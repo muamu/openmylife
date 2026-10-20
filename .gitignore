@@ -41,11 +41,14 @@ inbox/*
 # —— 编辑器 / 系统 / 依赖 ——
 .DS_Store
 Thumbs.db
+*.log
 .idea/
 .vscode/
 node_modules/
 
-# —— 密钥 ——
+# —— 密钥 / 证书（通用兜底）——
 .env
 *.key
 *.pem
+*.pfx
+*.p12
