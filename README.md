@@ -4,11 +4,41 @@
 
 > **这份仓库有两个读者**：人类读这里（[README.md](./README.md)），AI 读 [CONTEXT.md](./CONTEXT.md)。
 
-> **状态：阶段 0（开荒）** — 目录骨架已就位，内容陆续补入。
+> **状态：阶段 0（开荒）** — 骨架已就位，正在把过去的积累搬进来。
 
 ## 我是谁
 
-（一句话画像 + 我在解决的三个问题）
+我是尚盐。一个把「学习」当长期习惯的普通人，一个尝试"开源自己"的独立开发者。
+
+- **终身学习者**
+- **独立开发者**
+- **追踪与思考 AI 发展十多年**
+- **前互联网小公司产品经理**
+- **金融市场里已经亏空的投机者**
+- **从开发一个 个人副脑Agent框架 转到 开发DSH记忆插件**
+
+这些经历像我人生的一组长期实验：学什么、做什么、怎么判断、如何承担后果。现在开始把实验记录公开在这里。
+
+### 我在解决的三个问题
+
+1. **经验留不下来**：想法散落在备忘录、聊天记录和截图里，无法检索、无法引用，也换不来下一次机会。
+2. **信息太多，可信太少**：AI 时代不缺答案，缺的是「谁在什么版本上亲测过、结论是什么」。
+3. **普通人用不上 AI 的长期复利**：不会代码、不会维护仓库的人，很难把自己的知识变成可被 AI 读取、可被他人复用的资产。
+
+我的解法很笨，但可复用：用 git 把思考、经验和作品版本化；用 `README.md` 给人类读，用 `CONTEXT.md` / `llms.txt` 给 AI 读；让公开变成储蓄，而不是消耗。
+
+## 当前项目：OpenMyLife（开源自己）
+
+OpenMyLife 是一套「把自己当成长期维护的开源项目」的方法与工具。
+
+- **001 号样板间**：你正在看的这个仓库。我先把自己的思考、评测、职业方法与产品复盘公开出来，作为第一个可检查的样本。
+- **模板仓**：[openmylife/openmylife](https://github.com/openmylife/openmylife)。点 `Use this template`，几分钟就能拥有同款仓库。
+- **收录仓**：[awesome-openlife](https://github.com/openmylife/awesome-openlife)。收录愿意公开自己的人，让彼此的积累**既被人看见，也能被 AI 读取**。
+- **入口与 Skill**：[openmylife.xyz](https://openmylife.xyz)。把仓库丢给 AI，说一句「帮我开源自己」，剩下的交给它。
+
+我想解决的问题不复杂：让一个普通人也能拥有一个**可搜索、可引用、可协作、可被 AI 理解**的个人知识库；让今天公开的积累，在几年后变成信誉、机会和作品。
+
+它不会一次性写成。起初只是零散的笔记、思考、成败和复盘；写久了，这些片段会连成一条时间线，最后变成一本属于你的人生之书。
 
 ## 这里有什么
 
@@ -16,7 +46,7 @@
 |---|---|---|
 | [ideas](./ideas) | 灵感备忘录（随手记） | 更新中 |
 | [notes](./notes) | 思考与阅读笔记（含 `insights/` 洞察集） | 计划 |
-| [critiques](./critiques) | 产品报告 / 评测 / 建议（社交/婚恋/音乐/游戏/直播） | 计划 |
+| [critiques](./critiques) | 产品报告 / 评测 / 建议（AI产品/Agent框架） | 计划 |
 | [career](./career) | 职业与方法论 | 计划 |
 | [products](./products) | 做过的产品（build in public） | 计划 |
 | [stories](./stories) | 非常规经历复盘 | 计划 |
@@ -40,15 +70,27 @@
 ## 找我
 
 - GitHub：[@muamu](https://github.com/muamu) · 平台入口：[openmylife.xyz](https://openmylife.xyz)
-- 联系：**表单或邮箱**（不留私人手机号）
+- X(推特)：[@Crazayan](https://x.com/Crazayan)
 
 ## 加入收录
 
-把自己加进 [`awesome-openlife`](https://github.com/openmylife/awesome-openlife) 收录榜 —— 提一个 PR 即可，须本人同意、可随时退出。
+把自己加进 [`awesome-openlife`](https://github.com/openmylife/awesome-openlife) 收录榜 —— 提一个 PR/Issue Forms 即可，可随时退出。
 
 ## 想拥有同款
 
-这是 [`openmylife/openmylife`](https://github.com/openmylife/openmylife) 模板仓的 **001 号样板间**。想开自己的仓：点模板仓的 **Use this template**，或把 [openmylife.xyz](https://openmylife.xyz) 丢给你的 AI 助手，说一句「帮我开源自己」。
+想拥有一个同款仓库？它来自 [`openmylife/openmylife`](https://github.com/openmylife/openmylife) 模板仓。
+
+**方式一：让 AI 带你做**
+
+把下面这段指令复制给你的 AI 助手：
+
+```text
+读取 https://openmylife.xyz/llms.txt 帮我开源自己
+```
+
+**方式二：自己一键生成**
+
+打开模板仓，点右上角 **Use this template** 生成自己的仓库；然后把新仓库链接发给 AI 助手，让它按模板约定帮你初始化。
 
 ---
 
