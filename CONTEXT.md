@@ -51,6 +51,7 @@
 - 每篇文首必填 front-matter：`date` / `tags` / `visibility`；`critiques/` 另加 `kind`。
 - **保留原始日期**，不做二次精修；第一版允许丑，先公开再完善。
 - 不编造事实；引用要给出来源。
+- 第三方原文摘录与 AI 总结：文首标注来源 + 「摘录 / 评论」，不纳入 CC BY（见 [LICENSE-CONTENT](./LICENSE-CONTENT)）。
 
 ## 7. 更新节奏
 
