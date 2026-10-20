@@ -1,0 +1,51 @@
+# 「开源自己」隐私门 —— never 级内容永不入库
+# 说明：分享的是想法与作品，不是生活。以下路径/文件一律不提交。
+
+# —— 隐私 / 敏感（never）——
+private/
+secret/
+secrets/
+*.private.md
+*.secret.md
+
+# 财务 / 交易
+finance/
+ledger/
+*.csv
+# 例外：允许公开的数据集（如例子），按需调整
+!*/**/data/*.csv
+
+# 证件 / 身份
+id/
+*.id.*
+passport*
+身份证*
+
+# 在谈 offer / 合同
+offers/
+contracts/
+*.offer.md
+合同*
+
+# —— 他人信息（未经同意）——
+others/
+旁人/
+
+# —— 本地收件箱（inbox/ 素材暂存，内容不入库）——
+# inbox/ 是「随手丢素材」的中转站：未分类草稿、原始素材、大体积文件。
+# 只公开本目录的说明文件 README.md，其余一律不提交。
+# 注意：必须用 `inbox/*` 而不是 `inbox/` —— 否则连 README.md 自己也会被挡掉。
+inbox/*
+!inbox/README.md
+
+# —— 编辑器 / 系统 / 依赖 ——
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+node_modules/
+
+# —— 密钥 ——
+.env
+*.key
+*.pem
