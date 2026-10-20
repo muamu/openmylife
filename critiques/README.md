@@ -14,30 +14,30 @@
 
 ## 目录与命名
 
-**按领域用一级子目录**（领域自定义，示例见下）；**三类用 front-matter 的 `kind` 标记**——不为类型再挖一层目录，避免目录过深。
+**默认平铺在 `critiques/` 下，不预建领域子目录**；需要分领域时再建 `<domain>/`。**三类用 front-matter 的 `kind` 标记**——不为类型再挖一层目录。
 
 ```
 critiques/
-├── social/    dating/    music/    games/    live/
-└── <domain>/YYYY-MM-slug.md
+├── YYYY-MM-slug.md              # 默认：直接放这里
+└── <domain>/YYYY-MM-slug.md     # 可选：需要分领域时再建
 ```
 
-每篇文首 front-matter（必填）：
+每篇文首 front-matter（`date` / `kind` / `visibility` 必填）：
 
 ```yaml
 ---
 date: 2026-11
 kind: review          # report | review | advice
-domains: [dating]     # 自定义，如 social | dating | music | games | live
+domains: []           # 可选；分领域时填写，如 social | dating | music | games | live
 visibility: public    # public | link-only
 tags: []
 ---
 ```
 
 命名示例：
-- `critiques/dating/2026-11-dating-app-review.md` —— `kind: review`
-- `critiques/social/2026-12-social-market-report.md` —— `kind: report`
-- `critiques/live/2027-01-live-product-advice.md` —— `kind: advice`
+- `critiques/2026-11-app-review.md` —— `kind: review`（默认平铺）
+- `critiques/2026-12-social-market-report.md` —— `kind: report`
+- `critiques/dating/2027-01-dating-product-advice.md` —— `kind: advice`（需要分领域时）
 
 ## 与 `notes/insights/` 的分工
 

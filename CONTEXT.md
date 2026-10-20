@@ -23,7 +23,7 @@
 | 目录 | 放什么 | 命名 | front-matter |
 |---|---|---|---|
 | `notes/` | 思考与阅读笔记（含 `insights/` 洞察集） | `YYYY-MM-DD-slug.md` | `date` / `tags` / `visibility` |
-| `critiques/` | 对他人产品的报告 / 评测 / 建议 | `<domain>/YYYY-MM-slug.md` | +`kind`；`domain` 自定义（如 `social` / `dating` / `music` / `games` / `live`） |
+| `critiques/` | 对他人产品的报告 / 评测 / 建议 | `YYYY-MM-slug.md`；需要时再建 `<domain>/` | +`kind`；`domain` 可选 |
 | `career/` | 职业与方法论 | `YYYY-MM-slug.md` | `date` / `tags` / `visibility` |
 | `products/` | 我做过的产品（build in public） | `<product>/` + 顶层 `README.md` | — |
 | `stories/` | 非常规经历复盘 | `YYYY-MM-slug.md` | `date` / `tags` / `visibility` |
