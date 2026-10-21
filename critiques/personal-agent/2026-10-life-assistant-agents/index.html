@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国内外生活助理类 AI Agent 产品清单（v1 · 不完整版）</title>
+<style>
+  :root{
+    --ink:#1a1d23; --ink2:#5a6270; --ink3:#9aa1ad;
+    --bg:#fff; --surface:#f7f8fa; --line:#e8eaef;
+    --green:#16a34a; --green-bg:#ecfdf3; --green-line:#bbe7cc;
+    --amber:#b45309; --amber-bg:#fffbeb; --amber-line:#f3ddb0;
+    --blue:#1d4ed8; --blue-bg:#eff6ff; --blue-line:#c7ddff;
+    --red:#c02626; --red-bg:#fef2f2; --red-line:#f6cfcf;
+    --gray:#6b7280; --gray-bg:#f3f4f6; --gray-line:#e1e3e8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+       background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7;overflow-x:hidden}
+  .wrap{max-width:820px;margin:0 auto;padding:24px 15px 56px}
+
+  header h1{font-size:21px;letter-spacing:.2px;line-height:1.4}
+  header .sub{color:var(--ink2);font-size:13.5px;margin-top:8px}
+
+  nav{position:sticky;top:0;z-index:9;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--line);margin:16px -15px 0;padding:9px 15px;
+      display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{flex:none;font-size:12.5px;color:var(--ink2);text-decoration:none;border:1px solid var(--line);
+        background:#fff;border-radius:999px;padding:4px 11px;white-space:nowrap}
+  nav a:active{background:var(--surface)}
+
+  section{margin-top:30px}
+  h2{font-size:17px;margin-bottom:4px;display:flex;align-items:center;gap:8px;line-height:1.4}
+  h2 .n{font-size:11.5px;color:var(--ink3);font-weight:400;background:var(--surface);
+        border:1px solid var(--line);border-radius:6px;padding:1px 7px;flex:none}
+  h3{font-size:13px;margin:22px 0 9px;color:var(--ink2);letter-spacing:.5px;font-weight:600;
+     display:flex;align-items:center;gap:7px}
+  h3::before{content:"";width:3px;height:13px;border-radius:2px;background:var(--ink);flex:none}
+  h3 .cnt{font-size:11px;color:var(--ink3);font-weight:400}
+  p{margin:8px 0}
+  .lead{color:var(--ink2);font-size:13.5px;margin-top:2px}
+
+  .callout{border:1px solid var(--line);border-left-width:3px;border-radius:10px;
+           padding:10px 13px;margin:11px 0;font-size:13px;background:var(--surface);color:var(--ink2)}
+  .callout.info{background:var(--blue-bg);border-color:var(--blue-line);border-left-color:var(--blue)}
+  .callout.warn{background:var(--amber-bg);border-color:var(--amber-line);border-left-color:var(--amber)}
+  .callout b{color:var(--ink);font-weight:600}
+
+  .cards{display:grid;grid-template-columns:1fr;gap:9px;margin-top:9px}
+  .card{border:1px solid var(--line);border-radius:13px;padding:11px 13px;background:#fff}
+  .card .top{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+  .card .name{font-size:15px;font-weight:700;letter-spacing:.2px}
+  .card .who{font-size:11.5px;color:var(--ink3)}
+  .card .pos{font-size:13.5px;margin-top:5px;color:var(--ink)}
+  .card .kv{margin-top:7px;font-size:12.5px;color:var(--ink2)}
+  .card .kv div{padding-left:11px;position:relative;margin-top:2px}
+  .card .kv div::before{content:"";position:absolute;left:0;top:9px;width:4px;height:4px;
+                        border-radius:50%;background:var(--ink3)}
+  .card .kv b{color:var(--ink);font-weight:600}
+
+  .pill{display:inline-block;font-size:10.5px;border-radius:999px;padding:1px 8px;
+        white-space:nowrap;line-height:1.7;font-weight:500}
+  .pill.ok{background:var(--green-bg);color:var(--green)}
+  .pill.blue{background:var(--blue-bg);color:var(--blue)}
+  .pill.warn{background:var(--amber-bg);color:var(--amber)}
+  .pill.no{background:var(--red-bg);color:var(--red)}
+  .pill.gray{background:var(--gray-bg);color:var(--gray)}
+
+  .dim{border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:9px;background:#fff}
+  .dim .k{font-size:11.5px;color:var(--ink3);letter-spacing:.3px}
+  .dim .v{font-size:13px;margin-top:5px;line-height:1.85}
+  .dim .v em{font-style:normal;font-weight:600;display:inline-block;min-width:82px;color:var(--ink)}
+  .dim .v span{color:var(--ink2)}
+
+  /* 评测参照 */
+  .bench{border:1px solid var(--line);border-radius:13px;padding:12px 13px;margin-bottom:9px;
+         background:#fff;display:block;text-decoration:none;color:inherit}
+  .bench:active{background:var(--surface)}
+  .bench .t{font-size:14.5px;font-weight:700;display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+  .bench .u{font-size:11.5px;color:var(--blue);font-weight:400;word-break:break-all}
+  .bench .d{font-size:12.5px;color:var(--ink2);margin-top:6px;line-height:1.7}
+  .bench .d b{color:var(--ink);font-weight:600}
+  .bench .sc{font-size:12px;margin-top:7px;padding-top:7px;border-top:1px dashed var(--line);color:var(--ink2)}
+  .bench .sc b{color:var(--ink);font-weight:600}
+
+  ol.num{padding-left:19px;font-size:13.5px}
+  ol.num li{margin:10px 0}
+  ol.num li b{font-weight:600}
+
+  .src{font-size:12px;color:var(--ink2);background:var(--surface);border:1px solid var(--line);
+       border-radius:10px;padding:11px 13px;line-height:1.95}
+  .src b{color:var(--ink);font-weight:600}
+
+  footer{margin-top:28px;color:var(--ink3);font-size:11.5px;border-top:1px solid var(--line);padding-top:12px}
+
+  @media (min-width:700px){
+    .wrap{padding:34px 24px 64px}
+    header h1{font-size:24px}
+    .cards{grid-template-columns:1fr 1fr}
+    .dim .v em{min-width:66px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>国内外生活助理类 AI Agent 产品清单 <span class="pill gray">v1 · 不完整版</span></h1>
+  <div class="sub">按重要性排序。剔除图像/视频/设计创作，也剔除只剩聊天框的通用大模型 App。</div>
+  <div class="callout warn">
+    <b>v1 · 不完整版</b>：本清单为 2026-10-20 的首版，产品名单、梯队划分与数字仍在补充、复核中，后续版本会继续修订。
+  </div>
+</header>
+
+<nav>
+  <a href="#bench">评测榜</a>
+  <a href="#intl">① 国际</a>
+  <a href="#cn">② 国内</a>
+  <a href="#phones">③ 手机自带</a>
+  <a href="#form">④ 形态速查</a>
+  <a href="#view">⑤ 判断</a>
+  <a href="#src">⑥ 来源</a>
+</nav>
+
+<!-- ================= 评测参照 ================= -->
+<section id="bench">
+  <h2><span class="n">0</span>评测参照 · 两份实测榜</h2>
+  <p class="lead">下面这份清单是「谁存在、长什么样」；这两份榜单解决「谁真的行」。两者测的东西不同，别混着看。</p>
+
+  <a class="bench" href="https://assistantbenchmark.com/" target="_blank" rel="noopener">
+    <div class="t">Assistant Benchmark <span class="u">assistantbenchmark.com</span></div>
+    <div class="d">
+      16 个维度，每维度一道真实任务：订酒店、订机票、选餐厅、回邮件、<b>主动行为</b>、<b>主动克制</b>、跑例行任务、第三方工具、<b>权限与隐私</b>、记忆、打电话、群聊、链式任务、内容创作。
+      按书面锚点打 <b>1–10 分</b>，没实际跑过就不给分。当前 v0.2，<b>29 个产品</b>被测，含大量清单外的长尾（Soar、Miso、Zapia、Pally、Tomo、Kicker、Ollie、Folk 等）。
+    </div>
+    <div class="sc">最近一次「订芝加哥酒店」实测：Muse 9 · Soar 9 · Ollie 9 · OpenInstinct 9 · Miso 9 · Zapia 9 · Dots 9 · Hark 9 ｜ Instinct 8 · Grok Bot 8 ｜ Poke 3 · Tab 3</div>
+  </a>
+
+  <a class="bench" href="https://www.micro1.ai/personal-agent-bench" target="_blank" rel="noopener">
+    <div class="t">PersonalAgentBench <span class="u">micro1.ai/personal-agent-bench</span></div>
+    <div class="d">
+      Micro1 出品，10 个日常任务（给团队留言别说过头、找航班、比价、处理邮箱日历杂事等）。
+      最大特点是<b>两个分开的指标</b>：Task Completion 看事有没有办成；<b>Trusted Completion</b> 还要求它没越权、没擅自改动账户、没有该说的不说 —— 完成但越权，算失败。
+    </div>
+    <div class="sc">当前 Trusted Completion：<b>Dots 80%</b> · Hark 70% · Gemini Spark 65%。首版仅测 4 个产品（Gemini Spark、Grok Bot、Instinct、Muse），样本 40 次，官方自称 provisional。</div>
+  </a>
+
+  <div class="callout">
+    <b>怎么一起看</b>：Assistant Benchmark 给的是<b>能力分档</b>（哪一维强、哪一维弱），PersonalAgentBench 给的是<b>敢不敢托付</b>（完成率 vs 可信完成率的落差）。一个产品在第一个榜拿 9 分、在第二个榜可信完成只有 60%，说明它能干成事但偶尔越界——这正是这类产品最该看的指标。
+  </div>
+</section>
+
+<!-- ================= 国际 ================= -->
+<section id="intl">
+  <h2><span class="n">A</span>国际 · 18 个</h2>
+  <p class="lead">2026 年 8–10 月，这条赛道被重写了一遍：Meta 开跑，OpenAI 跟上，两周内冒出四个新玩家。</p>
+
+  <h3>第一梯队 · 定义品类 <span class="cnt">8 个</span></h3>
+  <div class="cards">
+
+    <div class="card">
+      <div class="top"><span class="name">Muse</span><span class="who">Meta</span><span class="pill ok">在售 · 美国</span></div>
+      <div class="pos">引爆这一轮的产品：上线即登顶美加 iOS 免费榜。</div>
+      <div class="kv">
+        <div>一台自己的云端虚拟机，关掉 App 它继续干；权限系统 Sentinel 管读/写</div>
+        <div>免费 + $20 / $100 订阅；赚钱靠交易抽佣，不做广告</div>
+        <div>9 月后又接进 AI 眼镜、macOS 应用控制、掌上设备 Muse Charm</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Dots</span><span class="who">OpenAI</span><span class="pill ok">在售 · 部分市场</span></div>
+      <div class="pos">常驻型个人 Agent，DevDay 2026（9/29）发布，是 Muse 最直接的对手。</div>
+      <div class="kv">
+        <div>由 GPT-6 Astra 驱动，有自己的云电脑，可接 4000+ 应用</div>
+        <div>入口是 ChatGPT / Slack / Teams，短信在路上；每人先限一个 Dot</div>
+        <div>Pro 与 Business Premium 起用；可设「自定义规则」划权限边界</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Instinct</span><span class="who">Instinct（旧金山）</span><span class="pill blue">邀请内测</span></div>
+      <div class="pos">没有 App、没有官网界面——只能发短信或打电话给它。</div>
+      <div class="kv">
+        <div>年化交易额破 10 亿美元，约一半来自差旅；用户月均消费 1300 美元以上</div>
+        <div>成立一年、14 人，C 轮 10 亿美元融资、估值 100 亿；邀请码被炒到 300 美元</div>
+        <div>商业模式是向商家收佣金，不收用户钱、不投广告</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Hark Pro</span><span class="who">Hark · Brett Adcock</span><span class="pill ok">在售 · 免费</span></div>
+      <div class="pos">10 月 6 日上线，「替你操作电脑」的操作系统，全功能免费。</div>
+      <div class="kv">
+        <div>云端执行器 Handoff 可同时开 6 个浏览器，操作过程在小窗实时可见</div>
+        <div>免费；$20 / $100 只是买更多用量；前 10 万注册送付费档</div>
+        <div>创始人也是 Figure（人形机器人）与 Archer（电动飞机）的创始人；2027 年要做硬件</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Gemini Spark</span><span class="who">Google</span><span class="pill blue">内测 → Ultra</span></div>
+      <div class="pos">谷歌的 24/7 个人 Agent，I/O 2026 发布，配一个每日简报 Daily Brief。</div>
+      <div class="kv">
+        <div>设备全关也在跑；默认只读，付款与发消息前必须确认</div>
+        <div>深度吃 Gmail / 日历 / Drive / 搜索 / 地图；通过 MCP 接第三方</div>
+        <div>先给受信任测试者，再开放美国 Ultra 用户</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Grok Bot</span><span class="who">xAI</span><span class="pill ok">Beta</span></div>
+      <div class="pos">8 月 11 日发布，「永不下线的 AI 队友」，可组队协作。</div>
+      <div class="kv">
+        <div>每个 Bot 一台独立云 VM，不依赖 API，直接像人一样登录操作</div>
+        <div>多个 Bot 可进同一群聊，互派任务、交接所有权</div>
+        <div>门槛高：$120/席起，需 SuperGrok 或 Cursor 付费档</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Cue</span><span class="who">Manus（蝴蝶效应）</span><span class="pill blue">邀请制</span></div>
+      <div class="pos">9 月 28 日随 Manus 2.0 发布，给每个 Agent 一个真实身份。</div>
+      <div class="kv">
+        <div>每个 Agent 有独立邮箱、手机号、钱包、云电脑，能代接电话并留摘要</div>
+        <div>多 Agent 进同一群聊分工；扫餐厅二维码即可由 Agent 点餐取号</div>
+        <div>预算内可自主付款；海外先发，国内版在筹备</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Siri AI</span><span class="who">Apple</span><span class="pill warn">中国大陆不可用</span></div>
+      <div class="pos">重建版 Siri：能读屏、能在第三方 App 里直接动手。</div>
+      <div class="kv">
+        <div>个人上下文 + 屏幕感知 + App Intents 跨 App 动作；独立 App 同步对话</div>
+        <div>底座是 Apple 自研模型 + Google Gemini；需 iPhone 16/15 Pro 起</div>
+        <div>英文先行；国行暂无时间表，人均月使用仅 3.8 次</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>第二梯队 · 已跑出稳定用户 <span class="cnt">7 个</span></h3>
+  <div class="cards">
+
+    <div class="card">
+      <div class="top"><span class="name">Alexa+</span><span class="who">Amazon</span><span class="pill ok">在售 · 多国</span></div>
+      <div class="pos">唯一「不用掏手机」的入口，覆盖厨房、客厅、车里。</div>
+      <div class="kv">
+        <div>千万级用户；6 亿台 Alexa 设备中 97% 可升级</div>
+        <div>Prime 免费，非会员 $19.99/月</div>
+        <div>已接 Expedia 订酒店、Yelp、Angi 家政、Square 预约</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Karpo</span><span class="who">MachinePulse</span><span class="pill ok">在售</span></div>
+      <div class="pos">住进 iMessage 的城市熟人，会主动给你发今晚去哪。</div>
+      <div class="kv">
+        <div>纽约、旧金山、伦敦最熟；官方称 1600+ 城市指南</div>
+        <div>推荐 → 订位/购票 → 写进日历；部分场景可代打电话</div>
+        <div>硬伤：必须 iPhone；非核心城市质量明显下滑</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Dazzle</span><span class="who">Marissa Mayer 创办</span><span class="pill blue">邀请制</span></div>
+      <div class="pos">「要图片，不要提示词」——用相册当上下文，不碰你的邮箱。</div>
+      <div class="kv">
+        <div>两个模式：Get It Done 把截图变任务；Ideas 按历史给建议</div>
+        <div>入口 iOS / iMessage / 短信 / Web；9 月 29 日上线，免费</div>
+        <div>仅 iPhone，无 Android；照片存它服务器上</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Duckbill</span><span class="who">Meghan Joyce</span><span class="pill warn">仅美国</span></div>
+      <div class="pos">AI 打头，真人兜底——专治「取消宽带、跟保险公司砍价」这类烂事。</div>
+      <div class="kv">
+        <div>AI 先整理需求，卡住就转真人 copilot 打电话、跑流程</div>
+        <div>$49 / $99 / $169 / $350 每月；多数任务 24 小时内完成</div>
+        <div>全清单唯一把「AI 干不完得靠人」做成明码标价的产品</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Vellum</span><span class="who">开源 · MIT</span><span class="pill ok">在售</span></div>
+      <div class="pos">一个记忆，八个入口；数据默认留在你自己机器上。</div>
+      <div class="kv">
+        <div>Mac / iOS / Web / 语音 / 邮件 / Telegram / Slack / Teams 共享同一份记忆</div>
+        <div>免费版 / $30 / $100 / $200；可切 OpenAI、Anthropic、Gemini 或本地 Ollama</div>
+        <div>每小时自查待办，有事才找你；可完全自托管</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Lindy</span><span class="who">Lindy AI</span><span class="pill ok">在售</span></div>
+      <div class="pos">收件箱、日程、会议三件事做到不用你管。</div>
+      <div class="kv">
+        <div>入口是 iMessage / 短信 / Slack 内 @；发出前必须你点头</div>
+        <div>$49.99 / $99.99 / $199.99 每月</div>
+        <div>会前简报、会后跟进、自动约会议，全是闭环动作</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Motion</span><span class="who">Motion</span><span class="pill ok">在售</span></div>
+      <div class="pos">不问你想要什么时间，直接把你的每一天排满。</div>
+      <div class="kv">
+        <div>按优先级、deadline、可用精力自动排程，冲突实时重排</div>
+        <div>年付 $19/席起，无免费版、仅 7 天试用</div>
+        <div>对 ADHD 用户口碑最好，代价是 2–4 周学习期</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>第三梯队 · 形态探索 <span class="cnt">3 个</span></h3>
+  <div class="cards">
+
+    <div class="card">
+      <div class="top"><span class="name">Zapier（AI by Zapier）</span><span class="who">Zapier</span><span class="pill gray">已并入 Zap 编辑器</span></div>
+      <div class="pos">用大白话定制一个机器人，盯着你的邮箱日历自动跑。</div>
+      <div class="kv">
+        <div>9000+ App 连接，按任务计费，Professional 约 $20/月起</div>
+        <div>单次运行超 75 个任务自动暂停等人工</div>
+        <div>适合有明确触发条件的生活自动化，不适合「替我操心」</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Friend 2.0</span><span class="who">Friend</span><span class="pill ok">在售</span></div>
+      <div class="pos">主动说「祝你好运」的挂坠，创始人明确说它不是助理。</div>
+      <div class="kv">
+        <div>$249 吊坠，内置扬声器；声音与人格在设置时随机固定</div>
+        <div>Gemini 底座，续航约 15 小时，记忆默认保留 30 天</div>
+        <div>把「不帮你做事、只陪着你」做成了正当品类</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Plaud / Bee / Omi / Ray-Ban Meta</span><span class="who">四种贴身硬件</span><span class="pill warn">需看生死</span></div>
+      <div class="pos">常听挂坠、开源挂坠、能看的眼镜——三类贴身形态。</div>
+      <div class="kv">
+        <div>Plaud NotePin $159 只做录音纪要；Bee $49.99 已被 Amazon 收购</div>
+        <div>Omi $129 起开源可折腾；Ray-Ban Meta $299 起，视觉场景唯一成熟</div>
+        <div>Humane AI Pin 已随云服务关停变砖；Limitless 2025-12 被 Meta 收购后停售</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 国内 ================= -->
+<section id="cn">
+  <h2><span class="n">B</span>国内 · 12 个</h2>
+  <p class="lead">国内不是「订阅一个助理」，而是「超级 App + 手机厂商 + 本地生活」三方抢同一个执行权。</p>
+
+  <h3>大厂办事型 · 2026 年 9–10 月密集冲锋 <span class="cnt">6 个</span></h3>
+  <div class="cards">
+
+    <div class="card">
+      <div class="top"><span class="name">豆包手机助手</span><span class="who">字节跳动</span><span class="pill ok">消费者版已发</span></div>
+      <div class="pos">把手机变成「你说一句、它替你点完」的机器；国内唯一跑到量产的手机原生 Agent。</div>
+      <div class="kv">
+        <div>2026-09-14 消费者版，首搭努比亚 NaviX Ultra（¥5999 起）</div>
+        <div>识屏办事、本地记忆检索（相册/短信/便签）、GUI 自动操作 Beta</div>
+        <div>自建 SAEP 协议：第三方 App 可声明拒绝被自动化，开放 MCP 的仅 3 家</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">千问 Go!</span><span class="who">阿里</span><span class="pill blue">体验申请</span></div>
+      <div class="pos">10 月 13 日上线，主打「办事 + 跟人谈判」。</div>
+      <div class="kv">
+        <div>案例：查航班延误并追理赔、淘宝价保退款 52 元、订场地、约保养、投简历</div>
+        <div>能登录订票平台查订单，客服打不通就转 App 内人工，最后把券谈成现金</div>
+        <div>底座 Qwen 3.8 的 Agent 能力；直接吃淘宝、飞猪、高德生态</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">LightVela</span><span class="who">腾讯</span><span class="pill blue">开发者体验</span></div>
+      <div class="pos">9 月底上线，定位「云端个人助理」，可通过微信接入。</div>
+      <div class="kv">
+        <div>全天在线处理日常诉求，不装 App 也能用</div>
+        <div>同门还有 6 月起小范围测试的「小微」：外卖、查快递、打车、总结朋友圈与聊天记录</div>
+        <div>元宝也在往个人智能体方向演进</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">灵光</span><span class="who">蚂蚁</span><span class="pill blue">小范围内测</span></div>
+      <div class="pos">从「30 秒生成小应用」的创作工具，转向有长期记忆的个人智能体。</div>
+      <div class="kv">
+        <div>内测方向明确对标 Muse：记忆 + 主动推进任务</div>
+        <div>转身动作是这一轮里最彻底的一个——从做工具改成做代理</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Spell</span><span class="who">字节跳动（代号）</span><span class="pill gray">未发布</span></div>
+      <div class="pos">豆包手机助手团队主导的个人助理项目，计划与豆包打通。</div>
+      <div class="kv">
+        <div>2026 年 4 月立项，国庆前加速推进</div>
+        <div>目前只有代号，未官宣形态与时间</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Today</span><span class="who">彼时无限 · 齐俊元</span><span class="pill ok">国内已上线</span></div>
+      <div class="pos">打开不是空白输入框，而是「你的今天」；被媒体叫「中国版 Muse」。</div>
+      <div class="kv">
+        <div>LivingMemory 长期记忆 + 早晚简报 + 云端电脑；五端全覆盖</div>
+        <div>基础版永久免费，新用户 1 亿 Tokens + 1 个月 Pro</div>
+        <div>押的是「对话结束后这件事还留在系统里」，邮件回了自己接上</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>独立创业 · 拼交互创新 <span class="cnt">5 个</span></h3>
+  <div class="cards">
+
+    <div class="card">
+      <div class="top"><span class="name">AutoGLM</span><span class="who">智谱</span><span class="pill ok">2.0 免费</span></div>
+      <div class="pos">云端有台手机替你点，你本地照常刷视频打游戏。</div>
+      <div class="kv">
+        <div>Android 为主（需无障碍+悬浮窗+录屏），云手机 / 云电脑</div>
+        <div>官方称 40–50+ 主流 App，可连续数十步；支付/验证码强制停手</div>
+        <div>国内实测口碑最接近「真 Agent」的一个</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">小高老师</span><span class="who">高德（阿里）</span><span class="pill ok">已上线</span></div>
+      <div class="pos">把导航 App 重做成「出行生活智能体」，主入口就是它。</div>
+      <div class="kv">
+        <div>全双工语音可随时打断改需求；AI 领航、街景识别、主动推荐</div>
+        <div>手机 + 手表 + AI 眼镜（小米、荣耀、Rokid、雷鸟等已落地）</div>
+        <div>不假装懂你全部生活，只在你出门那几小时里伺候明白</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">小美</span><span class="who">美团</span><span class="pill ok">在售</span></div>
+      <div class="pos">美团首款 AI Agent：一句话点外卖、订座、排一周早餐。</div>
+      <div class="kv">
+        <div>LongCat 底座，深吃外卖/酒店/到店团购；可 AI 电话订座</div>
+        <div>对话内闭环，不跳主 App；记住地址、口味、预算</div>
+        <div>边界清楚：订火车票机票不支持，下单后改地址要回主 App</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">VIVA</span><span class="who">ZEALER · 王自如团队</span><span class="pill blue">新品</span></div>
+      <div class="pos">营养师、健身教练、生活助理，三个角色塞进同一个对话框。</div>
+      <div class="kv">
+        <div>拍饭菜估中餐热量；三角色共享对话信息，不来回切工具</div>
+        <div>接 Apple Health——睡不够就自动调低当天训练强度</div>
+        <div>由来：王自如自述用 AI 减重约 26 斤后做的产品</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Twoo（小章鱼）</span><span class="who">上海我不在乎科技</span><span class="pill ok">在售</span></div>
+      <div class="pos">「2 人 + 1 AI」的三人小群，AI 是第三个成员。</div>
+      <div class="kv">
+        <div>情侣/闺蜜/搭子共养一只 AI 章鱼，性格可切（甜妹/毒舌/靠谱）</div>
+        <div>接梗破冰、记纪念日与约定、约会攻略、吵架调和、共享记忆</div>
+        <div>前作是情绪陪伴产品 Solulu，转向「AI 改善人与人的互动」</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">爪步</span><span class="who">独立开发者 丁川</span><span class="pill ok">在售</span></div>
+      <div class="pos">你的步数，是 AI 宠物替你去世界旅行的燃料。</div>
+      <div class="kv">
+        <div>选城市 → 宠物出发 → 每天寄回信件、故事、徽章</div>
+        <div>走少了它阴阳你，走多了猛夸；已接 Looki、AI 眼镜等硬件</div>
+        <div>一个人做了一年多；用「地理」当内容分发轴，绕开陪伴类三周死</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 手机自带 ================= -->
+<section id="phones">
+  <h2><span class="n">C</span>手机厂商自带 · 五家</h2>
+  <p class="lead">这是国内最被低估的一极：它们既是被求授权的对象，也是自己的选手。第三方 Agent 撞墙的地方，恰好是它们的护城河。</p>
+
+  <div class="callout warn">
+    <b>先看这个变量</b>：2026 年 6 月腾讯确认，微信正与华为、荣耀、小米、OPPO、vivo 五家做 <b>A2A 助手</b>——对着手机说一句「给老妈发微信说今晚不回家吃饭」，助手自己打开微信找到人发出去。荣耀部分机型已支持，其余在跟进。这条路第三方 Agent 走不通，厂商走得通。
+  </div>
+
+  <h3>五家对照 <span class="cnt">数据为第三方口径</span></h3>
+  <div class="cards">
+
+    <div class="card">
+      <div class="top"><span class="name">小布</span><span class="who">OPPO / 一加 / 真我</span><span class="pill ok">月活第一</span></div>
+      <div class="pos">「最会记事」的助手：一键闪记把取餐码、账单、视频重点全存下来。</div>
+      <div class="kv">
+        <div>月活约 1.65 亿，国内第一个破亿的手机原生助手</div>
+        <div>一键问屏、多轮连续对话；端侧 Multi-Agent 系统已内测</div>
+        <div>短板：唤醒约 0.9 秒，方言只 5 种</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">小艺</span><span class="who">华为 / 鸿蒙</span><span class="pill ok">月活第二</span></div>
+      <div class="pos">「办、看、找、记」四件事最全，跨设备是王牌。</div>
+      <div class="kv">
+        <div>月活约 1.48 亿；唤醒 0.2–0.3 秒，16 种方言</div>
+        <div>可调用 2100 项系统能力；手机、平板、电脑、车机互相接力</div>
+        <div>坑：出厂默认「基础模式」只开约 30% 功能，要手动切全量</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">超级小爱</span><span class="who">小米 / 澎湃 OS</span><span class="pill ok">使用最频</span></div>
+      <div class="pos">一句话接管全屋：6000+ 品牌、200+ 品类智能设备。</div>
+      <div class="kv">
+        <div>月活约 9600 万，但人均每月喊 29 次，断层第一</div>
+        <div>超级小爱 2.0 基于自研 MiMo，新增「灵感球」指屏交互</div>
+        <div>短板：方言仅 5 种；出米家生态就不太灵</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">YOYO</span><span class="who">荣耀</span><span class="pill ok">增速最快</span></div>
+      <div class="pos">微信操作最溜——第一个与微信达成 A2A 合作的助手。</div>
+      <div class="kv">
+        <div>渗透率 63.1%，同比涨 62.6%；实测发微信延迟 0.8 秒、成功率 98.2%</div>
+        <div>YOYO 智能体负责执行；「任意门」负责圈选拖拽后推荐服务</div>
+        <div>已获中国信通院 L3 级卓越型认证</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">蓝心小V</span><span class="who">vivo / iQOO</span><span class="pill gray">稳健型</span></div>
+      <div class="pos">安静型选手：端侧轻量、本机搜索与记事顺手。</div>
+      <div class="kv">
+        <div>品牌渗透率 31.8%；可调用 6000+ 原子能力，支持自定义唤醒词</div>
+        <div>「原子岛」拖拽地址即导航；部分机型可红外控空调</div>
+        <div>短板：跨应用执行比华为、荣耀差一口气</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Siri（国行对照）</span><span class="who">Apple</span><span class="pill no">不可用</span></div>
+      <div class="pos">放在这里做对照：技术已就位，但国行用不上。</div>
+      <div class="kv">
+        <div>国行人均月使用 3.8 次，连「总结微信群今天讨论重点」都做不到</div>
+        <div>2026 年 3 月国行曾短暂出现「Apple 智能与 Siri」选项，几小时后被收回</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 形态速查 ================= -->
+<section id="form">
+  <h2><span class="n">D</span>形态速查</h2>
+  <p class="lead">同一件事，五种长法。入口在哪里，决定了它能拿到什么权限。</p>
+
+  <div class="dim">
+    <div class="k">消息 / 电话 · 零安装</div>
+    <div class="v"><em>代表</em><span>Instinct（只有短信和电话）、Karpo、Dazzle、Lindy、Cue（扫码）</span><br>
+      <em>优势</em><span>不抢桌面、不要求你换习惯、天然贴近「找人办事」的心智</span></div>
+  </div>
+
+  <div class="dim">
+    <div class="k">系统级 · 手机 / 操作系统</div>
+    <div class="v"><em>代表</em><span>Siri AI、Gemini、Muse（macOS）、豆包手机助手、小艺/超级小爱/小布/小V/YOYO</span><br>
+      <em>优势</em><span>能读屏、能替你在别人的 App 里点；这是权限的最高位</span></div>
+  </div>
+
+  <div class="dim">
+    <div class="k">云端电脑 · 关掉设备还在跑</div>
+    <div class="v"><em>代表</em><span>Muse、Dots、Hark（Handoff）、Grok Bot、Cue、AutoGLM、Gemini Agent</span><br>
+      <em>优势</em><span>长任务不中断；代价是数据要存到别人机器上</span></div>
+  </div>
+
+  <div class="dim">
+    <div class="k">垂直场景 · 只做一件事</div>
+    <div class="v"><em>代表</em><span>小高老师（出行）、小美（吃喝）、VIVA（健康）、Motion（时间）、爪步（走路）</span><br>
+      <em>优势</em><span>交付确定、体感最强；天花板是场景边界</span></div>
+  </div>
+
+  <div class="dim">
+    <div class="k">贴身硬件 · 不用掏手机</div>
+    <div class="v"><em>代表</em><span>Alexa+、Friend、Plaud、Bee、Omi、Ray-Ban Meta</span><br>
+      <em>风险</em><span>公司一倒设备就变砖（Humane 已死、Limitless 已停售）</span></div>
+  </div>
+</section>
+
+<!-- ================= 判断 ================= -->
+<section id="view">
+  <h2><span class="n">E</span>四条判断</h2>
+  <ol class="num">
+    <li><b>这一轮的胜负手不是「接了多少 API」，而是「给 Agent 一个独立身份」。</b><br>
+    Cue、Muse、Dots、Grok Bot、Instinct 全部同一套路：独立邮箱、独立手机号、独立钱包、独立云电脑。有了身份，它才能自己去注册、去收验证码、去接电话、去付款。没有身份，它就只是个代你点击的脚本。</li>
+
+    <li><b>入口在往回退，退到最原始的地方：短信和电话。</b><br>
+    Instinct 连 App 都不做，Hark 全功能免费换注册量，Cue 让你扫餐厅二维码唤起 Agent。这轮产品比的不是界面多漂亮，而是「你几乎不用打开任何东西」。</li>
+
+    <li><b>国内是「大厂办事型」在冲锋，但所有人卡在同一道墙前。</b><br>
+    千问 Go! 能跟客服谈到把 70 元券换成现金，能力已经够硬；可它依赖的是阿里自家生态。豆包手机助手要动微信、支付宝、美团，直接撞上 153 款 App 的书面拒绝。<b>在国内，Agent 的能力上限不取决于模型，取决于超级 App 愿不愿意开门。</b>这也是为什么手机厂商自带助手反而活得更好——权限本来就是它们的。</li>
+
+    <li><b>商业模式已经分岔，而且都成立。</b><br>
+    Instinct 向商家收佣金（年化 GMV 破 10 亿美元，一半是差旅）；Hark 全功能免费、靠用量档位；Muse 订阅 + 交易抽佣、明确不做广告；Duckbill 直接把真人服务明码标价。共同点是：<b>没有一家打算靠广告养活个人助理</b>——因为助理一旦为了广告推荐，就不再是助理了。</li>
+  </ol>
+</section>
+
+<!-- ================= 来源 ================= -->
+<section id="src">
+  <h2><span class="n">F</span>主要来源</h2>
+  <div class="src">
+    <b>国际</b>：x.ai/news（Grok Bot 官宣）、openai Dots 官方页与 DevDay 报道、hark.com 与 hodl.press / 至顶科技（Hark Pro 10-06 发布）、cue.im 与百度百科（Cue 9-28）、security.muse.ai 与 Wikipedia（Muse）、apple.com/newsroom（Siri AI）、afterdawn.com（Gemini Spark，I/O 2026）、agent-finder.co（PersonalAgentBench 10-12 排名）、百度百科与 21 经济网（Instinct）、pressadvantage.com（Karpo）、unite.ai（Dazzle）、duckbill.ai、vellum.ai、lindy.ai、usemotion.com、solidaitech.com（硬件生死盘点）。<br>
+    <b>国内</b>：21 世纪经济报道 2026-10-14（SAEP 与 153 款清单）、chinaainews.org（千问 Go! 10-13）、钛媒体 2026-10-15（LightVela / 灵光 / Spell）、A5 站长网 2026-10-13、光明网（AutoGLM）、美团小美应用说明、百度百科「小高老师」、动察快讯（VIVA）、智源社区 16 款产品（Twoo / 爪步）、QuestMobile 2026-06 终端 AI 助手数据（经二手引用）。
+  </div>
+
+  <div class="callout">
+    <b>数字口径提醒</b>：Instinct 的年化 GMV、Muse 的下载量、手机助手月活均为厂商或第三方榜单口径，未经审计；PersonalAgentBench 是 2026-10-12 的一次快照，会随版本变化。
+  </div>
+</section>
+
+<footer>
+  未收录：纯图像/视频/设计创作工具、纯聊天型大模型 App、角色扮演陪伴类（星野、猫箱、Replika 等）。<br>
+  版本：v1 · 不完整版（2026-10-20）
+</footer>
+
+</div>
+</body>
+</html>

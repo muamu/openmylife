@@ -39,6 +39,7 @@ tags: []
 
 命名示例：
 - `critiques/agent-framework/2026-10-dsh-plugin-search-experience.md` —— `kind: report`
+- `critiques/personal-agent/2026-10-life-assistant-agents/` —— `kind: report`（HTML 报告，v1 不完整版）
 - `critiques/finance/hk-a-shares/2026-10-minimax-zhipu-h1-2026/` —— `kind: report`（HTML 报告）
 - `critiques/dating/2027-01-dating-product-advice.md` —— `kind: advice`
 
