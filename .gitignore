@@ -14,6 +14,9 @@ ledger/
 *.csv
 # 例外：允许公开的数据集（如例子），按需调整
 !*/**/data/*.csv
+# 例外：公开公司财报分析报告（非个人财务 / 交易数据）
+!critiques/finance/
+!critiques/finance/**
 
 # 证件 / 身份
 id/

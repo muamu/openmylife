@@ -23,7 +23,7 @@
 | 目录 | 放什么 | 命名 | front-matter |
 |---|---|---|---|
 | `notes/` | 思考与阅读笔记（按领域分目录，含 `insights/` 洞察集） | `<domain>/YYYY-MM-DD-slug.md` | `date` / `tags` / `visibility` |
-| `critiques/` | 对他人产品的报告 / 评测 / 建议 | `<domain>/YYYY-MM-slug.md` | +`kind` / `domains` |
+| `critiques/` | 对他人产品的报告 / 评测 / 建议 | `<domain>/YYYY-MM-slug.md`；HTML 报告用 `<domain>/<YYYY-MM-slug>/index.html` | +`kind` / `domains` |
 | `career/` | 职业与方法论 | `YYYY-MM-slug.md` | `date` / `tags` / `visibility` |
 | `products/` | 我做过的产品（build in public） | `<product>/` + 顶层 `README.md` | — |
 | `stories/` | 非常规经历复盘 | `YYYY-MM-slug.md` | `date` / `tags` / `visibility` |
@@ -41,6 +41,7 @@
 ## 5. 隐私边界（AI 必须遵守）
 
 - **永不入库**：他人隐私、证件、住址、财务细节、在谈 offer、交易细节、买家身份 → 写入 `.gitignore`。
+- **公开公司财报分析**放 `critiques/finance/`，只写公开信息；个人财务 / 交易细节仍为 `never`，`.gitignore` 只为前者开了窄例外。
 - **`inbox/` 中的原始素材默认不公开**（见 [inbox/README.md](./inbox/README.md)）；整理后才按 §3 命名约定移入对应目录。
 - 拿不准 → **降级为 `link-only`**，并向本人确认。
 - 评测**必须披露利益相关**；引用他人内容只引用 + 给出处。
