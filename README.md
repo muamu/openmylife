@@ -8,6 +8,12 @@
 
 > **协议适用范围**：本仓文字内容适用 [CC BY 4.0](./LICENSE-CONTENT)，代码与脚本适用 [MIT](./LICENSE)；两者冲突时以文件类型判断。他人原文摘录与 AI 总结除外（见文末「关于第三方内容」）。
 
+## 每日推荐
+
+> 每天一条，宁缺毋滥 —— 值得看才推，不承诺日更。
+
+- **2026-10-21** · [DSH 插件检索经验总结](https://github.com/muamu/openmylife/blob/main/critiques/agent-framework/2026-10-dsh-plugin-search-experience.md) —— 为 DSH 找插件的三轮实战复盘：四步检索法、npm 同名包陷阱，以及一份能照做的安装 SOP。
+
 ## 我是谁
 
 我是尚盐。一个尝试"开源自己"的独立开发者。

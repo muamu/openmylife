@@ -1,7 +1,7 @@
 ---
 date: YYYY-MM
 kind: review          # report | review | advice（三选一）
-domains: []           # 可选；分领域时填写，如 social | dating | music | games | live
+domains: [agent-framework]   # 必填；与所在领域目录同名，如 agent-framework | social | dating | music | games | live
 visibility: public    # public | link-only
 tags: []
 ---

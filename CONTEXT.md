@@ -23,7 +23,7 @@
 | 目录 | 放什么 | 命名 | front-matter |
 |---|---|---|---|
 | `notes/` | 思考与阅读笔记（含 `insights/` 洞察集） | `YYYY-MM-DD-slug.md` | `date` / `tags` / `visibility` |
-| `critiques/` | 对他人产品的报告 / 评测 / 建议 | `YYYY-MM-slug.md`；需要时再建 `<domain>/` | +`kind`；`domain` 可选 |
+| `critiques/` | 对他人产品的报告 / 评测 / 建议 | `<domain>/YYYY-MM-slug.md` | +`kind` / `domains` |
 | `career/` | 职业与方法论 | `YYYY-MM-slug.md` | `date` / `tags` / `visibility` |
 | `products/` | 我做过的产品（build in public） | `<product>/` + 顶层 `README.md` | — |
 | `stories/` | 非常规经历复盘 | `YYYY-MM-slug.md` | `date` / `tags` / `visibility` |
@@ -48,7 +48,7 @@
 
 ## 6. 写作规范
 
-- 每篇文首必填 front-matter：`date` / `tags` / `visibility`；`critiques/` 另加 `kind`。
+- 每篇文首必填 front-matter：`date` / `tags` / `visibility`；`critiques/` 另加 `kind` 与 `domains`。
 - **保留原始日期**，不做二次精修；第一版允许丑，先公开再完善。
 - 不编造事实；引用要给出来源。
 - 第三方原文摘录与 AI 总结：文首标注来源 + 「摘录 / 评论」，不纳入 CC BY（见 [LICENSE-CONTENT](./LICENSE-CONTENT)）。
