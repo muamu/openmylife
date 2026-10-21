@@ -5,7 +5,7 @@
 这是「开源自己」的 001 号样本仓。若你（AI Agent）被要求帮主人整理并提交内容，请：
 
 1. 先读 [CONTEXT.md](./CONTEXT.md) —— 目录地图、命名约定、术语与隐私边界都在里面。
-2. 按约定命名（`notes/YYYY-MM-DD-slug.md` 等）并补全 front-matter（`date` / `tags` / `visibility`）。
+2. 按约定命名（`notes/<domain>/YYYY-MM-DD-slug.md` 等）并补全 front-matter（`date` / `tags` / `visibility`）。
 3. 过隐私门：`public` / `link-only` / `never`；`never` 写入 `.gitignore`；`inbox/` 原始素材不入库，只提交 `inbox/README.md`。
 4. 提交 commit，并同步更新 `README.md` 的「从哪读起」。
 
