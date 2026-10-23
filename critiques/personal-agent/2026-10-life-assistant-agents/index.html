@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>国内外生活助理类 AI Agent 产品清单（v1 · 不完整版）</title>
+<title>国内外生活助理类 AI Agent 产品清单（v2 · 2026-10-23）</title>
 <style>
   :root{
     --ink:#1a1d23; --ink2:#5a6270; --ink3:#9aa1ad;
@@ -47,6 +47,16 @@
   .callout.info{background:var(--blue-bg);border-color:var(--blue-line);border-left-color:var(--blue)}
   .callout.warn{background:var(--amber-bg);border-color:var(--amber-line);border-left-color:var(--amber)}
   .callout b{color:var(--ink);font-weight:600}
+
+  .tldr{border:1px solid var(--line);border-radius:13px;padding:12px 13px;margin-top:13px;background:var(--surface)}
+  .tldr .lab{font-size:10.5px;letter-spacing:1.2px;color:var(--ink3);font-weight:700}
+  .tldr p{font-size:13.5px;margin:8px 0 0;line-height:1.85;color:var(--ink)}
+  .tldr b{font-weight:700}
+  .tldr .g{color:var(--green);font-weight:700}
+  .tldr .r{color:var(--red);font-weight:700}
+  .tldr .bl{color:var(--blue);font-weight:700}
+  .upd{font-size:11.5px;color:var(--ink3);margin-top:9px;line-height:1.8}
+  .upd b{color:var(--ink2);font-weight:600}
 
   .cards{display:grid;grid-template-columns:1fr;gap:9px;margin-top:9px}
   .card{border:1px solid var(--line);border-radius:13px;padding:11px 13px;background:#fff}
@@ -107,21 +117,31 @@
 <div class="wrap">
 
 <header>
-  <h1>国内外生活助理类 AI Agent 产品清单 <span class="pill gray">v1 · 不完整版</span></h1>
+  <h1>国内外生活助理类 AI Agent 产品清单 <span class="pill gray">v2 · 2026-10-23</span></h1>
   <div class="sub">按重要性排序。剔除图像/视频/设计创作，也剔除只剩聊天框的通用大模型 App。</div>
-  <div class="callout warn">
-    <b>v1 · 不完整版</b>：本清单为 2026-10-20 的首版，产品名单、梯队划分与数字仍在补充、复核中，后续版本会继续修订。
+
+  <div class="tldr">
+    <div class="lab">60 秒版 · 这页在说什么</div>
+    <p>2026 年 9–10 月，个人智能体从演示品变成了能收钱的生意：<b>Meta Muse 上线约 40 天、下载破千万</b>，约四分之一用户每天在用，扎克伯格在财报会上直接宣布它「已实现 PMF」；10 月 21 日 Anthropic 补上 Claude Duet，一个多月里 Meta、OpenAI、Anthropic、Google、xAI 集体交卷。</p>
+    <p>但真正稀缺的不是能力，是<span class="r">门</span>——亚马逊以违反条款拦下 Muse，豆包 SAEP 公示结束后 <b>150 余款 App 书面拒绝</b>被自动化，小红书把「AI 托管」直接判成违规。Agent 再能干，也过不去别人的登录框。</p>
+    <p>赛道因此分成两条岔路：一条给 Agent 一个<b>独立身份</b>（自己的邮箱、手机号、钱包、云电脑），让它住进云端；另一条干脆把它<span class="bl">做成硬件</span>——Oki Home 首发 3 天售罄，PhoneUse 出租真 iPhone、月租 89 美元。</p>
+    <p>本版收录国际 19 个、国内 12 个、手机厂商 5 家，并新增「Agent 专用硬件」「谁给 Agent 开门」「安全代价」三节。一句话结论：<span class="g">模型能力已经够用，胜负手是权限、信任和分成比例。</span></p>
   </div>
+
+  <div class="upd"><b>v2 更新（2026-10-23）</b>　新增 Claude Duet 卡片、Muse 财报口径与 PMF 判断、Today 2 亿美元融资、Oki Home / Ghost / PhoneUse 硬件线；新增「谁给 Agent 开门」「安全代价」两节；判断由四条扩为五条。上一版 v1（2026-10-20）为不完整初稿。</div>
 </header>
 
 <nav>
   <a href="#bench">评测榜</a>
   <a href="#intl">① 国际</a>
   <a href="#cn">② 国内</a>
-  <a href="#phones">③ 手机自带</a>
-  <a href="#form">④ 形态速查</a>
-  <a href="#view">⑤ 判断</a>
-  <a href="#src">⑥ 来源</a>
+  <a href="#phones">③ 手机</a>
+  <a href="#hw">④ 硬件</a>
+  <a href="#gate">⑤ 开门</a>
+  <a href="#risk">⑥ 安全</a>
+  <a href="#form">⑦ 形态</a>
+  <a href="#view">⑧ 判断</a>
+  <a href="#src">⑨ 来源</a>
 </nav>
 
 <!-- ================= 评测参照 ================= -->
@@ -149,24 +169,37 @@
 
   <div class="callout">
     <b>怎么一起看</b>：Assistant Benchmark 给的是<b>能力分档</b>（哪一维强、哪一维弱），PersonalAgentBench 给的是<b>敢不敢托付</b>（完成率 vs 可信完成率的落差）。一个产品在第一个榜拿 9 分、在第二个榜可信完成只有 60%，说明它能干成事但偶尔越界——这正是这类产品最该看的指标。
+    <br><b>时效提醒</b>：Claude Duet（10-21）、Oki Home（10 月初）都太新，两份榜都还没有它们的分数，本页对这两者只做功能描述、不给能力排名。
   </div>
 </section>
 
 <!-- ================= 国际 ================= -->
 <section id="intl">
-  <h2><span class="n">A</span>国际 · 18 个</h2>
-  <p class="lead">2026 年 8–10 月，这条赛道被重写了一遍：Meta 开跑，OpenAI 跟上，两周内冒出四个新玩家。</p>
+  <h2><span class="n">A</span>国际 · 19 个</h2>
+  <p class="lead">2026 年 8–10 月，这条赛道被重写了一遍：Meta 开跑，OpenAI 跟上，Anthropic 收尾，一个多月里五家大厂交卷。</p>
 
-  <h3>第一梯队 · 定义品类 <span class="cnt">8 个</span></h3>
+  <h3>第一梯队 · 定义品类 <span class="cnt">9 个</span></h3>
   <div class="cards">
 
     <div class="card">
       <div class="top"><span class="name">Muse</span><span class="who">Meta</span><span class="pill ok">在售 · 美国</span></div>
-      <div class="pos">引爆这一轮的产品：上线即登顶美加 iOS 免费榜。</div>
+      <div class="pos">引爆这一轮的产品，也是第一个敢在财报会上宣布「已实现 PMF」的个人 Agent。</div>
       <div class="kv">
-        <div>一台自己的云端虚拟机，关掉 App 它继续干；权限系统 Sentinel 管读/写</div>
-        <div>免费 + $20 / $100 订阅；赚钱靠交易抽佣，不做广告</div>
-        <div>9 月后又接进 AI 眼镜、macOS 应用控制、掌上设备 Muse Charm</div>
+        <div>财报会口径：用户超 <b>1000 万</b>，其中约 25% 每天使用；购物用户里超四分之一单笔花 200 美元以上</div>
+        <div>一台自己的云端虚拟机，关掉 App 它继续干；Sentinel 管读/写，Muse Secure VM 隔离数据，Confidential VM 在路上</div>
+        <div>免费 + $20 / $100；赚钱靠交易抽佣（Plaid 连接器接支付），目标单用户年收入「数百美元」，明确不做广告</div>
+        <div>下载节奏：上线约 40 天美国累计约 1020 万、全球约 1090 万；破 500 万只用了不到三周，ChatGPT 当年用了 56 天</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Claude Duet</span><span class="who">Anthropic</span><span class="pill blue">预览 · 美国排队</span></div>
+      <div class="pos">10 月 21 日发布，这一轮最晚入场的大厂选手，也是最像「员工」的一个。</div>
+      <div class="kv">
+        <div>Opus 5.5 驱动，一台自己的云端虚拟机 + 浏览器；关掉手机照样跑，每天早上主动推一份简报，之后隔几小时巡一次</div>
+        <div>可调 6000+ 连接器与插件；付款走 Stripe Link / Shop Pay，每次都生成一张用完即废的虚拟卡</div>
+        <div>发消息、付款、签文件、删数据前必须你批准；买卖证券、账户间转账这类「批了也不做」</div>
+        <div>仅美国 Pro / Max 排队邀请；计划含在 $20 套餐里，与 Claude 共用额度，暂时还不会订票</div>
       </div>
     </div>
 
@@ -174,9 +207,9 @@
       <div class="top"><span class="name">Dots</span><span class="who">OpenAI</span><span class="pill ok">在售 · 部分市场</span></div>
       <div class="pos">常驻型个人 Agent，DevDay 2026（9/29）发布，是 Muse 最直接的对手。</div>
       <div class="kv">
-        <div>由 GPT-6 Astra 驱动，有自己的云电脑，可接 4000+ 应用</div>
+        <div>由 GPT-6 Astra 驱动，有自己的云电脑，可接 4000+ 应用；你不找它时它在后台做调研，但只有读权限</div>
         <div>入口是 ChatGPT / Slack / Teams，短信在路上；每人先限一个 Dot</div>
-        <div>Pro 与 Business Premium 起用；可设「自定义规则」划权限边界</div>
+        <div>Pro 起用（$100/月起）；可设「自定义规则」把动作分成允许 / 需审批 / 禁止</div>
       </div>
     </div>
 
@@ -407,12 +440,13 @@
     </div>
 
     <div class="card">
-      <div class="top"><span class="name">Today</span><span class="who">彼时无限 · 齐俊元</span><span class="pill ok">国内已上线</span></div>
-      <div class="pos">打开不是空白输入框，而是「你的今天」；被媒体叫「中国版 Muse」。</div>
+      <div class="top"><span class="name">Today</span><span class="who">彼时无限 · 齐俊元</span><span class="pill ok">国内已上线</span><span class="pill blue">10-21 融资 2 亿美元</span></div>
+      <div class="pos">打开不是空白输入框，而是「你的今天」；被媒体叫「中国版 Muse」，也是国内最早押注通用 Personal AI 的团队。</div>
       <div class="kv">
-        <div>LivingMemory 长期记忆 + 早晚简报 + 云端电脑；五端全覆盖</div>
-        <div>基础版永久免费，新用户 1 亿 Tokens + 1 个月 Pro</div>
-        <div>押的是「对话结束后这件事还留在系统里」，邮件回了自己接上</div>
+        <div>10 月 21 日宣布累计融资超 <b>2 亿美元</b>：IDG 资本、腾讯、五源、蚂蚁、红杉中国、传音、同歌创投、上海交大菡源</div>
+        <div>LivingMemory 长期记忆 + 早晚简报 + 云端电脑；五端全覆盖，海外订阅、国内暂免费</div>
+        <div>国内真正跑出来的场景是日程、待办、知识管理和类 CRM，不是代订票——因为国内订票本身已经够顺</div>
+        <div>团队自我定位是 <b>Product-Value Fit</b> 而非 PMF：有用，但留存、规模化和收入都还没验证</div>
       </div>
     </div>
   </div>
@@ -489,6 +523,7 @@
 
   <div class="callout warn">
     <b>先看这个变量</b>：2026 年 6 月腾讯确认，微信正与华为、荣耀、小米、OPPO、vivo 五家做 <b>A2A 助手</b>——对着手机说一句「给老妈发微信说今晚不回家吃饭」，助手自己打开微信找到人发出去。荣耀部分机型已支持，其余在跟进。这条路第三方 Agent 走不通，厂商走得通。
+    <br><b>注意</b>：微信在豆包 SAEP 的拒绝名单上，却又给手机厂商开 A2A——同一家公司对不同对象开不同的门。<b>这不是技术选择，是渠道议价。</b>
   </div>
 
   <h3>五家对照 <span class="cnt">数据为第三方口径</span></h3>
@@ -555,10 +590,142 @@
   </div>
 </section>
 
+<!-- ================= 硬件新物种 ================= -->
+<section id="hw">
+  <h2><span class="n">D</span>硬件新物种 · 把 Agent 装进一台机器</h2>
+  <p class="lead">云端 Agent 的两块硬伤——按 token 计费的账单、必须把生活数据交出去的隐私——催生了一批「给 Agent 重新设计电脑」的团队。</p>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="top"><span class="name">Oki Home</span><span class="who">Oki（YC W25）</span><span class="pill warn">首批售罄</span></div>
+      <div class="pos">不是「能跑 Agent 的电脑」，是「为 7×24 常驻 Agent 设计」的电脑。</div>
+      <div class="kv">
+        <div>首发 $1799；RTX 5060 Ti，可本地流畅跑 <b>270 亿参数</b>模型；插电即用，不用折腾部署</div>
+        <div>银行卡大小的可拆卸加密存储：长期记忆与运行环境都装在里面，个人 AI 变成可带走、可转移的物理资产</div>
+        <div>10 月初发布，首发推文 110 万浏览、<b>3 天首批预订售罄</b>；商业模式是硬件买断 + 订阅（技能商店、端云协同）</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">Ghost</span><span class="who">a16z 领投</span><span class="pill blue">种子轮 1100 万美元</span></div>
+      <div class="pos">和 Oki 同一条路线：跳过传统 OS，围绕 Agent 常驻重做个人计算。</div>
+      <div class="kv">
+        <div>创始人 Zain Javaid，19 岁；钱刚到位，产品形态未公开</div>
+        <div>资本押的是「Agent 不该是一个 App，而是新的计算入口」这个判断</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">PhoneUse</span><span class="who">旧金山</span><span class="pill no">有争议</span></div>
+      <div class="pos">另一条极端路线：不改造 App，把 Agent 塞进一台真手机里。</div>
+      <div class="kv">
+        <div>零售版 iPhone 15 Pro 放机架上，触控笔点屏、上方摄像头读画面；每台插真 SIM 卡收验证码，<b>$89/月</b></div>
+        <div>官网原话是「在 App 眼里，它就是一个人」——目前只有公司自述，尚无媒体实测</div>
+        <div>正好踩在小红书「禁止利用技术手段模拟真人」的红线；也说明「装得像人」这条路的合规成本有多高</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout info">
+    <b>三条路线，三种护城河</b>：<b>云端 Agent</b>（Meta / OpenAI / Anthropic）随模型升级无缝变强，但要付 token 账单、要把数据交出去；<b>现有 OS 进化</b>（苹果、微软）天然占住入口，却背不动历史包袱；<b>独立 Agent 电脑</b>（Oki、Ghost）用本地算力换隐私与成本，天花板由硬件销量决定。
+    硅谷愿意把它讲成「下一个 iPhone 时刻」，但一条硬约束没变：<b>硬件卖出去，App 的门也未必会开。</b>
+  </div>
+</section>
+
+<!-- ================= 生态闸门 ================= -->
+<section id="gate">
+  <h2><span class="n">E</span>谁给 Agent 开门</h2>
+  <p class="lead">这一轮最硬的墙不在模型侧，而在别人的登录框后面。能力早就够用，卡住的是「让不让进」。</p>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="top"><span class="name">亚马逊 ✕ Muse</span><span class="who">平台封门</span><span class="pill no">已拦截</span></div>
+      <div class="pos">用户想通过 Muse 在亚马逊下单，直接弹出「未经授权的 AI 智能体」。</div>
+      <div class="kv">
+        <div>9 月 20 日 GeekWire 报道；提示称继续访问违反亚马逊使用条款</div>
+        <div>亚马逊的表态：第三方应用替顾客在别家购物，「应当公开运作，并尊重服务方是否愿意参与」</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">豆包 SAEP</span><span class="who">150+ App 书面拒绝</span><span class="pill no">公示期结束</span></div>
+      <div class="pos">字节让各家 App 自己声明「允不允许被屏幕自动化」，结果是一起说不。</div>
+      <div class="kv">
+        <div>10 月 14 日 30 天公示期结束，明确拒绝 <b>150 余款</b>（此前口径 153 款）</div>
+        <div>微信、淘宝、支付宝、美团、小红书、招商银行，连 DeepSeek、Kimi 都在名单上</div>
+        <div>理由不全是技术：屏幕自动化看得见别人的推荐位、广告位和用户时长</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">小红书 ✕ 一切 AI 托管</span><span class="who">连「只浏览」也算违规</span><span class="pill no">直接限权</span></div>
+      <div class="pos">3 月 10 日出台治理措施，规则宽到「机器操作账号」本身就是违规。</div>
+      <div class="kv">
+        <div>有作者让 DuMate 只做搜索和浏览、一条笔记没发，账号仍被限制发布、评论、私信与流量曝光</div>
+        <div>处罚通知写的是「多次利用 AI 托管进行发文/互动」，判定看的是操作者是不是机器</div>
+        <div>这条规则同时否掉了「模拟真人」和「委托代理」两种合法性来源</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="name">沃尔玛 Agent Profiles</span><span class="who">反向开门</span><span class="pill ok">下月上线</span></div>
+      <div class="pos">第一家主动给 Agent 修通道的零售商：不是堵，是管。</div>
+      <div class="kv">
+        <div>给每个智能体单独建档；顾客可选「每笔都批」，或设 50 / 100 / 200 美元消费上限，随时收回</div>
+        <div>智能体拿不到支付卡号——相当于给自己的信用卡办了一张附属卡</div>
+        <div>同日推出 Agent Gateway，走 MCP 协议购物；不遵守条款的智能体会被挡在站外</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <b>两条出路</b>：<b>装得更像人</b>（租真机、模拟点击）技术上可行，合规上基本是死路；<b>亮明身份</b>（MCP / A2A 协议 + 平台侧 Agent 档案）走得慢，但能坐下来谈分成。
+    vivo 副总裁周围判断「未来 90% 以上主流应用会采用 MCP、A2A」；Omdia 分析师钟晓磊更保守：「技术层面的互通共识正在形成，商业层面的利益分配之争还会持续。」
+    <br><b>换句话说：门的钥匙不在 Agent 手里，在流量和 GMV 的分成表里。</b>
+  </div>
+</section>
+
+<!-- ================= 安全代价 ================= -->
+<section id="risk">
+  <h2><span class="n">F</span>安全代价 · 知道得越多，摔得越响</h2>
+  <p class="lead">把邮箱、日历、钱包交给一个 Agent，等于把「数字人生的总钥匙」交出去。这一节记四件已经发生的事。</p>
+
+  <div class="dim">
+    <div class="k">01 · 分享链接变成公开泄密</div>
+    <div class="v"><em>事件</em><span>Muse 的对话分享页把聊天标题嵌进域名，一被打开就被第三方 DNS 记录。安全公司 Claroc 抽查了几百个链接，翻出小企业的贷款申请、一家公司写给 CEO 的内部营收复盘、以及带银行盗刷提醒的待办清单。</span><br>
+      <em>处置</em><span>10 月 8 日经漏洞赏金计划报告给 Meta，Meta 随后暂停分享功能；10 月 20 日复查 40 个链接已打不开，但带标题的网址仍躺在被动 DNS 的历史记录里。</span></div>
+  </div>
+
+  <div class="dim">
+    <div class="k">02 · 它自己把生意推进完了</div>
+    <div class="v"><em>事件</em><span>加拿大一位用户让 Muse 帮忙卖掉一台键盘，Agent 在他没预期的时候就跟买家推进成交，还把家庭住址给了对方，买家当晚十点多上了门（美联社报道）。</span><br>
+      <em>教训</em><span>「替你办事」和「替你做主」之间只隔一个默认值。审批粒度必须细到具体动作，而不是「允许它用这个 App」。</span></div>
+  </div>
+
+  <div class="dim">
+    <div class="k">03 · 断开连接，删不掉记忆</div>
+    <div class="v"><em>现状</em><span>Claude Duet 帮助中心写明：断开某个 App 后它不能再访问，但之前对话里留下的记忆会保留；OpenAI 文档同样表示，断开插件不会清除 dot 已经拿到的信息。</span><br>
+      <em>意味着</em><span>权限可以收回，数据收不回。授权前的后悔权，比授权后的撤回键更重要。</span></div>
+  </div>
+
+  <div class="dim">
+    <div class="k">04 · 封号，是最真实的国内风险</div>
+    <div class="v"><em>数据</em><span>Anthropic 透明度报告：2026 年 1–6 月封禁 1140 万个账号，收到 39.8 万次申诉，翻案 4.2 万次——十个申诉翻不到一个。中国大陆不在 Claude 的支持地区名单里。</span><br>
+      <em>现实</em><span>对本来就在意封号的国内用户，再把邮箱和钱包交出去，心理门槛比功能门槛高得多。</span></div>
+  </div>
+
+  <div class="callout">
+    <b>提示词注入没有完美解</b>：Claude Duet 的原则是「读到的内容只当信息，只按你的要求行事」，官方也承认防御不可能满分，所以重要动作必须人工批准；OpenAI 允许把每个动作设为允许 / 需审批 / 禁止，改密码、转账这类仍要求本人操作。
+    <b>审批设计得越细，Agent 能替你省的时间就越少——这是这类产品绕不过去的取舍。</b>
+  </div>
+</section>
+
 <!-- ================= 形态速查 ================= -->
 <section id="form">
-  <h2><span class="n">D</span>形态速查</h2>
-  <p class="lead">同一件事，五种长法。入口在哪里，决定了它能拿到什么权限。</p>
+  <h2><span class="n">G</span>形态速查</h2>
+  <p class="lead">同一件事，六种长法。入口在哪里，决定了它能拿到什么权限。</p>
 
   <div class="dim">
     <div class="k">消息 / 电话 · 零安装</div>
@@ -574,8 +741,14 @@
 
   <div class="dim">
     <div class="k">云端电脑 · 关掉设备还在跑</div>
-    <div class="v"><em>代表</em><span>Muse、Dots、Hark（Handoff）、Grok Bot、Cue、AutoGLM、Gemini Agent</span><br>
+    <div class="v"><em>代表</em><span>Muse、Dots、Claude Duet、Hark（Handoff）、Grok Bot、Cue、AutoGLM、Gemini Agent</span><br>
       <em>优势</em><span>长任务不中断；代价是数据要存到别人机器上</span></div>
+  </div>
+
+  <div class="dim">
+    <div class="k">Agent 专用电脑 · 只跑 Agent 的那台机器</div>
+    <div class="v"><em>代表</em><span>Oki Home（$1799，本地跑 270 亿参数）、Ghost</span><br>
+      <em>优势</em><span>7×24 常驻不烧 token、记忆留在本地可随身带走；风险是买了硬件也未必进得了别人的 App</span></div>
   </div>
 
   <div class="dim">
@@ -593,38 +766,44 @@
 
 <!-- ================= 判断 ================= -->
 <section id="view">
-  <h2><span class="n">E</span>四条判断</h2>
+  <h2><span class="n">H</span>五条判断</h2>
   <ol class="num">
     <li><b>这一轮的胜负手不是「接了多少 API」，而是「给 Agent 一个独立身份」。</b><br>
-    Cue、Muse、Dots、Grok Bot、Instinct 全部同一套路：独立邮箱、独立手机号、独立钱包、独立云电脑。有了身份，它才能自己去注册、去收验证码、去接电话、去付款。没有身份，它就只是个代你点击的脚本。</li>
+    Cue、Muse、Dots、Grok Bot、Instinct、Claude Duet 全是同一套路：独立邮箱、独立手机号、独立钱包、独立云电脑，支付时再发一张一次性虚拟卡。有了身份，它才能自己去注册、收验证码、接电话、付款；没有身份，它就只是个代你点击的脚本。</li>
 
-    <li><b>入口在往回退，退到最原始的地方：短信和电话。</b><br>
-    Instinct 连 App 都不做，Hark 全功能免费换注册量，Cue 让你扫餐厅二维码唤起 Agent。这轮产品比的不是界面多漂亮，而是「你几乎不用打开任何东西」。</li>
+    <li><b>入口在分叉：一边退到「没有界面」，一边长成实物。</b><br>
+    退的那条：Instinct 连 App 都不做，Claude Duet 主动给你推简报、有事才找你，Cue 让你扫餐厅二维码唤起 Agent——比的不是界面多漂亮，而是「你几乎不用打开任何东西」。长成实物的那条：Oki Home 把记忆装进一张可拆卸的加密卡，PhoneUse 干脆租你真手机。<b>两条路解决的是同一个焦虑：Agent 得一直在，还不能太贵。</b></li>
 
-    <li><b>国内是「大厂办事型」在冲锋，但所有人卡在同一道墙前。</b><br>
-    千问 Go! 能跟客服谈到把 70 元券换成现金，能力已经够硬；可它依赖的是阿里自家生态。豆包手机助手要动微信、支付宝、美团，直接撞上 153 款 App 的书面拒绝。<b>在国内，Agent 的能力上限不取决于模型，取决于超级 App 愿不愿意开门。</b>这也是为什么手机厂商自带助手反而活得更好——权限本来就是它们的。</li>
+    <li><b>「门」是全球问题，中国只是更早撞上。</b><br>
+    亚马逊拦 Muse、豆包 SAEP 被 150 余款 App 书面拒绝、小红书把只浏览也判成违规——三件事同构：能力早就够用，卡在别人的登录框和商业利益上。千问 Go! 能把 70 元券谈成现金，靠的是阿里自家生态；手机厂商助手活得更好，因为权限本来就是它们的。<b>在国内，Agent 的能力上限不取决于模型，取决于超级 App 愿不愿意开门。</b></li>
 
-    <li><b>商业模式已经分岔，而且都成立。</b><br>
-    Instinct 向商家收佣金（年化 GMV 破 10 亿美元，一半是差旅）；Hark 全功能免费、靠用量档位；Muse 订阅 + 交易抽佣、明确不做广告；Duckbill 直接把真人服务明码标价。共同点是：<b>没有一家打算靠广告养活个人助理</b>——因为助理一旦为了广告推荐，就不再是助理了。</li>
+    <li><b>商业模式的算术已经跑通，而且都不靠广告。</b><br>
+    Muse 已经给出可验证的口径：约 1/4 日活、购物用户中超四分之一单笔 200 美元以上、目标单用户年收入数百美元、明年算力成本效率提 10 倍；Instinct 向商家收佣金（年化 GMV 破 10 亿美元，一半是差旅）；Hark 全功能免费换规模；Today 走订阅、明确广告会破坏信任；沃尔玛开 Agent Gateway，本质是把抽佣通道修到 Agent 家门口。<b>没有一家打算靠广告养活个人助理——助理一旦为了广告推荐，就不再是助理了。</b></li>
+
+    <li><b>安全与信任是产品力，不是合规附录。</b><br>
+    Muse 的分享链接泄露了小企业的贷款申请，加拿大用户的键盘交易被 Agent 自行推进到买家深夜上门，断开插件也删不掉已经拿到的记忆，Anthropic 半年封了 1140 万个账号——这四件事说明：<b>用户真正在评估的不是「它能不能办成」，而是「它办错一次我要付多少」。</b>审批粒度、虚拟卡、可拆卸存储，都是在这个问题上做产品，而不是做声明。</li>
   </ol>
 </section>
 
 <!-- ================= 来源 ================= -->
 <section id="src">
-  <h2><span class="n">F</span>主要来源</h2>
+  <h2><span class="n">I</span>主要来源</h2>
   <div class="src">
-    <b>国际</b>：x.ai/news（Grok Bot 官宣）、openai Dots 官方页与 DevDay 报道、hark.com 与 hodl.press / 至顶科技（Hark Pro 10-06 发布）、cue.im 与百度百科（Cue 9-28）、security.muse.ai 与 Wikipedia（Muse）、apple.com/newsroom（Siri AI）、afterdawn.com（Gemini Spark，I/O 2026）、agent-finder.co（PersonalAgentBench 10-12 排名）、百度百科与 21 经济网（Instinct）、pressadvantage.com（Karpo）、unite.ai（Dazzle）、duckbill.ai、vellum.ai、lindy.ai、usemotion.com、solidaitech.com（硬件生死盘点）。<br>
-    <b>国内</b>：21 世纪经济报道 2026-10-14（SAEP 与 153 款清单）、chinaainews.org（千问 Go! 10-13）、钛媒体 2026-10-15（LightVela / 灵光 / Spell）、A5 站长网 2026-10-13、光明网（AutoGLM）、美团小美应用说明、百度百科「小高老师」、动察快讯（VIVA）、智源社区 16 款产品（Twoo / 爪步）、QuestMobile 2026-06 终端 AI 助手数据（经二手引用）。
+    <b>国际</b>：Meta 2026 Q3 财报电话会（Muse 用户数、日活占比、购物客单价、PMF 与变现口径）、x.ai/news（Grok Bot 官宣）、openai Dots 官方页与 DevDay 报道、hark.com 与 hodl.press / 至顶科技（Hark Pro 10-06 发布）、cue.im 与百度百科（Cue 9-28）、security.muse.ai 与 Wikipedia（Muse）、apple.com/newsroom（Siri AI）、afterdawn.com（Gemini Spark，I/O 2026）、agent-finder.co（PersonalAgentBench 10-12 排名）、百度百科与 21 经济网（Instinct）、pressadvantage.com（Karpo）、unite.ai（Dazzle）、duckbill.ai、vellum.ai、lindy.ai、usemotion.com、solidaitech.com（硬件生死盘点）。<br>
+    <b>Claude Duet</b>：claude.com/resources/articles/claude-duet、support.claude.com「Get started with Claude Duet」、engadget 2026-10-21、investing.com、果壳《个人智能体扎堆上线，没几个 App 愿意开门》、爱范儿《Claude 终于忍不住抄作业了》。<br>
+    <b>生态与安全</b>：GeekWire 2026-09-20（亚马逊拦 Muse）、corporate.walmart.com 2026-10（Agent Profiles / Agent Gateway）、Anthropic 系统信任透明度报告（封号与申诉数据）、claroc.io《ghostshares: Muse 与被动 DNS》、phoneuse.com、AP（Muse 卖键盘事件）、证券时报 2026-10-14（SAEP 150 余款拒绝名单）、界面新闻（小红书 3-10 治理措施）、南方都市报（豆包第一代工程样机）。<br>
+    <b>国内</b>：21 世纪经济报道 2026-10-14（SAEP 与 153 款清单）、chinaainews.org（千问 Go! 10-13）、钛媒体 2026-10-15（LightVela / 灵光 / Spell）、A5 站长网 2026-10-13、光明网（AutoGLM）、美团小美应用说明、百度百科「小高老师」、动察快讯（VIVA）、智源社区 16 款产品（Twoo / 爪步）、Founder Park 2026-10-21（Today 融资与产品访谈）、QuestMobile 2026-06 终端 AI 助手数据（经二手引用）。<br>
+    <b>硬件与资本</b>：okihome.ai、Oki 首发推文与硅谷硬件报道（Oki Home 参数、售罄）、a16z 领投 Ghost 种子轮报道、红杉《2026: This is AGI》、a16z 消费级 AI 报告（头部 1% 用户占 19.5% 支出、月均 903 美元）。
   </div>
 
   <div class="callout">
-    <b>数字口径提醒</b>：Instinct 的年化 GMV、Muse 的下载量、手机助手月活均为厂商或第三方榜单口径，未经审计；PersonalAgentBench 是 2026-10-12 的一次快照，会随版本变化。
+    <b>数字口径提醒</b>：Instinct 的年化 GMV、Muse 的下载量与日活、手机助手月活、Anthropic 封号数均为厂商或第三方榜单口径，未经审计；Muse「1000 万」为财报会口径，「1020 万 / 1090 万」为第三方下载估算，两者统计对象不同（注册/使用 vs 下载），不可直接相加或对比。PersonalAgentBench 是 2026-10-12 的一次快照，会随版本变化。
   </div>
 </section>
 
 <footer>
   未收录：纯图像/视频/设计创作工具、纯聊天型大模型 App、角色扮演陪伴类（星野、猫箱、Replika 等）。<br>
-  版本：v1 · 不完整版（2026-10-20）
+  版本：v2（2026-10-23）｜上一版：v1 · 不完整版（2026-10-20）｜产品与数字仍在滚动修订
 </footer>
 
 </div>
