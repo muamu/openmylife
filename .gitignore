@@ -55,3 +55,7 @@ node_modules/
 *.pem
 *.pfx
 *.p12
+
+# —— Python 缓存（agents/skills 脚本运行产物）——
+__pycache__/
+*.pyc

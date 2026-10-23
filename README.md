@@ -54,7 +54,8 @@ OpenMyLife 是一套「把自己当成长期维护的开源项目」的方法与
 |---|---|---|
 | [ideas](./ideas) | 灵感备忘录（随手记） | 更新中 |
 | [notes](./notes) | 思考与阅读笔记（按领域分目录，含 `insights/` 洞察集、`agent-collaboration/` Agent 协作） | 更新中 |
-| [critiques](./critiques) | 产品报告 / 评测 / 建议（按领域分目录，如 Agent 框架、金融/港股A股） | 更新中 |
+| [agents](./agents) | AI Agent 使用产物（角色 / 工作流 / 趣味提示词 / skill 插件） | 进行中 |
+| [critiques](./critiques) | 产品报告 / 评测 / 建议（按领域分目录，如 Agent 框架、个人助理 Agent、金融/港股A股） | 更新中 |
 | [career](./career) | 职业与方法论 | 计划 |
 | [products](./products) | 做过的产品（build in public） | 计划 |
 | [stories](./stories) | 非常规经历复盘 | 计划 |
@@ -63,6 +64,7 @@ OpenMyLife 是一套「把自己当成长期维护的开源项目」的方法与
 ## 从哪读起
 
 1. 灵感备忘录：[开源自己 · 灵感备忘录](./ideas/2026-10-17-openmylife-ideas.md)
+2. 洞察：[大模型的壁垒](./notes/insights/2026-10-21-llm-barriers.html) —— 技术收敛之后，壁垒转移到算力、数据、资本与分发渠道。站点版：`https://openmylife.xyz/articles/ai/llm-barriers.html`（部署后生效）。
 
 ## 怎么用这个仓库
 
@@ -75,9 +77,12 @@ OpenMyLife 是一套「把自己当成长期维护的开源项目」的方法与
 
 本地 `inbox/` 是素材暂存区，其中的内容同样不公开（规矩见 [inbox/README.md](./inbox/README.md)）。
 
+对外分享的内容**只用相对路径**，不写本机绝对路径、他人真实姓名 / 联系方式、密钥等敏感信息；提示词与 skill 放 [agents](./agents/README.md)，发布前按其中的「脱敏红线」检查。
+
 ## 找我
 
 - GitHub：[@muamu](https://github.com/muamu) · 平台入口：[openmylife.xyz](https://openmylife.xyz)
+- 邮箱：[openmylife.xyz@gmail.com](mailto:openmylife.xyz@gmail.com)
 - X(推特)：[@Crazayan](https://x.com/Crazayan)
 
 ## 加入收录
