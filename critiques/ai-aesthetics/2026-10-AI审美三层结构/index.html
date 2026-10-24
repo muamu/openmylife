@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 审美三层结构 · 默认审美 / 调节层 / 上限层（2026-10-24）</title>
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#26241f; --muted:#6f6a5e; --line:#e6e2d8;
+    --l1:#4d6e8a; --l1bg:#edf2f7; --l2:#4a58c9; --l2bg:#eef0fc; --l3:#b45309; --l3bg:#fdf3e8;
+    --ok:#3f7d5a;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:15px/1.8 system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:14px 12px 48px}
+  header.top{padding:22px 4px 10px}
+  header.top h1{font-size:21px;line-height:1.45;margin:0 0 6px}
+  header.top .sub{color:var(--muted);font-size:13px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:14px;margin:12px 0;
+  }
+  h2{font-size:17px;margin:2px 0 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  h3{font-size:15px;margin:16px 0 6px}
+  p{margin:8px 0}
+  .muted{color:var(--muted)}
+  .small{font-size:13px}
+  .chip{
+    display:inline-block;font-size:12px;font-weight:600;color:#fff;
+    border-radius:999px;padding:1px 10px;letter-spacing:.5px;
+  }
+  .chip.l1{background:var(--l1)} .chip.l2{background:var(--l2)} .chip.l3{background:var(--l3)}
+  .tag{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:6px;padding:0 8px;color:var(--muted);background:#faf9f6}
+  .tldr{background:#fffdf5;border:1px solid #eadfc0}
+  .tldr ul{margin:6px 0 0;padding-left:20px}
+  .tldr li{margin:6px 0}
+  .warn{background:#fdf0ec;border:1px solid #f2d5c8}
+  .ok{color:var(--ok);font-weight:600}
+  .fig{background:#fbfaf7;border:1px dashed var(--line);border-radius:12px;padding:8px 6px;margin:10px 0}
+  .fig svg{display:block;width:100%;height:auto}
+  .figcap{font-size:12px;color:var(--muted);text-align:center;padding:4px 8px 2px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:10px 0}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top;word-break:break-word}
+  th{background:#f4f2ec;font-weight:600;white-space:nowrap}
+  code{background:#f1efe9;border-radius:4px;padding:1px 5px;font-size:13px;font-family:ui-monospace,Consolas,monospace}
+  a{color:var(--l2);text-decoration:none;word-break:break-all}
+  .src{font-size:12.5px;color:var(--muted)}
+  .src li{margin:5px 0}
+  .kicker{font-size:12px;color:var(--l3);font-weight:700;letter-spacing:1px}
+  .quote{border-left:3px solid var(--l2);background:#f7f8fd;padding:8px 12px;margin:10px 0;font-size:14px;border-radius:0 8px 8px 0}
+  @media (max-width:699px){
+    table.resp thead{display:none}
+    table.resp tr{display:block;border:1px solid var(--line);border-radius:10px;margin:10px 0;padding:4px 8px;background:#fff}
+    table.resp td{display:block;border:none;padding:5px 2px}
+    table.resp td::before{content:attr(data-label);display:block;font-size:11.5px;color:var(--muted);font-weight:600;margin-bottom:1px}
+  }
+  @media (min-width:700px){
+    .wrap{padding:28px 20px 64px}
+    header.top h1{font-size:25px}
+    .card{padding:20px 24px}
+    h2{font-size:19px}
+    body{font-size:15.5px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="kicker">调研 · 已入库 · link-only（未定稿，不对外宣传）</div>
+  <h1>AI 审美的三层结构：默认审美、调节层、与作为上限的审美</h1>
+  <div class="sub">2026-10-24 · 小满整理 · 基于 2026-08～10 公开资料检索 · 数字级事实均标注来源与口径</div>
+</header>
+
+<div class="card tldr">
+  <h2>TL;DR（先看这段）</h2>
+  <ul>
+    <li><b>老大提的三层框架成立</b>，且三层是三种性质完全不同的约束：<span class="chip l1">L1 默认审美</span>是<b>统计引力</b>——模型不问你时替你做的选择；<span class="chip l2">L2 调节层</span>是<b>意图翻译</b>——提示词 / 参考对象 / 微调 / 设定 / skill 把「我要的」翻成「模型能表达的」；<span class="chip l3">L3 上限层</span>是<b>物理边界</b>——架构决定的细节天花板。</li>
+    <li><b>最有用的一句话</b>：动手前先分清你面对的是「默认审美问题」还是「能力上限问题」。前者拧 L2 的旋钮，后者只能绕 L3。<b>治错层最挫败</b>——对 VAE 压缩丢失的细节写一万字提示词也没用。</li>
+    <li>默认审美有一手解释：Krea 官方博客明说，预训练追求 <b>mode coverage</b>（多样性），后训练追求 <b>mode collapsing</b>（把分布推向人类评委偏好的区域）。默认审美不是 bug，是对齐的必然产物。</li>
+    <li>reward model 优化的是「<b>平均人类吸引力</b>」（PAMELA 论文，arXiv 2604.07427，2026）——这是 L1 顽固的根源：只要对齐还在优化大众偏好，默认审美就会被每一轮训练再生产。</li>
+    <li>可复用的方法论都已搜到并写进正文：10 分钟审美体检（固定三件事 + A/B + 4 张定律）、VAE 往返测试（10 分钟自测细节天花板）、sref / LoRA 分工、去 AI 味规则表。</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>〇、先纠偏（搜索中发现的高频误传）</h2>
+  <table class="resp">
+    <thead><tr><th style="width:34%">常见说法</th><th>核实后的情况</th></tr></thead>
+    <tbody>
+      <tr><td data-label="常见说法">「AI 审美是玄学，不可控、没法讨论」</td><td data-label="核实后">默认审美高度可预测：有完整特征清单（讨好式布光 / 塑料皮肤 / 居中构图等 8 项，PromptZone），有量化方法（CLIP 嵌入空间聚类，ACM 3820915），有五万人行为实验（CHI 2025，识别率 76%）。主观的是个体品味，客观的是默认落点，两层要分开谈。</td></tr>
+      <tr><td data-label="常见说法">「提示词写得越详细越好」</td><td data-label="核实后">「8K / ultra detailed / hyper-detailed」这类词因在训练 caption 里出现太多次，已退化为近似无意义的风格噪声（bestprompt.art，2026）。有效提示词的做法是<b>命名物理过程</b>（撕纸边缘、叠层、安全别针），而非堆氛围形容词；「不完美」描述符 3–5 个为优，更多会被读成「不舒服」。</td></tr>
+      <tr><td data-label="常见说法">「审美纯粹是主观的」</td><td data-label="核实后">默认审美是统计现象（regression to the mean，codexical）；个体品味确实主观（PAMELA：70,000 评分 / 5,077 图 / 每图 15 人，偏好方差很大）。把两者混谈是大多数争论空转的原因。</td></tr>
+      <tr><td data-label="常见说法">「五万人研究」的二手转述</td><td data-label="核实后">精确口径：CHI 2025 论文（Kamali et al.）主阶段 37,568 人 + 第二阶段 3,787 人，合计约 50,444 参与者、749,828 次判断，数据采集期 2024-02-05～2024-06-22，模型为 Midjourney V5/V6、Firefly Image 2、SD 1.5/XL。转述常写作「50,000 人」或「five out of six」（后者混淆了 76% 的识别率口径）。引用以论文为准。</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h2>一、总览：三层结构图</h2>
+  <p>一次生成的完整路径：<b>先落在 L1</b>（模型默认替你选）→ <b>拧 L2 的旋钮</b>（改变落点）→ <b>撞不破 L3</b>（能力封顶）。三层从上到下是「天花板 → 旋钮 → 地心引力」。</p>
+  <div class="fig">
+    <svg viewBox="0 0 360 600" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif">
+      <!-- L3 -->
+      <rect x="30" y="40" width="300" height="122" rx="12" fill="#fdf3e8" stroke="#b45309" stroke-width="1.5"/>
+      <rect x="42" y="54" width="86" height="20" rx="10" fill="#b45309"/>
+      <text x="85" y="68" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">L3 · 上限层</text>
+      <text x="44" y="98" font-size="13.5" fill="#26241f" font-weight="700">物理边界：细节能到多优</text>
+      <text x="44" y="118" font-size="11.5" fill="#6f6a5e">VAE 压缩天花板 · 去噪陷阱（细节≈噪声）</text>
+      <text x="44" y="135" font-size="11.5" fill="#6f6a5e">视频的时序 / 物理一致性</text>
+      <text x="44" y="152" font-size="11.5" fill="#b45309" font-weight="600">提示词治不了 → 只能换模型或绕工作流</text>
+      <!-- arrow L2->L3 -->
+      <path d="M 180 196 L 180 168" stroke="#b45309" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrO)"/>
+      <text x="188" y="184" font-size="10.5" fill="#b45309">拧到底也撞这里</text>
+      <!-- L2 -->
+      <rect x="30" y="200" width="300" height="140" rx="12" fill="#eef0fc" stroke="#4a58c9" stroke-width="1.5"/>
+      <rect x="42" y="214" width="86" height="20" rx="10" fill="#4a58c9"/>
+      <text x="85" y="228" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">L2 · 调节层</text>
+      <text x="44" y="258" font-size="13.5" fill="#26241f" font-weight="700">方向调节：把「我要的」翻译成</text>
+      <text x="44" y="276" font-size="13.5" fill="#26241f" font-weight="700">「模型能表达的」</text>
+      <text x="44" y="298" font-size="11.5" fill="#6f6a5e">提示词三层 · 参考对象（sref）· 微调（LoRA）</text>
+      <text x="44" y="315" font-size="11.5" fill="#6f6a5e">人设 / 禁令 · skill（把调节固化成资产）</text>
+      <text x="44" y="332" font-size="11.5" fill="#4a58c9" font-weight="600">可控度最高的一层 —— 你的主战场</text>
+      <!-- arrow L1->L2 -->
+      <path d="M 180 366 L 180 344" stroke="#4a58c9" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrB)"/>
+      <text x="188" y="358" font-size="10.5" fill="#4a58c9">拧旋钮，改落点</text>
+      <!-- L1 -->
+      <rect x="30" y="370" width="300" height="182" rx="12" fill="#edf2f7" stroke="#4d6e8a" stroke-width="1.5"/>
+      <rect x="42" y="384" width="86" height="20" rx="10" fill="#4d6e8a"/>
+      <text x="85" y="398" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">L1 · 默认层</text>
+      <text x="44" y="428" font-size="13.5" fill="#26241f" font-weight="700">统计引力：你不指定时，模型替你选</text>
+      <text x="44" y="450" font-size="11.5" fill="#6f6a5e">后训练 mode collapsing（SFT + 偏好优化）</text>
+      <text x="44" y="467" font-size="11.5" fill="#6f6a5e">数据集倾斜（专业摄影过度代表）</text>
+      <text x="44" y="484" font-size="11.5" fill="#6f6a5e">reward model 优化「平均人类吸引力」</text>
+      <text x="44" y="505" font-size="11.5" fill="#6f6a5e">prompt 词汇坍缩（cinematic / 8K 成标准码）</text>
+      <text x="44" y="526" font-size="11.5" fill="#4d6e8a" font-weight="600">不可控，除非换模型 / 微调 / 持续对抗</text>
+      <text x="44" y="543" font-size="11.5" fill="#6f6a5e">民间称「AI 味」「Midjourney look」</text>
+      <!-- bottom note -->
+      <text x="180" y="578" font-size="11" fill="#6f6a5e" text-anchor="middle">换模型 = 换 L1 的地心引力；微调 = 局部改写 L1</text>
+      <defs>
+        <marker id="arrO" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#b45309"/></marker>
+        <marker id="arrB" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#4a58c9"/></marker>
+      </defs>
+    </svg>
+    <div class="figcap">图 1 · 三层结构：L3 是天花板，L2 是旋钮，L1 是地心引力</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2><span class="chip l1">L1</span> 默认审美：模型不问你时替你做的全部选择</h2>
+
+  <h3>它长什么样（8 项特征清单）</h3>
+  <p>PromptZone 的总结最完整。同一条泛泛的人像 / 风景提示词过大多数基座模型，你会稳定拿到：</p>
+  <table class="resp">
+    <thead><tr><th style="width:44%">默认特征</th><th>真实摄影里的反面</th></tr></thead>
+    <tbody>
+      <tr><td data-label="默认特征">讨好式近对称布光，无硬阴影、无过曝</td><td data-label="真实摄影">单侧硬光、阴天平光、欠曝</td></tr>
+      <tr><td data-label="默认特征">到处浅景深（真实摄影师绝不会用的地方也糊）</td><td data-label="真实摄影">深焦，全景深清晰</td></tr>
+      <tr><td data-label="默认特征">过度磨皮 + 激进微对比 = 塑料感</td><td data-label="真实摄影">毛孔、绒毛、肤色不均</td></tr>
+      <tr><td data-label="默认特征">主体居中、全在框内、礼貌距离</td><td data-label="真实摄影">偏离中心、边缘裁切、贴身拍摄</td></tr>
+      <tr><td data-label="默认特征">暖色 + 青色分级，饱和度超可信一步</td><td data-label="真实摄影">脏色、克制色调、反常白平衡</td></tr>
+      <tr><td data-label="默认特征">零镜头缺陷：无暗角、无色散、无灰尘、无失焦</td><td data-label="真实摄影">镜头物理缺陷全套</td></tr>
+      <tr><td data-label="默认特征">人人异常对称、异常好看</td><td data-label="真实摄影">不对称、瑕疵、普通长相</td></tr>
+      <tr><td data-label="默认特征">饱和度与对比度推到「点赞最优」</td><td data-label="真实摄影">为叙事服务的平淡画面</td></tr>
+    </tbody>
+  </table>
+  <p class="small muted">清单里每一项都是「提示词没指定时模型替你做的选择」——这就是杠杆所在：命名了就被覆盖，没命名就被默认值填充。</p>
+
+  <h3>它从哪来（一手解释：Krea 官方博客）</h3>
+  <p>Krea 团队 2025 年发布 FLUX.1 Krea [dev]（在 FLUX.1 [dev] 上重做的审美微调，开放权重）时把机制说得很直白，这是本次检索中<b>最权威的一手材料</b>：</p>
+  <div class="quote">「预训练的重点是 mode coverage（模式覆盖）——给模型关于视觉世界的丰富知识，目标是最大化多样性。我们甚至认为预训练模型应该在『坏』数据上训练，只要数据里不受欢迎的部分被准确标注——否则负面提示词无效（模型从没见过丑的，就不知道往哪躲）。后训练的重点是 mode collapsing（模式坍缩）——把分布推向我们觉得好的区域。」</div>
+  <p>具体管线：SFT 阶段（人工精选符合自家美学标准的数据集）+ RLHF 阶段（他们称 TPO 的偏好优化变体，多轮校准）。两个关键数字口径：<b>后训练需要的数据少得惊人（&lt; 100 万张）</b>，质量远比数量重要；底座用的是 Black Forest Labs 提供的 <code>flux-dev-raw</code>（12B，未「baked」的预训练模型，没有 AI 味、分布多样，但质量远低于 SOTA）——<b>基底的多样性决定了微调后能达到的审美范围</b>。</p>
+  <p class="small">这正是老大框架的深层印证：<b>L1 是后训练刻意做出来的</b>，而 L1 的「可塑性上限」由预训练的 mode coverage 决定——换模型就是换地心引力，微调是局部改写它。</p>
+
+  <h3>其他三个叠加机制</h3>
+  <table class="resp">
+    <thead><tr><th style="width:26%">机制</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td data-label="机制">数据集倾斜</td><td data-label="说明">训练语料里专业 / 半专业摄影过度代表——本来就打过光、构过图、调过色。随手拍、废片、怪异构图是绝对少数。</td></tr>
+      <tr><td data-label="机制">Guidance 过高</td><td data-label="说明">Classifier-free guidance 把样本推向「对提示词最典型的读法」。guidance 越高越听话、也越平均。很多「AI 味」 simply 是 guidance 设太高（PromptZone）。</td></tr>
+      <tr><td data-label="机制">Prompt 词汇坍缩</td><td data-label="说明">「cinematic lighting / 8K / hyper-detailed」从创意描述退化为标准化代码，数百万用户用同一批词激活同一簇美学（ACM 3820915）。</td></tr>
+    </tbody>
+  </table>
+
+  <h3>量化证据（学术 + 行为实验）</h3>
+  <ul>
+    <li><b>CHI 2025</b>（Kamali et al., DOI 10.1145/3706598.3713962）：约 50,444 名参与者对 AI 图的识别率 76%、对真图的误判率 26%（识别率 74%）。1 秒一瞥 72% → 看 20 秒 82%。只有 17% 的 AI 图以「随机猜测水平」被误认真。瑕疵分类占比：功能性 58.7%（吉他松弦、包带融进夹克）&gt; 解剖性 51.4%（多指、长颈）&gt; 风格性 39.0%（塑料质感、不合光照）。</li>
+    <li><b>策展效应</b>：同一批 prompt，人工筛过的图比未筛的 84% 更显真实——「真实感」部分是人工选择的结果，不全是模型属性（Lacuna 对该论文的摘要口径）。</li>
+    <li><b>CLIP 嵌入空间</b>：同一模型同版本的输出在嵌入空间紧密成簇；跨模型对同一 prompt 的输出呈中度显著相似，高频美学词（cinematic lighting / hyper-detailed）尤其明显（ACM 3820915，2026）。</li>
+  </ul>
+
+  <h3>模型之间的 L1 并不相同</h3>
+  <p>mooko（2026-10，单一编辑主观测评，非盲测）用同一条提示词测四款图像模型，结论差异明显：</p>
+  <table class="resp">
+    <thead><tr><th>模型</th><th>自带风格关键词</th><th>适合场景</th></tr></thead>
+    <tbody>
+      <tr><td data-label="模型">Nano Banana2</td><td data-label="风格">端庄、干净、耐看、偏「高级」</td><td data-label="场景">品牌宣传头像，要「稳稳的美」</td></tr>
+      <tr><td data-label="模型">Imagen 4</td><td data-label="风格">「混血感」、骨相立体、国际化</td><td data-label="场景">海报 / 广告 KV，全球审美通吃</td></tr>
+      <tr><td data-label="模型">Seedream</td><td data-label="风格">清透、幼态、氛围感，韩系</td><td data-label="场景">小红书风封面、美妆穿搭</td></tr>
+      <tr><td data-label="模型">GPT Image2</td><td data-label="风格">年轻、甜、日常好看</td><td data-label="场景">社交头像，亲和力 &gt; 高级感</td></tr>
+    </tbody>
+  </table>
+  <p><b>10 分钟审美体检法</b>（mooko，可直接抄）：① 固定三件事——构图、光、镜头（如「华人女性，头像，正面，肩部以上，干净背景，柔和自然光，85mm，真实摄影质感，皮肤纹理自然」），让对比公平；② 加「风格开关」A/B——同模型跑写实版 vs 时尚杂志版，看它是「自带风格强」还是「听话可塑性强」；③ <b>每模型至少出 4 张再下结论</b>——单张容易被随机种子骗。</p>
+</div>
+
+<div class="card">
+  <h2><span class="chip l2">L2</span> 调节层：四个旋钮与 skill 的位置</h2>
+  <p>L2 是三层里唯一「你完全可控」的一层。四个旋钮，按对结果的影响力从上游到下游排：</p>
+  <table class="resp">
+    <thead><tr><th style="width:20%">旋钮</th><th style="width:38%">作用</th><th>成本 / 可复用性</th></tr></thead>
+    <tbody>
+      <tr><td data-label="旋钮">① 参考对象<br>（sref / moodboard）</td><td data-label="作用">Midjourney <code>--sref URL</code> 或数字 style code，借一张图的色彩 / 介质 / 纹理 / 光线；强度 <code>--sw</code> 0–1000（默认 100）。官方建议：参考图干活时文字要简单，文字只负责「主体」，别写跟参考图冲突的风格词</td><td data-label="成本">零训练，单次生成即时生效；参考图库 / 常用 style code 收藏 = 可复用资产</td></tr>
+      <tr><td data-label="旋钮">② 微调<br>（LoRA / DreamBooth）</td><td data-label="作用">用自己的数据集重训，把「难以写进提示词的东西」——一种纹理、一张固定的脸、一个品牌物件、一套素描习惯——变成可复用方向。Krea 2 LoRA：≥3 张同风格图起训，可产出 style code 反复调用</td><td data-label="成本">要数据 + 训练；sref 管单次，LoRA 管可复用。微调是「把一套 defaults 换成另一套」——不是变中性，是换了一种偏置</td></tr>
+      <tr><td data-label="旋钮">③ 提示词<br>（三层结构）</td><td data-label="作用">subject（主体）→ style（风格 / 参考 / 色板）→ technical（画幅、构图规则、负面约束）。有效写法是<b>命名物理过程</b>而非氛围（撕纸边缘、叠层、安全别针、喷漆——没有一项能被打磨成光滑渐变）；「不完美」描述符 3–5 个为优</td><td data-label="成本">零门槛，但需要纪律 + 固定 seed 验证；「8K / ultra detailed」已退化为噪声词，删掉</td></tr>
+      <tr><td data-label="旋钮">④ 设定 / 禁令<br>（文本侧人格）</td><td data-label="作用">写作场景的三步法（mobdome，实测有效）：人设 + 场景（谁在对谁说话、正式度）→ 明确禁令黑名单（「值得注意的是」「不仅…而且…」等）→ 要求先给立场再给理由，禁「取决于情况」</td><td data-label="成本">一次性投入，写进 system prompt 即长期生效</td></tr>
+    </tbody>
+  </table>
+  <p class="small muted">优先级逻辑：从上游治起。后处理（加颗粒、暗角、轻微色散、降再升）只治表面 tell，治不了构图和布光——PromptZone 称其为「最后的 5%」，不是修复。</p>
+
+  <h3>skill 的位置：把一次性调节固化成资产</h3>
+  <p>提示词是一次性的，skill 是可复用的。<a href="https://aisa.to/aisapedia/image-generation-prompting">AISApedia</a> 的说法可直接对应到我们的工作流：每个平台建一个 base prompt template，把你的质量标准与美学选择锁进去，只让主体层逐图变化。老大自己的 <code>sepia 去AI味写作Skill</code> 就是这一层的样板。公开流传的 <a href="https://skillselion.com/skills/chujianyun/skills/remove-ai-flavor">Remove AI Flavor Skill</a> 规则表摘录（文本侧去 AI 味的识别特征 → 处理方向）：</p>
+  <table class="resp">
+    <thead><tr><th style="width:30%">识别特征</th><th>处理方向</th></tr></thead>
+    <tbody>
+      <tr><td data-label="特征">套路开场（在这个快速发展的时代 / 众所周知）</td><td data-label="处理">删铺垫，直接进问题或场景</td></tr>
+      <tr><td data-label="特征">生硬连接（综上所述 / 鉴于此 / 值得一提的是）</td><td data-label="处理">改自然承接，多数情况直接删</td></tr>
+      <tr><td data-label="特征">空洞大词（革命性 / 颠覆性 / 重要意义）</td><td data-label="处理">用事实、数据、场景、结果替代</td></tr>
+      <tr><td data-label="特征">模板对立句（不是 A，而是 B）</td><td data-label="处理">直接说 B，或写成递进</td></tr>
+      <tr><td data-label="特征">破折号滥用（A——B——C）</td><td data-label="处理">改冒号 / 逗号 / 句号，或重排句式</td></tr>
+      <tr><td data-label="特征">bullet 堆叠、每段乱加粗</td><td data-label="处理">必要列表保留，其余改自然段；只留真正影响理解的加粗</td></tr>
+      <tr><td data-label="特征">翻译腔（长定语套叠、名词化、「被」「该」「其」泛滥）</td><td data-label="处理">长句拆短、介词短语还原成动词、去掉「被」、用自然中文重说</td></tr>
+      <tr><td data-label="特征">判词腔（「不是免费的 X 来源」「必须看起来 Y」式负向定义）</td><td data-label="处理">能正着说就正着说；句子重心放到读者能立刻懂的判断上</td></tr>
+    </tbody>
+  </table>
+  <p class="small">另有两个可抄的文本侧技巧：翻译系主任（王慧娟，文藻外语大学，2025）的「去 AI 味 5 法」——语态转换、分合句、正说反译、叠词、按文体调正式度；中文语感自检——<b>念出来，要换气两次以上的句子就拆</b>。</p>
+</div>
+
+<div class="card">
+  <h2><span class="chip l3">L3</span> 上限层：为什么「审美是上限，细节能到多优」</h2>
+  <p>这是老大三层里最深的一层，也是最容易被跳过的一层：<b>有些质量问题不是风格偏好问题，是物理边界问题</b>——提示词写到天荒地老也不会变。三个硬边界：</p>
+
+  <h3>边界一：VAE 压缩天花板</h3>
+  <p>主流 latent diffusion 并不在像素上工作：1024×1024 的图被 VAE 压成 128×128 的潜表示，扩散在潜空间进行，最后解码回像素。压缩是有损的，且损失不均匀——<b>高频内容掉得最狠</b>：单根睫毛、皮肤毛孔、织物经纬、小字、水滴、远处人脸。关键性质：<b>解码器的重建质量是整条管线的上界</b>。理论上完美的扩散模型也超不过解码器能重建的细节（PromptZone, 2026）。</p>
+  <ul>
+    <li><b>10 分钟自测协议</b>：ComfyUI 里拿一张真照片，VAE Encode → 直接 VAE Decode（中间不采样），100% 放大跟原图比。这一趟往返丢失的细节，就是任何 prompt / sampler / step / CFG 都拿不回来的细节。</li>
+    <li>行业已在抬高天花板：SD 1.x / SDXL 时代的 4 通道 autoencoder → SD3 / FLUX 一代的 16 通道（每个潜像素少扔东西）；更激进的是 pixel-native 路线——HiDream-O1-Image（2026-05 开放权重，约 8B 参数，无 VAE，MIT 许可，此前以代号 Peanut 登过公开图像榜单）。</li>
+    <li>旁证口径：CSDN 技术问答（2026-04，自媒体实测，非同行评审）称 SD v2.1 潜空间解码输出在 15–30 cycle/px 以上频段能量衰减超 78%、≥4K 高频保留率 &lt;12%——数字仅作机理佐证。</li>
+  </ul>
+
+  <h3>边界二：去噪陷阱（细节与噪声同邻域）</h3>
+  <p>扩散模型的训练目标是去噪，而毛孔、绒毛、微红血丝在统计上恰好是「高频、低幅、不规则」——和噪声几乎同一个邻域。模型在过去数十亿步里被奖励的行为正是擦掉这类信号。8× 压缩下一个毛孔只占 1–3 个潜像素，解码器在「这是信号还是伪影」之间 usually 猜伪影（bestprompt.art，2026）。</p>
+  <p>arXiv 2507.05496（Cloud Diffusion，2025）给出更理论的解释：白噪声扩散按「低频先、高频后」的顺序生成图像，高频只在去噪后期一个很窄的时间窗口内可生成，且被已经生成的低频块过度约束，被当作 filler 填进色块——这就是「airbrushed / ultra-processed」观感的理论根源。Cloud Diffusion 的全频段同时去噪是改进方向，但尚未成为主流产品。</p>
+  <p><b>可操作的应对</b>：不是写更长的 prompt，而是三层齐上——显式重述纹理词 + 具体光线词（平光会藏掉细节，即使模型生成了）+ 负面提示关掉默认磨皮；以及工作流层面「两遍生成、二次注入细节」（超分 / inpaint / 编辑）。</p>
+
+  <h3>边界三：视频的时序与物理</h3>
+  <p>静态帧可以完美，动起来崩——视频是多数写实尝试死掉的地方（domer.io）。2026 年横评（scenith，自媒体口径）按维度分出的头部模型：</p>
+  <table class="resp">
+    <thead><tr><th style="width:30%">能力维度</th><th>2026 头部模型（scenith 横评口径）</th></tr></thead>
+    <tbody>
+      <tr><td data-label="维度">物理（布料 / 液体 / 粒子）</td><td data-label="头部">Veo 3.1、Cosmos Predict 2.5、Runway Gen-4.5</td></tr>
+      <tr><td data-label="维度">光照一致性（跨帧光源方向）</td><td data-label="头部">Veo 3.1、Runway Gen-4.5</td></tr>
+      <tr><td data-label="维度">时序一致性（人脸不漂移）</td><td data-label="头部">Kling 3.0 Pro（人脸）、Runway Gen-4.5（环境）</td></tr>
+      <tr><td data-label="维度">自然相机行为（镜头呼吸 / 手持感）</td><td data-label="头部">Runway Gen-4.5、Veo 3.1</td></tr>
+      <tr><td data-label="维度">材质微细节（皮肤 / 织物 / 金属）</td><td data-label="头部">Kling 3.0 Pro、Hailuo 02 Pro、Veo 3.1</td></tr>
+      <tr><td data-label="维度">同步音频</td><td data-label="头部">Veo 3.1、Kling 3.0 Pro（原生生成）</td></tr>
+    </tbody>
+  </table>
+  <p>两条反直觉结论：① <b>「too perfect」反而更假</b>——零颗粒、无限景深、不可能稳定的画面比带自然镜头缺陷的实拍更显人工（scenith）；② 中文横评（软盟资讯，2026）说「画质决定下限，提示词遵循决定上限」——即模型听不听话决定你的意图能落地多少。国产模型的中文语义理解是护城河（即梦对成语 / 诗词 / 网络流行语几乎无隔阂），Sora 2 在复杂复合指令下偶尔「创造性发挥」（把傍晚渲染成深夜）。</p>
+
+  <h3>边界四（软边界）：reward model 只认「平均吸引力」</h3>
+  <p>PAMELA 论文（arXiv 2604.07427，2026，Tübingen AI Center + KU Leuven）：70,000 条评分 / 5,077 张图 / 每图 15 人，结论原话——现有 reward model 优化「平均人类吸引力」，抓不住审美判断固有的主观性；且这些 reward model 常训练在<b>过时的 AI 生成图</b>上，会把模型往旧代的 artifact 引。结合 stillbrook 的观察：偏好优化推向「赢下即时对比」的东西——居中主体、电影光、密集细节、没有未解决的边缘。而艺术常常需要「错一秒的裁切、留白、脏色、手绘抖动、被 withhold 的细节」——<b>这些决定会在盲测里输掉，却让整幅作品更好</b>。</p>
+
+  <h3>人类的编辑层不可跳过</h3>
+  <p>stillbrook 的 default vs edited 对比（2026）：好的生成图几乎都涉及参考搜集、反复否决、mask、合成、手绘覆盖、字体排印，和一个愿意把模型的惯用习惯亲手剥掉的人。</p>
+  <table class="resp">
+    <thead><tr><th style="width:26%">维度</th><th>默认生成</th><th>编辑后</th></tr></thead>
+    <tbody>
+      <tr><td data-label="维度">选择</td><td data-label="默认">第一张满足提示词的</td><td data-label="编辑">对着参考和用途反复否决后剩下的</td></tr>
+      <tr><td data-label="维度">构图</td><td data-label="默认">居中主体 + 即刻视觉层级</td><td data-label="编辑">为这张图选的裁切、留白与重点</td></tr>
+      <tr><td data-label="维度">表面</td><td data-label="默认"> gloss、轮廓光、密集微细节</td><td data-label="编辑">mask、合成、手绘覆盖、克制的纹理</td></tr>
+      <tr><td data-label="维度">停止点</td><td data-label="默认">每个边缘都解决、每个区域都打磨</td><td data-label="编辑">剩下的张力属于那里时就停手</td></tr>
+    </tbody>
+  </table>
+  <p class="small">一句话版本：生成器供给材料，sheen 要人手工调低。prompt 是太小的容器，装不下一张图需要的全部决定。</p>
+</div>
+
+<div class="card">
+  <h2>三、三层如何互相咬合：反馈回路</h2>
+  <p>L1 不是静态的——它每一轮都被人类自己的选择再生产。ACM 3820915（2026）称之为「算法–人类审美回路」，并给出可量化的操作化：同 prompt 跨模型输出在 CLIP 空间的余弦相似度；Midjourney v4→v6 的默认美学（柔和电影光、HDR 调色、光滑材质）呈方向性强化——用户的选择模式回流进了塑造后续默认值的训练管线。</p>
+  <div class="fig">
+    <svg viewBox="0 0 360 400" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif">
+      <circle cx="180" cy="185" r="100" fill="none" stroke="#d8d3c6" stroke-width="1.5" stroke-dasharray="3 4"/>
+      <!-- nodes -->
+      <rect x="118" y="52" width="124" height="38" rx="19" fill="#edf2f7" stroke="#4d6e8a" stroke-width="1.5"/>
+      <text x="180" y="69" font-size="12" fill="#26241f" text-anchor="middle" font-weight="700">模型默认输出（L1）</text>
+      <text x="180" y="84" font-size="10.5" fill="#6f6a5e" text-anchor="middle">光滑、居中、电影光</text>
+      <rect x="238" y="166" width="124" height="38" rx="19" fill="#fdf3e8" stroke="#b45309" stroke-width="1.5"/>
+      <text x="300" y="183" font-size="12" fill="#26241f" text-anchor="middle" font-weight="700">人类选择 / 采用 / 发布</text>
+      <text x="300" y="198" font-size="10.5" fill="#6f6a5e" text-anchor="middle">点赞、收录、进作品集</text>
+      <rect x="118" y="282" width="124" height="38" rx="19" fill="#f4f2ec" stroke="#6f6a5e" stroke-width="1.5"/>
+      <text x="180" y="299" font-size="12" fill="#26241f" text-anchor="middle" font-weight="700">数据沉淀回流</text>
+      <text x="180" y="314" font-size="10.5" fill="#6f6a5e" text-anchor="middle">被 scrape、进下一轮训练</text>
+      <rect x="-2" y="166" width="124" height="38" rx="19" fill="#eef0fc" stroke="#4a58c9" stroke-width="1.5"/>
+      <text x="60" y="183" font-size="12" fill="#26241f" text-anchor="middle" font-weight="700">再训练：新默认</text>
+      <text x="60" y="198" font-size="10.5" fill="#6f6a5e" text-anchor="middle">偏好对齐强化同一簇</text>
+      <!-- arrows -->
+      <path d="M 242 70 Q 275 105 268 162" fill="none" stroke="#b45309" stroke-width="1.5" marker-end="url(#arrO2)"/>
+      <path d="M 300 204 Q 275 258 244 280" fill="none" stroke="#6f6a5e" stroke-width="1.5" marker-end="url(#arrG)"/>
+      <path d="M 116 300 Q 60 262 58 208" fill="none" stroke="#4a58c9" stroke-width="1.5" marker-end="url(#arrB2)"/>
+      <path d="M 58 166 Q 80 100 116 72" fill="none" stroke="#4d6e8a" stroke-width="1.5" marker-end="url(#arrO3)"/>
+      <!-- center -->
+      <circle cx="180" cy="185" r="54" fill="#ffffff" stroke="#c2410c" stroke-width="1.5"/>
+      <text x="180" y="178" font-size="12" fill="#c2410c" text-anchor="middle" font-weight="700">策展偏见</text>
+      <text x="180" y="195" font-size="10.5" fill="#6f6a5e" text-anchor="middle">被看见的才被学</text>
+      <text x="180" y="210" font-size="10.5" fill="#6f6a5e" text-anchor="middle">循环自我收紧</text>
+      <!-- break note -->
+      <rect x="30" y="340" width="300" height="46" rx="10" fill="#ffffff" stroke="#4a58c9" stroke-width="1.2" stroke-dasharray="5 3"/>
+      <text x="180" y="357" font-size="11" fill="#4a58c9" text-anchor="middle" font-weight="700">loop-breaking：负面提示 / LoRA / 混合工作流 / 人工编辑</text>
+      <text x="180" y="373" font-size="10.5" fill="#6f6a5e" text-anchor="middle">局部抵抗，不溶解回路——因为仍在同一概率空间内</text>
+      <defs>
+        <marker id="arrO2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#b45309"/></marker>
+        <marker id="arrG" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6f6a5e"/></marker>
+        <marker id="arrB2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#4a58c9"/></marker>
+        <marker id="arrO3" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#4d6e8a"/></marker>
+      </defs>
+    </svg>
+    <div class="figcap">图 2 · 算法–人类审美回路（据 ACM 3820915 绘制）：默认输出被选择，选择回流成新默认</div>
+  </div>
+  <p>叠加 Shumailiv 等人的 model collapse 结论（递归用自产数据训练，分布向高频模式坍缩，ACM 论文引用），回路只会越收越紧。这对个人 / 小团队的含义很直接：<b>L1 的引力随每一轮对齐再生产，你的审美差异只能靠 L2 的持续投入维持</b>——参考对象库、模板、skill、编辑习惯，四样都是会蒸发的一次性提示词的反面。</p>
+</div>
+
+<div class="card">
+  <h2>四、行动清单（按媒介，可直接抄）</h2>
+  <table class="resp">
+    <thead><tr><th style="width:16%">媒介</th><th>动作</th></tr></thead>
+    <tbody>
+      <tr><td data-label="图像">图像</td><td data-label="动作">① 新模型先做 10 分钟审美体检（固定三件事 + 写实/时尚 A/B + 4 张定律）；② 建自己的 sref / style code 库，别每次现编提示词；③ 细节需求先做 VAE 往返测试决定选型（掉细节严重就换 16 通道 latent 或 pixel-native 模型）；④ 默认输出出来后必过编辑 checklist：重裁、留白、降 sheen、停手点。</td></tr>
+      <tr><td data-label="视频">视频</td><td data-label="动作">① 分镜拆短段 + 显式动作描述 + 参考真实运动片段（domer.io：视频是写实尝试死掉的地方，单帧完美不算数）；② 双层策略：快模型迭代概念 → 旗舰模型渲染定稿；③ 先治物理（重力、布料、液体）再治风格；④ 主动要镜头缺陷（手持感、颗粒），「too perfect」反而更假。</td></tr>
+      <tr><td data-label="文本">文本</td><td data-label="动作">① 人设 + 场景 + 禁令黑名单 + 先给立场（三步法）；② 去 AI 味规则表进 skill（我们已有 sepia 样板，可对照 Remove AI Flavor Skill 补漏）；③ 朗读测试：换气两次以上的句子就拆；④ 翻译腔专项：拆长定语、介词短语还原动词、去「被 / 该 / 其」。</td></tr>
+      <tr><td data-label="通用">通用</td><td data-label="动作">把每次调优固化为 skill / 模板 / 参考库——这是 L2 经验唯一不蒸发的方式。提示词是消耗品，资产才是复利。</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card warn">
+  <h2>五、存疑清单（数字级事实口径）</h2>
+  <ul class="small">
+    <li><b>Lippincott 品牌回忆度「三倍」</b>：出自 codexical 单一来源转述，未找到 Lippincott 原文，<b>勿对外引用</b>。</li>
+    <li><b>CSDN 频域数字</b>（15–30 cycle/px 衰减 78%、≥4K 高频保留 &lt;12%）：自媒体实测，未标明完整模型配置，仅作机理佐证。</li>
+    <li><b>CHI 2025 人数口径</b>：Kellogg 稿「more than 50,000」，论文主阶段 37,568 + 二阶段 3,787；采集期 2024-02～06，测的是 MJ V5/V6、Firefly Image 2、SD 1.5/XL——反映 2024 年 SOTA，2026 年模型已换代数。</li>
+    <li><b>mooko 四模型审美对比</b>：单一编辑主观测评，非盲测，风格结论有参考价值、非定论。</li>
+    <li><b>scenith 视频横评 / 软盟 Sora·即梦·可灵对比</b>：2026 年自媒体横评，未经独立复现；版本号（Kling 3.0 Pro、Veo 3.1 等）随时间过期快。</li>
+    <li><b>Krea「&lt;100 万张做后训练」</b>：针对其特定 SFT+TPO 管线的口径，不保证通用。</li>
+    <li><b>「17% 的 AI 图以随机水平被误认真」</b>：Lacuna 摘要口径，对应论文的 exclusion criteria 细节（排除 &gt;90% 识别率的图后）需回原文核对再引用。</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>六、来源</h2>
+  <h3>一手 / 官方</h3>
+  <ul class="src">
+    <li>Krea 官方博客《Releasing Open Weights for FLUX.1 Krea》——mode coverage / mode collapsing 的一手论述 · <a href="https://www.krea.ai/blog/flux-krea-open-source-release">krea.ai/blog/flux-krea-open-source-release</a></li>
+    <li>Midjourney 官方文档《Style Reference》——--sref / --sw / style codes · <a href="https://docs.midjourney.com/hc/en-us/articles/32180011136653-Style-Reference">docs.midjourney.com</a></li>
+    <li>Midjourney 更新日志《Style Ref v2》《Style references for V7》· <a href="https://updates.midjourney.com/style-ref-v2/">updates.midjourney.com</a></li>
+    <li>Krea 2 LoRA Training 公告与 Training 文档 · <a href="https://www.krea.ai/blog/krea-2-lora-training">krea.ai/blog/krea-2-lora-training</a></li>
+  </ul>
+  <h3>学术</h3>
+  <ul class="src">
+    <li>Kamali et al.,《Characterizing Photorealism and Artifacts in Diffusion Model-Generated Images》, CHI 2025 · DOI 10.1145/3706598.3713962</li>
+    <li>Maarten et al.,《Personalizing Text-to-Image Generation to Individual Taste》(PAMELA), arXiv 2604.07427, 2026</li>
+    <li>《Cloud Diffusion Part 1: Theory and Motivation》, arXiv 2507.05496, 2025</li>
+    <li>《A Study of Algorithmic Visibility and the Human-AI Construction of Aesthetics in AI Design》, ACM 10.1145/3820915.3821110, 2026</li>
+  </ul>
+  <h3>行业 / 深度</h3>
+  <ul class="src">
+    <li>PromptZone《Why AI Images Share a Look and How Fine-Tunes Fix It》· <a href="https://www.promptzone.com/sebastian_suzuki/why-ai-images-share-a-look-and-how-fine-tunes-fix-it-2g3c">链接</a></li>
+    <li>PromptZone《Pixel-Space vs Latent Diffusion and the VAE Detail Ceiling》· <a href="https://www.promptzone.com/noor_suzuki/pixel-space-vs-latent-diffusion-and-the-vae-detail-ceiling-2pj5">链接</a></li>
+    <li>stillbrook.dev《The AI sheen》· <a href="https://stillbrook.dev/articles/the-ai-sheen">链接</a></li>
+    <li>Codexical《AI Design Tools Don't Generate Creative Work — They Generate Averaged Work》· <a href="https://www.codexical.com/posts/2026-06-02-ai-design-aesthetic-regression-mean">链接</a></li>
+    <li>Kompozy《The AI Design Aesthetic》· <a href="https://kompozy.io/glossary/ai-design-aesthetic">链接</a></li>
+    <li>Jake's Insights《Why Does AI Art Look So Similar Everywhere in 2026》· <a href="https://jakeinsight.com/ai/2026-08-14-ai-art-look-so-similar-everywhere-2026">链接</a></li>
+    <li>AISApedia《How to Write Image Generation Prompts》· <a href="https://aisa.to/aisapedia/image-generation-prompting">链接</a></li>
+    <li>BestPrompt.art《Hyper-Realistic AI Portraits: The Complete 2026 Framework》· <a href="https://www.bestprompt.art/?p=4791">链接</a></li>
+    <li>Scenith《Which AI Model Makes Most Realistic Videos in 2026?》· <a href="https://scenith.in/tools/which-ai-model-makes-most-realistic-videos">链接</a></li>
+    <li>Domer《Photorealistic AI Video Rendering: A Practical Guide》· <a href="https://domer.io/blog/photorealistic-ai-video-rendering-guide">链接</a></li>
+    <li>Maya Labs《Midjourney v6's Aesthetic: Innovation or Homogenisation?》· <a href="https://www.mayalabsdesign.com/blog/midjourney-v6s-aesthetic-has-become-its-own-design-language-is-that-a-problem">链接</a></li>
+  </ul>
+  <h3>中文 / 自媒体（口径已标存疑）</h3>
+  <ul class="src">
+    <li>mooko《用同一条提示词测顶级文生图模型的「审美」》· <a href="https://www.mooko.cn/article/396">链接</a></li>
+    <li>软盟资讯《文生视频大模型巅峰对决：Sora、即梦、可灵》· <a href="https://news.softunis.com/71508.html">链接</a></li>
+    <li>CSDN《为什么当前 AI 生成图像普遍存在细节模糊、纹理失真？》· <a href="https://ask.csdn.net/questions/9491019">链接</a></li>
+    <li>掘金《三步改掉 AI 味，附可直接复制的去 AI 味提示词》· <a href="https://juejin.cn/post/7694481800702558254">链接</a></li>
+    <li>Skillselion《Remove AI Flavor Skill》规则表 · <a href="https://skillselion.com/skills/chujianyun/skills/remove-ai-flavor">链接</a></li>
+    <li>文藻外大 / 数位时代《跟着翻译系主任学「去 AI 味」的 5 种魔法》· <a href="https://d021.wzu.edu.tw/article/527361">链接</a></li>
+    <li>Mobdome《AI 写作像机器人？这招一键救回人味》· <a href="https://mobdome.com/blog/ai-humanizer-rewrite-tutorial">链接</a></li>
+  </ul>
+  <p class="small muted" style="margin-top:14px">本报告为调研稿，未定稿；按 link-only 入库，不对外宣传。对偶篇：<a href="../2026-10-推理模型审美三层结构/index.html">《推理模型的审美三层结构》</a>（前端 / 3D / 代码）。第三方摘录与观点转述不代表本仓立场；数字级事实对外引用前需按来源复核。</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>推理模型的审美三层结构 · 前端 / 3D / 代码细节（2026-10-24）</title>
+<style>
+  :root{
+    --bg:#f6f5f1; --card:#ffffff; --ink:#26241f; --muted:#6f6a5e; --line:#e6e2d8;
+    --l1:#4d6e8a; --l1bg:#edf2f7; --l2:#4a58c9; --l2bg:#eef0fc; --l3:#b45309; --l3bg:#fdf3e8;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:15px/1.8 system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:14px 12px 48px}
+  header.top{padding:22px 4px 10px}
+  header.top h1{font-size:21px;line-height:1.45;margin:0 0 6px}
+  header.top .sub{color:var(--muted);font-size:13px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin:12px 0}
+  h2{font-size:17px;margin:2px 0 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  h3{font-size:15px;margin:16px 0 6px}
+  p{margin:8px 0}
+  .muted{color:var(--muted)}
+  .small{font-size:13px}
+  .chip{display:inline-block;font-size:12px;font-weight:600;color:#fff;border-radius:999px;padding:1px 10px;letter-spacing:.5px}
+  .chip.l1{background:var(--l1)} .chip.l2{background:var(--l2)} .chip.l3{background:var(--l3)}
+  .tldr{background:#fffdf5;border:1px solid #eadfc0}
+  .tldr ul{margin:6px 0 0;padding-left:20px}
+  .tldr li{margin:6px 0}
+  .warn{background:#fdf0ec;border:1px solid #f2d5c8}
+  .fig{background:#fbfaf7;border:1px dashed var(--line);border-radius:12px;padding:8px 6px;margin:10px 0}
+  .fig svg{display:block;width:100%;height:auto}
+  .figcap{font-size:12px;color:var(--muted);text-align:center;padding:4px 8px 2px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin:10px 0}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top;word-break:break-word}
+  th{background:#f4f2ec;font-weight:600}
+  code{background:#f1efe9;border-radius:4px;padding:1px 5px;font-size:13px;font-family:ui-monospace,Consolas,monospace}
+  a{color:var(--l2);text-decoration:none;word-break:break-all}
+  .src{font-size:12.5px;color:var(--muted)}
+  .src li{margin:5px 0}
+  .kicker{font-size:12px;color:var(--l3);font-weight:700;letter-spacing:1px}
+  .quote{border-left:3px solid var(--l2);background:#f7f8fd;padding:8px 12px;margin:10px 0;font-size:14px;border-radius:0 8px 8px 0}
+  .pair{font-size:12.5px;color:var(--muted);border:1px dashed var(--line);border-radius:8px;padding:6px 10px;margin:8px 0}
+  @media (max-width:699px){
+    table.resp thead{display:none}
+    table.resp tr{display:block;border:1px solid var(--line);border-radius:10px;margin:10px 0;padding:4px 8px;background:#fff}
+    table.resp td{display:block;border:none;padding:5px 2px}
+    table.resp td::before{content:attr(data-label);display:block;font-size:11.5px;color:var(--muted);font-weight:600;margin-bottom:1px}
+  }
+  @media (min-width:700px){
+    .wrap{padding:28px 20px 64px}
+    header.top h1{font-size:25px}
+    .card{padding:20px 24px}
+    h2{font-size:19px}
+    body{font-size:15.5px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="kicker">调研 · 已入库 · link-only（未定稿，不对外宣传）· 对偶篇</div>
+  <h1>推理模型的审美三层结构：默认代码风格、文档调节层、与作为上限的前端 / 3D 执行力</h1>
+  <div class="sub">2026-10-24 · 小满整理 · 对象：Opus 5.5 / GPT-6 系 / Kimi K3 / GLM-5.3 / DeepSeek V4.1 等 · 与《AI 审美三层结构》（生成模型版）同一框架、换主体</div>
+</header>
+
+<div class="pair">姊妹篇：<a href="../2026-10-AI审美三层结构/index.html">《AI 审美三层结构》</a>讲图像生成模型的审美。本篇把同一套三层框架套到<b>推理模型</b>上——推理模型的审美不通过像素表达，通过<b>代码</b>表达，于是 L3「上限层」的对应物变成了前端执行力与 3D 建模执行力。</div>
+
+<div class="card tldr">
+  <h2>TL;DR</h2>
+  <ul>
+    <li><b>老大「公认最高审美是 Opus 5.5」的判断，榜单基本证实</b>：WebDev Arena（84 万+ 票）Opus 5.5 Max 1814 第一；Design Arena（文本→HTML）1409 第一；BridgeBench 前端轴 950 第一；AA-3D（agentic 3D 场景）1190 与 Sonnet 5.5 / GPT-6 Astra / Fable 5.1 统计并列第一梯队。<b>唯一例外</b>：单发 text-to-3D 榜（benchmark.ai）第一名是 gemini-4-argon（1606），Opus 5.5 排第五（1315）——「上限」依赖考法，见存疑。</li>
+    <li><b>三层框架在推理模型上完全成立，且有一手铁证</b>：Anthropic 在自家仓库放了公开 SKILL.md，明令模型先输出设计系统（色彩/字体/布局/原则）再写第一行 HTML，并点名四大默认审美坑——<b>厂商自己写文档对抗自己模型的默认审美</b>。原话逻辑：权重决定天花板，外部文档决定方向。</li>
+    <li><b>推理模型多一层图像模型没有的东西</b>：它会推理，所以能「看自己的产出再改」。AA-3D 实测：头部模型首次查看渲染截图的中位时间是第 10–13 轮，<b>自检时机与 Elo 的相关性 Spearman 0.82</b>——审美的差距一部分是「工作流差距」，不只是权重差距。</li>
+    <li><b>国产三强前端审美排序</b>（2026-09/10 多方横评口径）：GLM-5.3 ≈ Kimi K3 &gt; DeepSeek-V4.1（Flash 版追得快）。K3 慢但视觉最 polished，GLM 快且 UI 手感最好，DeepSeek 胜在成本（$0.0089/发的 FlappyBench 9/10）。</li>
+    <li><b>最实用的一句</b>：给模型「看见自己产出」的能力（截图回路），比换模型的收益大；写死设计系统文档先行，比堆提示词收益大。</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>〇、先纠偏</h2>
+  <table class="resp">
+    <thead><tr><th style="width:36%">常见说法</th><th>核实后</th></tr></thead>
+    <tbody>
+      <tr><td data-label="常见说法">「审美好的模型干活最快」</td><td data-label="核实后">普遍反例。Kimi K3 前端与 3D 视觉最 polished，但 Superconductor 实测 44 分钟/工单（30 个 agent 里最慢）；Opus 5.5 开 max 推理档会「想太多」——从腿骨长度想到图层遮挡，撞 12.8 万 token 输出上限没产出，两次各花 $2.56 等约 20 分钟（自媒体实测口径）。审美与速度是两个轴。</td></tr>
+      <tr><td data-label="常见说法">「Opus 5.5 什么审美都第一」</td><td data-label="核实后">分场景。前端与 agentic 3D 第一（多个榜）；单发 text-to-3D 物体建模榜第一是 gemini-4-argon（1606 Elo），Opus 5.5 第五（1315）。且 Subframe 实测其弱点明确：<b>没有参考图时风格偏保守</b>，容易给出「安全的相似布局」。</td></tr>
+      <tr><td data-label="常见说法">「Kimi K3 前端全球第一」</td><td data-label="核实后">中文自媒体（今日头条横评）称 K3 在 Frontend Code Arena 1679 分全球第一；但 BridgeBench 前端轴 K3 是 780 排第五，AA-3D 排第 11。<b>三个榜考法不同，数字不可互引</b>，详见存疑清单。</td></tr>
+      <tr><td data-label="常见说法">「推理越强审美越好」</td><td data-label="核实后">AA-3D 给出的真实变量是<b>自检时机</b>：前五名模型第 10–13 轮就看自己渲染结果，14–20 名要等 15–40 轮；自检时机与 Elo 相关 0.82。同为 Kimi K3，在长上下文检索拿第一、在物理模拟初试失败（水漏出杯壁）——审美是分维度波动的能力，不是单一分数。</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h2>一、总览：三层结构（推理模型版）</h2>
+  <p>与生成模型同构，但每一层的载体从「像素」换成「代码」：</p>
+  <div class="fig">
+    <svg viewBox="0 0 360 596" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif">
+      <!-- L3 -->
+      <rect x="30" y="36" width="300" height="126" rx="12" fill="#fdf3e8" stroke="#b45309" stroke-width="1.5"/>
+      <rect x="42" y="50" width="92" height="20" rx="10" fill="#b45309"/>
+      <text x="88" y="64" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">L3 · 上限层</text>
+      <text x="44" y="94" font-size="13.5" fill="#26241f" font-weight="700">执行力上限：细节能到多优</text>
+      <text x="44" y="114" font-size="11.5" fill="#6f6a5e">前端：排版一致 / 组件复用 / 动效细节</text>
+      <text x="44" y="131" font-size="11.5" fill="#6f6a5e">3D：Three.js / GLSL / 布料物理 / 时序一致</text>
+      <text x="44" y="148" font-size="11.5" fill="#6f6a5e">硬约束：token 与思考上限 / 速度 / 工程洁癖</text>
+      <!-- arrow L2->L3 -->
+      <path d="M 180 190 L 180 166" stroke="#b45309" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrO)"/>
+      <text x="188" y="182" font-size="10.5" fill="#b45309">文档再细也撞这里</text>
+      <!-- L2 -->
+      <rect x="30" y="194" width="300" height="140" rx="12" fill="#eef0fc" stroke="#4a58c9" stroke-width="1.5"/>
+      <rect x="42" y="208" width="92" height="20" rx="10" fill="#4a58c9"/>
+      <text x="88" y="222" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">L2 · 调节层</text>
+      <text x="44" y="252" font-size="13.5" fill="#26241f" font-weight="700">文档与参考：把方向写下来</text>
+      <text x="44" y="274" font-size="11.5" fill="#6f6a5e">SKILL.md 两步法（先设计系统再写码）</text>
+      <text x="44" y="291" font-size="11.5" fill="#6f6a5e">截图 / 设计稿参考（Astra 最强）</text>
+      <text x="44" y="308" font-size="11.5" fill="#6f6a5e">既有组件库复用（Opus 5.5 最强）</text>
+      <text x="44" y="325" font-size="11.5" fill="#6f6a5e">CONTEXT.md / AGENTS.md 类项目约束</text>
+      <!-- arrow L1->L2 -->
+      <path d="M 180 358 L 180 336" stroke="#4a58c9" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrB)"/>
+      <text x="188" y="350" font-size="10.5" fill="#4a58c9">拧旋钮，改落点</text>
+      <!-- L1 -->
+      <rect x="30" y="362" width="300" height="186" rx="12" fill="#edf2f7" stroke="#4d6e8a" stroke-width="1.5"/>
+      <rect x="42" y="376" width="92" height="20" rx="10" fill="#4d6e8a"/>
+      <text x="88" y="390" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="700">L1 · 默认层</text>
+      <text x="44" y="420" font-size="13.5" fill="#26241f" font-weight="700">默认代码风格：你不指定时它写的样</text>
+      <text x="44" y="442" font-size="11.5" fill="#6f6a5e">Anthropic 自名四大坑：泛滥居中 / 千篇一律</text>
+      <text x="44" y="459" font-size="11.5" fill="#6f6a5e">紫渐变 / 无约束圆角卡片 / 无脑 Inter 字体</text>
+      <text x="44" y="476" font-size="11.5" fill="#6f6a5e">GPT-6 Astra 无风格指南时的 card-heavy 默认</text>
+      <text x="44" y="493" font-size="11.5" fill="#6f6a5e">Codex 系次级文字过小的排版惯性</text>
+      <text x="44" y="514" font-size="11.5" fill="#4d6e8a" font-weight="600">来源同生成模型：训练数据分布 + 偏好对齐</text>
+      <text x="44" y="531" font-size="11.5" fill="#6f6a5e">（mode collapsing），载体从像素换成代码</text>
+      <text x="180" y="572" font-size="11" fill="#6f6a5e" text-anchor="middle">推理模型特有增益：会「看自己的产出再改」——自检时机与 Elo 相关 0.82（AA-3D）</text>
+      <defs>
+        <marker id="arrO" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#b45309"/></marker>
+        <marker id="arrB" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#4a58c9"/></marker>
+      </defs>
+    </svg>
+    <div class="figcap">图 1 · 推理模型的三层：L1 默认代码风格 → L2 文档与参考 → L3 前端 / 3D 执行力上限</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2><span class="chip l1">L1</span> 默认审美：模型不问你时写出的代码风格</h2>
+
+  <h3>一手铁证：厂商自己点名自己模型的默认审美坑</h3>
+  <p>Anthropic 在公开仓库提供的 <code>SKILL.md</code>（2026-09 更新）把问题定义为「avoiding generic design defaults」——避免通用设计默认值。配套的 web 生成 skill 文档<b>点名四大经典坑</b>（yage.ai 转述其内容）：</p>
+  <table class="resp">
+    <thead><tr><th style="width:40%">默认审美坑（厂商原名单）</th><th>民间叫法</th></tr></thead>
+    <tbody>
+      <tr><td data-label="坑">Rampant center-alignment（泛滥的居中）</td><td data-label="民间叫法">「AI 味布局」</td></tr>
+      <tr><td data-label="坑">Cookie-cutter purple gradients（千篇一律的紫色渐变）</td><td data-label="民间叫法">「AI 紫」</td></tr>
+      <tr><td data-label="坑">Unconstrained rounded cards（无约束的圆角卡片）</td><td data-label="民间叫法">「AI 卡片」</td></tr>
+      <tr><td data-label="坑">Defaulting to the Inter typeface（无脑用 Inter 字体）</td><td data-label="民间叫法">「AI 字体」</td></tr>
+    </tbody>
+  </table>
+  <p>这是三层框架在推理模型上最硬的实证：<b>默认审美是模型自身分布的统计产物，连厂商都要靠外部文档去对抗</b>——对抗手段不在权重里，在一份可读可改的 Markdown 里。</p>
+
+  <h3>各模型的默认审美差异（2026-10 实测口径）</h3>
+  <table class="resp">
+    <thead><tr><th style="width:22%">模型</th><th>默认审美特征</th><th style="width:24%">主要弱点</th></tr></thead>
+    <tbody>
+      <tr><td data-label="模型">Claude Opus 5.5</td><td data-label="特征">干净的视觉层级、慷慨且一致的间距；读现有组件并复用，不另起炉灶；能接「收紧这张卡的 padding」级精确修改</td><td data-label="弱点">无参考图时偏保守，倾向安全的相似布局（Subframe）</td></tr>
+      <tr><td data-label="模型">GPT-6 Astra</td><td data-label="特征">最听详细 spec 的话；给它截图做参照时最强</td><td data-label="弱点">无风格指南时 generic、card-heavy 默认（Subframe）；Codex 系有次级文字过小的排版惯性（sitem）</td></tr>
+      <tr><td data-label="模型">Gemini 3.1/3.8</td><td data-label="特征">快、便宜、动画顺；敢用深色渐变给版块个性</td><td data-label="弱点">跨屏一致性差（drift）；FAQ 拥挤、移动端样机显假（sitem）</td></tr>
+      <tr><td data-label="模型">Kimi K3</td><td data-label="特征">视觉最 polished；像「verification-heavy 的工程师」——代码组件化、仓库干净</td><td data-label="弱点">慢；物理模拟等推理密集任务初试会失败；硬编码部分玩法（Command Code）</td></tr>
+      <tr><td data-label="模型">GLM-5.3</td><td data-label="特征">FlappyBench 手感第一（9.5/10）；设计稿→可运行代码路径最短（GLM-5.3-FlashX 主打视觉 Coding）；速度碾压级</td><td data-label="弱点">幻觉过时 API（如 Three.js 废弃 Geometry 构造器，noderguru 实测）</td></tr>
+      <tr><td data-label="模型">DeepSeek V4.1</td><td data-label="特征">V4.1 审美升级（老大 2026-10-19 实测：完虐 Hy4 + Step 5）；Flash 版 $0.0089/发 9/10，成本屠夫</td><td data-label="弱点">V4-Pro 前端审美被评「约上一代模型水平」；3D 场景交付过半成品（头条横评口径）</td></tr>
+    </tbody>
+  </table>
+  <p class="small muted">机制与生成模型完全同构：训练语料里前端代码的分布（Tailwind 示例、模板站、vibe-coding 产物）+ 偏好对齐的 mode collapsing。差别在载体：推理模型的「默认审美」最终以<b>代码结构</b>呈现——组件切分、设计 token、间距体系，而不只是颜色和圆角。</p>
+</div>
+
+<div class="card">
+  <h2><span class="chip l2">L2</span> 调节层：把方向写成文档，而不是写成更长的提示词</h2>
+
+  <h3>标杆实践：Anthropic 的两步工作流</h3>
+  <div class="quote">「Weights determine the ceiling of how good the model can be, while external instruction files determine which direction it actually goes.」——权重决定它能多好，外部指令文件决定它实际往哪走。（yage.ai 对 Anthropic SKILL.md 的转述，2026-10-11）</div>
+  <p>其 <code>frontend-design</code> skill 规定的流程：模型<b>不许直接写码</b>——第一步必须先输出覆盖色彩、字体、布局、设计原则的设计系统，第二步才基于该系统搭组件。这跟我们仓里「先立 CONTEXT/AGENTS 再动手」是同一件事。</p>
+
+  <h3>四个旋钮（推理模型版）</h3>
+  <table class="resp">
+    <thead><tr><th style="width:22%">旋钮</th><th>作用与证据</th></tr></thead>
+    <tbody>
+      <tr><td data-label="旋钮">① 设计系统先行<br>（文档化方向）</td><td data-label="作用">把审美决策外置成可读可改的纯文本（SKILL.md / 设计系统文档）。收益：方向可复现、可移植、可团队共享；代价：文档一旦流传就趋同——好看但容易变得 generic（yage.ai 点名的 homogenization 种子）。</td></tr>
+      <tr><td data-label="旋钮">② 截图 / 设计稿参考</td><td data-label="作用">GPT-6 Astra 的强项就是「给一张截图对标」；Opus 5.5 / Fable 5.1 全系支持图像输入，都能吃参考。Subframe 的结论值得抄：<b>前三名模型之间的差距，小于「能看见自己跑起来的应用」和「看不见」的差距</b>。</td></tr>
+      <tr><td data-label="旋钮">③ 既有组件库复用</td><td data-label="作用">Subframe 评测的关键项：输出是用你现有的 React/Tailwind 组件，还是自己发明新的。Opus 5.5 这项最强——「读你现有组件并复用」本质是审美一致性的工程保底。</td></tr>
+      <tr><td data-label="旋钮">④ 项目约束文件<br>（CONTEXT / AGENTS）</td><td data-label="作用">把团队级审美与红线写成常驻上下文（我们仓里已有实践：AGENTS.md 管怎么干、README 管是什么）。对推理模型，这类文件就是 L2 的「常驻旋钮」，比每次现编提示词稳定一个量级。</td></tr>
+    </tbody>
+  </table>
+  <p class="small muted">与图像模型的 sref/LoRA 对照：推理模型的「参考对象」= 截图 + 设计系统 + 既有组件库；「微调」= 厂商后训练（用户侧不可操作，只能靠文档）。所以推理模型侧 L2 的重心比图像模型更偏<b>文档工程</b>——这也是 skill 沉淀在主线的直接理由。</p>
+</div>
+
+<div class="card">
+  <h2><span class="chip l3">L3</span> 上限层：前端与 3D 的执行力，细节能到多优</h2>
+  <p>老大框架里最深的一层，在推理模型上就是「同一个设计意图，模型的代码能把它实现到多细」。四个可量化的维度：</p>
+
+  <h3>维度一：前端细节（多个盲测榜，2026-10）</h3>
+  <table class="resp">
+    <thead><tr><th style="width:30%">榜单</th><th>口径</th><th>头部</th></tr></thead>
+    <tbody>
+      <tr><td data-label="榜单">WebDev Arena</td><td data-label="口径">双盲两两打分 Elo，84 万+ 票（2026-10 初）</td><td data-label="头部">Opus 5.5 Max 1814 ＞ GPT-6 Astra Max 1788；Gemini 4 Argon High 第 9（1678）</td></tr>
+      <tr><td data-label="榜单">Design Arena</td><td data-label="口径">文本→HTML 视觉呈现</td><td data-label="头部">Opus 5.5 1409 ＞ GPT-6 Astra (xhigh) 1386；Gemini 3.8 Flash 第 18（1309）</td></tr>
+      <tr><td data-label="榜单">BridgeBench 前端轴</td><td data-label="口径">「Layout, motion, taste——看起来是设计过的，不是生成的」</td><td data-label="头部">Opus 5.5 950 ＞ Fable 5.1 / Opus 5 860 ＞ Kimi K3 780（第 5）</td></tr>
+      <tr><td data-label="榜单">Google Research 论文</td><td data-label="口径">2026-02 发表（经 yage.ai 转述）</td><td data-label="头部">同一任务下，多达 50% 场景里模型原生界面达到人类专业设计师水平；动态界面显著优于纯 Markdown</td></tr>
+    </tbody>
+  </table>
+  <p>Subframe 的落地评测（2026-10，Irvin Zhan）还给了一条工程结论：单屏生成、多屏一致、进现有 codebase、精确改一处、跟随设计系统五件事里，Opus 5.5 的综合默认最好；Astra 在「有 spec / 有截图」时反超。</p>
+
+  <h3>维度二：3D / WebGL 执行力——两种考法，两种名次</h3>
+  <p>这是本次调研最迷人的发现：<b>同一批模型，单发考和 agent 考，排名会翻转</b>。</p>
+  <div class="fig">
+    <svg viewBox="0 0 360 404" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif">
+      <text x="20" y="24" font-size="12.5" fill="#26241f" font-weight="700">AA-3D（agent 考：可自建、自看、自改，3 小时/250 轮）</text>
+      <!-- left bars -->
+      <rect x="20" y="36" width="252" height="16" rx="3" fill="#d97706"/>
+      <text x="278" y="48" font-size="10.5" fill="#6f6a5e">1194</text>
+      <text x="20" y="33" font-size="10" fill="#26241f">Claude Sonnet 5.5</text>
+      <rect x="20" y="60" width="250" height="16" rx="3" fill="#d97706"/>
+      <text x="276" y="72" font-size="10.5" fill="#6f6a5e">1190</text>
+      <text x="20" y="57" font-size="10" fill="#26241f">Claude Opus 5.5</text>
+      <rect x="20" y="84" width="240" height="16" rx="3" fill="#d97706"/>
+      <text x="266" y="96" font-size="10.5" fill="#6f6a5e">1165</text>
+      <text x="20" y="81" font-size="10" fill="#26241f">GPT-6 Astra</text>
+      <rect x="20" y="108" width="232" height="16" rx="3" fill="#d97706"/>
+      <text x="258" y="120" font-size="10.5" fill="#6f6a5e">1131</text>
+      <text x="20" y="105" font-size="10" fill="#26241f">Claude Fable 5.1</text>
+      <rect x="20" y="132" width="230" height="16" rx="3" fill="#e8e4da"/>
+      <text x="256" y="144" font-size="10.5" fill="#6f6a5e">1123</text>
+      <text x="20" y="129" font-size="10" fill="#26241f">GPT-6 Sol</text>
+      <rect x="20" y="156" width="96" height="16" rx="3" fill="#4d6e8a"/>
+      <text x="122" y="168" font-size="10.5" fill="#6f6a5e">982（第 11）</text>
+      <text x="20" y="153" font-size="10" fill="#26241f">Kimi K3（开源最佳）</text>
+      <text x="20" y="192" font-size="10.5" fill="#b45309">前四名统计并列；开源差 200+ Elo；单场景成本 $0.20–$32.08</text>
+      <text x="20" y="208" font-size="10.5" fill="#b45309">自检时机（首次看渲染图的中位轮次）与 Elo：Spearman 0.82</text>
+      <!-- divider -->
+      <line x1="20" y1="224" x2="340" y2="224" stroke="#e6e2d8" stroke-width="1"/>
+      <text x="20" y="248" font-size="12.5" fill="#26241f" font-weight="700">benchmark.ai（单发考：一 Prompt 一次出码，无自看自改）</text>
+      <rect x="20" y="260" width="256" height="16" rx="3" fill="#4a58c9"/>
+      <text x="282" y="272" font-size="10.5" fill="#6f6a5e">1606</text>
+      <text x="20" y="257" font-size="10" fill="#26241f">gemini-4-argon</text>
+      <rect x="20" y="284" width="249" height="16" rx="3" fill="#4a58c9"/>
+      <text x="275" y="296" font-size="10.5" fill="#6f6a5e">1563</text>
+      <text x="20" y="281" font-size="10" fill="#26241f">gpt-6-astra</text>
+      <rect x="20" y="308" width="232" height="16" rx="3" fill="#4a58c9"/>
+      <text x="258" y="320" font-size="10.5" fill="#6f6a5e">1459</text>
+      <text x="20" y="305" font-size="10" fill="#26241f">gpt-6.1-sol</text>
+      <rect x="20" y="332" width="210" height="16" rx="3" fill="#4a58c9"/>
+      <text x="236" y="344" font-size="10.5" fill="#6f6a5e">1315（第 5）</text>
+      <text x="20" y="329" font-size="10" fill="#26241f">claude-opus-5.5</text>
+      <rect x="20" y="356" width="119" height="16" rx="3" fill="#4d6e8a"/>
+      <text x="145" y="368" font-size="10.5" fill="#6f6a5e">745（第 9）</text>
+      <text x="20" y="353" font-size="10" fill="#26241f">kimi-k3（开源）</text>
+      <rect x="20" y="380" width="106" height="16" rx="3" fill="#4d6e8a"/>
+      <text x="132" y="392" font-size="10.5" fill="#6f6a5e">664（第 11）</text>
+      <text x="20" y="377" font-size="10" fill="#26241f">glm-5.3-prime</text>
+    </svg>
+    <div class="figcap">图 2 · 同一批模型，两种考法两种名次：agent 场 Opus 系封顶，单发场 Gemini 4 Argon / GPT-6 反超——「上限」由 model × harness 共同决定</div>
+  </div>
+  <p><b>读法</b>：AA-3D 给模型沙箱（可写码、渲染、看截图、改，3 小时 250 轮）——头部是 Claude 系；benchmark.ai 只给一次 64k token 的输出窗口单发——头部换成 gemini-4-argon 和 GPT-6。结论对老大极重要：<b>所谓「审美上限」不全是模型属性，是模型 × 工作流的联合属性</b>。给 Opus 5.5 配上看得见自己产出的 harness，它才是那个 1814 分的 Opus。</p>
+
+  <h3>维度三：实测细节案例（上限长什么样）</h3>
+  <ul>
+    <li><b>Opus 5.5 一句话三个 3D 游戏</b>（自媒体实测，2026-10）：鹈鹕骑车（围巾布料物理模拟、黄昏→星空昼夜过渡、14 个成就、5 种镜头含鹈鹕第一视角、BGM 节奏跟踩踏频率）、QQ 飞车（先写脚本生成赛道俯视图、检查弯道与交叉点无误后才开工；Shift 漂移/Ctrl 氮气/双喷全还原）、CF 运输船（先查官方布局图核对地图结构再搭场景）。全部单文件 HTML，模型/纹理/动画/音效<b>纯代码生成，零图片零音频引用</b>，人工一行码没改直接部署。</li>
+    <li><b>MiMo-V2.6-Pro 的 WebGL2</b>（noderguru 实测）：程序化流体漩涡 + 粒子群，420 行 Three.js，自定义 GLSL shader、UV 投影、requestAnimationFrame 全对，一遍过。</li>
+    <li><b>Kimi K3 的视觉与工程</b>（aicodingdir 汇总多个第三方实测）：3D 足球场——Fable 5 快速单文件 demo，K3 慢但交付正确组件化的干净仓库；尼亚加拉瀑布——Sol 快但漏了提示词里的彩虹，K3 用 30 分钟补上彩虹和水汽，「 genuinely beautiful」；但倒水物理初试失败（水漏出杯壁），要人指出后才慢慢改对。</li>
+    <li><b>GLM-5.3 的水墨天穹</b>（头条横评）：花果山 Three.js 场景一次直出、建模质量高，水墨天穹比 K3 更符合原著设定（K3 把花果山放错了位置）；同轮 DeepSeek-V4-Pro 交付半成品、页面无法渲染。</li>
+    <li><b>一致性与细节是分水岭</b>（sitem 三工具重建外卖网站）：Claude Code 在字体、padding、卡片间距、移动端样机可信度上全面胜出；Codex（GPT-5.6）hero 区最炫但次级文字系统性过小、newsletter 草率；Antigravity（Gemini 3.8）动画顺但 FAQ 拥挤、样机显假。</li>
+  </ul>
+
+  <h3>维度四：推理模型特有的 L3 硬约束</h3>
+  <table class="resp">
+    <thead><tr><th style="width:26%">约束</th><th>表现</th></tr></thead>
+    <tbody>
+      <tr><td data-label="约束">思考 / 输出 token 上限</td><td data-label="表现">Opus 5.5 max 档鹈鹕题从腿骨长度想到图层遮挡，撞 12.8 万 token 输出上限零产出，两次各 $2.56 等约 20 分钟（自媒体口径）。高推理档不是免费的质量。</td></tr>
+      <tr><td data-label="约束">速度-质量权衡</td><td data-label="表现">K3 中位 36–62 tok/s、44 分钟/工单（30 个 agent 最慢），但质量≈Opus 4.8 档、成本约四分之一（Superconductor 实测）；GLM-5.3 速度碾压级。<b>慢工出细活与快速 demo 是两种产品，不是优劣。</b></td></tr>
+      <tr><td data-label="约束">token 效率</td><td data-label="表现">Opus 5.5 输出 token 数是 Astra 的数倍——单价低 ≠ 总花费低（自媒体实测口径）。</td></tr>
+      <tr><td data-label="约束">幻觉 / 过时知识</td><td data-label="表现">GLM-5.3 写 Three.js 时幻觉已废弃的 Geometry 构造器（应换 BufferGeometry）；K3 硬编码玩法而非推导。这类错不是审美问题，是知识边界问题——但它直接决定「细节到不到位」。</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h2>三、三层咬合：推理模型版的审美回路</h2>
+  <p>与生成模型同构，但多一环，且这一环正在公开化：</p>
+  <table class="resp">
+    <thead><tr><th style="width:26%">环节</th><th>推理模型版</th></tr></thead>
+    <tbody>
+      <tr><td data-label="环节">模型产出</td><td data-label="内容">默认风格的前端 / 3D 代码（居中、紫渐变、圆角卡、Inter）</td></tr>
+      <tr><td data-label="环节">人类选择</td><td data-label="内容">vibe-coding 产物大量上线、被点赞、被 fork</td></tr>
+      <tr><td data-label="环节">数据回流</td><td data-label="内容">这些代码进入语料，成为下一轮的「典型答案」</td></tr>
+      <tr><td data-label="环节">厂商反应<br>（新环节）</td><td data-label="内容">Anthropic 把对抗手段写成 SKILL.md 公开发布——L2 的对抗设施本身成了行业公共品，于是所有人的设计系统开始趋同（yage.ai 点名的 homogenization 代价）</td></tr>
+    </tbody>
+  </table>
+  <p>对个人的含义与生成模型篇一致但更尖锐：<b>L1 的引力随每一轮对齐再生产，你的差异化只能靠 L2 的持续投入维持</b>——而推理模型侧的 L2 资产（设计系统文档、组件库规范、skill、CONTEXT）恰好是我们这条线已经在做的事。老大自己的 sepia 去AI味 skill 和仓里的 AGENTS/CONTEXT 体系，就是这一层的实践。</p>
+</div>
+
+<div class="card">
+  <h2>四、行动清单（按老大的场景）</h2>
+  <table class="resp">
+    <thead><tr><th style="width:18%">场景</th><th>动作</th></tr></thead>
+    <tbody>
+      <tr><td data-label="场景">前端 / 页面</td><td data-label="动作">① 默认 Opus 5.5（干净层级 + 复用组件）；有详细 spec 或截图时换 GPT-6 Astra；预算紧用 GPT-6.1 Sol。② 抄 Anthropic 两步法：先让它产出设计系统文档，审完再让它写码。③ 给它看见自己产出的回路（截图/预览），Subframe 结论：这比前三名之间的差距更值钱。</td></tr>
+      <tr><td data-label="场景">3D / 交互</td><td data-label="动作">① 能等 + 要惊艳选 Opus 5.5（agent 场第一梯队）；要快出 demo 用 GPT-6 Sol（$3.46/场景）或 Luna（$0.20）。② 抄 QQ 飞车模式：先让模型写脚本做结构验证（俯视图/布局核对），再正式开发。③ 国产性价比：GLM-5.3 快且 UI 手感好，K3 视觉最细但按批任务派（别守着等）。</td></tr>
+      <tr><td data-label="场景">选型纪律</td><td data-label="动作">固定 brief + 固定视口 + 同题至少 4 次再下结论（防随机性）；先验「能跑」再评「好看」；记录成本与时间。K3 类慢模型派去队列型任务（迁移、批量重构），别用于即时迭代。</td></tr>
+      <tr><td data-label="场景">推理档位</td><td data-label="动作">max 档慎开——想太多会撞输出上限零交付（$2.56×2 的教训）。日常 high/xhigh，复杂任务看最后有没有交付，不看它想得多认真。</td></tr>
+      <tr><td data-label="场景">资产沉淀</td><td data-label="动作">设计系统文档、组件规范、去 AI 味 skill、CONTEXT——这四样是 L2 里不蒸发的部分；一次性提示词是消耗品。</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card warn">
+  <h2>五、存疑清单</h2>
+  <ul class="small">
+    <li><b>Kimi K3 前端排名三个口径互斥</b>：头条横评称 Frontend Code Arena 1679 全球第一；morphllm 引同一榜单为 1658 第 7；BridgeBench 前端轴 780 第 5；AA-3D 第 11（982）。三榜考法不同，<b>不可互相引用拼结论</b>。</li>
+    <li><b>Opus 5.5 实测细节</b>（三个 3D 游戏、$2.56 空跑、6/6 稳定性）：微信公众号自媒体单一来源，未经独立复现。</li>
+    <li><b>Google Research「50% 场景达人类设计师水平」</b>：经 yage.ai 二手转述，未核原文（论文 2026-02）。</li>
+    <li><b>AA-3D 成本区间 $0.20–$32.08 / 场景</b> 与具体 harness 配置强相关（3 小时 250 轮沙箱），换环境数字即变。</li>
+    <li><b>benchmark.ai 单发 3D 榜</b>：500 个提示词五类、64k 输出上限、Bradley-Terry Elo；与 AA-3D 不可比（后者 agentic）。gemini-4-argon 1606 第一的结论仅限单发场景。</li>
+    <li><b>noderguru / Command Code / sitem 等横评</b>：个人或小团队实测，样本量小（常为 n=1），有方向参考价值、无统计效力。</li>
+    <li><b>API 价格</b>：均为 2026-10-18 前后各厂商官网口径，随调价过期。</li>
+    <li><b>老大 2026-10-19 实测</b>（DP V4.1 审美完虐 Hy4/Step 5、GLM 5.3-Flash 第三）：群聊笔记口径，未留可复现测试记录。</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>六、来源</h2>
+  <h3>榜单 / 基准</h3>
+  <ul class="src">
+    <li>Subframe《Best AI Model for UI Design (2026, Tested)》· <a href="https://www.subframe.com/tips/best-ai-model-for-ui-design">链接</a></li>
+    <li>BridgeBench《Best AI Model for Front-End Coding and UI Design》· <a href="https://www.bridgebench.ai/blog/best-ai-model-for-front-end">链接</a></li>
+    <li>yage.ai《AI Can Now Make Interfaces Look Good. It Wrote Down How.》（Anthropic SKILL.md 转述 + WebDev/Design Arena 数字）· <a href="https://yage.ai/share/ai-design-direction-written-down-en-20261011.html">链接</a></li>
+    <li>AlphaSignal《Artificial Analysis' AA-3D Ranks 21 AI Models by 3D Scenes They Build》· <a href="https://alphasignal.ai/news/artificial-analysis-aa-3d-ranks-21-ai-models-by-3d-scenes-they-build">链接</a></li>
+    <li>benchmark.ai《The Human-Preference Leaderboard for LLM-to-3D Generation》· <a href="https://www.benchmark.ai/">链接</a></li>
+  </ul>
+  <h3>横评 / 实测</h3>
+  <ul class="src">
+    <li>MorphLLM《Best AI Model for Coding (2026): 15 Models Ranked》· <a href="https://www.morphllm.com/codex-5-3">链接</a></li>
+    <li>Standard Compute《Best Open-Weight Models for Coding Agents (October 2026)》· <a href="https://standardcompute.com/best-open-weight-models-for-coding-agents">链接</a></li>
+    <li>NoderGuru《Chinese AI models tested: MiMo-V2.6 vs DeepSeek v4.1 vs Kimi K3 vs GLM-5.3 vs MiniMax M3》· <a href="https://noderguru.dev/en/blog/chinese-ai-models-tested-2026-en">链接</a></li>
+    <li>Command Code《DeepSeek V4.1-Flash vs GLM 5.3 vs Kimi K3: FlappyBench》· <a href="https://commandcode.ai/guides/deepseek-v4.1-flash-glm-5.3-kimi-k3">链接</a></li>
+    <li>AICodingDir《Kimi K3 vs Claude vs GPT-5.6: Full Coding Benchmark Comparison》· <a href="https://aicodingdir.com/blog/kimi-k3-frontend-coding-2026">链接</a></li>
+    <li>SiteM《I asked Claude Code, Codex, and Google Antigravity to rebuild the same website》· <a href="https://sitem.co/public/summary/3720/">链接</a></li>
+    <li>腾讯搜一搜《七家国产大模型同台》· <a href="https://so.html5.qq.com/page/real/search_news?docid=70000021_6186ab36f4746652">链接</a></li>
+    <li>今日头条《Kimi K3 编程能力第一，但速度却被 GLM-5.3 碾压？》· <a href="https://www.toutiao.com/a7677922409927787049">链接</a></li>
+    <li>微信公众号《Claude Opus 5.5 实测：一句话做出 3 个能玩的 3D 游戏》· <a href="http://mp.weixin.qq.com/s?__biz=MzYyNDg3MjU1Mw==&mid=2247484377&idx=1">链接</a></li>
+    <li>BitTide《Local Qwen 3.8 27B vs GPT-5.6 Terra vs Grok 4.6（Three.js 香水发布页）》· <a href="http://bittide.aicompass.dev/article/f6722aa1-7085-4826-9dde-a900133832ca">链接</a></li>
+  </ul>
+  <p class="small muted" style="margin-top:14px">本报告为调研稿，未定稿；按 link-only 入库，不对外宣传。与<a href="../2026-10-AI审美三层结构/index.html">《AI 审美三层结构》</a>（生成模型版）为对偶篇，共用同一三层框架。转述与横评结论不代表本仓立场；数字级事实对外引用前需按来源复核。</p>
+</div>
+
+</div>
+</body>
+</html>

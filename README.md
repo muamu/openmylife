@@ -55,7 +55,7 @@ OpenMyLife 是一套「把自己当成长期维护的开源项目」的方法与
 | [ideas](./ideas) | 灵感备忘录（随手记） | 更新中 |
 | [notes](./notes) | 思考与阅读笔记（按领域分目录，含 `insights/` 洞察集、`agent-collaboration/` Agent 协作） | 更新中 |
 | [agents](./agents) | AI Agent 使用产物（角色 / 工作流 / 趣味提示词 / skill 插件） | 进行中 |
-| [critiques](./critiques) | 产品报告 / 评测 / 建议（按领域分目录，如 Agent 框架、个人助理 Agent、金融/港股A股） | 更新中 |
+| [critiques](./critiques) | 产品报告 / 评测 / 建议（按领域分目录，如 Agent 框架、个人助理 Agent、金融/港股A股、AI 审美、创意产业） | 更新中 |
 | [career](./career) | 职业与方法论 | 计划 |
 | [products](./products) | 做过的产品（build in public） | 计划 |
 | [stories](./stories) | 非常规经历复盘 | 计划 |

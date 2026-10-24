@@ -42,6 +42,8 @@ tags: []
 - `critiques/personal-agent/2026-10-life-assistant-agents/` —— `kind: report`（HTML 报告，v1 不完整版）
 - `critiques/finance/hk-a-shares/2026-10-minimax-zhipu-h1-2026/` —— `kind: report`（HTML 报告）
 - `critiques/auto-industry/2026-10-全球汽车进出口数据研究/` —— `kind: report`（HTML 报告）
+- `critiques/ai-aesthetics/2026-10-AI审美三层结构/` —— `kind: report`（HTML 报告，link-only）
+- `critiques/creative-industry/2026-10-推理模型与游戏工业重估/` —— `kind: report`（HTML 报告，link-only）
 - `critiques/dating/2027-01-dating-product-advice.md` —— `kind: advice`
 
 ## 与 `notes/insights/` 的分工

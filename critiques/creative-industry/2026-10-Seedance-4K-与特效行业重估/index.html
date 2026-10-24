@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Seedance 2.5 4K 与特效行业重估 · 一份不乐观也不悲观的拆解</title>
+<style>
+  :root{
+    --paper:#ffffff;
+    --ink:#0E1013;
+    --body:#26292D;
+    --grey:#5A6068;
+    --faint:#8D939B;
+    --rule:#D5D9DE;
+    --hair:#E7EAEE;
+    --blue:#16527F;
+    --blue-soft:#F3F8FC;
+    --blue-mid:#E3EEF7;
+    --wine:#8F2F38;
+    --wine-soft:#FDF4F4;
+    --wine-mid:#F7E2E3;
+    --serif:"Source Han Serif SC","Noto Serif SC","Songti SC",STSong,Georgia,SimSun,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,"Liberation Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--body);
+    font-size:15px;
+    line-height:1.82;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:706px;margin:0 auto;padding:0 20px 88px;}
+
+  /* ============ 报头 ============ */
+  header{padding:38px 0 22px;border-bottom:2px solid var(--ink);}
+  .kicker{
+    font-size:12px;color:var(--blue);font-weight:600;
+    letter-spacing:0;margin-bottom:16px;
+  }
+  .kicker::before{content:"";display:inline-block;width:18px;height:2px;background:var(--blue);vertical-align:4px;margin-right:8px;}
+  h1{
+    font-family:var(--serif);
+    font-size:clamp(27px,6.4vw,40px);
+    line-height:1.24;font-weight:700;letter-spacing:-.02em;
+    color:var(--ink);margin-bottom:18px;
+    text-wrap:balance;
+  }
+  h1 em{font-style:normal;color:var(--blue);}
+  .sub{
+    font-size:15px;color:var(--grey);line-height:1.8;
+    max-width:62ch;
+  }
+  .meta{
+    margin:22px 0 0;padding-top:12px;
+    border-top:1px solid var(--rule);
+    font-size:11.5px;color:var(--faint);line-height:1.75;
+  }
+  .meta span{display:block;width:100%;}
+  .meta b{color:var(--grey);font-weight:600;font-family:var(--mono);font-size:11px;}
+
+  /* ============ 摘要 ============ */
+  .thesis{
+    margin:26px 0 0;padding:20px 18px;
+    border-left:4px solid var(--blue);
+    background:var(--blue-soft);
+    border-bottom:none;
+  }
+  .thesis .lead{
+    font-size:11.5px;color:var(--blue);
+    font-weight:700;margin-bottom:12px;
+  }
+  .thesis .lead::before{content:"■";font-size:8px;margin-right:7px;vertical-align:2px;}
+  .thesis p{
+    font-family:var(--serif);
+    font-size:17px;line-height:1.76;color:var(--ink);font-weight:400;
+  }
+  .thesis p + p{
+    margin-top:14px;font-size:14.5px;line-height:1.85;
+    color:var(--body);font-family:var(--sans);
+  }
+
+  /* ============ 章节：横幅式锚点 ============ */
+  section{margin-top:48px;}
+  h2{
+    font-family:var(--serif);
+    font-size:clamp(18px,4.2vw,22px);
+    font-weight:700;line-height:1.45;letter-spacing:-.01em;
+    color:var(--ink);
+    display:flex;align-items:baseline;gap:11px;
+    background:var(--blue-soft);
+    border-left:4px solid var(--blue);
+    border-top:none;
+    padding:12px 14px;
+    margin:0 -14px 22px;
+  }
+  h2 .n{
+    font-family:var(--mono);
+    font-size:12px;font-weight:600;
+    color:var(--blue);opacity:.75;
+    flex:0 0 auto;letter-spacing:0;
+  }
+  h3{
+    font-size:15px;font-weight:700;margin:30px 0 12px;
+    line-height:1.6;color:var(--ink);
+  }
+  h3:first-of-type{margin-top:6px;}
+  h3::before{
+    content:"";display:inline-block;
+    width:5px;height:5px;background:var(--blue);
+    margin-right:9px;vertical-align:3px;
+  }
+  p{margin-bottom:15px;}
+  p:last-child{margin-bottom:0;}
+  strong{font-weight:700;color:var(--ink);}
+  mark{
+    background:#FFF0B3;color:inherit;
+    padding:0 3px;border-radius:2px;
+  }
+
+  /* ============ 数据块 ============ */
+  .stats{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    border:1px solid var(--hair);
+    border-top:2px solid var(--blue);
+    background:#FCFDFE;
+    margin:22px 0 8px;border-radius:0;
+  }
+  .stat{
+    background:none;padding:15px 14px;
+    border-bottom:1px solid var(--hair);
+    border-right:1px solid var(--hair);
+  }
+  .stat:nth-child(even){border-right:none;}
+  .stat:nth-last-child(-n+2){border-bottom:none;}
+  .stat .v{
+    font-family:var(--mono);
+    font-size:23px;font-weight:600;line-height:1.15;
+    letter-spacing:-.03em;color:var(--ink);
+    font-variant-numeric:tabular-nums;
+  }
+  .stat .v small{
+    font-size:12px;font-weight:500;color:var(--faint);
+    margin-left:3px;letter-spacing:0;
+  }
+  .stat .k{
+    font-size:11.5px;color:var(--grey);line-height:1.6;
+    margin-top:6px;
+  }
+  .stat.bad .v{color:var(--wine);}
+  .stat.ok .v{color:var(--blue);}
+  .stat.mid .v{color:var(--ink);}
+  .stat.vi .v{color:var(--blue);}
+
+  /* ============ 条目 ============ */
+  .grid{
+    display:grid;grid-template-columns:1fr;gap:14px;
+    margin:22px 0;
+  }
+  .card{
+    padding:13px 15px;
+    border:none;
+    border-left:3px solid var(--rule);
+    background:#FAFBFC;
+  }
+  .card .h{
+    font-size:13px;font-weight:700;margin-bottom:5px;
+    display:flex;align-items:baseline;gap:8px;color:var(--ink);
+  }
+  .card p{font-size:13.5px;line-height:1.78;color:var(--body);margin:0;}
+  .dot{
+    width:7px;height:7px;flex:0 0 auto;
+    border-radius:50%;
+    position:relative;top:-1px;
+  }
+  .dot.b{background:var(--ink);}
+  .dot.w{background:var(--blue);}
+  .dot.r{background:var(--wine);}
+  .dot.g{background:#1B7A6B;}
+  .dot.v{background:var(--grey);}
+
+  /* ============ 时间线 ============ */
+  .tl{list-style:none;border-left:1px solid var(--rule);margin:20px 0 0 2px;padding-left:20px;}
+  .tl li{position:relative;padding-bottom:20px;}
+  .tl li:last-child{padding-bottom:0;}
+  .tl li::before{
+    content:"";position:absolute;left:-23.5px;top:8px;
+    width:5px;height:5px;border-radius:50%;background:var(--rule);
+  }
+  .tl li.key::before{background:var(--blue);}
+  .tl .d{
+    font-size:11px;font-weight:600;color:var(--blue);
+    font-family:var(--mono);
+    margin-bottom:2px;
+  }
+  .tl .t{font-size:13.8px;line-height:1.78;color:var(--body);}
+  .tl li.key .t{color:var(--ink);}
+
+  /* ============ 引文 ============ */
+  blockquote{
+    margin:26px 0;padding:18px 18px 18px 20px;
+    border:none;
+    border-left:3px solid var(--blue-mid);
+    background:#F9FAFB;
+    font-family:var(--serif);
+    font-size:15px;line-height:1.9;color:var(--ink);
+  }
+  blockquote p{margin-bottom:0;}
+  blockquote cite{
+    display:block;margin-top:10px;
+    font-family:var(--sans);font-size:11.5px;color:var(--faint);
+    font-style:normal;line-height:1.6;
+  }
+
+  /* ============ 提示块 ============ */
+  .callout{
+    margin:24px 0;padding:14px 16px;
+    border-left:4px solid var(--grey);
+    background:#F7F8FA;
+    font-size:13.5px;line-height:1.8;color:var(--body);
+  }
+  .callout .tag{
+    display:block;font-size:11px;font-weight:700;
+    letter-spacing:0;padding:0;margin-bottom:7px;
+    color:inherit;background:none;
+  }
+  .callout .tag::before{content:"■";font-size:8px;margin-right:6px;vertical-align:2px;}
+  .callout.warn{border-left-color:var(--wine);background:var(--wine-soft);}
+  .callout.warn .tag{color:var(--wine);}
+  .callout.bad{border-left-color:var(--wine);background:var(--wine-soft);}
+  .callout.bad .tag{color:var(--wine);}
+  .callout.good{border-left-color:var(--blue);background:var(--blue-soft);}
+  .callout.good .tag{color:var(--blue);}
+  .callout.info{border-left-color:var(--grey);background:#F7F8FA;}
+  .callout.info .tag{color:var(--grey);}
+
+  /* ============ 图 ============ */
+  figure{
+    margin:28px 0;padding:16px 14px 12px;
+    background:#FCFDFE;
+    border:1px solid var(--hair);
+    border-top:2px solid var(--blue);
+  }
+  figure svg{display:block;width:100%;height:auto;}
+  figcaption{
+    font-size:11.5px;color:var(--grey);line-height:1.72;
+    margin-top:12px;text-align:left;
+  }
+  figcaption strong{color:var(--ink);}
+  .fig-note{
+    font-size:11px;color:var(--faint);margin:-4px 0 18px;
+    line-height:1.7;
+  }
+
+  /* ============ 能力三栏 ============ */
+  .r3{display:grid;grid-template-columns:1fr;gap:14px;margin:22px 0;}
+  .r3 .box{
+    border:none;border-left:3px solid var(--blue);
+    background:#FAFBFC;padding:13px 15px;
+  }
+  .r3 .bh{
+    padding:0 0 8px;font-size:13px;font-weight:700;color:var(--ink);
+    background:none;border-bottom:1px solid var(--rule);
+    margin-bottom:10px;
+  }
+  .r3 .bh.a,.r3 .bh.b,.r3 .bh.c{background:none;color:var(--ink);}
+  .r3 .bd{padding:0;font-size:13px;line-height:1.78;color:var(--body);}
+  .r3 .bd dl{display:grid;grid-template-columns:58px 1fr;gap:8px 9px;font-size:12.8px;}
+  .r3 .bd dt{color:var(--faint);font-weight:600;font-size:11.5px;line-height:1.9;}
+  .r3 .bd dd{color:var(--body);line-height:1.78;}
+  .r3 .bd dd b{color:var(--wine);font-weight:600;}
+  .r3 .bd dd i{font-style:normal;color:var(--blue);font-weight:600;}
+
+  /* ============ 纠错清单（校勘体） ============ */
+  .correct{counter-reset:c;margin:24px 0 0;}
+  .correct .item{position:relative;padding-left:28px;margin-bottom:20px;}
+  .correct .item:last-child{margin-bottom:0;}
+  .correct .item::before{
+    counter-increment:c;content:counter(c);
+    position:absolute;left:0;top:2px;
+    width:18px;height:18px;
+    background:var(--wine);color:#fff;
+    font-family:var(--sans);font-size:11px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:2px;line-height:1;
+  }
+  .correct .said{
+    display:block;font-size:12.5px;color:var(--faint);
+    text-decoration:line-through;
+    text-decoration-thickness:1px;
+    text-decoration-color:#C6CAD0;
+    margin-bottom:6px;line-height:1.65;
+  }
+  .correct .real{font-size:14px;line-height:1.82;color:var(--body);}
+  .correct .real b{color:var(--wine);font-weight:700;}
+
+  /* ============ 预测 ============ */
+  .pred{list-style:none;}
+  .pred li{
+    padding:14px 15px;margin-bottom:8px;
+    background:#FAFBFC;
+    border-left:3px solid var(--blue);
+  }
+  .pred li:last-child{margin-bottom:0;}
+  .pred .p{font-size:14.5px;font-weight:700;line-height:1.7;margin-bottom:7px;color:var(--ink);}
+  .pred .v{font-size:12.8px;color:var(--grey);line-height:1.78;}
+  .pred .v b{color:var(--body);font-weight:600;}
+
+  /* ============ 页脚 ============ */
+  footer{
+    margin-top:56px;padding:16px 16px 18px;
+    border-top:3px solid var(--ink);
+    background:#F7F8FA;
+    font-size:12px;color:var(--grey);line-height:1.85;
+  }
+  footer strong{color:var(--ink);}
+  .srcs{margin-top:14px;font-size:11.5px;line-height:1.9;word-break:break-word;}
+  .srcs li{
+    margin-bottom:5px;list-style:none;padding-left:13px;position:relative;
+  }
+  .srcs li::before{content:"–";position:absolute;left:0;color:var(--faint);}
+
+  a{color:var(--blue);text-decoration:none;border-bottom:1px solid currentColor;}
+  :focus-visible{outline:2px solid var(--blue);outline-offset:3px;}
+
+  @media (min-width:700px){
+    body{font-size:16px;line-height:1.85;}
+    .wrap{padding:0 36px 104px;}
+    h1{font-size:40px;}
+    .sub{font-size:16px;}
+    h2{margin:0 -18px 24px;padding:13px 18px;}
+    .grid{grid-template-columns:1fr 1fr;gap:16px;}
+    .stats{grid-template-columns:repeat(4,1fr);}
+    .stat{padding:17px 16px;}
+    .stat:nth-child(even){border-right:1px solid var(--hair);}
+    .stat:nth-child(4n){border-right:none;}
+    .stat:nth-last-child(-n+2){border-bottom:1px solid var(--hair);}
+    .stat:nth-last-child(-n+4){border-bottom:none;}
+    .thesis{padding:24px 22px;}
+    .thesis p{font-size:18.5px;}
+    blockquote{font-size:16px;}
+    .r3{grid-template-columns:repeat(3,1fr);gap:14px;}
+    .r3 .bd dl{grid-template-columns:1fr;gap:2px;}
+    .r3 .bd dt{margin-top:8px;}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">产业观察</div>
+  <h1>Seedance 2.5 4K 开放之后，<br>特效行业真正的分水岭不是<em>裁员</em></h1>
+  <p class="sub">
+    老大的直觉抓对了一半：需求会涨、五毛特效确实有活路、大规模失业没发生。
+    但缺了另一半——单价崩得比需求涨得快，而“不裁员”是因为公司先把员工换成了外包。
+  </p>
+  <div class="meta">
+    <span><b>2026-10-24</b></span>
+    <span>取材：火山引擎 / HDRI Atlas 2026 / Netflix 股东信 / 广电总局 / 猫眼</span>
+    <span>状态：已入库 · link-only（未定稿，不对外宣传）</span>
+  </div>
+</header>
+
+<div class="thesis">
+  <div class="lead">核心结论</div>
+  <p>AI 没有让特效公司“更忙”，它让特效公司<strong>变回了承包制</strong>。被消灭的是“规模”，不是“岗位”。</p>
+  <p>
+    同一批项目量，过去要 100 个全职，现在 4 个核心 + 30 个外包就能接完（有公司在采访里就是这么讲的）。
+    所以从业人数没塌（全球同比 +2.7%），但单个公司的体量在缩（美国 VFX 工作室均值 34→29 人）。
+    人还在干活，钱还在流动，<strong>只是“稳定的雇佣关系”死了</strong>。
+  </p>
+</div>
+
+<!-- ============ 1 先纠错 ============ -->
+<section>
+  <h2><span class="n">01</span>先把四条判断校准一下</h2>
+  <p>
+    老大那几句里有三条是准的，一条需要拆开看。准的地方我不重复夸，只说偏了的。
+  </p>
+
+  <div class="correct">
+    <div class="item">
+      <span class="said">“对部分影视团队开放了”</span>
+      <div class="real">
+        比“部分”更窄：<b>定向 20 家</b>全球工作室与导演，<mark>作品绑定、一对一供应</mark>，不是公测。
+        API 开放时间与计费方式至今没公布。所以现在能讨论的其实是“未来 12 个月的预期”，
+        不是已经发生的事实。<b>4K 版不是全量 API 的规格升级，是单独切出来的一个“高端影视交付层级”</b>。
+      </div>
+    </div>
+
+    <div class="item">
+      <span class="said">“特效公司会更忙了”</span>
+      <div class="real">
+        只说对了头和尾。<b>中间那层是“更闲且更便宜”</b>——网络电影、常规剧集的中间层，
+        单价被压下去 80%，量却没同比例涨，因为甲方的总预算也跟着降了。
+        忙的是顶端（院线 / S 级重场，镜头数涨、要求也涨）和底端（短剧、漫剧、电商，订单量爆炸），
+        <b>夹在中间的最难受</b>。
+      </div>
+    </div>
+
+    <div class="item">
+      <span class="said">“五毛特效公司获得新生”</span>
+      <div class="real">
+        新生的是<b>个体户和小作坊，不是“公司”</b>。行业均价已经掉到 300–500 元/分钟，
+        低价散单 50–80 元/分钟——<b>这个价位养不起一家公司，只养得起一个人</b>。
+        所以准确说法是：五毛特效的“业务”重生了，五毛特效的“组织”没有。
+      </div>
+    </div>
+
+    <div class="item">
+      <span class="said">“乍一想会裁员，但一想并不会”</span>
+      <div class="real">
+        这是最值得掰扯的一条。<b>大规模裁员确实没发生</b>——全球从业人数和三年前大致持平，
+        过去 12 个月还涨了 2.7%。但同一份数据里还有一行：<b>美国 VFX 工作室的平均规模从 34 人掉到 29 人</b>（-15%），
+        动画公司从 114 人掉到 101 人（-11%）。<br>
+        总量不减、单位变小，这两件事同时成立只有一个解释：<b>大公司在拆成小团队，全职在换成按项目结算</b>。
+        不裁员是真的，但它不是“安全”，是“责任转移”。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 事实底座 ============ -->
+<section>
+  <h2><span class="n">02</span>这次到底发生了什么</h2>
+  <p>
+    先把时间线摆平，因为它决定了“影响”的时点。Seedance 2.5 从基础版到 4K 版用了整整四个月，
+    节奏很快，但每一步都在收窄范围——这一点常被忽略。
+  </p>
+
+  <ul class="tl">
+    <li>
+      <div class="d">2026.06.23</div>
+      <div class="t">Seedance 2.5 基础版在 FORCE 大会首次发布，最高 1080P</div>
+    </li>
+    <li>
+      <div class="d">2026.07.13 → 08.07</div>
+      <div class="t">四步放开：头部企业 API → 普通开发者 → 即梦 C 端 → 商用 API 全量。基础版走的是“铺量”路线</div>
+    </li>
+    <li class="key">
+      <div class="d">2026.09.27</div>
+      <div class="t">
+        <b>平遥国际电影展，Seedance 影视合作计划</b>：单项目 Token 补贴最高 100 万元，覆盖电影长片、系列剧集、动画、创意短片。
+        有报道称计划要求全片生成环节 100% 用 Seedance 实现——<b>补贴换的是工作流入口，不是一次调用费</b>
+      </div>
+    </li>
+    <li class="key">
+      <div class="d">2026.10.22</div>
+      <div class="t">
+        <b>4K 版启动第一批企业定向试用</b>：全球 20 家工作室与导演，与具体作品绑定，20 部作品在跑
+      </div>
+    </li>
+    <li class="key">
+      <div class="d">2026.10.23</div>
+      <div class="t">
+        火山引擎正式发布 Seedance 2.5 4K。同日，国内首部拿“龙标”的 AI 全流程院线长片《三星堆：未来往事》上映
+      </div>
+    </li>
+    <li>
+      <div class="d">2026.11（预期）</div>
+      <div class="t">
+        20 部在跑的项目里，<b>最早一部卫视 S 级 IP 剧集播出</b>；另有全球大 IP 电影在推进
+      </div>
+    </li>
+  </ul>
+
+  <h3>4K 版具体强在哪（对照剧组的真实痛点）</h3>
+  <div class="grid">
+    <div class="card">
+      <div class="h"><span class="dot b"></span>原生 4K + 10-bit 色深</div>
+      <p>解决“4K 一放大细节全崩”。色深上到 10-bit 后，纹理、轮廓、渐变过渡才够影院级</p>
+    </div>
+    <div class="card">
+      <div class="h"><span class="dot b"></span>人物表演专项训练</div>
+      <p>表情、细微动作专项优化——这是“恐怖谷”的正中央，也是最难的一项</p>
+    </div>
+    <div class="card">
+      <div class="h"><span class="dot b"></span>参考一致性</div>
+      <p>上传素材的清晰度、色彩、小字在生成与编辑中保持得更稳。翻译过来就是：<b>同一角色在不同镜头里长得一样</b></p>
+    </div>
+    <div class="card">
+      <div class="h"><span class="dot w"></span>480P Draft 样片模式</div>
+      <p>先用 480P 定分镜、反复调镜头，确认后出 4K 正片。<b>这条最要命</b>——它把“试错”变成了一件便宜的事</p>
+    </div>
+  </div>
+
+  <blockquote>
+    有已试用的后期公司反馈，该模型对不同焦段对应的光学透视特性还原较准确，
+    景深表现接近真实大光圈电影镜头的渐进式虚化逻辑。
+    <cite>——媒体报道中的单一工作室反馈，样本量极小，仅作参考</cite>
+  </blockquote>
+</section>
+
+<!-- ============ 3 分层 ============ -->
+<section>
+  <h2><span class="n">03</span>把“特效公司”拆开看：谁忙，谁死</h2>
+  <p>
+    “特效公司会裁员吗”这个问题之所以答不清，是因为“特效公司”不是一个行业，是四个行业。
+    它们对同一件事的反应方向完全相反。下面这张图把两个变量放在一起——
+    <b>横轴是单价的变化幅度，纵轴是需求量的变化方向</b>。
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 360 400" role="img" aria-label="特效单价与需求四象限">
+<defs>
+  <pattern id="vq1" width="16" height="16" patternUnits="userSpaceOnUse">
+    <path d="M16 0H0V16" fill="none" stroke="#EFF2F5" stroke-width="0.7"/>
+  </pattern>
+  <marker id="avq1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+    <path d="M0,0.7 L7,4 L0,7.3" fill="none" stroke="#0E1013" stroke-width="1.1"/>
+  </marker>
+</defs>
+<rect x="44" y="60" width="296" height="286" fill="url(#vq1)"/>
+<rect x="44" y="60" width="148" height="143" fill="#F3F8FC" opacity=".95"/>
+<rect x="192" y="60" width="148" height="143" fill="#F3F8FC" opacity=".62"/>
+<rect x="192" y="203" width="148" height="143" fill="#F7F8FA" opacity=".9"/>
+<rect x="44" y="203" width="148" height="143" fill="#FDF4F4" opacity=".95"/>
+<line x1="192" y1="60" x2="192" y2="346" stroke="#D5D9DE" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="44" y1="203" x2="340" y2="203" stroke="#D5D9DE" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="44" y1="346" x2="348" y2="346" stroke="#0E1013" stroke-width="1.3" marker-end="url(#avq1)"/>
+<line x1="44" y1="346" x2="44" y2="54" stroke="#0E1013" stroke-width="1.3" marker-end="url(#avq1)"/>
+<text x="44" y="44" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="9" fill="#5A6068" text-anchor="start">需求量 高 ↑</text>
+<text x="44" y="364" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="9" fill="#5A6068" text-anchor="start">单价崩</text>
+<text x="344" y="364" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="9" fill="#5A6068" text-anchor="end">单价稳</text>
+<text x="340" y="76" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.4" fill="#8D939B" text-anchor="end">量涨价稳</text>
+<text x="50" y="76" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.4" fill="#8D939B" text-anchor="start">量涨价崩</text>
+<text x="50" y="338" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.4" fill="#8D939B" text-anchor="start">量跌价崩</text>
+<text x="340" y="338" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.4" fill="#8D939B" text-anchor="end">量跌价稳</text>
+<circle cx="96" cy="108" r="15" fill="#16527F" opacity="0.18"/><circle cx="96" cy="108" r="15" fill="none" stroke="#16527F" stroke-width="1.6"/><circle cx="96" cy="108" r="2.6" fill="#16527F"/>
+<text x="96" y="134" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="9.6" fill="#16527F" text-anchor="middle" font-weight="700">短剧 / 漫剧</text>
+<text x="96" y="145" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.2" fill="#8D939B" text-anchor="middle">电商 / 信息流</text>
+<text x="96" y="156" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.4" fill="#16527F" text-anchor="middle" font-weight="700">单价 −90%</text>
+<circle cx="264" cy="104" r="13" fill="#16527F" opacity="0.16"/><circle cx="264" cy="104" r="13" fill="none" stroke="#16527F" stroke-width="1.6"/><circle cx="264" cy="104" r="2.6" fill="#16527F"/>
+<text x="264" y="130" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="9.6" fill="#16527F" text-anchor="middle" font-weight="700">院线 / S 级剧集</text>
+<text x="264" y="141" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.2" fill="#8D939B" text-anchor="middle">重场 / 大场面</text>
+<text x="264" y="152" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.4" fill="#16527F" text-anchor="middle" font-weight="700">单价守住</text>
+<circle cx="102" cy="236" r="17" fill="#8F2F38" opacity="0.2"/><circle cx="102" cy="236" r="17" fill="none" stroke="#8F2F38" stroke-width="1.6"/><circle cx="102" cy="236" r="2.6" fill="#8F2F38"/>
+<text x="102" y="264" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="9.8" fill="#8F2F38" text-anchor="middle" font-weight="700">网络电影</text>
+<text x="102" y="275" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.2" fill="#8D939B" text-anchor="middle">常规剧集 / 中端广告</text>
+<text x="102" y="286" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.4" fill="#8F2F38" text-anchor="middle" font-weight="700">两头夹，最惨</text>
+<circle cx="272" cy="254" r="8" fill="#5A6068" opacity="0.14"/><circle cx="272" cy="254" r="8" fill="none" stroke="#5A6068" stroke-width="1.1"/><circle cx="272" cy="254" r="2" fill="#5A6068"/>
+<text x="272" y="276" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.8" fill="#5A6068" text-anchor="middle" font-weight="700">实拍特技</text>
+<text x="272" y="287" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.2" fill="#8D939B" text-anchor="middle">微缩 / 高奢手工</text>
+<text x="192" y="386" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.2" fill="#A8ADB4" text-anchor="middle">圆面积大小 = 该层的岗位体量（示意）</text>
+</svg>
+    <figcaption>
+      同一个技术冲击，四个象限四种命运。<strong>“会裁员吗”必须点名问“哪一层”</strong>，
+      问整个行业永远得不到答案。
+    </figcaption>
+  </figure>
+
+  <div class="grid">
+    <div class="card">
+      <div class="h"><span class="dot b"></span>右上 · 院线 / S 级</div>
+      <p>
+        更忙，也更贵。AI 变成了“多拍几条”的许可证——以前预算只够拍 3 个方案，现在能试 30 个。
+        但<b>交付责任、质检、合规成本同步上升</b>，所以这层需要的是能拍板的人，不是快手。
+      </p>
+    </div>
+    <div class="card">
+      <div class="h"><span class="dot r"></span>左下 · 中间层</div>
+      <p>
+        最危险。上有顶配团队用 AI 抢活，下有作坊用 1/10 报价截单。
+        这层的翻车方式不是“没活”，而是<b>有活但报价被压到不赚钱</b>——做一单亏一单，最后是自己关门。
+      </p>
+    </div>
+    <div class="card">
+      <div class="h"><span class="dot w"></span>左上 · 短剧 / 漫剧</div>
+      <p>
+        量爆炸、价崩盘。这是“五毛特效重生”的真实位置：<b>活多到干不完，钱少到雇不起人</b>。
+        行业均价 300–500 元/分钟，散单 50–80 元。
+      </p>
+    </div>
+    <div class="card">
+      <div class="h"><span class="dot"></span>右下 · 实拍特技</div>
+      <p>
+        小众但没死。真实爆炸、微缩模型、机械装置——AI 生成不了物理真实感，
+        这类活的稀缺性反而上升。只是需求量本来就小。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 裁员数据 ============ -->
+<section>
+  <h2><span class="n">04</span>“不会裁员”这句话，数据怎么说的</h2>
+  <p>
+    这是全网吵得最凶、也最容易吵错的地方。两派都有数据，但看的是不同的量。
+    我把行业普查的原始数字拉出来，因为它比任何一方的口径都细。
+  </p>
+
+  <div class="stats">
+    <div class="stat ok">
+      <div class="v">+2.7<small>%</small></div>
+      <div class="k">全球 VFX / 动画从业人数，过去 12 个月</div>
+    </div>
+    <div class="stat bad">
+      <div class="v">34 → 29</div>
+      <div class="k">美国 VFX 工作室平均人数（-15%）</div>
+    </div>
+    <div class="stat bad">
+      <div class="v">-1.5<small>%</small></div>
+      <div class="k">洛杉矶从业人数同比</div>
+    </div>
+    <div class="stat mid">
+      <div class="v">0.1<small>%</small></div>
+      <div class="k">“AI 专属岗位”占全部岗位比例</div>
+    </div>
+  </div>
+  <div class="fig-note" style="margin-top:-8px;">
+    来源：HDRI Intelligence《Visual Effects & Animation World Atlas》2026 版，作者 Joseph Bell（前 ILM / The Mill / FuseFX 管理者）
+  </div>
+
+  <h3>同一份数据里的三个反直觉点</h3>
+  <p>
+    <strong>第一，rotoscoping 岗位涨了 8.7%。</strong>
+    按理说这是最该被 AI 吃掉的活。但它涨了——因为 AI 生成的东西必须有人擦。
+    模型越能生，需要清理的烂帧越多。这是整份报告里最有意思的一条：<b>AI 在创造“擦屁股”的岗位</b>。
+  </p>
+  <p>
+    <strong>第二，“AI 专属岗位”只占 0.1%。</strong>
+    “转型去做 AI 提示词工程师”这条路，容量小到可以忽略。
+    这不是一条出路，是一张彩票。
+  </p>
+  <p>
+    <strong>第三，前三大工作室的份额从 11% 涨到 12.3%。</strong>
+    行业在集中，但单个公司在缩小。这两件事不矛盾——头部在用更小的核心团队 + 更大的外包池接更多的活。
+  </p>
+
+  <blockquote>
+    Can the same movie that required 500 artists back in 2023 be made by 50 artists today,
+    as Katzenberg predicted? Thanks to the Atlas, we’re able to give a concrete answer to that concrete question:
+    <strong>Not yet.</strong>
+    <cite>—— Joseph Bell，HDRI Intelligence，2026</cite>
+  </blockquote>
+
+  <div class="callout bad">
+    <span class="tag">反例</span>
+    <b>但“没被 AI 裁”不等于“没被裁”。</b>
+    2025 年初 Technicolor 集团破产，MPC、The Mill、Mikros Animation 全线关停，全球数千岗位受威胁。
+    2025 年 4 月，以翻译本地化 + AI 起家的 TransPerfect 收购了法国业务；
+    2026 年 6 月，<b>MPC 这个拿了奥斯卡的老招牌被正式并入 The Mill，单品牌运营</b>。
+    Cartoon Brew 的定性是“缩编与重组”。<br><br>
+    新东家在声明里主打的卖点是“AI 赋能工作流 + 全球规模”。
+    <b>裁员不是 AI 造成的，但 AI 给这次缩编提供了一个体面的理由。</b>这个区别很重要。
+  </div>
+
+  <h3>Netflix 那边已经跑完了整轮实验</h3>
+  <p>
+    不用猜。2026 年 Q2 股东信里 Netflix 自己写了：
+    <mark>约 300 部作品使用了生成式 AI</mark>，<b>最大集中度在后期制作</b>——
+    增强人群、历史战争场面、世界观建立镜头。
+  </p>
+  <div class="stats">
+    <div class="stat mid">
+      <div class="v">300<small>部</small></div>
+      <div class="k">2026 年用 GenAI 的作品数</div>
+    </div>
+    <div class="stat">
+      <div class="v">10<small>×</small></div>
+      <div class="k">《The Eternaut》单个 VFX 序列的提速</div>
+    </div>
+    <div class="stat">
+      <div class="v">17<small>分钟</small></div>
+      <div class="k">《The American Experiment》AI 增强素材</div>
+    </div>
+    <div class="stat">
+      <div class="v">2<small>×</small></div>
+      <div class="k">同上的速度提升（成本减半）</div>
+    </div>
+  </div>
+  <p>
+    萨兰多斯的原话是“帮助创作者把作品做得更好，而不仅仅是更便宜”。
+    但注意一个细节：<b>Netflix 强制要求所有合作方主动申报 AI 使用情况</b>。这不是道德姿态，是在建账——为将来的结算和追责留痕。
+  </p>
+  <div class="callout warn">
+    <span class="tag">口径提醒</span>
+    “快 10 倍”是一个<strong>单序列</strong>的数字，不是整部剧、不是所有镜头。
+    有 VFX 从业者当场指出：一个序列快十倍，说明不了质量、连贯性，也说明不了 AI 还在崩的那几千个镜头。
+    这个反驳是对的，两边都该记住。
+  </div>
+</section>
+
+<!-- ============ 5 真相 ============ -->
+<section>
+  <h2><span class="n">05</span>不裁员的真相：从雇佣变成承包</h2>
+  <p>
+    到这里可以正面回答老大的问题了。<b>裁员确实没发生，但原因不是“业务变多了”，是“雇佣关系被替换了”。</b>
+  </p>
+
+  <p>
+    国内有一篇采访里，一家杭州特效公司的 CEO 把账算得很直白：
+  </p>
+  <blockquote>
+    以前 100 个全职、一年接 20 个项目。现在我和 3 个项目主管，加上临时找的自由职业者，
+    能接同样的量还多接一些。为什么要养一个大 payroll？
+    <cite>——媒体报道中的受访者表述（单一信源，仅供参考）</cite>
+  </blockquote>
+
+  <p>
+    这句话解释了一切。同一个项目量：
+  </p>
+  <div class="grid">
+    <div class="card">
+      <div class="h"><span class="dot"></span>以前</div>
+      <p>100 个全职员工<br>固定成本高，但人稳定、技能沉淀在组织里</p>
+    </div>
+    <div class="card">
+      <div class="h"><span class="dot w"></span>现在</div>
+      <p>4 个核心 + 30 个外包<br>固定成本极低，技能沉淀在<b>个人</b>身上，不在公司</p>
+    </div>
+  </div>
+
+  <p>
+    所以真实图景是三层同时成立，而且不矛盾：
+  </p>
+  <ul class="tl" style="margin-top:16px;">
+    <li class="key">
+      <div class="t"><b>从业人数没塌</b>（+2.7%）——活还是那么多人在干</div>
+    </li>
+    <li class="key">
+      <div class="t"><b>公司体量在缩</b>（34→29 人）——单个人被组织起来的规模变小了</div>
+    </li>
+    <li class="key">
+      <div class="t"><b>固定雇佣在变成项目制</b>——从“我有工作”变成“我有下一个单”</div>
+    </li>
+  </ul>
+
+  <div class="callout bad">
+    <span class="tag">结论</span>
+    <b>裁员没发生，因为公司先一步把员工变成了外包。</b>
+    这在统计上不叫失业，在人生上叫失去保障。老板的风险被转移给了个人——
+    项目空档期、社保、设备、算力账单，全部下移。
+  </div>
+</section>
+
+<!-- ============ 6 成本去哪了 ============ -->
+<section>
+  <h2><span class="n">06</span>降本省下来的钱，去哪了</h2>
+  <p>
+    老大的推论是“成本降低 → 特效用量变多 → 特效公司更忙”。链条前半段成立，后半段有个漏点：
+    <b>省下来的钱不留在制作方手里。</b>
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 360 320" role="img" aria-label="降本红利的流向">
+<defs>
+  <pattern id="vf1" width="16" height="16" patternUnits="userSpaceOnUse">
+    <path d="M16 0H0V16" fill="none" stroke="#EFF2F5" stroke-width="0.7"/>
+  </pattern>
+  <marker id="af1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+    <path d="M0,0.7 L7,4 L0,7.3" fill="none" stroke="#0E1013" stroke-width="1.1"/>
+  </marker>
+</defs>
+<text x="6" y="20" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="9.5" fill="#5A6068" text-anchor="start">客户总预算不变，内部结构变了</text>
+<text x="6" y="48" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="9" fill="#8D939B" text-anchor="start">以前</text>
+<rect x="42" y="36" width="152" height="26" fill="#16527F" opacity=".28"/>
+<rect x="42" y="36" width="152" height="26" fill="none" stroke="#16527F" stroke-width="1"/>
+<text x="118" y="53" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="9" fill="#0F3E62" text-anchor="middle" font-weight="700">制作 / 特效人力</text>
+<rect x="196" y="36" width="150" height="26" fill="#8F2F38" opacity=".16"/>
+<rect x="196" y="36" width="150" height="26" fill="none" stroke="#8F2F38" stroke-width="1" opacity=".7"/>
+<text x="271" y="53" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="9" fill="#6E2A31" text-anchor="middle" font-weight="700">平台投流 / 采购</text>
+<text x="6" y="92" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="9" fill="#8D939B" text-anchor="start">现在</text>
+<rect x="42" y="80" width="44" height="26" fill="#16527F" opacity="0.3"/>
+<rect x="42" y="80" width="44" height="26" fill="none" stroke="#16527F" stroke-width="1"/>
+<text x="64.0" y="97" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.6" fill="#16527F" text-anchor="middle" font-weight="700">人力</text>
+<rect x="88" y="80" width="38" height="26" fill="#8F2F38" opacity="0.34"/>
+<rect x="88" y="80" width="38" height="26" fill="none" stroke="#8F2F38" stroke-width="1"/>
+<text x="107.0" y="97" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.6" fill="#8F2F38" text-anchor="middle" font-weight="700">算力</text>
+<rect x="128" y="80" width="58" height="26" fill="#8F2F38" opacity="0.24"/>
+<rect x="128" y="80" width="58" height="26" fill="none" stroke="#8F2F38" stroke-width="1"/>
+<text x="157.0" y="97" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.6" fill="#8F2F38" text-anchor="middle" font-weight="700">投流</text>
+<rect x="188" y="80" width="158" height="26" fill="#3E6B62" opacity="0.2"/>
+<rect x="188" y="80" width="158" height="26" fill="none" stroke="#3E6B62" stroke-width="1"/>
+<text x="267.0" y="97" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.6" fill="#3E6B62" text-anchor="middle" font-weight="700">甲方留存 / 压价空间</text>
+<line x1="64" y1="110" x2="64" y2="136" stroke="#8F2F38" stroke-width="1"/>
+<line x1="64" y1="136" x2="352" y2="136" stroke="#8F2F38" stroke-width="0.9" stroke-dasharray="2 2"/>
+<text x="66" y="150" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.8" fill="#8F2F38" text-anchor="start" font-weight="700">制作费被压缩 80–90%</text>
+<line x1="107" y1="110" x2="107" y2="160" stroke="#8F2F38" stroke-width="1"/>
+<text x="112" y="174" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.8" fill="#8F2F38" text-anchor="start" font-weight="700">算力 / API 成为新的刚性支出</text>
+<line x1="6" y1="194" x2="354" y2="194" stroke="#0E1013" stroke-width="1.4"/>
+<text x="6" y="212" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="9.5" fill="#5A6068" text-anchor="start">结果</text>
+<rect x="4" y="222" width="170" height="66" fill="#FDF4F4"/>
+<rect x="4" y="222" width="3" height="66" fill="#8F2F38"/>
+<text x="16" y="240" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="9.3" fill="#8F2F38" text-anchor="start" font-weight="700">特效公司</text>
+<text x="16" y="254" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.4" fill="#6E4A4E" text-anchor="start">收入单价 ↓ 80%</text>
+<text x="16" y="267" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.4" fill="#6E4A4E" text-anchor="start">成本 ↓ 但多了一项算力</text>
+<text x="16" y="281" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.6" fill="#8F2F38" text-anchor="start" font-weight="700">净利：未必改善</text>
+<rect x="180" y="222" width="174" height="66" fill="#F3F8FC"/>
+<rect x="180" y="222" width="3" height="66" fill="#16527F"/>
+<text x="192" y="240" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="9.3" fill="#16527F" text-anchor="start" font-weight="700">甲方 / 平台</text>
+<text x="192" y="254" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.4" fill="#3F5F7C" text-anchor="start">预算没涨，交付量涨了</text>
+<text x="192" y="267" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.4" fill="#3F5F7C" text-anchor="start">省下的钱变成利润或投流</text>
+<text x="192" y="281" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.6" fill="#16527F" text-anchor="start" font-weight="700">真正的受益方</text>
+<text x="180" y="306" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif" font-size="8.2" fill="#A8ADB4" text-anchor="middle">降本红利主要在甲方一侧结算，制作方拿到的是「更多的活」而不是「更多的钱」</text>
+</svg>
+    <figcaption>
+      “降本”的红利主要在甲方和平台一侧结算。<strong>特效公司拿到的是“更多的活”，不是“更多的钱”</strong>。
+    </figcaption>
+  </figure>
+
+  <p>
+    这一点在国内短剧行业已经被验证过一轮了。有分析指出：短剧全链路成本里，
+    <b>流量投放约占 70%</b>，制作成本只是小头。
+    所以即使 AI 把制作费打到骨折，省下来的钱<b>依然被流量成本和算力成本一层层吃掉</b>。
+    “谁掌握流量入口，谁掌握分配权。”
+  </p>
+
+  <div class="callout info">
+    <span class="tag">推论</span>
+    AI 对特效公司的真实作用不是“增加订单”，而是<strong>把特效从“高毛利的技术服务”变成“低毛利的计件加工”</strong>。
+    这个方向一旦确立，靠规模赚钱的商业模式就死了——这也是为什么大公司都在拆小。
+  </div>
+</section>
+
+<!-- ============ 7 建模师 ============ -->
+<section>
+  <h2><span class="n">07</span>建模师真的改行去“抽卡”了吗</h2>
+  <p>
+    老大这句判断方向对，但落点偏了一点。准确的说法不是“建模师改行抽卡”，
+    而是<b>建模师的工作从“雕最终画面”变成了“雕可复用性”</b>。
+  </p>
+
+  <h3>为什么资产没消失，反而更关键了</h3>
+  <p>
+    4K 版最核心的能力是<b>参考一致性</b>——同一个角色在不同镜头里长得一样。
+    但一致性靠什么保证？靠你喂进去的参考图、关键帧。而“能当参考的干净资产”，
+    本身必须是先做出来的 3D 模型或实拍素材。
+  </p>
+  <p>
+    所以链条变成：<b>干净资产 → 喂模型 → 生成 → 人工修正 → 交付</b>。
+    建模没有消失，它从末端（出最终镜头）挪到了前端（出中间件）。
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="h"><span class="dot g"></span>新增的活</div>
+      <p>
+        <b>Previs 大幅增重。</b>480P Draft 模式本质就是把预演变成可以跑量的东西——
+        导演能一天试 20 个运镜方案。预演从“画故事板的人”变成“会用生成工具的人”。
+      </p>
+    </div>
+    <div class="card">
+      <div class="h"><span class="dot r"></span>贬值的活</div>
+      <p>
+        <b>精细雕刻的议价权下降。</b>你做的高模如果只是自己看，不值钱了；
+        只有当它能被喂进模型、稳定复用，才值钱。同一个技能，定价逻辑换了一套。
+      </p>
+    </div>
+  </div>
+
+  <blockquote>
+    同一件青铜器在不同镜头中，纹样和形态要保持统一；角色切换场景后，道具、动作和外观不能出现明显变化。
+    模型生成的画面还要与调色、声音制作等专业后期环节衔接，最终完成适配影院放映的交付和检查。
+    <cite>——《三星堆：未来往事》制片人曲吉小江，谈这部片真正的工作量在哪</cite>
+  </blockquote>
+
+  <p>
+    注意这段话的重点：<b>难的不是“生成”，是“统一”和“衔接”</b>。
+    这两件事恰好都是人干的，而且是懂工艺的人干的。所以这轮变化里最稳的岗位是“能把关的人”，不是“能出图的人”。
+  </p>
+</section>
+
+<!-- ============ 8 合规 ============ -->
+<section>
+  <h2><span class="n">08</span>被所有人忽略的增量：合规会造岗位</h2>
+  <p>
+    这一层在国内讨论里几乎没人提，但它是“不会失业”最硬的一条支撑——
+    <b>不是技术乐观主义，是监管刚性需求。</b>
+  </p>
+
+  <p>先把规矩摆出来，都是已经生效的：</p>
+  <ul class="tl">
+    <li>
+      <div class="d">2025.09.01 施行</div>
+      <div class="t">
+        《人工智能生成合成内容标识办法》：AI 生成/参与制作的音视频必须做<b>双标识</b>——
+        画面显著位置的显式标识 + 文件元数据的隐式溯源（记录生成主体、作品编号、AI 参与比例）
+      </div>
+    </li>
+    <li class="key">
+      <div class="d">2026.07.01 施行</div>
+      <div class="t">
+        广电总局《管理提示（AI 微短剧分类分层标准）》：按投资额分三档（≥80 万 / 30–80 万 / &lt;30 万），
+        对应总局备案、省级备案、平台自审三级。剧本、画面、配音任一环节 AI 占比触线，<b>片头必须标“AI 辅助制作”</b>
+      </div>
+    </li>
+    <li class="key">
+      <div class="d">2026.09.01 施行</div>
+      <div class="t">
+        《微短剧发展管理办法》：AI 生成制作的微短剧，<b>每集明显位置</b>加提示标识
+      </div>
+    </li>
+    <li>
+      <div class="d">现行技术要求</div>
+      <div class="t">
+        《AI 应用安全指引——广播电视和网络视听》：成片<b>责任人终审</b>；关键/敏感/自动生成内容<b>人工复审</b>；
+        显式与隐式标识<b>制作播出全流程不得删除</b>，转码、剪辑、跨平台传播后仍要可识别、可追溯
+      </div>
+    </li>
+  </ul>
+
+  <p>
+    把这四条合起来读，会得到一个很反直觉的结论：
+    <mark>AI 用得越多，“人审”的需求越刚性。</mark>
+    因为责任必须有归属人，而 AI 不能背责任。
+  </p>
+
+  <div class="stats">
+    <div class="stat bad">
+      <div class="v">3522<small>部</small></div>
+      <div class="k">红果一周内下架的未备案未标注 AI 漫剧</div>
+    </div>
+    <div class="stat bad">
+      <div class="v">15<small>天</small></div>
+      <div class="k">《桃花簪》出品方被暂停上传权限</div>
+    </div>
+    <div class="stat">
+      <div class="v">1.5<small>万部</small></div>
+      <div class="k">红果一季度核查量，处置 670 部</div>
+    </div>
+    <div class="stat">
+      <div class="v">8000<small>+</small></div>
+      <div class="k">快手小剧场排查量，下架 900 余部</div>
+    </div>
+  </div>
+
+  <div class="callout good">
+    <span class="tag">机会</span>
+    这直接催生三类新需求：<b>①AI 内容质检与修正</b>（生成物的“擦屁股”工序）、
+    <b>②标识与溯源管理</b>（元数据、水印、备案链路，转码后不能丢）、
+    <b>③备案代办与合规咨询</b>。<br>
+    而且要上星、上院线，第一道门槛根本不是画质，是<strong>合规链路能不能跑通</strong>。
+    谁能交付“合规可审”的 AI 管线，谁就先拿到单——这一层壁垒比模型能力更难跨。
+  </div>
+</section>
+
+<!-- ============ 9 冷水 ============ -->
+<section>
+  <h2><span class="n">09</span>泼一盆冷水：能生成，不等于有人买</h2>
+  <p>
+    整个讨论有个隐含假设——“特效用量会变多，所以行业变好”。
+    但需求端的数据没那么配合。就在 4K 版发布的同一天，一部 AI 全流程院线片上了。
+  </p>
+
+  <div class="stats">
+    <div class="stat bad">
+      <div class="v">10.5<small>万</small></div>
+      <div class="k">《三星堆：未来往事》上映首日票房（截至 13:40）</div>
+    </div>
+    <div class="stat bad">
+      <div class="v">2.9<small>%</small></div>
+      <div class="k">排片占比</div>
+    </div>
+    <div class="stat bad">
+      <div class="v">1.2<small>%</small></div>
+      <div class="k">票房占比</div>
+    </div>
+    <div class="stat">
+      <div class="v">100<small>分钟</small></div>
+      <div class="k">片长，龙标，全原创数字形象</div>
+    </div>
+  </div>
+
+  <p>
+    全天预测也就 17 万上下，有媒体口径称首日超 28 万。无论哪个数，对一部拿到龙标、
+    有院线排片的片子来说，都是冷到底的成绩。
+  </p>
+
+  <blockquote>
+    目前 AI 电影的清晰度已经可以达到在电影院放映的级别，但技术依然不够成熟，画面不够连贯，
+    AI 演员的容貌和声音都缺少辨识度，表演也依然生硬，远不及真人丰富有层次，
+    简单来说缺少“人味”。
+    <cite>——观众反馈综述，都市快报 2026-10-23</cite>
+  </blockquote>
+
+  <p>
+    这就把问题分成了两个不同的坎：
+  </p>
+  <div class="grid">
+    <div class="card">
+      <div class="h"><span class="dot g"></span>第一道坎：能不能做出来</div>
+      <p>
+        Seedance 2.5 4K 基本跨过去了。原生 4K、10-bit、人物一致性、参考复现——
+        技术上“能交付”这件事，已经不是瓶颈。
+      </p>
+    </div>
+    <div class="card">
+      <div class="h"><span class="dot r"></span>第二道坎：观众愿不愿付钱</div>
+      <p>
+        完全没跨过去。首日 10 万这个数字说明：<b>降低制作成本，不会自动创造需求</b>。
+        观众不关心你省了多少钱。
+      </p>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <span class="tag">同样是冷水</span>
+    AI 短剧的量已经爆炸到荒谬：2026 上半年抖音新增 AI 剧 / 漫剧 <strong>22.19 万部</strong>，
+    播放破亿的只有 <strong>1055 部</strong>，<strong>爆款率 0.47%</strong>。
+    超九成内容流量表现低迷。<br>
+    这意味着“五毛特效重生”带来的产能，绝大部分是<strong>无效产能</strong>——
+    有人在做，没人在看。这类订单的持续性取决于平台的补贴，不取决于市场。
+  </div>
+</section>
+
+<!-- ============ 10 预测 ============ -->
+<section>
+  <h2><span class="n">10</span>未来 12–24 个月，三条可验证的判断</h2>
+  <p>
+    分析报告最没用的部分就是“未来可期”。所以这里只写能被打脸的：每条都附验证指标，
+    到期可以回来对账。
+  </p>
+
+  <ul class="pred">
+    <li>
+      <div class="p">1. “AI 管线总监”会成为头部 VFX 公司的标配岗位，薪资高于同级别合成师。</div>
+      <div class="v">
+        <b>为什么：</b>4K 版的能力边界需要人摸清，谁能定义“什么镜头交给模型、什么镜头必须手工”，
+        谁就掌握了产能。这是新型的工段长。<br>
+        <b>验证：</b>12 个月内，头部公司（含印度、温哥华、国内头部）招聘 JD 中出现 AI Supervisor / Pipeline Lead 类岗位的频率。
+      </div>
+    </li>
+    <li>
+      <div class="p">2. 中间层公司（网络电影 / 常规剧集 / 中端广告）数量下降 30% 以上，但岗位数下降远小于此。</div>
+      <div class="v">
+        <b>为什么：</b>倒的是“组织”，不是“人”。人散成了小团队和 freelancer，
+        所以你会看到“公司少了、干活的人还在”。<br>
+        <b>验证：</b>18 个月内各地区 VFX / 后期公司注册与注销数、工作室数量统计；
+        同时对照 HDRI Atlas 2027 版的从业人数。
+      </div>
+    </li>
+    <li>
+      <div class="p">3. 会出现独立的“AI 合规与溯源”服务商，专门做标识、元数据、备案代跑。</div>
+      <div class="v">
+        <b>为什么：</b>双标识 + 全流程不可删除 + 转码后仍可追溯，这套要求对小团队来说太重，
+        外包是唯一理性选择。<br>
+        <b>验证：</b>18 个月内是否出现以此为唯一业务的服务商，以及平台是否开始要求供应商提供溯源资质。
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- ============ 11 行动 ============ -->
+<section>
+  <h2><span class="n">11</span>如果非要说怎么办</h2>
+  <p>按角色分，不写鸡汤，只写在真能改变议价权的地方。</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="h"><span class="dot b"></span>建模 / 资产</div>
+      <p>
+        从“雕细节”转“雕可复用性”。做能被喂进模型、跨镜头稳定的干净资产库。
+        <b>你的作品集应该展示“复用率”，不是“面数”。</b>
+      </p>
+    </div>
+    <div class="card">
+      <div class="h"><span class="dot b"></span>合成 / Roto</div>
+      <p>
+        往“质检 + 修正 + 前后景融合判断”走。行业数据说 roto 岗位还涨了 8.7%——
+        <b>AI 制造的问题比它解决的问题多</b>，这是短期最稳的活。
+      </p>
+    </div>
+    <div class="card">
+      <div class="h"><span class="dot w"></span>制片 / 导演</div>
+      <p>
+        学会 480P Draft 工作法：把试错成本前移到便宜的分辨率上。
+        <b>这省的不是钱，是“敢试”的胆量</b>——这才是 AI 给创作端最大的礼物。
+      </p>
+    </div>
+    <div class="card">
+      <div class="h"><span class="dot g"></span>小团队</div>
+      <p>
+        别做“更便宜的同一件事”，做“以前因为太贵所以没人做的事”。
+        沉睡 IP、长尾题材、考古/工业/科普可视化——这些是净新增需求，不是存量抢夺。
+      </p>
+    </div>
+  </div>
+
+  <p style="margin-top:22px;">
+    最后回到老大最初那个判断。老大说“乍一想会裁员，但一想并不会”——
+    <b>这个“一想”其实是对的，只是理由跟直觉不一样</b>。
+    不是因为技术还不够强所以人还得留着，而是因为：
+    <mark>责任需要人背，审美需要人拍板，合规需要人签字。</mark>
+    这三件事模型一个都接不了，而且随着 AI 用得越多，它们只会更贵。
+  </p>
+</section>
+
+<footer>
+  <p>
+    <strong>关于本文的性质：</strong>
+    这是一份调研稿，未定稿。核心事实来自火山引擎官方发布口径与主流媒体报道；
+    行业就业数据来自 HDRI Intelligence《Visual Effects &amp; Animation World Atlas》2026 版（作者 Joseph Bell，
+    数据由行业普查得出，非模型推演）；合规要求来自广电总局与 TC260 公开文件；
+    票房数据来自猫眼专业版，为上映首日盘中数据，会继续变动。
+  </p>
+  <p style="margin-top:10px;">
+    <strong>需要复核才能外发的数字（存疑清单）：</strong>
+  </p>
+  <ul class="srcs">
+    <li>“高端特效 3000 元/秒 → 3 元/秒”：出自券商 / 行业研究报告转述，量级夸张且未说明镜头类型，<strong>不建议直接引用</strong></li>
+    <li>杭州公司“100 人 → 4 人”：单一媒体采访的受访者自述，无第三方核验</li>
+    <li>“4K 版定价低于市场预期”：来自参与试用工作室的转述，官方未公布计费</li>
+    <li>《三星堆》首日票房存在 10.5 万（13:40 盘中）/ 17.6 万（全天预测）/ 28 万（媒体发稿时）三个口径，注意时点差异</li>
+    <li>“Seedance 影视合作计划要求全片生成环节 100% 使用 Seedance”：来自 36 氪报道，未见官方文件确认</li>
+    <li>Seedance 4K 的“景深接近大光圈电影镜头”：单一后期公司反馈，样本极小</li>
+  </ul>
+  <p style="margin-top:14px;color:#9aa0aa;">
+    整理于 2026-10-24 · 未定稿 · link-only 入库（不对外宣传）
+  </p>
+</footer>
+
+</div>
+</body>
+</html>
