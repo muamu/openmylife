@@ -12,6 +12,9 @@
 
 > 每天一条，宁缺毋滥 —— 值得看才推，不承诺日更。
 
+- **2026-10-24** · [Seedance 2.5 4K 之后，特效行业真正的分水岭不是裁员](https://github.com/muamu/openmylife/blob/main/critiques/creative-industry/2026-10-Seedance-4K-与特效行业重估/index.html) —— 需求会涨、五毛特效有活路、大规模失业没发生，这三条只对了一半：单价崩得比需求快，「不裁员」是把全职换成了外包。
+- **2026-10-24** · [推理模型进游戏工业：三种能力被重估，和一个错位](https://github.com/muamu/openmylife/blob/main/critiques/creative-industry/2026-10-推理模型与游戏工业重估/index.html) —— 能力最强的工程与工具链环节在玩家视野之外；被玩家看见的美术生成，用了反而掉分。
+- **2026-10-24** · [推理模型的审美三层结构](https://github.com/muamu/openmylife/blob/main/critiques/ai-aesthetics/2026-10-推理模型审美三层结构/index.html) —— 默认代码风格、文档调节层、前端 / 3D 执行力上限；审美差距有一部分是工作流差距，让模型「看见自己的产出」比换模型收益更大。
 - **2026-10-21** · [DSH 插件检索经验总结](https://github.com/muamu/openmylife/blob/main/critiques/agent-framework/2026-10-dsh-plugin-search-experience.md) —— 为 DSH 找插件的三轮实战复盘：四步检索法、npm 同名包陷阱，以及一份能照做的安装 SOP。
 
 ## 我是谁
