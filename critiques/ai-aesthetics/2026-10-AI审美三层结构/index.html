@@ -72,15 +72,15 @@
 <div class="wrap">
 
 <header class="top">
-  <div class="kicker">调研 · 已入库 · link-only（未定稿，不对外宣传）</div>
+  <div class="kicker">调研 · 公开 · 未定稿</div>
   <h1>AI 审美的三层结构：默认审美、调节层、与作为上限的审美</h1>
-  <div class="sub">2026-10-24 · 小满整理 · 基于 2026-08～10 公开资料检索 · 数字级事实均标注来源与口径</div>
+  <div class="sub">2026-10-24 · 基于 2026-08～10 公开资料检索 · 数字级事实均标注来源与口径</div>
 </header>
 
 <div class="card tldr">
   <h2>TL;DR（先看这段）</h2>
   <ul>
-    <li><b>老大提的三层框架成立</b>，且三层是三种性质完全不同的约束：<span class="chip l1">L1 默认审美</span>是<b>统计引力</b>——模型不问你时替你做的选择；<span class="chip l2">L2 调节层</span>是<b>意图翻译</b>——提示词 / 参考对象 / 微调 / 设定 / skill 把「我要的」翻成「模型能表达的」；<span class="chip l3">L3 上限层</span>是<b>物理边界</b>——架构决定的细节天花板。</li>
+    <li><b>尚盐提的三层框架成立</b>，且三层是三种性质完全不同的约束：<span class="chip l1">L1 默认审美</span>是<b>统计引力</b>——模型不问你时替你做的选择；<span class="chip l2">L2 调节层</span>是<b>意图翻译</b>——提示词 / 参考对象 / 微调 / 设定 / skill 把「我要的」翻成「模型能表达的」；<span class="chip l3">L3 上限层</span>是<b>物理边界</b>——架构决定的细节天花板。</li>
     <li><b>最有用的一句话</b>：动手前先分清你面对的是「默认审美问题」还是「能力上限问题」。前者拧 L2 的旋钮，后者只能绕 L3。<b>治错层最挫败</b>——对 VAE 压缩丢失的细节写一万字提示词也没用。</li>
     <li>默认审美有一手解释：Krea 官方博客明说，预训练追求 <b>mode coverage</b>（多样性），后训练追求 <b>mode collapsing</b>（把分布推向人类评委偏好的区域）。默认审美不是 bug，是对齐的必然产物。</li>
     <li>reward model 优化的是「<b>平均人类吸引力</b>」（PAMELA 论文，arXiv 2604.07427，2026）——这是 L1 顽固的根源：只要对齐还在优化大众偏好，默认审美就会被每一轮训练再生产。</li>
@@ -175,7 +175,7 @@
   <p>Krea 团队 2025 年发布 FLUX.1 Krea [dev]（在 FLUX.1 [dev] 上重做的审美微调，开放权重）时把机制说得很直白，这是本次检索中<b>最权威的一手材料</b>：</p>
   <div class="quote">「预训练的重点是 mode coverage（模式覆盖）——给模型关于视觉世界的丰富知识，目标是最大化多样性。我们甚至认为预训练模型应该在『坏』数据上训练，只要数据里不受欢迎的部分被准确标注——否则负面提示词无效（模型从没见过丑的，就不知道往哪躲）。后训练的重点是 mode collapsing（模式坍缩）——把分布推向我们觉得好的区域。」</div>
   <p>具体管线：SFT 阶段（人工精选符合自家美学标准的数据集）+ RLHF 阶段（他们称 TPO 的偏好优化变体，多轮校准）。两个关键数字口径：<b>后训练需要的数据少得惊人（&lt; 100 万张）</b>，质量远比数量重要；底座用的是 Black Forest Labs 提供的 <code>flux-dev-raw</code>（12B，未「baked」的预训练模型，没有 AI 味、分布多样，但质量远低于 SOTA）——<b>基底的多样性决定了微调后能达到的审美范围</b>。</p>
-  <p class="small">这正是老大框架的深层印证：<b>L1 是后训练刻意做出来的</b>，而 L1 的「可塑性上限」由预训练的 mode coverage 决定——换模型就是换地心引力，微调是局部改写它。</p>
+  <p class="small">这正是尚盐这套框架的深层印证：<b>L1 是后训练刻意做出来的</b>，而 L1 的「可塑性上限」由预训练的 mode coverage 决定——换模型就是换地心引力，微调是局部改写它。</p>
 
   <h3>其他三个叠加机制</h3>
   <table class="resp">
@@ -223,7 +223,7 @@
   <p class="small muted">优先级逻辑：从上游治起。后处理（加颗粒、暗角、轻微色散、降再升）只治表面 tell，治不了构图和布光——PromptZone 称其为「最后的 5%」，不是修复。</p>
 
   <h3>skill 的位置：把一次性调节固化成资产</h3>
-  <p>提示词是一次性的，skill 是可复用的。<a href="https://aisa.to/aisapedia/image-generation-prompting">AISApedia</a> 的说法可直接对应到我们的工作流：每个平台建一个 base prompt template，把你的质量标准与美学选择锁进去，只让主体层逐图变化。老大自己的 <code>sepia 去AI味写作Skill</code> 就是这一层的样板。公开流传的 <a href="https://skillselion.com/skills/chujianyun/skills/remove-ai-flavor">Remove AI Flavor Skill</a> 规则表摘录（文本侧去 AI 味的识别特征 → 处理方向）：</p>
+  <p>提示词是一次性的，skill 是可复用的。<a href="https://aisa.to/aisapedia/image-generation-prompting">AISApedia</a> 的说法可直接对应到我们的工作流：每个平台建一个 base prompt template，把你的质量标准与美学选择锁进去，只让主体层逐图变化。尚盐自己的 <code>sepia 去AI味写作Skill</code> 就是这一层的样板。公开流传的 <a href="https://skillselion.com/skills/chujianyun/skills/remove-ai-flavor">Remove AI Flavor Skill</a> 规则表摘录（文本侧去 AI 味的识别特征 → 处理方向）：</p>
   <table class="resp">
     <thead><tr><th style="width:30%">识别特征</th><th>处理方向</th></tr></thead>
     <tbody>
@@ -242,7 +242,7 @@
 
 <div class="card">
   <h2><span class="chip l3">L3</span> 上限层：为什么「审美是上限，细节能到多优」</h2>
-  <p>这是老大三层里最深的一层，也是最容易被跳过的一层：<b>有些质量问题不是风格偏好问题，是物理边界问题</b>——提示词写到天荒地老也不会变。三个硬边界：</p>
+  <p>这是尚盐的三层框架里最深的一层，也是最容易被跳过的一层：<b>有些质量问题不是风格偏好问题，是物理边界问题</b>——提示词写到天荒地老也不会变。三个硬边界：</p>
 
   <h3>边界一：VAE 压缩天花板</h3>
   <p>主流 latent diffusion 并不在像素上工作：1024×1024 的图被 VAE 压成 128×128 的潜表示，扩散在潜空间进行，最后解码回像素。压缩是有损的，且损失不均匀——<b>高频内容掉得最狠</b>：单根睫毛、皮肤毛孔、织物经纬、小字、水滴、远处人脸。关键性质：<b>解码器的重建质量是整条管线的上界</b>。理论上完美的扩散模型也超不过解码器能重建的细节（PromptZone, 2026）。</p>
@@ -400,7 +400,7 @@
     <li>文藻外大 / 数位时代《跟着翻译系主任学「去 AI 味」的 5 种魔法》· <a href="https://d021.wzu.edu.tw/article/527361">链接</a></li>
     <li>Mobdome《AI 写作像机器人？这招一键救回人味》· <a href="https://mobdome.com/blog/ai-humanizer-rewrite-tutorial">链接</a></li>
   </ul>
-  <p class="small muted" style="margin-top:14px">本报告为调研稿，未定稿；按 link-only 入库，不对外宣传。对偶篇：<a href="../2026-10-推理模型审美三层结构/index.html">《推理模型的审美三层结构》</a>（前端 / 3D / 代码）。第三方摘录与观点转述不代表本仓立场；数字级事实对外引用前需按来源复核。</p>
+  <p class="small muted" style="margin-top:14px">本报告为调研稿，未定稿；公开归档，持续修订。对偶篇：<a href="../2026-10-推理模型审美三层结构/index.html">《推理模型的审美三层结构》</a>（前端 / 3D / 代码）。第三方摘录与观点转述不代表本仓立场；数字级事实对外引用前需按来源复核。</p>
 </div>
 
 </div>

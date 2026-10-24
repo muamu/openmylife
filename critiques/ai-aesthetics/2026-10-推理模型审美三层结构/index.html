@@ -64,9 +64,9 @@
 <div class="wrap">
 
 <header class="top">
-  <div class="kicker">调研 · 已入库 · public（调研稿，已列入每日推荐）· 对偶篇</div>
+  <div class="kicker">调研 · 公开 · 未定稿 · 对偶篇</div>
   <h1>推理模型的审美三层结构：默认代码风格、文档调节层、与作为上限的前端 / 3D 执行力</h1>
-  <div class="sub">2026-10-24 · 小满整理 · 对象：Opus 5.5 / GPT-6 系 / Kimi K3 / GLM-5.3 / DeepSeek V4.1 等 · 与《AI 审美三层结构》（生成模型版）同一框架、换主体</div>
+  <div class="sub">2026-10-24 · 对象：Opus 5.5 / GPT-6 系 / Kimi K3 / GLM-5.3 / DeepSeek V4.1 等 · 与《AI 审美三层结构》（生成模型版）同一框架、换主体</div>
 </header>
 
 <div class="pair">姊妹篇：<a href="../2026-10-AI审美三层结构/index.html">《AI 审美三层结构》</a>讲图像生成模型的审美。本篇把同一套三层框架套到<b>推理模型</b>上——推理模型的审美不通过像素表达，通过<b>代码</b>表达，于是 L3「上限层」的对应物变成了前端执行力与 3D 建模执行力。</div>
@@ -74,7 +74,7 @@
 <div class="card tldr">
   <h2>TL;DR</h2>
   <ul>
-    <li><b>老大「公认最高审美是 Opus 5.5」的判断，榜单基本证实</b>：WebDev Arena（84 万+ 票）Opus 5.5 Max 1814 第一；Design Arena（文本→HTML）1409 第一；BridgeBench 前端轴 950 第一；AA-3D（agentic 3D 场景）1190 与 Sonnet 5.5 / GPT-6 Astra / Fable 5.1 统计并列第一梯队。<b>唯一例外</b>：单发 text-to-3D 榜（benchmark.ai）第一名是 gemini-4-argon（1606），Opus 5.5 排第五（1315）——「上限」依赖考法，见存疑。</li>
+    <li><b>尚盐「公认最高审美是 Opus 5.5」的判断，榜单基本证实</b>：WebDev Arena（84 万+ 票）Opus 5.5 Max 1814 第一；Design Arena（文本→HTML）1409 第一；BridgeBench 前端轴 950 第一；AA-3D（agentic 3D 场景）1190 与 Sonnet 5.5 / GPT-6 Astra / Fable 5.1 统计并列第一梯队。<b>唯一例外</b>：单发 text-to-3D 榜（benchmark.ai）第一名是 gemini-4-argon（1606），Opus 5.5 排第五（1315）——「上限」依赖考法，见存疑。</li>
     <li><b>三层框架在推理模型上完全成立，且有一手铁证</b>：Anthropic 在自家仓库放了公开 SKILL.md，明令模型先输出设计系统（色彩/字体/布局/原则）再写第一行 HTML，并点名四大默认审美坑——<b>厂商自己写文档对抗自己模型的默认审美</b>。原话逻辑：权重决定天花板，外部文档决定方向。</li>
     <li><b>推理模型多一层图像模型没有的东西</b>：它会推理，所以能「看自己的产出再改」。AA-3D 实测：头部模型首次查看渲染截图的中位时间是第 10–13 轮，<b>自检时机与 Elo 的相关性 Spearman 0.82</b>——审美的差距一部分是「工作流差距」，不只是权重差距。</li>
     <li><b>国产三强前端审美排序</b>（2026-09/10 多方横评口径）：GLM-5.3 ≈ Kimi K3 &gt; DeepSeek-V4.1（Flash 版追得快）。K3 慢但视觉最 polished，GLM 快且 UI 手感最好，DeepSeek 胜在成本（$0.0089/发的 FlappyBench 9/10）。</li>
@@ -169,7 +169,7 @@
       <tr><td data-label="模型">Gemini 3.1/3.8</td><td data-label="特征">快、便宜、动画顺；敢用深色渐变给版块个性</td><td data-label="弱点">跨屏一致性差（drift）；FAQ 拥挤、移动端样机显假（sitem）</td></tr>
       <tr><td data-label="模型">Kimi K3</td><td data-label="特征">视觉最 polished；像「verification-heavy 的工程师」——代码组件化、仓库干净</td><td data-label="弱点">慢；物理模拟等推理密集任务初试会失败；硬编码部分玩法（Command Code）</td></tr>
       <tr><td data-label="模型">GLM-5.3</td><td data-label="特征">FlappyBench 手感第一（9.5/10）；设计稿→可运行代码路径最短（GLM-5.3-FlashX 主打视觉 Coding）；速度碾压级</td><td data-label="弱点">幻觉过时 API（如 Three.js 废弃 Geometry 构造器，noderguru 实测）</td></tr>
-      <tr><td data-label="模型">DeepSeek V4.1</td><td data-label="特征">V4.1 审美升级（老大 2026-10-19 实测：完虐 Hy4 + Step 5）；Flash 版 $0.0089/发 9/10，成本屠夫</td><td data-label="弱点">V4-Pro 前端审美被评「约上一代模型水平」；3D 场景交付过半成品（头条横评口径）</td></tr>
+      <tr><td data-label="模型">DeepSeek V4.1</td><td data-label="特征">V4.1 审美升级（尚盐 2026-10-19 实测：完虐 Hy4 + Step 5）；Flash 版 $0.0089/发 9/10，成本屠夫</td><td data-label="弱点">V4-Pro 前端审美被评「约上一代模型水平」；3D 场景交付过半成品（头条横评口径）</td></tr>
     </tbody>
   </table>
   <p class="small muted">机制与生成模型完全同构：训练语料里前端代码的分布（Tailwind 示例、模板站、vibe-coding 产物）+ 偏好对齐的 mode collapsing。差别在载体：推理模型的「默认审美」最终以<b>代码结构</b>呈现——组件切分、设计 token、间距体系，而不只是颜色和圆角。</p>
@@ -197,7 +197,7 @@
 
 <div class="card">
   <h2><span class="chip l3">L3</span> 上限层：前端与 3D 的执行力，细节能到多优</h2>
-  <p>老大框架里最深的一层，在推理模型上就是「同一个设计意图，模型的代码能把它实现到多细」。四个可量化的维度：</p>
+  <p>尚盐这套框架里最深的一层，在推理模型上就是「同一个设计意图，模型的代码能把它实现到多细」。四个可量化的维度：</p>
 
   <h3>维度一：前端细节（多个盲测榜，2026-10）</h3>
   <table class="resp">
@@ -261,7 +261,7 @@
     </svg>
     <div class="figcap">图 2 · 同一批模型，两种考法两种名次：agent 场 Opus 系封顶，单发场 Gemini 4 Argon / GPT-6 反超——「上限」由 model × harness 共同决定</div>
   </div>
-  <p><b>读法</b>：AA-3D 给模型沙箱（可写码、渲染、看截图、改，3 小时 250 轮）——头部是 Claude 系；benchmark.ai 只给一次 64k token 的输出窗口单发——头部换成 gemini-4-argon 和 GPT-6。结论对老大极重要：<b>所谓「审美上限」不全是模型属性，是模型 × 工作流的联合属性</b>。给 Opus 5.5 配上看得见自己产出的 harness，它才是那个 1814 分的 Opus。</p>
+  <p><b>读法</b>：AA-3D 给模型沙箱（可写码、渲染、看截图、改，3 小时 250 轮）——头部是 Claude 系；benchmark.ai 只给一次 64k token 的输出窗口单发——头部换成 gemini-4-argon 和 GPT-6。结论对尚盐极重要：<b>所谓「审美上限」不全是模型属性，是模型 × 工作流的联合属性</b>。给 Opus 5.5 配上看得见自己产出的 harness，它才是那个 1814 分的 Opus。</p>
 
   <h3>维度三：实测细节案例（上限长什么样）</h3>
   <ul>
@@ -296,11 +296,11 @@
       <tr><td data-label="环节">厂商反应<br>（新环节）</td><td data-label="内容">Anthropic 把对抗手段写成 SKILL.md 公开发布——L2 的对抗设施本身成了行业公共品，于是所有人的设计系统开始趋同（yage.ai 点名的 homogenization 代价）</td></tr>
     </tbody>
   </table>
-  <p>对个人的含义与生成模型篇一致但更尖锐：<b>L1 的引力随每一轮对齐再生产，你的差异化只能靠 L2 的持续投入维持</b>——而推理模型侧的 L2 资产（设计系统文档、组件库规范、skill、CONTEXT）恰好是我们这条线已经在做的事。老大自己的 sepia 去AI味 skill 和仓里的 AGENTS/CONTEXT 体系，就是这一层的实践。</p>
+  <p>对个人的含义与生成模型篇一致但更尖锐：<b>L1 的引力随每一轮对齐再生产，你的差异化只能靠 L2 的持续投入维持</b>——而推理模型侧的 L2 资产（设计系统文档、组件库规范、skill、CONTEXT）恰好是我们这条线已经在做的事。尚盐自己的 sepia 去AI味 skill 和仓里的 AGENTS/CONTEXT 体系，就是这一层的实践。</p>
 </div>
 
 <div class="card">
-  <h2>四、行动清单（按老大的场景）</h2>
+  <h2>四、行动清单（按尚盐的场景）</h2>
   <table class="resp">
     <thead><tr><th style="width:18%">场景</th><th>动作</th></tr></thead>
     <tbody>
@@ -323,7 +323,7 @@
     <li><b>benchmark.ai 单发 3D 榜</b>：500 个提示词五类、64k 输出上限、Bradley-Terry Elo；与 AA-3D 不可比（后者 agentic）。gemini-4-argon 1606 第一的结论仅限单发场景。</li>
     <li><b>noderguru / Command Code / sitem 等横评</b>：个人或小团队实测，样本量小（常为 n=1），有方向参考价值、无统计效力。</li>
     <li><b>API 价格</b>：均为 2026-10-18 前后各厂商官网口径，随调价过期。</li>
-    <li><b>老大 2026-10-19 实测</b>（DP V4.1 审美完虐 Hy4/Step 5、GLM 5.3-Flash 第三）：群聊笔记口径，未留可复现测试记录。</li>
+    <li><b>尚盐 2026-10-19 实测</b>（DP V4.1 审美完虐 Hy4/Step 5、GLM 5.3-Flash 第三）：群聊笔记口径，未留可复现测试记录。</li>
   </ul>
 </div>
 
