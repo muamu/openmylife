@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>盐的差评｜Kimi 3.1 发布即翻车？比起暗广营销，真正背刺用户的是额度</title>
+<style>
+:root{
+  --blue:#16527F; --red:#8F2F38; --gray:#5A6068;
+  --ink:#14181C; --ink2:#3C434C; --ink3:#6B7278;
+  --line:#DDE3E9; --line2:#E8ECEF;
+  --blue-bg:#F3F8FC; --red-bg:#FBF3F4; --gray-bg:#F5F6F7;
+  --mark:#FFF0B3;
+  --serif:"Noto Serif SC","Songti SC","SimSun",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --mono:"SFMono-Regular",ui-monospace,"Cascadia Mono","Consolas",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:#fff;color:var(--ink);
+  font:15px/1.78 var(--sans);
+  overflow-x:hidden;
+}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px 56px}
+
+/* ---------- masthead ---------- */
+.masthead{padding:30px 0 4px}
+.kicker{
+  display:inline-block;font:600 11.5px/1 var(--mono);
+  color:var(--gray);background:var(--gray-bg);
+  padding:5px 8px;margin-bottom:14px;
+}
+h1{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(25px,6.5vw,37px);line-height:1.34;
+  letter-spacing:-.012em;margin:0 0 14px;
+}
+.sub{
+  font-family:var(--serif);font-size:16px;line-height:1.8;
+  color:var(--ink2);margin:0 0 18px;
+}
+.sub b{color:var(--ink);border-bottom:2px solid var(--mark)}
+.meta{
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:10px 0;font-size:12.5px;line-height:1.9;color:var(--ink3);
+}
+.meta div{display:grid;grid-template-columns:52px 1fr;gap:10px}
+.meta dt{font:600 11px/1.9 var(--mono);color:var(--gray)}
+.meta dd{margin:0}
+
+/* ---------- 30 秒版 ---------- */
+.brief{
+  background:#F8FAFB;border-left:4px solid var(--blue);
+  padding:14px 14px 12px;margin:22px 0 8px;
+}
+.brief-h{
+  font:600 11.5px/1 var(--mono);color:var(--blue);
+  display:block;margin-bottom:10px;
+}
+.brief p{margin:0 0 10px;font-size:14.5px;line-height:1.75}
+.brief p:last-of-type{margin-bottom:0}
+.brief ul.lst,.brief ol.lst{margin:2px 0 12px;font-size:14.5px;line-height:1.72}
+.brief ul.lst li,.brief ol.lst li{margin-bottom:9px}
+.facts3{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line2);margin:14px 0 0}
+.facts3>div{
+  background:#fff;padding:9px 11px;
+  display:grid;grid-template-columns:minmax(0,80px) 1fr;gap:10px;align-items:center;
+}
+.facts3 .n{
+  font:600 16px/1.25 var(--mono);
+  font-variant-numeric:tabular-nums;letter-spacing:-.02em;
+}
+.facts3 .t{min-width:0}
+.facts3 .t b{display:block;font-size:12.5px;line-height:1.5;color:var(--ink2)}
+.facts3 .t em{
+  display:block;font-style:normal;font-size:11px;line-height:1.55;
+  color:var(--gray);margin-top:1px;
+}
+@media (min-width:560px){
+  .facts3{grid-template-columns:repeat(3,1fr)}
+  .facts3>div{display:block;text-align:center;padding:11px 9px}
+  .facts3 .n{font-size:21px}
+  .facts3 .t b{margin-top:5px}
+}
+.verdict{
+  border-top:1px solid var(--line);margin-top:12px;padding-top:11px;
+  font-size:14.5px;line-height:1.78;
+}
+.howto{
+  font-size:12px;line-height:1.85;color:var(--gray);
+  border-top:1px dotted var(--line);padding-top:10px;margin-top:12px;
+}
+
+/* ---------- toc ---------- */
+nav.toc{margin:20px 0 6px}
+nav.toc .cap{font:600 11px/1 var(--mono);color:var(--gray);display:block;margin-bottom:8px}
+nav.toc ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:5px}
+nav.toc a{
+  display:block;text-decoration:none;color:var(--ink2);
+  background:var(--gray-bg);border-left:2px solid #C3C9CE;
+  padding:5px 9px;font-size:12.5px;
+}
+nav.toc a:active{background:#E9ECEF}
+nav.toc a i{font:600 11px var(--mono);color:var(--gray);font-style:normal;margin-right:5px}
+.backtop{
+  display:inline-block;font:11px var(--mono);color:var(--gray);
+  text-decoration:none;margin-top:8px;
+}
+
+/* ---------- headings ---------- */
+h2{
+  font-family:var(--serif);font-weight:700;
+  font-size:19.5px;line-height:1.45;
+  margin:40px 0 14px;
+}
+h2 .num{
+  font-family:var(--mono);font-weight:600;font-size:11.5px;
+  color:var(--gray);margin-right:9px;vertical-align:2px;
+  font-variant-numeric:tabular-nums;
+}
+h2.minor{border-left:2px solid var(--line);padding-left:11px}
+h2.major{
+  background:var(--blue-bg);border-left:5px solid var(--blue);
+  margin-left:-16px;margin-right:-16px;
+  padding:11px 16px;font-size:20.5px;
+}
+h2.major .num{color:var(--blue)}
+h3{
+  font-family:var(--serif);font-weight:700;font-size:16.5px;
+  margin:26px 0 9px;padding-left:10px;border-left:3px solid var(--ink);
+  line-height:1.5;
+}
+h4{font-family:var(--serif);font-size:15px;margin:0 0 6px;line-height:1.5}
+
+p{margin:0 0 13px}
+p:last-child{margin-bottom:0}
+strong,b{font-weight:700}
+mark{background:var(--mark);padding:0 2px}
+
+/* ---------- anchors ---------- */
+.a{
+  font:11px/1.6 var(--mono);color:var(--gray);
+  background:#F0F3F6;border:1px solid #E2E7EC;
+  padding:0 4px;white-space:nowrap;letter-spacing:-.02em;
+}
+code{font:12.5px/1.4 var(--mono);background:#F3F5F7;padding:1px 4px}
+
+/* ---------- lists ---------- */
+ul.lst,ol.lst{margin:0 0 14px;padding-left:19px}
+ul.lst li,ol.lst li{margin-bottom:8px;line-height:1.76}
+ul.lst li::marker,ol.lst li::marker{color:var(--gray)}
+
+/* ---------- blockquote ---------- */
+blockquote{
+  margin:18px 0;padding:11px 14px;
+  background:#FAFBFC;border-left:2px solid var(--blue);
+  font-family:var(--serif);font-size:14.5px;line-height:1.8;color:var(--ink2);
+}
+blockquote p{margin:0 0 8px}
+blockquote p:last-child{margin:0}
+blockquote .src{
+  display:block;font:12px/1.7 var(--sans);color:var(--gray);
+  font-style:normal;margin-top:8px;
+}
+
+/* ---------- callout ---------- */
+.block{
+  background:var(--gray-bg);border-left:4px solid var(--gray);
+  padding:12px 14px;margin:18px 0;font-size:14px;line-height:1.78;
+}
+.block.red{background:var(--red-bg);border-color:var(--red)}
+.block.blue{background:var(--blue-bg);border-color:var(--blue)}
+.block .lb{
+  display:block;font:600 11px/1 var(--mono);
+  color:var(--gray);margin-bottom:7px;
+}
+.block.red .lb{color:var(--red)}
+.block.blue .lb{color:var(--blue)}
+
+/* ---------- tables ---------- */
+.t{width:100%;border-collapse:collapse;margin:14px 0 18px;font-size:13.5px;line-height:1.7}
+.t caption{
+  caption-side:top;text-align:left;
+  font:600 11px/1.6 var(--mono);color:var(--gray);padding-bottom:6px;
+}
+.t th{
+  background:var(--gray-bg);font-weight:600;font-size:11.5px;
+  color:var(--gray);text-align:left;padding:7px 8px;
+  border-bottom:1px solid var(--line);white-space:nowrap;
+}
+.t td{padding:8px;border-bottom:1px solid var(--line2);vertical-align:top}
+.t td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.t tr:last-child td{border-bottom:1px solid var(--line)}
+
+/* ---------- databar ---------- */
+.databar{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line2);margin:16px 0}
+.databar .cell{background:#F8FAFB;padding:10px;border-top:2px solid var(--blue)}
+.databar .cell.r{border-top-color:var(--red)}
+.databar .k{display:block;font-size:11px;line-height:1.5;color:var(--gray)}
+.databar .v{
+  display:block;font:600 19px/1.25 var(--mono);
+  font-variant-numeric:tabular-nums;margin:3px 0 2px;
+}
+.databar .cell.r .v{color:var(--red)}
+.databar .d{display:block;font-size:11px;line-height:1.5;color:var(--gray)}
+
+/* ---------- timeline ---------- */
+.day{
+  font:600 11.5px/1 var(--mono);color:var(--blue);
+  margin:22px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line);
+}
+.tl{list-style:none;margin:0;padding:0 0 0 14px;border-left:1px solid var(--line2)}
+.tl li{position:relative;padding:0 0 15px 12px}
+.tl li::before{
+  content:"";position:absolute;left:-18px;top:7px;
+  width:7px;height:7px;border-radius:50%;background:#9AA1A7;
+}
+.tl li.hot::before{background:var(--red)}
+.tl li.pos::before{background:var(--blue)}
+.tl .t{display:block;font:600 11px/1.7 var(--mono);color:var(--gray);font-variant-numeric:tabular-nums}
+.tl .h{display:block;font-family:var(--serif);font-weight:700;font-size:15px;margin:0 0 2px}
+.tl .b{display:block;font-size:13.5px;line-height:1.75;color:var(--ink2)}
+
+/* ---------- note ---------- */
+.note{
+  font-size:12px;line-height:1.8;color:var(--gray);
+  border-top:1px dotted var(--line);padding-top:10px;margin-top:20px;
+}
+
+/* ---------- figure ---------- */
+figure{margin:20px 0}
+figure svg{display:block;width:100%;height:auto}
+figcaption{
+  font-size:12px;line-height:1.75;color:var(--gray);
+  margin-top:9px;padding-left:10px;border-left:2px solid var(--line);
+}
+figcaption b{color:var(--ink2)}
+
+/* ---------- footer ---------- */
+footer{
+  margin-top:46px;border-top:1px solid var(--line);padding-top:16px;
+  font-size:12.5px;line-height:1.85;color:var(--gray);
+}
+footer .ft-h{font:600 11px/1 var(--mono);color:var(--gray);display:block;margin-bottom:8px}
+footer .layer{display:grid;grid-template-columns:46px 1fr;gap:9px;padding:7px 0;border-bottom:1px dotted var(--line)}
+footer .layer b{font:600 11px/1.85 var(--mono);color:var(--ink2)}
+.sign{margin-top:16px;font-size:12.5px;color:var(--ink2)}
+
+@media (min-width:700px){
+  body{font-size:16px}
+  .wrap{padding:0 24px 72px}
+  .meta div{grid-template-columns:58px 1fr}
+  h2.major{margin-left:-24px;margin-right:-24px;padding:13px 24px}
+  .databar{grid-template-columns:repeat(4,1fr)}
+  .brief{padding:18px 20px}
+  .facts3 .n{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead" id="top">
+  <span class="kicker">盐的差评 · 2026-10-25</span>
+  <h1>Kimi 3.1 发布即翻车？比起暗广营销，真正背刺用户的是额度</h1>
+  <p class="sub">舆论都在围攻暗广丑闻，但真正让付费用户破防的，是后台冰冷的 429 报错。</p>
+  <dl class="meta">
+    <div><dt>事件</dt><dd>2026-10-23（发布前一日）→ 10-25 08:05（取数时点）</dd></div>
+    <div><dt>主体</dt><dd>月之暗面 Moonshot AI / Kimi K3.1 Pro；官方回应：至今为零，距曝光已超 28 小时</dd></div>
+  </dl>
+</header>
+
+<section class="brief">
+  <span class="brief-h">先说结论</span>
+  <p>10 月 24 日凌晨，月之暗面挑在「程序员节」压哨发布 Kimi K3.1 Pro：2.8T 总参数、1M 上下文。然而不到 12 个小时，全网舆论就从满屏庆祝彻底反转为全网劝退。</p>
+  <p>穿透这 30 个小时的喧嚣，这次风波的本质可以总结为三句话：</p>
+  <ol class="lst">
+    <li><b>被骂得最狠的事，和最没法洗白的事，不是同一件。</b>舆论场上讨伐声最响的是「要求博主隐瞒付费合作」，但这至今仍是一份主体未证的单方截图；真正最早引爆社区、且有官方文档白纸黑字实锤的，是「付费用户连一个任务都跑不完」的苛刻限流。营销翻车，只是给了破防的用户一个开火的借口。</li>
+    <li><b>最大的讽刺在于，这原本是一次完全多余的宣发动作。</b>在负面爆料发酵前，海外博主随手发布的 3D 机械手演示在 1.5 小时内就突破了 33 万浏览，跑得比负面爆料还快。<b>产品本可以在海外自己跑起来，但急于求成的话术反而亲手污染了原本真实的口碑。</b></li>
+    <li><b>商业赞助没有原罪，越过底线才是问题所在。</b>请博主做评测是全球通行的商业行为，但在合同里要求「隐瞒付费标签」，甚至在受质疑后「私信要求删差评」，就彻底击穿了商业道德底线——它让用户不敢再信任何一句夸奖，也让社区失去了客观说话的权利。</li>
+  </ol>
+  <div class="facts3">
+    <div><span class="n">65.7%</span><span class="t"><b>Terminal-Bench 4.0</b><em>仅落后顶级旗舰 Opus 0.9 分，硬实力其实在场</em></span></div>
+    <div><span class="n">28+ 小时</span><span class="t"><b>官方公开回应至今为零</b><em>诚信危机下的沉默，默认被视作无法否认</em></span></div>
+    <div><span class="n">40 万+</span><span class="t"><b>海外爆料帖浏览量</b><em>24 小时翻了 4 倍，且仍在持续扩散</em></span></div>
+  </div>
+  <p class="howto">想核对具体数字的，附一逐条对过；没坐实的部分在附二。都不影响主线。</p>
+</section>
+
+<nav class="toc">
+  <span class="cap">本文章节</span>
+  <ul>
+    <li><a href="#s01"><i>01</i>三颗雷</a></li>
+    <li><a href="#s02"><i>02</i>三十小时</a></li>
+    <li><a href="#s03"><i>03</i>额度风波</a></li>
+    <li><a href="#s04"><i>04</i>营销线与演示边界</a></li>
+    <li><a href="#s05"><i>05</i>证据链</a></li>
+    <li><a href="#s06"><i>06</i>舆情反转</a></li>
+    <li><a href="#s07"><i>07</i>最大的讽刺</a></li>
+    <li><a href="#s08"><i>08</i>违规与公关自杀</a></li>
+    <li><a href="#s09"><i>09</i>动机复盘</a></li>
+    <li><a href="#s10"><i>10</i>教训</a></li>
+    <li><a href="#a1"><i>附一</i>流传说法核对</a></li>
+    <li><a href="#a2"><i>附二</i>还没坐实的事</a></li>
+  </ul>
+</nav>
+
+<!-- ===== 01 ===== -->
+<h2 id="s01" class="major"><span class="num">01</span>三颗雷，同时引爆</h2>
+
+<p>外界总把这次风波轻描淡写成「一封邮件引发的惨案」。但事实远没那么简单——这不是单点意外，而是三颗雷在同时引爆，更讽刺的是，真正让用户最先破防的那颗雷，反而在后来的声讨浪潮里被掩盖了。</p>
+
+<h3>第一颗雷：隐瞒暗广，砸了评测圈的饭碗</h3>
+<p>被曝光邮件里最要命的一句话，是要求博主「不要标注付费合作」。这伤的不只是 Kimi 自己的口碑，而是在污染整个行业的信息水源：当「自发安利」被明码标价买断，博主就从独立的评测人退化成了收钱念词的群演，读者再也不敢相信任何一句夸赞。更严峻的是，海外对隐瞒商业推广有极其严苛的监管要求，这是整场危机中法律风险最高、最可能引来巨额监管罚单的硬伤。</p>
+
+<h3>第二颗雷：额度缩水，掏钱用户被当场背刺</h3>
+<p>699 元档开 Fast 模式撑不过 15 分钟，99 元档跑一个基准测试直接弹 429 报错，199 元档测一次就吃掉 5 小时额度的三分之二。这才是最早引爆舆论、波及最广、且根本无法洗白的核心痛点——报错代码、官方提示和截图满天飞。付费用户花了大钱却被卡脖子，早就憋了一肚子怨气；后来的邮件丑闻，不过是给这群憋屈的消费者递了一把名正言顺开火的枪。</p>
+
+<h3>第三颗雷：透支信任，拖着中国大模型连坐</h3>
+<p>这两年「中国开源大模型」在海外开发者圈子里打下的声誉，是多家团队靠硬实力一点点挣出来的。可一旦海外社区形成思维定势，默认「中国模型的好评都是花钱买的水军」，这笔信任透支的代价就得全行业分摊。从 DeepSeek、Qwen 到 GLM，所有老老实实做研发、出海拓荒的团队，全都要替这种短视的营销操盘背锅。</p>
+
+<a class="backtop" href="#top">↑ 回到目录</a>
+
+<!-- ===== 02 ===== -->
+<h2 id="s02" class="major"><span class="num">02</span>三十小时：怎么烧起来的</h2>
+
+<p>下面的时刻都是北京时间。查看量和点赞数还在涨，这里取的是 10 月 25 日早 8 点的读数。</p>
+
+<p class="day">10-23 上午 · 发布前一天</p>
+<ul class="tl">
+  <li class="hot"><span class="t">04:02</span><span class="h">长颈鹿测试：7.9 万查看</span><span class="b">@Haleeeemahh 用同一句提示词测了四家，Kimi 在 Arena 上的匿名代号 <b>Kibitz</b> 被认了出来——腿细长、比例不协调、跑姿僵硬。</span></li>
+</ul>
+<p>这条的意义在时间：<strong>「模型画卡通动物不自然」在营销轰炸之前就已经被 7.9 万人看到过。</strong>不是发布后突然翻车，是旧账被营销一起结算。</p>
+
+<p class="day">10-24 凌晨 · 发布</p>
+<ul class="tl">
+  <li class="pos"><span class="t">凌晨</span><span class="h">K3.1 Pro 上线</span><span class="b">2.8T 总参 / 104B 激活 / 1M 上下文，同步推出 Highspeed 模式（速度 2–3 倍，价格与额度消耗也差不多翻倍）。Terminal-Bench 4.0 拿到 65.7%，距 Opus 5.5 的 66.6% 差 0.9 个百分点。</span></li>
+</ul>
+
+<p class="day">10-24 · 01:29 — 正面口碑的第一个峰值</p>
+<ul class="tl">
+  <li class="pos"><span class="t">01:29</span><span class="h">3D 机械手：33.7 万查看 / 2,759 赞</span><span class="b">@crystalsssup 让 Kimi 做了一个 3D 拆解机械手的网页，2317 个零件。发帖时距离上线大约一个半小时。</span></li>
+</ul>
+<p>这是最容易被忽略的数字：<strong>正面自发内容的早期传播量，比爆料帖的早期数据（10 万）还高。</strong>口碑窗口本来是开着的。</p>
+
+<p class="day">10-24 · 约 01:54 — 额度先炸</p>
+<ul class="tl">
+  <li class="hot"><span class="t">01:54</span><span class="h">699 元档，Fast 模式，15 分钟跑完</span><span class="b">@CuiMao 发帖，12 万查看 / 643 赞。比邮件事件早约两个小时炸的，是钱。同一时段还有一条：99 元档订阅，一个鹈鹕测试没做完就见了底。</span></li>
+  <li><span class="t">02:21</span><span class="h">一条评论埋下引线</span><span class="b">Elshayib 在某条推广帖下留言：「你们完全照着创作者投放文档在发 🙄」。</span></li>
+  <li><span class="t">02:31</span><span class="h">「便宜 5 倍」的出处</span><span class="b">@Bhavani 用同一个 rocket 提示词跑了两家：Kimi $1.95 / 6 分钟，Opus $10.35 / 24 分钟，正好 5.3 倍。11.1 万查看。这是一次正常的用户自测，后来话术里那句「便宜 5 倍」就是从这儿来的——单任务成本口径，不是 token 单价口径。</span></li>
+</ul>
+
+<p class="day">10-24 · 03:43–05:55 — 邮件这条线连爆三帖</p>
+<ul class="tl">
+  <li class="hot"><span class="t">03:43</span><span class="h">投放文档截图曝光</span><span class="b">标题写着「Heyyy Influencers」的协作文档截图，四条要求：草稿先审、需预先批准、<mark>不要放付费合作标签</mark>、不必附官网链接或 @ 官方账号。</span></li>
+  <li><span class="t">载体</span><span class="h">是协作文档的访客页，不是邮件</span><span class="b">页面多处有平台自动生成的 <b>Guest User 19082</b> 水印。这点两面都说得通：伪造难度被抬高了（要伪就得连平台 UI 一起伪）；但访客视图也<b>证明不了文档是谁建的</b>。</span></li>
+  <li><span class="t">同期</span><span class="h">话术模板跟着全文曝光</span><span class="b">六条「Narratives You Can Consider」，包括「开源版 Opus 5.5，便宜 5 倍」「中国让所有人免费用上 Opus 5.5」「中美差距缩到 1 个月」「被切断先进算力仍训出 SOTA」。</span></li>
+  <li class="hot"><span class="t">05:55</span><span class="h">私信要求删评论</span><span class="b">「could you please delete this comment」「it could really ruin this launch」，4.9 万查看。Elshayib 后来那句话被中文转译补全：「我又不是为你工作，也永远不会为像这样的骗子公司工作。」<b>这一步是整条线的转折</b>：商业争议升级成了压制批评。</span></li>
+  <li><span class="t">06:26</span><span class="h">行业连坐：MiniMax 旧案被翻出</span><span class="b">@LuminaBench 附上自己收到的 MiniMax 投放文档（350 美元预算、同样要求不加付费标签），写下「I like my audience more than a quick payout」。</span></li>
+</ul>
+
+<p class="day">10-24 上午到下午 — 反向样本、破圈、反叙事</p>
+<ul class="tl">
+  <li class="pos"><span class="t">09:20</span><span class="h">@EianLu 自曝官方合作：正常投放长什么样</span><span class="b">「前几天 Kimi 团队找到我，问能不能帮他们的新模型做个宣发视频，我欣然同意。」3.4 万查看。他做的视频正是官方账号 10-23 发的那条 24 秒预告。这是迄今唯一一位公开承认收到 Kimi 团队正式邀约的创作者，而且是<b>大方公开</b>的。</span></li>
+  <li><span class="t">11:49</span><span class="h">中文转译：36.7 万查看 / 2,002 赞</span><span class="b">@lifcc 把英文长贴压成三句口号加一个表情，成了中文侧最大的单点，也是<b>全事件互动量最高的帖子</b>。破圈发生在转译之后，不在爆料当时。</span></li>
+  <li class="hot"><span class="t">12:15</span><span class="h">不到 3 小时，合作方变成质疑者</span><span class="b">还是 @EianLu：「很多人都说 Kimi K3.1 碾压 GPT-6 Astra，力追 Opus 5.5。我怎么感觉有点没对？」配一段 4 秒小鸭子走路视频，腿偏中、走得僵。他还自问了一句：「是因为我是免费用户的缘故嘛？」</span></li>
+  <li><span class="t">12:40</span><span class="h">同一天的落差，由同一个人走完</span><span class="b">@xueyu1125 上午还写「这就是杨植麟作为程序员的浪漫吗，1024 节日快乐」；几小时后变成「服了 Kimi 个老六了……一个鹈鹕测试没跑完就说没额度了」。他贴的 429 截图里能看到脚本 <code>--remote-debugging-port=9222</code>——典型的多步浏览器自动化任务，吃额度不是偶然。</span></li>
+  <li><span class="t">16:08</span><span class="h">反叙事登场</span><span class="b">@xluchuan：「Kimi K3.1 Pro 翻车了 / MiniMax M3.1 Flash 翻车了 / Muse wonder 翻车了 / Gemini 4 Argon 也翻车了 / 只有 Deepseek V4.1 Flash 1017」。8.9 万查看。</span></li>
+  <li><span class="t">23:55</span><span class="h">3D 能力被指「实为外部 API」</span><span class="b">@Michaelzsguo 转述一位 Reddit 3D 游戏开发者的挖掘：Kimi 内置 <code>model3d_generation</code> skill，通过 Python 脚本调用外部 3D 生成 API，脚本版本号与 Tripo 的模型版本对得上。1.8 万查看。详见 4.1 节。</span></li>
+</ul>
+
+<p class="day">10-25 — 反转线出现，官方仍沉默</p>
+<ul class="tl">
+  <li><span class="t">01:15</span><span class="h">质疑爆料方</span><span class="b">@dongxi_nlp：「那位所谓『英推 KOL』是典型的关注 6000 粉 6000 的垃圾账号」。8,943 查看。</span></li>
+  <li class="hot"><span class="t">08:05</span><span class="h">取数时点：源点帖 40.3 万，还在涨</span><span class="b">曝光后 24 小时内从 10 万涨到 40.3 万 / 1,865 赞。<b>官方仍无任何表态</b>，距曝光超过 28 小时。</span></li>
+</ul>
+
+<p class="note">注：@CuiMao 那条、要求删评论的私信、以及 MiniMax 的案例，三处数字取自截图当时的显示值，本次未重新采集。</p>
+
+<a class="backtop" href="#top">↑ 回到目录</a>
+
+<!-- ===== 03 ===== -->
+<h2 id="s03" class="major"><span class="num">03</span>额度风波：官方自己实锤的「性价比幻觉」</h2>
+
+<p>公关邮件还能辩解「消息未坐实」，但额度限制这块，官方文档自己把底牌掀得明明白白：在 Kimi Code 的报错指南里，429 限流清清楚楚写着四种可能——算力过载、并发超标、5 小时限额摸顶，以及月度额度彻底耗尽。</p>
+
+<p>这也是为什么掏了钱的用户最先炸锅。</p>
+
+<div class="databar">
+  <div class="cell"><span class="k">Kimi Code 限额窗口</span><span class="v">5 小时</span><span class="d">滚动窗口，与月度额度并行扣减</span></div>
+  <div class="cell r"><span class="k">一次测试（199 元档）</span><span class="v">66%</span><span class="d">吃掉 5 小时额度的三分之二</span></div>
+  <div class="cell r"><span class="k">Fast 极速模式</span><span class="v">约 2×</span><span class="d">速度 2–3 倍，消耗跟着翻倍</span></div>
+  <div class="cell r"><span class="k">月度额度池收紧</span><span class="v">+92%</span><span class="d">每千万 token ¥39.8 → ¥76.5（媒体测算）</span></div>
+</div>
+
+<h3>1. 为什么一个测试就能把额度干废？</h3>
+
+<p>社区里大家最爱测的「卡通动物动画生成」（比如跑一个让鹈鹕、鸭子走动的复杂代码任务），特点是步骤多、吐字长。</p>
+
+<ul class="lst">
+  <li>充 <b>199 元档</b>，跑一次这种测试就能吃掉 <b>5 小时额度的 66%</b>；</li>
+  <li>如果顺手开了 <b>Fast 极速模式</b>，速度快了两三倍，额度消耗也直接翻倍；</li>
+  <li>更难受的是双重枷锁：除了 5 小时的短期滚动窗口，底层的月度额度池还在加速缩水。</li>
+</ul>
+
+<p>很多付费用户还没搞清规则，一个测试没跑完，屏幕上就冷冰冰地弹出了 429 报错。</p>
+
+<h3>2. 三个都没说谎的「成本真相」</h3>
+
+<p>为什么官方坚称「降价」，用户体感却觉得「被抢」？因为这场争议里存在三个完全相反的「真相」：</p>
+
+<ol class="lst">
+  <li><b>看官方标价</b>：每百万 token 确实降了约三分之一，比 Claude Opus 便宜一半，<b>「确实便宜了」</b>；</li>
+  <li><b>看宣发案例</b>：某些特定测试里比对手省了 5 倍钱，<b>「便宜得夸张」</b>；</li>
+  <li><b>看用户实测</b>：新模型单次任务吐出的 token 变多了（单次任务成本几乎没变），加上额度卡得死，<b>「完全没觉得便宜」</b>。</li>
+</ol>
+
+<p>这才是最让用户难受的地方：官方没有明着造假，但各挑各的有利数据宣传。用户冲着「极致性价比」掏了真金白银，结果连一个完整任务都跑不下来。<b>这种期望与体感的巨大撕裂，比单纯的技术落后更伤信任。</b></p>
+
+<h3>3. 但别急着一棒子打死：撞墙的到底是谁？</h3>
+
+<p>舆论看似一边倒，但翻翻留言区会发现两极分化严重：不少每月在 Kimi 上花几千块的金融研究和长文档用户，依然觉得它在长上下文场景下比竞品稳定，愿意持续买单。</p>
+
+<p>真相其实很明确：<b>真正被额度逼到墙角的，是重度写代码、玩 Agent 的开发者群体。</b>这批人恰好是互联网上最懂技术、发声最响亮、最擅长抓包维权的一群人。</p>
+
+<p>所以，既不是「Kimi 彻底烂了」，也不是「全网都在跟风黑」。本质就是：<b>这套苛刻的限额规则，精准背刺了最懂技术且嗓门最大的那批核心种子用户。</b></p>
+
+<a class="backtop" href="#top">↑ 回到目录</a>
+
+<!-- ===== 04 ===== -->
+<h2 id="s04" class="major"><span class="num">04</span>营销线：那份文档要求了什么</h2>
+
+<p>被曝光的「Narratives You Can Consider」是整份材料里最有价值的一份——它比 brief 更能说明问题，因为它展示的不是「怎么做投放」，而是<strong>「希望世界相信什么」</strong>。</p>
+
+<table class="t">
+<thead><tr><th style="width:6%">#</th><th style="width:40%">叙事</th><th>风险类型与判断</th></tr></thead>
+<tbody>
+<tr><td class="num" data-th="#">1</td><td data-th="叙事">Motion Design<br><span style="font-size:12px;color:var(--gray)">「AE 已死，整支品牌片用 Kimi 写 Python 生成」</span></td><td data-th="判断"><b>可验证。</b>最容易被实测打脸，也最容易被实测证实。</td></tr>
+<tr><td class="num" data-th="#">2</td><td data-th="叙事">3D Tool Use<br><span style="font-size:12px;color:var(--gray)">Blender / UE / Unity 重建，60fps 本地渲染</span></td><td data-th="判断"><b>可验证（存疑）。</b>见 4.1 节「能力的边界」。</td></tr>
+<tr><td class="num" data-th="#">3</td><td data-th="叙事"><b>「开源版 Opus 5.5，便宜 5 倍」</b></td><td data-th="判断"><b>口径混用。</b>5 倍是单任务成本口径，token 单价是半价，见第三节。</td></tr>
+<tr><td class="num" data-th="#">4</td><td data-th="叙事">Latest Open Source SOTA<br><span style="font-size:12px;color:var(--gray)">两台 512GB Mac Studio 本地跑</span></td><td data-th="判断"><b>站得住。</b>有第三方智能指数 55 分（全球第 4、开源第一）支撑。</td></tr>
+<tr><td class="num" data-th="#">5</td><td data-th="叙事"><b>「中美差距缩到 1 个月」</b></td><td data-th="判断"><b>地缘叙事。</b>博主拒绝的核心理由之一。</td></tr>
+<tr><td class="num" data-th="#">6</td><td data-th="叙事"><b>「被切断先进算力仍训出 SOTA」</b></td><td data-th="判断"><b>地缘叙事。</b>把产品能力绑到国家叙事上，反噬的是国家品牌而非单家公司。</td></tr>
+</tbody>
+</table>
+
+<p>夸大性能是行业通病，社区会自己打折。但把一款商业产品包装成<strong>地缘竞争的胜负手</strong>，会让本想安静做技术内容的博主被拖进政治议程——他们拒绝的不是钱，是站队。</p>
+
+<blockquote>
+  <p>「我只说我自己测过的东西，而且我不想卷入中美政治。」</p>
+  <span class="src">Elshayib，2026-10-24</span>
+</blockquote>
+
+<p>这句话让他的爆料获得了远超一般「揭黑」的共情。<strong>它也是全事件里最能解释「为什么反弹这么强」的一句</strong>：投放买的是发布，被要求沉默的是判断。</p>
+
+<h3>4.1 能力的边界：演示没有造假，但话术偷换了概念</h3>
+
+<p>惊艳的 3D 演示，到底掺了多少「水分」？</p>
+
+<p>这次发布会最出圈的演示是「3D 工具调用」（3D Tool Use）。但在惊艳全网的同时，它也是技术圈扒得最狠的地方。</p>
+
+<p>仔细看外界的质疑，其实没有人指控 Kimi 在演示里造假。问题恰恰在于：<b>所有的东西都是真的，但通过模糊边界，巧妙地让用户产生了美丽的误判。</b></p>
+
+<p>围绕这次演示，技术社区抛出了三层质疑：</p>
+
+<ul class="lst">
+  <li><b>质疑一：把「借来的外力」包装成「自家的能力」。</b>有开发者深扒发现，Kimi 的 3D 生成脚本在后台直接调用了第三方 3D 建模平台 Tripo 的 API，参数和模型版本都对得上。平心而论，AI Agent 调用外部工具本就是标准架构，并不违规。但问题在于：<b>你在发布会上大秀肌肉时，从未明说这项惊艳的能力到底来自 Kimi 还是来自外挂。</b>这和前面的「不标暗广」在本质上一模一样：一个隐瞒了「这篇评测是谁出的钱」，一个隐瞒了「这个效果是谁出的力」。</li>
+  <li><b>质疑二：虚拟世界很丝滑，物理世界露了怯。</b>在第三方机构（Robocurve）的真实机器人操作评测中，主流旗舰模型普遍能拿到 47%–48% 的水准，而 Kimi K3.1 Pro 只有 9%。虽然打物理机械臂和做纯软件 Agent 算不上同一个赛道，但如此悬殊的差距，直接给外界扣上了「跑分很强、真干脏活不行」的刻板印象。</li>
+  <li><b>质疑三：民间热梗，成了新的刷榜靶场？</b>在这次大火的「卡通动物动画测试」视频下，有人调侃为什么总测那几个固定动作，刚接了官方推广的视频作者直接回复：「因为那些动作现在都专门优化过了」。不管这句回复是半开玩笑还是事实，它都给技术社区提了个醒：刷榜的毛病，可能已经从官方的权威测试集，下沉渗透到了大众爱看的民间热梗里。</li>
+</ul>
+
+<p>把这三点拼在一起，得出的结论很清晰：<b>演示是真的、脚本是真的、跑分也是真的。但把这一堆精挑细选的真东西拼在一起，就会让观众误以为它已经无所不能。</b></p>
+
+<h3>4.2 还原客观事实：官方自测表其实很诚实</h3>
+
+<p>如果抛开宣发泡沫，回头看官方公布的完整基准测试表，会发现官方其实并没有打肿脸充胖子，数据本身是自洽的：</p>
+
+<ul class="lst">
+  <li><b>长项极长（长文本 / 知识 / 金融文档）：</b>在长程代码（SWE-Marathon）、金融综合（Frontier Finance）以及专业文档问答等场景，Kimi 确实领先 Claude Opus 5.5，有的单项甚至拉开了近 10 分的差距。</li>
+  <li><b>短板极短（硬核科学 / 系统操作 / 工程）：</b>一碰到真正的基础科学（TB Science 直接落后 11 分以上）、操作系统级操控（OSWorld）和终端命令操作，它几乎全面落后。</li>
+  <li><b>自家的主场，也没敢闭眼吹第一：</b>在自建的 Kimi Code Bench 3.0 测试中，Kimi 拿了 61.2 分，依然落后于 GPT-6 Astra 的 68.5 分，并没有在自家地盘硬造一个第一名。</li>
+</ul>
+
+<p>官方自己列出的数据很诚实地证明了一件事：<b>Kimi 从来没有全面超越，它只是一个偏科极其严重的特长生。</b></p>
+
+<p>在长文本、金融研报、文档检索这些主场，它确实打出了优势；但在硬核推理、底层系统操作和物理世界任务上，差距依然明显。</p>
+
+<p>真正的症结从不在于产品本身能力差，而在于公关宣发非要把一个「偏科优等生」，包装成一个「全面碾压竞品的武林盟主」。当用户的心理预期被吹到天上去，随后迎面撞上苛刻的限额、受限的场景时，反噬自然来得猛烈而决绝。</p>
+
+<a class="backtop" href="#top">↑ 回到目录</a>
+
+<!-- ===== 05 ===== -->
+<h2 id="s05" class="major"><span class="num">05</span>证据链：一边是铁证如山，一边是外包疑云</h2>
+
+<p>复盘这场危机，必须先分清两种证据的「硬度」：<b>额度问题是实锤铁证，而营销丑闻至今依然是单方孤证。</b></p>
+
+<ul class="lst">
+  <li><b>额度线（硬到无法反驳）：</b>官方的 429 报错文档、各档位的限额规则、全网大面积复现的账单与录屏。这些数据公开透明、人人都能跑通，根本没有洗白的空间。</li>
+  <li><b>营销线（软到缺乏主体）：</b>全网群嘲的「要求博主不标暗广」，核心源头至今只有海外博主放出的几张协作文档截图。它致命，但证据链严重悬空。</li>
+</ul>
+
+<h3>爆料人是谁？不是水军，但物料疑点重重</h3>
+
+<p>有人试图将爆料人打成「碰瓷营销号」，这站不住脚：对方是 2015 年注册的技术开发者，绑定了真实 GitHub，甚至连 a16z 联合创始人 Marc Andreessen 也关注了他。</p>
+
+<p>但这并不意味着邮件就一定是官方所发。仔细看爆料的物料细节，破绽非常明显：</p>
+
+<ol class="lst">
+  <li>邮件抬头是极其轻浮随意的群发口吻（<b>Heyyy Influencers</b>），绝非正规商务的定向邀约；</li>
+  <li>截图来自无创建者信息的在线文档，甚至带有多人协作的访客水印（<b>Guest User</b>）；</li>
+  <li>没有任何官方域名邮箱的直发记录或发件人签名。</li>
+</ol>
+
+<h3>最大的可能：失控的海外外包代理商</h3>
+
+<p>把这些疑点拼在一起，最合逻辑的推论呼之欲出：<b>这大概率不是 Kimi 核心团队的定向公关，而是一起典型的「海外推广外包翻车事故」。</b></p>
+
+<p>许多出海企业会把海外网红投放打包给第三方中介，中介为了刷 KPI，往往拿着一份糙漏百出的 Brief，按爬下来的名单搞批量邮件轰炸。这完美解释了为什么「物料内容像真的，但投放行为极其业余且查不到官方主体」。</p>
+
+<div class="block red">
+  <span class="lb">但有一句话必须说清楚</span>
+  <h4>把活外包出去，不等于把责任也外包出去</h4>
+  <p>按照海外监管标准（如美国 FTC 的背书指引），品牌方对代理商的推广行为负有不可推卸的法定监督义务。如果最终证实是中介擅作主张，Kimi 需要向公众交代的也不是一句「不是我干的」，而是「为什么你们找的外包，敢在海外公然踩着合规红线裸奔」。</p>
+</div>
+
+<a class="backtop" href="#top">↑ 回到目录</a>
+
+<!-- ===== 06 ===== -->
+<h2 id="s06" class="major"><span class="num">06</span>舆情反转：从「程序员的浪漫」到「全网劝退」，只要一小时</h2>
+
+<p>这场风波在社交媒体上最讽刺的切面，被一条广为流传的段子精准概括了：</p>
+
+<blockquote>
+  <p><b>1 小时前：</b>Kimi K3.1 Pro 上线了！祝大家 1024 程序员节快乐！<br>
+  <b>1 小时后：</b>兄弟们快跑！一只鹈鹕动画没跑完，5 小时额度先没了！<br>
+  ——Kimi 这一波的第一批受害者，恰恰是第一批给它庆祝节日的人。</p>
+  <span class="src">Patrick 老派，6.8 万查看</span>
+</blockquote>
+
+<p>这不是编造的段子，而是几小时内真实发生的态度雪崩。</p>
+
+<h3>1. 两个极速变脸的典型现场</h3>
+
+<p>比任何统计数据更能解释「期待为何崩塌」的，是两位核心用户在同一天内的真实经历：</p>
+
+<ul class="lst">
+  <li><b>开发者 @雪瑜：</b>中午 12:40 还在发帖感叹「这就是杨植麟作为程序员的浪漫吗」；几小时后，面对干瘪见底的额度，同一账号连发怒怼：「服了 Kimi 这个老六……纯属骗订阅。」</li>
+  <li><b>宣发博主 @EianLu：</b>上午 9:20 刚发文官宣自己接了 Kimi 的视频宣发；不到 3 个小时后的 12:15，就公开质疑官方「吊打 Astra、硬刚 Opus 5.5」的宣传口径水分太大。从站台方变成质疑者，只用了不到一顿饭的时间。</li>
+</ul>
+
+<p><b>吹得越高，摔得越碎。</b>当发布会把情怀和跑分拉满，用户却在自己敲代码的第一个小时迎面撞上苛刻的限额，这种强烈的落差感甚至不需要外部推波助澜，用户自己掏出的真金白银就是最好的反戈证据。</p>
+
+<h3>2. 最体面的两层辩护，为何依然洗不白？</h3>
+
+<p>在评论区五花八门的争吵中，有两种声音跳出了低级的「互扣帽子」，试图为 Kimi 寻找逻辑立足点，但它们依然经不起推敲：</p>
+
+<ul class="lst">
+  <li><b>辩护一：「这是中国 PR 撞上了北美生态的文化差异」。</b>有人认为，国内公关习惯审稿、控评，而北美开发者崇尚透明，这是一次公关文化碰撞。<b>漏洞在于：</b>审稿或许多见，但「要求博主隐瞒付费合作标签」绝非文化习惯，而是违法行为。在美国，这公然违反 FTC 的反隐形广告法规；即便在中国，新版《互联网广告管理办法》也明文规定必须标明广告。这不是水土不服，而是底线失守。</li>
+  <li><b>辩护二：「新模型发布哪有不被骂翻车的，大家见怪不怪」。</b>有人觉得每个大模型刚发布都会被挑刺，舆论场早有「翻车疲劳」。<b>漏洞在于：</b>普通的技术瑕疵、跑分争议确实属于「正常的舆论拉扯」；但<b>暗箱推广、苛刻限流、要求博主删差评</b>是具有明确法律和商业红线边界的行为，绝不能用一句「黑子常年有」轻描淡写地蒙混过关。</li>
+</ul>
+
+<h3>3. 危险的信号：情绪开始走向非理性人身攻击</h3>
+
+<p>当一款产品引发的失望过度积累，舆情往往会迅速走偏。</p>
+
+<p>在争议爆发后，杨植麟 2015 年玩摇滚乐队时写的歌词（「等我公司上市数钞票，买辆兰博基尼」）被好事者重新翻出来疯传。这个多年前的文艺青年旧梗被生硬地嫁接到这次事件上，变成了攻击创始人「一心只想捞钱」的黑料。</p>
+
+<p>这种现象很危险，但也足够警醒：<b>一旦商业预期管理失控，技术和产品的理性探讨就会迅速退场，随之而来的，是一场连创始人陈年往事都会被卷入其中的非理性狂欢。</b></p>
+
+<a class="backtop" href="#top">↑ 回到目录</a>
+
+<!-- ===== 07 ===== -->
+<h2 id="s07" class="major"><span class="num">07</span>最大的讽刺：这只是一次完全没必要的「画蛇添足」</h2>
+
+<p>复盘这场危机，最令人扼腕的地方在于：<b>Kimi 本来已经赢了前半场。</b></p>
+
+<p>在争议爆发前，海外社区的自发安利一度呈病毒式传播。一位开发者随手发布的「机械手 3D 拆解」演示，短短一个多小时就冲上了 30 多万浏览；多位硬核博主自发拿着它跟 Claude Opus 5.5 做盲测，夸它「又快又好」。</p>
+
+<p>从技术指标看，它也确实有硬实力：长文本任务（SWE-Marathon）领先竞品 5.4 分，金融复杂推理（Frontier Finance）领先近 10 分。<b>即便不花一分钱营销，优质产品在海外自会长腿跑起来。</b></p>
+
+<p>然而，那份急功近利的推广要求，把本来光明正大的技术出海，硬生生拽进了泥潭。海外博主随后自发使用的夸赞词里，已经开始机械地复读官方话术。当受众发现那些看似惊艳的「技术自来水」背后全被塞了推广脚本时，原本真实的技术实力，也瞬间被污染成了「营销造势」。</p>
+
+<a class="backtop" href="#top">↑ 回到目录</a>
+
+<!-- ===== 08 ===== -->
+<h2 id="s08" class="major"><span class="num">08</span>违规与公关自杀：把「灰色潜规则」当出海经验</h2>
+
+<p>有人试图把「要求博主隐瞒赞助、要求删差评」洗白成「国内公关撞上北美生态的文化差异」。</p>
+
+<p><b>这不是文化差异，这是两边都踩线的违法行为。</b></p>
+
+<ul class="lst">
+  <li><b>在海外：</b>美国联邦贸易委员会（FTC）早有明文禁令，任何商业推广必须在开头显著标注 <code>#ad</code>，且品牌方负有连带监管责任。</li>
+  <li><b>在国内：</b>《互联网广告管理办法》同样白纸黑字规定，测评分享带货必须明确标注「广告」。</li>
+</ul>
+
+<p>在国内，软文不标或许因监管密度低而成了心照不宣的潜规则；但把这套投机取巧的玩法带出海，直接撞上了海外对商业诚信近乎苛刻的审视。</p>
+
+<p>更致命的是后续那一记公关昏招——<b>私信要求博主删除负面评论</b>。</p>
+
+<p>原本只是一份推广合同的合规瑕疵，在要求对方删评的那一刻，性质彻底升级为「跨国压制舆论」。这直接给愤怒的社区递上了最硬的实锤，把一场商业纠纷推向了无法挽回的公关自杀。</p>
+
+<a class="backtop" href="#top">↑ 回到目录</a>
+
+<!-- ===== 09 ===== -->
+<h2 id="s09" class="major"><span class="num">09</span>动机复盘：不是缺钱活命，是上市前的「数据焦虑」</h2>
+
+<p>为什么一家估值几百亿美元、刚完成巨额融资的明星独角兽，会在海外推广上做出如此变形的动作？</p>
+
+<p>外界有人猜测是「资金链断裂急着续命」，这显然脱离了商业常识。真相更有可能是另一种压力：<b>冲刺上市前，急于把海外增长曲线做漂亮的政绩焦虑。</b></p>
+
+<p>在递表冲刺的关键节点，管理层不仅需要国内用户量，更迫切需要向资本市场证明：自己的模型在海外开发者圈层同样具备爆发力。当这种自上而下的指标层层下压，经过层层外包给急于冲 KPI 的第三方代理商，最终就变形出了这种「按名单群发、先审后发、强按头夸、掩耳盗铃」的低劣打法。</p>
+
+<a class="backtop" href="#top">↑ 回到目录</a>
+
+<!-- ===== 10 ===== -->
+<h2 id="s10" class="major"><span class="num">10</span>留给所有出海 AI 公司的教训</h2>
+
+<p>Kimi 这次事件，给所有雄心勃勃出海的中国团队上了一堂极为昂贵的合规课：</p>
+
+<ol class="lst">
+  <li><b>别把国内的「营销套路」当做出海利器：</b>海外技术社区极其看重独立与透明。在国内行得通的打点、软广、控评，出海后全都是一点就着的火药桶。</li>
+  <li><b>给真实数据，别给主观定性：</b>跑分领先就是领先，落后就是落后。给社区提供客观基准和透明口径，远比塞一句空洞的「吊打竞品」更具说服力。</li>
+  <li><b>技术硬核，就别让宣发拖后腿：</b>中国模型这两年在全球打出的声誉，全靠底层技术的真刀真枪。如果对自己的技术底座有底气，就大大方方亮出产品，别让短视的营销操盘，透支了全行业好不容易挣来的信任。</li>
+</ol>
+
+<a class="backtop" href="#top">↑ 回到目录</a>
+
+<!-- ===== 附一 ===== -->
+<h2 id="a1" class="minor"><span class="num">附一</span>五条流传说法，逐条核对</h2>
+
+<p style="font-size:13.5px;color:var(--gray);border-left:2px solid var(--line);padding-left:10px">给已经看过二手报道、想核对具体数字的读者。不影响主线结论。</p>
+
+<p>五条里只有一条是真正的事实偏差，一条待证，另外三条是<b>口径问题</b>——而口径问题比数字错误更难察觉，也更容易被两种立场各自利用。</p>
+
+<table class="t">
+<thead><tr><th style="width:32%">流传说法</th><th>核对结果</th></tr></thead>
+<tbody>
+<tr>
+  <td data-th="流传说法">「K3.1 Pro 是 3 万亿参数」</td>
+  <td data-th="核对结果"><b>说明。</b>「3T-class」是档位定性，官方正文写的确切值是 <b>2.8T total / 104B active</b>（MoE）。两个都是官方表述，不矛盾；K3.1 Pro 是 K3 的后训练版本、未换基座，两代参数本就相同。</td>
+</tr>
+<tr>
+  <td data-th="流传说法">「Opus 5.5 $1.30 vs Kimi $0.25，便宜 5 倍」</td>
+  <td data-th="核对结果"><b>口径。</b>不是编造的数字，是被剥掉了口径的数字。5 倍是<b>单任务成本</b>口径：Kimi $1.95 / 6 分钟、Opus $10.35 / 24 分钟，正好 5.3 倍。按 token 单价算，官方定价是 <b>$2/$10 对 $4/$20，即半价</b>。两组数都对，只是从不同时出现。</td>
+</tr>
+<tr>
+  <td data-th="流传说法">「Kimi 连夜要求删帖」</td>
+  <td data-th="核对结果"><b>偏差。</b>原始证据是要求删除<b>一条评论</b>，不是删帖；且私信截图没有发件人身份标识。「连夜」是修辞，「删帖」是事实升格。</td>
+</tr>
+<tr>
+  <td data-th="流传说法">「MiniMax 等中国模型也有同类操作」</td>
+  <td data-th="核对结果"><b>待证。</b>目前只有中文二手转述与其附带的文档片段，<b>未检索到原始推文</b>。可作行业背景提示，不宜当作已证事实。</td>
+</tr>
+<tr>
+  <td data-th="流传说法">「5 小时限额」＝全产品线额度</td>
+  <td data-th="核对结果"><b>口径。</b>5 小时滚动窗口是 <b>Kimi Code 的独立限额</b>，与月度额度池并行扣减；<b>Kimi Work 不受此限</b>。混用口径会让「额度翻车」的指控失准。</td>
+</tr>
+</tbody>
+</table>
+
+<p><b>为什么值得单列。</b>这五条有一个共同方向：它们都让指控<strong>更整齐、更好传播</strong>。一篇批评「营销不诚实」的文章，如果在事实层面也出现同向偏差，它攻击公信力的基础就会被自己削弱一分。这不是给 Kimi 开脱——恰恰相反，把口径问题挑明之后剩下的那部分，才是真正站得住的。</p>
+
+<p>特别说明第二条。它在两个方向上都容易走偏：说「Kimi 造假」不成立，因为 5 倍有实测支撑；说「Kimi 的 5 倍是真的」也不成立，因为按大多数人实际付费的方式（token 单价）算，它是半价。<strong>准确的说法是：同一家公司在三套口径下给出了三个成本叙事，而每个渠道只展示其中一个。</strong>这不是数字错误，是口径管理问题，而它比数字错误更难反驳——因为每一个单独看都是真的。</p>
+
+<a class="backtop" href="#top">↑ 回到目录</a>
+
+<!-- ===== 附二 ===== -->
+<h2 id="a2" class="minor"><span class="num">附二</span>还没坐实的事</h2>
+
+<p>下面这些还没确认，正文里涉及它们的说法，都按证据强度打了折。</p>
+
+<ol class="lst">
+  <li><b>投放主体未确认</b>——自营团队、海外代理商、还是中间人群发，决定危机定性（公司行为还是供应链失控）。第五节给出的「群发 brief」是假设，不是结论。</li>
+  <li><b>brief 文档的创建者未确认</b>——访客视图水印证明了载体平台，证明不了创建者是谁。</li>
+  <li><b>3D 能力是否依赖 Tripo 外部 API</b>——有脚本名、版本号对应与界面截图，但无官方文档证实；源为 Reddit 开发者单方挖掘加转述，「禁用后效果下降」是他自述。</li>
+  <li><b>免费档与 Pro 档是否跑不同模型、不同 reasoning effort</b>——Eian 自己提过「是因为我是免费用户吗」。不查清的话，大量「实测不行」的吐槽可能存在<b>档位混淆</b>，两边在拿不同的东西打架。<b>这条最该优先解决。</b></li>
+  <li><b>「$1.30 / $0.25」的原始出处</b>——结构与 5.3 倍的实测一致，疑出自投放文档内的另一份测算，但没找到原始出处。</li>
+  <li><b>MiniMax 同类案例的原始推文</b>——目前只见中文二手转述与文档片段。</li>
+  <li><b>「鹈鹕骑车被专门优化」</b>——口头判断，无技术佐证，只作方向性提示。</li>
+  <li><b>智能指数 55 分 / 全球第 4 / 开源第 1</b>——来自二手引用 Artificial Analysis，未回一手数据页。另有二手引用称 Opus 5.5 为 58 分，同样未回一手，故本文不用作论据。</li>
+  <li><b>各帖最终互动数据</b>——所有查看量与点赞数仍在上行，本文统一取 10-25 08:05 的检索值。</li>
+  <li><b>FTC 罚则的具体金额</b>——仅见二手法律博客引用，未从原文核实。</li>
+  <li><b>「官方零回应」的检索边界</b>——检索范围限于官网、官方公众号与 X 账号 @Kimi_Moonshot，截止 10-25 08:05；不排除存在没检索到的渠道（客服话术、定向回复、代理商私下沟通）。</li>
+  <li><b>Elshayib 粉丝数的具体值</b>——两版截图分别为 6,280 与 5,623，时点不明、方向相反，故全文不引用具体数字，只写「5–6k 量级、关注数多于粉丝数」。</li>
+</ol>
+
+<a class="backtop" href="#top">↑ 回到目录</a>
+
+<footer>
+  <span class="ft-h">说明</span>
+  <div class="layer"><b>数字</b><span>查看量与点赞数仍在上涨，全文取 10 月 25 日早 8 点的检索值；三处取自截图当时的中途值，已在第二节末尾注明。</span></div>
+  <div class="layer"><b>素材</b><span>公开报道两篇、X 平台公开帖与留言区原话，以及官方发布页与错误码文档。凡没回到一手的数字，附二逐条列出。</span></div>
+
+  <p class="sign">尚盐　｜　盐的差评　｜　2026-10-25</p>
+</footer>
+
+</div>
+</body>
+</html>

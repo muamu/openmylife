@@ -12,6 +12,7 @@
 
 > 每天一条，宁缺毋滥 —— 值得看才推，努力日更。
 
+- **2026-10-25** · [Kimi 3.1 发布即翻车？比起暗广营销，真正背刺用户的是额度](https://github.com/muamu/openmylife/blob/main/critiques/ai-industry/2026-10-kimi-k3-1-pro-pr-crisis/index.html) —— 三条线同时起火，硬度完全不同：额度线有官方错误码与文档可复核，营销线最致命的一条至今只有单方截图。核心不是请 KOL，而是要求把商业内容伪装成自发口碑。
 - **2026-10-24** · [AI 审美的三层结构：默认审美、调节层与上限层](https://openmylife.xyz/articles/ai/aesthetic-three-layers.html) —— 默认审美是统计引力，提示词是意图翻译，模型能力是细节天花板；治错层最挫败。
 - **2026-10-24** · [Seedance 2.5 4K 之后，特效行业真正的分水岭不是裁员](https://openmylife.xyz/articles/ai/seedance-4k-vfx-industry.html) —— 需求会涨、五毛特效有活路、大规模失业没发生，这三条只对了一半：单价崩得比需求快，「不裁员」是把全职换成了外包。
 - **2026-10-24** · [推理模型进游戏工业：三种能力被重估，和一个错位](https://openmylife.xyz/articles/ai/reasoning-models-game-industry.html) —— 能力最强的工程与工具链环节在玩家视野之外；被玩家看见的美术生成，用了反而掉分。
@@ -59,7 +60,7 @@ OpenMyLife 是一套「把自己当成长期维护的开源项目」的方法与
 | [ideas](./ideas) | 灵感备忘录（随手记） | 更新中 |
 | [notes](./notes) | 思考与阅读笔记（按领域分目录，含 `insights/` 洞察集、`agent-collaboration/` Agent 协作） | 更新中 |
 | [agents](./agents) | AI Agent 使用产物（角色 / 工作流 / 趣味提示词 / skill 插件） | 进行中 |
-| [critiques](./critiques) | 产品报告 / 评测 / 建议（按领域分目录，如 Agent 框架、个人助理 Agent、金融/港股A股、AI 审美、创意产业） | 更新中 |
+| [critiques](./critiques) | 产品报告 / 评测 / 建议（按领域分目录，如 Agent 框架、个人助理 Agent、金融/港股A股、AI 行业、AI 审美、创意产业、汽车产业） | 更新中 |
 | [career](./career) | 职业与方法论 | 计划 |
 | [products](./products) | 做过的产品（build in public） | 计划 |
 | [stories](./stories) | 非常规经历复盘 | 计划 |
