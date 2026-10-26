@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#ffffff">
+<title>OpenAI 日更到第 20 天：为什么 88% 的票押它「今天别交了」</title>
+<meta name="description" content="28 天冲刺走到第 20 天：10 天交付、10 次重置，88% 的票在押它交不出来。拿额度当赌注的军令状，撞上 Google Labs 那句「你不能微波好点子」。">
+<style>
+  :root{
+    --paper:#FFFFFF;
+    --ink:#0E1013;
+    --body:#26292D;
+    --grey:#5A6068;
+    --faint:#8D939B;
+    --rule:#D5D9DE;
+    --hair:#E7EAEE;
+    --blue:#16527F;
+    --blue-soft:#F3F8FC;
+    --blue-mid:#E3EEF7;
+    --wine:#8F2F38;
+    --wine-soft:#FDF4F4;
+    --wine-mid:#F7E2E3;
+    --yellow:#FFF0B3;
+    --serif:"Source Han Serif SC","Noto Serif SC","Songti SC",STSong,Georgia,SimSun,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,"Liberation Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--body);
+    font-size:15px;
+    line-height:1.82;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:706px;margin:0 auto;padding:0 20px 88px;}
+
+  /* ============ 报头 ============ */
+  header{padding:34px 0 20px;border-bottom:2px solid var(--ink);}
+  .kicker{
+    font-size:12px;color:var(--blue);font-weight:600;
+    letter-spacing:0;margin-bottom:16px;
+  }
+  .kicker::before{content:"";display:inline-block;width:18px;height:2px;background:var(--blue);vertical-align:4px;margin-right:8px;}
+  h1{
+    font-family:var(--serif);
+    font-size:clamp(27px,6.4vw,40px);
+    line-height:1.28;font-weight:700;letter-spacing:-.02em;
+    color:var(--ink);margin-bottom:16px;
+    text-wrap:balance;
+  }
+  .sub{
+    font-size:15px;color:var(--grey);line-height:1.8;
+    max-width:62ch;
+  }
+  .meta{
+    margin:20px 0 0;padding-top:12px;
+    border-top:1px solid var(--rule);
+    font-size:11.5px;color:var(--faint);line-height:1.75;
+  }
+  .meta span{display:block;width:100%;}
+  .meta b{color:var(--grey);font-weight:600;font-family:var(--mono);font-size:11px;}
+
+  /* ============ 三个数 ============ */
+  .stats{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    border:1px solid var(--hair);
+    border-top:2px solid var(--blue);
+    background:#FCFDFE;
+    margin:24px 0 0;
+  }
+  .stat{
+    padding:13px 8px;text-align:center;
+    border-right:1px solid var(--hair);
+  }
+  .stat:last-child{border-right:none;}
+  .stat .v{
+    display:block;
+    font-family:var(--mono);
+    font-size:clamp(22px,5.5vw,27px);font-weight:600;line-height:1.15;
+    letter-spacing:-.04em;color:var(--ink);
+    font-variant-numeric:tabular-nums;
+  }
+  .stat .k{
+    display:block;margin-top:5px;
+    font-size:10.5px;color:var(--grey);line-height:1.5;
+  }
+  .stat.ok .v{color:var(--blue);}
+  .stat.bad .v{color:var(--wine);}
+
+  /* ============ 摘要 ============ */
+  .thesis{
+    margin:24px 0 0;padding:18px 16px;
+    border-left:4px solid var(--blue);
+    background:var(--blue-soft);
+  }
+  .thesis .lead{
+    font-size:11.5px;color:var(--blue);
+    font-weight:700;margin-bottom:10px;
+  }
+  .thesis .lead::before{content:"■";font-size:8px;margin-right:7px;vertical-align:2px;}
+  .thesis p{font-size:14.5px;line-height:1.85;}
+  .thesis p + p{margin-top:10px;}
+
+  /* ============ 目录 ============ */
+  nav.toc{margin:26px 0 0;}
+  nav.toc .cap{display:block;font:600 11px/1 var(--mono);color:var(--faint);margin-bottom:8px;letter-spacing:.06em;}
+  nav.toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:5px;}
+  nav.toc a{
+    display:block;text-decoration:none;color:var(--body);
+    background:#F5F6F7;border-left:2px solid #C3C9CE;border-bottom:none;
+    padding:5px 9px;font-size:12.5px;line-height:1.4;
+  }
+  nav.toc a i{font:600 10.5px var(--mono);color:var(--faint);font-style:normal;margin-right:5px;}
+
+  /* ============ 正文 ============ */
+  section{margin-top:46px;}
+  h2{
+    font-family:var(--serif);
+    font-size:clamp(18px,4.2vw,22px);
+    font-weight:700;line-height:1.45;letter-spacing:-.01em;
+    color:var(--ink);
+    display:flex;align-items:baseline;gap:11px;
+    background:var(--blue-soft);
+    border-left:4px solid var(--blue);
+    padding:12px 14px;
+    margin:0 -14px 22px;
+  }
+  h2 .n{
+    font-family:var(--mono);
+    font-size:12px;font-weight:600;
+    color:var(--blue);opacity:.75;
+    flex:0 0 auto;letter-spacing:0;
+  }
+  p{margin-bottom:15px;}
+  p:last-child{margin-bottom:0;}
+  strong{font-weight:700;color:var(--ink);}
+  mark{background:var(--yellow);color:inherit;padding:0 3px;border-radius:2px;}
+  code{
+    font-family:var(--mono);font-size:.88em;
+    color:var(--blue);background:var(--blue-soft);
+    padding:1px 5px;border-radius:2px;
+  }
+  a{color:var(--blue);text-decoration:none;border-bottom:1px solid currentColor;}
+  :focus-visible{outline:2px solid var(--blue);outline-offset:3px;}
+  .backtop{
+    display:inline-block;margin-top:20px;
+    font:11px/1.6 var(--mono);color:var(--faint);
+    text-decoration:none;border-bottom:none;
+  }
+
+  /* ============ 投票条 ============ */
+  .poll{
+    margin:26px 0;padding:16px 16px 14px;
+    border:1px solid var(--hair);border-top:2px solid var(--ink);
+    background:#FCFDFE;
+  }
+  .poll-title{font-size:13px;font-weight:700;color:var(--ink);line-height:1.6;margin-bottom:14px;}
+  .poll-row{
+    display:grid;grid-template-columns:52px 1fr 40px;gap:10px;
+    align-items:center;margin:9px 0;font-size:12.5px;color:var(--grey);
+    font-variant-numeric:tabular-nums;
+  }
+  .track{height:8px;background:#E2E7EB;overflow:hidden;}
+  .fill{height:100%;background:var(--wine);}
+  .poll-row b{
+    text-align:right;font-family:var(--mono);font-weight:600;
+    color:var(--ink);font-size:12.5px;
+  }
+  .poll-note{margin:14px 0 0;font-size:11.5px;color:var(--faint);line-height:1.65;}
+
+  /* ============ 强调块 ============ */
+  .standfirst{
+    margin:26px 0;padding:18px 16px 18px 18px;
+    background:var(--blue-soft);
+    border-left:4px solid var(--blue);
+    font-family:var(--serif);
+    font-size:clamp(18px,4.4vw,21px);line-height:1.72;font-weight:700;
+    color:var(--ink);
+  }
+  .standfirst p:last-child{margin-bottom:0;}
+
+  .quote-big{
+    margin:30px 0;padding:20px 16px;
+    border-top:1px solid var(--blue);border-bottom:1px solid var(--blue);
+    color:var(--blue);text-align:center;
+    font-family:var(--serif);
+    font-size:clamp(24px,6.4vw,31px);line-height:1.5;font-weight:800;
+    letter-spacing:-.01em;
+  }
+
+  .punch{
+    margin:30px 0 4px;
+    color:var(--wine);
+    font-family:var(--serif);
+    font-size:clamp(22px,5.6vw,28px);line-height:1.5;font-weight:800;
+    letter-spacing:-.02em;
+  }
+
+  /* ============ 时间线 ============ */
+  .timeline{margin:24px 0 30px;border-top:1px solid var(--rule);}
+  .event{
+    display:grid;grid-template-columns:64px 1fr;gap:12px;
+    padding:14px 0;border-bottom:1px solid var(--rule);
+  }
+  .event .day{
+    padding-top:2px;
+    font-family:var(--mono);font-size:11px;font-weight:600;
+    color:var(--blue);letter-spacing:.02em;line-height:1.7;
+    font-variant-numeric:tabular-nums;white-space:nowrap;
+  }
+  .event p{font-size:14px;line-height:1.8;margin:0;}
+
+  /* ============ 红块 ============ */
+  .contrast{
+    margin:28px 0;padding:16px 16px 16px 18px;
+    background:var(--wine-soft);border-left:4px solid var(--wine);
+  }
+  .contrast p{font-size:14.5px;line-height:1.82;margin-bottom:10px;}
+  .contrast p:last-child{margin-bottom:0;}
+  .contrast strong{color:var(--wine);}
+
+  /* ============ 流程对比 ============ */
+  .flow{margin:26px 0;border:1px solid var(--hair);}
+  .flow-row{padding:14px 16px;}
+  .flow-row + .flow-row{border-top:1px solid var(--hair);}
+  .flow-row.new{background:var(--blue-soft);}
+  .flow-label{
+    display:block;margin-bottom:6px;
+    font-size:11px;font-weight:700;letter-spacing:.04em;
+    color:var(--faint);
+  }
+  .flow-row.new .flow-label{color:var(--blue);}
+  .flow-row p{font-size:14.5px;line-height:1.8;margin:0;}
+
+  /* ============ 三条尺子 ============ */
+  .rules{list-style:none;counter-reset:rule;margin:22px 0 28px;}
+  .rules li{
+    position:relative;padding:16px 0 16px 46px;
+    border-top:1px solid var(--rule);counter-increment:rule;
+  }
+  .rules li:last-child{border-bottom:1px solid var(--rule);}
+  .rules li::before{
+    content:counter(rule);
+    position:absolute;left:0;top:18px;
+    width:28px;height:28px;
+    background:var(--blue);color:#FFFFFF;
+    text-align:center;
+    font-family:var(--mono);font-size:13px;font-weight:700;line-height:28px;
+  }
+  .rules p{font-size:14.5px;line-height:1.8;margin:0;}
+  .rules strong{display:block;font-size:15.5px;margin-bottom:3px;}
+
+  /* ============ 结尾 ============ */
+  .ending{
+    margin:52px -20px 0;padding:28px 20px 34px;
+    color:#FFFFFF;background:#243746;
+  }
+  .ending .kicker{
+    color:#A9C7DA;font-size:13px;font-weight:700;
+    margin-bottom:0;
+  }
+  .ending .kicker::before{display:none;}
+  .ending h2{
+    display:block;
+    margin:6px 0 18px;padding:0;
+    background:none;border:none;
+    color:#FFFFFF;font-size:clamp(26px,6vw,34px);
+  }
+  .ending p{color:#E4EDF2;font-size:14.5px;line-height:1.85;}
+  .ending .last{
+    margin-top:24px;padding-top:20px;border-top:1px solid #506474;
+    color:#FFFFFF;font-family:var(--serif);font-size:clamp(18px,4.4vw,21px);
+    font-weight:700;line-height:1.7;
+  }
+
+  /* ============ 页脚 ============ */
+  footer{
+    margin:0 -20px;padding:20px 20px 30px;
+    background:#243746;color:#B8C6D0;
+    font-size:11.5px;line-height:1.8;
+  }
+  footer p + p{margin-top:7px;}
+  footer .sign{
+    margin-top:14px;padding-top:12px;
+    border-top:1px solid #3C4F5E;color:#DCE7EE;
+    font-size:12px;letter-spacing:.02em;
+  }
+
+  @media (min-width:700px){
+    body{font-size:16px;line-height:1.85;}
+    .wrap{padding:0 36px 104px;}
+    header{padding:44px 0 22px;}
+    h1{font-size:40px;}
+    .sub{font-size:16px;}
+    h2{margin:0 -18px 24px;padding:13px 18px;}
+    .thesis{padding:22px 22px;}
+    .thesis p{font-size:15px;}
+    .poll{padding:18px 20px 16px;}
+    .standfirst{padding:22px 24px;}
+    .event{grid-template-columns:70px 1fr;gap:14px;padding:15px 0;}
+    .event p{font-size:14.5px;}
+    .flow-row{padding:16px 20px;}
+    .rules li{padding:18px 0 18px 50px;}
+    .rules li::before{top:20px;}
+    .ending{margin:56px -36px 0;padding:34px 36px 40px;}
+    footer{margin:0 -36px;padding:22px 36px 34px;}
+  }
+
+  @media (max-width:360px){
+    .stats .k{font-size:10px;}
+    .poll-row{grid-template-columns:48px 1fr 36px;gap:8px;}
+    .event{grid-template-columns:60px 1fr;gap:10px;}
+    .rules li{padding-left:40px;}
+    .rules li::before{width:26px;height:26px;line-height:26px;font-size:12px;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+  }
+  @media print{
+    .wrap{max-width:none;padding:0;}
+    .ending,footer{color:#000;background:#fff;}
+    .ending p,footer p,.ending .last{color:#000;}
+    .backtop,nav.toc{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+
+<header>
+  <div class="kicker">产业观察 · 28 天冲刺 · 第 20 天记录</div>
+  <h1>OpenAI 日更到第 20 天：为什么 88% 的票押它「今天别交了」？</h1>
+  <p class="sub">10 天交出东西、10 次额度清零，一场每天被用户现场打分的实验。</p>
+  <div class="meta">
+    <span><b>2026-10-26</b>　｜　对象：OpenAI · Codex / ChatGPT Work</span>
+    <span>窗口：2026-10-05 → 11-01；正文取数停在 Day 20（10-24）</span>
+    <span>状态：public · 数字级事实待复核</span>
+  </div>
+</header>
+
+<div class="stats" aria-label="冲刺第 20 天数据">
+  <div class="stat ok"><span class="v">10</span><span class="k">天交付改进</span></div>
+  <div class="stat bad"><span class="v">10</span><span class="k">次额度重置</span></div>
+  <div class="stat bad"><span class="v">88%</span><span class="k">投票选择重置</span></div>
+</div>
+
+<div class="thesis">
+  <div class="lead">速览</div>
+  <p>过去三周，OpenAI 每天都在回答同一个问题：今天交得出东西吗。交不出，就给全体付费用户把额度清零。而盯着这个赌局的人，多数希望它交不出。</p>
+  <p>对普通用户，立刻到账的额度比更新日志里那句「路由优化」实在得多。对写代码的人，这 20 天真正变的是响应速度、上下文长度，和一层正在被撤掉的脚手架。</p>
+  <p>而 OpenAI 自己给这 20 天定的方向是减法：选择器、推理档位、角色配置，一层层往下砍。</p>
+</div>
+
+<nav class="toc" id="toc" aria-label="本文章节">
+  <span class="cap">本文章节</span>
+  <ul>
+    <li><a href="#s01"><i>01</i>事情是被什么逼出来的</a></li>
+    <li><a href="#s02"><i>02</i>20 天的账</a></li>
+    <li><a href="#s03"><i>03</i>你不能微波好点子</a></li>
+    <li><a href="#s04"><i>04</i>冲刺真正产出的</a></li>
+    <li><a href="#s05"><i>05</i>如果你也想用这招</a></li>
+    <li><a href="#s06"><i>06</i>怎么判断真干活</a></li>
+    <li><a href="#end"><i>尾</i>第 29 天</a></li>
+  </ul>
+</nav>
+
+<p>10 月 24 日，程序员节。OpenAI 的 28 天冲刺走到第 20 天。</p>
+<p>当天的交付物是一句话：Rest and reset。休息，重置。付费账号的额度清零一次，没有别的。</p>
+<p>如果在别的公司，这叫进度落后。在这里，它是规则允许的结果——从 10 月 5 日起，Tibo 给团队定的规矩就是二选一：每天要么交出一件「大多数 Codex 和 ChatGPT Work 用户能感知的改进」，要么给所有付费账号来一次额度全清。没有第三种。</p>
+<p>20 天下来，账是这样的：10 天只有改进，7 天只有重置，3 天两样一起给。重置一共发了 10 次。</p>
+<p>有人做了个第三方记分牌（didcodexreset.com），每天挂一个投票。Day 20 那天，20985 人投「重置」，2818 人投「改进」，88% 对 12%。往前翻，Day 13 是 93%，Day 7 是 92%，Day 12 是 86%。</p>
+
+<div class="poll" role="img" aria-label="第三方记分牌投票：第 20 天 88% 选择重置，第 13 天 93%，第 7 天 92%，第 12 天 86%">
+  <p class="poll-title">第三方记分牌：你选择「重置」还是「改进」？</p>
+  <div class="poll-row"><span>Day 20</span><div class="track"><div class="fill" style="width:88%"></div></div><b>88%</b></div>
+  <div class="poll-row"><span>Day 13</span><div class="track"><div class="fill" style="width:93%"></div></div><b>93%</b></div>
+  <div class="poll-row"><span>Day 7</span><div class="track"><div class="fill" style="width:92%"></div></div><b>92%</b></div>
+  <div class="poll-row"><span>Day 12</span><div class="track"><div class="fill" style="width:86%"></div></div><b>86%</b></div>
+  <p class="poll-note">图中比例为选择「重置」的投票占比。Day 20：重置 20985 票，改进 2818 票。</p>
+</div>
+
+<div class="standfirst"><p>一个产品的用户，集体盼着它失败。而且盼得很具体：求你今天别交东西，直接把额度发了——这话每个被产品经理折腾过的人都熟，就是那句「求求你别迭代了，直接给我发钱吧」。</p></div>
+<p>这 88% 不是在贪小便宜。9 月 29 日 DevDay 之后那三周，很多人经历的是模型变慢、报错刷屏、那句「Selected model is at capacity」反复弹。在这种体验之后，一个写在更新日志里的「路由命中率优化」，和一个立刻到账、够你把一晚上的活儿跑完的额度，哪个更实在，不用算。</p>
+<p><mark>承诺是以后的事，额度是现在的事。</mark>被降速降了三周的人，会先拿现在这个。</p>
+
+<section id="s01">
+  <h2><span class="n">01</span>事情是被什么逼出来的</h2>
+  <p>9 月 29 日，DevDay。二十多个东西一口气放出来：GPT-6.1 Sol、新版 Codex、常驻型智能体 Dots、Ultrafast 速度档，还有一整套插件生态。</p>
+  <p>欢呼了大概三天。</p>
+  <p>然后反馈回来了，三条：额度被压了，模型变慢了，Sol 上线头两天直接顶不住负载。</p>
+  <p>Tibo 自己出来道歉，把原因归到负载激增，顺手给所有付费账号做了一次全球重置。这是他今年第很多次用重置说话：4 月一次，7 月一天之内两次（因为 Codex 并进桌面端搞坏了部分多智能体工作流），800 万活跃用户时一次，DevDay 现场又当场发了一波。</p>
+  <p>所以 10 月 4 日他先发了更收敛的一条：团队「锁定」四个方向——把产品做简单、把效率提到能换出更多用量、做突破性功能、上新模型。原话是「反馈很明确，大家希望事情变简单」。</p>
+  <p>第二天，赌约来了。</p>
+  <p>这个赌约的设计比赌约本身聪明。他押的是额度——用户可以立刻感知、立刻验证、并且已经期待了半年的东西。OpenAI 花了几个月把「重置」训练成一种信号，等到真要立军令状，手里已经有一种现成的、有公信力的、当场能兑现的货币。</p>
+  <div class="standfirst"><p>这是组织的本事，不是话术。想发一次全量清零，得先有能承住这次容量的算力。</p></div>
+  <p>还有一层原因，他没在推上说。</p>
+  <p>2015 年，Tibo 在 Google 伦敦做过一个移动端加速项目。做了两年，总部 VP 飞过来当场砍掉，理由是「只有几百个用户」，够不上 Google 要的规模。他后来复盘这件事，落点很重：不能相信产品经理说的「进展顺利」，工程师得自己盯着真实用户数、盯着这东西到底有没有人要用。</p>
+  <p>一个被「几百个用户」砍过项目的人，在 DevDay 之后看到「发布会很热闹、用户很生气」，会做什么？他不会再去写一份漂亮的复盘。他会找一个用户每天都能自己验证的指标，让全队每天面对它。</p>
+  <a class="backtop" href="#toc">↑ 回到目录</a>
+</section>
+
+<section id="s02">
+  <h2><span class="n">02</span>20 天的账，比宣传难看，也比想象的诚实</h2>
+  <p>前半程是有硬货的。</p>
+  <p>Day 1，GPT-6 Astra 和 Sol 的默认速度从每秒约 30 个 token 提到约 50。官方口径说「提升 50%」，按 30 到 50 算是三分之二——两个数都是粗估，不是基准测试。</p>
+  <p>先说用户这边。30 到 50 不是跑分。写过代码的人大概都有体会：模型迟两秒，你的思路就断了，得重新把上下文捡回来。这个门槛跨过去，人才敢把 agent 当成活的东西一起干活，而不是丢一个任务去泡杯茶等结果。Tibo 自己的说法是，以前他开一堆并发，后来速度上来了，他反倒把并发数降回去了——因为够快，他终于能重新进入心流。</p>
+  <p>再说工程这边。这次提速不只在自己产品里生效。通过 Sign in with ChatGPT，OpenCode、Pi、Amp、Devin 一起变快。改的是推理侧，不是客户端，所以用户在哪儿都能摸到。</p>
+
+  <div class="timeline" aria-label="冲刺关键交付记录">
+    <div class="event"><span class="day">DAY 07</span><p>Sol 在 Codex 和 Work 里的默认上下文从 272k 提到 500k，接近八成，还能手动拉到 1M。</p></div>
+    <div class="event"><span class="day">DAY 09</span><p>桌面端磁盘占用砍掉六成。</p></div>
+    <div class="event"><span class="day">DAY 11</span><p>「模型容量不足」的报错显著减少，而且出错会自动恢复、接着跑。</p></div>
+    <div class="event"><span class="day">DAY 12—16</span><p>全是缓存和路由：子代理之间复用上下文、请求路由提命中率、登录用户缓存永久保留。</p></div>
+  </div>
+
+  <p>这些不是「改个文案」的量级。那为什么敢把 4000 万用户的产品摆到砧板上天天切？</p>
+  <p>底牌在底层。Codex 的引擎核心是用 Rust 重写的（<code>codex-rs</code>）——这个选择当时很反直觉，因为模型对 Python 和 TypeScript 的熟悉程度远高于 Rust。运行时隔离用的是 Kata Containers，要的是「像虚拟机一样安全，像容器一样快」。把每个 agent 的运行环境做成能秒级起停、带资源上限的沙箱，一天端一道菜才不会把厨房炸了。</p>
+  <p><mark>日更靠的不是勇气，是这些设施。</mark>发布这条路早就被修成了流水线。</p>
+  <p>后半程的画风变了。</p>
+  <p>Day 19 的交付是：Dots 的电话接得更快、改推理档位不再让缓存失效、CLI 更新。都是好东西，但你很难说这是「大多数用户能感知的改进」。Day 20 干脆没有。</p>
+  <p>Day 18 最能看出这条线划在哪儿。那天他宣布 Decisions API 正式可用、OpenResponses 进了 Linux Foundation、上线一批性能改进、Uber 全面采用 Codex 和 Work。然后他自己判了一次重置——因为这些都不算「大多数用户能感知」。</p>
+  <p>在一个被砍过项目的人眼里，「我们发布了重大 API」和「真的有人在用」是两件事，只有后者算数。做基础设施的人在这条线上最吃亏：他们那天的活干得并不差，只是这类东西的收益要过几个月才显出来。但这条线只认当天手感，没人摸到，就等于没交。</p>
+
+  <div class="contrast">
+    <p>然后是同一个月里的另一件事。<strong>10 月 30 日</strong>，冲刺走到第 26 天，200 美元的 Pro 套餐额度从 Plus 的 20 倍砍到 10 倍，价格不动。同时上一个月费 500 美元、25 倍额度的新档，和一个最高 8 倍速的 Ultrafast。</p>
+    <p>所以这 28 天里，一边发止痛药，一边改账单。额度发完就没了，砍掉的那一半不会还回来。留下来的是效率和速度。</p>
+  </div>
+  <a class="backtop" href="#toc">↑ 回到目录</a>
+</section>
+
+<section id="s03">
+  <h2><span class="n">03</span>那句话：你不能微波好点子</h2>
+  <p>10 月 11 日，冲刺的第 7 天，Google Labs、Gemini App 和 AI Studio 的负责人 Josh Woodward 上了刚采访过 Tibo 的同一档播客。</p>
+  <p>他说，好点子很少来自设计冲刺，也很少来自你在日历上专门划出来的「我们来想下一个点子」的时间。它们通常出现在人游荡在走廊里、周末、假期的时候。</p>
+  <div class="quote-big"><p>你不能微波好点子。</p></div>
+  <p>NotebookLM、Flow、AI Studio、Google Beam，按他的说法都不是立项做出来的，是一小撮人对某件事痴迷到停不下手，回来发一段视频说「你得看看这个」。他还补了一刀：看数据，大公司自建实验室通常三四年就熄火，或者永远没法把东西商业化。</p>
+  <p>字面上，这是冲着「28 天冲刺」这类东西来的。</p>
+  <p>但他真正在意的那样东西，跟这场冲刺其实是一回事。他特别看重一个词：反学习速率——一个人能多快学会一样东西，又能多快地放下它。他还有一句我很喜欢：费德勒有「爆发式耐力」，拼得很猛，但能持续很久，找得到自己的节奏。</p>
+  <p>把「反学习速率」放到日更的语境里，意思就变了：面对每天往你脸上推的新东西，卡人的不是学不会，是舍不得扔。上个月还在改的那套系统提示词、那几条专门防它胡说的规则、那个顺手的工作习惯，模型一升级，全成了沉没成本。</p>
+  <p>那他和 Tibo 到底谁对？</p>
+  <p>把两人的话摆一起会发现他们不矛盾，只是站在同一条流水线的不同段。Josh 自己就把工作切成三段：0 到 1 的 Labs，1 到 10 的 Labs，10 到 100。第一阶段你看的是「有没有人眼睛发亮」，最后阶段你看的是漏斗、获客成本、「怎么把人推到那个魔法瞬间」。他也承认，有些东西两天前看到、48 小时后就成了一个项目，「你没法那样规划」。</p>
+  <p>Tibo 这场冲刺从头到尾在第三段里干活。4000 万活跃用户的产品，不会因为谁周末在走廊里灵光一现就转向。它只能靠每天磨。</p>
+  <p>两个人对未来的赌注，其实押在不同方向上。Josh 说他和 Logan Kilpatrick 在内部吵了很久：五年后 Google 是一万款各有品牌的产品，还是只有五款、大量体验由模型现场生成、背后一堆 agent、用户面对同一个主界面？他没有答案，Labs 里同时在跑两种推演。Tibo 的答案更硬：互联网上的大多数行为会由 agent 完成；模型会变得又快又便宜；所有模态会缝在一起。他还说，本地和云会走向混合——因为 agent 要用的算力，迟早超过一台笔记本的上限。</p>
+  <p>一个在推演「产品还剩几个」，一个在推演「入口还剩几个」。这两件事，决定了未来五年做 AI 产品的人都要重新回答一遍：你到底是在做产品，还是在做界面。</p>
+  <div class="standfirst"><p>别扭就在这儿：这场冲刺用的是 0 到 1 的语气——激情、赌约、军令状，干的是 10 到 100 的活——清缓存、提命中率、砍磁盘占用。这也解释了它为什么看着有点像作秀，又确实有东西落地。</p></div>
+  <a class="backtop" href="#toc">↑ 回到目录</a>
+</section>
+
+<section id="s04">
+  <h2><span class="n">04</span>冲刺真正产出的，不是功能</h2>
+  <p>20 天里被改掉的东西，最要紧的一个是可见性。</p>
+  <p>一个四千万用户的产品，路线图变成了一张公开的每日考核表：每天几点交、交什么，都摆在时间线上，外面还有人替你记账、替你投票。这在过去不可想象——产品团队最怕的就是让用户看见内部节奏。</p>
+  <p>第二个被忽略的变化，是「效率」被放到了产品功能的位置上。</p>
+  <p>对 agent 产品来说，一次任务能跑多久、跑多深，直接取决于每 token 多贵、缓存命中多高、上下文能撑多大。这些过去是基础设施指标，现在就是产品体验。Day 1 的提速、Day 7 的上下文、Day 12 的缓存复用，本质是同一个动作：在同样的算力预算里，让用户多干一点活。</p>
+  <p>第三个变化在开发方式上，影响比前两个更远。</p>
+  <p>Tibo 描述的新流程是这样的：人来定义意图和边界——资源上限、数据权限、安全保证、几条不能破的红线，然后把这整套东西当成黑盒交给 agent，里面多少行、怎么组织，人不关心。老流程是写代码、人审、单测、手动部署、长期维护。新流程是定义边界、AI 生成并自测自审、自动部署、自动升级重构。</p>
+
+  <div class="flow" aria-label="新旧开发流程对比">
+    <div class="flow-row"><span class="flow-label">老流程</span><p>写代码 → 人审 → 单测 → 手动部署 → 长期维护</p></div>
+    <div class="flow-row new"><span class="flow-label">新流程</span><p>定义边界 → AI 生成并自测自审 → 自动部署 → 自动升级重构</p></div>
+  </div>
+
+  <p>他确实是这么干活的：大部分时间用手机语音把任务口述下去，晚上把复杂的架构设想丢给 Codex 跑一宿，第二天早上看报告和原型。</p>
+  <p>这有点像从施工队变成甲方：活派下去，第二天验收，中间不看。区别是，甲方至少看得懂图纸；现在很多人不太敢点开代码看里面写了什么。</p>
+  <p>这里还有一条暗线：模型越强，外面那层脚手架越薄。他管 harness 叫「拐杖」——早期模型不行，得在每一轮塞大量开发者消息、写专门的 <code>/goal</code> 命令逼它记住几周之后的目标。新一代模型自己就会长程规划，那根拐杖就该撤了，<code>/goal</code> 已经被淘汰。</p>
+  <p>拐杖撤掉这件事，一线写代码的人比产品经理先感觉到。</p>
+  <p>冲刺走到第 20 天前后，一个朋友跟我聊他的工作流，扔过来一句：现在角色（Role）也不重要了，Codex 里压根没这个安排，以后直接用 ChatGPT Work 就行。</p>
+  <p>我回去翻自己在 IDE 里配的那一堆角色：专门管 TODO 的、专门限制它不许擅自执行的、只负责往下派任务的。每一个都是当初为了让模型别跑偏才写的——那时候通用模型一脱缰就在律所文书和医疗报告的语气之间乱窜，不给它安一个身份、塞一段前置提示，它就不肯好好说话。</p>
+  <p>现在这些约束开始碍事了。它自己知道先读什么、等什么、哪一步不该碰，你硬套一个角色，等于多包一层将来还得自己拆的壳。</p>
+  <p>放出来的已经这样了。他说还有一个比 Astra 更强的版本训练好了没放——要面向十二亿人，不能赌。</p>
+  <p>这些话串起来是这个意思：产品复杂度不是在增加，是在往一个方向收——收到用户只剩一个输入框，和一句「你帮我搞定」。Tibo 说得很不客气：那个下拉菜单里塞着 Astra、Sol、Luna，每个还分好几档推理强度，选哪个够用、开多高不算浪费，「你简直需要一个模型选择器的博士学位」。他想尽快把这东西消灭掉。</p>
+  <p class="punch">一个天天喊日更的公司，最后想交付的东西是「你不用再选」。</p>
+  <a class="backtop" href="#toc">↑ 回到目录</a>
+</section>
+
+<section id="s05">
+  <h2><span class="n">05</span>如果你也想用这招</h2>
+  <p>做 0 到 1 的团队，学 Josh。别在日历上划「创新时间」，去找那个停不下手的人——他周末在折腾什么，比他的 OKR 重要。维护一张「almost possible」清单，盯着哪些事刚刚跨过临界点。判断有没有人真想要，别看日活，看对方拿到原型时眼睛有没有亮、身体有没有前倾。团队叫停项目的时候要奖励，不要追责。</p>
+  <p>做 10 到 100 的团队，学 Tibo 的赌法。三个条件缺一不可：赌注必须是用户已经在乎的东西（他选了额度），门槛必须能被用户当场验证（他选了「大多数用户能感知」），过程必须公开到有人愿意替你记账。第三方记分牌是在替你记账，别当成敌情。</p>
+  <p>一个人的独立开发者，学他那个「虚拟团队」。他专门养一个 Dot 盯 Twitter，理由是这活儿的工作量大到值得一个角色全职来干。你不用等他那个产品上线，你要的是同一个判断：手上哪件事大到值得单独派一个人（或者一个 agent）天天盯着，然后真的派出去。速度快、上下文长，一个人同时跑三四个这样的角色是可能的。</p>
+  <p><mark>这招的代价也很清楚：你会被自己的日更绑架。</mark>第 19 天、第 20 天就是代价。</p>
+  <a class="backtop" href="#toc">↑ 回到目录</a>
+</section>
+
+<section id="s06">
+  <h2><span class="n">06</span>怎么判断一家 AI 公司是在真干活</h2>
+  <p>这场冲刺顺带提供了一套挺好用的尺子，看谁都行。</p>
+  <ol class="rules">
+    <li><p><strong>用户当天能不能摸到</strong>不是「优化了架构」，是「快了、便宜了、能跑更长了」。</p></li>
+    <li><p><strong>有没有押上能兑现的代价</strong>喊口号不要钱，全量重置要钱。</p></li>
+    <li><p><strong>有没有人愿意替它记账</strong>当记分牌、投票、倒计时都从外面自己冒出来，说明大家已经不太信官方口径，得靠外面的人替他数。</p></li>
+  </ol>
+  <p>按这三条量，OpenAI 这次是过关的：10 次重置是真金白银，最后那天从宣布到全量生效两个半小时，中途也没含糊。</p>
+  <a class="backtop" href="#toc">↑ 回到目录</a>
+</section>
+
+<section class="ending" id="end">
+  <p class="kicker">11 月 2 日，没有人安排交付</p>
+  <h2>第 29 天</h2>
+  <p>28 天会在 11 月 1 日结束。第 29 天是 11 月 2 日，没人给那天排任何事。</p>
+  <p>每天那一条推大概就没有了。那个第三方记分牌把最后一条投票挂在 Day 28，不再更新。速度提上去不会退回来，缓存命中率也是。倒是 10 月 30 日那天，Pro 的额度先砍了一半，价格一分没降，顺手架起一个月费 500 美元的新档。</p>
+  <p>Josh 说，好点子不能微波。信任也没法一次修好，它得每天续一次。</p>
+  <p class="last">用户大概不会再那么相信一场发布会了。账是怎么算的，心里都清楚。第二天早上还是会点开客户端，先看昨晚丢出去的那一宿跑通了没有，再看手上那个具体的麻烦有没有少一个。</p>
+</section>
+
+<footer>
+  <p>原文数据与表述按稿件保留；页面仅做阅读排版与信息图形化。数字级事实尚未逐条复核，引用前请以官方与第三方原始页面为准。</p>
+  <p class="sign">尚盐　｜　产业观察　｜　2026-10-26</p>
+</footer>
+
+</div>
+</body>
+</html>
