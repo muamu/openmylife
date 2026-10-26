@@ -12,6 +12,7 @@
 
 > 每天一条，宁缺毋滥 —— 值得看才推，努力日更。
 
+- **2026-10-26** · [OpenAI 日更到第 20 天：为什么 88% 的票押它「今天别交了」？](https://openmylife.xyz/articles/ai/openai-28-day-sprint.html) —— 10 天交付、10 次重置，88% 的票押它交不出来。拿额度当赌注的军令状，撞上 Google Labs 那句「你不能微波好点子」；数字级事实待复核。
 - **2026-10-25** · [Kimi 3.1 发布即翻车？比起暗广营销，真正背刺用户的是额度](https://openmylife.xyz/articles/ai/kimi-k31-pr-crisis.html) —— 三条线同时起火，硬度完全不同：额度线有官方错误码与文档可复核，营销线最致命的一条至今只有单方截图。核心不是请 KOL，而是要求把商业内容伪装成自发口碑。
 - **2026-10-24** · [AI 审美的三层结构：默认审美、调节层与上限层](https://openmylife.xyz/articles/ai/aesthetic-three-layers.html) —— 默认审美是统计引力，提示词是意图翻译，模型能力是细节天花板；治错层最挫败。
 - **2026-10-24** · [Seedance 2.5 4K 之后，特效行业真正的分水岭不是裁员](https://openmylife.xyz/articles/ai/seedance-4k-vfx-industry.html) —— 需求会涨、五毛特效有活路、大规模失业没发生，这三条只对了一半：单价崩得比需求快，「不裁员」是把全职换成了外包。
