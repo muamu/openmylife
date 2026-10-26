@@ -28,6 +28,7 @@ skills/
 | 技能 | 用途 | 入口 |
 |---|---|---|
 | `skill-evolution` | 把刚完成的工作流提炼为可复用技能，并按使用反馈持续进化 | [`SKILL.md`](./skill-evolution/SKILL.md) |
+| `orchestrate-mode` | 开发 / 重构 / 研究任务复杂度中等以上时先加载，再由分级逻辑决定直接做、派一个 agent 还是进入编排模式（主对话只拆解、派发、收口、汇报） | [`SKILL.md`](./orchestrate-mode/SKILL.md) |
 
 ## 新增技能
 
