@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>前沿编码模型榜与代际对照 · 2026-10</title>
+<style>
+:root{
+  --ink:#1A1D21; --ink2:#3E444C; --muted:#727A84; --faint:#9AA1AA;
+  --line:#E2E6EA; --line2:#D2D8DE; --paper:#FFFFFF; --wash:#F7F8FA;
+  --blue:#16527F; --blue-bg:#F3F8FC; --blue-line:#C9DDEB;
+  --green:#2C6E49; --green-bg:#F1F8F3; --green-line:#C6E2D1;
+  --yellow:#7A5A16; --yellow-bg:#FCF8EC; --yellow-line:#E8DCB8;
+  --red:#8F2F38; --red-bg:#FBF4F5; --red-line:#E8CDD1;
+  --serif:"Noto Serif SC","Songti SC","SimSun",Georgia,serif;
+  --sans:-apple-system,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:15.5px; line-height:1.72;
+  overflow-x:hidden;
+}
+.wrap{max-width:1000px;margin:0 auto;padding:0 18px 72px}
+@media(min-width:760px){ .wrap{padding:0 32px 96px} }
+p,ul,ol,.box,h3,figcaption{max-width:44em}
+
+header.mast{padding:44px 0 26px;border-bottom:1px solid var(--line)}
+.eyebrow{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;
+  color:var(--muted);margin:0 0 14px
+}
+h1{
+  font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.32;
+  margin:0 0 14px;letter-spacing:-.01em
+}
+@media(min-width:760px){ h1{font-size:34px} }
+.dek{font-size:15px;color:var(--ink2);margin:0 0 18px;max-width:46em}
+.meta{
+  font-family:var(--mono);font-size:11.5px;color:var(--faint);
+  display:flex;flex-wrap:wrap;gap:6px 16px
+}
+
+.lead{margin:26px 0 8px;display:grid;gap:12px}
+@media(min-width:760px){ .lead{grid-template-columns:repeat(3,1fr)} }
+.judge{
+  background:var(--blue-bg);border:1px solid var(--blue-line);
+  border-left:3px solid var(--blue);border-radius:4px;padding:14px 15px
+}
+.judge .n{
+  font-family:var(--mono);font-size:11px;color:var(--blue);
+  letter-spacing:.08em;display:block;margin-bottom:6px
+}
+.judge p{margin:0;font-size:14.5px;line-height:1.62;max-width:none}
+.judge b{font-weight:600}
+.judge.g{background:var(--green-bg);border-color:var(--green-line);border-left-color:var(--green)}
+.judge.g .n{color:var(--green)}
+.judge.y{background:var(--yellow-bg);border-color:var(--yellow-line);border-left-color:var(--yellow)}
+.judge.y .n{color:var(--yellow)}
+
+h2{
+  font-family:var(--serif);font-size:18.5px;font-weight:600;line-height:1.4;
+  margin:48px 0 14px;padding:9px 0 9px 14px;
+  background:var(--blue-bg);border-left:4px solid var(--blue);
+  margin-left:-18px;margin-right:-18px;padding-left:18px
+}
+@media(min-width:760px){ h2{margin-left:-32px;margin-right:-32px;padding-left:32px} }
+h2 span.num{
+  font-family:var(--mono);font-size:12px;color:var(--blue);
+  margin-right:10px;letter-spacing:.04em
+}
+h3{font-family:var(--sans);font-size:15px;font-weight:600;margin:26px 0 8px}
+p{margin:0 0 13px}
+a{color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue-line)}
+
+/* ---------- 标签页 ---------- */
+.tabs{
+  display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 10px;
+  align-items:center
+}
+.tabs button{
+  font-family:var(--sans);font-size:13.5px;line-height:1;
+  padding:9px 15px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--line2);background:#fff;color:var(--ink2);
+  transition:background .12s,color .12s,border-color .12s;
+  min-height:36px
+}
+.tabs button:hover{border-color:var(--muted)}
+.tabs button[aria-selected="true"]{
+  background:var(--blue);border-color:var(--blue);color:#fff
+}
+.tabs .cnt{
+  font-family:var(--mono);font-size:11px;opacity:.65;margin-left:5px
+}
+.tabs .hint{
+  font-size:12.5px;color:var(--faint);margin-left:auto;
+  font-family:var(--sans)
+}
+@media(max-width:699px){ .tabs .hint{display:none} }
+
+/* ---------- 主表 ---------- */
+.tbl{width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:13.5px}
+.tbl thead th{
+  text-align:left;font-weight:600;font-size:11.5px;letter-spacing:.04em;
+  color:var(--muted);padding:0 8px 8px;border-bottom:1.5px solid var(--line2);
+  font-family:var(--mono);white-space:nowrap;background:#fff
+}
+@media(min-width:700px){
+  .tbl thead th{position:sticky;top:0;z-index:3}
+}
+.tbl td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.mdl{font-weight:600;color:var(--sc)}
+.dt{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.vd{
+  display:block;font-size:11.5px;line-height:1.5;color:var(--faint);
+  font-weight:400;letter-spacing:.01em;margin-top:3px
+}
+.chip{
+  display:inline-block;font-style:normal;font-size:10px;line-height:1.5;
+  padding:0 4px;border-radius:2px;margin-right:5px;vertical-align:1px;
+  background:var(--green-bg);color:var(--green);border:1px solid var(--green-line)
+}
+.tagline{
+  font-size:10.5px;font-family:var(--mono);color:var(--muted);
+  border:1px solid var(--line2);border-radius:3px;padding:0 3px;margin-left:4px;
+  vertical-align:1px
+}
+.tagline.o{color:var(--green);border-color:var(--green-line);background:var(--green-bg)}
+.tagline.i{color:var(--blue);border-color:var(--blue-line);background:var(--blue-bg)}
+
+/* 系列色：底色 + 左侧竖条 */
+#mt tbody tr{background:color-mix(in srgb, var(--sc) 5%, #fff);cursor:pointer}
+#mt tbody tr:hover{background:color-mix(in srgb, var(--sc) 9%, #fff)}
+#mt td.mname{border-left:3px solid var(--sc);padding-left:11px}
+.tbl tr[hidden]{display:none !important}
+
+/* 悬停联动：只加亮同系列，不减淡其他行
+   所有状态只改颜色、不改任何尺寸（border-width / padding / margin），
+   否则 table-layout:auto 会重排列宽，整张表会横向抖一下 */
+#mt tbody tr.hl{background:color-mix(in srgb, var(--sc) 17%, #fff) !important}
+#mt tbody tr.self{background:color-mix(in srgb, var(--sc) 28%, #fff) !important}
+#mt tbody tr.hl td.mname{border-left-color:color-mix(in srgb, var(--sc) 78%, #000)}
+#mt tbody tr.self td.mname{border-left-color:color-mix(in srgb, var(--sc) 92%, #000)}
+
+@media(max-width:699px){
+  .tbl thead{display:none}
+  .tbl tr{display:block;padding:12px 0 10px;border-bottom:1px solid var(--line)}
+  .tbl td{display:flex;justify-content:space-between;gap:10px;border:0;padding:2px 0}
+  .tbl td::before{
+    content:attr(data-l);font-size:12px;color:var(--muted);
+    font-weight:400;flex:0 0 auto
+  }
+  .tbl td.mname{display:block;padding-bottom:6px;padding-left:10px}
+  .tbl td.mname::before{content:none}
+  .tbl td.mname .mdl{font-size:15px}
+}
+
+.box{
+  border:1px solid var(--line);border-left:3px solid var(--line2);
+  padding:13px 15px;margin:16px 0;border-radius:4px;background:var(--wash);
+  font-size:14px;line-height:1.68
+}
+.box p:last-child{margin:0}
+.box p+p{margin-top:9px}
+.box .h{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:6px}
+.box.warn{background:var(--yellow-bg);border-color:var(--yellow-line);border-left-color:var(--yellow)}
+.box.warn .h{color:var(--yellow)}
+.box.good{background:var(--green-bg);border-color:var(--green-line);border-left-color:var(--green)}
+.box.good .h{color:var(--green)}
+.box.hard{background:var(--red-bg);border-color:var(--red-line);border-left-color:var(--red)}
+.box.hard .h{color:var(--red)}
+
+figure{margin:22px 0 8px}
+figure svg{display:block;width:100%;height:auto}
+figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.6}
+
+ul,ol{margin:0 0 14px;padding-left:20px}
+li{margin-bottom:6px}
+li::marker{color:var(--faint)}
+mark{background:#FFF0B3;padding:0 2px;border-radius:2px}
+.tiny{font-size:12.5px;color:var(--muted);line-height:1.62;max-width:44em}
+
+footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);line-height:1.7}
+footer p{margin:0 0 8px;max-width:52em}
+.srcs{font-family:var(--mono);font-size:11.5px;color:var(--faint);line-height:1.9;word-break:break-all}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">BENCHMARK RECONSTRUCTION / 2025.05 — 2026.10</p>
+  <h1>前沿编码模型榜与代际对照</h1>
+  <p class="dek">五十一个模型、八个 Opus 版本、四套互不相通的榜单口径。同一款模型在不同榜上可以差 30 分，所以「谁第一」这个问题，必须先问是哪个榜。</p>
+  <div class="meta">
+    <span>整理 2026-10-27</span>
+    <span>数据截至 2026-10-26</span>
+    <span>公开厂商公告 / 独立测评 / 官方榜单</span>
+  </div>
+</header>
+
+<div class="lead">
+  <div class="judge">
+    <span class="n">01 · 口径先于排名</span>
+    <p>SWE-bench Pro 的<b>官方集第一是 61.5</b>（Muse Spark 1.1），<b>厂商自报聚合榜第一是 89.9</b>（Opus 5.5）。差 28.4 分。不是模型变强了，是两把尺子刻度不同。</p>
+  </div>
+  <div class="judge g">
+    <span class="n">02 · 开源只慢三个月</span>
+    <p>DeepSeek V4 Pro（8 月 13 日，MIT）在独立榜上 <b>96.4</b>，比 Opus 5 低 0.6 分，价格为四分之一。终端任务上 Qwen3.8-Max 也做到 <b>88.8</b>，只差 Opus 5 三分。</p>
+  </div>
+  <div class="judge y">
+    <span class="n">03 · 基准在轮换</span>
+    <p>Verified 于 9 月 1 日停跑；Terminal-Bench 三代并列（2.0 / 2.1 / 4.0），各自只覆盖几个月。所以表里大量「—」不是没查，是<b>那一代模型没赶上那一代基准</b>。</p>
+  </div>
+</div>
+
+<h2><span class="num">01</span>同一款模型，四份成绩单</h2>
+
+<p>Opus 5.5 在 2026 年 9 月 22 日发布，Terminal-Bench 4.0 这一项，公开能查到三个数：Anthropic 自报 66.4，Vals 复跑 65.2，Artificial Analysis 复跑 59.6。最高与最低差 6.8 分，比它和第二名的差距还大。</p>
+
+<table class="tbl">
+  <thead>
+    <tr><th style="width:30%">口径</th><th style="width:22%">谁跑的</th><th style="width:20%">覆盖到哪</th><th>典型偏差</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-l="口径"><b>厂商自报</b></td>
+      <td data-l="谁跑的">模型方</td>
+      <td data-l="覆盖">全部</td>
+      <td data-l="偏差">常采<b>最高 effort 档</b>、自定义 harness；数字最漂亮，也最难复现。</td>
+    </tr>
+    <tr>
+      <td data-l="口径"><b>独立复跑</b><span class="tagline i">VALS / AA</span></td>
+      <td data-l="谁跑的">第三方</td>
+      <td data-l="覆盖">部分</td>
+      <td data-l="偏差">统一 harness、固定重试次数，多数比自报低 5–8 分，个别低 20 分以上。</td>
+    </tr>
+    <tr>
+      <td data-l="口径"><b>官方榜单</b><span class="tagline o">SEAL / TB</span></td>
+      <td data-l="谁跑的">基准方</td>
+      <td data-l="覆盖">旧模型为主</td>
+      <td data-l="偏差">最可比，但更新滞后，新模型常常进不来。</td>
+    </tr>
+    <tr>
+      <td data-l="口径"><b>自建 harness</b></td>
+      <td data-l="谁跑的">各家测评站</td>
+      <td data-l="覆盖">不定</td>
+      <td data-l="偏差">同一模型可低至 55%（GPT-6 Astra on Verified），也可以高至 91%。<b>不与任何榜单可比。</b></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="box hard">
+  <span class="h">最刺眼的一组对照</span>
+  <p>SWE-bench Pro 官方集（Scale AI SEAL，2026-10-07）：榜首 Muse Spark 1.1 <b>61.5%</b>。同一个基准的聚合榜（BenchLM，2026-10-17，83 个模型其中 <mark>79 行是厂商自报</mark>）：榜首 Opus 5.5 <b>89.9%</b>。两条数字之间没有换算关系，SWE-bench Pro 又在 9 月 22 日切换到 v2 数据集，老分数与新分数同样对不上。</p>
+</div>
+
+<h2><span class="num">02</span>五十一个模型，一张表</h2>
+
+<p>按发布日期排列，闭源与开源混在一起。切换标签页可以只看一边；把鼠标移到任意一行，<b>同系列的模型会一起点亮</b>——Opus 是一个系列，Fable、Mythos、GPT-5、GPT-6、Sol 各算一个。开源模型多数没有子系列，就按品牌联动（DeepSeek、Qwen、Kimi、GLM、MiniMax 各自成组）。</p>
+
+<div class="tabs" role="tablist" aria-label="阵营筛选">
+  <button role="tab" data-f="all" aria-selected="true">全部<span class="cnt">51</span></button>
+  <button role="tab" data-f="c" aria-selected="false">闭源<span class="cnt">32</span></button>
+  <button role="tab" data-f="o" aria-selected="false">开源<span class="cnt">19</span></button>
+  <span class="hint">悬停看同系列 · 单击钉住 · 再点同系列取消</span>
+</div>
+
+<p class="tiny">标记：<span class="tagline i">独</span>独立复跑（TB 2.1 默认取 Artificial Analysis 统一方法，181 个模型）· <span class="tagline o">官</span>基准方官方榜 · 无标记＝厂商自报。行首竖条与姓名颜色对应系列。2025 年模型的 TB 2.0 分写在小字里，因为 2.1 上线时它们已不在评测窗口内。</p>
+
+<table class="tbl" id="mt">
+  <thead>
+    <tr>
+      <th style="width:36%">模型</th>
+      <th style="width:14%">发布</th>
+      <th style="width:14%">Verified</th>
+      <th style="width:10%">Pro</th>
+      <th style="width:13%">TB 2.1</th>
+      <th style="width:13%">TB 4.0</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr data-o="c" data-s="gemini" data-b="google" style="--sc:#8A6A2B">
+      <td class="mname" data-l="模型"><span class="mdl">Gemini 2.5 Pro</span><span class="vd">Google · Opus 4 发布前的最强对手</span></td>
+      <td class="dt" data-l="发布">2025-03-25</td>
+      <td class="num" data-l="Verified">63.8</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="o3" data-b="openai" style="--sc:#5C6670">
+      <td class="mname" data-l="模型"><span class="mdl">o3</span><span class="vd">OpenAI · 推理路线首次逼近 70，不属于 GPT-5 系列</span></td>
+      <td class="dt" data-l="发布">2025-04-16</td>
+      <td class="num" data-l="Verified">69.1</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="opus" data-b="anthropic" style="--sc:#16527F">
+      <td class="mname" data-l="模型"><span class="mdl">Claude Opus 4</span><span class="vd">Anthropic · 领先 3.4 分，价格三倍</span></td>
+      <td class="dt" data-l="发布">2025-05-22</td>
+      <td class="num" data-l="Verified">72.5</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="deepseek" style="--sc:#1D6E6E">
+      <td class="mname" data-l="模型"><span class="mdl">DeepSeek R1-0528</span><span class="vd"><i class="chip">开源</i>DeepSeek · 685B · MIT</span></td>
+      <td class="dt" data-l="发布">2025-05-28</td>
+      <td class="num" data-l="Verified">57.6</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="qwen" style="--sc:#8A3E5E">
+      <td class="mname" data-l="模型"><span class="mdl">Qwen3-Coder 480B</span><span class="vd"><i class="chip">开源</i>阿里 · 480B · Apache-2.0</span></td>
+      <td class="dt" data-l="发布">2025-07</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">38.7<span class="tagline o">官</span></td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="moonshot" style="--sc:#6E4A8A">
+      <td class="mname" data-l="模型"><span class="mdl">Kimi K2</span><span class="vd"><i class="chip">开源</i>月之暗面 · 1T/32B · Modified MIT</span></td>
+      <td class="dt" data-l="发布">2025-07-11</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">27.7<span class="tagline o">官</span></td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="opus" data-b="anthropic" style="--sc:#16527F">
+      <td class="mname" data-l="模型"><span class="mdl">Claude Opus 4.1</span><span class="vd">Anthropic · 两天后被 GPT-5 以 0.4 分反超</span></td>
+      <td class="dt" data-l="发布">2025-08-05</td>
+      <td class="num" data-l="Verified">74.5</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="gpt5" data-b="openai" style="--sc:#2C6E49">
+      <td class="mname" data-l="模型"><span class="mdl">GPT-5</span><span class="vd">OpenAI · 官方 Pro 集 41.8，自报落差由此显形</span></td>
+      <td class="dt" data-l="发布">2025-08-07</td>
+      <td class="num" data-l="Verified">74.9</td>
+      <td class="num" data-l="Pro">41.8<span class="tagline o">官</span></td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="gemini" data-b="google" style="--sc:#8A6A2B">
+      <td class="mname" data-l="模型"><span class="mdl">Gemini 3 Pro</span><span class="vd">Google · TB 2.0 记 54.2</span></td>
+      <td class="dt" data-l="发布">2025-11-18</td>
+      <td class="num" data-l="Verified">76.2</td>
+      <td class="num" data-l="Pro">43.3<span class="tagline o">官</span></td>
+      <td class="num" data-l="TB 2.1">73.9<span class="tagline o">官</span></td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="gpt5" data-b="openai" style="--sc:#2C6E49">
+      <td class="mname" data-l="模型"><span class="mdl">GPT-5.1-Codex-Max</span><span class="vd">OpenAI · 榜首只坐五天；TB 2.0 记 54.1</span></td>
+      <td class="dt" data-l="发布">2025-11-19</td>
+      <td class="num" data-l="Verified">77.9</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="opus" data-b="anthropic" style="--sc:#16527F">
+      <td class="mname" data-l="模型"><span class="mdl">Claude Opus 4.5</span><span class="vd">Anthropic · 首个破 80；TB 2.0 记 59.3，当时第一</span></td>
+      <td class="dt" data-l="发布">2025-11-24</td>
+      <td class="num" data-l="Verified">80.9</td>
+      <td class="num" data-l="Pro">45.9</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="gpt5" data-b="openai" style="--sc:#2C6E49">
+      <td class="mname" data-l="模型"><span class="mdl">GPT-5.2</span><span class="vd">OpenAI · 官方集 Pro 只记 29.9，与自报差 25.7</span></td>
+      <td class="dt" data-l="发布">2025-12-11</td>
+      <td class="num" data-l="Verified">80.0</td>
+      <td class="num" data-l="Pro">55.6</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="gpt5" data-b="openai" style="--sc:#2C6E49">
+      <td class="mname" data-l="模型"><span class="mdl">GPT-5.2-Codex</span><span class="vd">OpenAI · Verified 在 80 分档停滞四个月</span></td>
+      <td class="dt" data-l="发布">2026-01-14</td>
+      <td class="num" data-l="Verified">80.0</td>
+      <td class="num" data-l="Pro">56.4</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="opus" data-b="anthropic" style="--sc:#16527F">
+      <td class="mname" data-l="模型"><span class="mdl">Claude Opus 4.6</span><span class="vd">Anthropic · 三家挤进 1.2 分；2.1 只公布「涨 12.1 分」的相对值</span></td>
+      <td class="dt" data-l="发布">2026-02-05</td>
+      <td class="num" data-l="Verified">80.8</td>
+      <td class="num" data-l="Pro">53.4</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="gpt5" data-b="openai" style="--sc:#2C6E49">
+      <td class="mname" data-l="模型"><span class="mdl">GPT-5.3 Codex</span><span class="vd">OpenAI · 2026-08 下线</span></td>
+      <td class="dt" data-l="发布">2026-02</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">56.8</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="gemini" data-b="google" style="--sc:#8A6A2B">
+      <td class="mname" data-l="模型"><span class="mdl">Gemini 3.1 Pro</span><span class="vd">Google · Terminus-2 口径 65.6，差 8 分</span></td>
+      <td class="dt" data-l="发布">2026-02-19</td>
+      <td class="num" data-l="Verified">80.6</td>
+      <td class="num" data-l="Pro">54.2</td>
+      <td class="num" data-l="TB 2.1">73.8<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="gpt5" data-b="openai" style="--sc:#2C6E49">
+      <td class="mname" data-l="模型"><span class="mdl">GPT-5.4</span><span class="vd">OpenAI · 官方 Pro 集 59.1，曾居第一</span></td>
+      <td class="dt" data-l="发布">2026-03-05</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">57.7</td>
+      <td class="num" data-l="TB 2.1">78.3<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="opus" data-b="anthropic" style="--sc:#16527F">
+      <td class="mname" data-l="模型"><span class="mdl">Claude Opus 4.7</span><span class="vd">Anthropic · 同版本换 harness 差 17 分：83.2 / 68.9 / 66.1</span></td>
+      <td class="dt" data-l="发布">2026-04-16</td>
+      <td class="num" data-l="Verified">87.6</td>
+      <td class="num" data-l="Pro">64.3</td>
+      <td class="num" data-l="TB 2.1">83.2<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="gpt5" data-b="openai" style="--sc:#2C6E49">
+      <td class="mname" data-l="模型"><span class="mdl">GPT-5.5</span><span class="vd">OpenAI · Pro 落后 10.6，终端领先</span></td>
+      <td class="dt" data-l="发布">2026-04-23</td>
+      <td class="num" data-l="Verified">88.7</td>
+      <td class="num" data-l="Pro">58.6</td>
+      <td class="num" data-l="TB 2.1">84.3<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="opus" data-b="anthropic" style="--sc:#16527F">
+      <td class="mname" data-l="模型"><span class="mdl">Claude Opus 4.8</span><span class="vd">Anthropic · Pro 领先 10.6；换 Terminus-2 为 74.6</span></td>
+      <td class="dt" data-l="发布">2026-05-28</td>
+      <td class="num" data-l="Verified">88.6</td>
+      <td class="num" data-l="Pro">69.2</td>
+      <td class="num" data-l="TB 2.1">84.6<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">23.6<span class="tagline o">官</span></td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="minimax" style="--sc:#7A5C2E">
+      <td class="mname" data-l="模型"><span class="mdl">MiniMax M3</span><span class="vd"><i class="chip">开源</i>MiniMax · 428B/23B · 社区许可</span></td>
+      <td class="dt" data-l="发布">2026-06</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">59.0</td>
+      <td class="num" data-l="TB 2.1">53.6<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="fable" data-b="anthropic" style="--sc:#5A4A87">
+      <td class="mname" data-l="模型"><span class="mdl">Claude Fable 5</span><span class="vd">Anthropic · 新开一档，Opus 不再是天花板</span></td>
+      <td class="dt" data-l="发布">2026-06-09</td>
+      <td class="num" data-l="Verified">95.0</td>
+      <td class="num" data-l="Pro">80.0</td>
+      <td class="num" data-l="TB 2.1">84.6<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">44.6<span class="tagline o">官</span></td>
+    </tr>
+    <tr data-o="c" data-s="mythos" data-b="anthropic" style="--sc:#7A3B5A">
+      <td class="mname" data-l="模型"><span class="mdl">Claude Mythos 5</span><span class="vd">Anthropic · 受限，约百家机构可用</span></td>
+      <td class="dt" data-l="发布">2026-06-09</td>
+      <td class="num" data-l="Verified">95.5</td>
+      <td class="num" data-l="Pro">80.3</td>
+      <td class="num" data-l="TB 2.1">84.3</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="zhipu" style="--sc:#2F6B5A">
+      <td class="mname" data-l="模型"><span class="mdl">GLM-5.2</span><span class="vd"><i class="chip">开源</i>智谱 · 753B · MIT</span></td>
+      <td class="dt" data-l="发布">2026-06-13</td>
+      <td class="num" data-l="Verified">80.0<span class="tagline i">独</span></td>
+      <td class="num" data-l="Pro">62.1</td>
+      <td class="num" data-l="TB 2.1">77.9<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="gpt5" data-b="openai" style="--sc:#2C6E49">
+      <td class="mname" data-l="模型"><span class="mdl">GPT-5.6 Sol</span><span class="vd">OpenAI · 1–4 小时长任务解出率 98%，Opus 5 为 90%</span></td>
+      <td class="dt" data-l="发布">2026-06-26</td>
+      <td class="num" data-l="Verified">96.2<span class="tagline i">独</span></td>
+      <td class="num" data-l="Pro">64.6</td>
+      <td class="num" data-l="TB 2.1">89.5<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">37.3<span class="tagline o">官</span></td>
+    </tr>
+    <tr data-o="c" data-s="gpt5" data-b="openai" style="--sc:#2C6E49">
+      <td class="mname" data-l="模型"><span class="mdl">GPT-5.6 Terra</span><span class="vd">OpenAI · 中间档，$2/$12</span></td>
+      <td class="dt" data-l="发布">2026-06-26</td>
+      <td class="num" data-l="Verified">95.4<span class="tagline i">独</span></td>
+      <td class="num" data-l="Pro">63.4</td>
+      <td class="num" data-l="TB 2.1">88.0<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">21.5<span class="tagline o">官</span></td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="poolside" style="--sc:#3E6A7A">
+      <td class="mname" data-l="模型"><span class="mdl">Poolside Laguna S 2.1</span><span class="vd"><i class="chip">开源</i>Poolside · 未公开 · OpenMDW-1.1</span></td>
+      <td class="dt" data-l="发布">2026-07</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">59.4</td>
+      <td class="num" data-l="TB 2.1">70.2</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="muse" data-b="meta" style="--sc:#44536E">
+      <td class="mname" data-l="模型"><span class="mdl">Muse Spark 1.1</span><span class="vd">Meta · 官方集 Pro 长期第一</span></td>
+      <td class="dt" data-l="发布">2026-07-09</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">61.5<span class="tagline o">官</span></td>
+      <td class="num" data-l="TB 2.1">77.9<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="opus" data-b="anthropic" style="--sc:#16527F">
+      <td class="mname" data-l="模型"><span class="mdl">Claude Opus 5</span><span class="vd">Anthropic · 发布时未公布 Verified，Vals 复跑 97.0</span></td>
+      <td class="dt" data-l="发布">2026-07-24</td>
+      <td class="num" data-l="Verified">96.0 / 97.0<span class="tagline i">独</span></td>
+      <td class="num" data-l="Pro">79.2</td>
+      <td class="num" data-l="TB 2.1">89.1<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">53.9<span class="tagline o">官</span></td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="moonshot" style="--sc:#6E4A8A">
+      <td class="mname" data-l="模型"><span class="mdl">Kimi K3</span><span class="vd"><i class="chip">开源</i>月之暗面 · 2.8T/104B · Kimi K3 许可</span></td>
+      <td class="dt" data-l="发布">2026-07-27</td>
+      <td class="num" data-l="Verified">93.4<span class="tagline i">独</span></td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">85.0<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="qwen" style="--sc:#8A3E5E">
+      <td class="mname" data-l="模型"><span class="mdl">Qwen3.8-27B</span><span class="vd"><i class="chip">开源</i>阿里 · 27B 稠密 · Apache-2.0</span></td>
+      <td class="dt" data-l="发布">2026-08-05</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">61.7</td>
+      <td class="num" data-l="TB 2.1">79.8<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="qwen" style="--sc:#8A3E5E">
+      <td class="mname" data-l="模型"><span class="mdl">Qwen3.8-Max</span><span class="vd"><i class="chip">开源</i>阿里 · 2.4T/95B · 自定义许可</span></td>
+      <td class="dt" data-l="发布">2026-08-12</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">67.7</td>
+      <td class="num" data-l="TB 2.1">88.8<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="grok" data-b="xai" style="--sc:#7A4A2E">
+      <td class="mname" data-l="模型"><span class="mdl">Grok 4.6</span><span class="vd">xAI · Verified 第四，TB 4.0 只有 20 出头</span></td>
+      <td class="dt" data-l="发布">2026-08-12</td>
+      <td class="num" data-l="Verified">95.6<span class="tagline i">独</span></td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">88.4<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">20.3<span class="tagline o">官</span></td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="deepseek" style="--sc:#1D6E6E">
+      <td class="mname" data-l="模型"><span class="mdl">DeepSeek V4 Pro 0813</span><span class="vd"><i class="chip">开源</i>DeepSeek · 未公开 · MIT</span></td>
+      <td class="dt" data-l="发布">2026-08-13</td>
+      <td class="num" data-l="Verified">96.4<span class="tagline i">独</span></td>
+      <td class="num" data-l="Pro">55.4</td>
+      <td class="num" data-l="TB 2.1">78.6<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="tencent" style="--sc:#4A6E8A">
+      <td class="mname" data-l="模型"><span class="mdl">腾讯 Hy4-preview</span><span class="vd"><i class="chip">开源</i>腾讯 · 未公开 · Apache-2.0 · 自报比 Vals 高 30 分</span></td>
+      <td class="dt" data-l="发布">2026-08</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">65.7</td>
+      <td class="num" data-l="TB 2.1">85.4</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="deepreinforce" style="--sc:#6B6B3A">
+      <td class="mname" data-l="模型"><span class="mdl">Ornith-1.5-397B</span><span class="vd"><i class="chip">开源</i>DeepReinforce · 397B · MIT</span></td>
+      <td class="dt" data-l="发布">2026-08</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">65.1</td>
+      <td class="num" data-l="TB 2.1">86.1</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="zhipu" style="--sc:#2F6B5A">
+      <td class="mname" data-l="模型"><span class="mdl">GLM-5.3-Flash</span><span class="vd"><i class="chip">开源</i>智谱 · 320B/18B · MIT</span></td>
+      <td class="dt" data-l="发布">2026-08-26</td>
+      <td class="num" data-l="Verified">92.0<span class="tagline i">独</span></td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">84.3<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="zhipu" style="--sc:#2F6B5A">
+      <td class="mname" data-l="模型"><span class="mdl">GLM-5.3</span><span class="vd"><i class="chip">开源</i>智谱 · 753B · GLM-5.3 许可 · TB 4.0 唯一进榜开源</span></td>
+      <td class="dt" data-l="发布">2026-08-27</td>
+      <td class="num" data-l="Verified">95.4<span class="tagline i">独</span></td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">83.9<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">41.8<span class="tagline o">官</span></td>
+    </tr>
+    <tr data-o="c" data-s="fable" data-b="anthropic" style="--sc:#5A4A87">
+      <td class="mname" data-l="模型"><span class="mdl">Claude Fable 5.1</span><span class="vd">Anthropic · TB 2.1 全场第一；AA 智能指数 66</span></td>
+      <td class="dt" data-l="发布">2026-09-01</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">81.2</td>
+      <td class="num" data-l="TB 2.1">91.4<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">57.9<span class="tagline o">官</span></td>
+    </tr>
+    <tr data-o="c" data-s="mythos" data-b="anthropic" style="--sc:#7A3B5A">
+      <td class="mname" data-l="模型"><span class="mdl">Claude Mythos 5.1</span><span class="vd">Anthropic · 同权重、更松护栏</span></td>
+      <td class="dt" data-l="发布">2026-09-01</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">81.2</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">60.9</td>
+    </tr>
+    <tr data-o="c" data-s="gpt6" data-b="openai" style="--sc:#4F7A20">
+      <td class="mname" data-l="模型"><span class="mdl">GPT-6 Astra</span><span class="vd">OpenAI · 官方 TB 4.0 榜首；DeepSWE 74.1 · 与 GPT-5 系列不是一档</span></td>
+      <td class="dt" data-l="发布">2026-09-03</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">89.9<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">58.2<span class="tagline o">官</span></td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="deepseek" style="--sc:#1D6E6E">
+      <td class="mname" data-l="模型"><span class="mdl">DeepSeek V4.1 Flash</span><span class="vd"><i class="chip">开源</i>DeepSeek · 552B/8–16B · MIT · 自报比 Vals 高 16 分</span></td>
+      <td class="dt" data-l="发布">2026-09-10</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">90.6</td>
+      <td class="num" data-l="TB 4.0">19.7<span class="tagline i">独</span></td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="xiaomi" style="--sc:#7A3E3E">
+      <td class="mname" data-l="模型"><span class="mdl">MiMo-V2.6-Pro</span><span class="vd"><i class="chip">开源</i>小米 · 1.02T/42B · MIT · 自报比 Vals 高 22 分</span></td>
+      <td class="dt" data-l="发布">2026-09</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">89.9</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="c" data-s="grok" data-b="xai" style="--sc:#7A4A2E">
+      <td class="mname" data-l="模型"><span class="mdl">Grok 4.7</span><span class="vd">xAI · Grok Build 环境下测得</span></td>
+      <td class="dt" data-l="发布">2026-09-21</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">73.4<span class="tagline i">独</span></td>
+      <td class="num" data-l="TB 4.0">37.6<span class="tagline o">官</span></td>
+    </tr>
+    <tr data-o="c" data-s="opus" data-b="anthropic" style="--sc:#16527F">
+      <td class="mname" data-l="模型"><span class="mdl">Claude Opus 5.5</span><span class="vd">Anthropic · 发布时 4.0 已取代 2.1，故无 2.1 分</span></td>
+      <td class="dt" data-l="发布">2026-09-22</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">89.9</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">66.4 / 65.2<span class="tagline i">独</span></td>
+    </tr>
+    <tr data-o="c" data-s="sonnet" data-b="anthropic" style="--sc:#2D6E8C">
+      <td class="mname" data-l="模型"><span class="mdl">Claude Sonnet 5.5</span><span class="vd">Anthropic · 自报 70.6 为全榜最高，价格一半</span></td>
+      <td class="dt" data-l="发布">2026-09-28</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">81.3</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">70.6 / 64.1<span class="tagline i">独</span></td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="stepfun" style="--sc:#5A5A7A">
+      <td class="mname" data-l="模型"><span class="mdl">Step 5 Preview</span><span class="vd"><i class="chip">开源</i>阶跃星辰 · 未公开 · StepFun 许可</span></td>
+      <td class="dt" data-l="发布">2026-10</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">44.6<span class="tagline i">独</span></td>
+    </tr>
+    <tr data-o="c" data-s="gpt6" data-b="openai" style="--sc:#4F7A20">
+      <td class="mname" data-l="模型"><span class="mdl">GPT-6.1 Sol</span><span class="vd">OpenAI · $2/$10 打 Astra 的五分之一价</span></td>
+      <td class="dt" data-l="发布">2026-10-07</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">55.0<span class="tagline i">独</span></td>
+    </tr>
+    <tr data-o="c" data-s="gemini" data-b="google" style="--sc:#8A6A2B">
+      <td class="mname" data-l="模型"><span class="mdl">Gemini 4 Argon</span><span class="vd">Google · DeepSWE 77.9 自称第一，TB 落后 Astra</span></td>
+      <td class="dt" data-l="发布">2026-10-13</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">57.4</td>
+    </tr>
+    <tr data-o="o" data-s="muse" data-b="meta" style="--sc:#44536E">
+      <td class="mname" data-l="模型"><span class="mdl">Muse Spark Open</span><span class="vd"><i class="chip">开源</i>Meta · 未公开 · Muse Model 许可 · 无编码基准分</span></td>
+      <td class="dt" data-l="发布">2026-10-15</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">—</td>
+    </tr>
+    <tr data-o="o" data-s="" data-b="minimax" style="--sc:#7A5C2E">
+      <td class="mname" data-l="模型"><span class="mdl">MiniMax M3.1 Flash</span><span class="vd"><i class="chip">开源</i>MiniMax · 未公开 · 社区许可</span></td>
+      <td class="dt" data-l="发布">2026-10-19</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">38.1</td>
+    </tr>
+
+  </tbody>
+</table>
+
+<h2><span class="num">03</span>读这张表的三个裂口</h2>
+
+<div class="box warn">
+  <span class="h">裂口一 · TB 2.1 内部，harness 比模型更能决定分数</span>
+  <p>同一个版本、同一个模型，换一套 harness 就能差出一个代际：Opus 4.7 在 Artificial Analysis 统一方法下 83.2，在 Snorkel 记录的 Claude Code 下 68.9，在 Anthropic 自己的 Terminus-2 下 66.1。<b>17.1 分的摆幅</b>，比 Opus 4.7 到 4.8 的真实提升（8.5 分）还大。</p>
+  <p>所以 TB 2.1 那一列只能横着读——同一列内排序有效。竖着跟别的 harness 的数字比，等于换了把尺子。</p>
+</div>
+
+<div class="box hard">
+  <span class="h">裂口二 · 开源行的小字注明了自报与复跑的距离</span>
+  <p>三个模型的自报与 Vals 独立复跑差出一个代际：腾讯 Hy4-preview <b>85.4 对 55.1</b>（差 30.3）、小米 MiMo-V2.6-Pro <b>89.9 对 67.8</b>（差 22.1）、DeepSeek V4.1 Flash <b>90.6 对 74.5</b>（差 16.1）。三家都用了自家脚手架，且都没公布 effort 档位。</p>
+  <p>表里这几行保留自报值并<mark>不加「独」标记</mark>，因为那是厂商公布的唯一数字；但别拿它们和闭源行的 AA 数据排在一起。</p>
+</div>
+
+<div class="box good">
+  <span class="h">裂口三 · 三条观察，第二条推翻了我上一版的判断</span>
+  <p>一、<b>Verified 前十里四个开放权重</b>（DeepSeek V4 Pro 第 2、GLM-5.3 第 6、Kimi K3 第 8、GLM-5.3-Flash 第 10），这是 2025 年没有过的密度。</p>
+  <p>二、<b>「开源追不上终端任务」这个结论是错的</b>。上一版只看 TB 4.0，看到前九名全闭源就下了判断；补上 2.1 才发现 Qwen3.8-Max 拿到 <b>88.8</b>，全场第五，只比 Opus 5 低 0.3 分，Kimi K3 85.0、GLM-5.3 83.9 也都在前十。TB 4.0 上开源显得落后，是因为<b>只有 GLM-5.3 一家提交了</b>，不是能力断崖。</p>
+  <p>三、<b>参数越大越强在开源内部不成立</b>。Qwen3.8-27B 用 27B 稠密拿到 Pro 61.7、TB 2.1 79.8，压过一堆千亿级模型。</p>
+</div>
+
+<h2><span class="num">04</span>榜首阶梯：谁站过最高那一级</h2>
+
+<p>把「当时 SWE-bench Verified 的最高分」连成台阶，能看到一条几乎不动的时间线：2025 年 5 月到 2026 年 4 月，十一个月只涨了 15 分；之后三个月涨了 9 分；再之后这个指标被放弃。</p>
+
+<figure>
+<svg viewBox="0 0 680 380" role="img" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'PingFang SC','Segoe UI',sans-serif">
+<title>SWE-bench Verified 榜首分数阶梯（2025-05 至 2026-10）</title>
+<desc>阶梯图显示榜首分数从 2025 年 5 月的 72.5 分升至 2026 年 7 月的 97.0 分，其中 2025 年 11 月至 2026 年 4 月停留于 80 分档，2026 年 9 月起该榜单停止对新模型评测。</desc>
+<g stroke="#E2E6EA" stroke-width="1">
+  <line x1="56" y1="285" x2="644" y2="285"/>
+  <line x1="56" y1="210" x2="644" y2="210"/>
+  <line x1="56" y1="135" x2="644" y2="135"/>
+  <line x1="56" y1="60" x2="644" y2="60"/>
+</g>
+<g font-size="11" fill="#9AA1AA" text-anchor="end" font-family="monospace">
+  <text x="50" y="289">70</text>
+  <text x="50" y="214">80</text>
+  <text x="50" y="139">90</text>
+  <text x="50" y="64">100</text>
+</g>
+<path d="M78.7,266.25 H161.7 V248.25 H279.4 V203.25 H433.6 V153 H441.2 V144.75 H491.9 V97.5 H510.2 V88.5 H540.4 V82.5 H644"
+      fill="none" stroke="#16527F" stroke-width="2" stroke-linejoin="round"/>
+<path d="M78.7,266.25 H161.7 V248.25 H279.4 V203.25 H433.6 V153 H441.2 V144.75 H491.9 V97.5 H510.2 V88.5 H540.4 V82.5 H644 L644,300 L78.7,300 Z"
+      fill="#16527F" opacity="0.05"/>
+<line x1="598" y1="60" x2="598" y2="300" stroke="#E8DCB8" stroke-width="1.5" stroke-dasharray="4 3"/>
+<g>
+  <circle cx="78.7" cy="266.25" r="3.5" fill="#16527F"/>
+  <text x="82" y="258" font-size="11.5" fill="#1A1D21">72.5</text>
+  <text x="82" y="280" font-size="10.5" fill="#727A84">Opus 4</text>
+  <circle cx="161.7" cy="248.25" r="3.5" fill="#16527F"/>
+  <text x="166" y="240" font-size="11.5" fill="#1A1D21">74.9</text>
+  <text x="166" y="262" font-size="10.5" fill="#727A84">GPT-5</text>
+  <circle cx="279.4" cy="203.25" r="3.5" fill="#16527F"/>
+  <text x="284" y="195" font-size="11.5" fill="#1A1D21">80.9</text>
+  <text x="284" y="217" font-size="10.5" fill="#727A84">Opus 4.5</text>
+  <circle cx="433.6" cy="153" r="3.5" fill="#16527F"/>
+  <text x="392" y="145" font-size="11.5" fill="#1A1D21" text-anchor="end">87.6</text>
+  <text x="392" y="166" font-size="10.5" fill="#727A84" text-anchor="end">Opus 4.7</text>
+  <circle cx="441.2" cy="144.75" r="2.5" fill="#727A84"/>
+  <text x="446" y="136" font-size="10.5" fill="#727A84">88.7 GPT-5.5</text>
+  <circle cx="491.9" cy="97.5" r="2.5" fill="#727A84"/>
+  <text x="468" y="114" font-size="10.5" fill="#727A84" text-anchor="end">95.0 Fable 5</text>
+  <circle cx="510.2" cy="88.5" r="3.5" fill="#16527F"/>
+  <text x="514" y="80" font-size="11.5" fill="#1A1D21">96.2</text>
+  <text x="514" y="102" font-size="10.5" fill="#727A84">GPT-5.6 Sol</text>
+  <circle cx="540.4" cy="82.5" r="4" fill="#16527F"/>
+  <text x="548" y="74" font-size="11.5" fill="#16527F" font-weight="600">97.0</text>
+  <text x="548" y="94" font-size="10.5" fill="#16527F">Opus 5（独立复跑）</text>
+</g>
+<text x="592" y="290" font-size="10.5" fill="#7A5A16" text-anchor="end">9-1 起停跑</text>
+<g font-size="10.5" fill="#9AA1AA" font-family="monospace" text-anchor="middle">
+  <text x="72" y="322">2025-05</text>
+  <text x="200" y="322">2025-09</text>
+  <text x="330" y="322">2026-01</text>
+  <text x="462" y="322">2026-05</text>
+  <text x="590" y="322">2026-09</text>
+</g>
+<line x1="56" y1="300" x2="644" y2="300" stroke="#D2D8DE" stroke-width="1"/>
+</svg>
+<figcaption>阶梯高度为该时点公开可查的最高分（厂商口径与独立复跑混用，取最高者）。2026-09-22 之后不再有新模型进入该指标。</figcaption>
+</figure>
+
+<h3>每次 Opus 发布时，榜首在哪</h3>
+
+<table class="tbl">
+  <thead><tr><th style="width:26%">时点</th><th style="width:24%">Opus 分数</th><th style="width:26%">同期榜首</th><th>与对手差</th></tr></thead>
+  <tbody>
+    <tr><td data-l="时点">2025-05-22 · Opus 4</td><td class="num" data-l="Opus">72.5</td><td data-l="榜首">Opus 4 自己</td><td class="num" data-l="差">+3.4</td></tr>
+    <tr><td data-l="时点">2025-08-05 · Opus 4.1</td><td class="num" data-l="Opus">74.5</td><td data-l="榜首">GPT-5（两天后）</td><td class="num" data-l="差">−0.4</td></tr>
+    <tr><td data-l="时点">2025-11-24 · Opus 4.5</td><td class="num" data-l="Opus">80.9</td><td data-l="榜首">Opus 4.5 自己</td><td class="num" data-l="差">+3.0</td></tr>
+    <tr><td data-l="时点">2026-02-05 · Opus 4.6</td><td class="num" data-l="Opus">80.8</td><td data-l="榜首">Opus 4.6（并列）</td><td class="num" data-l="差">+0.2</td></tr>
+    <tr><td data-l="时点">2026-04-16 · Opus 4.7</td><td class="num" data-l="Opus">87.6</td><td data-l="榜首">Opus 4.7 自己</td><td class="num" data-l="差">+7.0</td></tr>
+    <tr><td data-l="时点">2026-05-28 · Opus 4.8</td><td class="num" data-l="Opus">88.6</td><td data-l="榜首">GPT-5.5 88.7</td><td class="num" data-l="差">−0.1</td></tr>
+    <tr><td data-l="时点">2026-07-24 · Opus 5</td><td class="num" data-l="Opus">96.0 / 97.0</td><td data-l="榜首">Opus 5 自己（97.0 独立复跑）</td><td class="num" data-l="差">+0.8</td></tr>
+    <tr><td data-l="时点">2026-09-22 · Opus 5.5</td><td class="num" data-l="Opus">未公布</td><td data-l="榜首">指标已停跑</td><td class="num" data-l="差">—</td></tr>
+  </tbody>
+</table>
+
+<h2><span class="num">05</span>为什么同时存在三个第一</h2>
+
+<p>「第一」的分裂不是数据错，是三件不同的事叠在一起。</p>
+
+<ul>
+  <li><b>数据集换版。</b>SWE-bench Pro 在 2026 年 9 月 22 日切到 v2；Terminal-Bench 更频繁，2.0 → 2.1 修了 28 个任务，2.1 → 4.0 换了整套题。换版前后不在同一条刻度上，官方集与厂商自报又各自选版，于是 Opus 5 的 79.2 与 Opus 5.5 的 89.9 未必是真实提升的 10.7 分。</li>
+  <li><b>harness 归属不同。</b>同一个 Opus 5.5，Anthropic 用自家 xhigh 档跑出 66.4，Artificial Analysis 用 mini-swe-agent 跑出 59.6。模型没变，脚手架变了。</li>
+  <li><b>覆盖范围不同。</b>官方集只收录愿意提交、且没换版的模型，所以 2026 年 7 月之后的一批新模型全部缺席，榜首停在 Muse Spark 1.1 的 61.5；聚合榜则照单全收厂商自报，于是一路涨到 89.9。</li>
+</ul>
+
+<div class="box warn">
+  <span class="h">判断建议</span>
+  <p>要做采购决策，用<b>同一个 harness 复跑自家任务</b>，别用任何榜单的绝对值。要看趋势，只比<b>同一来源的前后版本</b>——比如 AA 上的 Opus 4.8 84.6 对 Opus 5 89.1，这两个数可以比；BenchLM 的 89.9 和 SEAL 的 61.5 不能比。</p>
+</div>
+
+<h2><span class="num">06</span>存疑清单</h2>
+
+<table class="tbl">
+  <thead><tr><th style="width:34%">条目</th><th>存疑原因</th></tr></thead>
+  <tbody>
+    <tr>
+      <td data-l="条目"><b>GPT-5.2 Pro 55.6 vs 官方集 29.9</b></td>
+      <td data-l="原因">同一模型、同一基准，相差 25.7 分。可能是 harness 与 effort 档差异，但没有一方给出可复现配置，暂按「不可比」处理。</td>
+    </tr>
+    <tr>
+      <td data-l="条目"><b>Opus 4.7 的 TB 2.1 三个数</b></td>
+      <td data-l="原因">Anthropic 自报 66.1（Terminus-2）、Snorkel 记录 68.9（Claude Code）、AA 统一方法 83.2。同版本同模型，最大差 17.1 分。表中取 AA 以保持列内一致，但这一行的绝对值不可信。</td>
+    </tr>
+    <tr>
+      <td data-l="条目"><b>开源三家的 TB 2.1 自报值</b></td>
+      <td data-l="原因">Hy4-preview 85.4 / Vals 55.1，MiMo-V2.6-Pro 89.9 / 67.8，DeepSeek V4.1 Flash 90.6 / 74.5。均只公布自家脚手架结果，未披露 effort 档，与闭源行的 AA 数值不构成同一序列。</td>
+    </tr>
+    <tr>
+      <td data-l="条目"><b>Opus 5.5 Pro 89.9</b></td>
+      <td data-l="原因">纯自报，无独立复跑，且同一批模型在官方集上的最高值是 61.5。差距过大，标注为「口径待定」。</td>
+    </tr>
+    <tr>
+      <td data-l="条目"><b>Opus 4.6 的 TB 2.1</b></td>
+      <td data-l="原因">Anthropic 只公布了相对值（Claude Code 下比 2.0 提升 12.1 分），没有绝对值，因此留空而非估算。</td>
+    </tr>
+    <tr>
+      <td data-l="条目"><b>GPT-6 Astra 与 Gemini 4 Argon 的 Verified</b></td>
+      <td data-l="原因">两家均未公布。网上流传的 91.2 / 87.9 等数字来自第三方自建 harness，与 Vals、SEAL 无对应关系，未采信。</td>
+    </tr>
+    <tr>
+      <td data-l="条目"><b>Kimi K3 权重日期</b></td>
+      <td data-l="原因">模型 7 月 16 日发布，权重 7 月 27 日上 Hugging Face，两个日期都被不同来源引用为「发布时间」。</td>
+    </tr>
+    <tr>
+      <td data-l="条目"><b>Muse Spark Open / Mistral Large 4</b></td>
+      <td data-l="原因">前者权重已放但无编码基准分，后者仅 API 预览、权重尚未公开，均不足以与其他行并列。</td>
+    </tr>
+  </tbody>
+</table>
+
+<footer>
+  <p>口径约定：Verified = SWE-bench Verified 解决率；Pro = SWE-bench Pro 通过率（v1 为主，2026-09-22 后部分为 v2）；TB 2.1 / TB 4.0 = 对应版本的 Terminal-Bench 解出率。所有分数单位为百分比，保留一位小数。空值用「—」表示该模型未公布、未参与该榜，或该版基准上线时模型已不在评测窗口，不代表 0 分。</p>
+  <p class="srcs">
+    vals.ai/benchmarks/swebench · benchlm.ai（swe-bench-pro、terminalbench21）· benchleader.com（Scale AI SEAL、Vals TB 4.0）· tbench.ai Terminal-Bench 4.0（经 presenc.ai、benchleader.com 转引）· snorkel.ai/leaderboard/terminal-bench-2-1 · temperature2.com（Artificial Analysis TB 2.1，181 模型，2026-10-26）· agentbreaking.com/benchmarks/terminalbench_21 · benchmarklist.com/benchmarks/vals_terminal_bench_2_1 · datalearner.com/benchmarks/terminal-bench-4-0 · anthropic.com/news（Opus 4/4.5/4.7/4.8/5/5.5 公告与系统卡）· openai.com/index/previewing-gpt-5-6-sol · deepmind.google/models/model-cards/gemini-4-argon · morphllm.com · pinggy.io · 各厂 model card / Hugging Face
+  </p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var tbody = document.querySelector('#mt tbody');
+  var rows = [].slice.call(tbody.querySelectorAll('tr'));
+  var tabs = [].slice.call(document.querySelectorAll('.tabs button'));
+  function key(r){ return r.dataset.s ? 's:' + r.dataset.s : 'b:' + r.dataset.b; }
+
+  var pinnedKey = null;
+
+  function clear(){
+    rows.forEach(function(r){ r.classList.remove('hl','self'); });
+  }
+
+  function light(active){
+    var k = key(active);
+    rows.forEach(function(o){
+      if(key(o) === k) o.classList.add(o === active ? 'self' : 'hl');
+    });
+  }
+
+  tabs.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tabs.forEach(function(b){ b.setAttribute('aria-selected', b === btn ? 'true' : 'false'); });
+      var f = btn.dataset.f;
+      rows.forEach(function(r){
+        r.hidden = !(f === 'all' || r.dataset.o === f);
+      });
+      pinnedKey = null;
+      clear();
+    });
+  });
+
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    rows.forEach(function(r){
+      r.addEventListener('mouseenter', function(){ if(!pinnedKey) light(r); });
+      r.addEventListener('mouseleave', function(){ if(!pinnedKey) clear(); });
+    });
+  }
+
+  rows.forEach(function(r){
+    r.addEventListener('click', function(){
+      var k = key(r);
+      if(pinnedKey === k){
+        pinnedKey = null;
+        clear();
+      } else {
+        pinnedKey = k;
+        clear();
+        light(r);
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

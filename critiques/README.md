@@ -44,6 +44,7 @@ tags: []
 - `critiques/auto-industry/2026-10-全球汽车进出口数据研究/` —— `kind: report`（HTML 报告）
 - `critiques/ai-industry/2026-10-kimi-k3-1-pro-pr-crisis/` —— `kind: report`（HTML 报告，AI 公司公关事件复盘）
 - `critiques/ai-industry/2026-10-OpenAI的28天冲刺/` —— `kind: report`（HTML 报告，数字待复核）
+- `critiques/ai-industry/2026-10-前沿模型编程能力榜单对照/` —— `kind: report`（HTML 报告，多榜单口径对照，数字待复核）
 - `critiques/ai-aesthetics/2026-10-AI审美三层结构/` —— `kind: report`（HTML 报告，link-only）
 - `critiques/creative-industry/2026-10-推理模型与游戏工业重估/` —— `kind: report`（HTML 报告，link-only）
 - `critiques/dating/2027-01-dating-product-advice.md` —— `kind: advice`
