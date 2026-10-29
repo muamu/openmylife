@@ -12,7 +12,7 @@
 
 > 每天一条，宁缺毋滥 —— 值得看才推，努力日更。
 
-- **2026-10-27** · [前沿编码模型榜与代际对照：五十一个模型，四套不相通的口径](https://openmylife.xyz/articles/ai/frontier-coding-model-benchmarks.html) —— 官方集第一 61.5，厂商自报聚合榜第一 89.9，两条数字之间没有换算关系；开源只慢约三个月，DeepSeek V4 Pro 在独立榜上只差 Opus 5 0.6 分。附八条存疑清单，数字待复核。
+- **2026-10-29** · [前沿编码模型榜与代际对照：五十六个模型，四套不相通的口径](https://openmylife.xyz/articles/ai/frontier-coding-model-benchmarks.html) —— 补录 5 个模型后，TB 4.0 的头把交椅换了人：Kimi K3.1 Pro 以 AA 复跑的 67.2 登顶，开源第一次站到这个位置；但前三名 3 分差距仍在 harness 摆幅内。附十一条存疑清单，数字待复核。
 - **2026-10-26** · [OpenAI 日更到第 20 天：为什么 88% 的票押它「今天别交了」？](https://openmylife.xyz/articles/ai/openai-28-day-sprint.html) —— 10 天交付、10 次重置，88% 的票押它交不出来。拿额度当赌注的军令状，撞上 Google Labs 那句「你不能微波好点子」；数字级事实待复核。
 - **2026-10-25** · [Kimi 3.1 发布即翻车？比起暗广营销，真正背刺用户的是额度](https://openmylife.xyz/articles/ai/kimi-k31-pr-crisis.html) —— 三条线同时起火，硬度完全不同：额度线有官方错误码与文档可复核，营销线最致命的一条至今只有单方截图。核心不是请 KOL，而是要求把商业内容伪装成自发口碑。
 - **2026-10-24** · [AI 审美的三层结构：默认审美、调节层与上限层](https://openmylife.xyz/articles/ai/aesthetic-three-layers.html) —— 默认审美是统计引力，提示词是意图翻译，模型能力是细节天花板；治错层最挫败。

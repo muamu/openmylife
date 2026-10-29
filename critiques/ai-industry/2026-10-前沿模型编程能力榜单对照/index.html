@@ -194,10 +194,10 @@ footer p{margin:0 0 8px;max-width:52em}
 <header class="mast">
   <p class="eyebrow">BENCHMARK RECONSTRUCTION / 2025.05 — 2026.10</p>
   <h1>前沿编码模型榜与代际对照</h1>
-  <p class="dek">五十一个模型、八个 Opus 版本、四套互不相通的榜单口径。同一款模型在不同榜上可以差 30 分，所以「谁第一」这个问题，必须先问是哪个榜。</p>
+  <p class="dek">五十六个模型、八个 Opus 版本、四套互不相通的榜单口径。同一款模型在不同榜上可以差 30 分，所以「谁第一」这个问题，必须先问是哪个榜。</p>
   <div class="meta">
-    <span>整理 2026-10-27</span>
-    <span>数据截至 2026-10-26</span>
+    <span>整理 2026-10-27 · 补录 2026-10-29</span>
+    <span>数据截至 2026-10-29</span>
     <span>公开厂商公告 / 独立测评 / 官方榜单</span>
   </div>
 </header>
@@ -208,8 +208,8 @@ footer p{margin:0 0 8px;max-width:52em}
     <p>SWE-bench Pro 的<b>官方集第一是 61.5</b>（Muse Spark 1.1），<b>厂商自报聚合榜第一是 89.9</b>（Opus 5.5）。差 28.4 分。不是模型变强了，是两把尺子刻度不同。</p>
   </div>
   <div class="judge g">
-    <span class="n">02 · 开源只慢三个月</span>
-    <p>DeepSeek V4 Pro（8 月 13 日，MIT）在独立榜上 <b>96.4</b>，比 Opus 5 低 0.6 分，价格为四分之一。终端任务上 Qwen3.8-Max 也做到 <b>88.8</b>，只差 Opus 5 三分。</p>
+    <span class="n">02 · 开源已经登顶一项</span>
+    <p>DeepSeek V4 Pro（MIT）在独立榜上 <b>96.4</b>，比 Opus 5 低 0.6 分。终端任务上 Kimi K3.1 Pro 以 <b>67.2</b> 拿下 TB 4.0 全场第一——开源第一次站到这个位置，权重 11 月 4 日前放出。</p>
   </div>
   <div class="judge y">
     <span class="n">03 · 基准在轮换</span>
@@ -258,14 +258,14 @@ footer p{margin:0 0 8px;max-width:52em}
   <p>SWE-bench Pro 官方集（Scale AI SEAL，2026-10-07）：榜首 Muse Spark 1.1 <b>61.5%</b>。同一个基准的聚合榜（BenchLM，2026-10-17，83 个模型其中 <mark>79 行是厂商自报</mark>）：榜首 Opus 5.5 <b>89.9%</b>。两条数字之间没有换算关系，SWE-bench Pro 又在 9 月 22 日切换到 v2 数据集，老分数与新分数同样对不上。</p>
 </div>
 
-<h2><span class="num">02</span>五十一个模型，一张表</h2>
+<h2><span class="num">02</span>五十六个模型，一张表</h2>
 
 <p>按发布日期排列，闭源与开源混在一起。切换标签页可以只看一边；把鼠标移到任意一行，<b>同系列的模型会一起点亮</b>——Opus 是一个系列，Fable、Mythos、GPT-5、GPT-6、Sol 各算一个。开源模型多数没有子系列，就按品牌联动（DeepSeek、Qwen、Kimi、GLM、MiniMax 各自成组）。</p>
 
 <div class="tabs" role="tablist" aria-label="阵营筛选">
-  <button role="tab" data-f="all" aria-selected="true">全部<span class="cnt">51</span></button>
-  <button role="tab" data-f="c" aria-selected="false">闭源<span class="cnt">32</span></button>
-  <button role="tab" data-f="o" aria-selected="false">开源<span class="cnt">19</span></button>
+  <button role="tab" data-f="all" aria-selected="true">全部<span class="cnt">56</span></button>
+  <button role="tab" data-f="c" aria-selected="false">闭源<span class="cnt">36</span></button>
+  <button role="tab" data-f="o" aria-selected="false">开源<span class="cnt">20</span></button>
   <span class="hint">悬停看同系列 · 单击钉住 · 再点同系列取消</span>
 </div>
 
@@ -660,6 +660,14 @@ footer p{margin:0 0 8px;max-width:52em}
       <td class="num" data-l="TB 2.1">—</td>
       <td class="num" data-l="TB 4.0">44.6<span class="tagline i">独</span></td>
     </tr>
+    <tr data-o="c" data-s="haiku" data-b="anthropic" style="--sc:#3E7A7A">
+      <td class="mname" data-l="模型"><span class="mdl">Claude Haiku 5.5</span><span class="vd">Anthropic · 5.5 家族的小模型，$1/$5</span></td>
+      <td class="dt" data-l="发布">2026-10-07</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">36.4<span class="tagline i">独</span></td>
+    </tr>
     <tr data-o="c" data-s="gpt6" data-b="openai" style="--sc:#4F7A20">
       <td class="mname" data-l="模型"><span class="mdl">GPT-6.1 Sol</span><span class="vd">OpenAI · $2/$10 打 Astra 的五分之一价</span></td>
       <td class="dt" data-l="发布">2026-10-07</td>
@@ -667,6 +675,22 @@ footer p{margin:0 0 8px;max-width:52em}
       <td class="num" data-l="Pro">—</td>
       <td class="num" data-l="TB 2.1">—</td>
       <td class="num" data-l="TB 4.0">55.0<span class="tagline i">独</span></td>
+    </tr>
+    <tr data-o="c" data-s="muse-wonder" data-b="meta" style="--sc:#7B4A6B">
+      <td class="mname" data-l="模型"><span class="mdl">Muse Wonder</span><span class="vd">Meta · API 版 $4/$20；DeepSWE 78.8，高于 Opus 5.5 的 74.2</span></td>
+      <td class="dt" data-l="发布">2026-10-12</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">52.0<span class="tagline i">独</span></td>
+    </tr>
+    <tr data-o="c" data-s="muse-wonder" data-b="meta" style="--sc:#7B4A6B">
+      <td class="mname" data-l="模型"><span class="mdl">Muse Wonder Full</span><span class="vd">Meta · 仅 Muse Code 订阅可用，不按 token 出售</span></td>
+      <td class="dt" data-l="发布">2026-10-12</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">58.1<span class="tagline i">独</span></td>
     </tr>
     <tr data-o="c" data-s="gemini" data-b="google" style="--sc:#8A6A2B">
       <td class="mname" data-l="模型"><span class="mdl">Gemini 4 Argon</span><span class="vd">Google · DeepSWE 77.9 自称第一，TB 落后 Astra</span></td>
@@ -692,6 +716,22 @@ footer p{margin:0 0 8px;max-width:52em}
       <td class="num" data-l="TB 2.1">—</td>
       <td class="num" data-l="TB 4.0">38.1</td>
     </tr>
+    <tr data-o="o" data-s="" data-b="moonshot" style="--sc:#6E4A8A">
+      <td class="mname" data-l="模型"><span class="mdl">Kimi K3.1 Pro</span><span class="vd"><i class="chip">开源</i>月之暗面 · 2.8T/104B · 权重 11-04 前放出 · 官方自报 65.7</span></td>
+      <td class="dt" data-l="发布">2026-10-23</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">67.2<span class="tagline i">独</span></td>
+    </tr>
+    <tr data-o="c" data-s="gemini" data-b="google" style="--sc:#8A6A2B">
+      <td class="mname" data-l="模型"><span class="mdl">Gemini 4 Carbon</span><span class="vd">Google · AA 智能指数 59 第一；自报 65.2 · 暂限安全合作伙伴</span></td>
+      <td class="dt" data-l="发布">2026-10-28</td>
+      <td class="num" data-l="Verified">—</td>
+      <td class="num" data-l="Pro">—</td>
+      <td class="num" data-l="TB 2.1">—</td>
+      <td class="num" data-l="TB 4.0">64.0<span class="tagline i">独</span></td>
+    </tr>
 
   </tbody>
 </table>
@@ -713,7 +753,7 @@ footer p{margin:0 0 8px;max-width:52em}
 <div class="box good">
   <span class="h">裂口三 · 三条观察，第二条推翻了我上一版的判断</span>
   <p>一、<b>Verified 前十里四个开放权重</b>（DeepSeek V4 Pro 第 2、GLM-5.3 第 6、Kimi K3 第 8、GLM-5.3-Flash 第 10），这是 2025 年没有过的密度。</p>
-  <p>二、<b>「开源追不上终端任务」这个结论是错的</b>。上一版只看 TB 4.0，看到前九名全闭源就下了判断；补上 2.1 才发现 Qwen3.8-Max 拿到 <b>88.8</b>，全场第五，只比 Opus 5 低 0.3 分，Kimi K3 85.0、GLM-5.3 83.9 也都在前十。TB 4.0 上开源显得落后，是因为<b>只有 GLM-5.3 一家提交了</b>，不是能力断崖。</p>
+  <p>二、<b>开源已经在 TB 4.0 上登顶</b>，不是「追不上」。Kimi K3.1 Pro（10 月 23 日）在 AA 独立复跑里拿到 <b>67.2</b>，高过 Opus 5.5 的 66.4 与 Gemini 4 Carbon 的 64。上一版写「TB 4.0 上只有 GLM-5.3 一家开源提交」，那是照 tbench 官方榜说的；AA 不往那个榜报分，只看单一榜单就会得出相反结论——这一条比任何模型分数都更能说明为什么要交叉核对。</p>
   <p>三、<b>参数越大越强在开源内部不成立</b>。Qwen3.8-27B 用 27B 稠密拿到 Pro 61.7、TB 2.1 79.8，压过一堆千亿级模型。</p>
 </div>
 
@@ -844,6 +884,18 @@ footer p{margin:0 0 8px;max-width:52em}
       <td data-l="原因">模型 7 月 16 日发布，权重 7 月 27 日上 Hugging Face，两个日期都被不同来源引用为「发布时间」。</td>
     </tr>
     <tr>
+      <td data-l="条目"><b>TB 4.0 的榜首是谁</b></td>
+      <td data-l="原因">三个候选各自有两套数：Kimi K3.1 Pro 自报 65.7 / AA 复跑 67.2，Gemini 4 Carbon 自报 65.2 / AA 复跑 64.0，Opus 5.5 自报 66.4 / Vals 65.2 / AA 59.6。按自报排是 Opus 5.5 第一，按 AA 排是 Kimi 第一。表中取 AA（同为独立复跑口径），但这三名之间 3 分的差距完全在 harness 摆幅之内，不足以分胜负。</td>
+    </tr>
+    <tr>
+      <td data-l="条目"><b>Muse Wonder Full 的 TB 4.0</b></td>
+      <td data-l="原因">Meta 自己的表记 57.1，Vals 榜记 58.1。表中取 Vals 的 58.1 并标「独」，与同列其它行的来源保持一致。</td>
+    </tr>
+    <tr>
+      <td data-l="条目"><b>Kimi K3.1 Pro 的权重状态</b></td>
+      <td data-l="原因">10 月 23 日发布时权重尚未公开，官方承诺 11 月 4 日前放出，许可证未公布。表中按开放权重登记，若逾期未放则需改判为闭源。</td>
+    </tr>
+    <tr>
       <td data-l="条目"><b>Muse Spark Open / Mistral Large 4</b></td>
       <td data-l="原因">前者权重已放但无编码基准分，后者仅 API 预览、权重尚未公开，均不足以与其他行并列。</td>
     </tr>
@@ -853,7 +905,7 @@ footer p{margin:0 0 8px;max-width:52em}
 <footer>
   <p>口径约定：Verified = SWE-bench Verified 解决率；Pro = SWE-bench Pro 通过率（v1 为主，2026-09-22 后部分为 v2）；TB 2.1 / TB 4.0 = 对应版本的 Terminal-Bench 解出率。所有分数单位为百分比，保留一位小数。空值用「—」表示该模型未公布、未参与该榜，或该版基准上线时模型已不在评测窗口，不代表 0 分。</p>
   <p class="srcs">
-    vals.ai/benchmarks/swebench · benchlm.ai（swe-bench-pro、terminalbench21）· benchleader.com（Scale AI SEAL、Vals TB 4.0）· tbench.ai Terminal-Bench 4.0（经 presenc.ai、benchleader.com 转引）· snorkel.ai/leaderboard/terminal-bench-2-1 · temperature2.com（Artificial Analysis TB 2.1，181 模型，2026-10-26）· agentbreaking.com/benchmarks/terminalbench_21 · benchmarklist.com/benchmarks/vals_terminal_bench_2_1 · datalearner.com/benchmarks/terminal-bench-4-0 · anthropic.com/news（Opus 4/4.5/4.7/4.8/5/5.5 公告与系统卡）· openai.com/index/previewing-gpt-5-6-sol · deepmind.google/models/model-cards/gemini-4-argon · morphllm.com · pinggy.io · 各厂 model card / Hugging Face
+    vals.ai/benchmarks/swebench · benchlm.ai（swe-bench-pro、terminalbench21）· benchleader.com（Scale AI SEAL、Vals TB 4.0）· tbench.ai Terminal-Bench 4.0（经 presenc.ai、benchleader.com 转引）· snorkel.ai/leaderboard/terminal-bench-2-1 · temperature2.com（Artificial Analysis TB 2.1，181 模型，2026-10-26）· agentbreaking.com/benchmarks/terminalbench_21 · benchmarklist.com/benchmarks/vals_terminal_bench_2_1 · datalearner.com/benchmarks/terminal-bench-4-0 · artificialanalysis.ai/articles/gemini-4-carbon-new-number-1 · labindex.ai/outputs/google/gemini-4-carbon · llm-releases.com/latest · hokai.io/hub/models/muse-wonder · minirouter.sh/rankings/coding-models · anthropic.com/news（Opus 4/4.5/4.7/4.8/5/5.5 公告与系统卡）· openai.com/index/previewing-gpt-5-6-sol · deepmind.google/models/model-cards/gemini-4-argon · 月之暗面 K3.1 Pro 发布博客 · morphllm.com · pinggy.io · 各厂 model card / Hugging Face
   </p>
 </footer>
 
