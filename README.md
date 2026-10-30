@@ -10,16 +10,11 @@
 
 ## 每日推荐
 
-> 每天一条，宁缺毋滥 —— 值得看才推，努力日更。
+> 最新一条 + 随机两条旧文，最多三条 —— 轮换展示，宁缺毋滥。
 
-- **2026-10-29** · [前沿编码模型榜与代际对照：五十六个模型，四套不相通的口径](https://openmylife.xyz/articles/ai/frontier-coding-model-benchmarks.html) —— 补录 5 个模型后，TB 4.0 的头把交椅换了人：Kimi K3.1 Pro 以 AA 复跑的 67.2 登顶，开源第一次站到这个位置；但前三名 3 分差距仍在 harness 摆幅内。附十一条存疑清单，数字待复核。
-- **2026-10-26** · [OpenAI 日更到第 20 天：为什么 88% 的票押它「今天别交了」？](https://openmylife.xyz/articles/ai/openai-28-day-sprint.html) —— 10 天交付、10 次重置，88% 的票押它交不出来。拿额度当赌注的军令状，撞上 Google Labs 那句「你不能微波好点子」；数字级事实待复核。
-- **2026-10-25** · [Kimi 3.1 发布即翻车？比起暗广营销，真正背刺用户的是额度](https://openmylife.xyz/articles/ai/kimi-k31-pr-crisis.html) —— 三条线同时起火，硬度完全不同：额度线有官方错误码与文档可复核，营销线最致命的一条至今只有单方截图。核心不是请 KOL，而是要求把商业内容伪装成自发口碑。
-- **2026-10-24** · [AI 审美的三层结构：默认审美、调节层与上限层](https://openmylife.xyz/articles/ai/aesthetic-three-layers.html) —— 默认审美是统计引力，提示词是意图翻译，模型能力是细节天花板；治错层最挫败。
-- **2026-10-24** · [Seedance 2.5 4K 之后，特效行业真正的分水岭不是裁员](https://openmylife.xyz/articles/ai/seedance-4k-vfx-industry.html) —— 需求会涨、五毛特效有活路、大规模失业没发生，这三条只对了一半：单价崩得比需求快，「不裁员」是把全职换成了外包。
-- **2026-10-24** · [推理模型进游戏工业：三种能力被重估，和一个错位](https://openmylife.xyz/articles/ai/reasoning-models-game-industry.html) —— 能力最强的工程与工具链环节在玩家视野之外；被玩家看见的美术生成，用了反而掉分。
-- **2026-10-24** · [推理模型的审美三层结构](https://openmylife.xyz/articles/ai/reasoning-aesthetic-three-layers.html) —— 默认代码风格、文档调节层、前端 / 3D 执行力上限；审美差距有一部分是工作流差距，让模型「看见自己的产出」比换模型收益更大。
-- **2026-10-21** · [DSH 插件检索经验总结](https://github.com/muamu/openmylife/blob/main/critiques/agent-framework/2026-10-dsh-plugin-search-experience.md) —— 为 DSH 找插件的三轮实战复盘：四步检索法、npm 同名包陷阱，以及一份能照做的安装 SOP。
+- **2026-10-30** · [AI 味拆三层：大多数人洗的，是最不管用的那一层](https://openmylife.xyz/articles/ai/ai-flavor-three-layers.html) —— AI 味不是一种味道，而是三层：词、句、结构。520 万字对照统计（口径见附录 A）显示，黑名单词与破折号已经失效；真正决定读者信不信的，是结构与材料。附七种可数句式与存疑清单。
+- **2026-10-21** · [MiniMax 与智谱 2026 中报对照：收入、亏损与 ARR](https://openmylife.xyz/articles/finance/minimax-zhipu-h1-2026.html) —— 两家港股大模型公司上市后的首份中报对照：收入、亏损、ARR 与估值，数据截至 2026-10-21。
+- **2026-10-17** · [开源自己 · 灵感备忘录](https://github.com/muamu/openmylife/blob/main/ideas/2026-10-17-openmylife-ideas.md) —— 把「开源自己」当成一本富媒体电子书：仓库目录是章，commit 是修订记录，自带时间线与可引用性。
 
 ## 我是谁
 
@@ -71,7 +66,8 @@ OpenMyLife 是一套「把自己当成长期维护的开源项目」的方法与
 ## 从哪读起
 
 1. 灵感备忘录：[开源自己 · 灵感备忘录](./ideas/2026-10-17-openmylife-ideas.md)
-2. 洞察：[大模型的壁垒](./notes/insights/2026-10-21-llm-barriers.html) —— 技术收敛之后，壁垒转移到算力、数据、资本与分发渠道。站点版：`https://openmylife.xyz/articles/ai/llm-barriers.html`（部署后生效）。
+2. 写作方法：[AI 味拆三层](./notes/insights/2026-10-30-ai-flavor-three-layers.md) —— 把 AI 味拆成词、句、结构三层，附七种可数句式、三份自检清单与存疑口径。站点版：[openmylife.xyz/articles/ai/ai-flavor-three-layers.html](https://openmylife.xyz/articles/ai/ai-flavor-three-layers.html)
+3. 洞察：[大模型的壁垒](./notes/insights/2026-10-21-llm-barriers.html) —— 技术收敛之后，壁垒转移到算力、数据、资本与分发渠道。站点版：`https://openmylife.xyz/articles/ai/llm-barriers.html`（部署后生效）。
 
 ## 怎么用这个仓库
 
