@@ -56,6 +56,7 @@
 
 ## 现有内容
 
+- [`systematic-self-diagnosis`](./fun/systematic-self-diagnosis.md) —— 系统性自我诊断提示词：先问三个问题补全认知，再给出 3–5 年轨迹建议。
 - [`skill-evolution`](./skills/skill-evolution/SKILL.md) —— 把刚完成的工作流提炼为可复用技能，并按使用反馈持续进化。
 - [`orchestrate-mode`](./skills/orchestrate-mode/SKILL.md) —— 复杂任务先分级，再决定直接做、派一个 agent 还是多 agent 编排。
 
