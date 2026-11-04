@@ -10,11 +10,11 @@
 
 ## 每日推荐
 
-> 最新一条 + 随机两条旧文，最多三条 —— 轮换展示，宁缺毋滥。
+> 每日推荐 —— 宁缺毋滥，努力日更。
 
-- **2026-10-30** · [AI 味拆三层：大多数人洗的，是最不管用的那一层](https://openmylife.xyz/articles/ai/ai-flavor-three-layers.html) —— AI 味不是一种味道，而是三层：词、句、结构。520 万字对照统计（口径见附录 A）显示，黑名单词与破折号已经失效；真正决定读者信不信的，是结构与材料。附七种可数句式与存疑清单。
-- **2026-10-21** · [MiniMax 与智谱 2026 中报对照：收入、亏损与 ARR](https://openmylife.xyz/articles/finance/minimax-zhipu-h1-2026.html) —— 两家港股大模型公司上市后的首份中报对照：收入、亏损、ARR 与估值，数据截至 2026-10-21。
-- **2026-10-17** · [开源自己 · 灵感备忘录](https://github.com/muamu/openmylife/blob/main/ideas/2026-10-17-openmylife-ideas.md) —— 把「开源自己」当成一本富媒体电子书：仓库目录是章，commit 是修订记录，自带时间线与可引用性。
+- **2026-11-04** · [慢下来，把时间浪费在这里：AI 时代的推荐系统](https://openmylife.xyz/articles/ai/slow-down-ai-recommendation.html) —— 算力涨了百万倍，我们却还是在周五晚上滑两个小时也没挑出一部电影。推荐系统缺的不是语义理解，而是你的情节记忆；解法或许不是超级 App，而是一个安静住在设备里的个人 Agent。
+- **2026-10-25** · [Kimi 3.1 发布即翻车？比起暗广营销，真正背刺用户的是额度](https://openmylife.xyz/articles/ai/kimi-k31-pr-crisis.html) —— 三条线同时起火，硬度完全不同：额度线有官方错误码与文档可复核，营销线最致命的一条至今只有单方截图。核心不是请 KOL，而是要求把商业内容伪装成自发口碑。
+- **2026-10-21** · [一条语音指令，如何让 Agent 写出一份可复用的经验总结](https://github.com/muamu/openmylife/blob/main/notes/agent-collaboration/2026-10-21-instruction-experience-dsh-report.md) —— 把一次真实任务整理成下一个 Agent 能照着做的文档：先给一手事实，再指定读者与骨架。
 
 ## 我是谁
 
