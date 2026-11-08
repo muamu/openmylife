@@ -38,6 +38,7 @@
 - **commit**：存一次档；**仓库**：你的个人档案本；**fork**：复制一份改成自己的；**PR**：把你自己加进名单。
 - **visibility**：`public`（直接公开）| `link-only`（可见不宣传）。
 - **两份文档**：`README.md` 给人类看（建立品牌）；本文件 `CONTEXT.md` 给 AI 读（数字分身）。
+- **每日推荐**：`README.md` 只保留 3 条轮换（最新 1 + 随机 2，随机项排除上次条目）；全量归档在站点 `web/assets/recommendations.js`，README 不保留历史。
 
 ## 5. 隐私边界（AI 必须遵守）
 
