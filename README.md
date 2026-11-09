@@ -12,9 +12,9 @@
 
 > 每日推荐 —— 宁缺毋滥，努力日更。
 
-- **2026-11-08** · [个人助理 V3 洞察：从抢入口到抢上下文](https://openmylife.xyz/articles/agent/personal-agent-v3-context.html) —— V3 真正新增的不是五个产品，而是三种生产、保管与定价个人上下文的方式。能力已变成供应链，下一阶段看授权深度、分成率与可携带性，不看 DAU。
-- **2026-10-24** · [AI 审美的三层结构：默认审美、调节层与上限层](https://openmylife.xyz/articles/ai/aesthetic-three-layers.html) —— 默认审美是统计引力，提示词是意图翻译，模型能力是细节天花板。动手前先分清：你面对的是默认审美问题，还是能力上限问题。
-- **2026-10-17** · [开源自己 · 灵感备忘录](https://github.com/muamu/openmylife/blob/main/ideas/2026-10-17-openmylife-ideas.md) —— 把「开源自己」当成一本富媒体电子书：仓库目录是章，commit 是修订记录，自带时间线与可引用性。
+- **2026-11-09** · [段永平的 191 亿美元，只拿 0.15% 去试自己看不懂的阿里](https://openmylife.xyz/articles/finance/duan-yongping-191yi-alibaba.html) —— 六轮虚拟圆桌，把段永平「主仓、观察哨、不为清单」的持仓结构翻译成一份每日注意力协议。
+- **2026-10-24** · [Seedance 2.5 4K 之后，特效行业真正的分水岭不是裁员](https://openmylife.xyz/articles/ai/seedance-4k-vfx-industry.html) —— 需求会涨、五毛特效有活路、大规模失业没发生，这三条只对了一半：单价崩得比需求快，「不裁员」是把全职换成了外包。
+- **2026-10-21** · [大模型的壁垒](https://openmylife.xyz/articles/ai/llm-barriers.html) —— 技术会收敛，壁垒不会消失。一次朋友间的讨论，最后落到算力、数据、资本与分发渠道。
 
 ## 我是谁
 
