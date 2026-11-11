@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 招聘两年：四条互不相干的市场（2025–2026）</title>
+<style>
+:root{
+  --paper:#F7FBFE;
+  --ink:#152430;
+  --ink2:#415568;
+  --ink3:#7B8FA3;
+  --blue:#1C7ED6;
+  --blue-deep:#125FA8;
+  --blue-tint:#E8F3FD;
+  --mint:#0E9E7C;
+  --mint-tint:#E6F8F2;
+  --coral:#EE6B45;
+  --coral-tint:#FFF0EA;
+  --amber:#C98A12;
+  --amber-tint:#FFF7E3;
+  --line:#D5E6F5;
+  --card:#FFFFFF;
+  --mark:#FFF1A8;
+  --serif:"Noto Serif SC","Songti SC","SimSun",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Consolas,"Courier New",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.85;overflow-x:hidden}
+.wrap{max-width:920px;margin:0 auto;padding:0 18px}
+
+header.top{padding:40px 0 8px}
+.kicker{font-family:var(--mono);font-size:13px;color:var(--blue-deep);letter-spacing:.04em}
+h1{font-family:var(--serif);font-size:30px;line-height:1.38;margin:12px 0 10px;font-weight:700;color:var(--ink)}
+.sub{color:var(--ink2);font-size:16.5px}
+.dateline{font-size:14px;color:var(--ink3);margin-top:10px}
+
+.judge{background:linear-gradient(135deg,#E8F3FD 0%,#F6FBFF 70%);border:1px solid #CFE6FA;border-left:5px solid var(--blue);margin:22px -18px 8px;padding:26px 20px 24px}
+.judge .label{font-family:var(--mono);font-size:13px;color:var(--blue-deep);letter-spacing:.06em}
+.judge p.big{font-family:var(--serif);font-size:21px;line-height:1.92;margin-top:12px}
+.judge p.big em{font-style:normal;color:var(--blue-deep);font-weight:600}
+.judge p.tail{font-size:15.5px;color:var(--ink2);margin-top:14px;line-height:1.82}
+
+.guide{margin:22px 0 6px}
+.guide .glabel{font-family:var(--mono);font-size:13px;color:var(--blue-deep);letter-spacing:.06em;margin-bottom:6px}
+.guide ol{list-style:none}
+.guide li{display:flex;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line);font-size:16.5px}
+.guide li:last-child{border-bottom:none}
+.guide .n{font-family:var(--mono);color:var(--blue);font-size:13.5px;padding-top:4px;flex:none}
+.index-line{font-size:14.5px;color:var(--ink3);margin:14px 0 0}
+.index-line a{color:var(--blue-deep);text-decoration:none;border-bottom:1px solid var(--line)}
+
+h2{font-family:var(--serif);font-size:23px;font-weight:700;background:var(--blue-tint);border-left:4px solid var(--blue);padding:13px 16px;margin:48px -18px 18px;display:flex;align-items:baseline;gap:11px;line-height:1.5;color:var(--ink)}
+h2 .no{font-family:var(--mono);color:var(--blue);font-size:14px;flex:none}
+h3{font-family:var(--serif);font-size:20px;margin:30px 0 8px;line-height:1.55}
+h4{font-size:17px;margin:20px 0 6px;color:var(--ink)}
+p{margin:12px 0}
+.lead{color:var(--ink2);font-size:17.5px}
+.small{font-size:14px;color:var(--ink3);line-height:1.75}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+mark{background:var(--mark);padding:0 3px}
+a{color:var(--blue-deep)}
+
+table{width:100%;border-collapse:collapse;font-size:15px;margin:16px 0;background:var(--card);line-height:1.66}
+th{background:#EDF6FE;font-family:var(--mono);font-size:13px;font-weight:400;color:var(--ink2);text-align:left;padding:10px 10px;border:1px solid var(--line)}
+td{padding:10px 10px;border:1px solid var(--line);vertical-align:top}
+td.k{font-family:var(--mono);font-size:13px;color:var(--blue-deep);white-space:nowrap}
+
+.block{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--blue);padding:16px 18px;margin:16px 0}
+.block.soft{background:#F1F8FE;border-left-color:#8FBEDF}
+.block .t{font-family:var(--mono);font-size:13px;color:var(--blue-deep);margin-bottom:6px;letter-spacing:.02em}
+.block p{margin:7px 0;font-size:16.5px}
+.block p:last-child{margin-bottom:0}
+.callout{background:var(--coral-tint);border-left:4px solid var(--coral);padding:14px 17px;margin:18px 0;font-size:16.5px}
+
+.rows{margin:16px 0;background:var(--card);border:1px solid var(--line)}
+.row{padding:13px 15px;border-bottom:1px dashed var(--line)}
+.row:last-child{border-bottom:none}
+.row .h{font-size:17px;font-weight:600;margin-bottom:4px}
+.row .h .tag{font-family:var(--mono);font-size:12.5px;color:var(--blue-deep);font-weight:400;margin-left:6px}
+.row .b{font-size:16px;color:var(--ink2);line-height:1.78}
+.row .b b{color:var(--ink);font-weight:600}
+
+ul.plain{list-style:none;margin:14px 0}
+ul.plain li{padding:9px 0 9px 19px;position:relative;font-size:16.5px;color:var(--ink2);border-bottom:1px dashed var(--line)}
+ul.plain li:last-child{border-bottom:none}
+ul.plain li::before{content:"—";position:absolute;left:0;color:var(--blue)}
+ul.plain li b{color:var(--ink);font-weight:600}
+
+.tl{margin:18px 0;border-left:2px solid var(--line);padding-left:0;list-style:none}
+.tl li{position:relative;padding:0 0 18px 22px;margin-left:8px;font-size:16px;color:var(--ink2)}
+.tl li::before{content:"";position:absolute;left:-6px;top:10px;width:10px;height:10px;background:var(--paper);border:2px solid #9CC4E4;border-radius:50%}
+.tl li.on::before{background:var(--blue);border-color:var(--blue)}
+.tl .d{font-family:var(--mono);font-size:13px;color:var(--blue-deep);display:block;line-height:1.6}
+.tl b{color:var(--ink);font-weight:600}
+
+.fig{margin:18px 0}
+.fig svg{width:100%;height:auto;display:block}
+.fig .cap{font-family:var(--mono);font-size:13px;color:var(--ink3);margin-top:8px;line-height:1.65}
+
+.src{font-size:14px;color:var(--ink2);line-height:1.8}
+.src li{padding:6px 0;border-bottom:1px dashed var(--line);list-style:none}
+.src li:last-child{border-bottom:none}
+.src a{word-break:break-all}
+.src .tag{font-family:var(--mono);font-size:12px;color:var(--blue-deep);margin-right:6px}
+
+footer{margin:52px -18px 0;padding:22px 18px 40px;border-top:1px solid var(--line);font-size:14px;color:var(--ink3)}
+footer p{margin:5px 0}
+
+@media (min-width:700px){
+  .wrap{padding:0 40px;max-width:960px}
+  body{font-size:18.5px}
+  h1{font-size:40px}
+  .sub{font-size:17.5px}
+  .dateline{font-size:14.5px}
+  h2{margin-left:-40px;margin-right:-40px;padding:14px 40px;font-size:27px}
+  h3{font-size:22px}
+  .judge{margin-left:-40px;margin-right:-40px;padding:36px 40px}
+  .judge p.big{font-size:23px}
+  footer{margin-left:-40px;margin-right:-40px;padding:24px 40px 48px}
+  table{font-size:15.5px}
+  .block,.callout{padding:18px 20px}
+  .block p,.callout{font-size:17px}
+}
+
+@media (min-width:1400px){
+  .wrap{max-width:1000px;padding:0 48px}
+  body{font-size:19.5px;line-height:1.9}
+  h1{font-size:46px}
+  h2{font-size:30px;margin-left:-48px;margin-right:-48px;padding:16px 48px}
+  h3{font-size:23px}
+  .judge{margin-left:-48px;margin-right:-48px;padding:40px 48px}
+  .judge p.big{font-size:25px}
+  .lead{font-size:19px}
+  table{font-size:16.5px}
+  .src{font-size:14.5px}
+  footer{margin-left:-48px;margin-right:-48px;padding:26px 48px 52px}
+}
+
+@media (min-width:1900px){
+  .wrap{max-width:1060px}
+  body{font-size:21px}
+  h1{font-size:52px}
+  h2{font-size:33px}
+  h3{font-size:25px}
+  .kicker{font-size:14px}
+  .sub{font-size:19.5px}
+  .dateline{font-size:15.5px}
+  .judge p.big{font-size:28px}
+  .judge p.tail{font-size:17px}
+  .lead{font-size:20.5px}
+  .small{font-size:15px}
+  p{margin:14px 0}
+  table{font-size:17.5px}
+  td,th{padding:12px 12px}
+  .block p,.callout{font-size:18.5px}
+  .row .b{font-size:17.5px}
+  ul.plain li,.guide li{font-size:18px}
+  .tl li{font-size:17.5px}
+  .src{font-size:15px}
+  .fig .cap{font-size:14px}
+  footer{font-size:15px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="kicker">产业调研 · 口径分层标注 · 数字待复核</div>
+  <h1>AI 招聘两年：四条互不相干的市场</h1>
+  <p class="sub">2025 年 1 月至 2026 年 11 月，国内外产品、方向与老厂商布局的逐条核对</p>
+  <p class="dateline">资料截至 2026 年 11 月 11 日。公司自报数据、媒体转述与一手出处已分层标注；数字级事实均带口径与时间。核对与存疑见 §09，来源见 §10。</p>
+</header>
+
+<div class="judge">
+  <div class="label">判断</div>
+  <p class="big">这两年「AI 招聘」裂成了四个买家不同、付钱的人不同、风险也不同的市场。吸走最多钱的那条，并不是帮企业招人，而是帮模型买人的判断力——<em>2026 年 11 月 10 日，Mercor 以 200 亿美元估值融资 7.5 亿美元，它的客户是 AI 实验室和 Fortune 500，不是 HR 部门</em>。连接求职者与企业的那条线，2026 年的关键词从「更聪明地筛简历」变成「按结果收费」，同时第一次遇到成规模的候选人抵制。老牌 HR 厂商用一整年并购把自己从记录系统改造成执行系统。监管则在 2026 年集体后撤：欧盟和科罗拉多都把原定的招聘 AI 合规大限推到了 2027 年以后。</p>
+  <p class="tail">已经知道的「给模型招专家做数据和 RL／IL 训练」，只是第一条线。它在 2026 年自己变了两次：从买专家的小时，变成买公司的真实工作记录；从卖人力，变成卖评测集和训练环境。</p>
+</div>
+
+<div class="guide">
+  <div class="glabel">30 秒版</div>
+  <ol>
+    <li><span class="n">01</span><span>四条线分别是：给模型招专家、给企业招人、老厂商 AI 化、周边设施（身份核验、技能图谱、陪练、合规）。把它们当成一个市场看，会读错所有数字。</span></li>
+    <li><span class="n">02</span><span>第一条线最大也最贵。Mercor 估值 13 个月翻倍、两年约 80 倍；但被反复引用的「年收入 20 亿／30 亿美元」是平台毛流水，扣掉付给专家的六到七成后远低于此。</span></li>
+    <li><span class="n">03</span><span>2026 年新动作：micro1 承诺一年花 10 亿美元买企业运营数据；Google 在 Spirit Airlines 破产拍卖里用 1000 万美元买下邮件与协作记录；Mercor 收购 Deeptune 做企业应用训练环境。</span></li>
+    <li><span class="n">04</span><span>第二条线里，据第三方转述，微软在 2026 年 4 月财报电话会把 LinkedIn 招聘 Agent 年化收入运行率单独披露为 4.5 亿美元；Indeed 与 BOSS 直聘都在用「有没有达成／有没有录用」重新给 AI 定价；伦敦的 Jack &amp; Jill 用两个 Agent 分别代表求职者与雇主，是「Agent 对 Agent」最接近落地的尝试。</span></li>
+    <li><span class="n">05</span><span>2025 是老厂商的并购年：Workday 连收 Paradox、Sana、Flowise，SAP 收 SmartRecruiters，Zoom 收 BrightHire；2026-10 Dayforce 买 Ribbon 时直接把产品叫「Agentic Recruiting」。到 2026 年，Agent 已从产品功能名升格为平台层命名和并购标的类别。</span></li>
+    <li><span class="n">06</span><span>反噬有硬数据：ManpowerGroup 覆盖近 4 万家雇主的调查里，只有三分之一说招聘变快了，四分之一说更慢；Greenhouse 调查中 38% 求职者因 AI 面试退出流程。同期没有任何一家 AI 面试官厂商发布过录用质量或留存数据。</span></li>
+  </ol>
+  <p class="index-line">六条常见说法的核对与全部存疑项放在 <a href="#s9">§09</a>，不影响主线阅读。</p>
+</div>
+
+<h2 id="s1"><span class="no">01</span>一张图：四条线的买方与卖法</h2>
+
+<div class="fig">
+<svg viewBox="0 0 360 396" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI 招聘四条市场线的买方、交付物与 2026 年状态对比图">
+  <rect x="0" y="0" width="360" height="396" fill="#FFFFFF"/>
+  <line x1="0" y1="30" x2="360" y2="30" stroke="#D5E6F5" stroke-width="1"/>
+  <text x="8" y="19" font-family="monospace" font-size="11" fill="#7B8FA3">2025 → 2026 · 按资金与落地密度排列</text>
+
+  <rect x="8" y="40" width="344" height="80" fill="#E8F3FD" stroke="#1C7ED6" stroke-width="1"/>
+  <rect x="8" y="40" width="5" height="80" fill="#1C7ED6"/>
+  <text x="22" y="59" font-family="sans-serif" font-size="13" font-weight="bold" fill="#152430">A · 给模型招专家</text>
+  <text x="22" y="77" font-family="sans-serif" font-size="11.5" fill="#415568">买方：AI 实验室、模型公司、企业 AI 团队</text>
+  <text x="22" y="94" font-family="sans-serif" font-size="11.5" fill="#415568">交付：专家工时、后训练数据、评测集、RL 环境</text>
+  <text x="22" y="111" font-family="monospace" font-size="11" fill="#125FA8">2026：从买小时转向买企业工作记录</text>
+
+  <rect x="8" y="128" width="344" height="80" fill="#E6F8F2" stroke="#BFE8DA" stroke-width="1"/>
+  <rect x="8" y="128" width="5" height="80" fill="#0E9E7C"/>
+  <text x="22" y="147" font-family="sans-serif" font-size="13" font-weight="bold" fill="#152430">B · 给企业招人</text>
+  <text x="22" y="165" font-family="sans-serif" font-size="11.5" fill="#415568">买方：企业 HR、招聘平台、求职者</text>
+  <text x="22" y="182" font-family="sans-serif" font-size="11.5" fill="#415568">交付：寻访、筛选、AI 面试、结果与入职</text>
+  <text x="22" y="199" font-family="monospace" font-size="11" fill="#125FA8">2026：按结果定价，同时出现候选人抵制</text>
+
+  <rect x="8" y="216" width="344" height="80" fill="#FFF7E3" stroke="#EAD9A8" stroke-width="1"/>
+  <rect x="8" y="216" width="5" height="80" fill="#C98A12"/>
+  <text x="22" y="235" font-family="sans-serif" font-size="13" font-weight="bold" fill="#152430">C · 老厂商 AI 化</text>
+  <text x="22" y="253" font-family="sans-serif" font-size="11.5" fill="#415568">买方：既有 HCM／ATS 客户</text>
+  <text x="22" y="270" font-family="sans-serif" font-size="11.5" fill="#415568">交付：并购补齐的 Agent、面试智能、工作流</text>
+  <text x="22" y="287" font-family="monospace" font-size="11" fill="#125FA8">2025：并购年 · 2026：平台层命名与整合</text>
+
+  <rect x="8" y="304" width="344" height="80" fill="#FFFFFF" stroke="#D5E6F5" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="8" y="304" width="5" height="80" fill="#9AA7B4"/>
+  <text x="22" y="323" font-family="sans-serif" font-size="13" font-weight="bold" fill="#152430">D · 周边设施</text>
+  <text x="22" y="341" font-family="sans-serif" font-size="11.5" fill="#415568">买方：平台、企业合规、求职者本人</text>
+  <text x="22" y="358" font-family="sans-serif" font-size="11.5" fill="#415568">交付：身份核验、反作弊、技能图谱、陪练、审计</text>
+  <text x="22" y="375" font-family="monospace" font-size="11" fill="#7B8FA3">2026：因申请量暴增与诉讼而被迫生长</text>
+</svg>
+<p class="cap">四条线的划分依据是「谁付钱、拿到什么」，不是技术相似度。A 与 B 在 2026 年开始合流：招聘过程中产生的真实工作记录，成了训练企业 Agent 的原料。</p>
+</div>
+
+<p>四条线共用「AI 招聘」这个词，客户名单却几乎不重叠。A 线的买家是模型公司的研究团队，采购逻辑接近算力预算；B 线的买家是 HR，采购逻辑是每人每次招聘成本；C 线是存量软件的续约与升级；D 线多数由合规、风控和欺诈倒逼出来。把它们混在一起谈「AI 招聘市场规模」，得到的数字没有解释力——检索到的 2025 年市场规模估计从 75.5 亿美元到 870 亿美元不等，差一个数量级，来源多为低可信度的市场研究站，本稿一概不采用。</p>
+
+<h2 id="s2"><span class="no">02</span>第一条线：给模型招专家，2026 年变了两次</h2>
+
+<p class="lead">这条业务业内叫专家数据或后训练供给，涵盖偏好打分、可验证奖励（RLVR／GRPO）、模仿学习式的示范轨迹，以及把真实工作拆成 Agent 可练习的任务环境。2025 年的主线是「谁能组织到博士、律师、医生」；2026 年的主线变成了「谁能拿到一家公司怎么干活的完整上下文」。</p>
+
+<h3>关键事件</h3>
+<ul class="tl">
+  <li><span class="d">2024-09 → 2025-10</span>Mercor 的估值链条：<span class="mono">3000 万美元 A 轮 @ 2.5 亿</span>（2024-09-19）→ <span class="mono">1 亿美元 B 轮 @ 20 亿</span>（2025-02-20，ARR 约 7500 万美元）→ <span class="mono">3.5 亿美元 C 轮 @ 100 亿</span>（2025-10-27，Felicis 领投）。三位 22 岁创始人由此成为最年轻的白手起家亿万富翁（Forbes 口径）。</li>
+  <li><span class="d">2025-03</span><b>Handshake AI 上线</b>（官方博客原文「Since launching in March 2025」，部分第三方误记为 2025-01），把 1500 多所高校、2000 万+ 学生校友与专业人士、其中 50 万博士与 300 万硕士级学者直供后训练任务；Turing 完成 <span class="mono">1.11 亿美元</span> E 轮、估值 22 亿美元，ARR 约 3 亿美元。</li>
+  <li><span class="d">2025-05 / 06</span>Scale AI（Outlier）、Surge Labs 各遭工人错误分类集体诉讼；Snorkel 1 亿美元 D 轮 @ 13 亿。<b>2025-06-12 Meta 以约 143 亿美元取得 Scale 49% 无投票权股权</b>，Alexandr Wang 转入 Meta，Jason Droege 任临时 CEO；数周内 Google、OpenAI、xAI 暂停或撤出合作。Meta 10-Q 将其中 <span class="mono">137.9 亿美元</span>记为非上市权益投资，与新闻口径存在差额。</li>
+  <li><span class="d">2025-07 / 09 / 10</span>Scale 裁员 14%（200 名全职、停 500 名承包商）；2025-09-03 在加州北区联邦法院起诉 Mercor 及前员工 Eugene Ling 窃取商业秘密；2025-10 以 <span class="mono">1250 万美元</span>和解加州错误分类集体诉讼并停招加州零工。同期 micro1 完成 3500 万美元 A 轮、估值 5 亿美元（01 Advisors 领投），字节 Xpert、阿里专家平台、腾讯 Qlabel 在 2025 Q3 前后上线。</li>
+  <li><span class="d">2026-01 / 02</span><b>Scale 于 01-02 自愿撤回对 Mercor 的诉讼（with prejudice），01-05 结案</b>，无实体裁决、和解条件未公开；Handshake 收购 Cleanlab 做自动错标质控（二手来源）；Mercor 收购 Sepal AI（二手来源）。</li>
+  <li><span class="d">2026-03 / 05</span><b>03-31 Mercor 披露 LiteLLM 供应链攻击</b>，涉及约 4TB 数据与承包商个人信息，Meta 暂停合作；相关集体诉讼 2026-07-21 起中止待调解。05-08 White v. Mercor（德州北区，6:26-cv-00201）代表约 3 万名专家，主张错误分类、ERISA 福利、1099 报税、强制使用 Insightful 监控软件以及 app 外工时未付酬。</li>
+  <li><span class="d">2026-04 / 06 / 07</span>Handshake AI 毛 ARR 约 11 亿美元、净额约 3 亿–4.5 亿美元（The Information 转述）；Mercor 06 月毛 ARR 约 20 亿美元、上半年毛收入 6.14 亿美元、约 91% 来自基础模型公司；07-09 官方确认收购 RL 环境公司 Deeptune；micro1 公布 10 亿美元企业数据采购计划；Scale 07-30 任命 Francis deSouza 为 CEO（08-10 生效），Wang 任董事长。</li>
+  <li><span class="d">2026-08 / 09</span>EXL 完成收购 iMerit（最高 3.1 亿美元）；国家数据局推「人机协同、专家深度参与」；人社部 08-05 公示 123 个职业标准、扩展人工智能训练师定义；Snorkel 09-22 完成 <span class="mono">3.5 亿美元</span> E 轮、估值 35 亿美元，ARR 约 3.5 亿–3.75 亿美元。Spirit Airlines 破产数据拍卖中 <b>Google 以 1000 万美元中标</b>，micro1 出价 1250 万、Mercor 出价 750 万被列为备选。</li>
+  <li class="on"><span class="d">2026-10 / 11</span>10-09 micro1 宣布未来 12 个月投入 <span class="mono">10 亿美元</span>采购／授权企业运营数据（Citi、Hercules Capital 出资）。11-10 Mercor 官方宣布 <span class="mono">7.5 亿美元</span> D 轮、估值 <span class="mono">200 亿美元</span>，投资方含 Benchmark、Felicis、NVIDIA、Salesforce、Zoom、Apollo 关联基金等，含员工老股转让；官方把客户从前沿实验室扩到「整个经济体的企业」。</li>
+</ul>
+
+<h3>变化一：从卖工时到卖评测与训练环境</h3>
+<p>奖励信号先从 RLHF 的偏好打分转向 RLVR／GRPO 的可验证奖励，math 与 code 因为 verifier 便宜、可自动检验而最先跑通；往法律、医疗、金融建模、SWE、会计、并购尽调扩张时，需要专家写评分 rubric、校准 verifier 并持续维护 RL 环境。任务从「打个分」变成出题、写黄金答案和推理轨迹、定评分标准、做人类基线测试。Invisible Technologies 把这套能力直接写成「RL 环境自建还是外采」的产品论证；Scale 2025 年中的 rubric 论文据第三方分析在 HealthBench 上取得相对 +31% 的效果。</p>
+<p>Mercor 的 D 轮公告里几乎没有出现「招聘」二字。它给出的资产是：超过 500 万专家的网络、美国 800 多个职业类别、按企业自己的工作流定制的 evals、公开的 APEX 评测系列，以及 2026-07 收购的 Deeptune——后者用两年复刻了数百个企业应用，让 Agent 在仿真环境里练习专业流程。企业拿到的不再是一段专家打分，而是「模型在我司系统与规则下能干成什么」的度量，以及基于度量的后训练。Surge AI 走另一条路：长期不融资、靠现金流做到 2024 年约 12 亿美元营收（Forbes 口径），约 100 万零工经子公司 DataAnnotation.Tech、约 5 万审核专家，按项目卖 vetted 专家产出的偏好数据、红队与 RL 环境。</p>
+
+<h3>变化二：从买专家到买公司记录</h3>
+<p>专家能写出一道难题和它的解法，但写不出「一家公司是怎么把这件事提出来、讨论、审批、返工、交付的」。2026 年的新标的正是后者：邮件链、协作消息、CRM 记录、项目历史、SOP、QA 流程。micro1 的 10 亿美元计划按数据独特性分 10 万、50 万、100 万美元以上三档；Spirit Airlines 的标的含约 1 亿封内部邮件、5 亿条 Teams 消息、航班运营与交易记录；国内「智能知识」启动企业数据授权合作，最高 200 万元人民币／项目。micro1 自己把产品线拆成 Realm（RL 环境）、Cortex（评估）、Robotics，已经不是招聘公司的形态。</p>
+<div class="callout">
+  <div class="t">这条线的自我风险</div>
+  Mercor 自家的 APEX 评测显示，前沿模型在多次尝试下已能完成相当比例的复杂专业任务。卖「人类判断力」的生意，定价前提是模型暂时做不了这些事；前提消失的速度，就是估值需要回答的问题。另一层更现实：至少 5 起加州＋1 起德州错误分类诉讼（被告含 Scale／Outlier、Surge Labs、Mercor、Handshake AI、Assured Robot Intelligence），加上 2026 年 3 月的数据泄露，说明把数百万人组织成「非雇员的专家网络」本身就是合规敞口。
+</div>
+
+<h3>冷热不均，不是整体退潮</h3>
+<p>通用众包标注在收缩：Appen 市值从 2020 年约 40 亿美元压到 2026 年中约 1.9 亿–3.85 亿澳元，Scale 裁员，TELUS 以 5.39 亿美元私有化 TELUS Digital，EXL 收购 iMerit，行业集中度上升。同一时间，专家数据平台的毛流水仍在翻倍。用「AI 标注降温」概括 2026 年会读反方向：被淘汰的是低门槛标签产能，被溢价的是专业判断与真实工作上下文。</p>
+
+<h3>主要玩家（截至 2026-11）</h3>
+<div class="rows">
+  <div class="row"><div class="h">Mercor <span class="tag">200 亿美元 · D 轮</span></div><div class="b">2023 年以 AI 招聘平台起步，先做印度工程师与美国岗位的远程匹配，2024 年转为专家网络。AI 面试是筛选工具而非产品。客户含 OpenAI、Anthropic、Google DeepMind、Meta、微软、英伟达。时薪口径随时点变化：2025-10 媒体为平均 85 美元，官网不同页面出现 95+／109／113 美元；医学、法律等稀缺专家报道为 200–450 美元。毛收入中约 60%–70% 付给专家。</div></div>
+  <div class="row"><div class="h">Surge AI <span class="tag">未交割估值</span></div><div class="b">2020 年成立，长期自有资金、未引入外部融资，客户含 Google、Anthropic、Meta、微软、Mistral，OpenAI 为前客户。Forbes 2026 年据创始人约 75% 持股反推约 240 亿美元，另有 150 亿–250 亿美元、拟募 10 亿美元的洽谈报道；均未对应已完成的定价轮次。</div></div>
+  <div class="row"><div class="h">Scale AI <span class="tag">约 290 亿美元 · 交易隐含</span></div><div class="b">Meta 入股后仍独立运营，2024 年营收 8.7 亿美元、2025 年接近 10 亿美元（公司向 Forbes 提供）。2026 年换帅并推进早期 IPO 规划；据同业说法，在大型合约竞标中的存在感明显下降。</div></div>
+  <div class="row"><div class="h">Handshake AI / micro1 / Turing / Snorkel</div><div class="b">Handshake 从校园招聘网络转向学历人群的后训练供给；micro1 以 AI 面试官 Zara 筛工程师、并把该面试能力单独卖给雇主；Turing 由远程开发者市场转为工程师后训练与评测；Snorkel 从标注软件转为 Data-as-a-Service 与成品数据集。四家都复用原有的人才库与匹配基础设施，只是把买方从雇主换成实验室。</div></div>
+  <div class="row"><div class="h">其他</div><div class="b">Invisible Technologies（2024 营收约 1.34 亿美元，主打 RL 环境）、Labelbox、Prolific、Toloka、Alignerr、DataAnnotation.Tech。Toloka、Alignerr、Prolific 在 2025–2026 未检索到可核实的融资或重大事件，按「无公开记录」处理，不等于不存在。</div></div>
+</div>
+
+<h3>中国：同一逻辑，价格与政策环境都不同</h3>
+<p>国内也长出了这一层，但单价、组织方式和驱动力是另一套。据 Rest of World 2026 年 9 月报道及国内财经媒体：阿里专家平台（报道中作 Siriser／「晓天睿士」，上线时间有 2025 Q3 与 2026 年 1 月两种说法）招教师、机械工程师、作曲人；字节 <b>Xpert</b> 2025 年上线，自称招募专家超过 5 万名；腾讯 <b>Qlabel</b>（企鹅标注）同期上线；独立平台 <b>TalentsAI</b>、<b>MeetChances</b> 吸纳记者、税务师、猎头、律师。大厂平台普遍通过中介与官方渠道招 985 硕博及行业专家，做「出卷—批卷—评分」的认知劳动并转向 RLAIF，时薪多在 <span class="mono">150–500 元</span>；独立平台按件计酬 <span class="mono">100–500 元</span>（约 15–74 美元），数小时一件。与美国按小时 85 美元起、稀缺专家 200–450 美元的市场不是一个量级。</p>
+<p>创业公司侧，<b>原壤智能</b>（Humanlaya／TalentAI）获红杉中国与 BAI 资本天使轮近千万美元；<b>智能知识</b>（一面千识负责专家招募、Xpertiise 承接数据生产）2026 年 5 月获锦秋基金、耀途资本天使轮，投资方称累计注册数万名专家、每日数百场 AI 面试、每月数千名专家接单。传统数据服务商里，海天瑞声 2025 年营收 3.77 亿元（+59%）、毛利率 48.08%、2026 上半年收入 1.92 亿元、归母净利 977 万元（净利率约 5%）；数据堂 2025 年营收 3.62 亿元（+49.2%）；2026 年 6 月千百度以 3 亿元收购并增资本原智数相关业务。资本给「平台／评测／Agent 环境」的定价，明显高于给「项目交付」的定价。</p>
+<p>政策把这件事写成了产业方向。国家数据局 2025 年 7 月披露指导合肥、成都等 7 个数据标注基地建设，截至当年上半年建成数据集 524 个、规模超 29PB、服务大模型 163 个；《全国数据资源调查报告（2025 年）》称全年高质量数据集超 11 万个、908PB。2026 年 6 月《关于推进行业高质量数据集建设行动的实施方案》解读明确提出「标注攻坚行动」，推「模型预标注＋人工校准」「人工标注＋模型检验」，要求标注向人机协同与专家参与升级、从劳动密集型向「技术＋知识密集型」迭代，并首次系统部署 AI-Ready 数据集标准导向；另有 GB/T 45674-2025 国家标准与中国信通院《数据标注产业发展研究报告（2025）》。</p>
+<p>职业化这条线也落地了，但它和 Mercor 式的高价专家不是同一层级。「人工智能训练师」2020 年纳入国家职业分类目录（含数据标注员、人工智能算法测试员两个工种），国家职业技能标准设五级，五级满 16 周岁可报考、不设学历限制；2025 年山东将其纳入补贴性培训目录，全省 2.68 万人次获 AI 类证书、370 人次获训练师等级证书，杭州 2025 年上半年 700+ 人认证、30 家备案机构可申领补贴。2026-08-05 人社部公示 123 个职业标准，训练师定义扩展至数字人设计、多模态模型训练、场景交互适配——这是技能等级与 AIGC 应用体系，不是按小时付 200 美元买判断力的市场。2026 年 6 月四部门《关于加快推进「人工智能＋人社」应用发展的实施意见》（人社部发〔2026〕40 号）另提出到 2026 年打造 20 个左右应用场景及相应高质量数据集、2027 年探索 50 个。</p>
+<p class="small">劳动侧的不对称已有记录：据对平台条款的报道，阿里平台 2026-06-17 用户协议把参与者定义为「商业合作者」而非雇员，平台对验收有最终决定权、可对未通过审核的交付不付酬，并保留改编、发布、商用及转授的权利；Xpert 2026-07-16 条款规定由运营方单独审核并确定报酬系数。DeepSeek、月之暗面等因核心数据涉商业机密普遍自建标注团队，独立第三方专家市场在国内尚未检索到可核实案例。</p>
+
+<h3>争议集中在哪里</h3>
+<ul class="plain">
+  <li><b>劳动关系与税务。</b>至少 5 起加州＋1 起德州错误分类诉讼；美工拿 1099-NEC、海外填 W-8BEN，跨境另有常设机构税务风险。美劳工部 WHD 2025-05 停用 2024 年六因素规则、2026-02 提议恢复雇主友好测试并撤销对 Scale 的调查，加州 ABC 测试仍是主战场。</li>
+  <li><b>保密与竞业。</b>NDA 禁止专家披露为谁工作、做什么，导致无法跨项目积累声誉；承包商文档中的保密与发明转让协议允许把面试录音转录、简历与工作史共享给平台客户。兼职可能与现雇主 NDA／发明转让义务冲突，企业也未必有权许可员工在职期间的产出。评估数据泄漏进训练集还会造成 benchmark 污染。</li>
+  <li><b>质量与刷单。</b>计件＋时薪随项目成熟下调，诱使工人用聊天机器人代答，带来 model collapse 风险（New York Magazine 2026 年 3 月深度报道）；Handshake 2026 年初以「凭证差异、异常任务时长」停付部分项目工人且无申诉通道；重复账户双计费、账号买卖、deepfake 与虚拟摄像头、VPN 规避国别限制均已出现，平台以政府 ID＋自拍＋背景调查＋设备指纹应对。Google Threat Intelligence 观察到疑似朝鲜 IT 工作者在训练数据标注平台持有账户。</li>
+  <li><b>专业伦理。</b>律师、科学家、作家被雇来撰写 rubric 与黄金答案，等于「教 AI 取代自己」，却处于算法化管理、无劳动保障、薪酬递减的处境；FISD Alternative Data Council 2026-05 的 Expert Network DDQ 已专门定义「Expert Misrepresentation」。</li>
+</ul>
+
+<h2 id="s3"><span class="no">03</span>第二条线：连接求职者与企业，从「更准」到「按结果」</h2>
+
+<p class="lead">2025 年这批产品讲的是自然语言搜人、自动写 JD、自动外联。2026 年大平台改成另一套话术：少看了多少份无效简历、候选人愿不愿回、最后有没有被录用、有没有「达成」。收费方式随之从卖广告和席位，往卖交付结果移动。</p>
+
+<h3>大平台的三个可核对样本</h3>
+<div class="rows">
+  <div class="row"><div class="h">LinkedIn Hiring Assistant <span class="tag">2024-10 发布 · 2026-09-29 HA2</span></div><div class="b">v1 于 2025 年 9 月底英文版全球可用，从 500 家特许试点扩到 8000+ 早期用户。产品页（基于 2026 年 1 月 LinkedIn 数据）称：找到合格人选少看 <b>81%</b> 资料、InMail 接受率高 <b>66%</b>、找到面试级候选人快 <b>33%</b>。<b>2026-09-29 发布 Hiring Assistant 2</b>，2026 年 11 月起英文版现有客户自动免费升级：加入按角色／招聘者／公司的长期记忆、个性化 fit 与求职意愿信号、语音预筛（官方称中位 6 分钟完成，对比人工首响约 3.5 小时）、ATS 连通（已支持 Greenhouse、Lever、SmartRecruiters、Zoho Recruit、Tracker；iCIMS、Workday 标「即将」）、1.15 亿会员的身份验证状态统一视图，以及 Chess.com、GitHub 类外部作品的 connected apps。官方口径「20,000+ 公司使用 agentic hiring solutions」是全部 Agent 产品之和，不是 HA 席位数。边界也清楚：只覆盖 LinkedIn 会员与客户自有 ATS、不实测技能、按席位加购、外联仍须人工批准。据第三方转述，微软在 2026-04-29 Q3 FY26 电话会首次单独披露 LinkedIn 招聘 Agent 类产品年化收入运行率突破 <b>4.5 亿美元</b>，同期 Talent Solutions 季度收入 48.3 亿美元、同比 +12%（未核到微软财报原文或路透原稿，见 §09）。<span class="small">效率指标共有三套且分属不同版本：v1 工程博客 62%／69%／每岗 4+ 小时，2025 年媒体活动 80%／66%，HA2 为 83% fewer profiles、4x more likely to contact。不可混用，均为厂商自报。</span></div></div>
+  <div class="row"><div class="h">Indeed / Recruit Holdings <span class="tag">2026-06-15 官方发布</span></div><div class="b">Sourcing Assistant 在 Smart Sourcing 内用自然语言替代布尔检索，跨 3.7 亿可寻访档案调取近期活跃信号，主动邀请候选人投递并同步进 ATS。官方给出的美国 beta 结果：被录用概率是其他来源的 <b>2.9 倍</b>、每周中位数节省 <b>7 小时</b>、平均提前 <b>6 天</b>录用、整体快 30% 以上；口径为 225 个岗位、17 家 beta 雇主自报，测试期 2025-11-12 至 2026-01-17。集团侧：FY2025（截至 2026-03）HR Tech 收入 <span class="mono">96.7 亿美元</span>（+7.6%），Indeed 美国职位数约 -7% 但单职位平均收入 +17%；Recruit 2026-09-04 官方材料披露 FY2026 Q1 美国 HR Tech 收入同比 +30% 至 <span class="mono">16.4 亿美元</span>，归因于 AI 产品带来的服务价值。2026-02-10 上线 ChatGPT 内置职位搜索应用，05-14 扩至 14 国。</div></div>
+  <div class="row"><div class="h">BOSS 直聘 <span class="tag">2026 Q1 / Q2 披露</span></div><div class="b">自研大模型「南北阁」（另有 Nanbeige4.1-3B 开源版本）支撑智能交互与文本生成；求职端「直闪闪」提供简历优化、岗位推荐与答疑，2025 Q4 服务用户规模环比 +200%（2026 年 3 月财报披露），AI 模拟面试扩展到学生与 0–5 年经验人群；招聘端 AI Agent 从人岗匹配延伸到沟通、面试、入职，AI 风控大模型用于企业认证与虚假职位识别，2025 年报称约 80% 违规账号由 AI 拦截，全年收入 82.68 亿元（+12.4%）、净利 26.9 亿元（+71.7%）。2026 Q1：AI 辅助下从开聊到双方「达成」（同意交换简历／联系方式）的时间效率提升超 <b>60%</b>，AI 辅助闭环服务收入约 <b>5000 万元</b>；自建猎头团队交付中 AI 作业贡献约 20%，「人＋Agent」综合人效约 4 倍，AI 参与的校招服务收入同比 +50%。</div></div>
+</div>
+
+<h3>国内其他平台的产品化</h3>
+<p>智联招聘 2025-02 接入 DeepSeek-R1，2025-07 推「智联招聘 AI 版」、2025-11「AI 全能版」，2026 WAIC 发布 C 端「职悟空」（跨会话职业生涯长期记忆、主动提醒、投递动作保留用户确认），2026-10-29 推 B 端 Agent「智联小招」；<b>AI 易面 4.0</b> 用六维人才评估模型与 CLEAR 智能追问，称专家评分一致性 92.6%，自 2019 年研发起服务 1200 多家企业、累计百万级面试人次、覆盖 12 个行业。猎聘 2025 年推数字面试官 Doris 与主动电话的「AI 顾问」，2025 年 AI 产品综合现金回款超 1 亿元（近 10 倍增长、约占总收入 5%）、企业版 AI 账号覆盖 93%，2026 年中期报告披露端到端 Agent「Lily」。前程无忧自研「悟空」大模型与三大智能体（媒体转述，待一手确认），2025 年云栖大会披露 JD 智能生成使用率超 30%、AI 初筛简历效率 +40%。钉钉 2025-12-23 发布 AI 钉钉 1.1，含 AI 招聘。Moka 2026-05-13 把 HR SaaS 升级为 Moka AI，推出招聘 Eva、人事 Eva、BP Eva 与「Moka AI 工坊」，其中「面试教练 Eva」从企业历史面试中提炼用人标准并回流。北森 2025-08-28 发布 AI Family 2.0（详见 §04）。</p>
+
+<h3>创业公司分成了四层，而不是一个赛道</h3>
+<table>
+  <tr><th>层</th><th>代表</th><th>2025–2026 的可核动作</th></tr>
+  <tr><td class="k">寻访</td><td>Juicebox（原 PeopleGPT）、Pin、Serra、GoPerfect、Findem</td><td>Juicebox 2026-03-10 完成 8000 万美元 B 轮、估值 8.5 亿美元（DST 领投），累计 1.16 亿美元；覆盖 8 亿+ 档案、30+ 数据源、5000+ 招聘团队；2026-10 收购 Fetcher 资产。Findem 收购 Getro，推出自动寻访的 Intelligent Job Posts。</td></tr>
+  <tr><td class="k">对话／面试</td><td>Paradox（Olivia）、Alex（原 Apriora）、ConverzAI、Ribbon、Maki、Classet、Humanly</td><td>Paradox 被 Workday 收购，累计 1.89 亿次候选人对话；Alex 2025-09 A 轮 1700 万美元（Peak XV 领投），称累计超百万场 AI 面试；ConverzAI 2025-02 A 轮 1600 万美元（Menlo 领投），面向派遣公司；Ribbon 公布约 3 美元／场语音面试、累计 100 万+ 场，2026-10 被 Dayforce 收购；Classet 称 7 万场 AI 面试对比人工基线带来 +12% offer、+18% 到岗、+17% 留存。以上多为厂商自报。</td></tr>
+  <tr><td class="k">面试智能</td><td>Metaview、BrightHire、Pillar、Ezra</td><td>Metaview 2026-08 收购 Reval 扩展招聘 Agent，2026-09-30 完成 6000 万美元 C 轮（Insight 领投），称 7000+ 客户；BrightHire 被 Zoom、Pillar 被 Employ 收购；Greenhouse 2026-05-05 宣布、05-27 完成收购 Ezra AI Labs（语音 AI 面试），2026-06-10 发布 6 项 AI 能力含 Greenhouse MCP。面试记录与纪要正被 ATS 吸成标配。</td></tr>
+  <tr><td class="k">求职者侧</td><td>Jack &amp; Jill、Jobright、Simplify、Final Round AI、Interview Coder、LazyApply</td><td>Jack &amp; Jill 用两个 Agent 分别代表求职者（Jack）与雇主（Jill），2025-10-16 种子轮 2000 万美元、2026-09-15 A 轮 4000 万美元，累计 6000 万美元，自报 35 万候选人、5000 家企业、25,000 场面试（定价口径自相矛盾）。Jobright 2025-06-24 发布 Jobright Agent。Interview Coder／Cluely 一侧则出现反例：CEO 于 2026-03-05 承认对外 ARR 造假，实测答题延迟 5–90 秒、转录准确率约 20%、Trustpilot 1.8/5，2025-11 转型会议助手。</td></tr>
+</table>
+<p class="small">融资冷热并不均匀。有行业统计称独立「AI 面试」细分的融资额在两个可比时期之间下降约 46%，而能证明商业落地的公司仍拿到大钱：Juicebox 8000 万美元（2026-03）、Metaview 6000 万美元（2026-09）、Jack &amp; Jill 4000 万美元 A 轮（2026-09）、Spott 2100 万美元 A 轮（2026-09）、Humanly 2500 万美元 B 轮。另一份统计称 10 家美国 AI 招聘创业公司在 2025-07 至 2026-07 共融资 6.56 亿美元，Mercor 一家占一半以上。这两组都是自定义样本的二手统计，只能看方向。</p>
+
+<h3>军备竞赛与它的代价</h3>
+<p>AI 把投递成本压到接近零，企业收到的申请随之膨胀。Greenhouse 自 2022 年到 2025 年每岗申请人 +111%、招聘人员 -56%，其 CEO 把两边同时自动化称为「AI doom loop」；SEEK 旗下 Jobstreet／Jobsdb 单岗申请量 +57%、新加坡 +146%；Workable CEO 估计约 10% 的申请来自 AI 批量投递工具；AMS 的毕业生岗申请量从 2022 年 47 份涨到 2025 年 94 份。Juicebox 在 B 轮公告中转引 Greenhouse 的「自 ChatGPT 发布以来人均申请量 +239%」与「34% 招聘者每周最多花一半时间过滤低质申请」，未核到 Greenhouse 原报告页。Indeed 在 2025 年测试自动代投 Apply For Me 后暂停了这项测试——平台自己发现，让候选人一侧无限自动化会伤到市场质量。</p>
+<p>企业一侧的自动化则开始损耗候选人。Greenhouse《2026 Candidate AI Interview Report》（2026 年 5 月，2950 名求职者）显示：63% 被 AI 面试过，<mark>38% 曾因流程包含 AI 面试而退出</mark>，70% 未被明确告知将使用 AI，51% 面试后完全没有收到回复，只有 8% 认为 AI 让招聘更公平，57% 认为披露应写进法律。ManpowerGroup 2026-09-08 发布、覆盖 42 国近 4 万家雇主（含 6000 多家美国雇主）的研究给出更冷的一条：91% 的 HR 领导者称在招聘中主动使用 AI，但只有三分之一报告招聘速度快于 2025 年，42% 无变化，<b>25% 反而更慢</b>。</p>
+<div class="block">
+  <div class="t">独立研究怎么评价筛选效果</div>
+  <p>厂商发布的全是速度、成本与沟通量。独立审计给出的却是另一面：arXiv 2507.11548 测了 8 个主流 AI 简历筛选平台，发现复杂情境下的种族／性别偏见与「中立幻觉」；arXiv 2504.21400 分析 332,044 条真实招聘广告，发现 LLM 偏向男性、高薪岗位更明显；UC Berkeley CHI 2025 访谈 15 名招聘者，发现算法放大「CS 学位、名企经历」这类捷径；Theseus 2025 综述 40 篇同行评审文献，结论是效率证据多、质量证据少。检索范围内，没有任何一家 AI 面试官厂商发布过 quality-of-hire 或留存数据。这是评估这条线时最该记住的缺口。</p>
+</div>
+<div class="block soft">
+  <div class="t">口径提醒</div>
+  <p>「企业 AI 招聘采用率」在不同调查里从 27% 到 97.6% 都有。SHRM《The State of AI in HR 2026》（1908 名 HR 专业人士，2025 年 12 月调研）是 27% 的美国组织在招聘环节使用 AI、39% 在 HR 某处使用；前程无忧《2026 年度典范雇主》调研是 121 家上榜企业中 97.6% 已在招聘中应用 AI 工具、82.3% 计划继续加大投入（2025 年为 74.8%）、66.7% 已完成 HR 共享服务中心的 AI 工作流重构；央广网 2025-04-19 报道近 50% 招聘企业用 AI 面试、19% 部署大模型筛简历。三者样本完全不同，后者是「典范雇主」自选样本，不能外推成全国比例，也不能彼此相减。</p>
+</div>
+
+<h3>中国特有的战场：AI 代面与反代面</h3>
+<p>2025 年 4 月央广网实测「AI 外挂」1 秒出答案，南方都市报 2025 年 5 月实测 30 分钟面试的代答服务收费 50–200 元；到 2026 年 8–11 月，羊城晚报、人民法治网、广州日报、厦门日报做了同一组追踪：实时代答工具可在提问后约 3 秒生成结构化回答，并公开把「眼神修复」「双机位隐身」「微型耳机方案」作为付费卖点。企业侧供应商（牛客、北森等）的应对是面试前身份证核验与人脸比对、面试中双机位监控与眼球轨迹追踪、异常人声与键盘声识别、对作答文本做 AI 生成检测，最后生成风险报告交 HR 回看视频复核——系统不直接判不合格。律师与法学学者指出，具备「规避监测」功能的工具已超出一般辅助范畴，提供方明知用途仍提供技术支持可能承担法律责任；把题目、简历、项目资料与人脸声纹上传第三方工具，另涉个人信息与生物识别风险。国内也出现了毕师父／跃鱼信息、TTC「小麦招聘」、屿智同行等 AI 原生求职 Agent 尝试，规模都还在早期，公开数据不足以判断落地。</p>
+<p>监管侧目前走既有法律而非专门的「AI 招聘法」：2026 年 1 月网络招聘服务规范点名「算法推荐失范」，要求账号实名、资质每 6 个月核验一次、招聘信息不得含歧视性内容、加强个人信息保护；2026 年 4 月五部门对智联招聘等平台开展行政指导；2026 年 6 月八部门「国聘行动」要求加强招聘流程监管与个人信息保护；《个人信息保护法》框架下，自动化决策需事前做个人信息保护影响评估、生物识别需单独同意、委托第三方处理需约定并监督。2026 年 10 月「让 AI 面试经得起公平检验」一类官方媒体评论属倡导与解释，不是新法规。</p>
+
+<h2 id="s4"><span class="no">04</span>第三条线：传统厂商用并购换路线</h2>
+
+<p class="lead">2025 年这些公司做的事高度一致：买下自己缺的那一段，然后接进已有套件。2026 年则是整合、换帅与重新定价。判断这条路是否成立，看产品命名、定价单位和收购类型，比看发布会上的「agentic」形容词可靠。</p>
+
+<table>
+  <tr><th>时间</th><th>交易</th><th>补的是什么</th></tr>
+  <tr><td class="k">2025-10</td><td>Workday 收购 Paradox（约 10 亿美元现金，Workday Q2 FY26 投资者材料口径，10-01 完成）</td><td>面向麦当劳、FedEx、7-Eleven 等高容量小时工招聘的对话式前台 Olivia</td></tr>
+  <tr><td class="k">2025-09 / 11</td><td>Workday 收购 Sana（约 11 亿美元，09-16 官宣；11-04 完成为媒体报道）</td><td>企业知识检索、AI Agent 与 AI 原生学习平台</td></tr>
+  <tr><td class="k">2025</td><td>Workday 收购 FlowiseAI</td><td>Agent 构建能力；三笔收购对应前台入口、知识层、构建层</td></tr>
+  <tr><td class="k">2025-08 / 09</td><td>SAP 宣布（08-01）并完成（09-11）收购 SmartRecruiters</td><td>补齐 SuccessFactors 长期缺失的现代 ATS 与高容量招聘；后者继续独立运营并与其他 HCM 互通。两篇官方新闻稿均称「条款未披露」，但 SAP Form 6-K 披露初步对价约 <b>7.51 亿欧元</b>（Q3 口径）／7.53 亿欧元（全年口径），2025 年贡献收入约 2600 万欧元、IFRS 营业利润约 -1700 万欧元</td></tr>
+  <tr><td class="k">2025–2026</td><td>Zoom 收 BrightHire；iCIMS 收 Apli；Employ 收 Pillar；Humanly 收 Sprockets／Qualifi／HourWork；Findem 收 Getro；HireVue 收 Hireguide（2026-03，未找到官方稿）；Greenhouse 收 Ezra AI Labs（2026-05-27 完成）</td><td>面试智能、拉美一线招聘对话、高容量工具、人才网络、语音 AI 面试</td></tr>
+  <tr><td class="k">2026-10-23</td><td>Dayforce 签署协议收购 Ribbon AI，金额未披露</td><td>双向语音／视频 AI 面试与 100 万+ 场面试的完整性检查，原生整合进 Dayforce Agentic Recruiting</td></tr>
+  <tr><td class="k">2025–2026</td><td>Thoma Bravo 约 123 亿美元私有化 Dayforce（2026-02-04 完成、从 NYSE／TSX 退市）；Paychex 41 亿美元收 Paycor；Coursera 与 Udemy 合并为约 25 亿美元公司；Korn Ferry 6.5 亿美元收 AMS；EXL 最高 3.1 亿美元收 iMerit；TELUS 5.39 亿美元私有化 TELUS Digital</td><td>私募把 HCM 与技能学习当成可整合资产，规模远大于单笔 AI 工具收购</td></tr>
+</table>
+<p class="small">Drake Star 统计：仅 2025 年前三季度，全球 HR Tech 交易 650+ 笔、披露投资额 223 亿美元（含大量非 AI 标的）。注意 Dayforce 退市后品牌与新闻稿主体名仍沿用，但股票代码 NYSE: DAY 已失效，中文行业周报里带代码的写法是错的。</p>
+
+<h3>路线变化的三个证据</h3>
+<ul class="plain">
+  <li><b>平台层命名。</b>2026 年，Workday 提「Agent System of Record」并在 02-09 由联合创始人 Aneel Bhusri 回归任 CEO；SAP 提「Autonomous HCM」，2026-03-04 完成 Joule 与 SuccessFactors 集成一期，05-14 Sapphire 发布 5 个具名 Joule Assistants（薪酬、招聘、入职、HR 服务、劳动力技能提升）；Oracle 2025-09-16 发布 13 个 Fusion HCM AI Agents（称不额外收费），2026-09-29 推 Fusion Claw，10-20 前后发布 7 个 Claw 驱动的 HR 应用（含候选人寻访与招聘指挥中心），统称 Agentic Applications；Dayforce 2026-10 直接把新产品叫 Agentic Recruiting。Agent 从功能名升格为平台命名与并购标的类别，是这条主线最硬的一组证据。</li>
+  <li><b>定价单位。</b>Workday 引入 Flex Credits（自助检索 1 credit、自主任务 5 credits），从纯席位制往用量制移动；Indeed 的 Sourcing Assistant 绑定 Smart Sourcing 订阅；BOSS 直聘披露「AI 辅助闭环服务收入」；Classet 按每岗位每周 190 美元起售；Pin 从 99 美元／月自助席位切入。老厂商的报价体系仍是席位加模块化附加，转型没完成。</li>
+  <li><b>能力内化。</b>面试纪要、对话式筛选、候选人核验这些 2023–2024 年的独立品类，2025–2026 年被 ATS／HCM 直接收进平台（Zoom-BrightHire、Employ-Pillar、iCIMS-Apli、Greenhouse-Ezra、Dayforce-Ribbon）。独立「AI 面试」工具融资下滑与这条线是同一件事的两面。</li>
+</ul>
+
+<h3>人力服务与猎头公司：把 AI 用在自己的交付里</h3>
+<p>这一类公司不卖软件，卖的是替客户招到人，所以它们的 AI 数据更接近真实产出。Adecco 2026 年中期披露：在 10 个国家完成超 120 万次 AI 候选人互动、25 万场完成的面试，运行 7 个 AI agents，交付时间中位数缩短约 50%、填补率超 80%，且 51% 的互动发生在非工作时间。ManpowerGroup 2026 Q2 称九个月的 AI 实施让 time-to-fill 下降 67%，并把 2028 年前每年 2 亿美元的永久成本节约列为目标。Korn Ferry 用 6.5 亿美元收购招聘流程外包商 AMS，补的是交付能力而非算法。这几家的共同点是：AI 先替换自己内部的重复工序，省下的时间才是利润。</p>
+
+<h3>国内：政策牵引，靠自有客户数据而非并购</h3>
+<p>北森的演进链最完整：2024 年 AI Family 1.0（7 大助手）→ 2025-08-28 AI Family 2.0（10 大助手、500+ AI 特性、50+ 人力场景；官方称 AI Agent 客户 500+、签约额超 2000 万元、未来三年 AI 营收预估 1 亿元；AI 面试官 2.0 用数字人与三层追问、称人机一致性 &gt;90%、覆盖 6 大行业 300+ 岗位）→ 2026-06-24 发布 Mavens 并宣布从「HR 软件厂商」转型「AI 应用公司」，未来两年投入 10 亿元 → 2026-08-28 以「真人 HR 指挥数字 HR／碳硅混合编队」表述落地。2026 财年收入 11.05 亿元（+16.9%）、AI 新增合同额超 8700 万元（同比约 10 倍）、AI 客户 1400+、AI 面试官续费率 120%。与之同向的还有 Moka 2023 MokaEva → 2026-05 Moka AI／Eva 矩阵、猎聘 2025 AI 账号 → 2026-08 Agent Lily。人社部等四部门 2026-06-22《关于加快推进「人工智能＋人社」应用发展的实施意见》（人社部发〔2026〕40 号）明确建设人社行业大模型、智能体与应用场景全景图，到 2026 年打造 20 个左右应用场景及高质量数据集、2027 年探索 50 个高价值场景，同时要求「合规、透明、可信赖」与个人信息安全防护。</p>
+
+<h3>老玩家的两难与反向证据</h3>
+<p>评估与人才情报厂商受两头挤压。HireVue 早在 2021 年弃用面部分析，2025-03 因 Intuit 案被 ACLU 向 EEOC 投诉，2026-03 收购 Hireguide 补结构化面试；Eightfold、Beamery、Gloat、Phenom、SeekOut 靠技能图谱、内部人才市场与企业数据护城河立足，但 Eightfold 的估值仍锚在 2021-06 的 2 亿美元 E 轮、2025–2026 无新融资，产品密集 Agent 化的同时又遭 Kistler 诉讼。Gloat 2026-03 被报道裁员约 20%（公司否认该比例）并转向 Agentic HR／Loomra——并不是所有「AI 功能点」都在同步扩张。Workday 的 Mobley 案把买工具的一方和卖工具的一方一起拖进责任链，采购逻辑从「功能好不好」变成「能不能提供审计材料」。</p>
+
+<h2 id="s5"><span class="no">05</span>第四条线：被倒逼出来的周边</h2>
+
+<div class="rows">
+  <div class="row"><div class="h">高容量招聘的语音 Agent <span class="tag">落地最快</span></div><div class="b">蓝领、小时工、门店与技能工种是 AI 面试真正跑出规模的地方：候选人要的是「马上有人接电话」，不是仪式感。Paradox 累计 1.89 亿次候选人对话，ConverzAI 面向派遣公司做电话＋短信＋邮件全渠道，Ribbon 与 Classet 主打申请后即时回拨并核验证照，Fountain 与 Workstream 管住从申请到入职的整条流水线。反过来，把同一套工具用在资深岗位上是另一回事：Greenhouse 的退出率数据主要来自这一错配。</div></div>
+  <div class="row"><div class="h">身份核验与「是不是本人」</div><div class="b">FBI 2025-01-23 发布 PSA I-012325-PSA，明确朝鲜 IT 工作者在视频面试中用 AI 与换脸掩盖身份；DOJ 2025-06 搜查 16 州 29 个 laptop farm，联合国 2025-10 报告称渗透 40 多国。叠加 AI 批量投递、替考与实时代答，验证成了独立环节：LinkedIn 2026 年上线 Verified Applicant Spotlight 并把 1.15 亿会员的验证状态做成统一视图，Ribbon 内置异常音频／目光／响应时间检查，国内 AI 面试系统普遍加身份证＋人脸比对＋双机位＋眼球追踪＋文本生成检测。人脸与声纹属敏感个人信息，需单独同意并做影响评估，这层能力的扩张自带法律风险。</div></div>
+  <div class="row"><div class="h">技能图谱与内部人才市场，以及「AI 回旋镖」</div><div class="b">不看简历看技能、把内部员工匹配到项目与岗位，是 Workday Talent Marketplace、Gloat、Eightfold、Phenom 延续多年的方向；2025–2026 年 Coursera 与 Udemy 合并、Workday 收 Sana，把它和技能学习接成一条链。2026 年的「AI 回旋镖」研究点破了实际障碍：SHL 2026-10 报告称 19% 的美国受访劳动者曾被 AI 替代后又被原公司请回，Robert Half 2026-07 称 32% 的美国招聘经理所在组织恢复过因 AI 取消的岗位，Gartner 2026-02 预测到 2027 年有一半把减员归因于 AI 的公司会重新招人做类似职能。共同原因是组织无法客观衡量员工在岗位头衔之外的能力，于是「用 AI 替掉谁」只能靠猜。</div></div>
+  <div class="row"><div class="h">求职者侧陪练与模拟面试</div><div class="b">BOSS 直聘把 AI 模拟面试覆盖到学生与 0–5 年经验人群，智联「职悟空」提供简历诊断与模拟面试但保留投递的用户确认，Moka 的「面试教练 Eva」反过来服务企业面试官。这一层同时是招聘平台的流量入口和能力数据入口。</div></div>
+  <div class="row"><div class="h">数据反哺：A 线与 B 线开始合流</div><div class="b">Mercor 为企业定制基于自身工作流的 evals 并据此后训练；micro1 直接向企业采购运营记录；国内「智能知识」以项目制征集真实业务流程记录。招聘过程中沉淀的「一家公司怎么干活」，正被重新定价为训练企业 Agent 的资产。这是 2026 年最值得盯的交叉点，也最先碰到商业秘密与员工个人信息边界。</div></div>
+  <div class="row"><div class="h">算法审计与偏见检测</div><div class="b">纽约市 Local Law 144 自 2023-07-05 生效，2025-12 纽约州审计长复查 32 家公司，DCWP 只认定 1 起不合规，审计长却查出至少 17 起潜在违规；伊利诺伊 HB 3773 自 2026-01-01 生效，德州 TRAIGA 要求供应商文档，康涅狄格 SB 5 2026-04 过参议院。有行业统计称 88% 的 AI 供应商在合同里给自身责任设上限、仅 17% 对合规作出保证——二手统计，仅作提示。</div></div>
+</div>
+
+<h2 id="s6"><span class="no">06</span>国内外对照</h2>
+<table>
+  <tr><th>维度</th><th>国外</th><th>国内</th></tr>
+  <tr><td class="k">第一驱动力</td><td>前沿实验室的后训练预算，单笔可达数十亿美元</td><td>「人工智能＋」与高质量数据集政策，叠加就业与灵活用工需求</td></tr>
+  <tr><td class="k">专家单价</td><td>平均 85 美元／小时起（时点口径不一），医学法律等 200–450 美元</td><td>100–500 元／件或 150–500 元／时，约 15–74 美元</td></tr>
+  <tr><td class="k">组织形态</td><td>独立双边平台，中立性可同时服务多家模型公司</td><td>大厂自建平台（Xpert／Qlabel／阿里专家平台）＋独立创业公司＋传统数据服务商升级；模型公司核心数据普遍自建团队</td></tr>
+  <tr><td class="k">招聘侧主战场</td><td>Agent 化寻访与面试、按结果收费、诉讼与州法合规</td><td>平台内嵌 AI 助手与模拟面试、AI 代面攻防、招聘信息真实性治理</td></tr>
+  <tr><td class="k">老厂商动作</td><td>大额并购整合，路线从记录系统转向执行系统</td><td>在既有 SaaS 内叠加 Agent，政策场景牵引，少见大额并购</td></tr>
+  <tr><td class="k">主要风险</td><td>集体诉讼、FCRA 适用、承包商分类、数据泄露、估值与模型能力自噬</td><td>平台条款不对称、生物识别与个人信息、算法公平、虚假招聘与代面产业链</td></tr>
+</table>
+<p>两边最实质的差别不在技术，而在买方预算与法律工具。美国那边，模型公司愿意为「专家判断」付高价，同时集体诉讼与 FCRA 给自动化筛选装了刹车；中国这边，政策把专家参与标注写成产业升级方向，单价低、规模大，治理主要通过个人信息保护、招聘信息审核与劳动法一般原则落地，尚未出现专门针对招聘算法的单行规则。</p>
+
+<h2 id="s7"><span class="no">07</span>监管与诉讼：2026 年不是单向收紧</h2>
+
+<div class="block">
+  <div class="t">欧盟</div>
+  <p>《人工智能法案》把招聘、筛选、候选人评估、招聘广告投放列为附件三高风险场景，原定 2026-08-02 适用。2026 年通过的《人工智能数字综合法案》（Regulation (EU) 2026/1744，7 月 24 日刊于官方公报、7 月 27 日生效）把这些独立高风险系统的义务推迟到 <b>2027-12-02</b>，嵌入受监管产品的高风险系统推迟到 <b>2028-08-02</b>；理由是协调标准未交付、成员国主管机关未指定。但第 50 条透明度义务与通用人工智能模型治理仍按期于 2026-08-02 生效：交互式 AI 须告知用户在与 AI 对话，AI 生成或修改内容须带机器可读标记。也就是说，延的是高风险合规，不是整部法。</p>
+  <p>被推迟的义务内容本身值得记下：部署者须做人工监督、保留至少 6 个月日志、开展偏见评估，不得由表情、语调、肢体动作推断情绪并据此打分，候选人可要求人工复核；罚则最高 3500 万欧元或全球营业额 7%。另有自 2025-02-02 起生效的禁止性条款，明确禁在工作场所与教育机构做情绪识别。这几组条款的适用时间与「整体顺延」的关系，不同合规解读存在冲突，见 §09。</p>
+</div>
+<div class="block">
+  <div class="t">美国 · 科罗拉多</div>
+  <p>SB 24-205（2024 年通过，全美首部综合性州级 AI 法）原定 2026-02-01 生效，2025-08-28 经 SB 25B-004 推迟到 2026-06-30；2026-04-27 联邦法院在 X.AI LLC v. Weiser 相关诉讼中暂停执法；2026-05-14 州长签署 <b>SB 26-189</b>，废止并重建为「自动化决策技术（ADMT）」框架，2027-01-01 生效。新法删去了算法歧视注意义务、强制年度影响评估和风险管理程序，改为事前通知、不利决定后的说明、有意义的人工复核、三年记录保存与开发者文档义务。这不是简单松绑，是把合规坐标系整体换了。同期生效的还有伊利诺伊 HB 3773（2026-01-01，要求告知 AI 使用）、德州 TRAIGA 的供应商文档要求。</p>
+</div>
+<div class="block">
+  <div class="t">美国 · 两起改变责任分配的诉讼</div>
+  <p><b>Mobley v. Workday</b>（加州北区联邦法院）：法院认定 Workday 在使用其自动筛选工具时可作为雇主的「代理人」直接承担 ADEA 责任，而非中立软件供应商；2025-05-16 初步集体认证，40 岁以上申请人 opt-in 窗口于 2026-03-07 关闭，法院要求 Workday 提供启用 HiredScore Spotlight／Fetch 的雇主名单，2026-06-22 大体驳回其驳回动议。尚无法院认定歧视成立，Workday 否认指控。</p>
+  <p><b>Kistler et al. v. Eightfold AI</b>（2026-01-20，加州 Contra Costa 高等法院，由前 EEOC 主席 Jenny R. Yang 与 Towards Justice 提起）：不主张算法有偏见，而主张平台从公开渠道抓取数据、生成 0–5 分 Match Score 并在无人复核前筛掉低分者，却未履行 FCRA 与加州 ICRAA 的披露、查阅与争议程序。若平台被认定为「消费者报告机构」，同类产品都要向被评分者提供不利行动通知与申诉通道；FCRA 法定赔偿为每人每次故意违规 100–1000 美元。Eightfold 否认，称数据来自候选人主动分享或客户提供。两案构成钳形：一个打结果，一个打程序；共同结论是「工具是供应商做的」不能替雇主免责。</p>
+</div>
+<div class="block soft">
+  <div class="t">中国</div>
+  <p>没有专门的招聘 AI 立法。可用的抓手是《个人信息保护法》（自动化决策事前影响评估、敏感个人信息单独同意、委托处理监督义务）、《互联网信息服务算法推荐管理规定》与《人工智能生成合成内容标识办法》（2025-09-01 生效）、2026-01 网络招聘服务规范（实名、资质核验、禁歧视内容、算法推荐失范治理）、2026-04 五部门对招聘平台的行政指导、2026-06 八部门「国聘行动」（招聘流程监管、个人信息保护）与 2026-06「人工智能＋人社」实施意见（行业大模型、场景全景图、合规透明可信赖）。AI 代面工具的定性目前停留在专家意见与个案合同约定层面。</p>
+</div>
+
+<h2 id="s8"><span class="no">08</span>两年时间线</h2>
+<ul class="tl">
+  <li><span class="d">2025-01 / 03</span>Handshake AI 上线；ConverzAI 1600 万美元、Maki 2860 万美元 A 轮；Mercor 1 亿美元 B 轮 @ 20 亿；Turing 1.11 亿美元 E 轮；语音与对话式招聘 Agent 成批融资。</li>
+  <li><span class="d">2025-05 / 06</span>Scale／Surge 遭错误分类诉讼；Meta 约 143 亿美元入股 Scale AI，行业中立性被重排，需求外溢到 Mercor、Surge、Handshake、Invisible；国家数据局披露 7 个标注基地 524 个数据集、超 29PB、服务 163 个大模型。</li>
+  <li><span class="d">2025-07 / 09</span>Scale 裁员 14%；SAP 宣布并完成收购 SmartRecruiters；Workday 在 Rising 大会宣布 Illuminate 的「执行系统」路线与 Sana 收购；Scale 起诉 Mercor；micro1 3500 万美元 A 轮；Juicebox 3000 万美元 A 轮；北森 AI Family 2.0。</li>
+  <li><span class="d">2025-09 / 10</span>LinkedIn Hiring Assistant 英文版全球可用；Oracle 发布 13 个 HCM AI Agents；Alex 1700 万美元 A 轮；Mercor 3.5 亿美元 C 轮、估值 100 亿美元；Scale 以 1250 万美元和解加州错误分类案。</li>
+  <li><span class="d">2025 全年</span>HR Tech 并购大年：Workday 三连购，Zoom／iCIMS／Employ／Humanly／Findem 各自补位，Thoma Bravo 宣布 123 亿美元私有化 Dayforce。</li>
+  <li><span class="d">2026-01 / 02</span>Scale 撤诉结案；Kistler v. Eightfold 提起；Moka 发布 AI 招聘智能体；网络招聘服务规范点名算法推荐失范；阿里专家平台上线（时间有分歧）；02-04 Dayforce 完成私有化退市；02-09 Workday 换帅；02-10 Indeed 上线 ChatGPT 内置职位搜索。</li>
+  <li><span class="d">2026-03 / 04</span>Mercor 披露 LiteLLM 供应链攻击、Meta 暂停合作；Juicebox 8000 万美元 B 轮；Greenhouse 收 Ezra；微软 04-29 电话会被转述披露 LinkedIn 招聘 Agent 年化运行率 4.5 亿美元；科罗拉多执法被联邦法院暂停；五部门行政指导招聘平台。</li>
+  <li><span class="d">2026-05 / 06</span>Moka 升级为 Moka AI；Greenhouse 候选人调查发布；Indeed Sourcing Assistant 上线；科罗拉多 SB 26-189 签署；国家数据局《行业高质量数据集建设行动实施方案》解读明确「专家参与标注」；人社部等四部门「人工智能＋人社」实施意见发布；北森发布 Mavens 并宣布转型 AI 应用公司。</li>
+  <li><span class="d">2026-07 / 08</span>欧盟 2026/1744 生效并把招聘高风险义务推到 2027-12；Mercor 收 Deeptune、micro1 宣布 10 亿美元企业数据计划；Spirit Airlines 数据拍卖；Scale 换帅；EXL 收 iMerit；国内多家媒体集中调查 AI 代面产业链；ManpowerGroup 发布近 4 万雇主调查。</li>
+  <li><span class="d">2026-09 / 10</span>LinkedIn 发布 Hiring Assistant 2；Metaview 6000 万美元 C 轮；Snorkel 3.5 亿美元 E 轮；Dayforce 签署收购 Ribbon；智联「职悟空」在 WAIC 亮相、10-29 推 B 端「智联小招」；Juicebox 收购 Fetcher 资产。</li>
+  <li class="on"><span class="d">2026-11-10</span>Mercor 7.5 亿美元 D 轮、估值 200 亿美元，官方把客户从前沿实验室扩到全经济体企业，并明确把 evals 与后训练环境作为主业。</li>
+</ul>
+
+<h2 id="s9"><span class="no">09</span>常见说法核对与存疑清单</h2>
+
+<h3>六条需要改正的说法</h3>
+<div class="rows">
+  <div class="row"><div class="h">「2026 年 8 月 2 日起，欧盟招聘 AI 高风险合规正式生效」</div><div class="b">错。Regulation (EU) 2026/1744 把附件三独立高风险系统的义务推到 <b>2027-12-02</b>；当天按期生效的是第 50 条透明度义务与通用 AI 模型治理。很多 2025 年写的合规稿仍按旧日期。</div></div>
+  <div class="row"><div class="h">「Mercor 年收入 20 亿／30 亿美元」</div><div class="b">这是平台毛流水（GPV／gross payment volume），即付给专家的总额年化，不是公司净收入。约 60%–70% 付给专家，按 30%–35% 抽成推算净额约 6 亿–8 亿美元量级。官方 D 轮公告与新闻稿均未披露净收入口径，「30 亿美元年度化收入运行率」只见于媒体转述。Handshake 的 11 亿美元、micro1 的 5 亿美元、Snorkel 的 3.75 亿美元同样是 gross annualized run rate。</div></div>
+  <div class="row"><div class="h">「LinkedIn 官方数据：少看 81% 资料、每岗位省 4 小时」</div><div class="b">三套口径被拼在一起了。v1 工程博客（2025-09）是 62%／69%／每岗 4+ 小时；2025 年媒体活动版是 80%／66%；2026-01 产品页是 81%／66%／快 33%；HA2（2026-09-29）又变成 83% fewer profiles、4x more likely to contact。指标定义、样本与产品版本都换过，均为厂商自报、未经独立审计。</div></div>
+  <div class="row"><div class="h">「科罗拉多 AI 法 2026 年 2 月生效」</div><div class="b">三次变动：延到 2026-06-30（SB 25B-004）→ 2026-04-27 联邦法院暂停执法 → 2026-05-14 SB 26-189 废止重建，2027-01-01 生效且删去算法歧视注意义务、影响评估与风险管理程序。</div></div>
+  <div class="row"><div class="h">「97.6% 的中国企业已在招聘中用 AI」</div><div class="b">样本是前程无忧《2026 年度典范雇主》121 家上榜企业，属高度自选的先进企业样本。不能与 SHRM 覆盖 1908 名 HR 专业人士的 27% 直接比较，更不能写成全国比例。</div></div>
+  <div class="row"><div class="h">「SAP 花 15 亿美元／8.8 亿美元收购 SmartRecruiters」「Workday 花 15–20 亿美元收购 Paradox」</div><div class="b">两篇 SAP 官方新闻稿均称条款未披露，SAP Form 6-K 披露初步对价约 7.51 亿欧元（Q3 口径）／7.53 亿欧元（全年口径）。Workday Q2 FY26 投资者材料给的 Paradox 对价是约 10 亿美元现金，Sana 官宣约 11 亿美元。中文流传的大额数字均未见一手出处。</div></div>
+</div>
+
+<h3>本轮核实后销项</h3>
+<ul class="plain">
+  <li><b>Mercor D 轮（2026-11-10，7.5 亿美元 @ 200 亿美元）。</b>曾有聚合站标注「仅单一来源、待官网确认」。本稿核到公司官方博客 mercor.com/blog/series-d 与 Business Wire／Las Vegas Sun 全文新闻稿，双重确认，销项。</li>
+  <li><b>人社部「人工智能训练师」标准版本冲突。</b>已厘清：2020 年入国家职业分类目录、五级国家职业技能标准先行；2026-08-05 人社部公示 123 个职业标准，其中训练师定义扩展至数字人设计、多模态模型训练、场景交互适配。两者是旧标准与新修订公示，不是互相矛盾的两套标准。</li>
+</ul>
+
+<h3>存疑，未采信为结论</h3>
+<ul class="plain">
+  <li><b>Surge AI 的估值与融资状态冲突。</b>Forbes 2026 年按创始人约 75% 持股反推约 240 亿美元，另有 2025-07 起 150 亿–250 亿美元、拟募 10 亿美元的洽谈报道；《2026 胡润 U40 全球白手起家富豪榜》中文稿称「近期完成 A 轮融资、估值 240 亿美元」。多家 2026 年 10 月的核查称未找到已交割的定价轮次。本稿只写「未交割估值」。</li>
+  <li><b>Meta 入股 Scale 的金额有两个口径。</b>公布口径约 143 亿美元；Meta 2025 年 Q2 10-Q 记为 137.9 亿美元非上市权益投资，2025 年报为 138.0 亿美元。差额构成未公开解释。</li>
+  <li><b>Mercor 专家数量与时薪的口径差异。</b>官方 D 轮公告称「超过 500 万专家的网络」；另有报道称「超过 3 万名注册专家」「30 万+ 岗位」「每日支付 400 万美元」。时薪并存 85／95+／109／113 美元，来自不同时点与不同页面。可能是注册、通过筛选、实际接单三种分母，未找到官方拆分。</li>
+  <li><b>微软 4.5 亿美元 ARR。</b>仅见于 refolk.ai、herohunt.ai 等第三方转述「微软 2026-04-29 Q3 FY26 电话会／路透」，未核到微软财报原文、电话会实录或路透原稿。作为量级参考，不作为已确认财务披露。</li>
+  <li><b>欧盟具体条款的适用时间冲突。</b>有合规解读称「2026-08-02 起 Art.26 的人工监督、6 个月日志、偏见评估、人工复核等义务适用」，另有解读把整个附件三高风险义务（含 Art.26）顺延到 2027-12-02。本稿只按 Regulation (EU) 2026/1744 的整体顺延写，具体条款归属待回官方公报核实。</li>
+  <li><b>阿里专家平台的名称与上线时间。</b>Rest of World 称「Siriser，2026 年 1 月上线」，国内财经媒体称「晓天睿士，2025 Q3 上线、时薪最高破千元」。可能是同一平台的不同译名，也可能是两个产品；「破千元」无官方确认。</li>
+  <li><b>部分百分比为厂商转引。</b>Greenhouse「人均申请量 +239%」来自 Juicebox B 轮公告的转引，未核到 Greenhouse 原报告页；Indeed「2.9 倍录用概率」为 225 个岗位、17 家 beta 雇主自报的厂商测试；Classet「+12%／+18%／+17%」为厂商自有 7 万场面试对比；LinkedIn、BOSS 直聘、智联、北森的效率数据均为各自披露，无第三方审计。</li>
+  <li><b>国内若干产品名待一手源。</b>BOSS 直聘内测全链路 Agent「DeepHire」、前程无忧「悟空」大模型，均出自媒体分析与展会报道，非公司公告或财报；毕师父、TTC「小麦招聘」、屿智同行等 AI 原生求职 Agent 的规模数据不足。</li>
+  <li><b>「AI 面试融资下降 46%」「10 家美国公司共融 6.56 亿美元」「88% 供应商设责任上限」</b>均为自定义样本的二手行业统计，只用于判断方向，不作为规模结论。Cluely／Interview Coder 的 ARR 已由 CEO 于 2026-03-05 承认造假，不采用。</li>
+  <li><b>国内外「AI 招聘市场规模」预测。</b>检索到 75.5 亿美元、204.1 亿元、480 亿、528 亿、870 亿等多个互斥口径（含 IDC 对中国 AI 训练数据市场 2026 年 78 亿元、同比 +25% 的预测），多来自低可信度市场研究站，未能统一到可复核的一手报告，未纳入正文结论。</li>
+  <li><b>未公开记录的玩家。</b>Toloka、Alignerr、Prolific 在 2025–2026 未检索到可核实融资或重大事件；Handshake 收 Cleanlab、Mercor 收 Sepal AI、HireVue 收 Hireguide 仅见二手站点，金额均未披露。</li>
+</ul>
+
+<h2 id="s10"><span class="no">10</span>来源</h2>
+<p class="small">一手优先：公司官方公告、监管与政府网站、财报与投资者材料、法院与立法记录、SEC 文件。二手为权威媒体与行业分析，转引处已在正文标注。检索时间 2026-11-11。</p>
+
+<h4>一手</h4>
+<ul class="src">
+  <li><span class="tag">官方</span>Mercor, <a href="https://www.mercor.com/blog/series-d">Organizing human intelligence for the entire economy</a>（2026-11-10，D 轮公告）；<a href="https://www.mercor.com/blog/series-c">Series C 公告</a>（2025-10-27）</li>
+  <li><span class="tag">官方</span>Business Wire / Las Vegas Sun, <a href="https://lasvegassun.com/news/2026/nov/10/mercor-raises-750-million-series-d-at-20-billion-v">Mercor Raises $750 Million Series D at $20 Billion Valuation</a>（2026-11-10）</li>
+  <li><span class="tag">官方</span>Indeed, <a href="https://www.indeed.com/news/releases/indeeds-ai-powered-sourcing-assistant-helps-employers-hire-over-30-faster?co=US">Sourcing Assistant Helps Employers Hire Over 30% Faster</a>（2026-06-15，含测试口径脚注）；Recruit Holdings 投资者材料（2026-09-04）</li>
+  <li><span class="tag">官方</span>LinkedIn Business, <a href="https://business.linkedin.com/hire/hiring-assistant">Meet Hiring Assistant</a>（产品页，标注「基于 LinkedIn 数据 2026 年 1 月」）；LinkedIn 工程博客（2025-09，v1 指标）</li>
+  <li><span class="tag">官方</span>SmartRecruiters, <a href="https://smartrecruiters.com/news/sap-to-acquire-smartrecruiters">SAP to Acquire SmartRecruiters</a>（2025-08-01）；<a href="https://www.smartrecruiters.com/news/sap-completes-acquisition-of-smartrecruiters">完成收购</a>（2025-09-11）；SAP Form 6-K（Q3 2025、FY2025 对价）</li>
+  <li><span class="tag">官方</span>Juicebox, <a href="https://juicebox.ai/blog/series-b">Juicebox raises $80M Series B at an $850M valuation</a>（2026-03-10）；<a href="https://juicebox.ai/about">About Juicebox</a>（公司沿革与收购记录）</li>
+  <li><span class="tag">官方</span>国家数据局, <a href="https://www.nda.gov.cn/sjj/swdt/xwfb/0723/20250723130939298328454_pc.html">2025 中国国际大数据产业博览会新闻发布会文字实录</a>（2025-07-23）；<a href="https://www.nda.gov.cn/sjj/zwgk/zjjd/0618/20260618163157851323009_pc.html">《关于推进行业高质量数据集建设行动的实施方案》专家解读</a>（2026-06-18）</li>
+  <li><span class="tag">官方</span>人社部, <a href="https://www.mohrss.gov.cn/wap/zc/qwjd/202607/t20260708_579824.html">《关于加快推进「人工智能＋人社」应用发展的实施意见》答记者问</a>（2026-07-08）；<a href="https://www.mohrss.gov.cn/SYrlzyhshbzb/dongtaixinwen/buneiyaowen/rsxw/202606/t20260603_577555.html">八部门联合开展「国聘行动」</a>（2026-06-03）；山东省人社厅答复（2025-04-28）；杭州市政府（2025-07-22）</li>
+  <li><span class="tag">官方</span>科罗拉多州议会, <a href="https://leg.colorado.gov/bills/sb25b-004">SB25B-004</a>；<a href="https://content.leg.colorado.gov/sites/default/files/R25-503_Artificial%20Intelligence_2.pdf">立法研究办公室《Overview of Artificial Intelligence》</a>；<a href="https://www.sec.gov/Archives/edgar/data/1725057/000114036126003628/ef20064744_ex99-2.htm">Dayforce 私有化 SEC 8-K</a>（2026-02-04）</li>
+  <li><span class="tag">官方</span>新华网, <a href="https://www.xinhua.org/20260731/3165dd0ca76f42d5ada4ed42b8824a9a/c.html">欧盟宣布扩大实施《人工智能法》</a>（2026-07-31）；福建省商务厅, <a href="https://swt.fj.gov.cn/xxgk/jgzn/jgcs/dwmyc/gzdt_446/202608/t20260831_7206863.htm">欧盟 AI 法案落地节奏生变</a>（2026-08-31）</li>
+  <li><span class="tag">官方</span>Meta Platforms Form 10-Q（2025-06-30 季度）与 2025 年报；Workday Q2 FY26 投资者材料、<a href="https://newsroom.workday.com/">Workday Newsroom</a>（Sana、Paradox、Illuminate、Flex Credits）；Oracle Fusion HCM AI Agents 发布（2025-09-16）与 Fusion Claw（2026-09-29）</li>
+  <li><span class="tag">官方</span>Moka, <a href="https://mokahr.com/blog/40799.html">用三位 AI「同事」，迎接 AI 原生组织时代</a>（2026 产品发布会）；北森, <a href="https://www.beisen.com/news/615.html">AI Family 2.0</a>（2025-09-03）、<a href="https://www.beisen.com/brand/">品牌页大会年表</a>；新华网, <a href="https://www.xinhuanet.com/tech/20260924/e7f5824d19cc4effbb33cfb8ee3da728/c.html">BOSS 直聘让技能赛场直连真实岗位</a>（2026-09-24）</li>
+  <li><span class="tag">官方</span>FBI, <a href="https://www.ic3.gov/PSA/2025/PSA250123">PSA I-012325-PSA</a>（2025-01-23，朝鲜 IT 工作者使用 AI 与换脸）；DOJ 2025-06 行动通报</li>
+  <li><span class="tag">官方</span>Dayforce / GlobeNewswire, <a href="https://www2.staffingindustry.com/news/global-daily-news/dayforce-to-acquire-ai-interview-firm-ribbon-adding-agentic-recruiting-to-its-portfolio">Dayforce to Acquire Ribbon AI</a>（2026-10-23，经 SIA 转载）</li>
+</ul>
+
+<h4>二手与核查</h4>
+<ul class="src">
+  <li><span class="tag">媒体</span>The Next Web, <a href="https://thenextweb.com/news/mercor-750m-series-d-20bn-valuation">Mercor raises $750m at a $20bn valuation</a>（含 2026-04 数据泄露与 Meta 冻结记录）；TechCrunch（2025-02-20、2026-03-31、2026-07-09）</li>
+  <li><span class="tag">核查</span>The Inference, <a href="https://theinference.org/article/forbes-says-edwin-chen-is-worth-18-billion-no-one-has-ever-priced-surge-ai">No one has ever priced Surge AI</a>（2026-10）；Settlement Insight, <a href="https://settlementinsight.com/is-mercor-legit">Is Mercor Legit?</a>（诉讼与法院卷宗，2026-09-30）；CloudsPress, <a href="https://www.cloudspress.com/what-happened-in-scale-ais-trade-secret-lawsuit-against-mercor-and-a-former-employee">Scale v. Mercor 撤诉时间线</a>；Justia / PacerMonitor 法院卷宗</li>
+  <li><span class="tag">媒体</span>Inc., <a href="https://inc.com/moses-jeanfrancois/micro1-1-billion-dollar-bet-on-your-companys-data/91417578">Micro1’s $1 Billion Bet Isn’t on Better Models</a>；虎嗅, <a href="https://www.huxiu.com/article/4903510.html">百万小时背后，数据生意正在重新分工</a>（Spirit 拍卖与企业记录）；Bloomberg Tax（错误分类诉讼潮与 1250 万美元和解）</li>
+  <li><span class="tag">媒体</span>Rest of World 2026-09 报道及 <a href="https://stechtimes.com/en/article/expert-ai-training-gigs-spread-across-chinas-whitecollar-workforce-mtv3lpi4">转载</a>（中国专家兼职、平台条款、报酬区间）；新浪财经, <a href="https://finance.sina.com.cn/roll/2026-09-15/doc-inirwwna3820316.shtml">AI 催生的那些工作机会，数据标注</a>（2026-09-15）；<a href="https://finance.sina.com.cn/jjxw/2026-04-14/doc-inhumwqh4201955.shtml">大厂专家平台与 RLAIF</a>（2026-04-14）</li>
+  <li><span class="tag">媒体</span>新浪财经, <a href="https://finance.sina.com.cn/stock/wbstock/2026-08-26/doc-inipsezp5935915.shtml">BOSS 直聘 Q2 财报：AI 正在把招聘平台推向「结果交付」</a>（2026-08-26）；南方＋, <a href="https://www.nfnews.com/content/lyKmkkkW65.html">智联招聘亮相 2026 WAIC</a>；中国妇女网同题报道</li>
+  <li><span class="tag">法律</span>National Law Review, <a href="https://natlawreview.com/article/ai-hiring-under-fire-what-eightfold-lawsuit-means-every-employer-using-algorithmic">What the Eightfold Lawsuit Means</a>；JD Supra, <a href="https://www.jdsupra.com/legalnews/employment-law-update-ai-hiring-under-5180964">AI Hiring Under Fire</a>；SGR, <a href="https://www.sgrlaw.com/client-alerts/ai-hiring-tools-under-fire-key-litigation-updates-and-what-employers-should-know">Key Litigation Updates</a></li>
+  <li><span class="tag">法律</span>AI Compliance Atlas, <a href="https://aicomplianceatlas.com/law/colorado-ai-act">Colorado Artificial Intelligence Act</a>（SB 26-189 与 2026 年诉讼时间线，2026-07-31 核验）；AI Policy Tracker, <a href="https://aipolicytracker.org/updates/us-colorado">Colorado 政策变更记录</a>（2026-11-08 更新）；中国社会科学网, <a href="https://cssn.cn/skgz/bwyc/202610/t20261029_6075506.shtml">人工智能价值对齐</a>（2026-10-29，2026/1744 条款与中国逐项监管对比）</li>
+  <li><span class="tag">调查</span>Greenhouse《2026 Candidate AI Interview Report》经 <a href="https://hrtechedge.com?p=52257/">HR Tech Edge</a> 与 <a href="https://www.apollotechnical.com/statistics-on-ai-in-recruiting">Apollo Technical 统计汇总</a>（含 SHRM、Korn Ferry、HireVue、Resume.org 各调查样本与日期）；ManpowerGroup 2026-09-08 近 4 万雇主研究经 <a href="https://neuroscale.ai/blog/ai-interview-backlash-costing-employers">Neuroscale 汇总</a>；SHL / Robert Half / Gartner「AI 回旋镖」经 <a href="https://m.huxiu.com/article/4904764.html">虎嗅</a></li>
+  <li><span class="tag">学术</span><a href="https://arxiv.org/abs/2507.11548">arXiv 2507.11548</a>（8 个 AI 简历筛选平台偏见审计）；<a href="https://arxiv.org/abs/2504.21400">arXiv 2504.21400</a>（332,044 条招聘广告的 LLM 性别偏向）；UC Berkeley CHI 2025 招聘者访谈；Theseus 2025 综述（40 篇同行评审文献）</li>
+  <li><span class="tag">媒体</span>羊城晚报, <a href="https://ycpai.ycwb.com/content/ikimvkctic/content_54280761.html">AI「枪手」潜入招聘考场</a>；人民法治网, <a href="http://www.rmfzw.org.cn/article/0/314345">AI「枪手」潜入招聘考场，怎么破？</a>；广州日报, <a href="https://huacheng.gz-cmc.com/pages/2026/10/22/f5b27d3bb8754003b0025399fe77b129.html">当 AI 面试遭遇「AI 代答」</a>（含前程无忧典范雇主调研）；央广网（2025-04-19、04-30）</li>
+  <li><span class="tag">行业</span>Lighthouse Research &amp; Advisory, <a href="https://lhra.io/?p=5561/">2025 HR Tech M&amp;A Activity</a>（含 Drake Star 统计）；New Market Pitch, <a href="https://newmarketpitch.com/blogs/news/ai-recruiting-funding-analysis">AI recruiting: what’s funding like now?</a>；Second Talent, <a href="https://www.secondtalent.com/resources/top-ai-recruiting-startups-usa">Top 10 AI Recruiting Startups in the USA</a>（2026-09）</li>
+  <li><span class="tag">行业</span>HeroHunt, <a href="https://www.herohunt.ai/blog/agentic-recruiting-2026-guide">Agentic Recruiting 2026 Guide</a> 与 <a href="https://www.herohunt.ai/blog/linkedin-recruiting-automation-2026">LinkedIn Recruiting Automation 2026</a>；DHRMap, <a href="https://www.dhrmap.com/news/linkedin-launches-hiring-assistant-2">LinkedIn launches Hiring Assistant 2</a>（2026-09-29）；refolk.ai（微软 4.5 亿美元 ARR 转述）</li>
+  <li><span class="tag">行业</span>Sacra / Contrary Research / Value Add VC（Mercor、Surge、Handshake、Snorkel、Scale 的毛 ARR、估值与时薪，均为第三方估算）；Invisible Technologies 官博《Build vs Buy RL Environments》；New York Magazine / Intelligencer（2026-03，专家劳动深度报道）</li>
+</ul>
+
+<h2 id="s11"><span class="no">补</span>补记：定稿当晚又核到的八条</h2>
+
+<p class="lead">以下八条是主体写完后再核的一轮，其中两条会改写原稿的判断：中国专家数据平台的估值已经跳到十亿美元量级；「模型公司自己做招聘平台」这条路，公开可查的进展比发布会讲的慢得多。</p>
+
+<h3>一、中国这条线，估值先跳了</h3>
+<p><b>Humanlaya</b>（原壤智能）新轮以近 <span class="mono">10 亿美元</span> post-money 交割，<b>UniPat</b> 以 <span class="mono">10 亿美元</span> pre-money 交割，两家均由 HSG（原红杉中国）下注——据 The Information 转述、两家信源，未见于公司公告。原稿写的「天使轮近千万美元」是 2025 年的事，一年内跳了两个数量级。更值得记的是分母：截至 5 月底 UniPat 的客户订单只有 <span class="mono">3000 万美元</span>，而 Mercor 在 6 月的毛流水是 20 亿美元。同一篇报道给了一个价差解释：美国医生做同类任务约 <span class="mono">150 美元／小时</span>，Humanlaya 在中国约 <span class="mono">45 美元</span>；中国这块市场的收入体量，业内估算约为美国的十分之一。客户名单包括阿里、字节、Moonshot、DeepSeek——字节既是 Xpert 的运营方，也是外部平台的买家。</p>
+<p class="small">口径提醒：两家的估值都来自媒体转述的一级市场交易，未经公司确认；「订单」不等于「收入」，更不等于「毛利」。这条只能说明中国资本开始按平台价值而非项目利润定价，不能说明业务规模已经追上美国。</p>
+
+<h3>二、OpenAI 的招聘平台，宣布了，但没上线</h3>
+<p>2025-09-04 官方宣布「2026 年中上线」OpenAI Jobs Platform，配套 OpenAI Certifications，承诺 2030 年前认证 1000 万美国人。到 2026-09，公开可查的状态是：没有 beta、没有 waitlist、没有新日期；产品负责人 Fidji Simo 于 2026-07-09 转兼职顾问、保留董事席位。已经落地的是两条更轻的路径——2026-02-10 在 ChatGPT 里上线 Indeed 职位应用，2026-06-01 面向美国 Free／Go／Plus／Pro 用户开放站内职位搜索，投递仍跳回原网站。课程与徽章是真的，招聘市场不是。这件事的意义不在 OpenAI 一家：它说明「有流量、有模型」不等于能组织起双边市场，招聘的难点在雇主侧的信任与流程，而不在匹配算法。</p>
+
+<h3>三、Indeed 与 Glassdoor 合完了，Recruit 靠提价而不是靠流量增长</h3>
+<p>Glassdoor 于 <span class="mono">2026-07-01</span> 法律上并入 Indeed，品牌与点评保留，CEO 2025-11 离任。合并前后的裁员：2025-07 裁 <span class="mono">1300</span> 人（HR Tech 板块约 6%），2025-11 再裁少量。同期的经营事实是：FY2025 美国职位数约 <span class="mono">-7%</span>，单客户平均收入 <span class="mono">+17%</span>；公司对 FY2026 的指引是职位数再 <span class="mono">-4%</span>、价格再 <span class="mono">+18%</span>。职位供给在缩，收入在涨，涨的是「一个职位被处理得更快、更准」的价钱。</p>
+
+<h3>四、Recruit 的财报，是「AI 让单位职位更值钱」最硬的一份证据</h3>
+<p>FY2026 Q1（2026-04 至 06）：集团收入 <span class="mono">1.0453 万亿日元</span>、同比 <span class="mono">+18.9%</span>，EBITDA+S <span class="mono">2928 亿日元</span>、<span class="mono">+56.5%</span>，全年营业利润指引从 7870 亿上调到 <span class="mono">9450 亿日元</span>；东京市场 2026-08-08 单日涨 <span class="mono">20%</span>、触及涨停，为上市以来最大单日涨幅。HR Tech 美国收入 <span class="mono">16.4 亿美元</span>、<span class="mono">+30%</span>，而美国职位数同期约 <span class="mono">-4%</span>。管理层在电话会上的原话是把「下游流程」去掉——筛简历、验证资质、找人、触达、约面试，然后按省下来的招聘官人力收费。这与 BOSS 直聘的「按达成付费」是同一个方向，只是美国的价格基数是中国的 50–100 倍。</p>
+
+<h3>五、Randstad 把 AI 用在了排班和复用上，不是用在筛简历上</h3>
+<p>2026 Q2：收入 <span class="mono">58.97 亿欧元</span>、有机 <span class="mono">+1.9%</span>，Underlying EBITA <span class="mono">1.82 亿欧元</span>、利润率 <span class="mono">3.1%</span>。运营口径：单季 <span class="mono">170 万次</span>自主排班，超过 <span class="mono">50%</span> 的人才验证由集中人才中心完成，每名内部员工服务的人才数 <span class="mono">+5%</span>；旗下技术人才子公司 Torc 把招聘成本与填补时间各压了约 <span class="mono">50%</span>。这条线的价值不在「AI 面试」，在把「人还没到岗、班次已经变了」这类高频摩擦接过去——也是三大派遣巨头里最容易算清 ROI 的一段。</p>
+
+<h3>六、国内平台的产品化，已经细到可对账</h3>
+<p>智联「艾琳」：人岗匹配准确率 <span class="mono">93%</span>、推理成本降至约三成、HR 操作步骤 <span class="mono">-30%</span>（百度智能云案例，厂商口径，教师—学生模型蒸馏：DeepSeek-R1 作教师、ERNIE Speed 作学生）。前程无忧 AI 招聘助手：匹配精准度 <span class="mono">+50%</span>、招聘周期 <span class="mono">-30%</span>、半年拦截异常企业 <span class="mono">3 万+</span>。海纳 AI：累计面试 <span class="mono">1200 万人次</span>、服务 <span class="mono">5000+</span> 企业、2025-02 完成 <span class="mono">5000 万元</span> B 轮（德同领投）。鱼泡直聘：注册 <span class="mono">1.3 亿</span>、日活 <span class="mono">400 万</span>，称求职周期从十余天压到约 <span class="mono">2 小时</span>、匹配度 <span class="mono">+85%</span>。后两组均为企业宣传口径，但方向一致：蓝领与基层岗位是 AI 面试真正跑出规模的地方，白领资深岗位仍靠人。</p>
+
+<h3>七、数据堂扭亏，说明「数据资源化」比「项目交付」值钱</h3>
+<p>2026 半年报：营收 <span class="mono">1.8 亿元</span>、<span class="mono">+44.33%</span>，归母净利 <span class="mono">3313 万元</span>（上年同期亏损 274 万），毛利率 <span class="mono">54.12%</span>（上年 44.77%），境外收入占比过半、境外子公司合计净利超 1185 万元。拆开看：基础数据资源服务（一次制作、多次销售）毛利率 <span class="mono">63.5%</span>，定制生产服务只有 <span class="mono">25.22%</span>。这条与 Mercor 卖 evals、Snorkel 卖成品数据集是同一个动作——把「按项目卖人力」换成「按资产卖授权」。</p>
+
+<h3>八、融资不是整体退潮，是向能证明落地的人集中</h3>
+<p>两套口径并存：New Market Pitch 统计 2026 年前 9 个月 AI 招聘 32 笔、<span class="mono">3.645 亿美元</span>，同比笔数 <span class="mono">-22%</span>、金额 <span class="mono">-36%</span>；另一份统计称 10 家美国 AI 招聘公司在 2025-07 至 2026-07 合计融资 <span class="mono">6.56 亿美元</span>，Mercor 一家占一半以上。共同的方向是：首次融资数量下降约四成，钱集中到 Juicebox（8000 万美元 B 轮）、Metaview（6000 万美元 C 轮）、Jack &amp; Jill（4000 万美元 A 轮）这类已有客户与收入的公司。对创业者的含义比对投资人更直接——这个赛道已经过了「有个 Agent 就能融种子轮」的阶段。</p>
+
+<div class="block soft">
+  <div class="t">这八条对原稿判断的修正</div>
+  <p>第一，中国专家数据市场的估值锚已经不能再用「天使轮近千万美元」描述，十亿美元量级的两笔交易会把国内定价整体抬上去，但订单基数很小，泡沫与机会同时存在。第二，「模型公司直接做招聘平台」在 2026 年没有跑通，OpenAI 的案例说明分发优势不等于双边市场优势；真正跑通的是「平台内嵌 AI」和「垂直 Agent 被并购」两条路。</p>
+</div>
+
+<h3>补记来源</h3>
+<ul class="src">
+  <li><span class="tag">媒体</span>The Information / Dealroom 转述，<a href="https://dealroom.co/news/info-ab64c2-why-chinas-answer-to-surge-ai-got-a-1-billion-valuation-on-just-30-milli">Why China’s Answer to Surge AI Got a $1 Billion Valuation On Just $30 Million in Orders</a>（2026，Humanlaya／UniPat 估值、订单、时薪与客户）</li>
+  <li><span class="tag">官方</span>OpenAI, <a href="https://cdn.openai.com/pdf/21b88bb5-10a3-4566-919d-f9a6b9c3e632/[OpenAI_OSTP RFI Oct 27 2025].pdf">Workforce Blueprint / OSTP 回应</a>（2025-10-27，称 Jobs Platform「launching in 2026」）；ChatGPT 站内职位搜索帮助页（2026-06-01）</li>
+  <li><span class="tag">媒体</span>Reworked, <a href="https://www.reworked.co/employee-experience/glassdoor-folds-into-indeed/">Glassdoor’s Long Merger With Indeed Is Finally Done</a>（2026-07，含裁员、职位数与提价口径）；Recruit Holdings FY2026 Q1 说明会材料（2026-08）</li>
+  <li><span class="tag">官方</span>Recruit Holdings, <a href="https://recruit-holdings.com/en/blog/post_20260904_0001/">From AI promise to real hiring outcomes</a>（2026-09-04，美国 HR Tech +30%、职位数 -4%、Premium Sponsored Jobs 口径）</li>
+  <li><span class="tag">财报</span>Randstad 2026 Q2 业绩（收入、EBITA、自主排班与 Torc 口径）；ManpowerGroup 2026 Q1／Q2 电话会记录</li>
+  <li><span class="tag">媒体</span>新浪财经／经济观察报，<a href="https://finance.sina.com.cn/stock/wbstock/2026-08-26/doc-inipsezp5935915.shtml">BOSS 直聘 Q2 财报：AI 正在把招聘平台推向「结果交付」</a>（含智联、前程无忧、LinkedIn、Indeed 对照口径）</li>
+  <li><span class="tag">财报</span>数据堂 2026 年半年度报告（营收、净利、毛利率、境外收入与两类业务毛利率）；海天瑞声 2026 中报</li>
+  <li><span class="tag">行业</span>New Market Pitch, <a href="https://newmarketpitch.com/blogs/news/ai-recruiting-funding-trends">AI recruiting funding trends</a>（2026-10-15 更新）；LinkedIn Pulse 转载的 10 家公司 6.56 亿美元口径</li>
+</ul>
+
+<footer>
+  <p>调研范围：2025-01 至 2026-11-11。所有金额、估值、比例均标注了口径与时间；厂商自报数据已单独标记，未与第三方调查混用；二手聚合站的数字只用于方向判断。</p>
+  <p>本页为公开版调研稿：数字级事实均标注口径与时间，厂商自报数据单独标记，未经逐条独立复核；引用前请以公司公告、财报、法院卷宗与监管文本为准。不构成投资建议。</p>
+  <p>利益相关：无商业合作，基于公开信息整理与评论。尚盐 · 开源人生</p>
+</footer>
+
+</div>
+</body>
+</html>

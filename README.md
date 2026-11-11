@@ -12,9 +12,9 @@
 
 > 每日推荐 —— 宁缺毋滥，努力日更。
 
-- **2026-11-11** · [罗永浩与交个朋友：七年成长史与招牌股东](https://openmylife.xyz/articles/finance/luoyonghao-jiaogepengyou-01450.html) —— 从「真还传」到「去罗永浩化」：一个不持股的创始人、一家在港交所挂牌的公司，以及 2026 年规模、品控与股价的同时转向。
-- **2026-11-08** · [国内外生活助理类 AI Agent 清单（v3）](https://openmylife.xyz/articles/agent/life-assistant-agents.html) —— 国际 22 个、国内 14 个、手机厂商自带 5 家，附两份实测榜、形态速查与五条判断；新增 Wabi、Moras、Boba、Elys、迅宝，灵光 2.0 全面开放。
-- **2026-10-24** · [AI 审美的三层结构：默认审美、调节层与上限层](https://openmylife.xyz/articles/ai/aesthetic-three-layers.html) —— 默认审美是统计引力，提示词是意图翻译，模型能力是细节天花板。动手前先分清：你面对的是默认审美问题，还是能力上限问题。
+- **2026-11-11** · [AI 招聘两年：四条互不相干的市场](https://openmylife.xyz/articles/ai/ai-recruiting-two-years.html) —— 给模型招专家、给企业招人、老厂商 AI 化、周边设施——四条线共用「AI 招聘」这个词，客户名单却几乎不重叠。把 2025–2026 的资金、并购、诉讼与监管放回各自的买方，才看得清哪些数字能比。
+- **2026-10-24** · [推理模型的审美三层结构](https://openmylife.xyz/articles/ai/reasoning-aesthetic-three-layers.html) —— 默认代码风格、文档调节层、前端 / 3D 执行力上限；审美差距有一部分是工作流差距，让模型「看见自己的产出」比换模型收益更大。
+- **2026-10-24** · [Seedance 2.5 4K 之后，特效行业真正的分水岭不是裁员](https://openmylife.xyz/articles/ai/seedance-4k-vfx-industry.html) —— 需求会涨、五毛特效有活路、大规模失业没发生，这三条只对了一半：单价崩得比需求快，「不裁员」是把全职换成了外包。
 
 ## 我是谁
 
