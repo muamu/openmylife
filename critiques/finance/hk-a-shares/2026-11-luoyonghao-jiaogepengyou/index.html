@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>罗永浩与交个朋友：七年成长史与招牌股东</title>
+<style>
+:root{
+  --paper:#F7F4F1;
+  --ink:#241C1B;
+  --deep:#1A1312;
+  --red:#B32B24;
+  --red2:#E28A80;
+  --sub:#6C615E;
+  --line:#DFD8D3;
+  --block:#F0EAE6;
+  --block2:#E9E1DB;
+  --white:#FDFAF8;
+  --neg:#4A7A5F;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  font-size:15px;
+  line-height:1.78;
+  overflow-x:hidden;
+}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+h1,h2,h3{font-family:"Noto Serif SC","Songti SC",SimSun,Georgia,serif;line-height:1.4;font-weight:700}
+.mono{font-family:ui-monospace,SFMono-Regular,Consolas,"Courier New",monospace;font-variant-numeric:tabular-nums}
+a{color:inherit}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+mark{background:#FBE1DC;padding:0 2px}
+strong{font-weight:600}
+
+/* ===== hero：全页唯一深色实底 ===== */
+.hero{background:var(--deep);color:#F3EBE7;padding:40px 0 36px;border-bottom:2px solid var(--red);position:relative;overflow:hidden}
+.hero .code{
+  position:absolute;right:-12px;top:6px;
+  font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+  font-size:96px;font-weight:700;letter-spacing:.04em;
+  color:rgba(243,235,231,.05);pointer-events:none;line-height:1;
+}
+.hero .pre{font-size:12px;color:var(--red2);letter-spacing:.06em;margin-bottom:14px;position:relative}
+.hero .pre::before{content:"";display:inline-block;width:26px;height:2px;background:var(--red);margin-right:9px;vertical-align:middle}
+.hero h1{font-size:30px;color:#FBF5F1;margin-bottom:10px;position:relative;line-height:1.36}
+.hero .sub{font-size:15px;color:#CEC0BA;margin-bottom:20px;position:relative;max-width:34em}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:0;position:relative;border-top:1px solid rgba(243,235,231,.16);border-bottom:1px solid rgba(243,235,231,.16)}
+.hero-col{padding:15px 0 14px}
+.hero-col + .hero-col{border-top:1px dashed rgba(243,235,231,.22);padding-top:14px}
+.hero-col .k{font-size:11px;color:var(--red2);margin-bottom:5px}
+.hero-col .t{font-size:19px;color:#FBF5F1;font-family:"Noto Serif SC","Songti SC",SimSun,serif;margin-bottom:4px}
+.hero-col .d{font-size:13px;color:#BCADA7;line-height:1.7}
+.hero .judge{font-size:14.5px;color:#EBE0DB;margin-top:18px;position:relative;max-width:36em}
+.hero .judge b{color:var(--red2);font-weight:600}
+.hero .meta{font-size:11.5px;color:#9C8D88;margin-top:16px;position:relative;line-height:1.8}
+.hero .meta span{margin-right:14px}
+
+/* ===== 30 秒版 ===== */
+.verdict{padding:28px 0 4px}
+.verdict .vlabel{font-size:12px;color:var(--red);margin-bottom:12px}
+.v-card{background:var(--white);border:1px solid var(--line);border-left:3px solid var(--red);padding:12px 14px;margin-bottom:9px}
+.v-card .v-no{font-size:11px;color:var(--red);margin-bottom:3px}
+.v-card p{font-size:14.5px;line-height:1.75}
+
+/* ===== 目录 ===== */
+.toc{margin:22px 0 6px;padding:14px 16px;background:var(--block);font-size:13.5px}
+.toc .tt{font-size:12px;color:var(--sub);margin-bottom:9px;line-height:1.7}
+.toc ol{list-style:none;columns:1}
+.toc li{margin:4px 0;break-inside:avoid}
+.toc a{text-decoration:none;border-bottom:1px solid var(--line)}
+.toc a:hover{border-bottom-color:var(--red)}
+.toc .tn{color:var(--red);margin-right:6px;font-size:12px}
+
+/* ===== 分卷 ===== */
+.part{margin:34px 0 0;padding:10px 0 9px;border-top:1px solid var(--red);border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.part .pn{font-size:11px;color:var(--red)}
+.part .pt{font-family:"Noto Serif SC","Songti SC",SimSun,serif;font-size:17px;font-weight:700}
+.part .pd{font-size:11.5px;color:var(--sub);margin-left:auto}
+
+/* ===== 章节 ===== */
+section{padding:26px 0 4px}
+h2.banner{
+  display:flex;align-items:baseline;gap:11px;
+  background:var(--block2);border-left:3px solid var(--red);
+  padding:10px 14px;margin:0 -16px 18px;font-size:19px;
+}
+h2.banner .no{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12.5px;color:var(--red);font-weight:600;flex:none}
+h3{font-size:16.5px;margin:20px 0 8px;padding-left:10px;border-left:2px solid var(--red)}
+p{margin:0 0 12px;max-width:44em}
+p.lead{color:var(--sub);font-size:14px}
+p.lede{font-size:16px;line-height:1.85}
+
+/* 判断块 / 引文 / 脚注 */
+.note{background:var(--block);border-left:3px solid var(--sub);padding:12px 15px;margin:16px 0;font-size:14.5px}
+.note.accent{background:#F8E9E5;border-left-color:var(--red)}
+.pull{font-family:"Noto Serif SC","Songti SC",SimSun,serif;font-size:18px;line-height:1.7;padding:14px 0 14px 16px;border-left:3px solid var(--red);margin:18px 0;color:var(--deep)}
+.fn{font-size:10.5px;vertical-align:super;line-height:0}
+.fn a{color:var(--red);text-decoration:none;border-bottom:1px solid var(--red2)}
+blockquote{border-left:2px solid var(--red);padding:8px 14px;margin:14px 0;color:var(--sub);font-size:14px;background:var(--white)}
+blockquote cite{display:block;font-size:11px;font-style:normal;margin-top:6px;color:var(--sub)}
+
+/* 数据条 / 区块 / 反驳 / 纠错 */
+.stat-strip{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:16px 0}
+@media(min-width:560px){.stat-strip{grid-template-columns:repeat(4,1fr)}}
+.stat{background:var(--white);border:1px solid var(--line);padding:12px}
+.stat .k{font-size:11px;color:var(--sub);margin-bottom:4px}
+.stat .v{font-family:ui-monospace,Consolas,monospace;font-size:19px;font-variant-numeric:tabular-nums;line-height:1.3}
+.stat .n{font-size:11px;color:var(--sub);margin-top:3px}
+.stat .v.neg{color:var(--neg)}
+.stat .v.acc{color:var(--red)}
+.block{background:var(--block);border-left:2px solid var(--line);padding:14px 16px;margin:16px 0;font-size:14px}
+.block p:last-child{margin-bottom:0}
+.block .bt,.warn .bt{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--red);margin-bottom:6px}
+.rebut{background:var(--white);border:1px solid var(--line);border-left:3px solid var(--red);padding:12px 15px;margin:14px 0}
+.rebut .q{font-size:14.5px;color:var(--sub);margin-bottom:8px}
+.rebut .a{font-size:14.5px}
+.rebut .tag{font-size:11px;color:var(--red);margin-bottom:5px}
+.err{background:var(--white);border-left:3px solid var(--red);padding:10px 14px;margin:9px 0;font-size:14px}
+.err .m{color:var(--sub);text-decoration:line-through;text-decoration-color:var(--red);margin-bottom:3px;font-size:13.5px}
+.warn{background:var(--white);border:1px solid var(--line);border-left:3px solid var(--red);padding:12px 14px;font-size:13px;margin:16px 0}
+.warn .bt{color:var(--red)}
+
+/* 图 */
+figure{margin:16px 0 0;background:var(--white);border:1px solid var(--line);padding:12px 8px}
+figure svg{width:100%;height:auto;display:block}
+figcaption,.srcnote,.fig-note,.tbl-note{font-size:11.5px;color:var(--sub);line-height:1.65;margin:8px 0 18px}
+.tbl-note{margin-top:-6px}
+
+/* 时间线 A：双车道（成长史） */
+.tl{margin:18px 0}
+.tl-year{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--red);border-top:1px solid var(--line);padding-top:10px;margin-top:16px}
+.tl-item{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:8px 0;border-bottom:1px dotted var(--line)}
+.tl-item .lane{font-size:10px;padding:2px 0;text-align:center;border-radius:2px;height:fit-content}
+.lane-p{background:#EDE6E1;color:#4A3D3A}
+.lane-c{background:#F5DFDA;color:var(--red)}
+.tl-item .ev{font-size:14px}
+.tl-item .ev .d{color:var(--sub);font-size:11px;font-family:ui-monospace,Consolas,monospace}
+
+/* 时间线 B：竖轴（公司线，改名避免冲突） */
+.vtl{border-left:2px solid var(--line);margin:16px 0 8px 7px;padding-left:19px}
+.vtl-row{position:relative;margin-bottom:18px}
+.vtl-row::before{content:"";position:absolute;left:-26px;top:8px;width:9px;height:9px;background:var(--red);border:2px solid var(--paper);box-sizing:content-box}
+.vtl-date{font-size:12px;color:var(--red);margin-bottom:3px}
+.vtl-line{font-size:14px;margin:2px 0;line-height:1.7}
+.vtag{display:inline-block;font-size:10.5px;line-height:1.5;padding:1px 5px;background:var(--block2);color:var(--sub);margin-right:6px;vertical-align:1px;white-space:nowrap}
+.vtag.cap{background:#F3DDD9;color:var(--red)}
+
+/* 还款弧 */
+.repay{margin:16px 0}
+.repay-row{display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:center;margin:8px 0}
+.repay-row .rl{font-size:11px;color:var(--sub);font-family:ui-monospace,Consolas,monospace}
+.repay-bar{height:22px;background:var(--block);position:relative}
+.repay-bar i{display:block;height:100%;background:var(--ink)}
+.repay-bar i.acc{background:var(--red)}
+.repay-bar span{position:absolute;left:8px;top:0;line-height:22px;font-size:11px;color:#fff;font-family:ui-monospace,Consolas,monospace}
+.repay-bar span.out{color:var(--ink);left:auto;right:8px}
+
+/* 表格 */
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0 6px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--block2);font-weight:600;font-size:12.5px;color:var(--deep)}
+td.num,th.num{text-align:right;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;white-space:nowrap}
+tbody tr:nth-child(even){background:rgba(255,255,255,.35)}
+tr.total td{border-top:1.5px solid var(--ink);font-weight:600}
+
+/* 附录 */
+.appx{margin-top:30px;border-top:2px solid var(--deep);padding-top:18px}
+.appx h2{font-size:19px;margin:24px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.src{font-size:12px;color:var(--sub);margin:6px 0;line-height:1.7}
+.src a{color:var(--red);text-decoration:none}
+.src-list{font-size:12.5px;line-height:1.75;color:var(--sub)}
+.src-list li{margin:6px 0 6px 18px}
+.src-list a{color:var(--red);text-decoration:none;border-bottom:1px solid var(--line);word-break:break-all}
+.layer{font-size:12px;color:var(--red);margin:16px 0 6px}
+footer{margin:34px 0 30px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--sub);line-height:1.8}
+
+@media (min-width:700px){
+  .wrap{padding:0 24px}
+  body{font-size:15.5px}
+  .hero{padding:54px 0 44px}
+  .hero .code{font-size:150px;top:0}
+  .hero h1{font-size:38px}
+  .hero-grid{grid-template-columns:1fr 1fr;gap:0}
+  .hero-col{padding:20px 0 18px}
+  .hero-col + .hero-col{border-top:none;border-left:1px dashed rgba(243,235,231,.22);padding:20px 0 18px 26px}
+  .hero .judge{font-size:16px}
+  .toc ol{columns:2;column-gap:26px}
+  .v-card{padding:14px 18px}
+  .pull{font-size:20px}
+  h2.banner{margin:0 -24px 20px;font-size:22px;padding:11px 20px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="code mono" aria-hidden="true">01450</div>
+    <div class="pre mono">公开资料梳理 · 合并版 · 整合《一部七年成长史》与《招牌与股东》两份研究</div>
+    <h1>罗永浩与交个朋友：<br>七年成长史与招牌股东</h1>
+    <div class="sub">从「真还传」到「去罗永浩化」，再到 01450 的账本。一条人线、一条公司线，2020 年合流、2022 年分岔；这一版把股权结构、两次资本路径、纠错口径与来源分层一并补齐。</div>
+    <div class="hero-grid">
+      <div class="hero-col">
+        <div class="k mono">PERSON / 信用这一侧</div>
+        <div class="t">罗永浩</div>
+        <div class="d">个人还债叙事、公共表达、品牌背书。2022 年 6 月退出管理层，不持有上市公司股份。</div>
+      </div>
+      <div class="hero-col">
+        <div class="k mono">LISTCO / 股权这一侧</div>
+        <div class="t">交个朋友控股 01450.HK</div>
+        <div class="d">2014 年即在港交所主板挂牌的前广电方案商。持有品牌、账号、财报与赔付义务。</div>
+      </div>
+    </div>
+    <p class="judge">这家公司用一个人的信用起家，再用三年把他的名字从股东名单、管理层和账号上逐一摘掉。<b>2026 年 9 月一张 89.9 元的凳子出事时，公众还是先找他。</b></p>
+    <div class="meta mono">
+      <span>2026-11-11</span>
+      <span>行情截至 2026-11-10 收盘</span>
+      <span>财务主口径：人民币</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="verdict">
+    <div class="vlabel mono">三十秒版 · 五个判断</div>
+    <div class="v-card">
+      <div class="v-no mono">01</div>
+      <p>七年里两条线各自走通了。罗永浩还掉近 10 亿元债务，把「真还传」演完；交个朋友把自己从「罗永浩直播间」改造成一家上市公司，直播收入不再依赖他本人出镜。救赎叙事和组织化叙事都成立。</p>
+    </div>
+    <div class="v-card">
+      <div class="v-no mono">02</div>
+      <p>01450 不是罗永浩的公司。上市主体是 2014 年就在港交所主板挂牌的世纪睿科，2022 年 8 月签下五年独家运营、11 月起全面并表，2023 年 5 月完成全资收购、7 月更名——那是资产注入，不是「当年上市」。公司方面 2023 年向《每日经济新闻》确认，罗永浩本人未直接或间接持股。<sup class="fn"><a href="#r5">5</a></sup></p>
+    </div>
+    <div class="v-card">
+      <div class="v-no mono">03</div>
+      <p>成长的斜率换了。2026 上半年收入还在涨（+24.5%），GMV 却在 2026 年前三季首次累计转负（−5.0%），增长靠变现率而不是交易规模。股价年内跌 59.5%，PE（TTM）4.6 倍，市场按现金牛清算价定价，不给成长溢价。<sup class="fn"><a href="#r12">12</a></sup></p>
+    </div>
+    <div class="v-card">
+      <div class="v-no mono">04</div>
+      <p>资本路径走过两次，两次卖的都不是罗永浩的公司。2020 年 A 股尚纬股份拟以不超过 5.89 亿元收购运营主体 40.27% 股权，溢价 2819%，被上交所问询后一个月终止；2023 年经港股壳完成资产注入。<sup class="fn"><a href="#r7">7</a></sup></p>
+    </div>
+    <div class="v-card">
+      <div class="v-no mono">05</div>
+      <p>绑定没有真正解开。罗永浩以「首席品牌监督官」身份四处点火的火力越猛，公司品控反噬越狠——2026 年 9 月的溜溜凳事件把这层张力摆到了明处。下一章看两件事：信任能不能修复，AI 是降本工具还是可卖的产品。</p>
+    </div>
+  </div>
+
+  <nav class="toc" aria-label="目录">
+    <div class="tt">读法：卷一按时间走人和公司；卷二拆股权、账本与 2026 的转折；卷三回到当下与收束。五条常见误读的核对在附录 B，所有数字口径冲突在附录 C，脚注指向附录 D 的分层来源。</div>
+    <ol>
+      <li><span class="tn mono">01</span><a href="#s1">两条线怎么缠到一起 / 三次转换</a></li>
+      <li><span class="tn mono">02</span><a href="#s2">前史：网红的养成（2000–2011）</a></li>
+      <li><span class="tn mono">03</span><a href="#s3">锤子：理想主义的商业实验（2012–2019）</a></li>
+      <li><span class="tn mono">04</span><a href="#s4">真还传：直播还债（2020–2022）</a></li>
+      <li><span class="tn mono">05</span><a href="#s5">公司化：去罗永浩化与矩阵（2020–2025）</a></li>
+      <li><span class="tn mono">06</span><a href="#s6">资本的线：两次上市，和一个叫李钧的节点</a></li>
+      <li><span class="tn mono">07</span><a href="#s7">01450 的账本：并表、降本与剪刀差</a></li>
+      <li><span class="tn mono">08</span><a href="#s8">2026：规模、品控、股价同时转向</a></li>
+      <li><span class="tn mono">09</span><a href="#s9">现在的罗永浩：细红线与十字路口</a></li>
+      <li><span class="tn mono">10</span><a href="#s10">两声最硬的反驳</a></li>
+      <li><span class="tn mono">11</span><a href="#s11">收束：这七年长出了什么</a></li>
+      <li><span class="tn mono">A</span><a href="#appxA">附录 A · 全景时间线</a></li>
+      <li><span class="tn mono">B</span><a href="#appxB">附录 B · 先纠错</a></li>
+      <li><span class="tn mono">C</span><a href="#appxC">附录 C · 口径与存疑</a></li>
+      <li><span class="tn mono">D</span><a href="#appxD">附录 D · 来源分层</a></li>
+    </ol>
+  </nav>
+
+  <div class="part"><span class="pn mono">卷一 / 01–05</span><span class="pt">成长史</span><span class="pd">人线：信用怎么攒下，又怎么被押上</span></div>
+
+  <!-- 01 -->
+  <section id="s1">
+    <h2 class="banner"><span class="no">01</span>两条线怎么缠到一起 / 三次转换</h2>
+    <p class="lead">两条线：一个还债的人，和一家去「人」的公司。</p>
+
+    <figure>
+      <svg viewBox="0 0 360 470" role="img" aria-label="罗永浩线与交个朋友线的合流与分岔示意">
+        <g stroke="#E9E1DB" stroke-width="1">
+          <line x1="20" y1="0" x2="20" y2="470"/><line x1="180" y1="0" x2="180" y2="470"/><line x1="340" y1="0" x2="340" y2="470"/>
+        </g>
+        <path d="M 46 40 C 46 110, 180 100, 180 170" fill="none" stroke="#241C1B" stroke-width="3"/>
+        <path d="M 314 40 C 314 110, 180 100, 180 170" fill="none" stroke="#241C1B" stroke-width="3" stroke-dasharray="7 4"/>
+        <path d="M 180 170 L 180 280" fill="none" stroke="#241C1B" stroke-width="6"/>
+        <path d="M 180 280 C 180 340, 70 330, 62 400" fill="none" stroke="#241C1B" stroke-width="3"/>
+        <path d="M 180 280 C 180 340, 290 330, 298 400" fill="none" stroke="#241C1B" stroke-width="3" stroke-dasharray="7 4"/>
+        <circle cx="46" cy="40" r="6" fill="#241C1B"/>
+        <circle cx="314" cy="40" r="6" fill="#F7F4F1" stroke="#241C1B" stroke-width="2.5"/>
+        <circle cx="180" cy="170" r="10" fill="#1A1312" stroke="#B32B24" stroke-width="3"/>
+        <circle cx="180" cy="280" r="8" fill="#B32B24"/>
+        <circle cx="62" cy="400" r="6" fill="#241C1B"/>
+        <circle cx="298" cy="400" r="6" fill="#F7F4F1" stroke="#241C1B" stroke-width="2.5"/>
+        <g font-family="ui-monospace,Consolas,monospace" font-size="11" fill="#6C615E">
+          <text x="12" y="26">罗永浩 2000–2019</text>
+          <text x="228" y="26">交个朋友 2019–2020</text>
+          <text x="196" y="152" fill="#B32B24">2020.4 抖音首秀 · 合流</text>
+          <text x="196" y="270" fill="#B32B24">2022.6 退出管理层 · 分岔</text>
+          <text x="12" y="428">细红线 / 十字路口</text>
+          <text x="238" y="428">01450 上市公司</text>
+          <text x="238" y="444" fill="#B32B24">2023 资产注入 · 2026 守成</text>
+        </g>
+      </svg>
+      <figcaption>实线＝罗永浩个人线，虚线＝公司线。合流点是 2020 年 4 月 1 日的抖音首秀，分岔点是 2022 年 6 月他退出管理层。右侧标注已按附录 B 修正为「资产注入与更名」。</figcaption>
+    </figure>
+
+    <p>2020 年 4 月 1 日，罗永浩在抖音开播。这一晚把两条线拧在一起：他需要一场能快速还债的现金流，抖音需要一个能撑住直播电商心智的头部主播，一家叫「交个朋友」的公司就此诞生。2022 年 6 月，他把账号交出去、退出管理层，线又分开——他去做 AR 创业，公司去接一张 2014 年就存在的港股上市地位。</p>
+    <p>所以这份成长史有两个主角，但只有一份账本。</p>
+
+    <h3>换个角度看：三次转换，第三次没走完</h3>
+    <p class="lede">把这七年拆开，其实是三次把一种东西换成另一种东西：先把个人名声换成现金流，再把现金流换成一套不依赖某个人的组织，最后想把这套组织换成公开市场的定价。前两次做成了，第三次还悬着。</p>
+
+    <figure>
+      <svg viewBox="0 0 360 168" role="img" aria-label="个人信用、组织能力、公开市场定价三次转换示意图，第三阶段未完成">
+        <rect x="6" y="26" width="106" height="92" fill="#EFE9E4" stroke="#DCD4CF"/>
+        <rect x="127" y="26" width="106" height="92" fill="#E6DED8" stroke="#DCD4CF"/>
+        <rect x="248" y="26" width="106" height="92" fill="#FDFAF8" stroke="#A99B96" stroke-dasharray="4 3"/>
+        <text x="16" y="48" font-size="12" fill="#241C1B" font-weight="600">个人信用</text>
+        <text x="16" y="68" font-size="11" fill="#6C615E">2020 年前后</text>
+        <text x="16" y="88" font-size="11" fill="#6C615E">还债叙事 → 流量</text>
+        <text x="16" y="106" font-size="11" fill="#B32B24">完成</text>
+        <text x="137" y="48" font-size="12" fill="#241C1B" font-weight="600">组织能力</text>
+        <text x="137" y="68" font-size="11" fill="#6C615E">2020 — 2022</text>
+        <text x="137" y="88" font-size="11" fill="#6C615E">主播梯队 / 矩阵</text>
+        <text x="137" y="106" font-size="11" fill="#B32B24">完成</text>
+        <text x="258" y="48" font-size="12" fill="#241C1B" font-weight="600">市场定价</text>
+        <text x="258" y="68" font-size="11" fill="#6C615E">2023 年起</text>
+        <text x="258" y="88" font-size="11" fill="#6C615E">利润兑现 / 信任</text>
+        <text x="258" y="106" font-size="11" fill="#6C615E">未完成</text>
+        <path d="M114 72 L123 72 M116 68 L123 72 L116 76" stroke="#B32B24" stroke-width="1.6" fill="none"/>
+        <path d="M235 72 L244 72 M237 68 L244 72 L237 76" stroke="#B32B24" stroke-width="1.6" fill="none"/>
+        <line x1="6" y1="134" x2="354" y2="134" stroke="#DCD4CF"/>
+        <text x="6" y="154" font-size="11" fill="#6C615E">虚线框：利润进来了，市场没有按组织的价值给价</text>
+      </svg>
+      <figcaption>依据正文 §01、§05–§08 的事实链绘制。第三阶段未完成，依据：2026 年前三季 GMV 累计同比 −5.0%、股价年初至今 −59.46%、机构持股 0.41%、无港股通持仓。<sup class="fn"><a href="#r13">13</a></sup></figcaption>
+    </figure>
+
+    <p>第一次转换发生在 2020 年 4 月 1 日。三小时直播，支付交易总额超过 1.1 亿元，累计观看 4800 万人。那天罗永浩说「基本不赚钱，交个朋友」，品牌名由此而来。<sup class="fn"><a href="#r4">4</a></sup> 一场直播能卖掉这么多东西，不是因为货便宜，是因为台上那个人在过去十八年里攒下了「说话有人信」，而且刚刚选择不申请破产、把六亿债务背在自己身上。</p>
+    <p>第二次转换从公司成立第一天就在做。创始人黄贺 2021 年对经济参考网说，交个朋友想做的是「一家能够系统化的公司，而不是完全依赖于个人的网红工作室」；他给出的目标是 MCN 只占收入 40%、老罗只占 10–15%。<sup class="fn"><a href="#r6">6</a></sup> 到 2022 年 4 月，团队从 7 人扩到 1400 多人，主播团 40 多人，累计 GMV 破 100 亿元。</p>
+    <p>第三次转换，账面上看是完成的：2023 年营收 10.74 亿元、公司拥有人应占利润 1.20 亿元，同比分别 +152.4% 和 +1397.5%。<sup class="fn"><a href="#r10">10</a></sup> 但那一年的高增长主要来自 2022 年 11 月开始的并表，是会计口径变了，不是同一盘生意突然变好。市场后来给的价，也没有按「一家可复制的零售公司」来给。</p>
+    <div class="note accent">最容易走错的一步，是把 2023 年的 +152% 当成经营爆发。它先是一次资产注入，然后才是一段经营。</div>
+    <p>下面按时间走：先把人讲清楚（02–04），再讲公司（05），然后拆股权（06）、看账（07–08），最后回到人（09）。</p>
+  </section>
+
+  <!-- 02 -->
+  <section id="s2">
+    <h2 class="banner"><span class="no">02</span>前史：网红的养成（2000–2011）</h2>
+    <p class="lead">在成为「创业者罗永浩」之前，他先成了「会说话的罗永浩」。这十年攒下的是名声和受众，不是生意。</p>
+
+    <div class="tl">
+      <div class="tl-item"><div class="lane lane-p">罗永浩</div><div class="ev"><span class="d">2000–2006</span><br>两次试讲失败后被俞敏洪给了第三次机会，进新东方教英语。2004 年前后学生把课堂录音传上网，「老罗语录」走红，「彪悍的人生不需要解释」成了流行语。万字求职信与三次试讲的版本另见媒体回顾，年薪 70 多万元属回忆口径，不是薪酬披露。<sup class="fn"><a href="#r26">26</a></sup></div></div>
+      <div class="tl-item"><div class="lane lane-p">罗永浩</div><div class="ev"><span class="d">2006.7</span><br>离开新东方，创办牛博网。高峰时日 PV 近百万，汶川地震捐出 200 多万元物资；2009 年 1 月国内服务器关停。</div></div>
+      <div class="tl-item"><div class="lane lane-p">罗永浩</div><div class="ev"><span class="d">2008.6</span><br>创办「老罗和他的朋友们教育科技有限公司」，7 月老罗英语培训开业。英语培训市场已饱和，第一年亏 300 多万元，2015 年 1 月关校。</div></div>
+      <div class="tl-item"><div class="lane lane-p">罗永浩</div><div class="ev"><span class="d">2010–2011</span><br>出书《我的奋斗》，做「一个理想主义者的创业故事」巡回演讲。2011 年 9 月起公开投诉西门子冰箱门关不严，11 月 20 日在西门子北京总部砸了三台冰箱。</div></div>
+    </div>
+
+    <p>砸冰箱那年他 39 岁，标签已经定型：嫉恶如仇、敢说话、有粉丝愿意替他出头。这三样东西后来值多少钱，在 2020 年的直播间里第一次有了报价。</p>
+  </section>
+
+  <!-- 03 -->
+  <section id="s3">
+    <h2 class="banner"><span class="no">03</span>锤子：理想主义的商业实验（2012–2019）</h2>
+    <p class="lead">锤子科技是理解后面一切的钥匙：债务从哪来，「真还传」为什么成立，以及他为什么死活不申请破产清算。</p>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="k">累计融资</div><div class="v">约 17 亿</div><div class="n">另有 22 亿元媒体汇总口径，见附录 C</div></div>
+      <div class="stat"><div class="k">手机总销量</div><div class="v">约 300 万台</div><div class="n">7 款机型，截至 2018 年底</div></div>
+      <div class="stat"><div class="k">2016 年底净资产</div><div class="v neg">−2.43 亿元</div><div class="n">苏宁招股书披露的母公司口径</div></div>
+      <div class="stat"><div class="k">公开债务峰值</div><div class="v acc">约 6 亿元+</div><div class="n">2018 下半年起，本人口径</div></div>
+    </div>
+
+    <p>2012 年 5 月 15 日锤子科技成立，一个月前他刚在微博上说「下周注册一个新公司开始做手机」。融资节奏很顺：天使 900 万元（估值 5000 万）→ A 轮 7000 万元（2013.5，估值 4.7 亿）→ B 轮 1.8 亿元（2014.4）→ 2015 年 C 轮（苏宁参与）→ 2017 年成都东方广益 6 亿元国资入股加 3–4 亿元私募。八年下来累计募资接近 17 亿元（另有媒体汇总为约 22 亿元，口径不一）。<sup class="fn"><a href="#r26">26</a></sup></p>
+    <p>钱换来的成绩单：2014 年 5 月 20 日 T1 发布，售价 3599 元，销量约 25 万台，因为供应链和品控问题，逃单率一度从 2% 飙到接近 90%；2016 年 M1 系列破百万台，是唯一一次产品意义上的成功；到 2018 年底，7 款手机总销量约 300 万台。同期华为一年出货 2.4 亿台量级。2018 年下半年资金链断了：最多时欠银行、供应商、合作伙伴 6 亿多元，他本人签了 1 亿多元个人无限责任担保。2019 年 1 月丹阳法院对他下发限制消费令。</p>
+
+    <blockquote>合理合法赖掉公司债务的方式是破产清算，只需要还掉个人担保的一个亿，但我坚持不申请破产清算。<cite>——罗永浩，2019 年（据中国经济网等媒体转述）</cite></blockquote>
+
+    <p>这句话把后面三年的剧本写死了：他选择用个人信用背书到底。2019 年 11 月，锤子部分资产以 1.8 亿元卖给字节跳动（部分专利与团队并入新石实验室，2021 年并入字节教育硬件部门）；同月他为小野电子烟站台，微博发出 20 分钟后电子烟网售禁令落地，「行业冥灯」的帽子扣上。<sup class="fn"><a href="#r26">26</a></sup></p>
+    <p>这段经历在商业上是失败的，在信用上却是反过来的：一个欠了六个亿、公开说要自己还完的人，比一个成功的连续创业者更容易被相信不会坑人。2020 年那场首秀，卖的是这份信任，不是货架上的小龙虾和剃须刀。</p>
+    <div class="pull">他带来的是可信度，公司要建的是可信度之外的东西。这两件事从一开始就不在一张表上。</div>
+  </section>
+
+  <!-- 04 -->
+  <section id="s4">
+    <h2 class="banner"><span class="no">04</span>真还传：直播还债（2020–2022）</h2>
+    <p class="lead">2020 年的直播带货不是转型，是还债工程。三年里他把个人信用一次性变现，也把「负责」做成了可复用的人设资产。</p>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="k">首秀支付 GMV</div><div class="v acc">超 1.1 亿元</div><div class="n">2020-04-01，24 小时实际支付口径</div></div>
+      <div class="stat"><div class="k">首秀累计观看</div><div class="v">4800 万+</div><div class="n">3 小时、22 件商品、超 91 万件</div></div>
+      <div class="stat"><div class="k">累计偿还（2024.8）</div><div class="v">8.24 亿元</div><div class="n">本人官宣口径，未经审计</div></div>
+      <div class="stat"><div class="k">累计偿还（2026.6）</div><div class="v">近 10 亿元</div><div class="n">本人及接近人士口径，未经审计</div></div>
+    </div>
+
+    <div class="repay">
+      <div class="repay-row">
+        <div class="rl">债务口径 2019.11</div>
+        <div class="repay-bar"><i style="width:60%"></i><span>约 6 亿元（公开表述）</span></div>
+      </div>
+      <div class="repay-row">
+        <div class="rl">含诉讼口径</div>
+        <div class="repay-bar"><i style="width:100%"></i><span>约 13 亿元（赔偿、罚款及新增债务）</span></div>
+      </div>
+      <div class="repay-row">
+        <div class="rl">已偿还 2024.8</div>
+        <div class="repay-bar"><i class="acc" style="width:63%"></i><span class="out">8.24 亿元</span></div>
+      </div>
+      <div class="repay-row">
+        <div class="rl">已偿还 2026.6</div>
+        <div class="repay-bar"><i class="acc" style="width:77%"></i><span class="out">近 10 亿元</span></div>
+      </div>
+    </div>
+    <div class="fig-note">进度条仅按本人及接近人士的公开表述绘制，不是审计结论。「约 13 亿元」为含诉讼赔偿、罚款及新增债务的宽口径，与「约 6 亿元」的窄口径不是同一分母，两条进度不可直接相除。来源：本人公开表述、媒体转述（2019–2026），冲突见附录 B/C。</div>
+
+    <p>2020 年 3 月 26 日签约抖音，4 月 1 日首播。这场直播按专业标准是一场事故——把极米说成坚果、优惠券讲不明白、拿苹果手机演示小米功能——他讲完鞠了个 90 度的躬。但钱是真的：当晚支付 GMV 超 1.1 亿元，音浪打赏 80.7 万元。到 2020 年 9 月他说 6 亿债务已还 4 亿。</p>
+    <p>2020 年 11–12 月，直播间卖出的「皮尔卡丹」羊毛衫被证实不是真羊毛，同期还有即食燕窝品控争议。他当天认错，对两万多名消费者退一赔三，燕窝赔付累计数千万元量级（媒体口径）。<sup class="fn"><a href="#r4">4</a></sup> 这件事成了「真还传」的注脚：危机处理快、赔付狠，人设和生意互相加固。2021 年 4 月直播间迁到杭州，2022 年 1 月天眼查显示他名下已无关联被执行人信息，他说「直接债务还剩不到一个亿」。</p>
+    <p>2022 年 6 月 12 日，他宣布退出微博和所有社交平台，再次创业。账号「罗永浩直播间」改名「交个朋友直播间」，他只留了「首席品牌监督官」这个头衔，以及一份每周直播的履约合同。</p>
+
+    <h3>但「六个亿到底还完没有」，公开信息自己打架</h3>
+    <p>2022 年 3 月他连发八条微博否认「下月还完」，说「纯属谣传」；2023 年 6 月交个朋友方面再次回应「还在努力工作，将尽快还完」，并要求授权账号下架「真还传收官」的视频；也有媒体在 2025 年的回顾里写他 2022 年 6 月已基本还清；另据本人及接近人士口径，2024 年 8 月累计还款 8.24 亿元、2026 年 6 月近 10 亿元。<sup class="fn"><a href="#r20">20</a></sup><sup class="fn"><a href="#r19">19</a></sup> 这些说法不在同一时点、也未必是同一分母，彼此并不必然矛盾，但没有任何一条经过审计。</p>
+    <div class="note">能写实的是他选择个人扛债、不申请破产清算；「已还清 / 真还传大结局」不能写实。本页保留还款金额作为本人口径记录，不据此下清偿结论。逐条见附录 B、C。</div>
+  </section>
+
+  <!-- 05 -->
+  <section id="s5">
+    <h2 class="banner"><span class="no">05</span>公司化：去罗永浩化与矩阵（2020–2025）</h2>
+    <p class="lead">交个朋友的成长史，是一部把「一个人的爆发力」改写成「一家公司的时间表」的历史。</p>
+
+    <h3>公司先于账号存在</h3>
+    <p>北京交个朋友数码科技有限公司 2019 年 6 月 4 日成立，早于罗永浩开播九个月，创始人是前锤子产品总监黄贺。<sup class="fn"><a href="#r2">2</a></sup> 2020 年 1 月两人在疫情里决定做直播电商，3 月直播间成立，4 月首播。也就是说，「交个朋友」先是一个公司实体，才变成一个账号名字；首播的运营主体为成都星空野望体系，那份 2020 年的披露材料里，股东名单没有罗永浩。<sup class="fn"><a href="#r9">9</a></sup></p>
+
+    <div class="vtl">
+      <div class="vtl-row"><div class="vtl-date mono">2019.06</div><div class="vtl-line"><span class="vtag">公司</span>北京交个朋友数码科技成立，黄贺任法定代表人。</div></div>
+      <div class="vtl-row"><div class="vtl-date mono">2020.04</div><div class="vtl-line"><span class="vtag">人</span>抖音首秀，1.1 亿元 GMV、4800 万人观看。</div><div class="vtl-line"><span class="vtag cap">资本</span>星空野望 4 月 15 日成立，股东名单里没有罗永浩。</div></div>
+      <div class="vtl-row"><div class="vtl-date mono">2020.11</div><div class="vtl-line"><span class="vtag">公司</span>羊毛衫与即食燕窝品控事件，执行「退一赔三」。</div><div class="vtl-line"><span class="vtag cap">资本</span>尚纬股份拟 5.89 亿元收购星空野望 40.27% 股权，12 月 3 日终止。</div></div>
+      <div class="vtl-row"><div class="vtl-date mono">2021</div><div class="vtl-line"><span class="vtag">公司</span>开播 325 天，全年实际支付销售额约 50 亿元，居抖音带货第一；7×24 小时直播、垂类号铺开，罗永浩出镜时长占比降到 7% 以下。</div></div>
+      <div class="vtl-row"><div class="vtl-date mono">2022.04 — 06</div><div class="vtl-line"><span class="vtag">公司</span>两周年：7 人到 1400 多人，累计 GMV 破 100 亿元。</div><div class="vtl-line"><span class="vtag">人</span>6 月 2 日账号更名「交个朋友直播间」，6 月 7 日退出管理层，留「首席品牌监督官」。</div></div>
+      <div class="vtl-row"><div class="vtl-date mono">2022.08 — 11</div><div class="vtl-line"><span class="vtag cap">资本</span>8 月 29 日签五年独家运营协议；11 月起营收全部并表。</div></div>
+      <div class="vtl-row"><div class="vtl-date mono">2023.05 — 07</div><div class="vtl-line"><span class="vtag cap">资本</span>5 月 6 日工商变更、5 月 10 日公告拟更名、7 月 11 日股份简称改为「交个朋友控股」；5 月 31 日入驻京东。</div></div>
+      <div class="vtl-row"><div class="vtl-date mono">2025 — 2026H1</div><div class="vtl-line"><span class="vtag">公司</span>矩阵直播间 70 多个、资深主播 100 多名、合作品牌 3 万多家；2025 年 7 月入驻快手。</div><div class="vtl-line"><span class="vtag">人</span>2025 年 5 月百度真人直播、6 月「罗永浩数字人」；9 月西贝预制菜争议。</div></div>
+      <div class="vtl-row"><div class="vtl-date mono">2026.09</div><div class="vtl-line"><span class="vtag">公司</span>溜溜凳品控事故，9 月 25 日致歉与先行赔付；9 月 27 日郑刚实名举报（单方主张，未查实）。</div><div class="vtl-line"><span class="vtag cap">资本</span>10 月 14 日 Q3 运营数据公告，前三季 GMV 累计首次同比转负。</div></div>
+    </div>
+    <div class="srcnote">时间轴事实来源：公司官网、港交所公告与 2026 中期报告、证券时报 2023-05、中新经纬 2023-05 / 2023-09、经济参考网 2021-10、格隆汇 2026-10-14。<sup class="fn"><a href="#r2">2</a></sup><sup class="fn"><a href="#r3">3</a></sup><sup class="fn"><a href="#r4">4</a></sup> 事件日期以公告或媒体报道日为准。</div>
+
+    <h3>为什么必须去罗永浩化</h3>
+    <p>2020 年底抖音调整流量分配：约 60% 流量给商家自播、30% 给垂类达人、只有 10% 留给头部达人。规则写在墙上，公司开始布商家代运营和垂类直播间。2021 年 9 月罗永浩因疫情隔离 21 天，替补主播机制顶上，GMV 没掉——模式第一次被验证；当时他的直播时长占比已不到 7%。<sup class="fn"><a href="#r6">6</a></sup> 一家公司能把自己的招牌从排班表里拿掉而不掉收入，这在中国直播电商里并不多见。同年 10 月，黄贺的说法是「公司不是网红工作室」。2023 年「去头部化」正式成为战略：主账号加垂类账号，罗永浩在直播间 GMV 的占比从绝对主导降到个位数（有口径称降至 3% 以下，公司未在财报精确披露）。注意这是「GMV 占比」，与「出镜时长占比 &lt;7%」不是同一指标。</p>
+
+    <h3>矩阵长成了什么样</h3>
+    <div class="stat-strip">
+      <div class="stat"><div class="k">矩阵直播间</div><div class="v">70+ 个</div><div class="n">2026H1 末；2024 年约 30 个、2025 年底约 50 个</div></div>
+      <div class="stat"><div class="k">资深主播</div><div class="v">100+ 人</div><div class="n">直播时长满 1000 小时</div></div>
+      <div class="stat"><div class="k">合作品牌</div><div class="v">3 万+ 家</div><div class="n">截至 2026H1</div></div>
+      <div class="stat"><div class="k">服务消费者</div><div class="v">1.5 亿人次</div><div class="n">累计口径，2026 中报披露</div></div>
+    </div>
+
+    <p>平台也从一个变成六个：抖音起家，2022 年进淘宝，2023 年 5 月 31 日进京东，2025 年 5 月进百度优选（首播 GMV 超 5000 万元），2025 年 7 月全员主播入驻快手，另有小红书、视频号。2025 年全网 GMV 超 160 亿元，全平台粉丝超 1.5 亿（公司披露口径）。</p>
+
+    <h3>AI 与教育：两个新故事</h3>
+    <p>技术侧是三件套：「朋友云」直播中台（2024 年 2 月上线，年处理选品超 500 万次）、「BeFriends AI」零售平台（2025 年 7 月，接入 DeepSeek-R1、Qwen 等，选品从数周压到 60 秒）、「曼达斯克」AI 营销体系。2025 年 5 月和 6 月两场罗永浩数字人直播合计 GMV 破 1.05 亿元，其中 6 月 15 日单场观看超 1300 万人次、GMV 破 5500 万元。业务侧则是 2025 年 8 月花 1.8 亿元收购「电商学苑」（杭州交个朋友教育科技 100% 股权），把直播经验打包成 99 元到 3.2 万元的培训课。公司对外的定位从「直播机构」改成「以 AI 科技驱动的新零售企业」。</p>
+
+    <h3>没做成的那一半</h3>
+    <p>去罗永浩化在组织上是成功的，没做成的是另一半。2025 年 6 月，交个朋友与百度推出「罗永浩数字人」，把他的形象做成了可以不休息的资产；电商学苑宣传里挂着他「名誉校长」的头衔；2025 年 9 月他与西贝的争议带热公司股价；2026 年 9 月凳子出事，等待回应的还是他。<sup class="fn"><a href="#r22">22</a></sup><sup class="fn"><a href="#r9">9</a></sup> 公司拿走了 IP 的使用权，拿不走公众把信用记在谁名下。</p>
+    <div class="note">组织上完成的事：名字从股东名单、管理层、账号头像里退出。没完成的事：出事时，公众的默认联系人仍然是他。</div>
+  </section>
+
+  <div class="part"><span class="pn mono">卷二 / 06–08</span><span class="pt">招牌与股东</span><span class="pd">股权这一侧：谁的公司，谁的账本</span></div>
+
+  <!-- 06 -->
+  <section id="s6">
+    <h2 class="banner"><span class="no">06</span>资本的线：两次上市，和一个叫李钧的节点</h2>
+    <p class="lead">上市公司不是「交个朋友」本身，而是一张 2014 年就挂牌的壳；把直播电商装进去的，是另一批股东。</p>
+
+    <h3>壳比品牌老得多</h3>
+    <p>世纪睿科官网写「集团成立于 2007 年、2014 年在港交所主板上市」，公司档案里的开曼上市主体注册日是 2012 年 12 月 18 日、上市日是 2014 年 7 月 7 日。<sup class="fn"><a href="#r2">2</a></sup> 三个年份说的是三件不同的事：业务起源、控股主体注册、挂牌。原主业是广播电视视频应用解决方案与赛事转播服务——旗下北京睿科、时代华睿给央视、新华社以及 2008 年北京奥运会、2010 年广州亚运会做过技术和服务；2021 年营收 2.03 亿元、亏损约 6162 万元，股价长期在 1 港元以下。<sup class="fn"><a href="#r11">11</a></sup> 2025 年年报起广电业务列为已终止经营，2026 年中报里已彻底剥离，公司变成纯直播电商标的。</p>
+
+    <h3>第一次：2020 年，A 股没走通</h3>
+    <p>2020 年 10 月 26 日尚纬股份（603333.SH）停牌筹划重组，11 月 8 日公告拟以自有及自筹资金不超过 <span class="mono">5.89</span> 亿元收购成都星空野望 40.27% 股权，同时安排上市公司股东向李钧等转让 15% 股份，两笔交易互为条件。星空野望当年 4 月 15 日才成立，截至 9 月 30 日净资产 5192.48 万元，收购溢价率 2819.13%。上交所问询直指跨行业收购、代持、资金来源与是否变相利益输送。<sup class="fn"><a href="#r7">7</a></sup><sup class="fn"><a href="#r8">8</a></sup></p>
+    <p>12 月 3 日晚，尚纬股份以「直播新规实施将对行业产生较大影响、估值定价与对赌未达成一致」为由终止。公告前股价曾连续三个涨停，终止后开盘跌超 6%。<sup class="fn"><a href="#r7">7</a></sup> 那次交易披露的星空野望股东结构里，黄贺持股 25.8%、李钧通过代持 18.18%、罗永秀（罗永浩之弟）17.22%、深圳小野 14.36%，<strong>没有罗永浩</strong>。<sup class="fn"><a href="#r9">9</a></sup> 这份 2020 年的披露材料，比后来任何澄清都更早地说明了这家公司的股权形状。</p>
+
+    <h3>第二次：先运营，后收购</h3>
+    <p>2022 年 8 月 5 日，世纪睿科全资子公司杭州世纪睿科与抖音电商签年度合作协议，预计 12 个月有效结算 GMV 不低于 50 亿元；8 月 29 日，又与北京交个朋友及天津交个朋友签下为期五年的《独家营运合作协议》，取得旗下全部抖音账号的运营权与运营过程中产生的全部新媒体服务收入，再按约定比例向交个朋友分成。<sup class="fn"><a href="#r3">3</a></sup> 11 月起全面运营并并表。这一步很关键：收入先进上市公司，股权变更在半年后才办。</p>
+    <p>2023 年 5 月 6 日，北京交个朋友的投资人由成都星空野望变更为易匠未来科技（杭州）——世纪睿科的全资子公司，法定代表人由黄贺变更为赵慧利；5 月 10 日公告拟更名；7 月 11 日股份简称正式改为「交个朋友控股有限公司」（Be Friends Holding Limited）。<sup class="fn"><a href="#r4">4</a></sup><sup class="fn"><a href="#r10">10</a></sup> 严格说，2023 年发生的是资产注入与更名，不是「上市」；01450 这个上市地位 2014 年就有了。</p>
+
+    <figure>
+      <svg viewBox="0 0 360 336" role="img" aria-label="交个朋友控股四层主体与罗永浩信用位置的穿透示意图">
+        <rect x="52" y="14" width="286" height="44" fill="#E6DED8" stroke="#DCD4CF"/>
+        <text x="14" y="41" font-size="11" fill="#B32B24" font-family="monospace">01</text>
+        <text x="62" y="32" font-size="12" fill="#241C1B" font-weight="600">上市主体 · 交个朋友控股 01450.HK</text>
+        <text x="62" y="49" font-size="11" fill="#6C615E">开曼注册 / 香港挂牌 / 合并财报与赔付声明</text>
+        <rect x="52" y="70" width="286" height="44" fill="#EFE9E4" stroke="#DCD4CF"/>
+        <text x="14" y="97" font-size="11" fill="#B32B24" font-family="monospace">02</text>
+        <text x="62" y="88" font-size="12" fill="#241C1B" font-weight="600">境内运营 · 北京交个朋友数码科技</text>
+        <text x="62" y="105" font-size="11" fill="#6C615E">2023.05 起由易匠未来（杭州）全资持有</text>
+        <rect x="52" y="126" width="286" height="44" fill="#E6DED8" stroke="#DCD4CF"/>
+        <text x="14" y="153" font-size="11" fill="#B32B24" font-family="monospace">03</text>
+        <text x="62" y="144" font-size="12" fill="#241C1B" font-weight="600">矩阵直播间 · 引流与讲解</text>
+        <text x="62" y="161" font-size="11" fill="#6C615E">2026 年 9 月涉事共六个直播间</text>
+        <rect x="52" y="182" width="286" height="44" fill="#EFE9E4" stroke="#DCD4CF"/>
+        <text x="14" y="209" font-size="11" fill="#B32B24" font-family="monospace">04</text>
+        <text x="62" y="200" font-size="12" fill="#241C1B" font-weight="600">实际销售者 · 厦门云栖家具</text>
+        <text x="62" y="217" font-size="11" fill="#6C615E">2026.06 成立，注册资本 10 万元</text>
+        <line x1="346" y1="14" x2="346" y2="226" stroke="#B32B24" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <text x="330" y="245" font-size="11" fill="#B32B24">公众信任贯穿四层</text>
+        <rect x="52" y="266" width="286" height="48" fill="#F8E9E5" stroke="#B32B24" stroke-dasharray="4 3"/>
+        <text x="62" y="286" font-size="12" fill="#B32B24" font-weight="600">罗永浩：不在任何一层</text>
+        <text x="62" y="303" font-size="11" fill="#6C615E">零股权 · 零职务 · 「首席品牌监督官」</text>
+      </svg>
+      <figcaption>四层主体依据尚纬股份 2020 年问询材料、世纪睿科 2023 年公告、2026 年 9 月媒体对涉事商家的工商核查绘制；虚线表示公众认知中的信用归属，不表示法律上的责任归属。<sup class="fn"><a href="#r7">7</a></sup><sup class="fn"><a href="#r23">23</a></sup> 该图不是法律责任认定。</figcaption>
+    </figure>
+
+    <h3>把两条线接起来的人</h3>
+    <p>李钧是这套结构里绕不开的节点：他与罗永浩同为小野电子烟联合创始人，罗永浩公开称其为「老板」；2020 年通过代持在星空野望持股 18.18%；世纪睿科 2022 年年报显示他通过 Starlink Vibrant Holdings 持股 24.67%，为第一大股东，路嘉耀通过 Yoshiaki 持股 23.15%。<sup class="fn"><a href="#r5">5</a></sup><sup class="fn"><a href="#r11">11</a></sup> 2026 年的媒体报道口径为 23.03%，并指他同时是杭州尽微供应链的法定代表人及实控人，而尽微是交个朋友体系的「唯一指定供应链」。<sup class="fn"><a href="#r23">23</a></sup></p>
+    <p>2023 年 9 月，中新经纬引述交个朋友负责人向《每日经济新闻》的确认：罗永浩本人并未直接或间接持有上市公司股份。<sup class="fn"><a href="#r5">5</a></sup> 2026 年 9 月 27 日郑刚的实名举报，点名的也是尽微、李钧、罗永秀、黄贺这条股权与供应链的线，而不是「罗永浩的公司」。举报内容属单方主张，截至数据截止日未见税务或司法机关的查实结论；罗永浩的公开回应是「诬告，已截屏取证」。<sup class="fn"><a href="#r23">23</a></sup></p>
+    <div class="note accent">这张图用来解释一个反直觉的事实：品牌叫「交个朋友」，掌舵的人被公众认成罗永浩，把公司装进 01450 的却是另一批股东。理解 2026 年的争议，先得把这两件事分开。</div>
+  </section>
+
+  <!-- 07 -->
+  <section id="s7">
+    <h2 class="banner"><span class="no">07</span>01450 的账本：并表、降本与剪刀差</h2>
+    <p class="lead">2021 与 2022 年是世纪睿科原主业为主的口径，2022 年 11 月起并表，2023 年起才是完整的直播电商资产；跨过 2022 年底的增长率包含会计口径变化，不能当同店增长读。</p>
+
+    <table>
+      <thead>
+        <tr><th>期间</th><th class="num">营业收入</th><th class="num">同比</th><th class="num">归母净利</th><th class="num">毛利率</th><th class="num">GMV</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>2021（世纪睿科）</td><td class="num">2.03 亿</td><td class="num">—</td><td class="num">−0.62 亿</td><td class="num">—</td><td class="num">—</td></tr>
+        <tr><td>2022（世纪睿科）</td><td class="num">4.26 亿</td><td class="num">—</td><td class="num">−0.09 亿</td><td class="num">—</td><td class="num">—</td></tr>
+        <tr><td>2023 全年</td><td class="num">10.74 亿</td><td class="num">+152.4%</td><td class="num">1.20 亿</td><td class="num">52.8%</td><td class="num">&gt; 120 亿</td></tr>
+        <tr><td>2024 全年</td><td class="num">11.38 亿</td><td class="num">+5.9%</td><td class="num">0.82 亿</td><td class="num">50.5%</td><td class="num">未取到可靠全年值</td></tr>
+        <tr><td>2025 全年</td><td class="num">15.48 亿</td><td class="num">+23.8%</td><td class="num">0.90 亿</td><td class="num">40.6%</td><td class="num">160.2 亿</td></tr>
+        <tr class="total"><td>2026 上半年（半年）</td><td class="num">7.71 亿</td><td class="num">+24.5%</td><td class="num">0.87 亿</td><td class="num">42.1%</td><td class="num">65.3 亿</td></tr>
+      </tbody>
+    </table>
+    <div class="tbl-note">单位人民币，归母口径为公司拥有人应占利润。2025 年营收本表统一取<strong>合并口径 15.48 亿元（+23.8%）</strong>；持续经营的新媒体服务口径为 14.87 亿元（+30.6%），另有已终止广电业务 6806 万元，两组分部数相加与合并数存在约 0.07 亿元差异，未强行调平。2025 年另有经调整净利润 1.16 亿元（−4.8%）的口径。2026H1 公司公告的「期内利润 8651.8 万元、同比 +56.3%」含少数股东，归母口径约 0.87 亿元、同比 +50.8%，两者基数不同。2026H1 为半年数，不与全年直接可比。来源：港交所 2026 中期报告（2026-08-21）、2023–2025 年报、财经数据平台整理。<sup class="fn"><a href="#r1">1</a></sup><sup class="fn"><a href="#r14">14</a></sup></div>
+
+    <figure>
+      <svg viewBox="0 0 360 195" role="img" aria-label="2021 至 2026 年上半年营业收入柱状图，单位亿元人民币">
+        <line x1="26" y1="158" x2="348" y2="158" stroke="#241C1B" stroke-width="1"/>
+        <line x1="26" y1="26" x2="348" y2="26" stroke="#DCD4CF" stroke-dasharray="3 4"/>
+        <text x="26" y="16" font-size="11" fill="#6C615E">营业收入 · 亿元人民币</text>
+        <rect x="30" y="140.5" width="34" height="17.5" fill="#C9AEA8"/>
+        <rect x="84" y="121.3" width="34" height="36.7" fill="#B58D87"/>
+        <rect x="138" y="65.4" width="34" height="92.6" fill="#9A6560"/>
+        <rect x="192" y="59.8" width="34" height="98.2" fill="#7E4540"/>
+        <rect x="246" y="24.5" width="34" height="133.5" fill="#241C1B"/>
+        <rect x="300" y="91.5" width="34" height="66.5" fill="#D8C4BF" stroke="#B32B24" stroke-dasharray="3 3"/>
+        <g font-size="11" fill="#241C1B" text-anchor="middle" font-family="monospace">
+          <text x="47" y="135">2.03</text><text x="101" y="116">4.26</text><text x="155" y="60">10.74</text>
+          <text x="209" y="54">11.38</text><text x="263" y="19">15.48</text><text x="317" y="86">7.71</text>
+        </g>
+        <g font-size="11" fill="#6C615E" text-anchor="middle" font-family="monospace">
+          <text x="47" y="176">2021</text><text x="101" y="176">2022</text><text x="155" y="176">2023</text>
+          <text x="209" y="176">2024</text><text x="263" y="176">2025</text><text x="317" y="176">26H1</text>
+        </g>
+      </svg>
+      <figcaption>2025 年为合并口径 15.48 亿元（持续经营新媒体服务 14.87 亿元为另一口径）。虚线浅色柱为 2026 年上半年半年数，不与全年直接可比。2022 年 11 月起交个朋友营收并入，2023 年为并表首年。来源：世纪睿科 2021 / 2022 年报、交个朋友控股 2023–2025 年报与 2026 中期报告。<sup class="fn"><a href="#r10">10</a></sup><sup class="fn"><a href="#r14">14</a></sup></figcaption>
+    </figure>
+
+    <figure>
+      <svg viewBox="0 0 360 165" role="img" aria-label="2023 年至 2026 年上半年综合毛利率折线图">
+        <line x1="30" y1="42" x2="344" y2="42" stroke="#DCD4CF" stroke-dasharray="3 4"/>
+        <line x1="30" y1="64.5" x2="344" y2="64.5" stroke="#DCD4CF" stroke-dasharray="3 4"/>
+        <line x1="30" y1="87" x2="344" y2="87" stroke="#DCD4CF" stroke-dasharray="3 4"/>
+        <line x1="30" y1="109.5" x2="344" y2="109.5" stroke="#DCD4CF" stroke-dasharray="3 4"/>
+        <line x1="30" y1="132" x2="344" y2="132" stroke="#241C1B"/>
+        <text x="6" y="45" font-size="11" fill="#6C615E" font-family="monospace">55</text>
+        <text x="6" y="91" font-size="11" fill="#6C615E" font-family="monospace">45</text>
+        <text x="6" y="135" font-size="11" fill="#6C615E" font-family="monospace">35</text>
+        <polyline points="44,52.0 128,62.2 212,106.8 296,100.0" fill="none" stroke="#241C1B" stroke-width="2"/>
+        <circle cx="44" cy="52.0" r="3.4" fill="#B32B24"/>
+        <circle cx="128" cy="62.2" r="3.4" fill="#B32B24"/>
+        <circle cx="212" cy="106.8" r="3.4" fill="#B32B24"/>
+        <circle cx="296" cy="100.0" r="3.4" fill="#B32B24"/>
+        <g font-size="11" fill="#241C1B" text-anchor="middle" font-family="monospace">
+          <text x="44" y="44">52.8</text><text x="128" y="54">50.5</text><text x="212" y="99">40.6</text><text x="296" y="92">42.1</text>
+        </g>
+        <g font-size="11" fill="#6C615E" text-anchor="middle" font-family="monospace">
+          <text x="44" y="152">2023</text><text x="128" y="152">2024</text><text x="212" y="152">2025</text><text x="296" y="152">26H1</text>
+        </g>
+      </svg>
+      <figcaption>来源：公司 2023–2025 年报与 2026 中期报告；2026H1 为半年口径。<sup class="fn"><a href="#r1">1</a></sup><sup class="fn"><a href="#r15">15</a></sup> 公司把 2025 年的下滑归因于直播平台流量获取成本上升。</figcaption>
+    </figure>
+
+    <h3>成本、降本与那道剪刀差</h3>
+    <p>账面最扎眼的是毛利率：52.8% 一路掉到 2025 年的 40.6%，2026 上半年回到 42.1%。掉的原因是流量获取成本上升——2025 年服务成本 8.83 亿元、同比 +56.6%，快于收入 +23.8%；2026 上半年新媒体服务成本 4.46 亿元、同比 +28.1%，仍高于收入增速。<sup class="fn"><a href="#r14">14</a></sup> 流量是平台定价的，公司在这项成本上没有多少议价空间，矩阵开得越多，投流、主播、内容和履约的账越长。回升的原因是 AI 提效和费用控制（管理费用同比下降），不是涨价。利润的现金质量倒是好：2026 上半年经营现金流 +1.42 亿元，2025 年净利润现金含量约 408%。</p>
+    <p>另一边是 2026 年上半年的剪刀差：GMV 65.3 亿元、同比约 −6.5%，持续经营收入 7.71 亿元、+24.5%，期内利润 8651.8 万元、+56.3%。<sup class="fn"><a href="#r1">1</a></sup> 收入涨而成交盘子缩，说明单位 GMV 的货币化率提高了；利润涨得比收入快，则主要来自降本。管理层对媒体提过一组数字：AI 把单人单日口播稿产出从 20 条提到 100 条以上，垂类直播间人员从 20–30 人降到几个人，AI 相关业务 GMV 占比达 75%。这组数据来自管理层转述，未见财报逐项披露，按非一手来源处理。<sup class="fn"><a href="#r14">14</a></sup></p>
+    <p>资产负债表上还有两处值得记：2026 年 6 月 30 日现金 4.66 亿港元、商誉 2.41 亿港元（约占总资产 19.4%，为这轮资产注入留下的减值敏感项），资产负债率 48.08%。<sup class="fn"><a href="#r12">12</a></sup> 持续经营收入里，新媒体服务占 100%，原广电业务在 2025 年已列为终止经营、2026 年上半年清零。这已经是一家单一业务的上市公司。</p>
+
+    <h3>GMV：2026 年的转折</h3>
+    <table>
+      <thead><tr><th>2026 年</th><th class="num">GMV</th><th class="num">同比</th></tr></thead>
+      <tbody>
+        <tr><td>Q1</td><td class="num">31.7 亿元</td><td class="num">−1.0%</td></tr>
+        <tr><td>Q2</td><td class="num">33.6 亿元</td><td class="num">−11.2%</td></tr>
+        <tr><td>Q3</td><td class="num">25.3 亿元</td><td class="num">−0.7%</td></tr>
+        <tr class="total"><td>前三季累计</td><td class="num">90.6 亿元</td><td class="num">−5.0%</td></tr>
+      </tbody>
+    </table>
+    <div class="tbl-note">单位人民币；Q3 与前三季累计为公司 2026-10-14 公告口径，Q1 / Q2 为媒体据公告汇总。<sup class="fn"><a href="#r13">13</a></sup><sup class="fn"><a href="#r14">14</a></sup> 前三季累计为并表以来首次年度累计负增长（2025 年同期为 +7.6%）。另见公司 2026-10-15 相关公告。</div>
+
+    <figure>
+      <svg viewBox="0 0 360 180" role="img" aria-label="2026 年分季度 GMV 同比柱状图，负值向下">
+        <line x1="20" y1="60" x2="348" y2="60" stroke="#241C1B" stroke-width="1"/>
+        <line x1="20" y1="20" x2="348" y2="20" stroke="#DCD4CF" stroke-dasharray="3 4"/>
+        <text x="20" y="14" font-size="11" fill="#6C615E">GMV 同比 · %（负值向下）</text>
+        <rect x="46" y="60" width="44" height="7" fill="#4A7A5F"/>
+        <rect x="126" y="60" width="44" height="78.4" fill="#4A7A5F"/>
+        <rect x="206" y="60" width="44" height="4.9" fill="#4A7A5F"/>
+        <rect x="286" y="60" width="44" height="35" fill="#241C1B"/>
+        <g font-size="11" fill="#241C1B" text-anchor="middle" font-family="monospace">
+          <text x="68" y="80">−1.0%</text><text x="148" y="151">−11.2%</text><text x="228" y="78">−0.7%</text><text x="308" y="108">−5.0%</text>
+        </g>
+        <g font-size="11" fill="#6C615E" text-anchor="middle" font-family="monospace">
+          <text x="68" y="170">Q1</text><text x="148" y="170">Q2</text><text x="228" y="170">Q3</text><text x="308" y="170">累计</text>
+        </g>
+      </svg>
+      <figcaption>绿色为单季同比，深色为前三季累计。Q1 31.7 亿元、Q2 33.6 亿元、Q3 25.3 亿元，累计 90.6 亿元、同比 −5.0%（2025 年同期 +7.6%）。来源：公司季度经营公告 2026-10-14 / 2026-10-15。</figcaption>
+    </figure>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="k">2025 全年全网 GMV</div><div class="v">超 160 亿元</div><div class="n">公司披露口径（160.2 亿）</div></div>
+      <div class="stat"><div class="k">2026 前三季 GMV</div><div class="v">90.6 亿元</div><div class="n">同比 −5.0%，2026-10-15 公告</div></div>
+      <div class="stat"><div class="k">2026H1 收入增速</div><div class="v acc">+24.5%</div><div class="n">与 GMV 约 −6.5% 背离</div></div>
+      <div class="stat"><div class="k">2026H1 GMV</div><div class="v neg">65.3 亿元</div><div class="n">同比约 −6.5%（另有 −6.4% 口径）</div></div>
+    </div>
+
+    <p>收入涨、GMV 跌，差额来自变现率提升和垂类高毛利品类占比上升——每单位 GMV 挣的钱变多了，但盘子在缩。这是这家公司当前最关键的矛盾，也是 2026 年股价叙事的起点。</p>
+  </section>
+
+  <!-- 08 -->
+  <section id="s8">
+    <h2 class="banner"><span class="no">08</span>2026：规模、品控、股价同时转向</h2>
+    <p class="lead">GMV 转负、溜溜凳品控危机、股价跳水。三件事看起来独立，其实是同一个循环断了：信任带来规模，规模摊薄成本，成本让利给消费者，消费者再回来。</p>
+
+    <h3>一、规模掉头</h3>
+    <p>2026 年前三季度 GMV 90.6 亿元，同比 −5.0%，是公司披露口径里第一次年度累计负增长。三个季度连续同比下滑，是这套矩阵模式遇到的第一个硬约束；利润还能往上走，靠的是把成本压下来，但 GMV 是直播电商的盘子，盘子缩了，抽成效率提得再高也有尽头。行业另一头在涨：东方甄选（01797.HK）2026 财年 GMV 102 亿元、同比 +17.6%，自营 GMV 占比 52.6%；未上市的与辉同行 2025 年 GMV 超 200 亿元。交个朋友的绝对规模已被反超。行业逻辑也在换：从流量驱动转到价值驱动，胜负手是好产品、供应链和品控，而交个朋友的资产是渠道和主播矩阵，没有可沉淀的自营商品。</p>
+    <div class="block">
+      <div class="bt">行业坐标 · GMV 规模</div>
+      <p>与辉同行（未上市）2025 年超 200 亿元 → 交个朋友 2025 年全网超 160 亿元、2026 前三季 90.6 亿元（−5.0%）→ 东方甄选（01797.HK）2026 财年 102 亿元（+17.6%）。东方甄选已经把估值锚换到自营零售（自营品 1009 款、GMV 占比 52.6%），交个朋友还停在 MCN 范式。</p>
+    </div>
+
+    <h3>二、溜溜凳：品控缺口暴露</h3>
+    <p>2026 年 9 月，一款卖 89.9 元的「溜溜凳」被消费者拆解，内部是发霉木板、废弃海绵和硬纸板。9 月 25 日交个朋友承认并下架退款，但完整的赔付和整改方案迟迟未公布，媒体报道相关投诉超 2600 条。货源来自厦门云栖家具——2026 年 6 月才注册、认缴注册资本 10 万元的公司，涉事商品在六个直播间卖过。<sup class="fn"><a href="#r23">23</a></sup> 罗永浩公开称这是「严重质量管理事故」，同时点名东方甄选也销售过同款且金额更高。<sup class="fn"><a href="#r22">22</a></sup> 对照 2020 年羊毛衫事件的「当天认错、退一赔三」，处置速度差了一代。</p>
+    <p>处置动作本身不算慢，问题在结构：70 多个矩阵直播间共用一套品牌信用，选品与大货抽检的责任却分散在层层主体之间。2026 年 2 月 1 日起施行的《直播电商监督管理办法》压实平台、直播间运营者、主播与 MCN 四类主体责任，鼓励首问负责与先行赔付。<sup class="fn"><a href="#r23">23</a></sup> 从「一个人替所有货背书」变成「一套流程替所有货背书」，流程就必须比人更可靠。9 月这次没做到：10 万元注册资本的新供应商能进爆品榜，说明准入门槛形同虚设。</p>
+    <p>9 月 27 日郑刚的实名举报紧随其后，指向尽微、李钧、罗永秀、黄贺与「空壳走账偷税」。举报方未提供交易非公允或资金回流的实证，2025 年审计报告未见税务保留意见；截至数据截止日，双方说法都未经官方查实。<sup class="fn"><a href="#r23">23</a></sup> 这条要单独标出来：它是治理层面的疑云，不是已认定的事实。</p>
+
+    <h3>三、股价与流动性</h3>
+    <div class="stat-strip">
+      <div class="stat"><div class="k">收盘价（2026-11-10）</div><div class="v">0.45 港元</div><div class="n">总市值 6.32 亿港元</div></div>
+      <div class="stat"><div class="k">年初至今</div><div class="v neg">−59.5%</div><div class="n">52 周区间 0.40–1.21 港元</div></div>
+      <div class="stat"><div class="k">PE（TTM）/ PB</div><div class="v">4.6× / 0.98×</div><div class="n">TTM 口径，破净边缘</div></div>
+      <div class="stat"><div class="k">当日成交额</div><div class="v">5400 港元</div><div class="n">1.2 万股，换手率约 0%</div></div>
+    </div>
+
+    <figure>
+      <svg viewBox="0 0 360 205" role="img" aria-label="2024 年 12 月至 2026 年 11 月月收盘价折线图，港元">
+        <line x1="26" y1="20" x2="344" y2="20" stroke="#DCD4CF" stroke-dasharray="3 4"/>
+        <line x1="26" y1="57" x2="344" y2="57" stroke="#DCD4CF" stroke-dasharray="3 4"/>
+        <line x1="26" y1="94" x2="344" y2="94" stroke="#DCD4CF" stroke-dasharray="3 4"/>
+        <line x1="26" y1="131" x2="344" y2="131" stroke="#DCD4CF" stroke-dasharray="3 4"/>
+        <line x1="26" y1="168" x2="344" y2="168" stroke="#241C1B"/>
+        <text x="2" y="23" font-size="11" fill="#6C615E" font-family="monospace">1.2</text>
+        <text x="2" y="97" font-size="11" fill="#6C615E" font-family="monospace">0.8</text>
+        <text x="2" y="171" font-size="11" fill="#6C615E" font-family="monospace">0.4</text>
+        <polyline points="26.0,42.2 39.8,79.2 53.7,60.7 67.5,77.3 81.3,92.1 95.1,66.2 109.0,29.3 122.8,53.3 136.6,62.5 150.4,58.8 164.3,31.1 178.1,25.6 191.9,27.4 205.7,62.5 219.6,79.2 233.4,95.8 247.2,108.8 261.0,79.2 274.9,110.7 288.7,79.2 302.5,89.4 316.3,128.2 330.2,157.8 344.0,158.8" fill="none" stroke="#241C1B" stroke-width="2"/>
+        <circle cx="26.0" cy="42.2" r="2.2" fill="#B32B24"/>
+        <circle cx="109.0" cy="29.3" r="2.2" fill="#B32B24"/>
+        <circle cx="191.9" cy="27.4" r="2.2" fill="#B32B24"/>
+        <circle cx="274.9" cy="110.7" r="2.2" fill="#B32B24"/>
+        <circle cx="344.0" cy="158.8" r="3.4" fill="#B32B24"/>
+        <text x="336" y="150" font-size="11" fill="#B32B24" text-anchor="end" font-family="monospace">0.45</text>
+        <g font-size="11" fill="#6C615E" font-family="monospace">
+          <text x="26" y="192">24/12</text>
+          <text x="109" y="192" text-anchor="middle">25/06</text>
+          <text x="192" y="192" text-anchor="middle">25/12</text>
+          <text x="275" y="192" text-anchor="middle">26/06</text>
+          <text x="344" y="192" text-anchor="end">26/11</text>
+        </g>
+      </svg>
+      <figcaption>月收盘价，港元。来源：腾讯自选股港股月线数据，取数日 2026-11-10。<sup class="fn"><a href="#r12">12</a></sup> 2026-11 为 11 月 10 日收盘，非完整月。另据媒体口径，2022 年 7 月股价曾达 4.6 港元、2023 年 7 月 7 日收 1.72 港元，二者不在本图连续序列内，不参与连线。<sup class="fn"><a href="#r10">10</a></sup><sup class="fn"><a href="#r11">11</a></sup></figcaption>
+    </figure>
+
+    <p>2026 年 11 月 10 日收盘 0.45 港元，总市值 6.32 亿港元，总股本 14.05 亿股；52 周区间 0.40–1.21 港元，年初至今 −59.46%；PE(TTM) 4.6 倍、PB 0.98 倍、股息率(TTM) 11.11%。当日成交 1.2 万股、5400 港元，机构持股 0.41%，无港股通持仓。<sup class="fn"><a href="#r12">12</a></sup><sup class="fn"><a href="#r24">24</a></sup> 2025 年度末期息每股 0.05 港元，是上市以来第四次现金分红，派息率约 51.7%。<sup class="fn"><a href="#r12">12</a></sup></p>
+    <p>11 月 4 日盘中创 0.40 港元的 52 周新低，5 日超跌反弹 18.8%，但当日成交仍只有 10 万港元级别。日成交额长期在几千到十几万港元之间，意味着股价对极小资金极度敏感，机构既进不去也出不来，估值折价是结构性的。90 天内没有投行评级，也不在港股通标的内。9 月 25 日与 28 日，事件发酵期间股价分别收 0.68 与 0.61 港元；10 月 Q3 数据公布后继续走低。<sup class="fn"><a href="#r14">14</a></sup> 一家利润在涨、现金占市值过半的公司，价格却跌到这个位置，说明市场在给规模、治理和流动性三样东西同时打折。</p>
+  </section>
+
+  <div class="part"><span class="pn mono">卷三 / 09–11</span><span class="pt">当下与收束</span><span class="pd">还没证明的那一半</span></div>
+
+  <!-- 09 -->
+  <section id="s9">
+    <h2 class="banner"><span class="no">09</span>现在的罗永浩：细红线与十字路口</h2>
+    <p class="lead">退出交个朋友之后，他把时间押在「最后一次创业」上。这条路走的弯路，一点不比锤子少；而招牌本人并不打算一直站在货架前。</p>
+
+    <div class="tl">
+      <div class="tl-item"><div class="lane lane-p">罗永浩</div><div class="ev"><span class="d">2022.7–11</span><br>细红线科技成立，做 AR，天使轮约 5000 万美元（美团龙珠领投），投后估值约 2 亿美元。对外说的是对标「AR 时代的苹果」。</div></div>
+      <div class="tl-item"><div class="lane lane-p">罗永浩</div><div class="ev"><span class="d">2023–2024</span><br>AR 眼镜原型机因重量与软件问题未能量产；2024 年放弃 AR 眼镜转 AI；2025 年初裁撤硬件团队，只留约 20 名软件工程师。他自己的说法是：花一年多和不少钱，得出 AR 眼镜十年内难以商业化的结论。<sup class="fn"><a href="#r16">16</a></sup><sup class="fn"><a href="#r17">17</a></sup></div></div>
+      <div class="tl-item"><div class="lane lane-p">罗永浩</div><div class="ev"><span class="d">2025.8</span><br>深度视频播客《罗永浩的十字路口》上线，每期 3–5 小时，首期对话李想 B 站播放 349 万、对话影视飓风 Tim 达 550 万。年底「且听」AI 听书与 J1 Assistant、第二届大会等产品与活动信息主要见于百科与媒体回顾，未见一手公告，本页不作事实采用。<sup class="fn"><a href="#r16">16</a></sup></div></div>
+      <div class="tl-item"><div class="lane lane-p">罗永浩</div><div class="ev"><span class="d">2026</span><br>2026 年 8 月宣布第二届大会落地深圳，并要做科技创业加速器：「光给钱没用，我要做股东」。1 月北京丰台法院冻结其持有的锤子科技（成都）约 713.95 万元股权三年；与早期投资人郑刚的回购、税务争议未了（2026 年 9 月双方互相实名举报）；西贝预制菜争议持续，另有野人先生、杨笠播客等舆论事件。</div></div>
+    </div>
+
+    <p>两件事值得分开看。第一，细红线从 AR 缩到 AI 软件、从一百多人缩到二十人，产品的市场反馈平平，这是一次还没证明自己的转型；这一串转向也解释了为什么公司必须尽早把名字摘掉。第二，他的公共表达火力越来越强——吐槽西贝预制菜、监督野人先生、和郑刚互相举报——每一次都在加固「敢说话」的人设，也在给交个朋友的品控叙事制造反差。媒体已经把话说穿了：「去罗永浩化只是一句口号。」</p>
+  </section>
+
+  <!-- 10 -->
+  <section id="s10">
+    <h2 class="banner"><span class="no">10</span>两声最硬的反驳</h2>
+    <p>把两份研究合到一起，有两处最容易被挑。</p>
+    <div class="rebut">
+      <div class="tag">反驳一</div>
+      <div class="q">「公司 2022 年就完成去罗永浩化了，2026 年的品控问题跟他没关系，报告不该老把他放在标题里。」</div>
+      <div class="a">组织关系上这句话成立：零持股、零职务、账号已更名，处置声明由公司发出。但公司后来仍在持续使用他的形象资产——2025 年 5 月百度真人直播、6 月「罗永浩数字人」、电商学苑的「名誉校长」宣传；2026 年 9 月出事，公众等的第一份回应也来自他。<sup class="fn"><a href="#r22">22</a></sup><sup class="fn"><a href="#r9">9</a></sup> 公司拿走了 IP 使用权，没有把信用载体一起搬走。把这个错位写进标题，不是蹭名字，是因为它是解释 2026 年舆情与股价反应的那条线。</div>
+    </div>
+    <div class="rebut">
+      <div class="tag">反驳二</div>
+      <div class="q">「PE 4.6 倍、PB 不到 1、现金 4.66 亿港元对 6.32 亿港元市值，明显是市场错杀。」</div>
+      <div class="a">这个算法漏了分母的性质。单日成交额 5400 港元、三个月日均约 41 万股、机构持股 0.41%、无南向资金，价格对极小资金量就高度敏感；仅 1 家机构给出 4.43 港元目标价，样本与时点都不足以当估值锚。<sup class="fn"><a href="#r12">12</a></sup><sup class="fn"><a href="#r24">24</a></sup> 这种价位更接近「几乎没有人在定价」，而不是「很多人定错了价」。加上商誉占总资产 19.4%、关联供应链被实名举报（未查实）、GMV 累计转负，折价里至少有三项是可指认的。</div>
+    </div>
+    <p>最薄弱的假设其实是 AI 降本。它能压掉自己的人力成本，压不掉平台定的流量价格；2025 年服务成本 +56.6%、2026 年上半年新媒体成本 +28.1%，都还跑在收入前面。<sup class="fn"><a href="#r14">14</a></sup> 若流量成本继续上行，减量增利的空间会被吃掉。</p>
+    <div class="note">后续只看三个能证伪的变量：季度 GMV 同比能否转正；毛利率能否稳在 42% 附近；商誉与关联交易披露是否出现变化。三个都不需要预测，等公告即可。</div>
+  </section>
+
+  <!-- 11 -->
+  <section id="s11">
+    <h2 class="banner"><span class="no">11</span>收束：这七年长出了什么</h2>
+    <p>把两条线合起来看，七年里长出来的东西有三样。</p>
+    <p><strong>第一样，一个被验证过的还债机制。</strong>罗永浩证明了个人信用可以在三年内变现近 10 亿元——前提是肯认错、肯赔、不破产。这在商业史上是稀有的样本，代价是他把自己绑在了「监督者」人设上，从此说的每句话都会被拿去和自家货比。至于是否「已还清」，公开说法互相打架，本页不作结论。</p>
+    <p><strong>第二样，一家不靠创始人的公司。</strong>交个朋友把去罗永浩化做成了真事：GMV 占比降到个位数，70 多个矩阵直播间、3 万多个品牌、AI 中台在跑，2026 上半年收入还有 24.5% 的增长。组织能力是真的。但它也把公司从轻资产的爆发模型，变成了重运营、受流量成本挤压的守成模型——毛利率从 52.8% 掉到 40% 一线，GMV 2026 年转负。</p>
+    <p><strong>第三样，一张没人愿意给溢价的壳。</strong>01450 在 2023 年完成资产注入与更名后接住了一段高光，当年归母净利 1.20 亿元、同比 +1397%。三年后市场给的价格是 PE 4.6 倍、PB 0.98 倍、日成交 5400 港元。按利润和分红看它便宜，按 GMV 转负和品控缺口看它便宜得有道理。</p>
+
+    <p>七年里被造出来的，不是一个网红，也不只是一次还债，是一套能把一个人的流量拆成 70 多个直播间、再装进一张港股财报里的组织。2021 年那次隔离已经证明过前半段：他不在，销售额不掉。后半段是另一道题：当品牌不再由某个人每天出面，谁来替货架上的每一件商品负责。2026 年 9 月那张 89.9 元的凳子，从六个直播间流向一家注册资本 10 万元的商家，再由上市公司出面赔付，把四层主体和一层悬空的信任一次性摊在了桌面上。公司给的是流程和赔付，公众要的是一个人。</p>
+    <div class="pull">架构能分开股权，分不开别人把账记在谁头上。这是 01450 到现在还没定完的价。</div>
+
+    <div class="block">
+      <div class="bt">接下来盯什么</div>
+      <p>① 2026 年全年业绩（预计 2027 年 3 月）：GMV 能否回到正增长、毛利率能否守住 40%–42%；② 溜溜凳的最终赔付与整改方案，以及商誉、关联交易披露是否变化；③ AI 三件套能否从降本工具变成对外收费的产品；④ 末期股息能否延续（现价 11% 的股息率是最后的支撑）；⑤ 罗永浩侧的细红线产品数据、郑刚争议与股权冻结的结论——任何一项出负面，都会沿着品牌纽带传导回 01450。</p>
+    </div>
+
+    <p>这七年既不是励志故事，也不是失败故事。三次转换里，前两次有清楚的交割凭证：一场 1.1 亿元的首播、一份 2021 年停播不掉销售的记录。第三次没有。市场至今给这家公司的，仍是一个带人名标注的折扣价。罗永浩用七年把自己从一个欠债的理想主义者做成了还清债的媒体资产，交个朋友用七年把自己从一个直播间做成了利润尚可、规模见顶的小市值公司。两条线都活下来了，但都还没有拿到下一个增长故事。</p>
+  </section>
+
+  <!-- 附录 -->
+  <div class="appx">
+
+    <h2 id="appxA">附录 A · 全景时间线</h2>
+    <table>
+      <thead><tr><th>时间</th><th>线</th><th>事件</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">2000–2006</td><td>人</td><td>新东方教师，「老罗语录」走红</td></tr>
+        <tr><td class="mono">2006.7</td><td>人</td><td>创办牛博网（2009.1 国内关停）</td></tr>
+        <tr><td class="mono">2008.6</td><td>人</td><td>老罗英语培训开业（2015.1 关闭）</td></tr>
+        <tr><td class="mono">2011.11</td><td>人</td><td>西门子北京总部砸冰箱维权</td></tr>
+        <tr><td class="mono">2012.5</td><td>人</td><td>锤子科技成立</td></tr>
+        <tr><td class="mono">2014.5</td><td>人</td><td>Smartisan T1 发布（约 25 万台）</td></tr>
+        <tr><td class="mono">2014.7.7</td><td>资本</td><td>世纪睿科（01450）港交所主板上市，主业广电视频；开曼主体 2012.12.18 注册</td></tr>
+        <tr><td class="mono">2016–2017</td><td>人</td><td>M1 破百万；成都东方广益 6 亿元国资入股</td></tr>
+        <tr><td class="mono">2018–2019</td><td>人</td><td>资金链断裂，债务 6 亿元+；限制消费令；部分资产 1.8 亿元售予字节</td></tr>
+        <tr><td class="mono">2019.6.4</td><td>公司</td><td>北京交个朋友数码科技成立，黄贺任法定代表人</td></tr>
+        <tr><td class="mono">2020.4.1</td><td>合流</td><td>抖音首秀，支付 GMV 超 1.1 亿元；星空野望 4.15 成立，股东名单无罗永浩</td></tr>
+        <tr><td class="mono">2020.11–12</td><td>资本 / 公司</td><td>尚纬股份拟 5.89 亿元收购星空野望 40.27%（溢价 2819%），12.3 终止；羊毛衫、燕窝品控事件，退一赔三</td></tr>
+        <tr><td class="mono">2021</td><td>公司</td><td>全年实际支付销售额约 50 亿元；黄贺提出「老罗只占 10–15%」目标；9 月隔离 21 天，替补主播机制验证去头部化可行</td></tr>
+        <tr><td class="mono">2022.4</td><td>公司</td><td>两周年：7 人到 1400 多人，累计 GMV 破 100 亿元</td></tr>
+        <tr><td class="mono">2022.6</td><td>分岔</td><td>6.2 账号更名、6.7 退出管理层、6.12 宣布再创业；留「首席品牌监督官」</td></tr>
+        <tr><td class="mono">2022.7–11</td><td>人 / 资本</td><td>细红线科技成立，天使约 5000 万美元；8.5 抖音年度合作、8.29 五年独家运营协议、11 月起全面并表</td></tr>
+        <tr><td class="mono">2023.5–7</td><td>资本</td><td>5.6 工商变更、5.10 公告拟更名、7.11 股份简称改为「交个朋友控股」；当年营收 10.74 亿、归母净利 1.20 亿</td></tr>
+        <tr><td class="mono">2024.2</td><td>公司</td><td>「朋友云」直播中台上线</td></tr>
+        <tr><td class="mono">2024.8</td><td>人</td><td>官宣累计还款 8.24 亿元（本人口径，未经审计）</td></tr>
+        <tr><td class="mono">2025.5–6</td><td>公司</td><td>百度真人直播、罗永浩数字人直播，两场 GMV 破 1.05 亿元</td></tr>
+        <tr><td class="mono">2025.7</td><td>公司</td><td>BeFriends AI 零售平台发布；入驻快手</td></tr>
+        <tr><td class="mono">2025.8</td><td>公司 / 人</td><td>1.8 亿元收购电商学苑；播客《罗永浩的十字路口》上线</td></tr>
+        <tr><td class="mono">2025.9</td><td>人</td><td>西贝预制菜争议</td></tr>
+        <tr><td class="mono">2026.1</td><td>人</td><td>锤子科技（成都）713.95 万元股权被冻结三年</td></tr>
+        <tr><td class="mono">2026.2.1</td><td>监管</td><td>《直播电商监督管理办法》施行，压实平台、直播间运营者、主播与 MCN 四类主体责任</td></tr>
+        <tr><td class="mono">2026.8</td><td>公司</td><td>中期业绩：收入 7.71 亿（+24.5%）、GMV 65.3 亿（约 −6.5%）</td></tr>
+        <tr><td class="mono">2026.9</td><td>公司</td><td>9.25 溜溜凳致歉与先行赔付；9.27 郑刚实名举报（单方主张，未查实）</td></tr>
+        <tr><td class="mono">2026.10</td><td>公司</td><td>Q3 公告：前三季 GMV 90.6 亿（−5.0%），首次累计转负</td></tr>
+        <tr><td class="mono">2026.11.10</td><td>资本</td><td>收盘 0.45 港元，市值 6.32 亿港元，当日成交 5400 港元</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="appxB">附录 B · 先纠错</h2>
+    <p style="font-size:13.5px;color:var(--sub)">八条在二手转述里反复出现、但与公告、公司口径或另一份研究不符的说法。两条原始研究合并时，本页也已把「2023 年借壳上市」「2025 年营收唯一值」等表述统一到下列口径。</p>
+    <div class="err"><div class="m">交个朋友是罗永浩创办并控股的公司</div><div>公司实体由黄贺于 2019 年 6 月注册；2020 年尚纬股份收购案披露的星空野望股东名单里没有罗永浩；2023 年公司向《每日经济新闻》确认他未直接或间接持有上市公司股份。<sup class="fn"><a href="#r5">5</a></sup><sup class="fn"><a href="#r7">7</a></sup></div></div>
+    <div class="err"><div class="m">交个朋友 2023 年上市 / 借壳上市</div><div>01450 的上市地位来自 2014 年 7 月 7 日。2023 年 5 月完成的是全资收购与资产注入，7 月 11 日是股份简称更名。称「曲线上市」「资产注入」可以，称「当年上市」「借壳完成」不准确。<sup class="fn"><a href="#r2">2</a></sup><sup class="fn"><a href="#r10">10</a></sup></div></div>
+    <div class="err"><div class="m">6 亿元债务已经还清，真还传大结局</div><div>2022 年 3 月本人连发八条微博辟谣「下月还完」；2023 年 6 月公司再辟谣「还在努力工作，将尽快还完」，并下架「收官」视频。另有媒体在 2025 年回顾中写 2022 年 6 月基本还清，以及本人 2024 / 2026 年的还款金额口径，彼此不在同一时点与分母，不能合成「已还清」结论。<sup class="fn"><a href="#r19">19</a></sup><sup class="fn"><a href="#r20">20</a></sup></div></div>
+    <div class="err"><div class="m">首场直播卖了 1.7 亿元</div><div>公告与主流报道采用「支付交易总额超 1.1 亿元」；1.7 亿元见于部分媒体，口径不明。取 1.1 亿元。<sup class="fn"><a href="#r4">4</a></sup></div></div>
+    <div class="err"><div class="m">2026 年 9 月的实名举报已坐实</div><div>属举报方单方主张，未见税务或司法机关查实结论；2025 年审计报告无税务保留意见；被举报方公开回应为「诬告」。<sup class="fn"><a href="#r23">23</a></sup></div></div>
+    <div class="err"><div class="m">2025 年营收只有一个数：14.87 亿 / 15.48 亿</div><div>两个都对，范围不同：14.87 亿元为持续经营的新媒体服务口径（同比 +30.6%），15.48 亿元为合并口径（同比 +23.8%），另含已终止广电业务 6806 万元。本页财务表统一用合并口径，正文提到增速时标明所依口径，不自行调平约 0.07 亿元的分部差异。</div></div>
+    <div class="err"><div class="m">锤子累计融资 17 亿 / 22 亿，只有一个对</div><div>均为媒体汇总口径，轮次纳入范围不同，无一手审计数字。本页以约 17 亿为主口径，同时标注 22 亿的存在，不据此计算估值或亏损。</div></div>
+    <div class="err"><div class="m">2026H1 GMV 同比 −6.4% / −6.5% 互相矛盾</div><div>两份研究分别取自公告与平台整理，属四舍五入或小数位差异。本页统一写「约 −6.5%」，并保留 −6.4% 作为另一口径；前三季累计 −5.0% 无分歧。</div></div>
+
+    <h2 id="appxC">附录 C · 数据口径与存疑清单</h2>
+    <table>
+      <thead><tr><th>事项</th><th>采用口径 / 处理</th><th>分歧与说明</th></tr></thead>
+      <tbody>
+        <tr><td>2025 年营收</td><td>15.48 亿元（合并）</td><td>另有 14.87 亿元（持续经营·新媒体服务）；分部数相加与合并数有约 0.07 亿元差异，不强行调平；westock 港币折算表数字与人民币原币不可混用</td></tr>
+        <tr><td>2025 年净利</td><td>归母 0.90 亿元</td><td>另有「净利润约 0.88 亿」与经调整净利 1.16 亿元（−4.8%）两个口径</td></tr>
+        <tr><td>2026H1 利润</td><td>归母约 0.87 亿元、+50.8%</td><td>公司公告「期内利润 8651.8 万元、+56.3%」含少数股东，两者基数不同，不可混用</td></tr>
+        <tr><td>首秀 GMV</td><td>超 1.1 亿元（24 小时支付）</td><td>另有「1.7 亿元」等媒体口径并存，差异源于统计时长与支付/下单口径</td></tr>
+        <tr><td>债务与还款</td><td>6 亿（2019.11）→ 8.24 亿（2024.8）→ 近 10 亿（2026.6）</td><td>还款总额依赖本人及接近人士表述，未经审计；「约 13 亿」为含诉讼宽口径，不与 6 亿同分母；2022 / 2023 年另有辟谣，不写「已还清」</td></tr>
+        <tr><td>罗永浩占比</td><td>GMV 占比个位数（≤3% 口径）</td><td>公司未在财报精确披露；「出镜时长占比 &lt;7%」「2021 年目标 10–15% 收入」是另两个不同指标，不可互相替代</td></tr>
+        <tr><td>2026Q1 GMV</td><td>31.7 亿元（−1.0%）</td><td>按 H1 65.3 亿减 Q2 33.6 亿核对；某检索摘要出现过 39.7 亿元的错误推算</td></tr>
+        <tr><td>2026H1 GMV 同比</td><td>约 −6.5%</td><td>另一来源为 −6.4%，四舍五入差异</td></tr>
+        <tr><td>机构目标价 4.43 港元</td><td>不采用为估值锚</td><td>仅 1 家机构、发布时点不明，与现价差近 10 倍，只作为覆盖稀薄的例证；另一份研究检索到的「无对应可核实报告」亦不采信</td></tr>
+        <tr><td>细红线估值 2 亿美元</td><td>2022 年投后口径</td><td>无最新估值披露；2025 年底大会与 AI 产品细节主要见于百科与媒体回顾，未见一手公告，不作事实采用</td></tr>
+        <tr><td>锤子累计融资</td><td>约 17 亿元</td><td>另有约 22 亿元媒体汇总口径，轮次范围不同</td></tr>
+        <tr><td>债务清偿状态</td><td>不写「已还清」，仅写「选择个人扛债」</td><td>本人 2022-03 辟谣、公司 2023-06 辟谣、媒体 2025 回顾另有说法</td></tr>
+        <tr><td>公司成立年份</td><td>分开表述</td><td>官网「集团 2007」＝业务起源、开曼主体 2012-12-18 注册、2014-07-07 上市；北京交个朋友 2019-06-04 成立</td></tr>
+        <tr><td>李钧持股比例</td><td>逐项标主体与时点</td><td>2020 年代持 18.18%、2022 年报 24.67%、2026 媒体 23.03%、另有杭州交个朋友 21%，不合并成一个数</td></tr>
+        <tr><td>2023 年全资收购对价</td><td>不写金额</td><td>公开检索未取得可靠公告数字，只写交易路径与工商变更</td></tr>
+        <tr><td>2024 全年 GMV</td><td>表中留空</td><td>所见 127 亿为由 2025 年增速反推的推算值，不采信</td></tr>
+        <tr><td>AI 提效数据</td><td>标非一手来源，不进图表</td><td>口播稿 20→100 条、AI 相关 GMV 占比 75% 均为管理层向媒体转述</td></tr>
+        <tr><td>股价 4.6 / 1.72 港元</td><td>只在图注中标注</td><td>媒体时点价，不在连续月线序列内，不画进折线</td></tr>
+        <tr><td>财报币种</td><td>财务表统一人民币</td><td>公司功能货币为人民币，行情终端财务表折为港元；资产负债表项（现金 4.66 亿港元、商誉 2.41 亿港元）按港元原值标注</td></tr>
+      </tbody>
+    </table>
+    <div class="srcnote">数字级事实一律带口径与时点；跨来源冲突时优先采信交易所公告、公司年报与中期报告，媒体报道降级为线索。</div>
+
+    <div class="warn">
+      <div class="bt mono">数字级事实提示</div>
+      <p style="margin:0">财务数字取自公司公告与财经数据平台（截至 2026-11-10），人物与事件类事实取自公开媒体报道。还款金额、GMV 占比、部分销量与融资数字依赖本人、管理层或媒体口径，未逐一审计验证；举报与争议状态截至 2026-11-10，均非已认定事实。对外引用前建议回溯原始公告。</p>
+    </div>
+
+    <h2 id="appxD">附录 D · 来源分层</h2>
+    <div class="layer">一手 · 交易所公告 / 公司披露 / 官网 / 行情终端</div>
+    <ul class="src-list">
+      <li id="r1">[1] 交个朋友控股 2026 中期报告（港交所，公布日 2026-08-21）：<a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0916/2026091600421_c.pdf">hkexnews PDF</a>；2026 中期业绩摘要另见 <a href="https://www.quamnet.com/market-data/company?symbol=1450">华富财经公司业务页</a></li>
+      <li id="r2">[2] 交个朋友控股官网「集团成立于 2007 年、2014 年港交所主板上市」：<a href="https://befriends.com.cn">befriends.com.cn</a></li>
+      <li id="r12">[12] 腾讯自选股港股行情与财务数据（hk01450，取数日 2026-11-10）：月线、收盘价、市值、PE/PB/股息率、资产负债表与现金流量表；[24] 估值与持股结构交叉核对 <a href="https://hk.finance.yahoo.com/quote/1450.HK/key-statistics">Yahoo 财经关键统计数据</a></li>
+      <li id="r13">[13] 2026 年第三季度 GMV 公告转述（2026-10-14）：<a href="http://gu.qq.com/resources/shy/news/detail-v2/index.html#/?id=nesSN20261014201117a6c9c28f&s=b">格隆汇</a></li>
+      <li id="r15">[15] <a href="https://www.quamnet.com/market-data/company?symbol=1450">华富财经 · 1450 公司业务与最新业绩</a>（2026-08-21 公布数据）</li>
+    </ul>
+    <div class="layer">准一手 · 公司负责人确认 / 交易所问询材料 / 主流财经媒体</div>
+    <ul class="src-list">
+      <li id="r3">[3] <a href="https://www.stcn.com/article/detail/863098.html">证券时报 · 交个朋友曲线上市了！罗永浩没直接持股</a>（2023-05，含五年独家运营协议与抖音 50 亿 GMV 年度合作细节）</li>
+      <li id="r4">[4] <a href="https://www.jwview.com/jingwei/05-11/540151.shtml">中新经纬 · 罗永浩淡出后，「交个朋友」曲线上市</a>（2023-05-11，含工商变更与首播数据）</li>
+      <li id="r5">[5] <a href="https://www.jwview.com/jingwei/09-25/559779.shtml">中新经纬 · 罗永浩又被「炮轰」，啥情况？</a>（2023-09-25，引《每日经济新闻》公司负责人确认零持股，引 2022 年报股东结构）</li>
+      <li id="r6">[6] <a href="https://www.jjckb.cn/2021-10/26/c_1310269634.htm">经济参考网 · 交个朋友创始人黄贺访谈</a>（2021-10-26，隔离验证、7% 出镜、10–15% 目标）</li>
+      <li id="r7">[7] <a href="https://finance.ce.cn/stock/gsgdbd/202206/07/t20220607_37727233.shtml">中国经济网 · 尚纬股份 5.89 亿收购与 2819% 溢价</a>、<a href="http://finance1.ce.cn/stock/gsgdbd/202012/04/t20201204_36080394.shtml">终止收购公告转述</a>（2020-12-04 / 2022-06-07）</li>
+      <li id="r8">[8] <a href="https://www.peopleapp.com/rmharticle/30020217279">人民日报客户端 · 红星资本局：尚纬股份问询函与终止</a>（2020-12）</li>
+      <li id="r9">[9] <a href="https://static.nfnews.com/content/202012/04/c4390125.html">南方+ · 罗永浩「上市」梦碎</a>（2020-12-04，星空野望股权结构）；<a href="https://static.nfnews.com/content/202410/30/c10208704.html">南方+ · 起底交个朋友电商课</a>（2024-10-30，名誉校长与股东名单）</li>
+      <li id="r10">[10] <a href="https://finance.sina.cn/2023-05-12/detail-imytprfu6513614.d.html">证券日报 · 曲线上市成功</a>（2023-05-12）、<a href="http://www.zqrb.cn/gscy/gongsi/2023-07-07/A1688726275904.html">证券日报 · 更名与 2023-07-07 行情</a></li>
+      <li id="r11">[11] 北京商报 2023-07 报道（<a href="https://www.toutiao.com/article/7253692330518282764/">转载页</a>）：李钧与罗永浩关系、2022 年 7 月 4.6 港元、2022 年新媒体服务收入 3.03 亿元 / +1275%</li>
+      <li id="r14">[14] <a href="https://www.ec100.cn/detail--6664806.html">网经社 · 前三季度累计 GMV 与 AI 降本</a>（2026）、<a href="http://gu.qq.com/resources/shy/news/detail-v2/index.html#/?id=nesSN20260922080624a451fc39&s=b">一个网红凳，拷问交个朋友</a>（2026-09）</li>
+      <li id="r19">[19] <a href="https://news.qq.com/rain/a/20230626A05RA800">腾讯新闻 · 交个朋友辟谣 6 亿债务已还完</a>（2023-06-26）</li>
+      <li id="r20">[20] <a href="https://finance.ce.cn/stock/gsgdbd/202203/21/t20220321_37420870.shtml">中国经济网 · 罗永浩连发八条微博：纯属谣传</a>（2022-03-21）</li>
+      <li id="r22">[22] <a href="https://view.inews.qq.com/a/20260928A07SD700">腾讯新闻 · 罗永浩与「交个朋友」</a>（2026-09-28，历次品控事件与角色定位）</li>
+    </ul>
+    <div class="layer">非一手 · 媒体回顾 / 百科 / 单方分析，需核实原文，不作事实裁定</div>
+    <ul class="src-list">
+      <li id="r16">[16] <a href="https://www.jiemian.com/article/13693160.html">界面新闻 · 锤子手机梦碎 7 年后</a>（2025-11，细红线转向与播客）</li>
+      <li id="r17">[17] <a href="https://thecapital.com.cn/newsDetail/116869">融中财经 · 罗永浩，对一个天使轮项目做了调整</a>（细红线融资、硬件团队裁撤）</li>
+      <li id="r18">[18] <a href="http://ifengweekly.com/detil.php?id=19342">凤凰周刊 · 忙直播的罗永浩，还做不做 AR 了？</a>（2023，含「已还完」表述，与 [19][20] 冲突，未采用）</li>
+      <li id="r23">[23] 2026 年 9 月溜溜凳事件与四层主体梳理、郑刚举报内容，见微信公众号法律分析长文与腾讯自选股相关报道；举报属单方主张，未经查实，文中架构分析为作者推演，只取可交叉核对的事实部分</li>
+      <li id="r25">[25] <a href="https://baike.baidu.com/item/Thin%20Red%20Line/61715381">百度百科 · Thin Red Line</a>（细红线沿革与 2025 年底大会，未在报告中作为事实采用）</li>
+      <li id="r26">[26] 罗永浩早期经历、锤子融资与债务口径的媒体汇总：<a href="https://k.sina.com.cn/article_5831428209_15b94887100100yhy7.html">新浪 · 「真还」后传</a>、<a href="https://www.toutiao.com/article/7108581918773559841">今日头条转载回顾</a></li>
+      <li id="r24">[24] 已在 [12] 同条列出（Yahoo 财经，第三方统计，非一手）</li>
+    </ul>
+    <div class="layer">补充来源 · 成长史线（合并自《一部七年成长史》）</div>
+    <div class="src">公司公告与财报：交个朋友控股（01450.HK）2023 年报、2025 年报、2026 年中期报告（2026-08-21）、季度 GMV 公告（2026-10-14 / 2026-10-15）。</div>
+    <div class="src">行情：2026-11-10 收盘数据（收盘价 0.45 港元、市值 6.32 亿港元、PE TTM 4.6×、PB 0.98×）。财务整理：westock-data / neodata 财务与分红数据（2026-11 检索）。</div>
+    <div class="src">事件与人物：人民日报《「裸泳」的罗永浩》《网红创业者倒在 2019》、中国经济网（2019-11）、澎湃新闻、北京青年报（2022-06）、每日经济新闻（2025-12-31）、时代财经（2026，李亮专访）、网经社（2026-10-15）、蓝鲸新闻等。</div>
+    <div class="src">竞品数据：东方甄选（01797.HK）2026 财年业绩、遥望科技（002291.SZ）2026H1 业绩预告。</div>
+
+    <footer>
+      <p>公开资料梳理，不构成投资建议，不含任何买卖、价位或仓位判断。行情数据截至 2026 年 11 月 10 日收盘（港股，非实时），财务数据截至 2026 年中期报告，事件与举报状态截至 2026 年 11 月 10 日。财务主口径为人民币（公司记账本位币），港股折算口径已单独标注。</p>
+      <p style="margin-top:6px">编制日期 2026-11-11 · 单文件自包含，图表均为内联 SVG，可离线阅读。本页整合《罗永浩与交个朋友：一部七年成长史》与《招牌与股东：罗永浩、交个朋友与 01450.HK》两份研究，原始版本保持独立未改动。</p>
+      <p style="margin-top:6px">版式配色参考锤子科技「红底白锤」标识与坚果 Pro 细红线特别版的红黑配：近黑作底、朱红作强调、酒红作层次，标题与分卷处用细红线呼应「Thin Red Line」；绿色仅用于表示下跌数值。</p>
+    </footer>
+  </div>
+
+</div>
+</body>
+</html>
