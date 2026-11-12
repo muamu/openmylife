@@ -50,6 +50,7 @@ tags: []
 - `critiques/ai-industry/2026-11-AI原生求职Agent三家样本/` —— `kind: report`（HTML 报告，三家商业模式对照，数字待复核）
 - `critiques/ai-industry/2026-11-国内AI招聘求职产品全景/` —— `kind: report`（HTML 报告，四层分类与数字对账，数字待复核）
 - `critiques/ai-industry/2026-11-AI招聘圆桌-AI看不见的社区/` —— `kind: report`（HTML 报告，七席位 AI 模拟圆桌推演，数字未逐条复核）
+- `critiques/ai-industry/2026-11-字节Seed圆桌-5000亿与2029慢车票/` —— `kind: report`（HTML 报告，六席位 AI 模拟圆桌推演，数字未逐条复核）
 - `critiques/ai-aesthetics/2026-10-AI审美三层结构/` —— `kind: report`（HTML 报告，link-only）
 - `critiques/creative-industry/2026-10-推理模型与游戏工业重估/` —— `kind: report`（HTML 报告，link-only）
 - `critiques/dating/2027-01-dating-product-advice.md` —— `kind: advice`
