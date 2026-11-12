@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国内 AI 招聘求职产品全景：四层地图与一份对账</title>
+<style>
+:root{
+  --bg:#F7FBFE;
+  --ink:#152430;
+  --ink-2:#3C5568;
+  --ink-3:#6B7C8C;
+  --line:#DCE6EE;
+  --blue:#1C7ED6;
+  --blue-bg:#E8F3FD;
+  --blue-line:#D5E6F5;
+  --mint:#0E9E7C;
+  --mint-bg:#E6F6F1;
+  --coral:#EE6B45;
+  --coral-bg:#FDEDE8;
+  --gray-bg:#EFF4F8;
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --mono:"SF Mono","JetBrains Mono",Consolas,"Courier New",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:17px;line-height:1.88;overflow-x:hidden;padding:0 18px 90px;
+}
+.wrap{max-width:960px;margin:0 auto}
+
+.cover{padding:54px 0 34px;border-bottom:1px solid var(--line)}
+.kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;color:var(--blue);text-transform:uppercase;margin-bottom:18px}
+h1{font-family:var(--serif);font-weight:700;font-size:31px;line-height:1.42;letter-spacing:-.01em;margin-bottom:20px}
+h1 em{font-style:normal;color:var(--blue)}
+.deck{font-size:17px;color:var(--ink-2);line-height:1.85;margin-bottom:24px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--mono);font-size:12.5px;color:var(--ink-3)}
+.meta span{white-space:nowrap}
+
+.tldr{
+  margin:30px 0 46px;padding:22px 20px;border-radius:3px;
+  background:linear-gradient(160deg,#E8F3FD 0%,#F2F9FF 100%);
+  border:1px solid var(--blue-line);border-left:4px solid var(--blue);
+}
+.tldr h2{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--blue);text-transform:uppercase;margin-bottom:14px;font-weight:600;background:none;padding:0;border:0}
+.tldr p{font-size:16.5px;color:var(--ink);line-height:1.82;margin-bottom:12px}
+.tldr p:last-child{margin-bottom:0}
+.tldr strong{color:var(--blue);font-weight:600}
+
+h2{
+  font-family:var(--serif);font-size:23px;font-weight:700;line-height:1.5;
+  margin:62px 0 24px;padding:14px 0 14px 16px;
+  background:linear-gradient(90deg,#E8F3FD 0%,rgba(232,243,253,0) 100%);
+  border-left:4px solid var(--blue);display:flex;align-items:baseline;gap:13px;
+}
+h2 .num{font-family:var(--mono);font-size:12.5px;color:var(--blue);font-weight:600;letter-spacing:.08em;flex-shrink:0}
+h3{font-family:var(--serif);font-size:18.5px;font-weight:700;margin:36px 0 14px;color:var(--ink);line-height:1.6}
+h4{font-size:16px;font-weight:700;margin:26px 0 10px;color:var(--ink-2)}
+p{margin-bottom:17px;color:var(--ink)}
+p.lead{font-size:17.5px;color:var(--ink-2)}
+a{color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue-line)}
+strong{font-weight:600;color:var(--ink)}
+em{font-style:normal;background:linear-gradient(transparent 62%,#FFF0B3 62%)}
+
+.layer{
+  margin:26px 0;border:1px solid var(--line);border-radius:3px;
+  background:#fff;overflow:hidden;
+}
+.layer-head{padding:16px 18px;background:var(--gray-bg);border-bottom:1px solid var(--line)}
+.layer-tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--blue);margin-bottom:6px}
+.layer-name{font-family:var(--serif);font-size:19px;font-weight:700;line-height:1.5;margin-bottom:4px}
+.layer-sub{font-size:13px;color:var(--ink-3);line-height:1.7}
+.layer-body{padding:18px}
+.layer-body p:last-child{margin-bottom:0}
+
+.facts{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin:20px 0}
+.fact{background:#fff;padding:12px 14px;display:flex;gap:14px;align-items:flex-start}
+.fact dt{flex-shrink:0;width:76px;font-size:13px;color:var(--ink-3);font-family:var(--mono);padding-top:2px;letter-spacing:.02em}
+.fact dd{font-size:15.5px;color:var(--ink);line-height:1.75;flex:1}
+
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--blue-line);border:1px solid var(--blue-line);margin:22px 0}
+.stat{background:#fff;padding:14px 14px 13px}
+.stat b{display:block;font-family:var(--mono);font-size:21px;font-weight:600;color:var(--blue);line-height:1.25;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat span{display:block;font-size:12.5px;color:var(--ink-3);margin-top:4px;line-height:1.5}
+
+.note{margin:24px 0;padding:15px 17px;border-radius:2px;background:var(--gray-bg);border-left:3px solid var(--ink-3);font-size:15.5px;color:var(--ink-2);line-height:1.8}
+.note strong{color:var(--ink)}
+.note.warn{background:var(--coral-bg);border-left-color:var(--coral)}
+.note.warn strong{color:#B8461F}
+.note.good{background:var(--mint-bg);border-left-color:var(--mint)}
+.note.good strong{color:#0A7359}
+.note .tag{display:inline-block;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;padding:2px 7px;border-radius:2px;margin-bottom:8px;background:rgba(28,126,214,.1);color:var(--blue)}
+.note.warn .tag{background:rgba(238,107,69,.14);color:#B8461F}
+.note.good .tag{background:rgba(14,158,124,.13);color:#0A7359}
+
+ul,ol{margin:0 0 18px 0;padding-left:0;list-style:none}
+li{position:relative;padding-left:20px;margin-bottom:11px;font-size:16.5px;line-height:1.82;color:var(--ink)}
+li::before{content:"";position:absolute;left:4px;top:12px;width:5px;height:5px;border-radius:50%;background:var(--blue)}
+ul.plain li::before{background:var(--ink-3)}
+ol{counter-reset:n}
+ol li{padding-left:26px}
+ol li::before{counter-increment:n;content:counter(n);font-family:var(--mono);font-size:12.5px;color:var(--blue);background:none;width:auto;height:auto;border-radius:0;left:0;top:1px;font-weight:600}
+
+.tbl-wrap{margin:24px 0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:14.5px;line-height:1.7;background:#fff}
+th{text-align:left;padding:10px 11px;background:var(--blue-bg);color:var(--blue);font-weight:600;font-size:13px;border-bottom:1px solid var(--blue-line);white-space:nowrap;font-family:var(--mono);letter-spacing:.02em}
+td{padding:10px 11px;border-bottom:1px solid var(--line);color:var(--ink-2);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td strong{color:var(--ink)}
+td.mono{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+figure{margin:28px 0}
+figure svg{display:block;width:100%;height:auto}
+figcaption{font-size:13px;color:var(--ink-3);margin-top:10px;line-height:1.7;padding-left:2px}
+
+hr{border:0;border-top:1px solid var(--line);margin:50px 0}
+
+.closing{margin-top:56px;padding:24px 20px;border-radius:3px;background:linear-gradient(160deg,#E6F6F1 0%,#F5FCF9 100%);border:1px solid #C6E8DC;border-left:4px solid var(--mint)}
+.closing p:last-child{margin-bottom:0}
+.closing h3{margin-top:0;color:#0A7359}
+
+.doubt li::before{background:var(--coral)}
+.doubt li{font-size:15.5px;color:var(--ink-2)}
+.fix li::before{background:var(--coral)}
+
+.src h4{margin:22px 0 8px;font-size:14px;font-family:var(--mono);color:var(--blue);letter-spacing:.04em;font-weight:600}
+.src ol li{font-size:14px;color:var(--ink-3);line-height:1.75;margin-bottom:7px;padding-left:24px}
+.src ol li::before{color:var(--ink-3);font-size:12px}
+.src a{color:var(--ink-3);border-bottom:1px dotted var(--line);word-break:break-all}
+
+/* 全量清单 */
+.inv{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin:18px 0}
+.inv-row{background:#fff;padding:11px 13px}
+.inv-row .n{font-weight:600;font-size:15.5px;color:var(--ink);line-height:1.6}
+.inv-row .n .form{
+  display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+  padding:1px 6px;border-radius:2px;margin-left:6px;vertical-align:2px;
+  background:var(--blue-bg);color:var(--blue);font-weight:500;
+}
+.inv-row .n .form.hw{background:var(--coral-bg);color:#B8461F}
+.inv-row .n .form.mp{background:var(--mint-bg);color:#0A7359}
+.inv-row .d{font-size:13.5px;color:var(--ink-3);line-height:1.7;margin-top:3px}
+
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3);line-height:1.8;font-family:var(--mono)}
+
+@media(min-width:700px){
+  body{font-size:18.5px;padding:0 32px 110px;line-height:1.88}
+  .wrap{max-width:920px}
+  .cover{padding:76px 0 44px}
+  h1{font-size:40px;line-height:1.34}
+  .deck{font-size:19px}
+  h2{font-size:27px;padding:18px 0 18px 22px;margin:76px 0 28px}
+  h3{font-size:21px}
+  .tldr{padding:28px 28px;margin:36px 0 56px}
+  .tldr p{font-size:18px}
+  .stats{grid-template-columns:repeat(4,1fr)}
+  .stat b{font-size:24px}
+  .layer-body{padding:22px}
+  table{font-size:15px}
+  li{font-size:17.5px}
+  .inv-row .n{font-size:16.5px}
+}
+@media(min-width:1400px){
+  body{font-size:19.5px}
+  .wrap{max-width:1020px}
+  h1{font-size:46px}
+  h2{font-size:29px}
+  table{font-size:15.5px}
+}
+@media(min-width:1900px){
+  body{font-size:21px}
+  .wrap{max-width:1060px}
+  h1{font-size:52px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="cover">
+  <div class="kicker">Landscape / 2026.11</div>
+  <h1>国内 AI 招聘求职产品全景<br>四层地图，和一份<em>数字对账</em></h1>
+  <p class="deck">上一层卖结果，下一层卖工具，再下一层卖模板。同一批人，四种收钱方式。附 40+ 产品的形态清单与逐条数据核实。</p>
+  <div class="meta">
+    <span>2026-11-12</span>
+    <span>40+ 产品 / 12 个细分</span>
+    <span>承接 11-11 三家样本调研</span>
+  </div>
+</header>
+
+<section class="tldr">
+  <h2>30 秒版</h2>
+  <p><strong>国内产品可以分成四层，分界线不是技术，是「谁付钱、单价多少」。</strong>平台内嵌 AI（智联艾琳、BOSS DeepHire、猎聘同道汇才、支付宝晓叶）不单独收费，是保命工具；企业侧 AI 面试（北森、海纳、Moka、用友大易）按人次卖，单价已经打到 10 元；C 端工具（超级简历、牛客、职悟空）月费 18–29 元，做不成生意；AI 原生求职 Agent（毕师父、找北智职、屿智）卖结果承诺，靠高校和政府渠道活着。</p>
+  <p><strong>AI 面试的价格已经崩塌。</strong>北森 33 元/人次、牛客 30 元、Moka 10 元、讯飞智聘 10–20 元。北森 CEO 纪伟国的算法是「线下一场面试成本约 300 元，AI 能降到 20 元」——十五倍价差，两年内被吃完。这意味着 AI 面试不可能单独成为一门生意，只能是 HR SaaS 里的一个功能模块。</p>
+  <p><strong>最被低估的玩家是支付宝。</strong>「晓叶」2.0 年服务 1.6 亿用户、1500 万在招岗位、15 万岗位支持「报名即面试」、12 万门培训课，还开放了六大 AI 能力和 38 项原子能力给中小人力资源机构。它不在招聘赛道里竞争，直接把招聘变成超级 App 的一个入口。</p>
+  <p><strong>你摘录里有一处数字错配。</strong>智联艾琳的「30%」指的是推理成本降到原来的三成，不是「HR 操作步骤 -30%」——百度智能云案例页写的是操作步骤减少 80%。另外「前程无忧『悟空』大模型」查不到，悟空是智联的产品。逐条在附录 A。</p>
+</section>
+
+<h2><span class="num">01</span>四层地图</h2>
+
+<p class="lead">市面上讲这个赛道的文章，习惯按技术分（大模型 / Agent / 多模态），或者按场景分（校招 / 社招 / 蓝领）。这两种分法都看不出钱在哪。按「谁付钱」分，层级立刻清楚。</p>
+
+<figure>
+<svg viewBox="0 0 360 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="国内AI招聘产品四层地图">
+  <defs>
+    <style>
+      .cn{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+      .mo{font-family:"SF Mono",Consolas,monospace}
+    </style>
+  </defs>
+
+  <!-- 第一层 -->
+  <rect x="0" y="0" width="360" height="112" rx="3" fill="#E8F3FD" stroke="#D5E6F5"/>
+  <rect x="0" y="0" width="4" height="112" fill="#1C7ED6"/>
+  <text x="16" y="26" class="mo" font-size="10" fill="#1C7ED6">L1</text>
+  <text x="42" y="26" class="cn" font-size="14" font-weight="700" fill="#152430">平台内嵌 AI</text>
+  <text x="16" y="48" class="cn" font-size="11" fill="#3C5568">智联艾琳 · BOSS DeepHire · 猎聘同道汇才 · 支付宝晓叶</text>
+  <text x="16" y="66" class="cn" font-size="11" fill="#3C5568">鱼泡直聘 · 前程无忧 AI 招聘助手</text>
+  <text x="16" y="90" class="cn" font-size="11" fill="#1C7ED6" font-weight="600">不单独收费｜AI 是防守工事</text>
+  <text x="16" y="105" class="cn" font-size="10" fill="#6B7C8C">用户规模以亿计，靠岗位撮合本身赚钱</text>
+
+  <!-- 第二层 -->
+  <rect x="0" y="124" width="360" height="112" rx="3" fill="#E6F6F1" stroke="#C6E8DC"/>
+  <rect x="0" y="124" width="4" height="112" fill="#0E9E7C"/>
+  <text x="16" y="150" class="mo" font-size="10" fill="#0E9E7C">L2</text>
+  <text x="42" y="150" class="cn" font-size="14" font-weight="700" fill="#152430">企业侧 AI 面试与评估</text>
+  <text x="16" y="172" class="cn" font-size="11" fill="#3C5568">北森 · Moka · 用友大易 · 海纳 AI · 牛客</text>
+  <text x="16" y="190" class="cn" font-size="11" fill="#3C5568">中智光眸 · 讯飞智聘 · 来呗智聘 · 飞书招聘</text>
+  <text x="16" y="214" class="cn" font-size="11" fill="#0E9E7C" font-weight="600">10–33 元/人次｜唯一算得清 ROI 的一层</text>
+  <text x="16" y="229" class="cn" font-size="10" fill="#6B7C8C">对价是「省掉一场 300 元的线下面试」</text>
+
+  <!-- 第三层 -->
+  <rect x="0" y="248" width="360" height="112" rx="3" fill="#EFF4F8" stroke="#DCE6EE"/>
+  <rect x="0" y="248" width="4" height="112" fill="#6B7C8C"/>
+  <text x="16" y="274" class="mo" font-size="10" fill="#6B7C8C">L3</text>
+  <text x="42" y="274" class="cn" font-size="14" font-weight="700" fill="#152430">C 端工具</text>
+  <text x="16" y="296" class="cn" font-size="11" fill="#3C5568">超级简历 · AI 简历姬 · 牛客 · 实习僧</text>
+  <text x="16" y="314" class="cn" font-size="11" fill="#3C5568">智联职悟空 · BOSS 职决 · 鹅来面 · 简历本</text>
+  <text x="16" y="338" class="cn" font-size="11" fill="#6B7C8C" font-weight="600">18–29 元/月｜流量入口，不是生意</text>
+  <text x="16" y="353" class="cn" font-size="10" fill="#6B7C8C">ARPU 极低，靠导流或转介给上一层</text>
+
+  <!-- 第四层 -->
+  <rect x="0" y="372" width="360" height="112" rx="3" fill="#FDEDE8" stroke="#F5D5C9"/>
+  <rect x="0" y="372" width="4" height="112" fill="#EE6B45"/>
+  <text x="16" y="398" class="mo" font-size="10" fill="#EE6B45">L4</text>
+  <text x="42" y="398" class="cn" font-size="14" font-weight="700" fill="#152430">AI 原生求职 Agent</text>
+  <text x="16" y="420" class="cn" font-size="11" fill="#3C5568">毕师父 · 找北智职 · 屿智同行 · 仟寻职芽</text>
+  <text x="16" y="438" class="cn" font-size="11" fill="#3C5568">高顿 × 腾讯 WorkBuddy · TTC LovTalent</text>
+  <text x="16" y="462" class="cn" font-size="11" fill="#B8461F" font-weight="600">数千–数万/人｜卖结果承诺</text>
+  <text x="16" y="477" class="cn" font-size="10" fill="#6B7C8C">靠高校采购、政府活动、陪跑转化活着</text>
+
+  <text x="0" y="504" class="mo" font-size="9.5" fill="#A8B4BF">层与层之间存在导流关系：L3 拉人 → L4 收钱；L1 是所有人的天花板</text>
+</svg>
+<figcaption>四层的分界线是「单价 × 付费方」。越往上单笔金额越小、用户越多；越往下单笔越大、成交越依赖渠道。</figcaption>
+</figure>
+
+<h3>为什么是这个顺序</h3>
+
+<p>L1 到 L4 不是按技术先进程度排的，是按「离钱的距离」排的。</p>
+
+<p><strong>L1 平台内嵌 AI</strong> 的用户量最大、AI 无处不在，恰恰因为它不能单独收费——AI 是主业的护城河，收费会破坏撮合。智联、BOSS 直聘、猎聘三家的 AI 产品都不单卖，打包进原有账号体系。</p>
+
+<p><strong>L2 企业侧</strong> 是唯一能算清一笔账的层：一场线下面试成本约 300 元，AI 面试 10–33 元，省 90%。这种 ROI 不用教育客户，报个价就行。所以这一层最早实现规模化收入，也最早开始价格战。</p>
+
+<p><strong>L3 C 端工具</strong> 单价 18–29 元，看着用户多，其实每家都在给上一层导流。超级简历的会员费撑不起公司，真正的价值是被 BOSS、智联这样的平台收编，或者靠广告。</p>
+
+<p><strong>L4 AI 原生 Agent</strong> 单价最高，但成交最难——必须回答「你凭什么保证我拿到 Offer」。所以这一层没有一家靠投广告活着，全是渠道生意。</p>
+
+<h2><span class="num">02</span>L1：平台内嵌 AI —— 钱最多，动作最轻</h2>
+
+<div class="layer">
+  <div class="layer-head">
+    <div class="layer-tag">LAYER 01</div>
+    <div class="layer-name">四家综合平台的 AI 家底</div>
+    <div class="layer-sub">共同点：AI 全部藏在原有产品里，不单独卖</div>
+  </div>
+  <div class="layer-body">
+    <p>这一层不需要新获客，只需要把已有的岗位库和简历库喂给模型。所以四家的动作高度一致：自研或接入一个大模型，把所有环节重做一遍，然后打包进原有账号。</p>
+  </div>
+</div>
+
+<div class="tbl-wrap">
+<table>
+<thead>
+<tr><th>平台</th><th>AI 产品线</th><th>底座</th><th>关键数字</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>智联招聘</strong></td>
+<td>B端：艾琳（AI 招聘助手）、AI 易面 4.0<br>C端：职悟空（App + 小程序）</td>
+<td>文心 + DeepSeek-R1 教师 / ERNIE Speed 学生蒸馏</td>
+<td class="mono">匹配 93%、成本降至 30%、3.74 亿用户</td>
+</tr>
+<tr>
+<td><strong>BOSS 直聘</strong></td>
+<td>B端：DeepHire（全链路 Agent）<br>C端：职决（AI 求职助手）</td>
+<td>自研南北阁（Nanbeige2-16B 已开源）</td>
+<td class="mono">2025 AI 业务营收 1 亿元量级</td>
+</tr>
+<tr>
+<td><strong>前程无忧</strong></td>
+<td>AI 招聘助手（对话式搜寻）、AI 初筛、AI 淘金</td>
+<td>未公开，官方口径为「大模型底座」</td>
+<td class="mono">匹配 +50%、周期 -30%、2.8 亿简历库</td>
+</tr>
+<tr>
+<td><strong>同道猎聘</strong></td>
+<td>B端：AI-Pro、意图人选 Agent<br>H端：多猎 + 小易<br>C端：Dora、职伴 AI<br>测评：多面</td>
+<td>自研垂类大模型「同道汇才」</td>
+<td class="mono">AI 收入破 1 亿（占总营收 5%）</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3>猎聘是这一层里唯一披露 AI 收入的</h3>
+
+<p>2025 年财报：AI 相关产品综合现金回款突破 1 亿元，同比增长近 10 倍，占总营收约 5%。归母净利润 1.03 亿元。2026 年上半年 AI 产品回款同比再增近 100%，毛利率 79%。</p>
+
+<p>这组数字比任何宣传口径都有用，因为它给出了整个行业的分母：<em>一家做了二十多年、C 端注册用户 1.22 亿的中高端招聘平台，AI 产品一年卖 1 亿元。</em>这个量级放在中国 AI 招聘 122 亿元的市场里（华经产业研究院，2025 年），只占不到 1%。</p>
+
+<p>更能说明产品形态的是两个运营指标：截至 2025 年底，<strong>65% 的岗位订单可以在 2 小时内交付「具备沟通意向的候选人」</strong>；「意向人选」这个 Agent 的<strong>客户月度重复发起率 66%</strong>。前一个指标是结果承诺，后一个是留存——后者才是 To B 产品真正的健康度信号。</p>
+
+<div class="note">
+  <span class="tag">值得注意</span>
+  <p><strong>智联的模型方案是整个行业里唯一公开了技术细节的。</strong>千亿参数的 DeepSeek-R1 当教师模型，百亿参数的 ERNIE Speed 当学生模型，蒸馏调优之后「效果不变、推理成本降至原来的三成」。这不是公关话术，是能复现的工程方案（详见百度智能云官方案例页）。<br><br>它同时暴露了一件事：<strong>招聘场景的 AI 能力已经商品化了。</strong>既然可以用别人的教师模型蒸馏出自己要的学生模型，模型本身就不再是壁垒——壁垒回到数据和渠道。</p>
+</div>
+
+<h3>蓝领这一层被两家包了</h3>
+
+<p><strong>鱼泡直聘</strong>（成都鱼泡科技，2017 年成立，法人周峰）是蓝领赛道的头名。截至 2026 年：注册 1.3 亿、日活 400 万+、注册企业 800 万+、累计岗位 10 亿个、促成就业 12 亿人次。2021、2022 年完成钟鼎、顺为数亿元 A、B 轮，公开计划 2027 年上市。380 人研发团队，14 项发明专利。</p>
+
+<p>产品上它不讲 Agent，讲两件很土但很有效的事：一是自研匹配算法（工种、地域、薪资、经验多维），二是「一键直连企业负责人通话」，砍掉中介环节。这个设计比任何 AI 叙事都贴近蓝领场景——蓝领不需要简历优化，需要的是今天能跟工头说上话。</p>
+
+<div class="note warn">
+  <span class="tag">口径提醒</span>
+  <p>「求职周期从十余天压到约 2 小时」「简历与岗位匹配度提升 85%」这两个数字，出自 2026 年 7 月投放的软文（中华网科技、新浪财经转载），文末明确标注「此文仅供参考，不作买卖依据」。不是公司财报数据，也不是第三方审计口径。同类的「五大求职平台排名鱼泡第一（9.8 分）」也是同一批投放。</p>
+</div>
+
+<h3>真正被低估的是支付宝</h3>
+
+<p>「晓叶」不在招聘赛道的竞争名单里，但它的体量比任何一家招聘平台都大。</p>
+
+<div class="stats">
+  <div class="stat"><b>1.6亿</b><span>年服务用户</span></div>
+  <div class="stat"><b>1500万</b><span>在招岗位</span></div>
+  <div class="stat"><b>15万</b><span>岗位支持<br>「报名即面试」</span></div>
+  <div class="stat"><b>12万门</b><span>链接的培训课程</span></div>
+</div>
+
+<p>2026 年 1 月的生态大会上，「晓叶 AI 面试快」和「晓叶 AI 入职快」上线，官方口径是部分高频岗位入职转化率提升超 200%、面试成本降低约 80%、求职者周期缩短至 24 小时以内。2026 年 9 月外滩大会发布 2.0 版，把它从「岗位匹配」延伸到求职、面试、登记、用工、职业规划与培训全流程。</p>
+
+<p>更值得注意的是同场的另一个动作：<strong>「晓叶」AI 开放平台</strong>，面向制造业、服务业、中小人力资源机构开放 AI 投递、AI 面试、AI 跟进、AI 核验、AI 用工、AI 培训六大能力和 38 项数字化原子能力，企业最快一周完成对接。</p>
+
+<p>这一步的意味很重。它把 L2 那批 AI 面试厂商的核心能力，做成了免费或低价的基础设施，开放给最没有技术能力的中小人力资源机构。鸿富锦精密工业（武汉）的案例是：报名后 10 分钟智能跟进、面试后即刻输出评估报告、入职前自动核验实名资质，单人面试时长从 15 分钟压到 5 分钟。</p>
+
+<div class="note">
+  <span class="tag">判断</span>
+  <p>支付宝做这件事不需要靠招聘赚钱。它要的是「就业」这个场景的用户停留和政企关系——就业是地方政府最硬的 KPI 之一，而支付宝有 12 万门培训课、800 家职教机构、区块链合同、安心工作证这一整套。对 L2 的厂商来说，这是一个「上游被免费化」的风险；对 L4 的创业公司来说，这是一个「渠道被截胡」的风险。</p>
+</div>
+
+<h2><span class="num">03</span>L2：企业侧 AI 面试 —— 单价已经打到 10 块</h2>
+
+<p class="lead">这一层是整张地图里唯一有清晰 ROI 账的地方，也是价格战打得最狠的地方。先看两组公司：卖整套 HR 系统的，和只卖 AI 面试的。</p>
+
+<h3>一体化 HR SaaS：把 AI 当第二增长曲线</h3>
+
+<div class="tbl-wrap">
+<table>
+<thead>
+<tr><th>厂商</th><th>AI 产品</th><th>客户规模</th><th>财务与效果</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>北森</strong></td>
+<td>AI 面试官、AI 陪练、SenGPT 垂类模型、AI 招聘专家团</td>
+<td>2500+ 企业，6000+ 中大型客户，70% 中国 500 强</td>
+<td class="mono">2026 财年收入 11.05 亿<br>AI 新签合同 8700 万</td>
+</tr>
+<tr>
+<td><strong>Moka</strong></td>
+<td>招聘 Eva、人事 Eva、BP Eva 三位「AI 同事」+ Moka AI 工坊</td>
+<td>3500+ 客户，3000+ 中大型企业</td>
+<td class="mono">单店招聘周期 15.4→3.8 天<br>评估一致性 87%</td>
+</tr>
+<tr>
+<td><strong>用友大易</strong></td>
+<td>TRM + ATS 双引擎，TRM.AI 2.0</td>
+<td>2200+ 企业，45% 国内 500 强</td>
+<td class="mono">评分一致性 92.3%<br>简历解析 98%</td>
+</tr>
+<tr>
+<td><strong>飞书招聘</strong></td>
+<td>套件内招聘模块 + 智能面试总结</td>
+<td>依托飞书企业客户</td>
+<td class="mono">与 IM、日历、审批打通</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>北森是这一层唯一上市的样本，财报能反推很多事。2026 财年：整体收入 11.05 亿元（+16.9%），云端 HCM 8.64 亿元（+19.8%），经调整净利润 5549 万元，<strong>首次全年扭亏为盈</strong>。</p>
+
+<p>AI 部分：新签合同 8700 万元，同比增长近 10 倍；AI 客户 1400+，存量客户渗透率从 2–3% 提升到 15%；客均签约金额 5.9 万元、同比翻倍；AI 产品毛利率 79%。</p>
+
+<p>但同一份财报里还有另一个数字：按国际财务报告准则，账面归母净利润仍亏损 2340 万元。<em>经调整口径盈利、IFRS 口径亏损，差额来自股权激励和营销研发投入。</em>这不影响方向判断，但说明 AI 这块业务还没到能养活整家公司的程度——8700 万合同额，只占总收入 7.9%。</p>
+
+<div class="note good">
+  <span class="tag">结构性信号</span>
+  <p>北森 CEO 纪伟国说过一句被行业反复引用的话：招聘是业务入口，可以带动核心人力、薪酬、培训等其他模块的销售。这就是为什么一体化厂商愿意把 AI 面试卖得这么便宜——<strong>它不是利润品，是钩子</strong>。Moka 把整个品牌升级成「Moka AI」、推出三位「AI 同事」，逻辑一样：用一个能立刻见效的功能，撬动整套系统的续费和扩展。</p>
+</div>
+
+<h3>垂类 AI 面试：海纳的规模最大，价格已经见底</h3>
+
+<p><strong>海纳 AI</strong>（北京群星闪耀科技，2017 年成立，海纳 AI 品牌 2019 年启动）是纯做 AI 面试里规模最大的一家。创始人梁公军，原新浪技术总监、微软技术顾问、鲜果网创始人。累计融资 5 轮、1.4 亿元人民币：天使轮 2019、Pre-A 2022-12（阿米巴资本）、A 轮 2023-11（联想创投）、B 轮 2025-02-18（5000 万元，德同资本领投、求是资本跟投）。</p>
+
+<div class="stats">
+  <div class="stat"><b>1200万</b><span>累计 AI 面试人次</span></div>
+  <div class="stat"><b>5000+</b><span>企业客户<br>（2025 年 1 月）</span></div>
+  <div class="stat"><b>800万</b><span>2024 全年面试量<br>同比增超 3 倍</span></div>
+  <div class="stat"><b>10万+</b><span>头部集团年面试量<br>单客户级别</span></div>
+</div>
+
+<p>它的客户结构很有说服力：顺丰、沃尔玛、瑞幸咖啡、美的、海信、百果园——都是用工人数以万计、单岗招聘量大、流动率高的企业。中国用工量最大的八个行业里，Top3 集团大部分在用。2025 年 9 月还跟支付宝就业合作，做「总部 AI 直聘」。</p>
+
+<p><strong>其他几家各有切口：</strong></p>
+
+<ul>
+<li><strong>牛客</strong>：技术岗护城河。累计注册用户超 900 万，85% 来自 985/211 及 QS100 高校，自研 NowGPT。2026 年升级了候选人提问、唇音同步、单图生成数字人面试官（上传一张正面照即可生成）。</li>
+<li><strong>中智「光眸」</strong>：AI 数字人面试，自研国产大模型，主打动态追问和千人千面。已在中智全国 74 家分支机构应用，完成超 1.7 万场面试，平均降低招聘成本近 40%，初筛反馈从 3 天缩到 4 小时。</li>
+<li><strong>讯飞智聘</strong>：3D 虚拟形象面试、7×24 面试间，主打蓝领、客服、多语种岗位，按次计费。</li>
+<li><strong>来呗智聘</strong>（网萌科技）：8024 套岗位能力模型，按结果付费——拿到面试人联系方式 100 积分/份，完成 AI 面试 500 积分/次。这个付费结构在整层里最激进：不按席位、不按年费，按交付。</li>
+</ul>
+
+<h3>价格表才是这一层最真实的信息</h3>
+
+<figure>
+<svg viewBox="0 0 360 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI面试单价与线下面试成本对比">
+  <defs>
+    <style>
+      .cn{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+      .mo{font-family:"SF Mono",Consolas,monospace}
+    </style>
+  </defs>
+
+  <text x="0" y="14" class="mo" font-size="9.5" fill="#6B7C8C">单次面试成本对比（人民币）</text>
+
+  <!-- 线下 -->
+  <text x="0" y="46" class="cn" font-size="11.5" fill="#3C5568">线下面试</text>
+  <rect x="78" y="34" width="240" height="18" fill="#EE6B45" opacity="0.82"/>
+  <text x="288" y="47" class="mo" font-size="12" font-weight="600" fill="#B8461F">≈300</text>
+
+  <!-- 北森 -->
+  <text x="0" y="82" class="cn" font-size="11.5" fill="#3C5568">北森</text>
+  <rect x="78" y="70" width="30" height="18" fill="#1C7ED6" opacity="0.75"/>
+  <text x="116" y="83" class="mo" font-size="12" font-weight="600" fill="#1C7ED6">33</text>
+  <text x="140" y="83" class="cn" font-size="10" fill="#6B7C8C">2万含600人次</text>
+
+  <!-- 牛客 -->
+  <text x="0" y="114" class="cn" font-size="11.5" fill="#3C5568">牛客</text>
+  <rect x="78" y="102" width="27" height="18" fill="#1C7ED6" opacity="0.7"/>
+  <text x="113" y="115" class="mo" font-size="12" font-weight="600" fill="#1C7ED6">30</text>
+  <text x="137" y="115" class="cn" font-size="10" fill="#6B7C8C">按次计费</text>
+
+  <!-- 讯飞 -->
+  <text x="0" y="146" class="cn" font-size="11.5" fill="#3C5568">讯飞智聘</text>
+  <rect x="78" y="134" width="15" height="18" fill="#1C7ED6" opacity="0.65"/>
+  <rect x="96" y="134" width="12" height="18" fill="#1C7ED6" opacity="0.28"/>
+  <text x="116" y="147" class="mo" font-size="12" font-weight="600" fill="#1C7ED6">10–20</text>
+
+  <!-- Moka -->
+  <text x="0" y="178" class="cn" font-size="11.5" fill="#3C5568">Moka</text>
+  <rect x="78" y="166" width="10" height="18" fill="#0E9E7C" opacity="0.8"/>
+  <text x="96" y="179" class="mo" font-size="12" font-weight="600" fill="#0E9E7C">10</text>
+  <text x="120" y="179" class="cn" font-size="10" fill="#6B7C8C">1.8万账号赠2万积分</text>
+
+  <!-- 分界 -->
+  <line x1="0" y1="206" x2="360" y2="206" stroke="#DCE6EE" stroke-dasharray="3 3"/>
+  <text x="0" y="224" class="cn" font-size="11" fill="#6B7C8C">线下 → AI，价差 9–30 倍</text>
+
+  <!-- 说明块 -->
+  <rect x="0" y="240" width="360" height="94" rx="3" fill="#E8F3FD" stroke="#D5E6F5"/>
+  <text x="14" y="262" class="cn" font-size="11.5" font-weight="600" fill="#1C7ED6">低价意味着什么</text>
+  <text x="14" y="281" class="cn" font-size="11" fill="#3C5568">① 采购决策不需要走招标，部门预算就能批</text>
+  <text x="14" y="299" class="cn" font-size="11" fill="#3C5568">② 但也撑不起独立公司——33 元/人次卖 100 万次才 3300 万</text>
+  <text x="14" y="317" class="cn" font-size="11" fill="#3C5568">③ 所以只能作为 HR SaaS 的功能，或靠企业级合同打包</text>
+
+  <rect x="0" y="346" width="360" height="34" rx="3" fill="#FDEDE8" stroke="#F5D5C9"/>
+  <text x="14" y="367" class="cn" font-size="10.5" fill="#B8461F">对比：毕师父 AI 面试舱 7.92 万元/台，卖给高校——同一个能力，换个买单方，差三个数量级</text>
+
+  <text x="0" y="396" class="mo" font-size="9" fill="#A8B4BF">来源：南方周末客户询价、各厂商公开报价、纪伟国公开表态</text>
+</svg>
+<figcaption>同一个 AI 面试能力，卖给企业是 10–33 元/人次，卖给高校是一台硬件 7.92 万元。定价差异不来自技术，来自买单方的预算科目。</figcaption>
+</figure>
+
+<p>这张图解释了一个很多人想不通的现象：为什么 AI 面试技术早已成熟，却没有跑出一家上市公司。答案是单价太低、频次太散，单靠这一项业务，年收入天花板在几千万量级。</p>
+
+<h2><span class="num">04</span>L3：C 端工具 —— 便宜，但没有一家做成生意</h2>
+
+<div class="tbl-wrap">
+<table>
+<thead>
+<tr><th>类型</th><th>代表产品</th><th>定价</th><th>真实角色</th></tr>
+</thead>
+<tbody>
+<tr><td>简历工具</td><td>超级简历 WonderCV、AI 简历姬、简历本、职徒简历</td><td class="mono">18–29 元/月<br>99–128 元终身</td><td>做单点，攒用户，等被收编</td></tr>
+<tr><td>面试训练</td><td>牛客、鹅来面、面试鸭、ShowMeBug</td><td class="mono">免费 + 增值</td><td>垂直人群，技术岗最集中</td></tr>
+<tr><td>校招垂直</td><td>实习僧、应届生求职网、海投网</td><td class="mono">免费，向企业收费</td><td>岗位渠道，不是 AI 生意</td></tr>
+<tr><td>官方平台</td><td>国家大学生就业服务平台、国聘</td><td class="mono">免费</td><td>政策性入口，不可商业化</td></tr>
+<tr><td>大厂 C 端助手</td><td>智联职悟空、BOSS 职决、猎聘 Dora、仟寻职芽</td><td class="mono">免费</td><td>母体平台的用户留存工具</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>这一层最典型的产品是超级简历：5000+ 套模板、AI 一键润色、基于行业语料库的关键词密度检测和 ATS 校准，月度会员 18–29 元、终身会员 99–128 元。产品做得不差，但这个价格结构注定了它只能是一门「小而稳」的生意——一个用户一辈子可能只买一次终身会员。</p>
+
+<p>反过来看大厂的 C 端助手，全部免费。智联职悟空、BOSS 职决、猎聘 Dora 都是免费策略，因为它们根本不指望 C 端赚钱，要的是月活和使用时长。职悟空团队自己讲得很清楚：做独立 App 就是为了「主动触达」——小程序没法后台推送，用户一退出就联系不上；App 有系统推送权限，才能做「求职规划定时提醒」。</p>
+
+<div class="note">
+  <span class="tag">一条经验</span>
+  <p>C 端求职工具在中国只有两种活法：<strong>要么免费做母体平台的留存工具，要么做到单点极致然后被收编。</strong>中间状态（收费 20 块、功能不极致、没有母体）是最危险的，因为用户没有理由为「不确定有没有用」的东西付钱。</p>
+</div>
+
+<h2><span class="num">05</span>L4：AI 原生求职 Agent —— 卖结果，靠渠道</h2>
+
+<p class="lead">这一层就是上一份报告的主角，但补进两家上次没覆盖的：找北智职和高顿。</p>
+
+<div class="layer">
+  <div class="layer-head">
+    <div class="layer-tag">LAYER 04</div>
+    <div class="layer-name">新发现：找北智职，毕师父的同城对手</div>
+    <div class="layer-sub">杭州找北智职智能科技有限公司 / CEO 郝耘琦</div>
+  </div>
+  <div class="layer-body">
+    <p>2026 年 9 月 29 日，杭州第三届人力资源服务技能大赛暨人力资源服务和产品创新创优路演，八个入围项目全部聚焦「AI + 人力资源」。特等奖给了找北智职的「基于 AI 智能体矩阵的大学生精准求职服务平台」，毕师父拿的是优秀项目。</p>
+    <p>也就是说，在同一场由杭州市人社局主办的评审上，找北排在了毕师父前面。这家公司的数据是：累计研发投入 1400 万元，小程序日活 6 万，后台用户 123 万，已助力 20 余万名大学生。今年下半年新增 1000 平方米办公场地，团队扩至百人。</p>
+    <p>把它和毕师父放在一起看很有意思：两家都在杭州，都做大学生 AI 求职，都靠政府和高校资源，都强调「全流程 AI 求职服务」——选岗推荐、简历优化、模拟面试。区别在于毕师父有真人学长网络和硬件产品线（面试舱、一体机），找北是纯软件（小程序 + 智能体矩阵）。</p>
+  </div>
+</div>
+
+<p>这个对比揭示了一个容易被忽略的事实：<em>这一层真正的竞争不在产品，在渠道排位。</em>同一场路演的名次，直接决定了谁能进高校采购名单。而这场的评委是区人力社保局——这跟产品好不好用关系不大。</p>
+
+<h3>高顿：从职业教育切入的第四种打法</h3>
+
+<p>2026 年 9 月 2 日，腾讯 WorkBuddy 开放平台上线，首批引入超百家生态伙伴。高顿的「大学生实习就业助手」作为实习就业场景的标杆产品首发。</p>
+
+<p>它的路径跟前三家都不同：不做独立 App，把自己封装成 WorkBuddy 生态里的 Skill + MCP 连接器，用户通过 AI 助手直接调用。能力覆盖职业测评（性格、锚、兴趣、能力四大测评）→ 智能选岗（对接高顿岗位库，可按进面分数、竞争比、薪资筛选）→ 简历诊断 → 网申代填 → 面试模拟（公考、央国企、企业校招真题）。</p>
+
+<p>高顿的底牌是 20 年职业教育和升学就业积累，加上腾讯 2020 年以来的战略投资。它不需要重新获客——现有的学员就是用户；也不需要自己做 Agent 框架——腾讯提供。这是「内容商 + 平台」的组合，比纯创业公司轻得多。</p>
+
+<h3>这一层的收入结构，说穿了是三笔钱</h3>
+
+<ol>
+<li><strong>高校采购</strong>：硬件（AI 面试舱 7.92 万元/台）+ 软件（SaaS 看板 3/5/8 万分档）。这笔钱走政府采购流程，可预测但慢。</li>
+<li><strong>政府购买服务</strong>：双选会执行、就业活动运营。屿智联合南山区人社局和清华 SIGS 办秋招会，就是这个模式。</li>
+<li><strong>学生付费</strong>：陪跑 3–12 个月、学长直推、问诊咨询（¥99 起）、工具月卡（¥29 起）。这笔钱不稳定，但是唯一能规模化的一部分。</li>
+</ol>
+
+<p>三笔钱的共同点是：<strong>都不靠产品力本身成交。</strong>第一笔靠资质和背书，第二笔靠关系和执行能力，第三笔靠前两笔带来的信任。<em>这是服务业的逻辑，不是软件业的逻辑。</em>理解这一点，就不会再用 SaaS 的估值方式去看这类公司。</p>
+
+<h2><span class="num">06</span>对账：你摘录里的六个数字</h2>
+
+<p class="lead">你给的摘录质量不错，方向和量级都对得上。逐条核实之后，有六处需要修正或加限定。</p>
+
+<div class="tbl-wrap">
+<table>
+<thead>
+<tr><th>摘录原文</th><th>核实结果</th><th>问题</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>智联艾琳：匹配 93%、推理成本降至约三成、<strong>HR 操作步骤 -30%</strong></td>
+<td>前两项属实（百度智能云官方案例页）。第三项应为 <strong>-80%</strong>。</td>
+<td class="mono">数字错配</td>
+</tr>
+<tr>
+<td>前程无忧「<strong>悟空</strong>」大模型</td>
+<td>查不到。悟空是智联的产品「职悟空」。前程无忧的 AI 产品叫「AI 招聘助手」，2026 年 2 月推出。</td>
+<td class="mono">主体归属错</td>
+</tr>
+<tr>
+<td>前程无忧：匹配 +50%、周期 -30%、<strong>半年拦截异常企业 3 万+</strong></td>
+<td>前两项在前程无忧官方指南页可查。第三项未在官方渠道检索到，可能来自其他稿件。</td>
+<td class="mono">待证</td>
+</tr>
+<tr>
+<td>BOSS 直聘内测全链路 Agent「DeepHire」</td>
+<td>属实。2026 年 3 月上线内测，基于自研南北阁大模型。补充：C 端另有「职决」，需邀请码。</td>
+<td class="mono">信息不全</td>
+</tr>
+<tr>
+<td>海纳 AI：1200 万人次、5000+ 企业、2025-02 完成 5000 万元 B 轮（德同领投）</td>
+<td>全部属实。补充：累计融资 5 轮共 1.4 亿元；A 轮 2023-11 联想创投，Pre-A 2022-12 阿米巴资本。</td>
+<td class="mono">可补全</td>
+</tr>
+<tr>
+<td>鱼泡直聘：注册 1.3 亿、日活 400 万，求职周期十余天→约 2 小时、匹配度 +85%</td>
+<td>前两项属实。后两项出自 2026-07 软文，文末标注「仅供参考，不作买卖依据」。</td>
+<td class="mono">广告口径</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>另外，你摘录里那句「真正跑通的是『平台内嵌 AI』和『垂直 Agent 被并购』两条路」——前半句我完全同意，后半句在海外有实证、在国内还没有。</p>
+
+<h3>关于「被并购」这条路的实证</h3>
+
+<p>有机构在系统性追踪这个领域的并购：Work Insiders 的记录显示，2025 年 1 月以来招聘与 HR 软件领域共 88 起收购、合并、改名或停运，其中 2026 年至今 56 起，78 起是收购。最近几笔直接相关的：</p>
+
+<ul class="plain">
+<li><strong>2026-10-23</strong> Dayforce 收购 Ribbon AI —— Ribbon 的语音面试官将内置进 Dayforce 的 agentic recruiting，<em>独立产品线未来未说明</em>。这是最典型的「垂类被吸收」。</li>
+<li><strong>2026-10-06</strong> SAP 收购 TechWolf —— 技能图谱并入 SuccessFactors 和 Joule。</li>
+<li><strong>2026-09-17</strong> Harver 收购 Symphony Talent —— 评估 + 招聘营销 CRM 合并成「人才智能平台」。</li>
+<li><strong>2026-08-11</strong> Metaview 收购 Reval —— Reval 是「AI 原生招聘服务公司」（不是软件），做的是 AI 寻访筛选交付。收购后团队并入 Metaview 做自主招聘 Agent。</li>
+<li><strong>2026-10-16</strong> Fetcher 停运 —— 做寻访工具的，客户被引导迁移到 Juicebox。</li>
+<li><strong>2026-06-09</strong> 韩国 Codeit 收购 WhatTime（RoundHR）—— 把 AI 面试 KADE 与招聘管理平台合并。</li>
+</ul>
+
+<p>这个模式很清楚：<strong>一体化 HR 套件在买 AI 单点能力，把「AI 面试」「AI 寻访」变成套件里的一个开关而不是一个独立产品。</strong>买单的理由不是技术，是客户名单——Ribbon 的客户变成 Dayforce 的客户。</p>
+
+<p>国内还没有看到同类案例。可能的原因是：国内 HR SaaS 的集中度还不够高（北森 11 亿收入、Moka 3500 家客户、用友大易 2200 家，都还没到能大规模扫货的体量），而且垂类厂商自己也在往一体化走（海纳做生态合作年、接支付宝，Moka 直接升级成 Moka AI）。</p>
+
+<h2><span class="num">07</span>为什么国内没有出现 Jack &amp; Jill</h2>
+
+<p>上一份报告提过海外双 Agent 撮合模式（4000 万美元 A 轮）。放到国内的语境里看，它需要三个前提，国内一个都不具备。</p>
+
+<h4>前提一：企业愿意让 Agent 替自己判断用人需求</h4>
+
+<p>Jack &amp; Jill 的 Jill 是「嵌入企业」的 Agent，要学习团队结构、技术门槛、文化。这在国内意味着把用人画像和判断标准交给第三方系统——中大型企业的 HR 和业务负责人不会同意。国内能接受的形式是「给建议」，不是「代为判断」。</p>
+
+<h4>前提二：有一个不归属任何平台的投递入口</h4>
+
+<p>海外有企业自建招聘页 + 通用 ATS（Greenhouse、Lever），第三方可以合法接入。国内岗位集中在 BOSS、智联、前程无忧、猎聘四家手里，投递入口是平台资产，不开放。这让「跳过投递」这个设计失去落点——本来就没有一个必须绕过的投递环节。</p>
+
+<h4>前提三：可按入职结果收费的付费习惯</h4>
+
+<p>Jack &amp; Jill 对候选人免费、企业按入职付费。这个模型依赖猎头付费习惯的普及。国内只有中高端猎头有这种付费结构（TTC 做的就是），而大众岗位的企业端习惯是按「发布职位 + 下载简历」付费，不接受按入职结算。</p>
+
+<div class="note">
+  <span class="tag">一个反向观察</span>
+  <p>国内唯一接近这个模式的，是 TTC 的小麦招聘——它在微信群里充当企业侧的招聘 Agent，双边都用 Agent，但候选人侧仍是真人顾问在关键节点介入。区别在于：<strong>TTC 不取消投递，它把投递环节整个买下来了。</strong>企业付猎头费，Agent 负责效率。这条路在中国比 Jack &amp; Jill 更现实，因为它没有挑战任何一方的既有利益。</p>
+</div>
+
+<hr>
+
+<section class="closing">
+  <h3>四层看完，其实只有一句话</h3>
+  <p>AI 在招聘行业已经无处不在，但每一层能收的钱被两层结构锁死了：上面被平台免费化（支付宝开放六大能力、智联 BOSS 把 AI 打包进账号），下面被单价压平（10 元一次的 AI 面试，撑不起一家公司）。</p>
+  <p>所以真正有余量的只剩两个位置：<strong>做企业侧的整套系统</strong>（北森、Moka 这条线，用 AI 面试当钩子卖全套），或者<strong>做结果承诺的服务</strong>（毕师父、找北这一条线，用渠道换信任、用信任换客单价）。中间那层卖单点工具、卖会员订阅的，两年内会被挤干净。</p>
+  <p>判断一家公司值不值得看，问一个问题就够：<em>它收的那笔钱，明年还在不在同一个科目里。</em></p>
+</section>
+
+<section class="src">
+<h2><span class="num">08</span>附录 A：纠错三条</h2>
+
+<ul class="fix">
+<li><strong>智联艾琳的「30%」是成本口径，不是 HR 操作步骤。</strong>百度智能云案例页原文：人岗匹配准确率 93%、模型推理成本降至 30%（即降 70%）、HR 操作步骤减少 80%。你摘录里把 30% 配到了操作步骤上。另外部分报告写「操作步骤 -30%」，与官方口径不符，疑为转述串行。</li>
+<li><strong>「前程无忧『悟空』大模型」不存在。</strong>悟空是智联招聘的 C 端产品「职悟空」（2026 年 7 月 WAIC 发布，官网 wukong.zhaopin.com）。前程无忧的对应产品是 2026 年 2 月推出的「AI 招聘助手」，底层未公开命名。搜索「前程无忧 悟空」会命中一个叫「悟空易职」的第三方匹配系统，与 51job 无关。</li>
+<li><strong>BOSS 直聘的 C 端 AI 助手叫「职决」，不叫 DeepHire。</strong>DeepHire 是 B 端全链路招聘 Agent（2026 年 3 月内测）。职决是 C 端求职助手，需邀请码，与 BOSS 账号数据打通，功能含 AI 求职诊断、智能推荐、简历优化、自动投递。两者经常被媒体混为一谈。</li>
+</ul>
+
+<h2><span class="num">09</span>附录 B：国内产品全量清单</h2>
+
+<p class="lead">按四层归类，标注形态。<span class="form" style="display:inline-block;font-family:var(--mono);font-size:10.5px;padding:1px 6px;border-radius:2px;background:var(--blue-bg);color:var(--blue)">APP</span> 独立应用　<span class="form mp" style="display:inline-block;font-family:var(--mono);font-size:10.5px;padding:1px 6px;border-radius:2px;background:var(--mint-bg);color:#0A7359">小程序</span> 微信/支付宝小程序　<span class="form hw" style="display:inline-block;font-family:var(--mono);font-size:10.5px;padding:1px 6px;border-radius:2px;background:var(--coral-bg);color:#B8461F">硬件</span> 实体设备</p>
+
+<h3>L1 平台内嵌 AI</h3>
+
+<div class="inv">
+  <div class="inv-row"><div class="n">智联招聘<span class="form">APP</span><span class="form mp">小程序</span></div><div class="d">艾琳（B端 AI 招聘助手）、AI 易面 4.0、职悟空（C端，有独立 App）</div></div>
+  <div class="inv-row"><div class="n">BOSS 直聘<span class="form">APP</span><span class="form mp">小程序</span></div><div class="d">DeepHire（B端全链路 Agent）、职决（C端，内测邀请制）、南北阁大模型</div></div>
+  <div class="inv-row"><div class="n">前程无忧 51job<span class="form">APP</span><span class="form mp">小程序</span></div><div class="d">AI 招聘助手、AI 初筛、AI 淘金、对话式搜寻、人才订阅</div></div>
+  <div class="inv-row"><div class="n">同道猎聘<span class="form">APP</span><span class="form mp">小程序</span></div><div class="d">AI-Pro 账号、意向人选 Agent、多面（测评）、Dora（C端）、职伴 AI、小易（猎头端）</div></div>
+  <div class="inv-row"><div class="n">鱼泡直聘<span class="form">APP</span><span class="form mp">小程序</span></div><div class="d">蓝领为主，AI 智能匹配、一键直连负责人、AI 自动派单（与支付宝晓叶合作）</div></div>
+  <div class="inv-row"><div class="n">支付宝「晓叶」<span class="form">APP内</span><span class="form mp">小程序</span></div><div class="d">AI 就业助手 2.0，语音唤起，15 万岗位「报名即面试」，另有开放平台六大能力</div></div>
+  <div class="inv-row"><div class="n">58 同城招聘<span class="form">APP</span></div><div class="d">蓝领与基层岗位，AI 匹配与推荐；与鱼泡形成直接竞争</div></div>
+  <div class="inv-row"><div class="n">脉脉<span class="form">APP</span></div><div class="d">职场社交侧，AI 人才推荐与雇主品牌；「职得去公司」评选方</div></div>
+</div>
+
+<h3>L2 企业侧 AI 面试与评估</h3>
+
+<div class="inv">
+  <div class="inv-row"><div class="n">北森<span class="form">SaaS</span></div><div class="d">AI 面试官、AI 陪练、AI 招聘专家团、SenGPT 垂类模型；33 元/人次（2 万含 600 人次）</div></div>
+  <div class="inv-row"><div class="n">Moka<span class="form">SaaS</span></div><div class="d">招聘 Eva / 人事 Eva / BP Eva 三位 AI 同事、Moka AI 工坊；10 元/人次（1.8 万账号赠 2 万积分）</div></div>
+  <div class="inv-row"><div class="n">用友大易<span class="form">SaaS</span></div><div class="d">TRM + ATS 双引擎、TRM.AI 2.0；年费 10–30 万 + 面试场次包 1–5 万</div></div>
+  <div class="inv-row"><div class="n">飞书招聘<span class="form">SaaS</span></div><div class="d">套件内模块，智能面试总结、与 IM 日历审批打通</div></div>
+  <div class="inv-row"><div class="n">海纳 AI<span class="form">SaaS</span></div><div class="d">AI 面试官，蓝灰领与校招为主，1200 万人次、5000+ 企业；PC 版 2025-07 上线</div></div>
+  <div class="inv-row"><div class="n">牛客<span class="form">APP</span><span class="form">Web</span></div><div class="d">NowGPT 驱动的 AI 面试官，技术岗护城河；900 万注册用户，30 元/人次</div></div>
+  <div class="inv-row"><div class="n">中智「光眸」<span class="form">SaaS</span></div><div class="d">AI 数字人面试，动态追问，74 家分支机构、1.7 万场面试</div></div>
+  <div class="inv-row"><div class="n">讯飞智聘<span class="form">SaaS</span></div><div class="d">3D 虚拟形象面试、7×24 面试间，蓝领/客服/多语种，10–20 元/次</div></div>
+  <div class="inv-row"><div class="n">来呗智聘<span class="form">SaaS</span></div><div class="d">网萌科技，8024 套岗位能力模型，按结果付费（100 积分/份简历、500 积分/次面试）</div></div>
+  <div class="inv-row"><div class="n">ShowMeBug<span class="form">SaaS</span></div><div class="d">技术岗在线编程评估，笔试与面试合并</div></div>
+  <div class="inv-row"><div class="n">谷露 / 云招<span class="form">SaaS</span></div><div class="d">猎头与招聘流程管理，AI 寻访与人选推荐</div></div>
+  <div class="inv-row"><div class="n">FESCO AI 招聘<span class="form">服务</span></div><div class="d">RPA + AI，简历初筛到人才管理五环节；简历解析率 62%→95%</div></div>
+</div>
+
+<h3>L3 C 端工具</h3>
+
+<div class="inv">
+  <div class="inv-row"><div class="n">超级简历 WonderCV<span class="form">APP</span><span class="form">Web</span></div><div class="d">5000+ 模板、AI 润色与评分、ATS 校准；18–29 元/月，99–128 元终身</div></div>
+  <div class="inv-row"><div class="n">AI 简历姬<span class="form">Web</span></div><div class="d">JD 关键词对齐、ATS 诊断、STAR 结构重写、1000+ 岗位模拟面试题库</div></div>
+  <div class="inv-row"><div class="n">实习僧<span class="form">APP</span><span class="form mp">小程序</span></div><div class="d">实习与校招垂直平台，AI 模拟面试覆盖产品/运营/人力等五大岗位</div></div>
+  <div class="inv-row"><div class="n">应届生求职网<span class="form">Web</span></div><div class="d">老牌校招信息站，宣讲会与网申信息聚合</div></div>
+  <div class="inv-row"><div class="n">海投网<span class="form">Web</span><span class="form mp">小程序</span></div><div class="d">校招信息聚合与宣讲会查询</div></div>
+  <div class="inv-row"><div class="n">鹅来面<span class="form">APP</span></div><div class="d">面试实时提词辅助，差异化在临场场景</div></div>
+  <div class="inv-row"><div class="n">面试鸭<span class="form">Web</span><span class="form mp">小程序</span></div><div class="d">技术岗面试题库与面经社区</div></div>
+  <div class="inv-row"><div class="n">百度网盘 AI 求职套件<span class="form">APP内</span></div><div class="d">简历生成与优化，绑定网盘存量用户顺手完成求职准备</div></div>
+  <div class="inv-row"><div class="n">国家大学生就业服务平台<span class="form">Web</span><span class="form mp">小程序</span></div><div class="d">教育部学生服务与素质发展中心运营，国企/事业单位/基层项目岗位</div></div>
+  <div class="inv-row"><div class="n">国聘<span class="form">APP</span><span class="form">Web</span></div><div class="d">央国企招聘官方平台</div></div>
+</div>
+
+<h3>L4 AI 原生求职 Agent</h3>
+
+<div class="inv">
+  <div class="inv-row"><div class="n">毕师父<span class="form mp">小程序</span><span class="form hw">硬件</span></div><div class="d">跃鱼信息 / 童部林；AI 简历评分、模拟面试、网申、学长师父；AI 面试舱 7.92 万/台，SaaS 3/5/8 万分档</div></div>
+  <div class="inv-row"><div class="n">找北求职<span class="form mp">小程序</span></div><div class="d">杭州找北智职 / 郝耘琦；AI 智能体矩阵，日活 6 万、后台 123 万、助力 20 万大学生</div></div>
+  <div class="inv-row"><div class="n">屿智同行 / 千寻 AI 聘<span class="form">Web</span><span class="form mp">小程序</span></div><div class="d">深圳屿智同行 / 张永豪；以练代投、能力画像、AI 多面体人才库；2026-05 起转 Sprix AI</div></div>
+  <div class="inv-row"><div class="n">小麦招聘 / LovTalent<span class="form mp">小程序</span><span class="form">Web</span></div><div class="d">TTC / 肖玛峰；B端 Agent 在微信飞书群内，C端 lovtalent.com 免费公测</div></div>
+  <div class="inv-row"><div class="n">职芽<span class="form">APP</span></div><div class="d">仟寻 MoSeeker；面向应届生的求职搭子，2026 夏 iOS 公测，安卓年内上线</div></div>
+  <div class="inv-row"><div class="n">高顿大学生实习就业助手<span class="form">Skill</span></div><div class="d">高顿 × 腾讯 WorkBuddy；封装为 Skill + MCP，覆盖测评→选岗→简历→网申→面试</div></div>
+</div>
+
+<h3>政策与行业口径</h3>
+
+<ul class="plain">
+<li>人社部、发改委、工信部、国家数据局四部门联合印发《关于加快推进「人工智能+人社」应用发展的实施意见》：到 2026 年培育一批人社行业大模型和智能体应用，打造 20 个左右应用场景及相应高质量数据集。</li>
+<li>2025 年 AI 招聘市场规模 122 亿元（华经产业研究院口径）。</li>
+<li>2025 年中国灵活用工市场规模 1.76 万亿元，2020 年以来年复合增长 17.8%，预计 2030 年达 3.88 万亿元。</li>
+<li>AI 面试自主完成率从 2024 年的 17.9% 升至 2025 年的 33.3%；AI 面试助手使用率从 12.5% 升至 24.0%。北大光华报告：AI 面试官在全样本中的使用率 23.2%。</li>
+</ul>
+
+<h2><span class="num">10</span>存疑清单</h2>
+
+<ul class="doubt">
+<li><strong>北森财年口径未核实。</strong>文中「2026 财年」按公司口径引用，未确认是 4 月制还是自然年制。收入 11.05 亿元、AI 新签 8700 万元、IFRS 归母净亏 2340 万元均来自媒体转述，未比对公司年报原文。</li>
+<li><strong>Moka 客户数有两个版本。</strong>一处写「3500+ 客户」，另一处写「3000+ 中大型企业」，可能是不同统计口径（含中小企业 vs 仅中大型）。</li>
+<li><strong>AI 面试单价来自媒体询价，非官方报价单。</strong>北森 33 元、牛客 30 元、Moka 10 元出自南方周末以客户身份的询价，讯飞智聘 10–20 元标注为「第三方评测口径」。实际成交价随合同规模浮动，只能当量级参考。</li>
+<li><strong>「半年拦截异常企业 3 万+」未找到官方出处。</strong>前程无忧的风控体系描述（机审 + 人工复核、事前防控—事中干预—事后治理）可在官方渠道查到，但具体拦截数量没有对应。</li>
+<li><strong>鱼泡直聘的研发团队规模有两个数。</strong>软文写 380 人，官网招聘页写近 1000 名员工、其中研发 300 人。同一公司两个口径。</li>
+<li><strong>海纳 AI 的成立时间有两种说法。</strong>品牌口径「2019 年成立」（梁公军与曾南山、Steve Jiang 共同启动），工商口径主体「北京群星闪耀科技有限公司」成立于 2017-04-28。两个都成立，指的是不同对象。</li>
+<li><strong>找北智职的融资与股权结构未查到。</strong>目前只有路演材料和政府新闻里的运营数据（研发投入 1400 万、日活 6 万、用户 123 万），没有融资轮次信息。</li>
+<li><strong>「2025 年 AI 招聘市场规模 122 亿元」来源单一。</strong>仅见华经产业研究院一处引用，未见其他机构交叉验证，口径（是否含 HR SaaS）不明。</li>
+<li><strong>支付宝「晓叶」的转化率数据为公司口径。</strong>「入职转化率提升超 200%、面试成本降低约 80%」出自 2026-01 生态大会发布，未给出样本与方法。</li>
+</ul>
+
+<h2><span class="num">11</span>来源</h2>
+
+<h4>平台侧</h4>
+<ol>
+<li>智联招聘 × 百度智能云案例页（艾琳 93% / 成本降 70% / 操作步骤 -80%）· <a href="https://cloud.baidu.com/customer/case/zhaopin.html">cloud.baidu.com</a></li>
+<li>《Zhaopin Unveils AI-Powered Job Search Companion "Zhi Wukong" at World AI Conference》· To The Moon</li>
+<li>《一个 AI 求职搭子，陪年轻人从校园走进职场》· 腾讯网 · 2026-07-25</li>
+<li>《职悟空 App 上线，主打「会主动提醒」的求职助手》· 凤凰网科技</li>
+<li>「DeepHire」词条 · 百度百科</li>
+<li>《2026 年大学生求职平台推荐，职悟空等 5 款产品横评》· eNet 硅谷动力 · 2026-09-20</li>
+<li>前程无忧《AI 招聘能力》官方指南 · zhinan.51job.com</li>
+<li>同道猎聘 2025 年财报解读 · 腾讯网 / 新浪财经 · 2026-03-27</li>
+<li>同道猎聘 2026 年上半年业绩 · 英为财情</li>
+<li>《AI 智能匹配赋能求职服务》· 中华网科技 / 新浪财经 · 2026-07-28（广告稿）</li>
+<li>《支付宝 AI 就业助手「晓叶」升级》· 中国劳动保障新闻网 · 2026-09-14</li>
+<li>《AI 就业白皮书发布：数字平台已演进为 AI 就业基础设施》· 中国网 · 2026-01-09</li>
+</ol>
+
+<h4>企业侧</h4>
+<ol start="13">
+<li>《我的面试官不是人》· 南方周末 / 腾讯新闻 · 2026-11-10（含各厂商单价询价）</li>
+<li>《AI 招聘软件怎么选？2026 国内六款主流产品横向对比》· 中国经济新闻网</li>
+<li>海纳 AI 5000 万元 B 轮 · 中国日报网 / 中国经济新闻网 · 2025-02</li>
+<li>「海纳 AI」词条 · 百度百科；海纳人事融资档案 · 亿欧数据</li>
+<li>《海纳 AI 发布蓝领 AI 面试白皮书》· 三个皮匠报告</li>
+<li>《人力资源服务产品发展趋势》《中国 AI+HRM 产业白皮书》· 三个皮匠报告（北森、Moka、用友大易、中智、牛客数据）</li>
+</ol>
+
+<h4>C 端与 L4</h4>
+<ol start="19">
+<li>《高手同台亮绝活！拱墅举办 HR 界的「武林大会」》· 杭州宣传网 / 新华网浙江 / 潮新闻 · 2026-09-30（找北智职、毕师父同场）</li>
+<li>《高顿携手腾讯 WorkBuddy 生态发布首款大学生实习就业 AI Agent》· 中国日报网 · 2026-09-03</li>
+<li>《这款 Agent，想做千万毕业生的「求职搭子」》· 上观新闻（仟寻职芽）</li>
+<li>《2026 届校招季，5 款值得大学生关注的求职平台实测推荐》· 燕赵晚报 · 2026-07-31</li>
+<li>《2026 应届生找工作有哪些好用工具？6 类求职工具及使用场景对比》· 微信公众号</li>
+</ol>
+
+<h4>并购与行业</h4>
+<ol start="24">
+<li>Recruiting Tech Acquisitions and Shutdowns Tracker (2025–2026) · Work Insiders（更新至 2026-10-26，88 起）</li>
+<li>《全球人力科技并购持续升温》· 四川省人力资源服务行业协会 · 2026-06</li>
+<li>SAP 收购 TechWolf、Dayforce 收购 Ribbon AI 等 · HRTechChina 收购 Tag</li>
+<li>《Where remarkable people meet ambitious companies》· Jack &amp; Jill 官网（对照用）</li>
+</ol>
+</section>
+
+<footer>
+调研整理 · 2026-11-12<br>
+承接 2026-11-11《AI 原生求职 Agent：三家样本与一条分岔路》。<br>
+全部信息来自公开渠道；厂商宣传口径与第三方数据已在正文与存疑清单分层标注。<br>
+文中不构成任何投资或采购建议。
+</footer>
+
+</div>
+</body>
+</html>

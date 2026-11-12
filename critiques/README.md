@@ -47,6 +47,8 @@ tags: []
 - `critiques/ai-industry/2026-10-OpenAI的28天冲刺/` —— `kind: report`（HTML 报告，数字待复核）
 - `critiques/ai-industry/2026-10-前沿模型编程能力榜单对照/` —— `kind: report`（HTML 报告，多榜单口径对照，数字待复核）
 - `critiques/ai-industry/2026-11-AI招聘两年发展调研/` —— `kind: report`（HTML 报告，四条市场线拆解，数字待复核）
+- `critiques/ai-industry/2026-11-AI原生求职Agent三家样本/` —— `kind: report`（HTML 报告，三家商业模式对照，数字待复核）
+- `critiques/ai-industry/2026-11-国内AI招聘求职产品全景/` —— `kind: report`（HTML 报告，四层分类与数字对账，数字待复核）
 - `critiques/ai-aesthetics/2026-10-AI审美三层结构/` —— `kind: report`（HTML 报告，link-only）
 - `critiques/creative-industry/2026-10-推理模型与游戏工业重估/` —— `kind: report`（HTML 报告，link-only）
 - `critiques/dating/2027-01-dating-product-advice.md` —— `kind: advice`

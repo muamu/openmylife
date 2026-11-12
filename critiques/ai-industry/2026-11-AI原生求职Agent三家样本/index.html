@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 原生求职 Agent：三家样本与一条分岔路</title>
+<style>
+:root{
+  --bg:#F7FBFE;
+  --ink:#152430;
+  --ink-2:#3C5568;
+  --ink-3:#6B7C8C;
+  --line:#DCE6EE;
+  --blue:#1C7ED6;
+  --blue-bg:#E8F3FD;
+  --blue-line:#D5E6F5;
+  --mint:#0E9E7C;
+  --mint-bg:#E6F6F1;
+  --coral:#EE6B45;
+  --coral-bg:#FDEDE8;
+  --gray-bg:#EFF4F8;
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --mono:"SF Mono","JetBrains Mono",Consolas,"Courier New",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.88;
+  overflow-x:hidden;
+  padding:0 18px 90px;
+}
+.wrap{max-width:960px;margin:0 auto}
+
+/* ---------- 封面 ---------- */
+.cover{padding:54px 0 34px;border-bottom:1px solid var(--line)}
+.kicker{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;
+  color:var(--blue);text-transform:uppercase;margin-bottom:18px;
+}
+h1{
+  font-family:var(--serif);font-weight:700;font-size:31px;line-height:1.42;
+  letter-spacing:-.01em;margin-bottom:20px;
+}
+h1 em{font-style:normal;color:var(--blue)}
+.deck{font-size:17px;color:var(--ink-2);line-height:1.85;margin-bottom:24px}
+.meta{
+  display:flex;flex-wrap:wrap;gap:8px 18px;
+  font-family:var(--mono);font-size:12.5px;color:var(--ink-3);
+}
+.meta span{white-space:nowrap}
+
+/* ---------- 30秒版 ---------- */
+.tldr{
+  margin:30px 0 46px;padding:22px 20px;border-radius:3px;
+  background:linear-gradient(160deg,#E8F3FD 0%,#F2F9FF 100%);
+  border:1px solid var(--blue-line);border-left:4px solid var(--blue);
+}
+.tldr h2{
+  font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--blue);
+  text-transform:uppercase;margin-bottom:14px;font-weight:600;
+  background:none;padding:0;border:0;
+}
+.tldr p{font-size:16.5px;color:var(--ink);line-height:1.82;margin-bottom:12px}
+.tldr p:last-child{margin-bottom:0}
+.tldr strong{color:var(--blue);font-weight:600}
+
+/* ---------- 章节标题横幅 ---------- */
+h2{
+  font-family:var(--serif);font-size:23px;font-weight:700;line-height:1.5;
+  margin:62px 0 24px;padding:14px 0 14px 16px;
+  background:linear-gradient(90deg,#E8F3FD 0%,rgba(232,243,253,0) 100%);
+  border-left:4px solid var(--blue);
+  display:flex;align-items:baseline;gap:13px;
+}
+h2 .num{
+  font-family:var(--mono);font-size:12.5px;color:var(--blue);
+  font-weight:600;letter-spacing:.08em;flex-shrink:0;
+}
+h3{
+  font-family:var(--serif);font-size:18.5px;font-weight:700;
+  margin:36px 0 14px;color:var(--ink);line-height:1.6;
+}
+h4{
+  font-size:16px;font-weight:700;margin:26px 0 10px;color:var(--ink-2);
+}
+p{margin-bottom:17px;color:var(--ink)}
+p.lead{font-size:17.5px;color:var(--ink-2)}
+a{color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue-line)}
+strong{font-weight:600;color:var(--ink)}
+em{font-style:normal;background:linear-gradient(transparent 62%,#FFF0B3 62%)}
+
+/* ---------- 公司卡 ---------- */
+.co-card{
+  margin:26px 0;border:1px solid var(--line);border-radius:3px;
+  background:#fff;overflow:hidden;
+}
+.co-head{
+  padding:16px 18px;background:var(--gray-bg);
+  border-bottom:1px solid var(--line);
+}
+.co-name{
+  font-family:var(--serif);font-size:19px;font-weight:700;line-height:1.5;
+  margin-bottom:4px;
+}
+.co-sub{font-size:13px;color:var(--ink-3);font-family:var(--mono);letter-spacing:.02em}
+.co-body{padding:18px}
+.co-body p:last-child{margin-bottom:0}
+
+/* 事实行 */
+.facts{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin:20px 0}
+.fact{background:#fff;padding:12px 14px;display:flex;gap:14px;align-items:flex-start}
+.fact dt{
+  flex-shrink:0;width:76px;font-size:13px;color:var(--ink-3);
+  font-family:var(--mono);padding-top:2px;letter-spacing:.02em;
+}
+.fact dd{font-size:15.5px;color:var(--ink);line-height:1.75;flex:1}
+
+/* ---------- 数据条 ---------- */
+.stats{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  background:var(--blue-line);border:1px solid var(--blue-line);
+  margin:22px 0;
+}
+.stat{background:#fff;padding:14px 14px 13px}
+.stat b{
+  display:block;font-family:var(--mono);font-size:22px;font-weight:600;
+  color:var(--blue);line-height:1.25;letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums;
+}
+.stat span{display:block;font-size:12.5px;color:var(--ink-3);margin-top:4px;line-height:1.5}
+
+/* ---------- 提示块 ---------- */
+.note{
+  margin:24px 0;padding:15px 17px;border-radius:2px;
+  background:var(--gray-bg);border-left:3px solid var(--ink-3);
+  font-size:15.5px;color:var(--ink-2);line-height:1.8;
+}
+.note strong{color:var(--ink)}
+.note.warn{background:var(--coral-bg);border-left-color:var(--coral)}
+.note.warn strong{color:#B8461F}
+.note.good{background:var(--mint-bg);border-left-color:var(--mint)}
+.note.good strong{color:#0A7359}
+.note .tag{
+  display:inline-block;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.1em;padding:2px 7px;border-radius:2px;margin-bottom:8px;
+  background:rgba(28,126,214,.1);color:var(--blue);
+}
+.note.warn .tag{background:rgba(238,107,69,.14);color:#B8461F}
+.note.good .tag{background:rgba(14,158,124,.13);color:#0A7359}
+
+/* ---------- 列表 ---------- */
+ul,ol{margin:0 0 18px 0;padding-left:0;list-style:none}
+li{
+  position:relative;padding-left:20px;margin-bottom:11px;
+  font-size:16.5px;line-height:1.82;color:var(--ink);
+}
+li::before{
+  content:"";position:absolute;left:4px;top:12px;
+  width:5px;height:5px;border-radius:50%;background:var(--blue);
+}
+ul.plain li::before{background:var(--ink-3)}
+ol{counter-reset:n}
+ol li{padding-left:26px}
+ol li::before{
+  counter-increment:n;content:counter(n);
+  font-family:var(--mono);font-size:12.5px;color:var(--blue);
+  background:none;width:auto;height:auto;border-radius:0;
+  left:0;top:1px;font-weight:600;
+}
+
+/* ---------- 表格 ---------- */
+.tbl-wrap{margin:24px 0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:14.5px;line-height:1.7;background:#fff}
+th{
+  text-align:left;padding:10px 11px;background:var(--blue-bg);
+  color:var(--blue);font-weight:600;font-size:13px;
+  border-bottom:1px solid var(--blue-line);white-space:nowrap;
+  font-family:var(--mono);letter-spacing:.02em;
+}
+td{padding:10px 11px;border-bottom:1px solid var(--line);color:var(--ink-2);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td strong{color:var(--ink)}
+td.mono{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* ---------- 图 ---------- */
+figure{margin:28px 0}
+figure svg{display:block;width:100%;height:auto}
+figcaption{
+  font-size:13px;color:var(--ink-3);margin-top:10px;line-height:1.7;
+  padding-left:2px;
+}
+
+/* ---------- 分隔 ---------- */
+hr{border:0;border-top:1px solid var(--line);margin:50px 0}
+
+/* ---------- 尾声 ---------- */
+.closing{
+  margin-top:56px;padding:24px 20px;border-radius:3px;
+  background:linear-gradient(160deg,#E6F6F1 0%,#F5FCF9 100%);
+  border:1px solid #C6E8DC;border-left:4px solid var(--mint);
+}
+.closing p:last-child{margin-bottom:0}
+.closing h3{margin-top:0;color:#0A7359}
+
+/* ---------- 存疑清单 ---------- */
+.doubt li::before{background:var(--coral)}
+.doubt li{font-size:15.5px;color:var(--ink-2)}
+
+/* ---------- 来源 ---------- */
+.src h4{margin:22px 0 8px;font-size:14px;font-family:var(--mono);color:var(--blue);letter-spacing:.04em;font-weight:600}
+.src ol li{font-size:14px;color:var(--ink-3);line-height:1.75;margin-bottom:7px;padding-left:24px}
+.src ol li::before{color:var(--ink-3);font-size:12px}
+.src a{color:var(--ink-3);border-bottom:1px dotted var(--line);word-break:break-all}
+
+/* ---------- 页脚 ---------- */
+footer{
+  margin-top:64px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:13px;color:var(--ink-3);line-height:1.8;
+  font-family:var(--mono);
+}
+
+/* ---------- 响应式 ---------- */
+@media(min-width:700px){
+  body{font-size:18.5px;padding:0 32px 110px;line-height:1.88}
+  .wrap{max-width:920px}
+  .cover{padding:76px 0 44px}
+  h1{font-size:40px;line-height:1.34}
+  .deck{font-size:19px}
+  h2{font-size:27px;padding:18px 0 18px 22px;margin:76px 0 28px}
+  h3{font-size:21px}
+  .tldr{padding:28px 28px;margin:36px 0 56px}
+  .tldr p{font-size:18px}
+  .stats{grid-template-columns:repeat(4,1fr)}
+  .stat b{font-size:25px}
+  .co-body{padding:22px}
+  table{font-size:15px}
+  li{font-size:17.5px}
+}
+@media(min-width:1400px){
+  body{font-size:19.5px}
+  .wrap{max-width:1020px}
+  h1{font-size:46px}
+  h2{font-size:29px}
+  table{font-size:15.5px}
+}
+@media(min-width:1900px){
+  body{font-size:21px}
+  .wrap{max-width:1060px}
+  h1{font-size:52px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="cover">
+  <div class="kicker">Product Research / 2026.11</div>
+  <h1>AI 原生求职 Agent<br>三家样本，和一条<em>没人走通的分岔路</em></h1>
+  <p class="deck">毕师父、TTC 小麦招聘、屿智同行，外加智联、BOSS 直聘、高顿、Jack &amp; Jill 这些同场玩家。它们被归到同一个赛道，但赚的不是同一种钱。</p>
+  <div class="meta">
+    <span>调研日期 2026-11-11</span>
+    <span>样本 11 家公司 / 4 个市场</span>
+    <span>公开信源，含存疑标注</span>
+  </div>
+</header>
+
+<section class="tldr">
+  <h2>30 秒版</h2>
+  <p><strong>三家不是同一个物种。</strong>毕师父是卖给高校的就业服务，AI 只是把真人导师的产能放大三到五倍；TTC 的小麦招聘是卖给企业的猎头交付工具，C 端产品是漏斗不是生意；屿智同行在卖「能力评估数据」，用户是数据生产者，2026 年 5 月已经掉头去做 Agent 劳动力市场。</p>
+  <p><strong>海外主流是「自动投递」，中国这条路基本堵死。</strong>BOSS 直聘和智联自己就是平台方，不会把接口开放给第三方去自动投递；中国校招走的是网申表单，不是 LinkedIn 的 Easy Apply。所以国内绕了个弯：不帮你多投，帮你「练完直推」。</p>
+  <p><strong>C 端付不动钱。</strong>毕师父的工具月卡 ¥29、问诊 ¥99 只是钩子，真金白银来自高校采购（面试舱 7.92 万/台、SaaS 3/5/8 万分档）和 3–12 个月的陪跑费。TTC 明确说 C 端靠自然增长，「一二十万真实用户」是 2026 年的目标而不是现状。</p>
+  <p><strong>真正的护城河是把人变成结构化数据，不是模型。</strong>毕师父的「真岗位字典」、屿智的「能力画像」、TTC 的「人才深度标签 + 长期记忆」——三家都在做同一件事：把非结构化的判断沉淀成可检索的字段。模型是租来的，字段是自己的。</p>
+</section>
+
+<h2><span class="num">01</span>先把三家分清楚</h2>
+
+<p class="lead">「AI 原生求职 Agent」是个筐。三家被装进去，但它们的客户、收入和生死线完全不同。先看一张对照。</p>
+
+<div class="tbl-wrap">
+<table>
+<thead>
+<tr><th>维度</th><th>毕师父</th><th>TTC 小麦招聘</th><th>屿智同行 / 千寻AI聘</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>谁付钱</strong></td><td>高校（主）+ 学生（辅）</td><td>AI 科技企业（猎头费）</td><td>企业（人才库）+ 政府/高校活动</td></tr>
+<tr><td><strong>生意本质</strong></td><td>高校就业数字化采购</td><td>猎头交付效率工具</td><td>能力评估数据供应商</td></tr>
+<tr><td><strong>AI 干什么</strong></td><td>简历评分、模拟面试、网申代填</td><td>理解需求、搜索筛选、排期、记录上下文</td><td>模拟面试、能力画像、排序推荐</td></tr>
+<tr><td><strong>真人干什么</strong></td><td>内推判断、画像匹配、关键复盘</td><td>谈薪、条件协调、关系建立</td><td>专家团队 1v1 陪跑</td></tr>
+<tr><td><strong>核心资产</strong></td><td>111 所高校渠道 + 400 学长</td><td>1600 家 AI 公司 + 300 万人才</td><td>10 万面试题 + 能力画像库</td></tr>
+<tr><td><strong>当前阶段</strong></td><td>天使轮，靠高校订单跑现金流</td><td>A 轮数千万美元，规模化交付</td><td>Pre-A，已转向数字劳动力</td></tr>
+</tbody>
+</table>
+</div>
+
+<figure>
+<svg viewBox="0 0 360 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="三家公司商业模式对比">
+  <defs>
+    <style>
+      .cn{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+      .mo{font-family:"SF Mono",Consolas,monospace}
+    </style>
+  </defs>
+
+  <!-- 卡片 1 -->
+  <rect x="0" y="0" width="360" height="126" rx="4" fill="#E8F3FD" stroke="#D5E6F5"/>
+  <rect x="0" y="0" width="4" height="126" fill="#1C7ED6"/>
+  <text x="18" y="30" class="cn" font-size="15" font-weight="700" fill="#152430">毕师父</text>
+  <text x="18" y="50" class="mo" font-size="10" fill="#6B7C8C">高校 → 学生 → 就业结果</text>
+  <text x="18" y="78" class="cn" font-size="11.5" fill="#3C5568">钱从左边进来</text>
+  <rect x="120" y="66" width="72" height="17" rx="2" fill="#1C7ED6" opacity="0.14"/>
+  <text x="130" y="78" class="mo" font-size="9.5" fill="#1C7ED6">高校采购</text>
+  <text x="18" y="100" class="cn" font-size="11.5" fill="#3C5568">AI 放大真人产能 3–5 倍，真人在前台拍板</text>
+  <text x="18" y="118" class="cn" font-size="11.5" fill="#6B7C8C">本质：教育服务，不是软件</text>
+
+  <!-- 卡片 2 -->
+  <rect x="0" y="140" width="360" height="126" rx="4" fill="#E6F6F1" stroke="#C6E8DC"/>
+  <rect x="0" y="140" width="4" height="126" fill="#0E9E7C"/>
+  <text x="18" y="170" class="cn" font-size="15" font-weight="700" fill="#152430">TTC 小麦招聘</text>
+  <text x="18" y="190" class="mo" font-size="10" fill="#6B7C8C">企业 ← Agent → 候选人</text>
+  <text x="18" y="218" class="cn" font-size="11.5" fill="#3C5568">钱从企业进来，按入职收</text>
+  <rect x="152" y="206" width="72" height="17" rx="2" fill="#0E9E7C" opacity="0.14"/>
+  <text x="162" y="218" class="mo" font-size="9.5" fill="#0E9E7C">猎头交付</text>
+  <text x="18" y="240" class="cn" font-size="11.5" fill="#3C5568">Agent 覆盖 80% 流程，谈薪仍归人</text>
+  <text x="18" y="258" class="cn" font-size="11.5" fill="#6B7C8C">本质：服务业的效率工具</text>
+
+  <!-- 卡片 3 -->
+  <rect x="0" y="280" width="360" height="126" rx="4" fill="#EFF4F8" stroke="#DCE6EE"/>
+  <rect x="0" y="280" width="4" height="126" fill="#6B7C8C"/>
+  <text x="18" y="310" class="cn" font-size="15" font-weight="700" fill="#152430">屿智同行</text>
+  <text x="18" y="330" class="mo" font-size="10" fill="#6B7C8C">求职者 → 画像 → 企业</text>
+  <text x="18" y="358" class="cn" font-size="11.5" fill="#3C5568">用户生产数据，企业买单</text>
+  <rect x="150" y="346" width="72" height="17" rx="2" fill="#6B7C8C" opacity="0.16"/>
+  <text x="160" y="358" class="mo" font-size="9.5" fill="#4A5C6B">人才数据</text>
+  <text x="18" y="380" class="cn" font-size="11.5" fill="#3C5568">「以练代投」：练完即评估，评估即推荐</text>
+  <text x="18" y="398" class="cn" font-size="11.5" fill="#6B7C8C">本质：数据生意，用户是原料</text>
+
+  <text x="0" y="424" class="mo" font-size="9.5" fill="#A8B4BF">三家都说「AI + 真人」，但「真人」在各自链路里的位置完全不同</text>
+</svg>
+<figcaption>三家都宣传「AI + 真人双引擎」，但真人的位置决定了收入结构：毕师父的真人在交付端，TTC 的真人在成交端，屿智的真人在服务端。</figcaption>
+</figure>
+
+<h2><span class="num">02</span>毕师父：把贝壳的楼盘字典搬进校招</h2>
+
+<div class="co-card">
+  <div class="co-head">
+    <div class="co-name">毕师父 · Leapin Carp</div>
+    <div class="co-sub">跃鱼信息科技（宁波）有限公司 / 跃鱼教育科技（杭州）有限公司</div>
+  </div>
+  <div class="co-body">
+    <p>创始人童部林，2015 到 2025 年在吉利控股负责全球校园招聘与雇主品牌。2025 年 4 月 23 日离职，一个月后以「毕师父-童部林」的账号在 B 站发第一条视频，正式亮相。5 月 27 日 36 氪报道完成 500 万元天使轮，投资方写的是一家「国内人力资源行业知名企业」。</p>
+    <p>这家投资方基本可以确定是谁：企查查显示跃鱼信息实控人洪斌持股 90%、监事张鹏持股 10%，两人都与浙江杰博人力资源有关联——洪斌持有浙江杰博 18% 股份并任董事、财务负责人，而浙江杰博的通讯地址就是跃鱼的注册地址。浙江杰博 2024 年营收超 48.1 亿。这条线决定了毕师父的开局不是纯互联网创业，而是「人力资源服务集团的数字化子公司」。</p>
+  </div>
+</div>
+
+<h3>它在卖什么：一套三层打包的东西</h3>
+
+<p>毕师父对高校的报价是硬件、软件、人三层，可以单买也可以组合。这套结构的巧妙之处在于：它把「就业服务」这件没法量化的事，拆成了三样能开发票的东西。</p>
+
+<div class="tbl-wrap">
+<table>
+<thead>
+<tr><th>层</th><th>产品</th><th>定价</th><th>解决什么</th></tr>
+</thead>
+<tbody>
+<tr><td>硬件</td><td>AI 面试舱</td><td class="mono">7.92 万 / 台</td><td>就业中心没人手做模拟面试</td></tr>
+<tr><td>硬件</td><td>简历打印一体机 / 职业规划一体机</td><td class="mono">未公开</td><td>学生随到随用，测评留在校内</td></tr>
+<tr><td>软件</td><td>就业 SaaS 看板</td><td class="mono">3 / 5 / 8 万分档</td><td>把「就业率」拆成投递→面试→签约过程指标</td></tr>
+<tr><td>人</td><td>400+ 学长师父</td><td class="mono">问诊 ¥99 起 / 咨询 ¥199–499 / 直推另议</td><td>内推判断、行业认知、关键复盘</td></tr>
+<tr><td>C 端</td><td>AI 工具月卡</td><td class="mono">¥29 起</td><td>简历评分、模拟面试、岗位推送</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="stats">
+  <div class="stat"><b>111</b><span>合作高校<br>985:21 / 本科:78 / 高职:12</span></div>
+  <div class="stat"><b>50万+</b><span>注册学生<br>月活 1 万+</span></div>
+  <div class="stat"><b>400+</b><span>学长师父<br>覆盖 23 个行业</span></div>
+  <div class="stat"><b>20万</b><span>真实校招<br>面试数据条数</span></div>
+</div>
+
+<p>有一组数字需要停下来看一眼。<em>50 万注册、月活 1 万，月活率 2%。</em>这个比例对工具型产品是致命的，但对渠道型生意不构成问题——因为毕师父的客户不是学生，是学校。学生注册量是采购谈判桌上的筹码，月活不是 KPI。这解释了为什么它的产品线里有一半是硬件：硬件进校之后，学生用不用都得经过它。</p>
+
+<h3>「真岗位字典」是这套生意里最实的一块</h3>
+
+<p>童部林公开讲的参照物是贝壳找房。贝壳用楼盘字典解决房源真假，毕师父用「真岗位字典」解决岗位真假，标准是六条：真实企业、真实 HR、真实授权、真实需求、真实薪酬、真实进度，14 天内必须刷新核验，过期自动下架。</p>
+
+<p>这个设计在中国校招场景里是有真需求的。校招岗位的水分集中在两处：一是「储备岗」挂三年不招人，二是同一家公司十几个事业部重复发同一个 JD 刷简历池。六真标准本质上是给每条岗位加了一个 TTL（生存期），过期就死。<strong>这是全场唯一一个能被验证、能被审计的产品承诺</strong>——其他几家的「匹配度」「能力画像」都无法外部核验。</p>
+
+<div class="note warn">
+  <span class="tag">数据口径提醒</span>
+  <p><strong>「85% 陪跑学员 Offer 率」不能横向比较。</strong>官方自己标注了限定条件：仅限完整服务周期样本。能坚持走完 3–12 个月陪跑的人，本身就是意愿最强、条件相对最好的一批。这是标准的生存者偏差，任何一家用同样算法都能做出好看的数字。它说明不了产品比别家强，只能说明筛选有效。</p>
+</div>
+
+<h2><span class="num">03</span>TTC 小麦招聘：把猎头的判断沉淀成 Agent</h2>
+
+<div class="co-card">
+  <div class="co-head">
+    <div class="co-name">TTC · True Talents Connect</div>
+    <div class="co-sub">北京才多对信息技术有限公司 / 2022 年成立</div>
+  </div>
+  <div class="co-body">
+    <p>创始人肖玛峰（Max），17 年高端猎头经验，做过国内头部中高端猎头品牌；CTO 宁燎原，微软和字节背景。2022 年成立，2024 年初砍掉与 AI 无关的业务，定下一个规矩：所有顾问推荐的人，必须先过一遍「小麦」。</p>
+    <p>融资阵容在国内 HRTech 里算豪华：源码资本、创新工场、九合创投、中关村资本、厚雪资本，A 轮数千万美元由厚雪领投、百度战略投资。百度这一笔的背景是小麦招聘拿了第三届「文心杯」创业大赛一等奖。</p>
+  </div>
+</div>
+
+<h3>产品结构比宣传复杂：一个 Agent，两个入口</h3>
+
+<p>外面看到的「小麦招聘」其实有两个面。</p>
+
+<p><strong>B 端是主战场。</strong>客户在微信、飞书群里直接跟小麦说话——大公司几条业务线同时招人、彼此不想让对方知道，就各自拉一个小麦进群。Agent 先结合企业档案、业务阶段、招聘背景和历史合作数据理解「这次为什么招人」，再形成搜索策略、筛选评估、给出推荐理由和待核实问题。客户确认约面后，Agent 继续推排期，把已经积累的完整上下文交给真人顾问。</p>
+
+<p><strong>C 端是 LovTalent（也写作 lovtalent.com）。</strong>2025 年以「AI 原生求职智能体平台」名义公测，免费不限量。核心是 Multi-Agent 架构 + 长期记忆：一次推荐只给 3–5 个岗位，每个配「四维解析」（推荐理由、岗位核心、匹配点与风险点、投递建议），另有行业洞察、简历优化、成长规划、面试辅导。</p>
+
+<div class="note">
+  <span class="tag">关键设计</span>
+  <p><strong>LovTalent 的投递必须由本人点确认，不会自动发出。</strong>双方都表达意向之后，平台才交换电话安排面试；企业方上传营业执照要审核。这套流程跟海外自动投递工具是相反的方向——它把「人」留在投递动作里，只是把投递前的判断做厚。这个选择在中国是聪明的：平台既规避了自动投递的合规风险，也没破坏自己的 B 端数据质量。</p>
+</div>
+
+<h3>它的真实壁垒：一次招聘的结果会变成下一次的上下文</h3>
+
+<p>肖玛峰讲过一句挺关键的话：客户见过谁、拒绝过谁，不能只留在某个顾问的微信里。这是整个产品的立论——猎头行业的资产一直存在，但存在人脑和微信聊天记录里，人一走就没了。小麦做的事情是把这些沉淀成可复用的上下文。</p>
+
+<p>效果层面有一个可对照的例子：2026 年一名没有任何猎头经验的男生进 TTC，70 天里参与推进发放了 7 个中高端人才 Offer。这个速度在传统猎头模式下基本不可能，因为它把「资深顾问的判断」变成了新人也能调用的结构化提示。</p>
+
+<div class="stats">
+  <div class="stat"><b>1600+</b><span>服务 AI 科技企业<br>（含互联网头部）</span></div>
+  <div class="stat"><b>300万+</b><span>链接 AI 科创人才</span></div>
+  <div class="stat"><b>15</b><span>城市服务网络<br>含香港、新加坡</span></div>
+  <div class="stat"><b>50%+</b><span>2025 年营收<br>同比增长</span></div>
+</div>
+
+<p>它对边界的判断反而比宣传更值得看：年薪百万以上的核心岗位，仍由资深人类顾问主导；中基层、标准化岗位优先交给 Agent。2026 年的目标也很克制——B 端 AI 公司接近 2000 家，C 端沉淀一二十万真实用户，核心只盯一个指标：「建联—沟通—意向」这条链路的效率是否持续优于传统方式。</p>
+
+<p>荣誉方面，2026 年《财富》中国最佳设计榜把小麦招聘列进年度 50 个上榜项目，评语是「把猎头的判断逻辑沉淀成 Agent」。同榜的还有拓竹 A2L、京东 JoyInside、荣耀 Robot Phone。</p>
+
+<div class="note warn">
+  <span class="tag">存疑</span>
+  <p><strong>「年入 2 亿」是媒体标题口径，未经证实。</strong>那篇报道（《在 AI 抢人大战里吃到红利的人，年入 2 亿》）讲的是 TTC 这家公司的整体营收量级，不是小麦招聘这个产品的收入。TTC 的业务有三块：招聘、FA、投资孵化，混在一起算。公开可查的只有「2025 年营收同比增长超 50%」。</p>
+</div>
+
+<h2><span class="num">04</span>屿智同行：一家正在改行的公司</h2>
+
+<div class="co-card">
+  <div class="co-head">
+    <div class="co-name">屿智同行 · YuugeAI</div>
+    <div class="co-sub">深圳市屿智同行科技有限公司 / 2024-06-20 成立</div>
+  </div>
+  <div class="co-body">
+    <p>创始人兼 CEO/CTO 张永豪，清华背景，2025 年福布斯中国 30 Under 30。团队来自清华、北大、斯坦福、MIT，清华 i-Space 和 X-lab 重点孵化，依托清华人工智能实验室。拿过清华校友三创大赛五强奖。</p>
+    <p>产品对外叫「AI 多面体人才库」，口号是「让工作来找你」。核心机制四个字：<strong>以练代投</strong>——先用 AI 模拟面试把你的真实能力测出来，生成结构化能力画像，再拿这份画像向企业推荐，跳过简历筛选。</p>
+  </div>
+</div>
+
+<h3>时间线比产品介绍更有信息量</h3>
+
+<p>百度百科「张永豪」词条记了一条完整的产品演进线，这条线说明的事情比任何一篇宣传稿都直白：</p>
+
+<ol>
+<li><strong>2024.07</strong> 启动大模型及 Agent 研发</li>
+<li><strong>2025.07</strong> 天使轮，前海信诺数百万人民币</li>
+<li><strong>2025.10</strong>「千寻 AI 聘」C 端上线，开放 AI 模拟面试、能力建模、职业路径规划</li>
+<li><strong>2025.12</strong> 切入政企招聘与就业服务</li>
+<li><strong>2026.01</strong> Pre-A 轮，正轩投资（亿欧报道为「千万级天使+轮，正轩投资领投」，口径不一）</li>
+<li><strong>2026.02</strong>「千寻 AI 聘」B 端上线，提供 AI 招聘、人才评估、岗位匹配</li>
+<li><strong>2026.05</strong> 推出「Sprix AI」，转向 Human-Agent 协同、Agent 能力评估、数字劳动力市场</li>
+<li><strong>2026.06</strong> 围绕 Agent 分身建模、任务匹配、能力评估、任务交付持续拓展</li>
+</ol>
+
+<p>从「AI 招聘平台」到「Agent 原生数字劳动力平台」，方向换了。这不是简单的品类扩张，是判断变了：<em>帮人找工作的生意，天花板看起来不如「帮 Agent 找工作」的生意性感。</em>Sprix AI 的定位是连接企业需求方、Agent 服务方和「Agent 协作师」，覆盖任务发布、匹配、协同执行、质量评估、收益分配。同一个团队、同一套多智能体技术，叙事从 HR 换成了劳动力市场。</p>
+
+<div class="note">
+  <span class="tag">怎么读这件事</span>
+  <p>一家 2024 年成立、2026 年初刚拿完 Pre-A 的公司，在五个月后就把主线叙事换掉，通常指向两种情况：原赛道的单位经济模型跑不通，或者新赛道融资故事更好讲。两种都成立也不矛盾。对观察者来说，这比任何 PR 稿都更能说明「AI 求职 Agent」在中国有多难独立成生意。</p>
+</div>
+
+<h3>产品本身的设计有可取之处</h3>
+
+<p>把它当求职产品看，有几个机制做得比同类细：</p>
+
+<ul>
+<li><strong>压力追问响应 &lt;100ms</strong>，复刻大厂面试节奏——这个不是技术指标，是产品体感指标，慢一点就出戏</li>
+<li><strong>表情 × 情绪 × 逻辑三维评估</strong>，加上「作弊指数」和反常行为检测，企业端才敢用这个分数做初筛</li>
+<li><strong>岗位锁定机制</strong>：候选人在合适机会里优先曝光，避免多家企业同时抢同一个人导致错配</li>
+<li><strong>真实薪资区间与竞争情况同步展示</strong>，这一条在国内产品里少见</li>
+</ul>
+
+<div class="stats">
+  <div class="stat"><b>10万+</b><span>大厂面试题库</span></div>
+  <div class="stat"><b>2000+</b><span>累计 Offer 数量</span></div>
+  <div class="stat"><b>1000+</b><span>专家团队<br>其中 400+ 行业专家</span></div>
+  <div class="stat"><b>100+</b><span>合作企业</span></div>
+</div>
+
+<p>2026 年 10 月底，它以执行方身份联合南山区人社局、清华深圳国际研究生院办了场秋季双选会，百余家企业到场，会前两周开放线上预对接，近千名学生提前入驻，30% 在双选会开始前就完成了简历和 AI 面试报告投递。这个动作透露了它的真实获客方式：<strong>不是投广告拉 C 端，是绑政府和高校做线下场景</strong>。跟毕师父是同一个逻辑，只是毕师父卖硬件，屿智卖活动。</p>
+
+<h2><span class="num">05</span>同场还有谁</h2>
+
+<p>把这三家放回 2026 年的市场里看，会发现真正的对手不是彼此，是三个方向来的巨兽。</p>
+
+<h3>国内大厂：自带流量和岗位库</h3>
+
+<div class="tbl-wrap">
+<table>
+<thead>
+<tr><th>产品</th><th>推出方</th><th>时间</th><th>关键动作</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>职悟空</strong></td>
+<td>智联招聘</td>
+<td class="mono">2026 WAIC</td>
+<td>业内首个职业生涯长期记忆系统，跨会话记录从入学到职场的全节点；独立 App 主打「主动提醒」和网申代填；免费</td>
+</tr>
+<tr>
+<td><strong>DeepHire</strong></td>
+<td>BOSS 直聘</td>
+<td class="mono">2026.03</td>
+<td>基于自研「南北阁」大模型；C 端 AI 润色简历、自动投递、代聊约面；B 端批量解析、打分排序、自动回复、约面管理；内测中</td>
+</tr>
+<tr>
+<td><strong>大学生实习就业助手</strong></td>
+<td>高顿 × 腾讯 WorkBuddy</td>
+<td class="mono">2026.09</td>
+<td>职业测评→智能选岗→简历优化→网申投递→面试模拟全链路，封装为 Skill + MCP 连接器接入生态</td>
+</tr>
+<tr>
+<td><strong>职芽</strong></td>
+<td>仟寻 MoSeeker</td>
+<td class="mono">2026 夏</td>
+<td>面向应届生的「求职搭子」，iOS 已公测；母公司 2014 年成立，服务 1000+ 客户，平台可触达候选人 3000 万+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>这四家的共同点是：<strong>不需要重新获客</strong>。智联有三十多年岗位数据，BOSS 直聘有南北阁大模型和 2025 年 1 亿元量级的 AI 业务营收，高顿有 20 年职业教育积累和腾讯的战略投资，仟寻有 500 万小程序会员。三家创业公司得先花钱把用户拉进来，再跟他们抢同一批人。</p>
+
+<p>BOSS 直聘 CEO 赵鹏在 2025 年财报电话会上说，互联网招聘行业在 AI 帮助下有机会进化到「闭环服务」，管理层预计 2026 年 AI 业务翻倍乃至多倍增长。<em>DeepHire 的「自动投递」意味着平台方自己要吃掉这个动作</em>——这是第三方自动投递工具在中国最大的结构性威胁。</p>
+
+<h3>海外：两条完全不同的路</h3>
+
+<p><strong>第一条是自动投递，已经撞墙。</strong>LoopCV、JobCopilot、LazyApply、TurboApply 这一批，$39–350/月，帮你批量填表、群发 HR 邮件。Wonsulting 2025 年 8 月直接关掉了批量自动投递功能，理由是跟踪下来平均 50 投才 1 个面试，2% 命中率，用户赔进去的雇主好感比拿到的面试多。</p>
+
+<p><strong>第二条是双 Agent 撮合，目前最激进也最被资本认可。</strong>Jack &amp; Jill，2026 年 9 月 14 日完成 4000 万美元 A 轮，Air Street Capital 领投，Creandum、Madrona 跟投，累计融资 6000 万美元。模式是：Jack 是候选人侧的语音 Agent，跟你聊十分钟职业诉求；Jill 是企业侧的招聘 Agent，学习团队结构、技术门槛、文化。两个 Agent 都认为合适，就直接把人和公司引到一张桌子上，<strong>跳过投递环节</strong>。对候选人完全免费，企业按入职付费。</p>
+
+<div class="stats">
+  <div class="stat"><b>38万</b><span>候选人跟 Jack 对话<br>（官网口径 42.8 万）</span></div>
+  <div class="stat"><b>5000+</b><span>企业用 Jill 招人<br>含 Ramp、Maze、Attio</span></div>
+  <div class="stat"><b>2.5万</b><span>累计安排面试<br>月跑 5000 场</span></div>
+  <div class="stat"><b>1.2万h</b><span>候选人累计<br>与 Jack 通话时长</span></div>
+</div>
+
+<p>Jack &amp; Jill 的设计有个值得注意的细节：候选人侧是<strong>语音 Agent</strong>，不是表单。官方给的理由是「你不是在向一个人推销自己，它不会对你做预设，你可以完全诚实」。这句话点出了一个真问题——求职者面对 HR 时会美化，面对 Agent 时反而更愿意说真话，而真实信息对匹配质量的价值远大于美化后的简历。同时它也得接受监管代价：欧盟 AI Act 附件三把招聘和候选人评估类 AI 列为高风险，第 50 条透明度义务已于 2026 年 8 月 2 日强制生效。</p>
+
+<h2><span class="num">06</span>三条路线，三种结局</h2>
+
+<p>把国内外放在一起，AI 求职 Agent 其实只有三条技术路线，各自的天花板已经能看出来。</p>
+
+<figure>
+<svg viewBox="0 0 360 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="三条路线的面试转化率对比">
+  <defs>
+    <style>.cn{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+    .mo{font-family:"SF Mono",Consolas,monospace}</style>
+  </defs>
+
+  <text x="0" y="14" class="mo" font-size="9.5" fill="#6B7C8C">不同投递方式的面试转化率（海外公开数据）</text>
+
+  <!-- 轴 -->
+  <line x1="0" y1="180" x2="360" y2="180" stroke="#DCE6EE" stroke-width="1"/>
+  <line x1="0" y1="40" x2="0" y2="180" stroke="#DCE6EE" stroke-width="1"/>
+
+  <!-- 柱 1：人工精准 -->
+  <rect x="12" y="46" width="66" height="134" fill="#1C7ED6" opacity="0.82"/>
+  <text x="12" y="38" class="mo" font-size="13" font-weight="600" fill="#1C7ED6">7–9%</text>
+  <text x="12" y="198" class="cn" font-size="10.5" fill="#3C5568">人工精准</text>
+  <text x="12" y="212" class="cn" font-size="10" fill="#6B7C8C">逐岗定制</text>
+
+  <!-- 柱 2：AI 副驾 -->
+  <rect x="96" y="102" width="66" height="78" fill="#1C7ED6" opacity="0.5"/>
+  <text x="96" y="94" class="mo" font-size="13" font-weight="600" fill="#1C7ED6">3–5%</text>
+  <text x="96" y="198" class="cn" font-size="10.5" fill="#3C5568">AI 副驾</text>
+  <text x="96" y="212" class="cn" font-size="10" fill="#6B7C8C">人审人投</text>
+
+  <!-- 柱 3：自动海投 -->
+  <rect x="180" y="150" width="66" height="30" fill="#EE6B45" opacity="0.8"/>
+  <text x="180" y="142" class="mo" font-size="13" font-weight="600" fill="#EE6B45">0.4–2%</text>
+  <text x="180" y="198" class="cn" font-size="10.5" fill="#3C5568">自动海投</text>
+  <text x="180" y="212" class="cn" font-size="10" fill="#6B7C8C">通用简历</text>
+
+  <!-- 柱 4：人审代投 -->
+  <rect x="264" y="34" width="66" height="146" fill="#0E9E7C" opacity="0.82"/>
+  <text x="264" y="26" class="mo" font-size="13" font-weight="600" fill="#0E9E7C">15–30%</text>
+  <text x="264" y="198" class="cn" font-size="10.5" fill="#3C5568">人审代投</text>
+  <text x="264" y="212" class="cn" font-size="10" fill="#6B7C8C">逐份复核</text>
+
+  <!-- 说明 -->
+  <rect x="0" y="240" width="360" height="66" rx="3" fill="#FDEDE8" stroke="#F5D5C9"/>
+  <text x="14" y="262" class="cn" font-size="11.5" font-weight="600" fill="#B8461F">分界线不在「用不用 AI」，在「有没有人逐份复核」</text>
+  <text x="14" y="280" class="cn" font-size="11" fill="#3C5568">纯自动化把转化率打到 2% 以下，人工复核能拉回 15% 以上</text>
+  <text x="14" y="296" class="cn" font-size="11" fill="#3C5568">LinkedIn 约 30 份/天开始限流，23% 重度自动化用户 90 天内被限制</text>
+
+  <text x="0" y="330" class="mo" font-size="9.5" fill="#A8B4BF">来源：Jobr、JobAICopilot、RankID 等行业博客汇总的公开跟踪数据，口径不完全一致</text>
+  <text x="0" y="346" class="mo" font-size="9.5" fill="#A8B4BF">样本主要来自北美市场，中国市场缺同类公开数据</text>
+</svg>
+<figcaption>自动投递的失败不是 AI 不够强，是它把「投递」这个动作从求职者的判断链里摘了出去。数据来源为北美市场公开跟踪，国内无同类统计。</figcaption>
+</figure>
+
+<h3>路线一：自动投递（海外主流，中国走不通）</h3>
+
+<p>这条路的前提是存在一个可被程序化操作的投递入口——LinkedIn 的 Easy Apply、ATS 的公开表单。中国没有这个前提。BOSS 直聘、智联本身是平台方，用户协议禁止第三方自动化；校招走的是各家自己的网申系统，字段千奇百怪，还常年加图形验证码。</p>
+
+<p>更关键的是，即使技术上能做，效果也不成立。申请量从 2022 年的 115 份/岗涨到 2025 年的 244 份/岗，招聘团队缩编 55%（Greenhouse 数据），67% 的美国 HR 负责人说 AI 生成的申请拖慢了招聘，84% 说工作量更重了（Robert Half，2026 年 3 月）。<em>供应侧在自动化，需求侧在加过滤器，这是一个典型的公地悲剧。</em></p>
+
+<h3>路线二：以练代投（中国特色）</h3>
+
+<p>屿智同行的「以练代投」和毕师父的「AI 面试舱 + 学长直推」，本质是同一件事：既然简历没法区分人，那就造一个新的区分维度——可验证的能力表现。</p>
+
+<p>这条路绕过了中国校招的真正瓶颈。不是投递动作太慢，是 HR 面对一万份格式相同的简历，只能先按学校筛。能力画像如果可信，就给了非名校学生一个绕过学历筛选的入口——这是它真正的社会价值，也是它能拿到政府和高校资源的原因。</p>
+
+<p>但代价也很清楚：<strong>能力画像的可信度依赖企业买单</strong>。企业不认这个分数，画像就是自娱自乐。屿智做了「作弊指数」、反常行为检测、结构化评分，都是为了解决企业侧的信任问题——这是这条路最难也最必须的一环。</p>
+
+<h3>路线三：双 Agent 撮合（最激进）</h3>
+
+<p>Jack &amp; Jill 直接取消了投递。它的判断是「更多的申请和更好的过滤器解决不了问题」，需要的是「一个由理解双方诉求的 Agent 撮合的网络」。这条路在中国短期内很难复制，原因不是技术，是三件事：</p>
+
+<ul>
+<li><strong>双边都要有 Agent</strong>。企业侧得愿意让一个 Agent 替自己判断用人需求，这在国内中大型企业几乎不可能</li>
+<li><strong>要靠撮合费活</strong>。Jack &amp; Jill 对候选人免费、企业按入职付费，这意味着它必须先有 5000 家企业客户才转得动</li>
+<li><strong>监管成本前置</strong>。欧盟把招聘类 AI 列为高风险，透明度义务已经生效；国内《生成式人工智能服务管理暂行办法》对招聘场景的具体要求还在演进</li>
+</ul>
+
+<h2><span class="num">07</span>这个赛道的四个真问题</h2>
+
+<h3>一、信任不能外包给模型</h3>
+
+<p>三家创业公司都在强调同一件事：关键节点必须有真人。毕师父的学长师父做「内推判断、画像匹配、关键复盘」；TTC 明确说谈薪和 Offer 环节人类不可替代，团队还保留人类运营的轻度介入来「传递更微妙的信号、缓冲情绪波动」；屿智有 1000+ 专家团队。</p>
+
+<p>这不是能力问题，是接受度问题——TTC 自己的说法是「Agent 已经可以覆盖 80% 以上的标准化、信息型流程，但在涉及信任与心理博弈的关键节点，人类仍然不可或缺，这更多是接受度问题，而非能力上限」。</p>
+
+<p>招聘的本质是风险转移。候选人赌上职业生涯，企业赌上一个 headcount。<em>AI 能降低信息成本，但没法承担决策责任。</em>所以「AI + 真人」不是过渡形态，可能是这个行业长期的稳定结构——只是真人的占比会一路压缩。</p>
+
+<h3>二、钱在 B 端，C 端付不动</h3>
+
+<p>三家没有一个靠 C 端订阅活着。毕师父 C 端月卡 ¥29 起，这个价格在中国互联网是「心理门槛以内」的定价，用意是把人留在池子里，不是赚钱。TTC 的 LovTalent 直接免费公测。屿智的 C 端也是免费训练、靠 B 端人才库变现。</p>
+
+<p>原因很简单：求职是低频、高 stakes、结果导向的事。用户愿意为「拿到 Offer」付几千上万（陪跑、直推），不愿意为「工具」付 30 块一个月——因为工具不承诺结果。这就把 C 端订阅模式锁死在很低的 ARPU 上。</p>
+
+<h3>三、护城河是数据结构化，不是模型</h3>
+
+<p>三家都在做同一件事，只是名字不同：毕师父叫「真岗位字典」，屿智叫「能力画像」，TTC 叫「人才深度标签 + 长期记忆」。共同点是把非结构化的判断（这个岗位真不真、这个人能不能干、这次为什么招人）变成可检索、可复用的字段。</p>
+
+<p>模型是租来的——三家都得调外部大模型。字段是自己的。毕师父的六真标准 + 20 万条面试数据、屿智的 10 万道题 + 2000 个 Offer 样本、TTC 的 1600 家企业合作史 + 100 万人才标签，这些才是花钱买不到的部分。</p>
+
+<h3>四、所有漂亮的数字都是内部统计</h3>
+
+<p>这一条值得单独说。85% Offer 率、80% 提高面试能力、90% 准确率、7 倍效率提升——全部标注「内部统计」或「据内部数据」，没有一家给出可复核的方法。</p>
+
+<p>不是说不真实，是说<strong>不可比</strong>。分母不同（谁算「陪跑学员」）、周期不同（3 个月还是 12 个月）、口径不同（拿到 Offer 算不算接受 Offer），任何两个数字放在一起都没有意义。看这类公司，能横向比较的只有三个：合作机构数、融资轮次与金额、有没有第三方审计过的采购合同。</p>
+
+<div class="note warn">
+  <span class="tag">反过来看</span>
+  <p>唯一一个可以外部核验的产品承诺，是毕师父的岗位「14 天过期自动下架」。这条能被抽查、能被证伪，所以它比任何一个百分比都更可信。评估这类公司时，优先找这种「可被证伪的承诺」，而不是漂亮的转化率。</p>
+</div>
+
+<h2><span class="num">08</span>附录：11 家速查</h2>
+
+<p class="lead">同样的信息压成表，方便横向对照。金额与用户数均为公开口径，时间点见括号。</p>
+
+<h3>国内创业公司</h3>
+
+<div class="tbl-wrap">
+<table>
+<thead>
+<tr><th>产品</th><th>谁在做</th><th>核心机制</th><th>谁付钱</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>毕师父</strong></td>
+<td>跃鱼信息 / 童部林（前吉利全球校招负责人）</td>
+<td>AI 干 80% 标准化 + 400 学长做 20% 拍板；真岗位字典六真标准，14 天过期</td>
+<td>高校（面试舱 7.92 万 / SaaS 3–8 万）+ 学生陪跑</td>
+</tr>
+<tr>
+<td><strong>小麦招聘</strong></td>
+<td>TTC / 肖玛峰（17 年猎头）</td>
+<td>猎头判断逻辑沉淀成 Agent，微信飞书拉群即用；长期记忆 + 全流程上下文</td>
+<td>AI 科技企业，按入职收费</td>
+</tr>
+<tr>
+<td><strong>LovTalent</strong></td>
+<td>TTC（同一家）</td>
+<td>C 端入口，Multi-Agent + 长期记忆；一次只推 3–5 个岗位，附四维解析；投递须本人确认</td>
+<td>免费，作为 B 端漏斗</td>
+</tr>
+<tr>
+<td><strong>屿智同行 / 千寻 AI 聘</strong></td>
+<td>屿智同行 / 张永豪（清华，2024 成立）</td>
+<td>以练代投：AI 模拟面试 → 能力画像 → 直推企业人才库；作弊指数防刷</td>
+<td>企业人才库 + 政府/高校活动执行</td>
+</tr>
+<tr>
+<td><strong>Sprix AI</strong></td>
+<td>屿智同行（同一家，2026.05 起）</td>
+<td>Human-Agent 协同、Agent 能力评估、数字劳动力市场</td>
+<td>企业需求方 + Agent 服务方</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3>国内大厂与上市公司</h3>
+
+<div class="tbl-wrap">
+<table>
+<thead>
+<tr><th>产品</th><th>谁在做</th><th>核心机制</th><th>谁付钱</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>职悟空</strong></td>
+<td>智联招聘（2026 WAIC 发布）</td>
+<td>业内首个职业生涯长期记忆系统，跨会话记全节点；独立 App 做主动提醒 + 网申代填</td>
+<td>免费，为主站导流</td>
+</tr>
+<tr>
+<td><strong>DeepHire</strong></td>
+<td>BOSS 直聘（2026.03 内测）</td>
+<td>自研南北阁大模型；C 端 AI 润色 + 自动投递 + 代聊约面；B 端批量解析 + 打分排序</td>
+<td>企业 + C 端增值</td>
+</tr>
+<tr>
+<td><strong>职芽</strong></td>
+<td>仟寻 MoSeeker（2026 夏 iOS 公测）</td>
+<td>面向应届生的「求职搭子」；母公司 2014 年成立，可触达 3000 万候选人</td>
+<td>待验证</td>
+</tr>
+<tr>
+<td><strong>大学生实习就业助手</strong></td>
+<td>高顿 × 腾讯 WorkBuddy（2026.09）</td>
+<td>四大测评 → 智能选岗 → 简历诊断 → 网申代填 → 面试模拟；封装为 Skill + MCP</td>
+<td>高顿课程与服务转化</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3>海外</h3>
+
+<div class="tbl-wrap">
+<table>
+<thead>
+<tr><th>产品</th><th>谁在做</th><th>核心机制</th><th>谁付钱</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Jack &amp; Jill</strong></td>
+<td>伦敦 / 旧金山，2026.09 完成 $40M A 轮</td>
+<td>双 Agent：Jack 语音对话候选人，Jill 嵌入企业；双方同意才直接引荐，跳过投递</td>
+<td>企业按入职付费，候选人全免</td>
+</tr>
+<tr>
+<td><strong>Final Round AI</strong></td>
+<td>旧金山，2023 成立，$6.88M 种子轮</td>
+<td>Interview Copilot 实时面试辅助 + 模拟面试 + 简历生成；100 万+ 用户</td>
+<td>C 端订阅 $150/月或 $25/月（年付）</td>
+</tr>
+<tr>
+<td><strong>LoopCV / JobCopilot / TurboApply</strong></td>
+<td>多家，2020 年前后起</td>
+<td>批量自动投递 + 群发 HR 邮件 + A/B 测试简历；Wonsulting 已于 2025.08 关停同类功能</td>
+<td>C 端订阅 $39–350/月</td>
+</tr>
+<tr>
+<td><strong>Teal</strong></td>
+<td>美国，累计 $20M+</td>
+<td>从简历生成器扩到职业导航中心：简历优化、申请追踪、Offer 评估</td>
+<td>C 端订阅</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2><span class="num">09</span>存疑清单</h2>
+
+<ul class="doubt">
+<li><strong>跃鱼信息的公司主体有两个。</strong>跃鱼信息科技（宁波）有限公司（2023-07-28 成立，注册资本 108 万，法人童部林，实控人洪斌 90%）与跃鱼教育科技（杭州）有限公司（杭州路演的参赛主体）。对外宣传常混用，报道口径不一。天使轮投资方公开只写「国内人力资源行业知名企业」，与浙江杰博的关联是根据股权和注册地址推断，非官方确认。</li>
+<li><strong>毕师父合作高校数有三个版本。</strong>官网写 110+，路演材料写 111 所（985:21 / 本科:78 / 高职:12），早期报道写 30 余所。时间点不同，不是矛盾，但引用时必须带日期。</li>
+<li><strong>TTC「年入 2 亿」未经证实。</strong>媒体标题口径，且 TTC 业务含招聘、FA、投资孵化三块，无法拆分到小麦招聘这个产品。</li>
+<li><strong>屿智同行的轮次名称与时间有出入。</strong>亿欧 2026-02-02 报道为「千万级天使+轮，正轩投资领投」；Preqin 记为 2026 年 1 月 Series A（投资方 Zhengxuan Capital）；百度百科写「2026 年 1 月完成 Pre-A 轮，正轩投资」。三个来源三个说法，金额量级一致（千万级人民币）。</li>
+<li><strong>屿智同行的产品名在变。</strong>对外主品牌「屿智同行 / YuugeAI」，产品对外叫过「AI 多面体人才库」「千寻 AI 聘」，2026 年 5 月又出一个「Sprix AI」。搜索时容易当成不同公司。</li>
+<li><strong>LovTalent 与小麦招聘是同一产品的两个面。</strong>lovtalent.com 是 C 端求职入口，小麦招聘是 B 端招聘 Agent，都属 TTC。部分工具导航站把 LovTalent 的服务方写成「北京月优科技有限公司」，与 TTC 主体（北京才多对信息技术有限公司）不一致，可能是运营主体差异，未核实。</li>
+<li><strong>转化率数据全部来自北美。</strong>7–9% / 3–5% / 0.4–2% / 15–30% 这组数字出自 Jobr、JobAICopilot、RankID 等行业博客的汇总，未见原始研究出处，口径也不统一。中国校招市场没有同类公开统计。</li>
+<li><strong>「85% 陪跑学员 Offer 率」的限定条件。</strong>官方标注「仅限完整服务周期样本」，属生存者偏差，不可与同业横比。</li>
+</ul>
+
+<hr>
+
+<section class="closing">
+  <h3>最后一句</h3>
+  <p>这三家公司真正的分歧不在技术，在「谁为结果负责」。</p>
+  <p>毕师父把责任压在高校和学生身上——学校买服务，学生买陪跑，结果好坏由就业率体现。TTC 把责任压在企业身上——按入职收费，不成就没钱。屿智一度想把责任压在数据上，发现数据本身不值钱，于是转去做 Agent 劳动力市场。</p>
+  <p>AI 在这个行业里能做的，是把「找到对的人」这件事的成本降下来。它做不到的是替任何一方承担选错的后果。<strong>谁离这个后果最近，谁就掌握定价权</strong>——这大概是看这一类产品最实用的一把尺子。</p>
+</section>
+
+<section class="src">
+  <h2><span class="num">10</span>来源</h2>
+
+  <h4>毕师父 / 跃鱼信息</h4>
+  <ol>
+    <li>毕师父官网产品矩阵与数据 · <a href="https://www.bishifu.com/">bishifu.com</a></li>
+    <li>《前吉利校招人童部林创办毕师父，让 AI 当大学生的求职师父》· 中华网科技 · 2026-08-12</li>
+    <li>《毕师父 AI：校招求职计算机跌出前十，AI 岗找人帮你找对路》· 微信公众号</li>
+    <li>《毕师父入选杭州人资推介会第八期》· 微信公众号（含 111 所高校明细）</li>
+    <li>《毕师父获评 2026 杭州人力资源服务和产品创新创优路演优秀项目》· 微信公众号（含 AI 面试舱 7.92 万、SaaS 3/5/8 万分档）</li>
+    <li>《注册用户超 50 万！宁波 AI 就业平台获国内「HR」巨头押注》· 宁波晚报 · 2025-06-09</li>
+    <li>跃鱼信息科技（宁波）有限公司工商信息 · 企查查</li>
+  </ol>
+
+  <h4>TTC / 小麦招聘 / LovTalent</h4>
+  <ol start="8">
+    <li>《TTC 小麦招聘入选 2026〈财富〉中国最佳设计榜》· 微信公众号（含《财富》评语原文）</li>
+    <li>《在 AI 抢人大战里吃到红利的人，年入 2 亿》· ZAKER / 今日头条</li>
+    <li>《对话 TTC 创始人 Max：Agent 进场，招聘不再是一门卖简历的生意》· 新浪财经 · 2026-02-06</li>
+    <li>TTC 完成数千万美元 A 轮融资（厚雪资本领投，百度战投）· 36 氪</li>
+    <li>LovTalent 产品说明 · <a href="https://lovtalent.com/">lovtalent.com</a> / AI 工具导航站</li>
+    <li>《聚力全球 AI 创新生态，TTC 将亮相 2026 WAIC》· ttcadvisory.com</li>
+  </ol>
+
+  <h4>屿智同行 / 千寻 AI 聘 / Sprix AI</h4>
+  <ol start="14">
+    <li>屿智同行官网 · <a href="http://ispace.yuugeai.com/">ispace.yuugeai.com</a></li>
+    <li>《屿智同行完成天使轮融资，清华麻省理工团队打造 AI 招聘新范式》· 微信公众号 · 2025-07-14</li>
+    <li>《千寻 AI 聘获千万级天使+轮融资，正轩投资领投》· 亿欧 · 2026-02-02</li>
+    <li>「张永豪」词条（含产品演进时间线）· 百度百科</li>
+    <li>《百万英才汇南粤，屿智同行 AI 招聘助力清华秋招会圆满收官》· 微信公众号</li>
+    <li>Yuuge AI 公司档案 · Preqin</li>
+  </ol>
+
+  <h4>国内同类</h4>
+  <ol start="20">
+    <li>《一个 AI 求职搭子，陪年轻人从校园走进职场》（职悟空）· 腾讯网 · 2026-07-25</li>
+    <li>《职悟空 App 上线，主打「会主动提醒」的求职助手》· 凤凰网科技</li>
+    <li>「DeepHire」词条（BOSS 直聘）· 百度百科</li>
+    <li>《高顿携手腾讯 WorkBuddy 生态发布首款大学生实习就业 AI Agent》· 中国日报网 · 2026-09-03</li>
+    <li>《这款 Agent，想做千万毕业生的「求职搭子」》（职芽）· 上观新闻</li>
+  </ol>
+
+  <h4>海外与行业数据</h4>
+  <ol start="25">
+    <li>Jack &amp; Jill 官网与系列 A 公告 · <a href="https://www.jackandjill.ai/">jackandjill.ai</a>（4000 万美元 A 轮，2026-09-14）</li>
+    <li>Jack &amp; Jill 融资与监管分析 · Silicon Polder · 2026-09-16</li>
+    <li>《Why VCs Are Pouring Millions into Candidate-First Tech》· HR Tech Feed</li>
+    <li>Final Round AI 融资与产品档案 · Seedtable / 官方博客</li>
+    <li>《AI Auto-Apply Bots: Do They Actually Get You Interviews? (2026 Reality Check)》· RankID</li>
+    <li>《Auto-Applying for Jobs: When It Works and When It Backfires (2026)》· Jobr</li>
+    <li>《Does Auto Apply Get You Blacklisted?》· JobsAICopilot</li>
+    <li>《用 AI 三層流程提升面試率：台灣求職者的進攻型策略指南》· Shareuhack</li>
+    <li>LoopCV / TurboApply 官网定价与功能页</li>
+  </ol>
+</section>
+
+<footer>
+调研整理 · 2026-11-11<br>
+全部信息来自公开渠道，数字口径与时间点已在正文与存疑清单标注。<br>
+文中不构成任何投资或采购建议。
+</footer>
+
+</div>
+</body>
+</html>
