@@ -12,9 +12,9 @@
 
 > 每日推荐 —— 宁缺毋滥，努力日更。
 
-- **2026-11-12** · [国内 AI 招聘求职产品全景：四层地图与一份数字对账](https://openmylife.xyz/articles/ai/ai-recruiting-landscape-four-layers.html) —— 上一层卖结果，下一层卖工具，再下一层卖模板——同一批人，四种收钱方式。40+ 产品的形态清单，以及对「智联 30%」等六个数字的逐条对账。
-- **2026-11-08** · [个人助理 V3 洞察：从抢入口到抢上下文](https://openmylife.xyz/articles/agent/personal-agent-v3-context.html) —— V3 真正新增的不是五个产品，而是三种生产、保管与定价个人上下文的方式。能力已变成供应链，下一阶段看授权深度、分成率与可携带性，不看 DAU。
-- **2026-10-24** · [AI 审美的三层结构：默认审美、调节层与上限层](https://openmylife.xyz/articles/ai/aesthetic-three-layers.html) —— 默认审美是统计引力，提示词是意图翻译，模型能力是细节天花板。动手前先分清：你面对的是默认审美问题，还是能力上限问题。
+- **2026-11-12** · [AI 招聘平台的圆桌：双端 Agent 社区在中国能不能成立](https://openmylife.xyz/articles/ai/ai-recruiting-roundtable-invisible-community.html) —— 七个 AI 模拟席位、八轮推演与两轮重启：把「AI 看不见的社区」拆成伪命题与真核弹，再放回冷启动、NDA 与巨头免费化四道墙前验证。
+- **2026-10-24** · [Seedance 2.5 4K 之后，特效行业真正的分水岭不是裁员](https://openmylife.xyz/articles/ai/seedance-4k-vfx-industry.html) —— 需求会涨、五毛特效有活路、大规模失业没发生，这三条只对了一半：单价崩得比需求快，「不裁员」是把全职换成了外包。
+- **2026-10-21** · [大模型的壁垒](https://openmylife.xyz/articles/ai/llm-barriers.html) —— 技术会收敛，壁垒不会消失。一次朋友间的讨论，最后落到算力、数据、资本与分发渠道。
 
 ## 我是谁
 

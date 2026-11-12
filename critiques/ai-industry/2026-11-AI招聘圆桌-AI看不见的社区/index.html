@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI 招聘平台的圆桌 · 双端 Agent 社区在中国能不能成立</title>
+<meta name="description" content="从动机重置到本地证据，从四层绞肉机到 500 进 5 初筛：八轮推演、两轮重启与一次收敛的完整圆桌讨论。" />
+<meta name="theme-color" content="#F7F4EC" />
+<style>
+/* 配色对齐站点：变量、硬编码两层统一用暖米纸面 + 陶土橙 */
+.article-page{
+  --paper:#F7F4EC;
+  --card:#FFFDF8;
+  --soft:#FBF8F1;
+  --ink:#1B1A17;
+  --ink2:#4A463D;
+  --ink3:#7A7468;
+  --accent:#C64B2F;
+  --accent-deep:#A63C24;
+  --accent-tint:#F5E6DC;
+  --green:#3F7D54;
+  --green-tint:#E9F0E5;
+  --red:#B7301F;
+  --red-tint:#F7E2DD;
+  --amber:#B47A1F;
+  --amber-tint:#F7EBD6;
+  --line:#E3DDD0;
+  --mark:#F2E2A8;
+  --serif:"Songti SC","STSong","SimSun","Noto Serif SC",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei","Noto Sans SC",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Consolas,"Courier New",monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#F7F4EC}
+.article-page{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.85;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.article-page .wrap{max-width:920px;margin:0 auto;padding:0 16px}
+.article-page p{margin:13px 0}
+.article-page a{color:var(--accent-deep);text-underline-offset:3px}
+.article-page strong{font-weight:700}
+.article-page em{font-style:normal;color:var(--accent-deep);font-weight:600}
+.article-page mark{background:var(--mark);padding:0 2px}
+.article-page header.top{padding:34px 0 8px}
+.article-page .kicker{font-family:var(--mono);font-size:12.5px;color:var(--accent-deep);letter-spacing:.04em}
+.article-page h1{font-family:var(--serif);font-size:28px;line-height:1.4;margin:12px 0 10px;font-weight:700;color:var(--ink)}
+.article-page .sub{color:var(--ink2);font-size:15.5px;line-height:1.75}
+.article-page .dateline{font-size:13.5px;color:var(--ink3);margin-top:12px;line-height:1.8}
+.article-page .notice{background:var(--accent-tint);border-left:4px solid var(--accent);padding:11px 14px;margin:20px 0 6px;font-size:14.5px;color:var(--ink2);line-height:1.8}
+
+.article-page h2{font-family:var(--serif);font-size:21px;font-weight:700;background:var(--accent-tint);border-left:4px solid var(--accent);margin:38px -16px 18px;padding:12px 16px;line-height:1.5;scroll-margin-top:16px}
+.article-page h2 .no{font-family:var(--mono);font-size:13px;color:var(--accent-deep);margin-right:12px;font-variant-numeric:tabular-nums}
+.article-page h3{font-family:var(--serif);font-size:18px;font-weight:700;margin:28px 0 10px;line-height:1.6;padding-bottom:7px;border-bottom:1px dashed var(--line)}
+.article-page h3 .rt{font-family:var(--mono);font-size:12px;color:var(--ink3);font-weight:400;margin-left:10px}
+.article-page .lead{font-size:16px;color:var(--ink2);line-height:1.85}
+
+/* 剧本式发言：角色署名是这一页唯一的强装饰 */
+.article-page ::selection{background:var(--mark);color:var(--ink)}
+.article-page .sim{font-family:var(--mono);font-size:11.5px;font-weight:400;color:var(--ink3);letter-spacing:0;margin-right:7px;white-space:nowrap}
+.article-page .say{margin:22px 0;padding-left:16px;border-left:2px solid var(--line)}
+.article-page .say .who{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--ink);line-height:1.5;margin-bottom:7px}
+.article-page .say .who .sim{font-family:var(--mono);font-size:11.5px}
+.article-page .say .who span{color:var(--ink3);font-family:var(--sans);font-size:12.5px;font-weight:400;letter-spacing:0;margin-left:3px}
+.article-page .say p{font-size:15.5px;line-height:1.9;margin:10px 0}
+.article-page .say ul{margin:10px 0;padding-left:20px}
+.article-page .say li{font-size:15.5px;line-height:1.85;margin:7px 0}
+
+/* 反思与插话：淡底成区块 */
+.article-page .block{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);padding:14px 16px;margin:18px 0}
+.article-page .block.chaos{border-left-color:var(--amber);background:var(--amber-tint)}
+.article-page .block.review{border-left-color:var(--green);background:var(--green-tint)}
+.article-page .block .bt{font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:var(--accent-deep);display:block;margin-bottom:7px}
+.article-page .block.chaos .bt{color:var(--amber)}
+.article-page .block.review .bt{color:var(--green)}
+.article-page .block p{font-size:15.5px;line-height:1.88;margin:8px 0}
+.article-page .block ol{padding-left:20px;margin:9px 0}
+.article-page .block li{font-size:15.5px;line-height:1.85;margin:9px 0}
+
+/* 表格：手机卡片化，桌面才铺开 */
+.article-page table{border-collapse:collapse}
+.article-page table,
+.article-page thead,
+.article-page tbody,
+.article-page tr,
+.article-page td{display:block;width:100%}
+.article-page thead{display:none}
+.article-page tr{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);margin:14px 0;padding:5px 0}
+.article-page td{padding:7px 14px;font-size:15px;line-height:1.78}
+.article-page td::before{content:attr(data-label);display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--ink3);margin-bottom:2px}
+.article-page td:first-child{color:var(--ink2)}
+.article-page .cap{font-size:13.5px;color:var(--ink3);margin:10px 0 0;line-height:1.75}
+.article-page .report-foot{background:var(--soft);border-top:1px solid var(--line);margin:44px -16px 0;padding:22px 16px 30px;font-size:13.5px;color:var(--ink3);line-height:1.8}
+.article-page .report-foot p{margin:6px 0}
+
+@media (min-width:700px){
+  .article-page{font-size:17px;line-height:1.88}
+  .article-page .wrap{padding:0 28px}
+  .article-page h1{font-size:36px}
+  .article-page .sub{font-size:17px}
+  .article-page h2{font-size:25px;margin-left:-28px;margin-right:-28px;padding:14px 28px}
+  .article-page h3{font-size:21px}
+  .article-page table{display:table;width:100%;background:var(--card);border:1px solid var(--line);font-size:15.5px}
+  .article-page thead{display:table-header-group}
+  .article-page tbody{display:table-row-group}
+  .article-page tr{display:table-row;border:none;border-left:none;margin:0;padding:0}
+  .article-page th{background:var(--accent-tint);color:var(--accent-deep);font-family:var(--sans);font-size:13.5px;font-weight:700;text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+  .article-page td{display:table-cell;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;width:auto}
+  .article-page td::before{display:none}
+  .article-page .report-foot{margin-left:-28px;margin-right:-28px;padding-left:28px;padding-right:28px}
+}
+@media (min-width:1400px){
+  .article-page{font-size:18.5px;line-height:1.9}
+  .article-page .wrap{max-width:1000px;padding:0 48px}
+  .article-page h1{font-size:46px}
+  .article-page h2{font-size:29px;margin-left:-48px;margin-right:-48px;padding:16px 48px}
+  .article-page h3{font-size:23px}
+  .article-page .lead{font-size:18.5px}
+  .article-page table{font-size:16.5px}
+  .article-page .report-foot{margin-left:-48px;margin-right:-48px;padding-left:48px;padding-right:48px}
+}
+@media (min-width:1900px){
+  .article-page{font-size:20px}
+  .article-page .wrap{max-width:1060px}
+  .article-page h1{font-size:52px}
+  .article-page h2{font-size:32px}
+  .article-page table{font-size:17.5px}
+}
+</style>
+</head>
+<body>
+<div class="article-page">
+<div class="wrap">
+
+<header class="top">
+  <div class="kicker">圆桌讨论全记录</div>
+  <h1>AI 招聘平台的圆桌：<br />双端 Agent 社区在中国能不能成立</h1>
+  <p class="sub">从「动机重置」到「500 进 5 初筛」，八轮推演、两轮重启与一次收敛。</p>
+  <p class="dateline">2026 年 11 月 12 日。议题：验证「中国市场双端 Agent-to-Agent 招聘撮合平台必成炮灰」假说，拆解数据封锁、决策黑箱与定价崩塌之下的底层死局与微弱裂缝。</p>
+</header>
+
+<div class="notice">以下七个席位的姓名、履历、职衔、信条与全部发言，均由 AI 按设定视角模拟生成，不对应任何真实人物，不是访谈、不是当事人观点，也不是行业调研结论。涉及公司、产品与价格处按公开口径书写。</div>
+
+<h2 id="s1"><span class="no">01</span>动机重置：当对手不是「缺钱的创业者」</h2>
+
+<h3>第八轮 <span class="rt">ROUND 8</span></h3>
+
+<div class="say"><div class="who"><span class="sim">(AI模拟)</span> 顾知行 <span>｜企服与 AI 赛道双币基金合伙人</span></div>
+<p>我收回前面三轮对财务模型的部分批判——<strong>之前我们用 VC 算账的尺子，去量一个明说没想在这件事上赚多少钱的技术老炮，靶子打偏了。</strong></p>
+<p>马德龙是拉勾网前联合创始人兼 CEO，他既不是来找投资人讲故事骗融资的，也不指望靠这个项目赚取世俗意义上的利润。他在视频里说的“凭啥招聘还要收中介费，我就收几块钱 Token 费，免费冲击一下”，这是商业世界里最可怕的物种——<strong>“不以盈利为目的的降维破坏者”</strong>。</p>
+<p>当 BOSS 和猎聘每年要从企业身上抽走几十亿利润来维持股价和庞大的销售团队时，一个懂架构、亲自下场用 Claude 写代码的创始级老兵，决定用“纯算力成本价”去掀掉信息差中介的桌子。哪怕只有 5% 的成功率，对既有利益格局都是一次精准的侧翼爆破。</p></div>
+
+<div class="say"><div class="who"><span class="sim">(AI模拟)</span> 严正德 <span>｜前头部招聘平台战略 VP</span></div>
+<p>老顾，别被“免费＋情怀”的叙事感动了。<strong>免费能颠覆单边工具（比如当年的 360 杀毒），但免费在双边市场里往往是毒药。</strong></p>
+<p>马德龙设想了一个“AI 看不见的社区”：让全球所有求职者 Agent 和企业 Agent 在里面自由碰撞、“爱咋咋地，自己玩去”。他忽略了一个最致命的工程与经济学灾难——<strong>算力级别的垃圾邮件洪水（Spam Flood）</strong>。</p>
+<p>物理世界里，一个人一天只有 24 小时、只能投有限的简历，这个物理限制恰恰是招聘市场的“天然防洪堤”，迫使求职者必须做筛选。一旦你用几块钱的 Token 成本彻底拆掉物理限制，让每个求职 Agent 都能在几分钟内向全网 10 万家企业 Agent 发起全量握手，企业端瞬间就会被海量的“高精度幻觉简历”淹没。</p>
+<p>没有门槛的“自由连接”，最后不会长出“两看不相厌的精准匹配”，只会长出一场<strong>两个大模型互相消耗电费的 DDoS 攻击</strong>。企业端只要被垃圾信息轰炸三天，就会立刻拔掉接入的网线。</p></div>
+
+<h2 id="s2"><span class="no">02</span>真正的核弹不是「Agent 社区」，而是「本地文件夹挖证据」</h2>
+
+<h3>第九轮 <span class="rt">ROUND 9</span></h3>
+
+<div class="say"><div class="who"><span class="sim">(AI模拟)</span> 陆天河 <span>｜自主智能体架构师 / Web3 极客</span></div>
+<p>你们都盯着他说的“看不见的社区”，但我作为架构师，听完这段视频后背脊发凉的细节在后半段——<strong>他让 Claude 帮他整理履历，结果 AI 反手向他申请权限，直接钻进他电脑的本地文件夹里去“扒拉工作成果作为证据”。</strong></p>
+<p>这才是整个视频里含金量最高、真正具备颠覆性的“AI 原生火花”！过去三十年的招聘，本质上是“文本编造大赛”——你在 Word 里吹自己主导了亿级架构，HR 只能靠猜。但马德龙无意中撞破了一个新范式：<strong>基于本地私有数据的“可验证工作证明”（Proof of Work）。</strong></p>
+<p>当求职 Agent 能在本地读取你的 Git 提交记录、架构设计图、业务复盘文档，并把这些不可伪造的硬核资产提炼成结构化凭证时，简历这个存在了几百年的物种就彻底死亡了。<strong>“把本地工作流沉淀为客观证据”，这比“建一个招聘社区”高级一万倍。</strong></p></div>
+
+<div class="say"><div class="who"><span class="sim">(AI模拟)</span> 薛明漪 <span>｜500 强与泛中资大厂前 CHRO</span></div>
+<p>小陆，技术上这叫“本地证据萃取”，但在中国企业的真实职场里，这叫<strong>“主动递交窃密罪证”</strong>。</p>
+<p>马德龙自己当老板十几年，他电脑里的文件夹都是他自己的资产，Claude 随便扫、随便挖，他觉得“整个人都懵了，太爽了”。可你让一个腾讯的 T11 架构师、或者字节的商业化总监，授权一个第三方招聘 Agent 去扫描他工作电脑里的本地文件夹，提取项目数据、架构图和业务指标，然后打包发给外部“看不见的社区”去证明自己？</p>
+<p><strong>前脚 Agent 刚跟下家“对上眼”，后脚老东家的信息安全部和法务部就能直接报警抓人。</strong>在缺乏零知识证明（ZKP）和企业级数据脱敏沙盒的前提下，“本地挖证据”只能服务于两类人：<strong>开源社区的独立开发者</strong>，以及<strong>像马德龙这样没有任何雇主约束的自由人</strong>。一旦试图向主流职场推广，第一道撞上的不是技术墙，而是《保密协议》（NDA）与商业机密红线。</p></div>
+
+<div class="block chaos">
+  <span class="bt">混沌打脸官插话 · Round 9 触发点</span>
+  <p><strong><span class="sim">(AI模拟)</span> 徐二狗（Chaos Master）：</strong>各位老师，听完马德龙这段深夜睡前灵光一现、醒来感动自己的全过程，我太熟悉这个画面了——这不就是“中年技术男的典型颅内高潮”嘛！</p>
+  <p>尤其是最后那句灵魂总结：<strong>“过去做招聘的没我懂 AI，做 AI 的没我懂招聘，我不做谁做？”</strong>好家伙，一股浓浓的“天降大任于斯人也”的悲壮感扑面而来。</p>
+  <p>但咱们把滤镜关掉，看看真实发生了什么：一个明说没想靠这件事赚钱的前大厂联合创始人，晚上睡不着觉，跟 Claude 聊了半小时天，醒来发现 Claude 居然会翻他电脑文件夹帮他写简历，瞬间觉得自己摸到了人类招聘史的终极形态。</p>
+  <p>这就像一个退休的米其林三星主厨，某天半夜突然发现全自动炒菜机居然会自己放盐，于是激动地宣布：“以前做厨师的没我懂自动化，做自动化的没我懂炒菜，我要建一个‘人类看不见的无人厨房社区’，让全世界的锅和铲子自己谈恋爱，一道菜只收两毛钱电费！”</p>
+  <p>大哥，锅和铲子在后台聊得再火热，最后张嘴吃饭的还是人类啊！<strong>你省掉了中介费，但你没省掉人类对“信任背书”和“利益博弈”的刚需。</strong>至于让 AI 翻本地文件夹找证据——普通打工人电脑里除了《2026 年 Q3 颗粒度对齐周报_最终版_v8.docx》和摸鱼存的表情包，哪有啥能拿得出手的硬核证据？AI 翻完文件夹可能比你还懵：“兄弟，你这三年到底干啥了？”</p>
+</div>
+
+<h2 id="s3"><span class="no">03</span>终局重构：如果这是一场纯粹的个人实验，它该长成什么物种？</h2>
+
+<h3>第十轮 <span class="rt">ROUND 10 · 老何 &amp; 陆天河 联合推演</span></h3>
+
+<p>既然马德龙不缺钱、也不想靠“卖人头收中介费”赚钱，那么用商业公司的生死线去劝退他是无效的。但如果把他的探索当作一场<strong>极客实验</strong>，他最应该避开“重造一个中心化招聘社区”的泥潭，直接把精力聚焦在他真正踩中痛点的那个切口上——<strong>做“个人职业数字分身与工作证明协议”的开源基础设施</strong>。</p>
+
+<table>
+<thead><tr><th>维度</th><th>马德龙当前的设想（容易滑向死胡同）</th><th>圆桌重构后的极客最优解（高杠杆实验）</th></tr></thead>
+<tbody>
+<tr><td data-label="维度"><strong>核心产品形态</strong></td><td data-label="当前设想">搭建一个中心化的“AI 看不见的招聘社区”，拉两边进场</td><td data-label="重构后"><strong>开源本地端侧 Agent 技能（Local Skill）</strong>：帮极客／工程师自动从本地代码、文档中脱敏萃取“可验证战绩档案”</td></tr>
+<tr><td data-label="维度"><strong>信任与安全边界</strong></td><td data-label="当前设想">直接扫描本地文件夹提取原始材料（极易触发 NDA 违规）</td><td data-label="重构后"><strong>基于本地小模型的“事实脱敏＋能力指纹生成”</strong>：原始文件不出本地，只输出经过验证的能力图谱</td></tr>
+<tr><td data-label="维度"><strong>连接方式</strong></td><td data-label="当前设想">让所有 Agent 在他的社区里无差别“全网海聊”（导致算力泛滥）</td><td data-label="重构后"><strong>标准化 A2A 握手协议（类似 robots.txt / agent.json）</strong>：让个人分身直接对接企业官网／GitHub 挂出的招聘端点</td></tr>
+<tr><td data-label="维度"><strong>历史使命定位</strong></td><td data-label="当前设想">“我不做谁做”的行业颠覆者</td><td data-label="重构后"><strong>去中心化人才协议的布道者</strong>：用开源标准倒逼 BOSS 和猎聘开放数据接口</td></tr>
+</tbody>
+</table>
+
+<div class="block review">
+  <span class="bt">架构师反思与收敛校准</span>
+  <p>引入马德龙的真实身份与第一手思考后，整个推演完成了一次关键的维度跃迁：</p>
+  <ol>
+    <li><strong>去商业化免疫与新的陷阱：</strong>他不缺钱、只想收几块钱 Token 费的打法，使他免疫了传统创业公司的现金流死亡螺旋；但他掉进了另一个极客专属陷阱——<strong>用“算力无限”去替代“注意力稀缺”</strong>。拆掉物理投递限制后，如果不建立高昂的“验证门槛”，他的社区会迅速沦为大模型互相制造噪音的垃圾场。</li>
+    <li><strong>真假创新的剥离：</strong>他设想的“AI 看不见的社区”依然是旧平台思维的变体（只是把网页换成了 Agent 接口）；但他与 Claude 互动时撞出来的“本地文件夹挖证据（Proof of Work）”，才是真正能杀死传统简历、重构招聘信任机制的核武器。</li>
+    <li><strong>跨界盲区（“我不做谁做”的误区）：</strong>懂招聘（2014 年的互联网垂直撮合）＋懂 AI（2026 年的 Vibe Coding），中间依然缺了一块最致命的拼图——<strong>当代中国大中型企业的组织政治与数据合规边界</strong>。</li>
+  </ol>
+</div>
+
+<h2 id="s4"><span class="no">04</span>圆桌会议重启：席位与冲突矩阵</h2>
+
+<p class="lead"><strong>核心议题：</strong>结合「中国 AI 招聘四层地图」、Jack &amp; Jill 跨国水土不服逻辑、拉勾网前联合创始人马德龙的「AI 看不见的社区」构想，以及 AI 时代独立开发者的「手搓自嗨幻觉」，重新推演双端 Agent 招聘平台在中国市场的生死局。</p>
+
+<table>
+<thead><tr><th>席位与角色（全部 AI 模拟）</th><th>代表视角</th><th>核心信条 / 攻击靶点</th></tr></thead>
+<tbody>
+<tr><td data-label="席位与角色"><strong>严正德</strong>｜前头部招聘平台战略 VP</td><td data-label="代表视角">L1 寡头封锁与双边经济学</td><td data-label="核心信条 / 攻击靶点">“投递入口是平台私有资产，没有流动性底座的 Agent 协议只是空气。”</td></tr>
+<tr><td data-label="席位与角色"><strong>薛明漪</strong>｜前 500 强 &amp; 互联网大厂 CHRO</td><td data-label="代表视角">组织政治与 NDA 数据合规</td><td data-label="核心信条 / 攻击靶点">“企业招聘的核心是‘免责’，而让外部 AI 扫本地文件夹叫‘商业泄密’。”</td></tr>
+<tr><td data-label="席位与角色"><strong>顾知行</strong>｜企服与 AI 双币基金合伙人</td><td data-label="代表视角">四层定价绞肉机与分发稀缺性</td><td data-label="核心信条 / 攻击靶点">“两头被锁死，供给无限膨胀；没有分发红利的‘等时运’，本质是刮彩票。”</td></tr>
+<tr><td data-label="席位与角色"><strong>陆天河</strong>｜自主 Agent 架构师</td><td data-label="代表视角">端侧协议与算力洪水悖论</td><td data-label="核心信条 / 攻击靶点">“免费双端海聊会引发 Token 级 DDoS 灾难，但‘本地挖证据’是真核弹。”</td></tr>
+<tr><td data-label="席位与角色"><strong>林见微</strong>｜互联网创业史与产品观察者</td><td data-label="代表视角">路径依赖与“手搓自嗨幻觉”</td><td data-label="核心信条 / 攻击靶点">“工程摩擦力归零制造了多巴胺骗局，把‘做出来了’当成了‘有人要用’。”</td></tr>
+<tr><td data-label="席位与角色"><strong>老何</strong>｜20 年资深猎头合伙人</td><td data-label="代表视角">重度交付与人性博弈</td><td data-label="核心信条 / 攻击靶点">“蓝领靠一通电话，高管靠深夜心理按摩，中间层靠 AI 演戏只会批量制造炮灰。”</td></tr>
+<tr><td data-label="席位与角色"><strong>徐二狗</strong>（Chaos Master）｜毒舌脱口秀演员</td><td data-label="代表视角">击碎行话与使命感</td><td data-label="核心信条 / 攻击靶点">专治财务自由技术老炮的“天降大任感”与独立开发者的“颅内高潮”。</td></tr>
+</tbody>
+</table>
+
+<h3>第一轮：四层绞肉机与结构性死穴 <span class="rt">ROUND 1</span></h3>
+
+<div class="say"><div class="who"><span class="sim">(AI模拟)</span> 严正德 <span>｜前招聘平台战略 VP</span></div>
+<p>你的直觉极其敏锐。把海外 Jack &amp; Jill（4000 万美元 A 轮）的双 Agent 撮合搬到中国，先别谈 AI 普及度，光是<strong>底层基建的三个前提，国内一个都不成立</strong>：</p>
+<p>第一，海外有企业自建招聘页和 Greenhouse、Lever 这种开放 ATS，第三方 Agent 合法接入、跳过投递；国内的岗位和简历是 BOSS、智联、前程无忧、猎聘四家的私有资产，接口焊死，根本不存在一个供你“绕过”的公共投递入口。</p>
+<p>第二，最可怕的降维打击来自 <strong>L1 层的免费化</strong>。智联（艾琳／职悟空）、BOSS（DeepHire／职决）把大模型能力直接打包进原有账号不单卖；更狠的是支付宝“晓叶”，覆盖超 1.6 亿用户、聚合超 1800 万个岗位，还向生态机构开放六大 AI 能力和 38 项原子能力。巨头把 AI 招聘做成水电煤和政企基建，你建一个独立双端平台，靠什么把两头的人从巨头的池子里拽出来？</p></div>
+
+<div class="say"><div class="who"><span class="sim">(AI模拟)</span> 顾知行 <span>｜双币 VC 合伙人</span></div>
+<p>我从商业账本补一刀。中国 AI 招聘四层地图里，能收的钱已经被两头锁死了：<strong>上面被 L1 平台免费化，下面被 L2 单价压平</strong>（Moka AI 面试已经打到 10 元/人次，北森 33 元，相比 300 元的线下面试，十五倍价差两年内吃完）。</p>
+<p>马德龙在视频里说“不赚中介费、不靠信息差，只收几块钱 Token 费免费冲击一下”——听起来很理想主义，但<strong>在双边市场里，“便宜”解决不了冷启动</strong>。个人用户一年才换几次工作？企业端在没有看到成规模的高质量候选人之前，连接口都懒得接。没有 L4（如毕师父、找北）那种硬啃高校和政府采购的苦力渠道，也没有 TTC“小麦招聘”那样把猎头重交付买下来的预算科目，一个纯靠 Token 计费的第三方撮合社区，连流量破冰的摩擦力都克服不了。</p></div>
+
+<h3>第二轮：老兵的路径依赖，与 AI 时代的「手搓自嗨幻觉」 <span class="rt">ROUND 2</span></h3>
+
+<div class="say"><div class="who"><span class="sim">(AI模拟)</span> 林见微 <span>｜互联网创业史与产品观察者</span></div>
+<p>你提到两点特别戳心：一是拉勾前创始人的资源是否过期，二是你自己这两个月连做几个项目后感受到的“AI 时代手搓自嗨幻觉”。马德龙的视频完美印证了这两者的叠加。</p>
+<p>先看资源：2013 年拉勾网能起势，靠的是移动互联网大爆发，用“24 小时极速反馈”去切传统 PC 招聘巨头的软肋。但 2026 年的互联网已经是存量绞肉机，他十年前积攒的大厂 HRD 和技术 VP 人脉，要么财务自由退隐，要么在裁员潮里被优化，仍在位上的也被锁死在集团统一的 HR SaaS 流程里。<strong>他脑子里的“Agent 社区”，本质上还是 2014 年“交易撮合平台”的路径依赖，只是把网页换成了 Agent 接口。</strong></p>
+<p>再看“手搓自嗨”：以前做个招聘产品要拉 15 人写半年代码，高昂的沉没成本会逼着你在动工前反复验证伪需求；现在他睡前跟 Claude 聊几句，早上醒来发现 Claude 已经把履历理顺、甚至开始翻本地文件夹找证据了——<strong>工程摩擦系数趋近于零，瞬间制造出一种极强的多巴胺骗局</strong>，让人产生“过去做招聘的没我懂 AI，做 AI 的没我懂招聘，我不做谁做”的使命感。</p>
+<p>但残酷的真相是：<strong>当 AI 让软件和 Agent 的生产成本趋近于零时，它的供给就会趋近于无穷大，而用户的注意力被撕得粉碎。</strong>在今天，没有自带百万粉丝 IP 或超级 App 流量池的冷启动，根本不存在靠“产品巧妙”就能等来的“时运”——商业史上的时运从来不是买彩票，而是<strong>新型分发渠道的窗口期，而今天并不存在这样一个独立于大厂之外的新通道。</strong></p></div>
+
+<div class="say"><div class="who"><span class="sim">(AI模拟)</span> 陆天河 <span>｜自主 Agent 架构师</span></div>
+<p>林见微把心理账算得很透，但我从纯技术架构角度做个切割：马德龙视频里其实混杂了<strong>一个伪命题</strong>和<strong>一个真核弹</strong>。</p>
+<p>伪命题是他设想的“AI 看不见的社区”——让每个求职 Agent 突破每天 24 小时的物理限制，去和全世界所有公司的 Agent 聊一圈。这在工程上是一场灾难：<strong>算力级别的垃圾邮件洪水（Spam Flood）</strong>。物理世界里一个人一天只有 24 小时、能投的简历有限，这个限制恰恰保护了企业不被淹没。一旦花几块钱 Token 就能全网海聊，企业端 Agent 瞬间会被百万份“高精度幻觉简历”打成 DDoS 瘫痪，三天之内企业就会拔掉网线。</p>
+<p>但他在视频后半段无意中撞破的那个细节——<strong>Claude 主动向他申请本地文件夹权限，去扒拉过往工作成果作为履历“证据”</strong>——这才是真正的核弹。如果能用端侧 Agent 把一个人的代码提交、项目文档沉淀为不可伪造的“工作量证明（Proof of Work）”，传统简历确实会被彻底杀死。</p></div>
+
+<h3>第三轮：企业黑箱、NDA 铁幕与「去中介化」的悖论 <span class="rt">ROUND 3</span></h3>
+
+<div class="say"><div class="who"><span class="sim">(AI模拟)</span> 薛明漪 <span>｜前 500 强 CHRO</span></div>
+<p>小陆，技术上“本地挖证据”很性感，但放到中国大中型企业的真实职场里，这叫<strong>“主动递交商业窃密罪证”</strong>。</p>
+<p>马德龙自己当老板十几年，电脑里的文件夹都是他自己的资产，Claude 随便扫、随便挖，他觉得“整个人都懵了，太爽了”。可你让一个腾讯的架构师或字节的业务负责人，授权一个外部招聘 Agent 扫描他工作电脑里的本地文件夹，提取业务指标和系统架构图发到外部“看不见的社区”去证明能力？<strong>前脚 Agent 刚跟下家“对上眼”，后脚老东家的信息安全部和法务部就能直接报警。</strong></p>
+<p>此外，中国企业招人从来不是客观的参数对齐，而是<strong>多方政治平衡与免责游戏</strong>。用人部门提的需求往往是自相矛盾的，HR 和老板要的是“能扛雷的白手套”和“拍板前的安全感”，没有任何一家正规企业会把用人判断权交给外部社区里两个黑箱 Agent 的自嗨对话。</p></div>
+
+<div class="say"><div class="who"><span class="sim">(AI模拟)</span> 老何 <span>｜20 年资深猎头合伙人</span></div>
+<p>我补充最后一块拼图。马德龙说“凭啥招聘还要收中介费、靠信息差赚钱”，这话暴露了他离开一线招聘交付太久。</p>
+<p><strong>招聘的本质从来不是“信息差”，而是“信任背书”和“人性摩擦的处理”。</strong></p>
+<p>基层蓝领岗位，信息差早就没了，鱼泡直聘靠“一键直连工头打电话”就解决了，根本不需要两个 Agent 在后台扯皮；中高端岗位，决定一个年薪百万的专家跳不跳槽的，是他的家庭顾虑、对新老板性格的忌惮、期权折算的心理底线——这些隐秘维度他连老婆都不全说，怎么可能写进 Agent 的提示词里？TTC 的“小麦招聘”为什么能跑通？因为它在微信群里用 Agent 提效，但关键节点全是真人顾问按头签字、做心理按摩。把“人”从撮合里彻底踢出去，两台机器聊得再热闹，最后“最后一公里”依然是死路。</p></div>
+
+<div class="block chaos">
+  <span class="bt">混沌打脸官插话 · Round 3 触发点</span>
+  <p><strong><span class="sim">(AI模拟)</span> 徐二狗（Chaos Master）：</strong>听完各位老师的分析，我算看明白了，这哪是什么“AI 原生招聘革命”，这分明是<strong>“2026 年科技圈两大典型幻觉的世纪会师”</strong>：</p>
+  <p>一边是普通独立开发者，借助大模型一个月手搓三四个项目，看着本地跑通了，天天盯着后台等用户上门，结果发现<strong>全网最缺的不是代码，是活人的眼球</strong>；</p>
+  <p>另一边是昔日大厂联合创始人，半夜睡不着觉跟 Claude 聊了半小时，早上醒来发现 Claude 居然会翻他电脑文件夹写简历，瞬间感动得热泪盈眶，发出一声灵魂呐喊：<strong>“以前做招聘的没我懂 AI，做 AI 的没我懂招聘，我不做谁做？！”</strong></p>
+  <p>兄弟们，这画面太经典了！就像一个退休的米其林主厨，半夜发现全自动炒菜机居然会自己撒盐，于是激动地宣布：“我要建一个‘人类看不见的无人厨房社区’，让全世界的锅和铲子自己谈恋爱，一道菜只收两毛钱电费！”大哥，锅和铲子在后台聊得再火热，最后张嘴吃饭的还是人类啊！</p>
+  <p>你以为两个 Agent 在“看不见的社区”里突破了 24 小时物理限制，替你聊遍了全世界的公司；实际上呢？<strong>是一个失业程序员的 Agent 拿着几块钱 Token 买的“高并发赋能话术”，去轰炸一个苦逼 HR 压根不敢授权的“僵尸招聘 Agent”。</strong>两个硅基马屁精在云端对齐了半小时颗粒度，最后候选人依然过不了年龄卡点，或者因为让 Claude 翻了工作电脑，直接喜提老东家法务部律师函一张。</p>
+  <p>这不叫“颠覆招聘”，这叫<strong>用最先进的算力，给传统职场的演戏艺术增加了一道全自动电费账单。</strong></p>
+</div>
+
+<div class="block review">
+  <span class="bt">架构师反思与重启校准</span>
+  <p>在重新整合了四层市场格局、马德龙的第一手构想以及你的“手搓自嗨与注意力稀缺”洞察后，前 3 轮推演已经将整个问题锚定在三个核心冲突点上：</p>
+  <ol>
+    <li><strong>理想主义破坏者 vs. 双边市场物理定律（顾知行 vs. 严正德）：</strong>马德龙不缺钱、只收几块钱 Token 费的打法，让他免疫了传统创业公司的现金流危机，却依然跨不过闭源平台壁垒（BOSS／支付宝）与免于算力垃圾邮件轰炸（Spam Flood）的工程铁律。</li>
+    <li><strong>“手搓自嗨幻觉”与“时运”的真相（林见微 vs. 陆天河）：</strong>开发摩擦力归零导致极易陷入“做出来＝有需求”的认知偏差；在供给无限的 2026 年，缺乏分发通道的冷启动几乎无法靠“等时运”突围。但马德龙无意中撞出的“本地文件夹挖证据（Proof of Work）”，却是极少数具备真价值的微光。</li>
+    <li><strong>去中介化幻觉 vs. 组织政治与 NDA 红线（薛明漪 vs. 老何）：</strong>企业需要的是“免责”与“人性安抚”，而非冷冰冰的参数对接；同时，“扫描本地文件夹提取战绩”在雇佣制下直接撞击商业机密与 NDA 铁幕。</li>
+  </ol>
+</div>
+
+<h2 id="s5"><span class="no">05</span>撤回「拍板权」伪命题，聚焦「500 进 5 初筛漏斗」</h2>
+
+<div class="block">
+  <span class="bt">架构师校准声明</span>
+  <p>你的指正完全准确。在任何招聘产品设计里，Agent 都不会替人类发 Offer 拍板，它的真实定位就是<strong>漏斗顶端的“500 进 5”初筛与预沟通</strong>，最后 1% 依然交给人来面谈。撤回上一轮“夺走用人拍板权”的过度推演，本轮圆桌直接把火力对准：<strong>“双端 Agent 聊天做 500 进 5 初筛”在中国市场到底能不能成立。</strong></p>
+  <p>这里说明一下口径：“500 进 5”是本次讨论里给出的分析漏斗，视频里没有这个数字，视频只说“剩下的就是再让人走最后一公里”。</p>
+</div>
+
+<h3>第一轮：漏斗的物理前提——冷启动阶段，你哪来的「500 个求职者」？ <span class="rt">ROUND 1</span></h3>
+
+<div class="say"><div class="who"><span class="sim">(AI模拟)</span> 严正德 <span>｜前招聘平台战略 VP</span></div>
+<p>我收回“Agent 替老板拍板”那句话，咱们就按讨论里那个“500 进 5”的漏斗来算。但这里有一个更基础的物理学悖论：<strong>你要做“500 进 5”的漏斗，前提是企业端得先收到 500 个求职者的 Agent 投递。</strong></p>
+<p>在 2026 年的中国市场，一家公司在 BOSS 直聘、智联或者支付宝“晓叶”上发一个岗位，因为平台有亿级日活池子，确实能收到 500 份简历；可如果这家企业去接入一个全新的、没有流量蓄水池的“独立 Agent 社区”，它收到的不是 500 个求职 Agent，而是 <strong>2 个</strong>。</p>
+<p>面对 2 个候选人，HR 扫一眼就约面了，根本用不着部署一个企业 Agent 去搞什么“500 进 5”的深度对话筛选。<strong>双边平台的冷启动死局，不是“筛不准”，而是“根本没有足够的基数供你去筛”。</strong></p></div>
+
+<div class="say"><div class="who"><span class="sim">(AI模拟)</span> 顾知行 <span>｜双币 VC 合伙人</span></div>
+<p>退一万步，假设马德龙靠刷脸拉来一批种子用户，真让部分岗位凑够了 500 个求职 Agent。那我们看第二个问题：<strong>“500 进 5”这件事本身，在 2026 年还值不值得企业为此迁移工作流？</strong>看看四层地图里的现成基建：</p>
+<ul>
+  <li>在 <strong>L1 平台层</strong>，BOSS 的 DeepHire、智联的艾琳、猎聘的“意向人选 Agent”，已经直接在原有账号里免费帮 HR 把 500 份简历筛出前 10 个了；</li>
+  <li>在 <strong>L2 SaaS 层</strong>，Moka 和海纳把 AI 初筛面试打到了 <strong>10 块钱一次</strong>，直接嵌在企业原有的 ATS 审批流里。</li>
+</ul>
+<p>对于企业 HR 来说，在自己每天打开的 BOSS 或 Moka 后台点一下就能完成“500 进 5”，凭什么要额外去维护一个外部社区里的企业 Agent，再把筛出来的 5 个人手动导回自己的招聘系统？<strong>“500 进 5”已经是存量巨头的标配免费功能，不再是能支撑新平台的独立卖点。</strong></p></div>
+
+<h3>第二轮：A2A 初筛的博弈论灾难——当「500 进 5」变成「提示词选美」 <span class="rt">ROUND 2</span></h3>
+
+<div class="say"><div class="who"><span class="sim">(AI模拟)</span> 陆天河 <span>｜自主 Agent 架构师</span></div>
+<p>从纯技术博弈来看，用“求职 Agent 对话招聘 Agent”来做 500 进 5，还会遇到一个致命的信号失真问题——<strong>对抗性恭维（Adversarial Sycophancy）</strong>。</p>
+<p>在传统招聘里，500 份简历之所以能筛出 5 个人，是因为简历是静态的、写死的历史记录，HR 靠硬指标和经验能看出水分。但在 A2A（Agent 对 Agent）对话模式下，求职者用对话 Skill 包装出完美画像，求职 Agent 在聊天时又能根据企业 Agent 的提问实时调整话术、精准迎合 JD 关键词。</p>
+<p>更麻烦的是，一旦投递成本趋近于零，企业面对的就不是 500 个真实意向者，而是 <strong>5,000 个全网海投的求职 Agent</strong>。当 5,000 个经过大模型深度润色的 Agent 涌向同一个企业 Agent 时，最终挤进那“1%（5 个名额）”的，<strong>往往不是业务能力最强的人，而是手握最懂企业 Agent 偏好提示词（Prompt）的“AI 面霸”。</strong>企业约面这 5 个人后一旦发现货不对板，整个漏斗的信任度瞬间归零。</p></div>
+
+<div class="say"><div class="who"><span class="sim">(AI模拟)</span> 薛明漪 <span>｜前 500 强 CHRO</span></div>
+<p>小陆说到了点子上。我从 HR 实操角度补充一句：为什么中大型企业宁愿用自己后台的规则引擎初筛，也不太敢用外部社区的 A2A 对话做“500 进 5”？</p>
+<p>因为<strong>中国企业的初筛标准大量是“只可意会、不可言传”的隐性红线</strong>——比如卡年龄、卡第一学历、卡大厂背景、甚至业务负责人一句“不要某某竞对出来的人”。这些潜规则企业绝不可能白纸黑字写进一个公开对外的“招聘 Agent”配置里（写了就是歧视实锤，分分钟上热搜）。</p>
+<p>如果企业 Agent 不能加载这些真实的隐性过滤条件，它聊完 500 个人精心挑出来的 5 个“完美匹配者”，送到 HR 面前可能 4 个都踩在隐性红线上直接作废。<strong>不能加载潜规则的初筛漏斗，筛出来的全是无效交付。</strong></p></div>
+
+<h3>第三轮：商业价值天花板 <span class="rt">ROUND 3</span></h3>
+
+<div class="say"><div class="who"><span class="sim">(AI模拟)</span> 老何 <span>｜20 年资深猎头合伙人</span></div>
+<p>把前两轮合起来看，商业账就彻底算清了：如果双端 Agent 对话的定位仅仅是“帮企业做 500 进 5 的初筛”，那么它在整个招聘价值链里切走的只是<strong>最前端、最廉价的“简历过滤”环节</strong>。</p>
+<p>后端的真人面试、背调、谈薪、心理按摩、催入职（所谓的“最后一公里”），依然需要企业 HR 或猎头亲自下场肉搏。只做前端 500 进 5，既收不到猎头那种 20% 年薪的高额佣金，又面临 BOSS 免费内嵌 AI 和 Moka 十元初筛的正面截胡——<strong>哪怕只收几块钱 Token 费，企业也懒得为了省这点初筛功夫去搬家。</strong></p></div>
+
+<div class="block chaos">
+  <span class="bt">混沌打脸官插话 · Round 3 触发点</span>
+  <p><strong><span class="sim">(AI模拟)</span> 徐二狗（Chaos Master）：</strong>哎呀，刚才各位老师把“拍板权”改成“500 进 5 初筛”之后，我发现这画面不仅没变合理，反而更像咱们每天接到的骚扰电话了！</p>
+  <p>你想啊，以前是 500 个求职者自己写简历投给 1 个 HR，大家写得歪歪扭扭、真假参半，HR 还能一眼看出谁在吹牛；现在可好，变成了 <strong>500 个经过同款大模型调教的“AI 销售代表”，排队去跟 1 个同样读过无数 HR 话术的“AI 客服”唠嗑。</strong></p>
+  <p>两边在服务器里客客气气地互吹了半天“底层逻辑”和“业务闭环”，最后招聘 Agent 感动得一塌糊涂，精挑细选出了 5 个最会顺着它话茬接梗的“硅基马屁精”，毕恭毕敬地呈递给老板。</p>
+  <p>老板约来一聊，好家伙，5 个人里 3 个是全网海投刷存在感的，2 个是提示词写得比本人还会吹牛的，真正干活踏实但不会调教 Agent 的老实人，全在第一轮就被淘汰出 99% 了。</p>
+  <p>说白了，<strong>在没有足够真实流动性、又不敢把企业隐性用人潜规则喂给外部 AI 的前提下，“500 进 5”的 A2A 对话，本质上就是把“海投注水”升级成了“全自动精密注水”。</strong></p>
+</div>
+
+<div class="block review">
+  <span class="bt">架构师反思与收敛</span>
+  <p>经过本轮校准，我们彻底剔除了“AI 夺走拍板权”和“翻本地文件夹”这两个不准确的靶子，把讨论收敛到了<strong>最硬核、最无法反驳的三条工程与商业事实</strong>上：</p>
+  <ol>
+    <li><strong>漏斗前置悖论（没有 500 哪来的 5）：</strong>只有 BOSS、支付宝这种拥有亿级日活的平台才存在“500 份投递需要筛成 5 份”的痛点；独立新社区冷启动期根本凑不齐 500 个有效投递，A2A 筛选无用武之地。</li>
+    <li><strong>初筛功能已被巨头免费化／白菜价化：</strong>“500 进 5”只是漏斗最前端的初筛，BOSS DeepHire、智联艾琳已经免费内置在企业原有账号里，Moka／海纳也打到了 10 元/次。企业没有动力为了一个已经免费的能力，把招聘流迁移到外部新社区。</li>
+    <li><strong>A2A 对话的“潜规则盲区”与“面霸效应”：</strong>企业不敢把年龄、学历等隐性卡点写进外部招聘 Agent，导致筛出来的 5 个人依然大量无效；同时求职 Agent 高度同质化的润色话术，会让 500 进 5 变成“谁的 Agent 更会迎合提示词”的博弈。</li>
+  </ol>
+</div>
+
+<div class="report-foot">
+  <p>全文为圆桌讨论的网页呈现：七个席位及全部发言均由 AI 按设定视角模拟生成，不对应任何真实人物，不是访谈，也不构成对任何真实人物、产品或项目的评价；文中公司、产品与价格按公开口径书写。</p>
+  <p>涉及的公开数字未逐条复核，引用前请以原始出处为准；本页不构成投资建议。</p>
+</div>
+
+</div>
+</div>
+</body>
+</html>
