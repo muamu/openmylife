@@ -12,9 +12,9 @@
 
 > 每日推荐 —— 宁缺毋滥，努力日更。
 
-- **2026-11-13** · [张一鸣的耐心：一年 5000 亿，买一张 2029 年的慢车票](https://openmylife.xyz/articles/ai/bytedance-seed-roundtable-5000yi-2029.html) —— 单年 700 亿美元、拒绝蒸馏、2029 年时间表：六个虚构席位七轮推演、两次阶段复盘，把「偏执」拆成表象，再落到胜率边界、结构性死穴与破局蓝图。
-- **2026-11-12** · [国内 AI 招聘求职产品全景：四层地图与一份数字对账](https://openmylife.xyz/articles/ai/ai-recruiting-landscape-four-layers.html) —— 上一层卖结果，下一层卖工具，再下一层卖模板——同一批人，四种收钱方式。40+ 产品的形态清单，以及对「智联 30%」等六个数字的逐条对账。
-- **2026-10-21** · [一条语音指令，如何让 Agent 写出一份可复用的经验总结](https://github.com/muamu/openmylife/blob/main/notes/agent-collaboration/2026-10-21-instruction-experience-dsh-report.md) —— 把一次真实任务整理成下一个 Agent 能照着做的文档：先给一手事实，再指定读者与骨架。
+- **2026-11-13** · [个人助理 V4 洞察：默认值就是产品](https://openmylife.xyz/articles/agent/personal-agent-v4-defaults.html) —— V4 真正新增的不是六个产品，而是三道开关：默认公开、默认隐藏、默认先问。能力上限决定发布会，能力下限决定复购；用默认值保守度、授权回收成本、失败恢复时间替代 DAU。
+- **2026-10-25** · [Kimi 3.1 发布即翻车？比起暗广营销，真正背刺用户的是额度](https://openmylife.xyz/articles/ai/kimi-k31-pr-crisis.html) —— 三条线同时起火，硬度完全不同：额度线有官方错误码与文档可复核，营销线最致命的一条至今只有单方截图。核心不是请 KOL，而是要求把商业内容伪装成自发口碑。
+- **2026-10-24** · [推理模型进游戏工业：三种能力被重估，和一个错位](https://openmylife.xyz/articles/ai/reasoning-models-game-industry.html) —— 能力最强的工程与工具链环节在玩家视野之外；被玩家看见的美术生成，用了反而掉分。
 
 ## 我是谁
 
