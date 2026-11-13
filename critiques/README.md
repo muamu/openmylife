@@ -39,8 +39,9 @@ tags: []
 
 命名示例：
 - `critiques/agent-framework/2026-10-dsh-plugin-search-experience.md` —— `kind: report`
-- `critiques/personal-agent/2026-10-life-assistant-agents/` —— `kind: report`（HTML 报告，v1 不完整版）
+- `critiques/personal-agent/2026-10-life-assistant-agents/` —— `kind: report`（HTML 报告，产品清单，已更新至 v4 · 2026-11-13）
 - `critiques/personal-agent/2026-11-personal-agent-v3-context/` —— `kind: report`（HTML 洞察文章，基于上方清单 v3，已接入站点）
+- `critiques/personal-agent/2026-11-personal-agent-v4-defaults/` —— `kind: report`（HTML 洞察文章，基于清单 v4，已接入站点）
 - `critiques/finance/hk-a-shares/2026-10-minimax-zhipu-h1-2026/` —— `kind: report`（HTML 报告）
 - `critiques/auto-industry/2026-10-全球汽车进出口数据研究/` —— `kind: report`（HTML 报告）
 - `critiques/ai-industry/2026-10-kimi-k3-1-pro-pr-crisis/` —— `kind: report`（HTML 报告，AI 公司公关事件复盘）
@@ -51,6 +52,8 @@ tags: []
 - `critiques/ai-industry/2026-11-国内AI招聘求职产品全景/` —— `kind: report`（HTML 报告，四层分类与数字对账，数字待复核）
 - `critiques/ai-industry/2026-11-AI招聘圆桌-AI看不见的社区/` —— `kind: report`（HTML 报告，七席位 AI 模拟圆桌推演，数字未逐条复核）
 - `critiques/ai-industry/2026-11-字节Seed圆桌-5000亿与2029慢车票/` —— `kind: report`（HTML 报告，六席位 AI 模拟圆桌推演，数字未逐条复核）
+- `critiques/ai-industry/2026-11-奇绩创坛2026年度盘点/` —— `kind: report`（HTML 报告，机构年度盘点：IPO 节点、S26 赛道与制裁影响，数字未逐条复核）
+- `critiques/ai-industry/2026-11-奇绩S26-39家Agent核对/` —— `kind: report`（HTML 报告，按公开材料重建 39 家 Agent 标签的分档核对，非官方名单）
 - `critiques/ai-aesthetics/2026-10-AI审美三层结构/` —— `kind: report`（HTML 报告，link-only）
 - `critiques/creative-industry/2026-10-推理模型与游戏工业重估/` —— `kind: report`（HTML 报告，link-only）
 - `critiques/dating/2027-01-dating-product-advice.md` —— `kind: advice`
