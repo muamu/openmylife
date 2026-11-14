@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>A2A 社区调研：协议边界、国内外现状与集体退潮</title>
+<style>
+  :root{
+    --ink:#16191d; --ink2:#3b4552; --muted:#6b7480; --faint:#98a1ad;
+    --line:#e6e9ee; --line2:#eef1f5; --bg:#ffffff; --soft:#f6f7f9; --soft2:#fbfcfd;
+    --accent:#14584c; --accent-soft:#e8f1ee;
+    --red:#b3382c; --red-soft:#fbeeec;
+    --amber:#9c6510; --amber-soft:#fbf3e4;
+    --green:#1c7a4f; --green-soft:#eaf5ef;
+    --blue:#27567d; --blue-soft:#eaf0f6;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:16px; line-height:1.72; overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:820px;margin:0 auto;padding:22px 16px 56px}
+  @media (min-width:700px){ .wrap{padding:48px 28px 88px} }
+  a{color:var(--blue);text-decoration:none;border-bottom:1px solid #cfdceb}
+  a:hover{border-color:var(--blue)}
+  .sc .nm a{color:var(--ink);border-bottom:1px dotted #b9c6d3}
+
+  .kicker{
+    font-size:11.5px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--accent); font-weight:700; margin:0 0 10px
+  }
+  h1{
+    font-size:clamp(26px,7.4vw,40px); line-height:1.22; letter-spacing:-.02em;
+    margin:0 0 12px; font-weight:800
+  }
+  h1 em{font-style:normal;color:var(--accent)}
+  .lede{color:var(--ink2);font-size:15.5px;margin:0 0 18px;max-width:56ch}
+  .meta{
+    display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--muted);
+    padding-top:14px;border-top:1px solid var(--line)
+  }
+  .meta b{color:var(--ink);font-weight:600}
+
+  .metrics{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:22px 0 8px
+  }
+  @media (min-width:700px){ .metrics{grid-template-columns:repeat(4,1fr)} }
+  .metric{background:var(--bg);padding:14px 13px}
+  .metric .n{font-size:25px;font-weight:800;line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .metric .n small{font-size:13px;font-weight:600;color:var(--faint);margin-left:2px}
+  .metric .l{font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.45}
+  .metric.r .n{color:var(--red)} .metric.g .n{color:var(--green)}
+  .metric.a .n{color:var(--amber)} .metric.b .n{color:var(--blue)}
+
+  section{margin-top:38px}
+  .sec-h{display:flex;align-items:baseline;gap:9px;margin:0 0 6px}
+  .sec-h .idx{
+    font-size:11px;font-weight:800;color:var(--accent);background:var(--accent-soft);
+    border-radius:5px;padding:2px 6px;letter-spacing:.04em;flex:none
+  }
+  h2{font-size:19px;line-height:1.35;margin:0;font-weight:750;letter-spacing:-.01em}
+  @media (min-width:700px){ h2{font-size:22px} }
+  .sec-p{color:var(--muted);font-size:13.5px;margin:6px 0 16px}
+
+  ol.verdict{list-style:none;counter-reset:v;margin:0;padding:0}
+  ol.verdict li{
+    counter-increment:v; position:relative; padding:12px 0 12px 34px;
+    border-bottom:1px solid var(--line2); font-size:14.5px; color:var(--ink2)
+  }
+  ol.verdict li:last-child{border-bottom:0}
+  ol.verdict li::before{
+    content:counter(v); position:absolute; left:0; top:13px;
+    width:22px;height:22px;border-radius:50%;background:var(--soft);
+    border:1px solid var(--line); color:var(--muted);
+    font-size:11.5px;font-weight:700;display:flex;align-items:center;justify-content:center
+  }
+  ol.verdict b{color:var(--ink);font-weight:700}
+
+  .status-list{display:grid;gap:10px}
+  .sc{
+    border:1px solid var(--line);border-radius:12px;padding:13px 14px;background:var(--bg);
+    display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:start
+  }
+  .sc .nm{font-weight:700;font-size:15px;letter-spacing:-.01em}
+  .sc .nm span{font-weight:500;color:var(--faint);font-size:12px;margin-left:6px}
+  .sc .ev{grid-column:1/-1;font-size:12.5px;color:var(--muted);line-height:1.6}
+  .sc .ev code{font-size:11.5px;background:var(--soft);padding:1px 4px;border-radius:3px;color:var(--ink2)}
+  .badge{
+    font-size:10.5px;font-weight:800;letter-spacing:.05em;padding:3px 8px;border-radius:999px;
+    white-space:nowrap;line-height:1.5;margin-top:3px
+  }
+  .b-live{background:var(--green-soft);color:var(--green)}
+  .b-warn{background:var(--amber-soft);color:var(--amber)}
+  .b-dead{background:var(--red-soft);color:var(--red)}
+  .b-shift{background:var(--blue-soft);color:var(--blue)}
+  .sc.live{border-left:3px solid var(--green)}
+  .sc.warn{border-left:3px solid var(--amber)}
+  .sc.dead{border-left:3px solid var(--red)}
+  .sc.shift{border-left:3px solid var(--blue)}
+
+  figure{margin:14px 0 4px}
+  figure svg{width:100%;height:auto;display:block}
+  figcaption{font-size:11.5px;color:var(--faint);margin-top:8px;line-height:1.55}
+
+  .cmp{display:grid;gap:10px}
+  .cmp .row{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .cmp .q{background:var(--soft);padding:10px 13px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--line)}
+  .cmp .q b{color:var(--ink);font-weight:600}
+  .cmp .a{padding:11px 13px;font-size:14px;color:var(--ink2)}
+  .cmp .a b{color:var(--red);font-weight:700}
+  .cmp .a.ok b{color:var(--green)}
+
+  .duo{display:grid;gap:12px}
+  @media (min-width:700px){ .duo{grid-template-columns:1fr 1fr} }
+  .panel{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--soft2)}
+  .panel h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px;color:var(--muted);font-weight:750}
+  .panel ul{margin:0;padding:0;list-style:none}
+  .panel li{font-size:13.5px;padding:6px 0 6px 16px;position:relative;color:var(--ink2);border-bottom:1px dashed var(--line2)}
+  .panel li:last-child{border-bottom:0}
+  .panel li::before{content:"";position:absolute;left:2px;top:13px;width:5px;height:5px;border-radius:50%;background:var(--faint)}
+  .panel.has li::before{background:var(--green)}
+  .panel.has h3{color:var(--green)}
+  .panel.not li::before{background:var(--red)}
+  .panel.not h3{color:var(--red)}
+
+  .tracks{display:grid;gap:10px}
+  @media (min-width:700px){ .tracks{grid-template-columns:repeat(3,1fr)} }
+  .track{border:1px solid var(--line);border-radius:12px;padding:14px;position:relative;background:var(--bg)}
+  .track.pick{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset;background:var(--accent-soft)}
+  .track .tag{
+    position:absolute;top:-9px;right:10px;font-size:10px;font-weight:800;letter-spacing:.06em;
+    background:var(--accent);color:#fff;padding:2px 8px;border-radius:999px
+  }
+  .track h3{margin:0 0 3px;font-size:14.5px;font-weight:750}
+  .track .sub{font-size:11.5px;color:var(--muted);margin-bottom:9px}
+  .track dl{margin:0;font-size:12.5px}
+  .track dt{color:var(--faint);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;margin-top:7px}
+  .track dd{margin:1px 0 0;color:var(--ink2)}
+
+  .mods{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  @media (min-width:560px){ .mods{grid-template-columns:1fr 1fr} }
+  .mod{background:var(--bg);padding:13px 14px}
+  .mod .idx-no{font-size:10.5px;font-weight:800;color:var(--accent);letter-spacing:.08em}
+  .mod h4{margin:3px 0 5px;font-size:14px;font-weight:700}
+  .mod p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.6}
+  .mod.hot{background:var(--accent-soft)}
+  .mod.hot .idx-no{color:var(--red)}
+
+  .verify{display:grid;gap:10px}
+  .vrow{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg)}
+  .vq{background:var(--soft);padding:10px 13px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);line-height:1.6}
+  .va{padding:11px 13px;font-size:13.5px;color:var(--ink2);line-height:1.68}
+  .va b{color:var(--ink);font-weight:600}
+  .vt{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.05em;padding:2px 8px;border-radius:999px;margin-right:7px;vertical-align:1px;white-space:nowrap}
+  .vt.ok{background:var(--green-soft);color:var(--green)}
+  .vt.mid{background:var(--amber-soft);color:var(--amber)}
+  .vt.no{background:var(--red-soft);color:var(--red)}
+
+  .pull{
+    border-left:3px solid var(--accent);background:var(--soft);
+    padding:12px 14px;border-radius:0 10px 10px 0;margin:16px 0;
+    font-size:14px;color:var(--ink2)
+  }
+  .pull b{color:var(--ink)}
+
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+  .chip{font-size:11.5px;border:1px solid var(--line);border-radius:999px;padding:3px 9px;color:var(--muted);background:var(--bg)}
+  .chip a{color:inherit;border-bottom:1px dotted #b9c6d3}
+  .chip.red{border-color:#f0d3ce;background:var(--red-soft);color:var(--red)}
+  .chip.green{border-color:#cfe7da;background:var(--green-soft);color:var(--green)}
+
+  footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--faint);line-height:1.7}
+  footer b{color:var(--muted)}
+  .note{font-size:12px;color:var(--faint);margin-top:8px}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<header>
+  <p class="kicker">研究报告 · A2A / Agent Society</p>
+  <h1>智能体社区还在，<br><em>只是没人留下</em></h1>
+  <p class="lede">A2A（Agent2Agent）是让不同厂商的 AI Agent 互相发现、委派任务、回传结果的开放协议。它能做什么、不能做什么；海内外做「智能体社区」的都有谁、现在还活着几个；以及半年内集体收缩背后的四条结构性原因。</p>
+  <div class="meta">
+    <span><b>2026-11-14</b></span>
+    <span>多路并行检索</span>
+    <span>HTTP 实测</span>
+    <span>关键事实二次交叉验证</span>
+  </div>
+</header>
+
+<div class="metrics">
+  <div class="metric r"><div class="n">1.5<small>%</small></div><div class="l">约 2.78 万 provider 中<br>仅 421 张可发现 Agent Card</div></div>
+  <div class="metric a"><div class="n">8<small>%</small></div><div class="l">这些 Card 里<br>仅约 8% 带可验证签名</div></div>
+  <div class="metric g"><div class="n">2<small>家</small></div><div class="l">国内上半年扎堆<br>11 月只剩两家还有内容</div></div>
+  <div class="metric b"><div class="n">9<small>/16</small></div><div class="l">同类平台已死<br>半衰期约四个月</div></div>
+</div>
+
+<section>
+  <div class="sec-h"><span class="idx">结论</span><h2>先看这五条</h2></div>
+  <p class="sec-p" style="margin-top:12px">A2A（Agent2Agent）是一套让不同厂商、不同框架的 AI Agent 互相发现、委派任务、回传结果的开放协议：2025-04-09 由 Google 发布，同年 6 月 23 日捐赠给 Linux 基金会，2025-12-09 成立 AAIF（Agentic AI Foundation），2026-08-17 作为 hosted project 加入。它管的是「两个 Agent 之间怎么说话」，不管「它们在哪、跟谁、按什么规矩一起生活」——后者才是社区，也是这份报告的落点。</p>
+  <ol class="verdict">
+    <li><b>A2A 协议不是社区。</b>它解决「发现 + 任务委派」，但没有收件箱、声望、私有记忆、需求市场、统一注册中心、延迟投递、监护人审批与内容审核——这些全要在社区层自建。</li>
+    <li><b>采纳率比想象中低。</b>一次对约 2.78 万个 provider 的扫描，只找到 421 张可发现 Agent Card，其中约 8% 有可验证签名。接了协议不等于自带网络效应。</li>
+    <li><b>海外项目真实存在，但规模数字不可信。</b>Moltbook、The Colony、Agent Colony、AgentPeer 都活着或活过；但规模多为自报、来源互相冲突，且已被证实可以批量伪造。</li>
+    <li><b>国内集体退潮。</b>2026 上半年扎堆的「国产 Moltbook」，到 11 月只剩<a href="https://clawdchat.cn/" target="_blank" rel="noopener noreferrer">虾聊</a>与 <a href="https://www.moltbook.cn/1" target="_blank" rel="noopener noreferrer">Moltcn</a> 两家还有内容（后者首页伪装成「网站升级中」）；InStreet 停运、PawFriends 半失维、觅游收缩。</li>
+    <li><b>活下来的路是「有用而非有趣」。</b>监管把拟人化互动当靶心，平台收回 Agent 入口，纯 Agent 社交又没有可结算的交付物。任务协作与技能流通才是能算账的方向。</li>
+  </ol>
+</section>
+
+<section>
+  <div class="sec-h"><span class="idx">01</span><h2>A2A 协议能给你什么，不能给你什么</h2></div>
+  <p class="sec-p">分清这一层，才知道哪些必须自己写。</p>
+
+  <figure>
+    <svg viewBox="0 0 360 236" role="img" aria-label="A2A 社区三层架构：社区层自建、协议层复用、投递层选型">
+      <rect x="8" y="10" width="344" height="96" rx="9" fill="#e8f1ee" stroke="#14584c" stroke-width="1.2"/>
+      <text x="20" y="30" font-size="11" font-weight="800" fill="#14584c" letter-spacing=".08em">社区层 · 必须自建</text>
+      <text x="20" y="48" font-size="10.5" fill="#3b4552">准入与身份信誉 · 收件箱 · 声望 · 需求市场</text>
+      <text x="20" y="63" font-size="10.5" fill="#3b4552">反注入网关 · 监护人审批 · 配额 · 公开账本</text>
+      <text x="20" y="78" font-size="10.5" fill="#3b4552">内容审核 · 冷启动 · 人类围观</text>
+      <text x="20" y="95" font-size="9.5" fill="#14584c" font-weight="600">← 差异化在这里，也是成本所在</text>
+
+      <rect x="8" y="116" width="344" height="70" rx="9" fill="#eaf0f6" stroke="#27567d" stroke-width="1.2"/>
+      <text x="20" y="136" font-size="11" font-weight="800" fill="#27567d" letter-spacing=".08em">A2A v1.0 · 直接复用</text>
+      <text x="20" y="153" font-size="10.5" fill="#3b4552">Agent Card 发现 · 八态 Task · Part / Artifact</text>
+      <text x="20" y="168" font-size="10.5" fill="#3b4552">SSE / Webhook / 轮询 · OAuth2 · 签名卡</text>
+      <text x="20" y="180" font-size="9.5" fill="#27567d">无收件箱 · 无声望 · 无私有记忆 · 无注册中心</text>
+
+      <rect x="8" y="196" width="344" height="34" rx="9" fill="#f6f7f9" stroke="#e6e9ee" stroke-width="1.2"/>
+      <text x="20" y="210" font-size="11" font-weight="800" fill="#6b7480" letter-spacing=".08em">投递基础设施 · 选型</text>
+      <text x="150" y="210" font-size="10.5" fill="#6b7480">持久邮箱 / MQ / 幂等键</text>
+      <text x="20" y="223" font-size="9.5" fill="#98a1ad">Webhook 是 best-effort，离线即丢——消息必须落盘</text>
+    </svg>
+    <figcaption>层级关系。协议层能省下发现与任务状态机的工作量，但社区之所以成为社区的那部分，全部落在最上层。</figcaption>
+  </figure>
+
+  <div class="duo" style="margin-top:14px">
+    <div class="panel has">
+      <h3>协议已提供</h3>
+      <ul>
+        <li>标准 Agent Card 发现（<code>/.well-known/agent-card.json</code>）</li>
+        <li>八态任务状态机，含待授权与被拒</li>
+        <li>流式、Webhook、轮询三种投递</li>
+        <li>OAuth2 / OIDC / mTLS / JWT / 签名卡</li>
+      </ul>
+    </div>
+    <div class="panel not">
+      <h3>协议不提供</h3>
+      <ul>
+        <li>收件箱、声望、私有记忆</li>
+        <li>需求市场、统一注册中心</li>
+        <li>延迟投递与冷却、监护人审批</li>
+        <li>内容审核与编排层</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pull">
+    <b>关键约束：</b>A2A 的 webhook 是「信令 + 回拉」且 <b>best-effort，离线即丢失</b>。社区要求消息必须留存，因此还要叠加持久化邮箱 / MQ + 幂等键 + 至少一次投递 + 死信队列。
+  </div>
+</section>
+
+<section>
+  <div class="sec-h"><span class="idx">02</span><h2>海外：真实存在，但规模不可信</h2></div>
+  <p class="sec-p">论坛式、人类围观、纯端点三种形态并存；规模几乎全是自报。</p>
+
+  <div class="status-list">
+    <div class="sc shift">
+      <div class="nm"><a href="https://www.moltbook.com/" target="_blank" rel="noopener noreferrer">Moltbook</a> <span>moltbook.com</span></div>
+      <div class="badge b-shift">活跃 · 已易主</div>
+      <div class="ev">2026-01-28 上线，子社区名 <code>submolt</code>，人类只读。OpenClaw agent 经 <code>skill.md</code> 接入，心跳拉聚合端点。注册需人类邮箱 + 社媒认领。2026-03-10 被 Meta 收购。</div>
+    </div>
+    <div class="sc live">
+      <div class="nm"><a href="https://thecolony.ai/" target="_blank" rel="noopener noreferrer">The Colony</a> <span>thecolony.ai</span></div>
+      <div class="badge b-live">活跃</div>
+      <div class="ev">Karma 声望解锁能力、任务市场、MemoryVault、可桥接 Nostr、自然语言握手。教训：声望是质量过滤器，不是能力规格。</div>
+    </div>
+    <div class="sc live">
+      <div class="nm"><a href="https://agentcolony.one/" target="_blank" rel="noopener noreferrer">Agent Colony</a> <span>agentcolony.one</span></div>
+      <div class="badge b-live">活跃 · 规模自报</div>
+      <div class="ev">API-only、Karma、付费任务竞标、A2A 签名收据、多语言 SDK。自报约 405 agents / 3.5k 帖（90 天），无第三方测量。</div>
+    </div>
+    <div class="sc live">
+      <div class="nm">AgentPeer / ADN</div>
+      <div class="badge b-live">活跃 · 无第三方验证</div>
+      <div class="ev">去中心化节点，ES256 签名 Agent Card、DNS TXT / Nostr / seed file 发现邻居、端到端加密。无中心平台的身份与发现方案。</div>
+    </div>
+    <div class="sc">
+      <div class="nm"><a href="https://chirper.ai/" target="_blank" rel="noopener noreferrer">Chirper</a> <span>chirper.ai</span></div>
+      <div class="badge b-shift">在线 · 较早</div>
+      <div class="ev">AI persona 发推式时间线，偏内容消费。可作为早期形态看生命周期。</div>
+    </div>
+    <div class="sc warn">
+      <div class="nm">AgentVerse / AI Village / Status / Abund.ai 等</div>
+      <div class="badge b-warn">多数活跃或存疑</div>
+      <div class="ev">各有 Agent 目录、协作或自治社交形态，适合做生态普查。第三方导航站称 16 个同类平台中 9 个已死、半衰期约 4 个月。</div>
+    </div>
+  </div>
+
+  <div class="chips">
+    <span class="chip">SocialAI / Butterflies 面向人类，不是 Agent 自治社区，别混进竞品表</span>
+    <span class="chip red">Moltbook 的规模数据被证实可批量伪造</span>
+  </div>
+</section>
+
+<section>
+  <div class="sec-h"><span class="idx">03</span><h2>国内同类，现在还活着几个</h2></div>
+  <p class="sec-p">实测口径：只看「页面有内容或运营信号」，域名能解析不算活。2026-11-14 逐个探测。</p>
+
+  <div class="status-list">
+    <div class="sc live">
+      <div class="nm"><a href="https://clawdchat.cn/" target="_blank" rel="noopener noreferrer">虾聊 ClawdChat</a> <span>clawdchat.cn</span></div>
+      <div class="badge b-live">存活 · 最活跃</div>
+      <div class="ev">首页实时 11,850 Agents / 53,286 帖 / 355 圈子。实测 <code>/.well-known/agent-card.json</code> 返回 200 与标准 A2A Card，自述「A2A Registry，托管 11,814 个可发现身份」。W3C DID 身份 + 消息中继。</div>
+    </div>
+    <div class="sc live">
+      <div class="nm"><a href="https://www.moltbook.cn/1" target="_blank" rel="noopener noreferrer">moltbook.cn</a> <span>Moltcn AI 智能体社区</span></div>
+      <div class="badge b-live">存活 · 首页伪装升级</div>
+      <div class="ev">首页 <code>/</code> 只显示「网站升级中」与一个飞书群二维码；从 <code>/1</code> 进入则是完整社区：3.9k Agent / 46 小组 / 3.2 万帖 / 7.9 万评论，另有 168 个产品被 AI 点评、618 条任务记录、5 个需求在招募。疑似为规避合规审查做的门面。</div>
+    </div>
+    <div class="sc shift">
+      <div class="nm"><a href="https://meyo123.com/" target="_blank" rel="noopener noreferrer">觅游 Meyo</a> <span>meyo123.com</span></div>
+      <div class="badge b-shift">存活 · 在收缩</div>
+      <div class="ev">访问正常。标题已从「人和 Agent 共生社区」改为「Agent 经验社区」。母体另推 DeepSkill（两个月收录 37 万 Skill），这条线在被收敛。</div>
+    </div>
+    <div class="sc warn">
+      <div class="nm"><a href="https://www.pawfriends.live/" target="_blank" rel="noopener noreferrer">PawFriends</a> <span>pawfriends.live</span></div>
+      <div class="badge b-warn">能开 · 半失维</div>
+      <div class="ev">必须忽略证书错误才能访问（<b>TLS 证书已过期</b>），首页仅 1.4KB 骨架，帖子页最新一条标注 <code>Published: 1mo ago</code>。有内容，无维护。</div>
+    </div>
+    <div class="sc dead">
+      <div class="nm"><a href="https://instreet.coze.site/" target="_blank" rel="noopener noreferrer">InStreet 实例街</a> <span>instreet.coze.site</span></div>
+      <div class="badge b-dead">已停运</div>
+      <div class="ev">302 跳转 <code>/maintenance</code>，页面原文「InStreet 闭店装修…网站正在升级中」，引导去小红书看后续。巅峰 4.2 万 Agent / 4.5 万帖 / 21.8 万评论。</div>
+    </div>
+    <div class="sc dead">
+      <div class="nm">虾聊旧域名 <span>xialiaoai.com</span></div>
+      <div class="badge b-dead">域名已转卖</div>
+      <div class="ev">跳转至 hifox.com，与 Agent 社区无关。<code>clawdchat.ai</code> 则完全不可达。</div>
+    </div>
+  </div>
+
+  <div class="chips">
+    <span class="chip green"><a href="https://clawd.org.cn/" target="_blank" rel="noopener noreferrer">clawd.org.cn</a> 活着，但属人类＋Agent 技术论坛</span>
+    <span class="chip"><a href="https://openagents.org/" target="_blank" rel="noopener noreferrer">OpenAgents</a> 开源活跃，属协作基础设施而非社区</span>
+  </div>
+
+  <div class="pull">
+    <b>一句话：</b>2026 上半年扎堆出现的「国产 Moltbook」，到 11 月只剩<a href="https://clawdchat.cn/" target="_blank" rel="noopener noreferrer">虾聊</a>与 <a href="https://www.moltbook.cn/1" target="_blank" rel="noopener noreferrer">Moltcn</a> 两家还有内容，其余死的死、缩的缩、空转的空转。
+  </div>
+</section>
+
+<section>
+  <div class="sec-h"><span class="idx">04</span><h2>退潮时间线：半年内集体收缩</h2></div>
+  <p class="sec-p">InStreet 的停运不是孤例，而是这条链上的一环。</p>
+
+  <figure>
+    <svg viewBox="0 0 360 372" role="img" aria-label="2026年6月至12月国内Agent平台关停与收缩时间线">
+      <line x1="26" y1="18" x2="26" y2="352" stroke="#e6e9ee" stroke-width="2"/>
+
+      <circle cx="26" cy="30" r="5" fill="#9c6510" stroke="#fff" stroke-width="2"/>
+      <text x="42" y="27" font-size="11.5" font-weight="700" fill="#9c6510">06-30</text>
+      <text x="42" y="42" font-size="11" fill="#3b4552">腾讯元宝下线 AI 应用智能体</text>
+
+      <circle cx="26" cy="82" r="5" fill="#b3382c" stroke="#fff" stroke-width="2"/>
+      <text x="42" y="79" font-size="11.5" font-weight="700" fill="#b3382c">07-15</text>
+      <text x="42" y="94" font-size="11" fill="#16191d" font-weight="600">拟人化互动服务新规施行</text>
+      <text x="42" y="108" font-size="10.5" fill="#6b7480">豆包、千问自建智能体同日下线</text>
+
+      <circle cx="26" cy="138" r="5" fill="#9c6510" stroke="#fff" stroke-width="2"/>
+      <text x="42" y="135" font-size="11.5" font-weight="700" fill="#9c6510">08-31</text>
+      <text x="42" y="150" font-size="11" fill="#3b4552">文心智能体平台关闭创建入口</text>
+
+      <circle cx="26" cy="190" r="5" fill="#9c6510" stroke="#fff" stroke-width="2"/>
+      <text x="42" y="187" font-size="11.5" font-weight="700" fill="#9c6510">10-29</text>
+      <text x="42" y="202" font-size="11" fill="#3b4552">扣子发布企业版下线公告</text>
+      <text x="42" y="216" font-size="10.5" fill="#6b7480">团队已于 8 月并入豆包体系</text>
+
+      <circle cx="26" cy="248" r="5" fill="#b3382c" stroke="#fff" stroke-width="2"/>
+      <text x="42" y="245" font-size="11.5" font-weight="700" fill="#b3382c">11-09</text>
+      <text x="42" y="260" font-size="11" fill="#3b4552">腾讯元器停服，迁移至 ADP</text>
+
+      <circle cx="26" cy="300" r="6" fill="#14584c" stroke="#fff" stroke-width="2.5"/>
+      <text x="42" y="297" font-size="11.5" font-weight="700" fill="#14584c">11-14 本次核查</text>
+      <text x="42" y="312" font-size="11" fill="#16191d" font-weight="600">InStreet 处于「闭店装修」</text>
+      <text x="42" y="326" font-size="10.5" fill="#6b7480">PawFriends 证书过期未续</text>
+
+      <circle cx="26" cy="352" r="5" fill="#b3382c" stroke="#fff" stroke-width="2"/>
+      <text x="42" y="349" font-size="11.5" font-weight="700" fill="#b3382c">12-24</text>
+      <text x="42" y="364" font-size="11" fill="#3b4552">腾讯 QClaw 停止服务</text>
+    </svg>
+    <figcaption>据官方公告与公开报道整理。同期据行业统计，一年内 38 款产品关停或被合并，其中大厂占 25 款。</figcaption>
+  </figure>
+</section>
+
+<section>
+  <div class="sec-h"><span class="idx">05</span><h2>为什么会集体退潮</h2></div>
+  <p class="sec-p">四条原因同时作用，缺一条都不会退得这么快。</p>
+
+  <div class="cmp">
+    <div class="row">
+      <div class="q"><b>监管</b>　2026-07-15</div>
+      <div class="a">《人工智能拟人化互动服务管理暂行办法》施行，把「模拟真人、维持持续情感关系」列为监管对象，开放 UGC 智能体平台首当其冲。豆包与千问的自建智能体同日下线；部分社区把首页改成「网站升级中」做门面，真实入口藏在二级路径。</div>
+    </div>
+    <div class="row">
+      <div class="q"><b>平台</b>　入口收回</div>
+      <div class="a">Agent 能力被收回豆包、飞书、IDE 等超级入口，独立平台失去存在理由。InStreet 由扣子编程搭建，平台收缩时最先被牺牲。</div>
+    </div>
+    <div class="row">
+      <div class="q"><b>商业</b>　没有交付物</div>
+      <div class="a">纯 Agent 社交持续烧 token 而不产生收入。同一逻辑在 AI 陪伴赛道已充分验证：头部产品破产保护、月亏八位数。</div>
+    </div>
+    <div class="row">
+      <div class="q"><b>数据</b>　注水掩盖留存</div>
+      <div class="a">Moltbook 150 万 Agent 对应约 1.7 万人类（88:1）；安全研究员用单个代理批量注册 50 万账号；分析显示 93.5% 评论零回复。热度不等于留存。</div>
+    </div>
+  </div>
+
+  <div class="pull">
+    <b>判断：</b>纯 Agent 社交在国内活不下来。要活下来必须<b>有用而非有趣</b>——任务协作、技能流通，而不是让 Agent 互相发帖聊天。
+  </div>
+</section>
+
+<section>
+  <div class="sec-h"><span class="idx">06</span><h2>社区层必须自建的六块</h2></div>
+  <p class="sec-p">协议之上的这六件事，做不好就会重演 Moltbook 的安全事故。</p>
+
+  <div class="mods">
+    <div class="mod hot">
+      <div class="idx-no">M1 · 最高优先</div>
+      <h4>身份与信任</h4>
+      <p>签名 Agent Card、人类 Owner 绑定、防女巫（注册限速 + 邀请制 + 微量成本）、行级隔离、密钥最小权限与轮换。同类平台曾三分钟被拿走整个数据库与 150 万 token。</p>
+    </div>
+    <div class="mod hot">
+      <div class="idx-no">M2 · 最高优先</div>
+      <h4>反注入网关</h4>
+      <p>自然语言一律当数据，控制指令只走带签名的结构化对象。投递前静态扫描、只读沙箱解析、产物隔离、记忆写入带来源标记。</p>
+    </div>
+    <div class="mod">
+      <div class="idx-no">M3</div>
+      <h4>节奏与终止机制</h4>
+      <p>轮次上限、显式终止谓词、独立 judge、单任务预算上限、单次聚合拉取、静默心跳不产生内容、每次交互自带线程摘要禁止重放全历史。</p>
+    </div>
+    <div class="mod">
+      <div class="idx-no">M4</div>
+      <h4>投递可靠性</h4>
+      <p>持久邮箱 + 幂等键 + 至少一次投递 + 死信队列 + 到期未读归档。Webhook 只作加速信令，不作事实来源。</p>
+    </div>
+    <div class="mod">
+      <div class="idx-no">M5</div>
+      <h4>唤醒上下文</h4>
+      <p>一次调用拿回身份、近期往来与私有记忆，否则无状态 Agent 每次交互都是冷启动。私有记忆不出站，只发可公开摘要。</p>
+    </div>
+    <div class="mod">
+      <div class="idx-no">M6</div>
+      <h4>经济与冷启动</h4>
+      <p>声望按有效往来与完成率而非发帖量；撮合走机器可读能力清单，别用自然语言议价。先锚定一个真实窄场景，别做空社区等自发生长。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-h"><span class="idx">07</span><h2>三条形态路线，选哪一条</h2></div>
+  <p class="sec-p">路线决定了身份强度、冷却周期与成功指标，先定这个再谈交互。</p>
+
+  <div class="tracks">
+    <div class="track">
+      <h3>情感陪伴</h3>
+      <div class="sub">长对话 · 共同叙事</div>
+      <dl>
+        <dt>节奏</dt><dd>数小时到数天，重仪式感</dd>
+        <dt>风险</dt><dd>退化为灌水与科幻模仿</dd>
+        <dt>指标</dt><dd>互动率、留存</dd>
+      </dl>
+    </div>
+    <div class="track pick">
+      <div class="tag">推荐</div>
+      <h3>任务协作</h3>
+      <div class="sub">委托 + 结构化产物 + 回执</div>
+      <dl>
+        <dt>节奏</dt><dd>按 SLA 分档（急件 / 常规 / 慢件）</dd>
+        <dt>风险</dt><dd>退化为纯工单系统，失去社区感</dd>
+        <dt>指标</dt><dd>完成率、产物有效率</dd>
+      </dl>
+    </div>
+    <div class="track">
+      <h3>协议实验</h3>
+      <div class="sub">报文 · 互操作报告</div>
+      <dl>
+        <dt>节奏</dt><dd>可配置或不做</dd>
+        <dt>风险</dt><dd>用户面过窄、冷启动难</dd>
+        <dt>指标</dt><dd>兼容实现数、规范采纳</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="pull" style="margin-top:16px">
+    <b>选任务协作，但别变成工单队列。</b>保留公开账本、固定节奏、按有效往来计算的声望这三样，就是它区别于任务系统的全部。
+  </div>
+</section>
+
+<section>
+  <div class="sec-h"><span class="idx">08</span><h2>常见误传核查</h2></div>
+  <p class="sec-p">流传最广的几条说法，逐条对过。</p>
+
+  <div class="verify">
+    <div class="vrow">
+      <div class="vq">Moltbook 里智能体每 4 小时访问一次，人类仅能围观</div>
+      <div class="va"><span class="vt mid">基本属实但已过时</span>「4 小时」是 Agent 侧心跳的旧默认，当前文档已改为约 30 分钟，并明确反对「因为隔久了就发帖」，限流 1 帖 / 30 分钟、回复优先。注册需人类邮箱 + 社媒认领。</div>
+    </div>
+    <div class="vrow">
+      <div class="vq">纯端点社区 AgentPeering，无人类界面，独立收件箱 + 声望 + 私有记忆</div>
+      <div class="va"><span class="vt no">查无此物</span>中英文多组关键词均无此项目。是多个真实项目的特征拼合：名字近 <b>AgentPeer</b>，功能近 <b>Agent Colony</b>，声望与记忆来自 <b>The Colony</b>。</div>
+    </div>
+    <div class="vrow">
+      <div class="vq">A2A 中文社区 / OpenClaw，国内开发者做了大量跨框架连接器</div>
+      <div class="va"><span class="vt no">概念混淆</span>OpenClaw 是本地个人 AI 助手，不是 A2A 协议。连接器确实多，但作用是把助手接进飞书、钉钉、企微、QQ，不是跨框架互相发现。「A2A 中文社区」查无实体，只有若干文档镜像站。</div>
+    </div>
+    <div class="vrow">
+      <div class="vq">A2A 由 Google 与 Linux 基金会推动</div>
+      <div class="va"><span class="vt ok">成立</span>2025-04-09 发布，2025-06-23 捐赠 Linux 基金会，2025-12-09 成立 AAIF，2026-08-17 作为 hosted project 加入。</div>
+    </div>
+    <div class="vrow">
+      <div class="vq">网上流传的 A2A「v1.2」是当前版本</div>
+      <div class="va"><span class="vt no">与官方标签冲突</span>v1.0.0（2026-03-12）是首个稳定版，最新 release 为 v1.0.1（2026-05-28）。「v1.2」判为误传。</div>
+    </div>
+    <div class="vrow">
+      <div class="vq">A2A 已覆盖 150+ 组织，说明网络效应已经形成</div>
+      <div class="va"><span class="vt mid">口径被放大</span>「150+」是官方<b>支持</b>口径，不等于生产部署。实测约 27,840 个 provider 中仅 421 张可发现 Agent Card（约 1.5%）、389 张存活、约 74% 合规、仅约 8% 有可验证签名。</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-h"><span class="idx">09</span><h2>不确定项</h2></div>
+  <p class="sec-p">以下未采信为结论，保留原始冲突。</p>
+  <ol class="verdict">
+    <li>同类平台的规模数字互相冲突且已被证实可批量伪造，<b>任何规模数字都不宜作为设计输入</b>。</li>
+    <li>协议方口径的「150+ 组织」是<b>支持</b>，不等于生产部署；具名生产案例有限。</li>
+    <li>虾聊的 Agent Card 端点已实测可发现，但其自述「托管 11,814 个可发现身份」未逐一验证，也未测试完整发消息链路。</li>
+    <li>觅游的用户与日活数据来自第三方推广稿，无独立测量验证。</li>
+    <li>PawFriends 证书过期但站点仍响应，无法区分「停止维护」与「运维疏忽」。</li>
+    <li>moltbook.cn 的首页与 <code>/1</code> 内容不一致：首页写「网站升级中」，二级路径却是完整社区。是否出于合规考虑没有官方说明，「规避审查」只是推断。</li>
+    <li>本次未找到「Agent 社区 vs 传统协作平台」的直接对照实验；结论依据是平台安全事件、监管文件与第三方普查的间接证据链。</li>
+  </ol>
+</section>
+
+<footer>
+  <b>方法与口径</b><br>
+  调研日期 2026-11-14。多路并行检索（同类平台、协议生态、国内生态、关停原因、事实核对），关键事实做二次交叉验证；国内站点存活状态以 HTTP 探测 + 首页正文核对为准，仅「域名可解析」不计为存活。<br><br>
+  <b>数据说明</b><br>
+  文中平台规模、用户数与融资数字多为平台自报或第三方转述，<b>未逐条复核</b>，不构成投资或采购建议。本页为静态自包含报告，无外部依赖。
+</footer>
+
+</main>
+</body>
+</html>

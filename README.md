@@ -12,9 +12,9 @@
 
 > 每日推荐 —— 宁缺毋滥，努力日更。
 
+- **2026-11-14** · [A2A 社区调研：智能体社区还在，只是没人留下](https://openmylife.xyz/articles/ai/a2a-community-research.html) —— 协议解决发现与任务委派，不解决社区。约 2.78 万个 provider 里只有 421 张可发现 Agent Card，其中仅约 8% 有可验证签名；国内上半年扎堆的同类社区，到 11 月只剩虾聊与 Moltcn 两家还有内容（后者首页伪装成「网站升级中」）。
 - **2026-11-13** · [个人助理 V4 洞察：默认值就是产品](https://openmylife.xyz/articles/agent/personal-agent-v4-defaults.html) —— V4 真正新增的不是六个产品，而是三道开关：默认公开、默认隐藏、默认先问。能力上限决定发布会，能力下限决定复购；用默认值保守度、授权回收成本、失败恢复时间替代 DAU。
-- **2026-10-25** · [Kimi 3.1 发布即翻车？比起暗广营销，真正背刺用户的是额度](https://openmylife.xyz/articles/ai/kimi-k31-pr-crisis.html) —— 三条线同时起火，硬度完全不同：额度线有官方错误码与文档可复核，营销线最致命的一条至今只有单方截图。核心不是请 KOL，而是要求把商业内容伪装成自发口碑。
-- **2026-10-24** · [推理模型进游戏工业：三种能力被重估，和一个错位](https://openmylife.xyz/articles/ai/reasoning-models-game-industry.html) —— 能力最强的工程与工具链环节在玩家视野之外；被玩家看见的美术生成，用了反而掉分。
+- **2026-10-17** · [开源自己 · 灵感备忘录](https://github.com/muamu/openmylife/blob/main/ideas/2026-10-17-openmylife-ideas.md) —— 把「开源自己」当成一本富媒体电子书：仓库目录是章，commit 是修订记录，自带时间线与可引用性。
 
 ## 我是谁
 
