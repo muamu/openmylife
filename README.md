@@ -12,9 +12,9 @@
 
 > 每日推荐 —— 宁缺毋滥，努力日更。
 
-- **2026-11-14** · [A2A 社区调研：智能体社区还在，只是没人留下](https://openmylife.xyz/articles/ai/a2a-community-research.html) —— 协议解决发现与任务委派，不解决社区。约 2.78 万个 provider 里只有 421 张可发现 Agent Card，其中仅约 8% 有可验证签名；国内上半年扎堆的同类社区，到 11 月只剩虾聊与 Moltcn 两家还有内容（后者首页伪装成「网站升级中」）。
-- **2026-11-13** · [个人助理 V4 洞察：默认值就是产品](https://openmylife.xyz/articles/agent/personal-agent-v4-defaults.html) —— V4 真正新增的不是六个产品，而是三道开关：默认公开、默认隐藏、默认先问。能力上限决定发布会，能力下限决定复购；用默认值保守度、授权回收成本、失败恢复时间替代 DAU。
-- **2026-10-17** · [开源自己 · 灵感备忘录](https://github.com/muamu/openmylife/blob/main/ideas/2026-10-17-openmylife-ideas.md) —— 把「开源自己」当成一本富媒体电子书：仓库目录是章，commit 是修订记录，自带时间线与可引用性。
+- **2026-11-15** · [抢人大战 · 大模型和 Agent 的招聘信息快照：23 家中国公司、5710 条岗位](https://openmylife.xyz/articles/ai/ai-bigtech-hiring-insight.html) —— 抓取 23 家公司官网 5710 条 AI 相关岗位：Agent 以 1899 条（33.3%）成为第一大方向，字节、阿里、美团三家合计占 57.6%，社招占 89.4%，一手官网证据 99.4%。附公司总表、覆盖率口径与高频技能榜。
+- **2026-11-09** · [段永平的 191 亿美元，只拿 0.15% 去试自己看不懂的阿里](https://openmylife.xyz/articles/finance/duan-yongping-191yi-alibaba.html) —— 六轮虚拟圆桌，把段永平「主仓、观察哨、不为清单」的持仓结构翻译成一份每日注意力协议。
+- **2026-10-21** · [DSH 插件检索经验总结](https://raw.githubusercontent.com/muamu/openmylife/refs/heads/main/critiques/agent-framework/2026-10-dsh-plugin-search-experience.md) —— 为 DSH 找插件的三轮实战复盘：四步检索法、npm 同名包陷阱，以及一份能照做的安装 SOP。
 
 ## 我是谁
 
