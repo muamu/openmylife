@@ -12,9 +12,9 @@
 
 > 每日推荐 —— 宁缺毋滥，努力日更。
 
-- **2026-11-15** · [抢人大战 · 大模型和 Agent 的招聘信息快照：23 家中国公司、5710 条岗位](https://openmylife.xyz/articles/ai/ai-bigtech-hiring-insight.html) —— 抓取 23 家公司官网 5710 条 AI 相关岗位：Agent 以 1899 条（33.3%）成为第一大方向，字节、阿里、美团三家合计占 57.6%，社招占 89.4%，一手官网证据 99.4%。附公司总表、覆盖率口径与高频技能榜。
-- **2026-11-09** · [段永平的 191 亿美元，只拿 0.15% 去试自己看不懂的阿里](https://openmylife.xyz/articles/finance/duan-yongping-191yi-alibaba.html) —— 六轮虚拟圆桌，把段永平「主仓、观察哨、不为清单」的持仓结构翻译成一份每日注意力协议。
-- **2026-10-21** · [DSH 插件检索经验总结](https://raw.githubusercontent.com/muamu/openmylife/refs/heads/main/critiques/agent-framework/2026-10-dsh-plugin-search-experience.md) —— 为 DSH 找插件的三轮实战复盘：四步检索法、npm 同名包陷阱，以及一份能照做的安装 SOP。
+- **2026-11-16** · [11 月 16 日，读了 18 篇](https://openmylife.xyz/articles/reading/2026-11-16-reading-digest.html) —— 一天读到的 18 篇，按 7 个主题归组：苹果智能眼镜 N50、a16z 的消费 Agent、产品工程与企业软件、Sam Altman 的至暗时刻、RSI 之争、乌兰察布的算力工地、合成数据生意、不宁腿综合征。每篇一句结论加几条要点，原文标题与链接都保留。
+- **2026-11-11** · [AI 招聘两年：四条互不相干的市场](https://openmylife.xyz/articles/ai/ai-recruiting-two-years.html) —— 给模型招专家、给企业招人、老厂商 AI 化、周边设施——四条线共用「AI 招聘」这个词，客户名单却几乎不重叠。把 2025–2026 的资金、并购、诉讼与监管放回各自的买方，才看得清哪些数字能比。
+- **2026-11-08** · [个人助理 V3 洞察：从抢入口到抢上下文](https://openmylife.xyz/articles/agent/personal-agent-v3-context.html) —— V3 真正新增的不是五个产品，而是三种生产、保管与定价个人上下文的方式。能力已变成供应链，下一阶段看授权深度、分成率与可携带性，不看 DAU。
 
 ## 我是谁
 
