@@ -1,0 +1,1257 @@
+<!--
+date: 2026-11-17
+tags: [复杂经济学, 收益递增, 路径依赖, AI 战略]
+visibility: public
+note: 独立单页 HTML 源文件；站点发布版见 https://openmylife.xyz/articles/reading/complexity-economics-ch04.html
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 模型的三重正反馈：能否赢家通吃？·《复杂经济学》第 04 章</title>
+<meta name="description" content="数据飞轮、算力规模与智能体生态构成的三重正反馈，会不会把 AI 市场锁进赢家通吃？《复杂经济学》（布莱恩·阿瑟）第 04 章「收益递增和路径依赖」知识树拆解，12 个核心模块。">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+<style>
+:root{
+  --bg:#f6f3ec;
+  --paper:#fffdf8;
+  --paper-soft:#fbf8f1;
+  --ink:#141414;
+  --ink-2:#2c2c2c;
+  --muted:#6b6b63;
+  --line:#e4dfd3;
+  --line-strong:#d3cbbb;
+  --orange:#e8590c;
+  --orange-ink:#b9470a;
+  --orange-soft:#f7e3d3;
+  --orange-wash:#fdf4ec;
+  --green:#2f8f4e;
+  --green-soft:#e2f0e6;
+  --amber:#c67a12;
+  --amber-soft:#f7ebd6;
+  --red:#b7301f;
+  --red-soft:#f6ded9;
+  --serif:"Songti SC","STSong","SimSun","Noto Serif SC",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei","Noto Sans SC",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Code","SFMono-Regular",Consolas,"Liberation Mono",monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:18px;-webkit-text-size-adjust:100%}
+body{
+  margin:0;overflow-x:hidden;
+  background:var(--bg);color:var(--ink-2);
+  font-family:var(--sans);
+  font-size:clamp(16px,.35vw + 15px,17.5px);
+  line-height:1.88;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+::selection{background:var(--orange-soft);color:var(--ink)}
+p{margin:0 0 1.05em}
+strong{color:var(--ink);font-weight:600}
+a{color:var(--orange-ink);text-decoration:none;border-bottom:1px solid rgba(185,71,10,.28)}
+a:hover{border-bottom-color:var(--orange-ink)}
+.page{max-width:900px;margin:0 auto;padding:0 20px 90px}
+
+/* ---------- 页头 ---------- */
+.masthead{padding:56px 0 30px;border-bottom:1px solid var(--line-strong)}
+.kicker{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;
+  color:var(--orange-ink);margin:0 0 18px;line-height:1.7;
+}
+.kicker span{
+  font-family:var(--serif);font-size:15px;font-weight:700;
+  color:var(--ink);letter-spacing:0;margin-left:4px;
+}
+.masthead h1{
+  font-family:var(--serif);font-weight:700;color:var(--ink);
+  font-size:clamp(25px,5.2vw,35px);line-height:1.36;margin:0 0 10px;
+}
+.masthead h1 span{
+  display:block;font-size:.63em;color:var(--orange-ink);
+  font-weight:400;margin-top:11px;line-height:1.5;
+}
+.masthead .sub{
+  font-family:var(--serif);font-size:clamp(15px,2.6vw,18px);
+  color:var(--muted);margin:0 0 24px;line-height:1.7;
+}
+.lede{
+  font-size:clamp(15.5px,.3vw + 15px,16.5px);color:var(--ink-2);
+  background:var(--paper);border-left:3px solid var(--orange);
+  padding:16px 18px;border-radius:0 10px 10px 0;margin:0 0 26px;
+}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.stats div{background:var(--paper-soft);padding:12px 14px}
+.stats b{display:block;font-family:var(--mono);font-size:20px;color:var(--orange-ink);line-height:1.3}
+.stats span{font-size:12.5px;color:var(--muted)}
+
+/* ---------- 书目与速览 ---------- */
+.biblio{
+  display:flex;gap:16px;align-items:flex-start;
+  margin:0 0 26px;padding:16px;background:var(--paper);
+  border:1px solid var(--line);border-radius:12px;
+}
+.biblio img{
+  width:84px;height:auto;flex:0 0 auto;border-radius:3px;
+  box-shadow:0 2px 8px rgba(20,20,20,.22);background:var(--line-strong);
+}
+.biblio .bi{min-width:0}
+.biblio .bt{
+  font-family:var(--serif);font-size:17px;color:var(--ink);
+  font-weight:700;margin:0 0 3px;line-height:1.45;
+}
+.biblio .bt span{display:block;font-size:13.5px;font-weight:400;color:var(--muted);margin-top:2px}
+.biblio .bl{font-size:13px;color:var(--muted);margin:0 0 3px;line-height:1.7}
+.biblio .bl b{color:var(--ink-2);font-weight:500}
+.biblio .bl a{border-bottom:1px solid rgba(185,71,10,.3);font-size:13px}
+.brief{
+  margin:34px 0 0;padding:22px 20px;
+  background:var(--paper);border:1px solid var(--line);
+  border-top:3px solid var(--orange);border-radius:12px;
+}
+.brief-t{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;
+  color:var(--orange-ink);margin:0 0 16px;font-weight:600;
+}
+.brief ol{margin:0;padding:0;list-style:none;counter-reset:bf}
+.brief li{
+  position:relative;padding-left:27px;margin:0 0 13px;
+  font-size:16.5px;line-height:1.78;color:var(--ink-2);
+}
+.brief li:last-child{margin-bottom:0}
+.brief li::before{
+  counter-increment:bf;content:counter(bf);
+  position:absolute;left:0;top:.32em;
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  color:var(--orange-ink);background:var(--orange-soft);
+  width:17px;height:17px;border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+}
+.srcnote{font-size:14px;color:var(--muted);line-height:1.85;margin:32px 0 0}
+
+/* ---------- 目录 ---------- */
+.toc{margin:40px 0 8px;padding:22px 20px;background:var(--paper);border:1px solid var(--line);border-radius:14px}
+.toc-title{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;
+  color:var(--muted);margin:0 0 18px;font-weight:500;
+}
+.toc-grid{display:grid;gap:22px}
+.toc-branch{
+  margin:0 0 8px;font-size:13.5px;color:var(--muted);
+  padding-bottom:6px;border-bottom:1px solid var(--line);
+}
+.toc-branch span{
+  display:inline-block;font-family:var(--mono);font-size:11.5px;
+  color:var(--orange-ink);background:var(--orange-soft);
+  padding:1px 7px;border-radius:4px;margin-right:8px;
+}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc li{margin:0}
+.toc li a{
+  display:flex;gap:10px;align-items:baseline;
+  padding:5px 0;border-bottom:none;font-size:14.5px;
+  color:var(--ink-2);line-height:1.6;
+}
+.toc li a:hover{color:var(--orange-ink)}
+.toc li b{font-family:var(--mono);font-size:12px;color:var(--line-strong);font-weight:400;flex:0 0 auto}
+
+/* ---------- 章节 ---------- */
+.branch-head{
+  margin:56px 0 0;padding:14px 16px;background:var(--orange-soft);
+  border-left:4px solid var(--orange);border-radius:0 8px 8px 0;
+}
+.branch-head .bno{
+  display:block;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.08em;color:var(--orange-ink);margin-bottom:3px;
+}
+.branch-head h2{
+  font-family:var(--serif);font-size:clamp(21px,4.4vw,27px);
+  color:var(--ink);margin:0;line-height:1.4;font-weight:700;
+}
+.fuse{
+  margin:18px 0 0;padding:14px 16px;background:var(--paper-soft);
+  border:1px solid var(--line);border-radius:10px;
+  font-size:14px;line-height:1.8;color:var(--ink-2);
+}
+.fuse dl{margin:0;display:grid;gap:6px}
+.fuse dt{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;
+  color:var(--orange-ink);
+}
+.fuse dd{margin:0 0 6px;font-size:14px}
+.fuse dd:last-child{margin-bottom:0}
+
+/* ---------- 模块 ---------- */
+.module{padding-top:34px;margin-top:34px;border-top:1px solid var(--line)}
+.mod-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px}
+.mod-no{
+  flex:0 0 auto;font-family:var(--mono);font-size:13px;font-weight:600;
+  color:var(--orange-ink);background:var(--orange-soft);
+  width:36px;height:36px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  margin-top:5px;
+}
+.mod-head h3{
+  font-family:var(--serif);font-size:clamp(19px,3.6vw,23px);
+  color:var(--ink);margin:0;line-height:1.5;font-weight:700;
+}
+.role{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;
+  color:var(--muted);margin:0 0 12px;
+}
+.role::before{content:"";width:14px;height:1px;background:var(--line-strong)}
+.dig{margin:0 0 20px}
+.field{margin:0 0 16px}
+.field h4{
+  font-family:var(--mono);font-size:12px;font-weight:600;
+  letter-spacing:.05em;color:var(--orange-ink);margin:0 0 4px;
+}
+.field p{margin:0 0 .8em}
+.field p:last-child{margin-bottom:0}
+.case{
+  background:var(--orange-wash);border-left:3px solid var(--orange);
+  padding:14px 16px;border-radius:0 10px 10px 0;margin:16px 0;
+}
+.case h4{
+  font-family:var(--mono);font-size:12px;font-weight:600;
+  letter-spacing:.03em;color:var(--orange-ink);margin:0 0 6px;
+}
+.case p{margin:0;font-size:15.5px}
+.think{
+  background:#f1eee4;border-left:3px solid var(--line-strong);
+  padding:16px;border-radius:0 10px 10px 0;
+}
+.think .role{color:var(--ink);margin-bottom:10px}
+.think h4{
+  font-family:var(--mono);font-size:12px;font-weight:600;
+  letter-spacing:.05em;color:var(--ink);margin:0 0 4px;
+  display:flex;align-items:center;gap:7px;
+}
+.think h4::before{content:"◆";font-size:8px;color:var(--orange)}
+.think p{font-size:15.5px;margin:0 0 .8em}
+.think p:last-child{margin-bottom:0}
+
+/* ---------- 公式 ---------- */
+.eq{
+  overflow-x:auto;overflow-y:hidden;
+  background:var(--paper-soft);border:1px solid var(--line);
+  border-radius:10px;padding:16px 14px;margin:16px 0;
+  -webkit-overflow-scrolling:touch;
+}
+.eq .katex-display{margin:0}
+.eq .katex{font-size:1.02em}
+.katex{font-size:1em}
+.katex-display{margin:.5em 0;padding:2px 0}
+
+/* ---------- 表 ---------- */
+.tablewrap{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:600px}
+caption{
+  caption-side:top;text-align:left;font-family:var(--mono);
+  font-size:12px;color:var(--muted);padding-bottom:8px;
+}
+th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top;text-align:left;line-height:1.7}
+th{background:var(--paper-soft);font-weight:600;color:var(--ink);font-size:13.5px}
+tbody tr:nth-child(even){background:rgba(255,253,248,.7)}
+td code{font-family:var(--mono);font-size:13px}
+
+/* ---------- 图 ---------- */
+figure{
+  margin:24px 0;padding:18px 14px 14px;background:var(--paper);
+  border:1px solid var(--line);border-radius:12px;
+}
+figure svg{display:block;width:100%;max-width:400px;height:auto;margin:0 auto}
+figcaption{
+  font-size:13.5px;color:var(--muted);line-height:1.7;
+  margin-top:14px;padding-top:12px;border-top:1px solid var(--line);
+}
+figcaption b{color:var(--ink);font-weight:600}
+
+/* ---------- 清单 ---------- */
+.dim{margin:30px 0 0}
+.dim-head{
+  font-family:var(--serif);font-size:19px;color:var(--ink);font-weight:700;
+  margin:0 0 4px;padding-bottom:8px;border-bottom:1px solid var(--line-strong);
+  display:flex;gap:10px;align-items:baseline;
+}
+.dim-head .dno{font-family:var(--mono);font-size:12px;color:var(--orange-ink);font-weight:400}
+.check{margin:22px 0 0;padding-left:0}
+.check-q{
+  font-size:16.5px;color:var(--ink);font-weight:600;
+  margin:0 0 10px;line-height:1.7;display:flex;gap:10px;
+}
+.check-q .cn{
+  flex:0 0 auto;font-family:var(--mono);font-size:12px;
+  color:var(--paper);background:var(--orange-ink);
+  width:22px;height:22px;border-radius:5px;
+  display:flex;align-items:center;justify-content:center;
+  margin-top:4px;
+}
+.check p{margin:0 0 8px;font-size:15px}
+.check .lbl{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;
+  color:var(--orange-ink);margin-right:6px;
+}
+.check p.act{background:var(--paper);border-left:2px solid var(--line-strong);padding:9px 12px;border-radius:0 6px 6px 0}
+
+/* ---------- 总览 ---------- */
+.sec{
+  font-family:var(--serif);font-size:clamp(17.5px,3.2vw,20px);color:var(--ink);
+  font-weight:700;margin:34px 0 14px;padding-bottom:7px;
+  border-bottom:1px solid var(--line);
+}
+.sec .sn{font-family:var(--mono);font-size:12px;color:var(--orange-ink);font-weight:400;margin-right:8px}
+.kp{margin:0 0 14px;padding-left:14px;border-left:2px solid var(--orange-soft)}
+.kp p{margin:0;font-size:15.5px}
+.kp .kt{font-family:var(--mono);font-size:11.5px;color:var(--orange-ink);letter-spacing:.03em}
+.yes{color:var(--green);font-weight:600;white-space:nowrap}
+.no{color:var(--red);font-weight:600;white-space:nowrap}
+.yes::before{content:"● ";font-size:9px;vertical-align:1px}
+.no::before{content:"○ ";font-size:9px;vertical-align:1px}
+
+/* ---------- 三体制对照 ---------- */
+.regime{margin:10px 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+.regime .rt{
+  display:inline-block;font-family:var(--mono);font-size:11.5px;font-weight:600;
+  padding:2px 9px;border-radius:5px;margin-bottom:7px;letter-spacing:.02em;
+}
+.rt.con{background:var(--green-soft);color:var(--green)}
+.rt.dec{background:var(--amber-soft);color:var(--amber)}
+.rt.inc{background:var(--red-soft);color:var(--red)}
+.regime p{margin:0 0 .55em;font-size:15px;line-height:1.8}
+.regime p:last-child{margin-bottom:0}
+.regime p b{color:var(--ink);font-weight:600}
+
+/* ---------- 收尾 ---------- */
+footer{
+  margin-top:64px;padding-top:22px;border-top:1px solid var(--line-strong);
+  font-size:13px;color:var(--muted);line-height:1.8;
+}
+footer p{margin:0 0 6px}
+
+/* ---------- 桌面 ---------- */
+@media (min-width:700px){
+  .page{padding:0 28px 110px}
+  .masthead{padding-top:72px}
+  .stats{grid-template-columns:repeat(4,1fr)}
+  .toc{padding:26px 26px}
+  .toc-grid{grid-template-columns:repeat(2,1fr);gap:26px}
+  .fuse{padding:16px 20px}
+  .fuse dl{grid-template-columns:88px 1fr;gap:4px 12px}
+  .fuse dd{margin:0}
+  figure{padding:22px 20px 18px}
+  .module{padding-top:40px;margin-top:40px}
+}
+@media (min-width:980px){
+  .toc-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media (max-width:699px){
+  table{min-width:0}
+  thead{display:none}
+  tbody tr{display:block;border:1px solid var(--line);border-radius:8px;margin-bottom:10px;background:var(--paper)}
+  tbody tr:nth-child(even){background:var(--paper)}
+  td{display:block;border:none;border-bottom:1px solid var(--line);padding:8px 12px}
+  td:last-child{border-bottom:none}
+  td::before{
+    content:attr(data-label);display:block;
+    font-family:var(--mono);font-size:11px;color:var(--orange-ink);
+    margin-bottom:2px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="masthead">
+  <p class="kicker">复杂经济学 · 第 04 章 <span>收益递增和路径依赖</span></p>
+  <h1>AI 模型：数据飞轮、算力规模与智能体生态的三重正反馈<span>能否赢家通吃？</span></h1>
+  <p class="sub">知识树拆解 · 12 个核心模块 · 四大分支递进</p>
+
+  <div class="biblio">
+    <img src="data:image/webp;base64,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" alt="《复杂经济学：经济思想的新框架》封面" width="84" height="113">
+    <div class="bi">
+      <p class="bt">复杂经济学<span>经济思想的新框架 · 新版</span></p>
+      <p class="bl"><b>[美] 布莱恩·阿瑟</b> 著　贾拥民 译</p>
+      <p class="bl">浙江科学技术出版社 · 湛庐文化 · 2023 年 7 月</p>
+      <p class="bl"><a href="https://book.douban.com/subject/36453897/" target="_blank" rel="noopener noreferrer">豆瓣条目 ↗</a></p>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div><b>12</b><span>知识模块</span></div>
+    <div><b>4</b><span>分支递进</span></div>
+    <div><b>3</b><span>张支付矩阵表</span></div>
+    <div><b>2</b><span>张相平面图</span></div>
+  </div>
+</header>
+
+<section class="brief" aria-labelledby="brief-t">
+  <p class="brief-t" id="brief-t">1 分钟速览</p>
+  <ol>
+    <li>平常的经济学讲“越稀缺越贵”，技术却相反：用的人越多，它改进越快、越便宜，这叫收益递增。</li>
+    <li>麻烦在于，这种越用越强的市场里，最后谁赢经常不看谁技术更好，而看早期一个很小的偶然。</li>
+    <li>阿瑟把这件事写成了模型，结论有点反直觉：结果只有“一家通吃”和“各占一半”两种命，而且事前算不出是哪一种。</li>
+    <li>好在通吃没那么容易。技术改进总有天花板，涨到顶就停下，用户原本的偏好重新说话，市场回到几家共存。</li>
+    <li>所以做决策的功夫不在押注谁赢，而在别过早掐死其他路线——留好接口，留好退路，等得起下一次变化。</li>
+  </ol>
+</section>
+
+<p class="srcnote">全章依据正文与全套图表（表4-1至表4-3、式1至式3、图4-1至图4-2）拆成 <strong>12 个核心知识模块</strong>，按“范式奠基 → 线性随机游走模型 → 三大体制属性对比 → 一般非线性框架与政策推演”四大分支递进，每支 3 个模块。</p>
+
+<nav class="toc" aria-label="知识树目录">
+  <p class="toc-title">12 个核心模块 · 点击跳转</p>
+  <div class="toc-grid">
+    <div class="toc-col">
+      <p class="toc-branch"><span>第一分支</span>范式转换与核心概念</p>
+      <ol>
+        <li><a href="#m01"><b>01</b>静态均衡的盲区与动力学转向</a></li>
+        <li><a href="#m02"><b>02</b>收益递增与正反馈机制</a></li>
+        <li><a href="#m03"><b>03</b>路径依赖与历史小事件</a></li>
+      </ol>
+    </div>
+    <div class="toc-col">
+      <p class="toc-branch"><span>第二分支</span>双技术竞争的随机游走</p>
+      <ol>
+        <li><a href="#m04"><b>04</b>双异质主体与线性支付矩阵</a></li>
+        <li><a href="#m05"><b>05</b>同质主体的早期锁定</a></li>
+        <li><a href="#m06"><b>06</b>吸收屏障与反射屏障</a></li>
+      </ol>
+    </div>
+    <div class="toc-col">
+      <p class="toc-branch"><span>第三分支</span>三大收益体制的四维对比</p>
+      <ol>
+        <li><a href="#m07"><b>07</b>可预测性与灵活性</a></li>
+        <li><a href="#m08"><b>08</b>遍历性与路径有效性</a></li>
+        <li><a href="#m09"><b>09</b>策略性定价与理性预期</a></li>
+      </ol>
+    </div>
+    <div class="toc-col">
+      <p class="toc-branch"><span>第四分支</span>非线性框架与政策推演</p>
+      <ol>
+        <li><a href="#m10"><b>10</b>非线性采用函数与不动点</a></li>
+        <li><a href="#m11"><b>11</b>有界收益递增</a></li>
+        <li><a href="#m12"><b>12</b>经济史重估与政策两难</a></li>
+      </ol>
+    </div>
+  </div>
+</nav>
+
+<main>
+<section id="b1">
+  <div class="branch-head">
+    <span class="bno">第一分支 · 模块 01–03</span>
+    <h2>范式转换与核心概念</h2>
+  </div>
+  <div class="fuse">
+    <dl>
+      <dt>位置</dt>
+      <dd>第一分支 / 共四支｜模块 01 – 模块 03</dd>
+      <dt>知识缝合线</dt>
+      <dd>本支为全章认知地基（第一支，无前置衔接）。核心任务是完成一次<strong>科学方法论升维</strong>——破除传统经济学“给定约束求唯一静态最优解”的思维定式，建立复杂科学“在正反馈与随机扰动中追踪动态路径演化”的分析坐标系，为第 2 轮的随机游走与吸收屏障建模铺平道路。</dd>
+    </dl>
+  </div>
+
+  <article class="module" id="m01">
+    <div class="mod-head">
+      <span class="mod-no">01</span>
+      <h3>静态均衡的盲区与动力学转向</h3>
+    </div>
+    <div class="dig">
+      <p class="role">模块拆解</p>
+      <div class="field">
+        <h4>核心定义</h4>
+        <p>新古典静态均衡分析（Static Equilibrium Analysis）只能计算出系统在给定供需条件下的所有潜在平衡点（多重均衡，Multiple Equilibria），却无法解释现实中究竟是哪一个均衡最终“胜出”；<strong>动力学转向（Dynamical Approach）</strong>则是将资源配置重构为一个随时间演化的<strong>概率随机过程（Stochastic Process）</strong>。</p>
+      </div>
+      <div class="field">
+        <h4>运行逻辑</h4>
+        <p>在静态视角下，时间被压缩为零，因果关系是线性的“基本面决定结果”。但在现实的技术竞争中，采用决策是按时间序列逐次发生的（$t_1, t_2, \dots, t_n$）。早期每一次微小的采纳选择，都会实时改写下一期竞争者的收益函数。只有把系统放回时间轴，追踪随机事件序列如何一步步累积并推动市场份额偏移，才能解开“均衡选择之谜”。</p>
+      </div>
+      <div class="case">
+        <h4>实操案例 · 2026 年 11 月 AI 产业锚点</h4>
+        <p>以推理与全能基座双雄 <strong>OpenAI（GPT-6 Astra / GPT-6.1 Sol）</strong> 与 <strong>Anthropic（Claude Fable 5.2 / Sonnet 5.5）</strong> 的竞争为例。若用传统静态视角分析两者的架构演进、参数量级与算力储备，两者在理论能力上限上处于典型的“多重均衡”状态——静态模型根本无法预测企业级开发者究竟会倒向谁。但切换至动力学视角就会发现，真正的胜负手在于按周展开的<strong>序列采用路径</strong>：谁先在高频复杂工程任务中拿到第一批规模化 Agent 调用，谁就能率先沉淀真实的强化学习验证轨迹（RL Trajectories），从而动态抬高自己下一代版本的收益曲面。</p>
+      </div>
+    </div>
+    <div class="think">
+      <p class="role">底层原理</p>
+      <h4>底层第一性原理</h4>
+      <p>经济学从“牛顿力学式的均衡科学”向“演化科学”跃迁——<strong>市场格局不是被提前计算出来的，而是在时间序列中“长”出来的</strong>。</p>
+      <h4>认知局限性</h4>
+      <p>动力学模型主动放弃了对“具体哪一家必赢”的绝对预测权（牺牲点预测精度），转而追求对“演化机制与概率分布”的解释。对于习惯了线性因果律的观察者而言，接受“即使拥有关于偏好与技术潜力的完全先验知识，仍无法准确预测市场结果”是一种反直觉的认知挑战。</p>
+    </div>
+  </article>
+
+  <article class="module" id="m02">
+    <div class="mod-head">
+      <span class="mod-no">02</span>
+      <h3>收益递增（Increasing Returns）与正反馈机制</h3>
+    </div>
+    <div class="dig">
+      <p class="role">模块拆解</p>
+      <div class="field">
+        <h4>核心定义</h4>
+        <p>收益递增（Increasing Returns）是指这样一种动态趋势：如果某种技术处于领先地位，在<strong>正反馈（Positive Feedback）机制</strong>的作用下，它就会获得更进一步的技术改进与生态优势，从而在下一轮竞争中占据更加领先的位置。</p>
+      </div>
+      <div class="field">
+        <h4>运行逻辑</h4>
+        <p>传统资源型行业（如水力发电的优质坝址越来越稀缺）受制于<strong>收益递减（Diminishing Returns）</strong>——领先者会遭遇边际成本上升的“负反馈”刹车，最终市场趋于均分。而现代复杂技术遵循<strong>使用中学习（Learning by Using）</strong>与<strong>协调外部性（Coordination Externalities）</strong>：</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 360 340" role="img" aria-label="收益递增的五步正反馈闭环：早期领先优势带来采用次数增加，累积经验与反馈数据，推动技术版本持续改进，吸引更大比例潜在采用者，再回到早期领先优势">
+          <defs>
+            <marker id="ar1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#e8590c"/>
+            </marker>
+          </defs>
+          <circle cx="180" cy="170" r="104" fill="none" stroke="#e4dfd3" stroke-width="1.2" stroke-dasharray="3 5"/>
+          <!-- 五个节点 -->
+          <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11.5" text-anchor="middle">
+            <!-- 1 顶部 -->
+            <rect x="112" y="26" width="136" height="34" rx="8" fill="#fffdf8" stroke="#e8590c" stroke-width="1.4"/>
+            <text x="180" y="47" fill="#141414">早期领先优势</text>
+            <!-- 2 右上 -->
+            <rect x="252" y="96" width="92" height="34" rx="8" fill="#fffdf8" stroke="#d3cbbb" stroke-width="1.2"/>
+            <text x="298" y="111" fill="#141414">被采用次数</text>
+            <text x="298" y="123" fill="#6b6b63" font-family="ui-monospace,Consolas,monospace" font-size="10.5">n 增加</text>
+            <!-- 3 右下 -->
+            <rect x="238" y="228" width="108" height="34" rx="8" fill="#fffdf8" stroke="#d3cbbb" stroke-width="1.2"/>
+            <text x="292" y="243" fill="#141414">经验与反馈</text>
+            <text x="292" y="255" fill="#6b6b63" font-size="10.5">数据累积</text>
+            <!-- 4 下中 -->
+            <rect x="112" y="288" width="136" height="34" rx="8" fill="#fffdf8" stroke="#d3cbbb" stroke-width="1.2"/>
+            <text x="180" y="309" fill="#141414">技术版本持续改进</text>
+            <!-- 5 左下 -->
+            <rect x="10" y="228" width="112" height="34" rx="8" fill="#fffdf8" stroke="#d3cbbb" stroke-width="1.2"/>
+            <text x="66" y="243" fill="#141414">吸引更大比例</text>
+            <text x="66" y="255" fill="#6b6b63" font-size="10.5">潜在采用者</text>
+          </g>
+          <!-- 弧线箭头 -->
+          <g fill="none" stroke="#e8590c" stroke-width="1.6" marker-end="url(#ar1)" opacity=".85">
+            <path d="M250 46 Q306 56 300 92"/>
+            <path d="M304 134 Q318 190 300 224"/>
+            <path d="M236 252 Q206 276 196 282"/>
+            <path d="M108 300 Q92 290 80 266"/>
+            <path d="M62 224 Q56 150 108 62"/>
+          </g>
+          <!-- 中心 -->
+          <text x="180" y="162" text-anchor="middle" font-family="-apple-system,PingFang SC,sans-serif" font-size="12" fill="#b9470a" font-weight="600">正反馈飞轮</text>
+          <text x="180" y="182" text-anchor="middle" font-family="ui-monospace,Consolas,monospace" font-size="10.5" fill="#6b6b63">self-reinforcing</text>
+        </svg>
+        <figcaption><b>图 1 · 自我强化的指数级飞轮。</b>原文以一条串联式公式表示该闭环：早期领先优势 → 被采用次数增加 → 经验与反馈数据累积 → 技术版本持续改进 → 吸引更大比例潜在采用者。这里按同一顺序画成环，强调它没有终点——每一步的输出都是下一步的输入。</figcaption>
+      </figure>
+
+      <p>这个闭环构成了自我强化的指数级飞轮。</p>
+
+      <div class="case">
+        <h4>实操案例 · 2026 年 11 月 AI 产业锚点</h4>
+        <p>看 <strong>OpenAI 与 Anthropic 的智能体飞轮</strong> 以及 <strong>ElevenLabs（2026 年估值飙升至 220 亿美元）</strong> 的音频护城河。在推理模型赛道，OpenAI 借助海量用户调用 GPT-6 Astra 产生的长链推理日志，结合 Mercor 等专家网络的密集强化学习反馈，形成了“调用越多 → 推理轨迹越丰富 → 奖励模型越精准 → 越聪明 → 虹吸更多开发者”的正反馈闭环；同理，ElevenLabs 凭借早期在人声情感拟真度上的先发优势，迅速接入海量企业配音与游戏工作流，海量真实声学交互反哺模型迭代，使其成为企业级音频配音的事实默认标准。</p>
+      </div>
+    </div>
+    <div class="think">
+      <p class="role">底层原理</p>
+      <h4>底层第一性原理</h4>
+      <p>正反馈的本质是<strong>系统内部的状态耦合打破了独立同分布（i.i.d.）假设</strong>——历史累计采纳量 $n_A$ 直接作为内生变量嵌入了当期收益函数 $\Pi_A(n_A)$ 中，使竞争从“静态单点性能比拼”变成了“生态势能滚雪球”。</p>
+      <h4>认知局限性</h4>
+      <p>正反馈并非永无止境的永动机。在现实算力与物理约束下，高质量合成／人类数据的边际效用衰减、推理延迟成本等“负反馈阻力”终将显现，使收益递增在特定阶段呈现出<strong>有界性（Boundedness）</strong>（这将在模块 11 中深入拆解）。</p>
+    </div>
+  </article>
+
+  <article class="module" id="m03">
+    <div class="mod-head">
+      <span class="mod-no">03</span>
+      <h3>路径依赖与历史小事件的“非平均化”</h3>
+    </div>
+    <div class="dig">
+      <p class="role">模块拆解</p>
+      <div class="field">
+        <h4>核心定义</h4>
+        <p>路径依赖（Path Dependence）指人类社会中的技术进化或制度变迁类似于物理学中的惯性，一旦进入某一轨道，就可能对其产生越来越强的依赖；而<strong>“历史小事件”（Small Historical Events）被阿瑟精确定义为：超出观察者事前模型分辨能力的随机扰动或偶然条件</strong>（如原型机的意外成功、早期开发者的直觉偏好、一次关键合约的时机）。</p>
+      </div>
+      <div class="field">
+        <h4>运行逻辑</h4>
+        <p>在收益递减或收益不变的常规系统里，偶然的随机涨落会被大数定律“平均化掉”（Averaged Out）并逐渐遗忘，系统总会回归由基本面决定的唯一均衡。但在收益递增系统中，正反馈充当了高倍放大器：早期的微小随机扰动不会被平均化，反而被锁进每一次后续迭代中，产生<strong>非遍历性（Non-ergodicity）</strong>——即不同的历史随机事件序列，会把同一个市场推向截然不同的长期垄断格局。</p>
+      </div>
+      <div class="case">
+        <h4>实操案例 · 2026 年 11 月 AI 产业锚点</h4>
+        <p>观察 AI 编程与创意生成赛道中 <strong>Cursor（被 SpaceX 收购并融入 SpaceXAI / Grok 生态）</strong>、<strong>Cognition（Devin 收购 Windsurf，估值达 480 亿美元）</strong> 以及 <strong>Suno</strong> 的演化路径。早期各家 AI 编程编辑器调用的底层大模型相差无几，但 Cursor 团队早期在 Tab 键局部代码补全交互延迟上的几个工程直觉细节（典型的“模型外历史小事件”），意外捕获了第一批核心极客开发者；随后开发者的频繁采纳与修改行为不断喂养其上下文预测模型，沉淀出极高的开发习惯与工作流路径依赖，最终促成巨头天价并购整合。Suno 亦然，早期在完整歌曲结构生成上的偶然突破，使其迅速锁定了创作者的提示词体系与音频工作流。</p>
+      </div>
+    </div>
+    <div class="think">
+      <p class="role">底层原理</p>
+      <h4>底层第一性原理</h4>
+      <p><strong>微观扰动的宏观涌现（Micro-fluctuations to Macro-order）</strong>。我们事后所津津乐道的“必然商业规律”，往往带有极强的幸存者偏差——在赢家通吃之后，人们总习惯为其编造一套“先天技术更优越”的宏大叙事，却忽略了最初只是几个不可预测的微弱脉冲决定了分岔方向。</p>
+      <h4>认知局限性</h4>
+      <p>过度强调“历史小事件”容易滑向历史虚无主义或纯运气论。事实上，小事件只有在<strong>系统处于早期临界分岔点（Bifurcation Point）且正反馈通道已打通</strong>时才具有决定性；若核心技术存在致命短板，再多偶然红利也无法完成长期锁定。</p>
+    </div>
+  </article>
+</section>
+<section id="b2">
+  <div class="branch-head">
+    <span class="bno">第二分支 · 模块 04–06</span>
+    <h2>双技术竞争的随机游走模型</h2>
+  </div>
+  <div class="fuse">
+    <dl>
+      <dt>位置</dt>
+      <dd>第二分支 / 共四支｜模块 04 – 模块 06</dd>
+      <dt>知识缝合线</dt>
+      <dd>上一支完成了从“静态均衡”到“概率动力学”的思维破局，确立了正反馈与历史小事件的核心地位。本轮把这套哲学理念“数学化”与“几何化”——通过构建 $R$ 型与 $S$ 型两类异质主体的线性支付矩阵，推演它们在随机排队进入市场时的微观博弈，见证正反馈如何在相平面上筑起不可逾越的“吸收屏障”。</dd>
+    </dl>
+  </div>
+
+  <article class="module" id="m04">
+    <div class="mod-head">
+      <span class="mod-no">04</span>
+      <h3>双异质主体竞争模型与线性支付矩阵（表4-1）</h3>
+    </div>
+    <div class="dig">
+      <p class="role">模块拆解</p>
+      <div class="field">
+        <h4>核心定义</h4>
+        <p>阿瑟构建了一个包含两种开放技术（$A$ 与 $B$）和两类数量相等的异质行为主体（$R$ 型与 $S$ 型）的序列选择模型。行为主体按随机次序逐一进入市场，选择当下的最新版本并将其版本设计“冻结”在自己的使用中。</p>
+      </div>
+      <div class="field">
+        <h4>运行逻辑</h4>
+        <p>在表4-1的线性支付矩阵中，主体选择技术 $A$ 或 $B$ 的净现值，取决于他进行选择那一刻之前已累积的采用者数量 $n_A$ 和 $n_B$。$R$ 型主体的支付函数为 $a_R + r n_A$（选 $A$）与 $b_R + r n_B$（选 $B$），且天然偏好 $A$（$a_R &gt; b_R$）；$S$ 型主体的支付函数为 $a_s + s n_A$（选 $A$）与 $b_s + s n_B$（选 $B$），且天然偏好 $B$（$a_s &lt; b_s$）。通过调节参数 $r$ 和 $s$ 的符号，模型统一囊括了三种经济体制：同时为正代表<strong>收益递增</strong>，同时为负代表<strong>收益递减</strong>，同时为 $0$ 则代表<strong>收益不变</strong>。</p>
+      </div>
+
+      <div class="tablewrap">
+        <table>
+          <caption>表 4-1 的支付函数结构</caption>
+          <thead>
+            <tr><th>主体类型</th><th>选择 $A$ 的支付</th><th>选择 $B$ 的支付</th><th>天然偏好</th></tr>
+          </thead>
+          <tbody>
+            <tr data-label="R 型主体">
+              <td data-label="主体类型"><strong>$R$ 型</strong></td>
+              <td data-label="选择 A 的支付">$a_R + r n_A$</td>
+              <td data-label="选择 B 的支付">$b_R + r n_B$</td>
+              <td data-label="天然偏好">$A$（$a_R &gt; b_R$）</td>
+            </tr>
+            <tr data-label="S 型主体">
+              <td data-label="主体类型"><strong>$S$ 型</strong></td>
+              <td data-label="选择 A 的支付">$a_s + s n_A$</td>
+              <td data-label="选择 B 的支付">$b_s + s n_B$</td>
+              <td data-label="天然偏好">$B$（$a_s &lt; b_s$）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>$r &gt; 0$ 且 $s &gt; 0$ 时两种技术都“越用越好”，$r &lt; 0$ 且 $s &lt; 0$ 时“越用越挤”，$r = s = 0$ 时网络效应彻底消失——同一个矩阵，三种体制。</p>
+
+      <div class="case">
+        <h4>实操案例 · 2026 年 11 月 AI 产业锚点</h4>
+        <p>将其映射到 <strong>Anthropic（Claude Sonnet 5.5，技术 $A$）</strong> 与 <strong>OpenAI（GPT-6.1 Sol，技术 $B$）</strong> 的开发者争夺战。开发者天然分为两派：$R$ 型主体是注重代码架构审美、长上下文指令遵循与复杂推理稳定性的工程派（$a_R &gt; b_R$）；$S$ 型主体则是重度依赖 OpenAI 既有函数调用生态、多模态原生工具链与快速原型部署的生态派（$a_s &lt; b_s$）。但在收益递增机制（$r, s &gt; 0$）下，一个开发者最终选谁，不再只看自己的初始偏好 $a$ 或 $b$，还要加上庞大的“生态网络红利” $r n_A$ 或 $s n_B$——即周围有多少开源框架、MCP 服务器与自动化测评基准是围绕该模型构建的。</p>
+      </div>
+    </div>
+    <div class="think">
+      <p class="role">底层原理</p>
+      <h4>底层第一性原理</h4>
+      <p><strong>将“异质性偏好”与“社会网络外部性”进行线性解耦与叠加</strong>。每个决策者的效用函数都由两部分构成：内在基因（天然偏好 $a, b$）与外在势能（历史存量 $r n_A, s n_B$）。当网络势能足够大时，外部性就会压倒个体的内在禀赋。</p>
+      <h4>认知局限性</h4>
+      <p>该基础模型假设技术版本在主体做出选择的那一刻即“冻结在设计中”，且行为主体只看过去累积的采用量（回顾型决策），暂未引入对未来采纳趋势的“前瞻性预期”（阿瑟将在模块 09 的扩展模型中补全这一环）。</p>
+    </div>
+  </article>
+
+  <article class="module" id="m05">
+    <div class="mod-head">
+      <span class="mod-no">05</span>
+      <h3>同质主体下的早期锁定与“非不遗憾”低效率（表4-2）</h3>
+    </div>
+    <div class="dig">
+      <p class="role">模块拆解</p>
+      <div class="field">
+        <h4>核心定义</h4>
+        <p>在进入异质主体竞争前，阿瑟先用单一同质主体模型揭示了收益递增的冷酷一面——当两项技术的学习改进速率不同时，早期最优的理性选择会将整个市场永久锁死在长期劣势的技术路径上，从而违背路径有效性的“不遗憾”（No-regret）标准。</p>
+      </div>
+      <div class="field">
+        <h4>运行逻辑</h4>
+        <p>观察表4-2中的支付数据：在累积采用数为 $0$ 时，技术 $A$ 的初始收益为 $10$，技术 $B$ 仅为 $4$。于是第一个行为主体必然选择技术 $A$，使 $A$ 的采用量增至 $1$、收益继续上升，后续主体便接连全部选择 $A$，$B$ 甚至没有机会启动。然而，表4-2显示技术 $A$ 每增加 $10$ 次采用，收益仅温和增长 $1$ 个单位（从 $10$ 升至 $100$ 次时的 $20$）；而技术 $B$ 每增加 $10$ 次采用，收益却猛增 $3$ 个单位（从 $4$ 飙升至 $100$ 次时的 $34$）。当采用推进到第 $30$ 次时，两者收益在 $13$ 处打平，此后 $B$ 的潜力全面反超 $A$，但此时技术 $A$ 已经走得太远，即使给予技术 $B$ 一定的早期补贴 $g$，也无法弥补 $A$ 累积的巨大存量优势，市场彻底丧失灵活性并锁定在较劣选择上。</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 360 268" role="img" aria-label="技术A从收益10起步、每10次采用只增长1；技术B从收益4起步、每10次采用增长3；两条线在第30次采用处、收益13的位置交叉，此后B全面反超">
+          <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11">
+            <!-- 网格 -->
+            <g stroke="#efeae0" stroke-width="1">
+              <line x1="52" y1="216" x2="344" y2="216"/>
+              <line x1="52" y1="172" x2="344" y2="172"/>
+              <line x1="52" y1="128" x2="344" y2="128"/>
+              <line x1="52" y1="84" x2="344" y2="84"/>
+              <line x1="52" y1="40" x2="344" y2="40"/>
+            </g>
+            <!-- 轴 -->
+            <line x1="52" y1="40" x2="52" y2="216" stroke="#d3cbbb" stroke-width="1.2"/>
+            <line x1="52" y1="216" x2="344" y2="216" stroke="#d3cbbb" stroke-width="1.2"/>
+            <!-- y 刻度 -->
+            <g fill="#6b6b63" font-family="ui-monospace,Consolas,monospace" font-size="9.5" text-anchor="end">
+              <text x="46" y="220">0</text>
+              <text x="46" y="176">10</text>
+              <text x="46" y="132">20</text>
+              <text x="46" y="88">30</text>
+            </g>
+            <text x="16" y="34" fill="#6b6b63" font-size="10.5">收益</text>
+            <!-- x 刻度 -->
+            <g fill="#6b6b63" font-family="ui-monospace,Consolas,monospace" font-size="9.5" text-anchor="middle">
+              <text x="52" y="230">0</text>
+              <text x="110" y="230">20</text>
+              <text x="168" y="230">40</text>
+              <text x="226" y="230">60</text>
+              <text x="284" y="230">80</text>
+              <text x="342" y="230">100</text>
+            </g>
+            <text x="330" y="248" fill="#6b6b63" font-size="10.5">采用次数 n</text>
+            <!-- 交叉点竖直参考线 -->
+            <line x1="139" y1="40" x2="139" y2="216" stroke="#b7301f" stroke-width="1" stroke-dasharray="3 4" opacity=".45"/>
+            <!-- 技术 A：起点 10，斜率 1/10 -->
+            <line x1="52" y1="172" x2="344" y2="128" stroke="#2f8f4e" stroke-width="2.2" stroke-linecap="round"/>
+            <!-- 技术 B：起点 4，斜率 3/10 -->
+            <line x1="52" y1="198.4" x2="344" y2="66.4" stroke="#e8590c" stroke-width="2.2" stroke-linecap="round"/>
+            <!-- 交叉点 -->
+            <circle cx="139" cy="158.8" r="3.6" fill="#fffdf8" stroke="#b7301f" stroke-width="1.8"/>
+            <line x1="141" y1="152" x2="148" y2="136" stroke="#b7301f" stroke-width="1" opacity=".6"/>
+            <text x="150" y="130" fill="#b7301f" font-size="10.5" font-weight="600">第 30 次 · 收益 13</text>
+            <!-- 端点标签 -->
+            <text x="344" y="148" fill="#2f8f4e" font-size="10.5" text-anchor="end" font-weight="600">A · 起点高</text>
+            <text x="344" y="56" fill="#e8590c" font-size="10.5" text-anchor="end" font-weight="600">B · 斜率陡</text>
+            <text x="60" y="166" fill="#2f8f4e" font-size="10" opacity=".85">10</text>
+            <text x="60" y="212" fill="#e8590c" font-size="10" opacity=".85">4</text>
+          </g>
+        </svg>
+        <figcaption><b>图 2 · 表4-2 的两条学习曲线。</b>技术 $A$ 起点 10、每 10 次采用只涨 1；技术 $B$ 起点 4、每 10 次采用涨 3。第 30 次时两者在收益 13 处打平，之后 $B$ 一路走高——但市场早在 30 次之前就已经把 $A$ 选完了。</figcaption>
+      </figure>
+
+      <div class="case">
+        <h4>实操案例 · 2026 年 11 月 AI 产业锚点</h4>
+        <p>这一机制精准复现了当下<strong>世界模型与具身智能底层架构的路线焦虑</strong>（如传统的自回归多模态 Token 拼接路线 vs <strong>AMI Labs 的 JEPA 自监督表征架构</strong>或 <strong>World Labs 的 3D 空间物理引擎</strong>）。在早期阶段（采用量 $n=0$），自回归多模态方案工程门槛低、立竿见影就能生成逼真视频（初始收益 $10$），迅速吸干了全行业的算力与开发者注意力；而像 JEPA 这种强调抽象物理规律预测的新架构，早期训练极其晦涩、直观视觉产出差（初始收益仅 $4$）。如果市场缺乏早期保护与孵化机制，全行业就会在第 $30$ 轮迭代前彻底锁定在“Token 拼接”的局部最优解上，即便后者在百亿级交互后的物理泛化天花板远低于前者。</p>
+      </div>
+    </div>
+    <div class="think">
+      <p class="role">底层原理</p>
+      <h4>底层第一性原理</h4>
+      <p><strong>短视局部贪心算法（Greedy Algorithm）在非凸地形上的必然陷阱</strong>。每一个单独的决策者在自己进入的那个时间切片上都是完全理性的（追求当期净现值最大化），但个体理性的时间序列加总，却涌现出了集体层面的长期非理性。</p>
+      <h4>认知局限性</h4>
+      <p>现实商业世界中的“后来者”并非完全盲目，大型科技巨头或长线风投具备跨期贴现能力，往往愿意在早期承受亏损去孵化“起点低但斜率陡”的技术（这对应模块 09 汉森的策略性渗透定价模型）。</p>
+    </div>
+  </article>
+
+  <article class="module" id="m06">
+    <div class="mod-head">
+      <span class="mod-no">06</span>
+      <h3>异质主体下的吸收屏障与反射屏障（式1–3 &amp; 图4-1）</h3>
+    </div>
+    <div class="dig">
+      <p class="role">模块拆解</p>
+      <div class="field">
+        <h4>核心定义</h4>
+        <p>在双异质主体随机排队进入的模型中，定义第 $n$ 步时技术 $A$ 与 $B$ 的采用数量之差为 $d_n = n_A(n) - n_B(n)$，则技术 $A$ 的市场份额可表示为：</p>
+        <div class="eq">$$x_n = 0.5 + \frac{d_n}{2n}$$</div>
+        <p>决定系统命运的，是 $d_n$ 在 $(d_n, n)$ 相平面上触碰到的<strong>屏障（Barriers）</strong>。</p>
+      </div>
+      <div class="field">
+        <h4>运行逻辑</h4>
+        <p><strong>收益不变（$r = s = 0$）</strong>：$R$ 型永远选 $A$，$S$ 型永远选 $B$，两者互不干扰。由于主体类型以 $0.5$ 概率随机出现，$d_n$ 表现为无边界的<strong>自由随机游走</strong>；随着 $n \to \infty$，$d_n / 2n \to 0$，市场份额 $x_n$ 必然收敛于 $50\%$ 对 $50\%$。</p>
+        <p><strong>收益递减（$r, s &lt; 0$）</strong>：领先技术的拥挤效应会降低收益，迫使原本偏好它的主体倒戈向冷门技术，形成两道<strong>反射屏障（Reflecting Barriers）</strong>——一旦 $d_n$ 偏离过大就会被反弹回中间区域，市场份额同样稳健锁定在 $50\%$ 对 $50\%$。</p>
+        <p><strong>收益递增（$r, s &gt; 0$）</strong>：如式(2)与式(3)所示，当 $d_n &lt; \Delta_R = \frac{b_R - a_R}{r}$ 时，连天然偏好 $A$ 的 $R$ 型主体都会“改换门庭”转向 $B$；反之，当 $d_n &gt; \Delta_S = \frac{b_S - a_S}{s}$ 时，天然偏好 $B$ 的 $S$ 型主体也会集体倒戈向 $A$。</p>
+        <div class="eq">$$\Delta_R = \frac{b_R - a_R}{r}, \qquad \Delta_S = \frac{b_S - a_S}{s}$$</div>
+        <p>如图4-1所示，这两条边界构成了两道<strong>吸收屏障（Absorbing Barriers）</strong>：在两条屏障之间的狭长地带，两派各选所爱，轨迹呈随机锯齿波动；但随机游走以概率 $1$ 终究会撞破其中一道屏障，一旦越界，所有新进主体都会一边倒地选择同一项技术，系统瞬间坠入单一技术的永久锁定。</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 360 300" role="img" aria-label="相平面上两条轨迹：收益递增时随机游走撞破吸收屏障后一路上扬并锁定；收益递减时撞到反射屏障后被弹回中间区域">
+          <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11">
+            <!-- 游走区底色 -->
+            <rect x="48" y="85" width="296" height="120" fill="#fbf8f1" stroke="none"/>
+            <!-- 屏障 -->
+            <line x1="48" y1="85" x2="344" y2="85" stroke="#d3cbbb" stroke-width="1.3" stroke-dasharray="6 4"/>
+            <line x1="48" y1="205" x2="344" y2="205" stroke="#d3cbbb" stroke-width="1.3" stroke-dasharray="6 4"/>
+            <line x1="48" y1="145" x2="344" y2="145" stroke="#e4dfd3" stroke-width="1"/>
+            <!-- 轴 -->
+            <line x1="48" y1="30" x2="48" y2="240" stroke="#d3cbbb" stroke-width="1.2"/>
+            <line x1="48" y1="240" x2="344" y2="240" stroke="#d3cbbb" stroke-width="1.2"/>
+            <!-- 轴标签 -->
+            <text x="34" y="42" fill="#6b6b63" font-size="10.5">d</text>
+            <text x="38" y="54" fill="#9a9490" font-size="9">n</text>
+            <text x="318" y="256" fill="#6b6b63" font-size="10.5">n</text>
+            <!-- 屏障标签 -->
+            <text x="52" y="79" fill="#8a8577" font-size="10">上屏障 Δ</text>
+            <text x="52" y="220" fill="#8a8577" font-size="10">下屏障 Δ</text>
+            <!-- 收益递增：突破上屏障 -->
+            <polyline points="48,145 62,153 76,137 90,148 104,131 118,142 132,126 146,134 160,117 174,122 188,97 200,74 214,60 236,48 264,37 300,28 336,20"
+                      fill="none" stroke="#b7301f" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="336" cy="20" r="3.2" fill="#b7301f"/>
+            <text x="232" y="74" fill="#b7301f" font-size="10.5" font-weight="600">越界 → 单技术锁定</text>
+            <text x="118" y="120" fill="#b7301f" font-size="9.5" opacity=".85">收益递增</text>
+            <!-- 收益递减：撞下屏障后反弹 -->
+            <polyline points="48,145 64,158 80,172 96,186 110,198 124,207 136,190 150,174 166,159 182,150 200,144 222,151 242,140 264,149 288,142 312,148 340,143"
+                      fill="none" stroke="#c67a12" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="124" cy="207" r="3.2" fill="#fffdf8" stroke="#c67a12" stroke-width="1.7"/>
+            <text x="132" y="222" fill="#c67a12" font-size="10">触碰 → 反弹</text>
+            <text x="222" y="170" fill="#c67a12" font-size="9.5" opacity=".85">收益递减</text>
+          </g>
+        </svg>
+        <figcaption><b>图 3 · 两种屏障，两种命运。</b>横轴是进入市场的主体数 $n$，纵轴是两种技术的采用量之差 $d_n$。中间浅色区域是“两派各选所爱”的拉锯带。红色轨迹越出上屏障后不再回头，市场走向单技术垄断；橙色轨迹一触碰屏障就被弹回，长期被压回 50/50。屏障越窄（正反馈强度 $r, s$ 越大），越容易被偶然事件撞破。</figcaption>
+      </figure>
+
+      <div class="case">
+        <h4>实操案例 · 2026 年 11 月 AI 产业锚点</h4>
+        <p>看开发者在 <strong>Claude Sonnet 5.5（$A$）</strong> 与 <strong>GPT-6.1 Sol（$B$）</strong> 之间的迁移临界点。假设某段时间内因为几个现象级开源 Agent 工作流与 IDE 插件集中围绕 Claude 深度优化，导致 $d_n$ 持续向 $A$ 倾斜并突破了 $\Delta_S = (b_S - a_s)/s$ 这道吸收屏障。此时，原本坚定的 OpenAI 生态派（$S$ 型开发者）会发现：团队接入的新工具链、企业级安全审计模版全都在向 Sonnet 5.5 倾斜，继续坚守 GPT-6.1 Sol 的生态适配成本已高于其天然偏好差 $(b_S - a_s)$。于是 $S$ 型开发者集体跨过屏障改用 Sonnet 5.5，进一步拉大 $d_n$，从而完成对该开发细分市场的彻底锁定。</p>
+      </div>
+    </div>
+    <div class="think">
+      <p class="role">底层原理</p>
+      <h4>底层第一性原理</h4>
+      <p><strong>相变（Phase Transition）与临界阈值（Critical Threshold）</strong>。系统在屏障内部是“双稳态共存的拉锯战”，一旦越过 $\Delta_R$ 或 $\Delta_S$ 的临界线，系统动力学性质发生突变，从“异质性分化”坍缩为“同质性趋同”。注意公式分母中的 $r$ 和 $s$：正反馈强度（$r, s$）越强，屏障间距 $\Delta$ 就越窄，市场越容易在极早期就被偶然事件锁死。</p>
+      <h4>认知局限性</h4>
+      <p>线性随机游走模型假设正反馈斜率 $r$ 和 $s$ 是恒定不变的常数，这意味着一旦越过屏障，优势会无限线性发散。而在真实商业世界中，正反馈的斜率往往随规模呈非线性变化（这将在图4-2 的 $S$ 型采用函数中得到更精确的刻画）。</p>
+    </div>
+  </article>
+</section>
+<section id="b3">
+  <div class="branch-head">
+    <span class="bno">第三分支 · 模块 07–09</span>
+    <h2>三大收益体制的四维属性对比</h2>
+  </div>
+  <div class="fuse">
+    <dl>
+      <dt>位置</dt>
+      <dd>第三分支 / 共四支｜模块 07 – 模块 09</dd>
+      <dt>知识缝合线</dt>
+      <dd>上一轮用线性随机游走模型在相平面上画出了决定命运的“吸收屏障”与“反射屏障”。本轮基于这些几何边界，对收益不变、收益递减与收益递增三种体制做四维体检（可预测性、灵活性、遍历性、路径有效性），随后打破“技术无厂商资助、主体只看过去”的理想化假设，引入厂商渗透定价与用户理性预期，还原真实商业战场中更具冲击力的锁定加速度。</dd>
+    </dl>
+  </div>
+
+  <article class="module" id="m07">
+    <div class="mod-head">
+      <span class="mod-no">07</span>
+      <h3>可预测性与灵活性（锁定程度指数）（表4-3前两维）</h3>
+    </div>
+    <div class="dig">
+      <p class="role">模块拆解</p>
+      <div class="field">
+        <h4>核心定义</h4>
+        <p><strong>可预测性（Predictability）</strong>指系统内嵌的小不确定性能否被“平均化掉”，使观察者预先准确锁定长期市场份额；<strong>灵活性（Flexibility）</strong>指对某种技术实施补贴或征税（政策调整 $g$），是否总能改变未来的市场选择。把屏障转移到足以影响选择所需的补贴或税收幅度，即为系统<strong>“锁定程度”的精确指数</strong>。</p>
+      </div>
+      <div class="field">
+        <h4>运行逻辑</h4>
+        <p>对照表4-3的前两个维度：</p>
+
+        <div class="regime">
+          <span class="rt con">收益不变</span>
+          <p><b>可预测性：是。</b>长期市场份额以概率 $1$ 稳定在 $50\%$ 对 $50\%$。<b>灵活性：不是。</b>最多只有部分灵活性，补贴必须大到足以填补对不同技术的天然偏好差距。</p>
+        </div>
+
+        <div class="regime">
+          <span class="rt dec">收益递减</span>
+          <p><b>可预测性：是。</b>份额同样收敛于 $50\%$ 对 $50\%$。<b>灵活性：是。</b>政策调整 $g$ 总是能移动反射屏障，以概率 $1$ 影响未来选择或绝对数量。</p>
+        </div>
+
+        <div class="regime">
+          <span class="rt inc">收益递增</span>
+          <p><b>可预测性：不是。</b>虽然理论上能算出技术 $A$ 独占市场的概率为 $s(a_R - b_R)/[s(a_R - b_R) + r(b_s - a_s)]$，但实际结果非 $0$ 即 $100\%$，任何事前预测都有一半概率出错。</p>
+          <p><b>灵活性：不是。</b>一旦过程被吸收进某项技术，随着采纳量持续攀升，为了移动屏障所需付出的补贴 $g$（锁定程度指数）将无限增加，系统彻底丧失被外部微调的灵活性。</p>
+        </div>
+      </div>
+      <div class="case">
+        <h4>实操案例 · 2026 年 11 月 AI 产业锚点</h4>
+        <p>看 <strong>Cursor（并入 SpaceXAI 并融入 Grok 生态）</strong> 与 <strong>Cognition（Devin 收购 Windsurf，估值达 480 亿美元）</strong> 的 AI 编程智能体之争。早期各家工具尚处于屏障内部拉锯时，谁能最终统领企业研发工作流具有高度不可预测性；但一旦某家研发团队将私有代码库图谱、CI/CD 自动化脚本、个人编码记忆与定制规则深度沉淀进 Cursor 或 Devin 体系后，系统就跨越了吸收屏障。此时即便竞争对手提供全额免费算力补贴（政策调整 $g$），团队也几乎不可能整体迁移——因为“重构工作流上下文与迁移私有记忆”的隐性成本（锁定指数）已随着时间推移变得近乎无穷大。</p>
+      </div>
+    </div>
+    <div class="think">
+      <p class="role">底层原理</p>
+      <h4>底层第一性原理</h4>
+      <p><strong>历史势垒的不可逆累积（Irreversibility）</strong>。在收益递增系统中，时间不是中性的标尺，而是单向度堆砌势能壁垒的过程。所谓“锁定程度指数”，本质上是外部干预力量为了逆转历史累积外部性所必须支付的能量门槛。</p>
+      <h4>认知局限性</h4>
+      <p>模型假设用户数据与状态完全封闭在单一技术栈内（零互操作性）。现实中，一旦出现跨平台的开源记忆协议或标准化上下文接口（如通用 MCP 资产规范），就能在技术层面人为削平转移屏障，重新为市场注入部分灵活性。</p>
+    </div>
+  </article>
+
+  <article class="module" id="m08">
+    <div class="mod-head">
+      <span class="mod-no">08</span>
+      <h3>遍历性与路径有效性（表4-3后两维）</h3>
+    </div>
+    <div class="dig">
+      <p class="role">模块拆解</p>
+      <div class="field">
+        <h4>核心定义</h4>
+        <p><strong>遍历性（Ergodicity）</strong>指历史事件的不同序列导致相同市场结果的概率为 $1$（系统会“遗忘”历史小事件），反之则为<strong>非遍历性（路径依赖）</strong>；<strong>路径有效性（Path Efficiency）</strong>遵循<strong>“不遗憾”（No-regret）标准</strong>——在任何时刻，如果对滞后技术进行同等强度的开发或给予同样的采用率不会带来更高的收益，该过程才是路径有效的。</p>
+      </div>
+      <div class="field">
+        <h4>运行逻辑</h4>
+        <p>对照表4-3的后两个维度：</p>
+
+        <div class="regime">
+          <span class="rt con">收益不变</span>
+          <span class="rt dec">收益递减</span>
+          <p><b>遍历性：是。路径有效性：是。</b>无论行为主体以何种奇特顺序排队进入，系统最终都会抹平早期扰动并收敛至 $50/50$；且在任何时点选择领先技术都是当前最优，强行扶持滞后技术不会带来更高回报，因此不存在“遗憾”。</p>
+        </div>
+
+        <div class="regime">
+          <span class="rt inc">收益递增</span>
+          <p><b>遍历性：不是。路径有效性：不是。</b>不同的历史事件序列会将市场推向截然不同的技术垄断（非遍历）。更重要的是，这里存在严重的<strong>跨期外部性失灵</strong>：早期采纳者只根据自身当期偏好做理性选择，却客观上剥夺了另一项技术获得“使用中学习”的机会。若市场锁死在技术 $A$，天然偏好 $B$ 的 $S$ 型主体就会蒙受 $(b_S - a_S)$ 的永久效用损失而心生“遗憾”；若被排斥的技术长期改进速率更快，甚至会导致全体主体都陷入路径无效的泥潭。</p>
+        </div>
+      </div>
+      <div class="case">
+        <h4>实操案例 · 2026 年 11 月 AI 产业锚点</h4>
+        <p>对比 <strong>OpenAI Dots / Anthropic Claude Meetings</strong> 等中心化云端 AI 办公台与早期纯端侧、本地知识主权优先的分布式个人助理架构。2026 年初，企业为了快速落地会议自动化与跨软件任务调度，扎堆涌入云端通用办公台，海量真实办公语料推动云端 Agent 路由与插件生态飞速成熟（非遍历路径演化）；而强调绝对数据主权、零云端依赖与本地因果图谱推理的架构因早期缺乏商业订单喂养而发展迟缓。结果全行业被锁死在持续上涨的云端席位订阅费与数据合规焦虑中，印证了早期局部理性导致的整体“路径无效”。</p>
+      </div>
+    </div>
+    <div class="think">
+      <p class="role">底层原理</p>
+      <h4>底层第一性原理</h4>
+      <p><strong>代际外部性（Intergenerational Externality）与跨期交易市场缺失</strong>。早期采纳者实质上扮演了技术成熟度的“义务孵化器”，但市场机制只让他们为自己的当期效用买单，却没有机制让未来的受益者反向补偿早期探索者去孵化那项“贵但更有潜力”的未成熟技术。</p>
+      <h4>认知局限性</h4>
+      <p>判定“路径无效”依赖于一个上帝视角的反事实假设（“如果当初同等开发被淘汰的技术会怎样”）。在真实商业史上，落败技术路线的长期天花板往往无法被事后证伪，实践中极易滑向“事后诸葛亮”式的归因偏误。</p>
+    </div>
+  </article>
+
+  <article class="module" id="m09">
+    <div class="mod-head">
+      <span class="mod-no">09</span>
+      <h3>模型边界扩展：策略性定价与理性预期</h3>
+    </div>
+    <div class="dig">
+      <p class="role">模块拆解</p>
+      <div class="field">
+        <h4>核心定义</h4>
+        <p>阿瑟在基础模型之上放宽了“技术无厂商资助”和“主体只看过去”两个前提，引入两大现实机制：(1) <strong>厂商策略性行为（Hanson 模型）</strong>：企业为争夺垄断地位主动采取渗透定价（Penetration Pricing）；(2) <strong>理性预期（Katz &amp; Shapiro 推广）</strong>：行为主体的当期支付同时受<strong>未来用户会不会选择同一项技术</strong>的预期影响。</p>
+      </div>
+      <div class="field">
+        <h4>运行逻辑</h4>
+        <p><strong>渗透定价与贴现率博弈</strong>：当技术背后有商业巨头支持时，厂商会在早期主动承受巨额亏损（低价甚至免费倾销）来抢占早期装机量，以期在跨越吸收屏障后收割长期垄断利润，此时市场大概率仍走向单技术排斥；<strong>唯一的例外是当厂商的贴现率（Discount Rate）极高时</strong>——如果企业更看重当期现金流而非遥远的未来垄断收益，就会放弃烧钱补贴，此时多强共存的<strong>市场分享现象便会重新出现</strong>。</p>
+        <p><strong>理性预期加速锁定</strong>：在标准制定与生态竞争中，当用户形成的预期信念与实际随机演化过程相吻合时，便达成了<strong>理性预期均衡</strong>。对“某项技术即将锁定市场”的共同预期，会直接提前转化为当期采纳动力——其数学后果是<strong>大幅缩窄两条吸收屏障之间的距离</strong>，让锁定发生得更快，并恶化市场的根本不稳定性。</p>
+      </div>
+      <div class="case">
+        <h4>实操案例 · 2026 年 11 月 AI 产业锚点</h4>
+        <p>看 <strong>Google DeepMind 凭借 Gemini 4 Hydrogen 全面接管搜索与 OS 入口</strong>，以及 <strong>大模型推理 API 的价格战演进</strong>。一方面，Google 将 Gemini 4 Hydrogen 深度整合进全球搜索框与原生操作系统交互层，向全行业释放了极强的信号，诱导开发者和硬件厂商形成<strong>理性预期</strong>：“未来亿级用户的默认交互入口就在 Gemini 4 生态内”，这种集体信念瞬间缩窄了竞争的吸收屏障，加速了生态向其标准靠拢；另一方面，回顾各大模型厂商的定价策略，早期 OpenAI、Anthropic 与 Google 均采取了激进的算力补贴与渗透定价（Hanson 模型），但随着 2026 年下半年资本市场对 AI 基础设施回报率的要求显著提高（贴现率上升），各家纷纷推出高定价的企业级专属算力与分级推理套餐，在部分高净值 B 端市场重新形成了巨头“市场分享”的微妙平衡。</p>
+      </div>
+    </div>
+    <div class="think">
+      <p class="role">底层原理</p>
+      <h4>底层第一性原理</h4>
+      <p><strong>金融学中的“反身性（Reflexivity）”与自证预言</strong>。一旦模型引入理性预期，因果律就从“过去存量决定现在选择”升级为“对未来的集体共识反向折现到当下”。预期本身就是一种零边际成本的虚拟杠杆，把未来的网络势能提前引爆。</p>
+      <h4>认知局限性</h4>
+      <p>理性预期均衡要求所有参与者对未来的随机演化路径拥有同质化的“共同知识”。但在技术范式剧烈跃迁的窗口期（例如新架构突然横空出世），市场各方对谁是未来标准的预期往往严重分裂，不同阵营的信念相互对冲，反而会暂时延缓单一标准的彻底锁定。</p>
+    </div>
+  </article>
+</section>
+<section id="b4">
+  <div class="branch-head">
+    <span class="bno">第四分支 · 模块 10–12</span>
+    <h2>一般非线性框架与现实经济史启示</h2>
+  </div>
+  <div class="fuse">
+    <dl>
+      <dt>位置</dt>
+      <dd>第四分支 / 共四支｜模块 10 – 模块 12</dd>
+      <dt>知识缝合线</dt>
+      <dd>前三支从线性随机游走出发，剖析了吸收屏障、四维体制属性以及理性预期对锁定的加速效应。本轮是全章的理论收官：把线性模型升维至一般非线性概率映射 $p(x)$，通过“不动点稳定性”与“有界收益递增”推导出单技术垄断与多强共存的数学边界，最后回归真实经济史与产业政策，直面治理者在早期技术博弈中的“多臂老虎机”下注难题。</dd>
+    </dl>
+  </div>
+
+  <article class="module" id="m10">
+    <div class="mod-head">
+      <span class="mod-no">10</span>
+      <h3>非线性采用函数与不动点稳定性（图4-2 &amp; 定理1–2）</h3>
+    </div>
+    <div class="dig">
+      <p class="role">模块拆解</p>
+      <div class="field">
+        <h4>核心定义</h4>
+        <p>阿瑟、埃尔莫利耶夫与卡尼奥弗斯基（1983）建立了一个普适的非线性随机动力学框架：设向量 $x$ 为当前各技术的市场份额，每次决策时技术 $j$ 被选中的概率由<strong>采用函数（Adoption Function）</strong> $p_j(x)$ 决定。系统演化的终局取决于 $p(x) = x$ 的<strong>稳定（吸引）不动点</strong>。</p>
+      </div>
+      <div class="field">
+        <h4>运行逻辑</h4>
+        <p>以图4-2中的双技术竞争为例，当技术 $A$ 的采用概率 $p(x)$ 高于其当前市场份额 $x$（曲线位于 $45^\circ$ 对角线上方）时，其份额倾向于上升；反之则倾向于下降：</p>
+        <p>对于凹形曲线 $p_2(x)$，存在唯一的内部稳定不动点 $x_2$，无论从何处出发，箭头都会将系统推向 $x_2$（多技术分享市场）。</p>
+        <p>对于 $S$ 型曲线 $p_1(x)$，中间与对角线的交点是一个不稳定的“分水岭”：分水岭下方箭头滑向 $0$，分水岭上方箭头冲向 $1$，只有单位向量（$0$ 和 $1$）才是稳定不动点。</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 360 306" role="img" aria-label="采用函数 p(x) 与 45 度对角线：S 型曲线在 0 和 1 处有稳定不动点、在 0.5 处有不稳定分水岭；凹形曲线在 x2 处有唯一的内部稳定不动点">
+          <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11">
+            <!-- 轴 -->
+            <line x1="50" y1="20" x2="50" y2="260" stroke="#d3cbbb" stroke-width="1.2"/>
+            <line x1="50" y1="260" x2="290" y2="260" stroke="#d3cbbb" stroke-width="1.2"/>
+            <!-- 45 度对角线 -->
+            <line x1="50" y1="260" x2="290" y2="20" stroke="#a8a29a" stroke-width="1.2" stroke-dasharray="5 4"/>
+            <!-- p1：S 型 -->
+            <path d="M50,260 C194,260 146,20 290,20" fill="none" stroke="#b7301f" stroke-width="2.2" stroke-linecap="round"/>
+            <!-- p2：凹形 -->
+            <path d="M50,248 C110,140 200,88 290,80" fill="none" stroke="#2f8f4e" stroke-width="2.2" stroke-linecap="round"/>
+            <!-- p1 稳定不动点 0 与 1 -->
+            <circle cx="50" cy="260" r="3.4" fill="#b7301f"/>
+            <circle cx="290" cy="20" r="3.4" fill="#b7301f"/>
+            <!-- p1 不稳定分水岭 -->
+            <circle cx="170" cy="140" r="4" fill="#fffdf8" stroke="#b7301f" stroke-width="1.9"/>
+            <text x="178" y="147" fill="#b7301f" font-size="10.5" font-style="italic">x*</text>
+            <!-- p2 内部稳定点 -->
+            <circle cx="210" cy="99" r="3.4" fill="#2f8f4e"/>
+            <line x1="212" y1="102" x2="232" y2="116" stroke="#2f8f4e" stroke-width="1" opacity=".7"/>
+            <text x="236" y="122" fill="#2f8f4e" font-size="10.5" font-weight="600">x₂ 稳定</text>
+            <!-- 曲线标注 -->
+            <text x="196" y="196" fill="#b7301f" font-size="10.5" font-weight="600">p₁(x) · S 型</text>
+            <text x="104" y="112" fill="#2f8f4e" font-size="10.5" font-weight="600">p₂(x) · 凹形</text>
+            <!-- 轴刻度 -->
+            <g fill="#6b6b63" font-family="ui-monospace,Consolas,monospace" font-size="9.5" text-anchor="middle">
+              <text x="50" y="274">0</text>
+              <text x="170" y="274">0.5</text>
+              <text x="290" y="274">1</text>
+            </g>
+            <g fill="#6b6b63" font-family="ui-monospace,Consolas,monospace" font-size="9.5" text-anchor="end">
+              <text x="44" y="264">0</text>
+              <text x="44" y="144">0.5</text>
+              <text x="44" y="24">1</text>
+            </g>
+            <text x="286" y="292" fill="#6b6b63" font-size="10.5" text-anchor="end">当前市场份额 x</text>
+            <text x="18" y="34" fill="#6b6b63" font-size="10.5">p(x)</text>
+          </g>
+        </svg>
+        <figcaption><b>图 4 · 图4-2 的两种终局。</b>实心点＝稳定（吸引）不动点，空心点＝不稳定分水岭。$S$ 型曲线 $p_1$ 把 $50\%$ 的份额变成一道分水岭：偏左滑向 $0$，偏右冲向 $1$，中间那一格站不住；凹形曲线 $p_2$ 则把所有出发点都吸向内部的 $x_2$，也就是多技术共享。这正是“单技术支配”与“多强共存”的几何差别。</figcaption>
+      </figure>
+
+      <p>由此直接导出两大核心定理：<strong>定理 1（路径依赖定理）</strong>指出，当且仅当采用函数 $p$ 具有多个稳定不动点时，过程是非遍历且不可预测的；<strong>定理 2（单技术支配定理）</strong>指出，当且仅当 $p$ 仅在单位向量处存在稳定不动点时，系统以概率 $1$ 收敛为单一技术垄断。</p>
+
+      <div class="case">
+        <h4>实操案例 · 2026 年 11 月 AI 产业锚点</h4>
+        <p>看当前<strong>世界模型（World Models）三派路线之争</strong>——Google DeepMind（2026 年 10 月发布支持实时音画交互与提示词转向的 <strong>Genie 4</strong>，“视频交互派”）、World Labs（李飞飞创立，推出 <strong>Marble 3D 空间模型</strong>，正被 AMD 收购，“3D 空间派”）与 AMI Labs（Yann LeCun 创立，主攻 <strong>JEPA 自监督表征架构</strong>，“自监督表征派”）。三者正处于图4-2中 $p_1(x)$ 曲线中间“不稳定分水岭”附近的生死竞速期：一旦某一派率先在具身智能训练与工业仿真中跨过临界份额阈值，触发底层物理引擎标准与开发者工具链的自我强化，市场份额箭头便会迅速滑向 $1$，而其余架构则被锁定在市场之外。</p>
+      </div>
+    </div>
+    <div class="think">
+      <p class="role">底层原理</p>
+      <h4>底层第一性原理</h4>
+      <p><strong>非线性系统中的“临界质量（Critical Mass）”与对称性破缺</strong>。一项技术在早期仅仅获得微弱的领先优势是不够的——在特定市场份额区间内，这种优势必须具备自我强化的斜率（$p'(x) &gt; 1$），才能冲破分水岭完成宏观层面的相变。</p>
+      <h4>认知局限性</h4>
+      <p>该定理假设采用函数 $p(x)$ 的基本拓扑结构在演化过程中保持稳定。而在底层算法剧烈迭代的周期里，一次跨代式的架构突破会直接重绘整条 $p(x)$ 曲线，让原本看似稳固的局部不动点瞬间失效。</p>
+    </div>
+  </article>
+
+  <article class="module" id="m11">
+    <div class="mod-head">
+      <span class="mod-no">11</span>
+      <h3>连续偏好分布与“有界收益递增”（定理3）</h3>
+    </div>
+    <div class="dig">
+      <p class="role">模块拆解</p>
+      <div class="field">
+        <h4>核心定义</h4>
+        <p>将主体类型从离散的两类扩展为天然偏好向量 $a = (a_1, \dots, a_K)$ 在正象限上连续有界分布的一般情形，并引入非线性技术改进函数 $r(n_j)$，使得下一个主体采用技术 $j$ 的支付为：</p>
+        <div class="eq">$$\Pi_j(n) = a_j + r(n_j)$$</div>
+      </div>
+      <div class="field">
+        <h4>运行逻辑</h4>
+        <p><strong>定理 3</strong> 严格证明：只要改进函数 $r(n_j)$ 随着采用量 $n_j$ 的增加至少以速度 $\varepsilon$ 无限递增（即<strong>无界收益递增</strong>），哪怕偏好分布再分散，极限采用函数也只会在单位向量处拥有稳定不动点，市场必然以概率 $1$ 走向<strong>单技术支配</strong>。</p>
+        <p>然而，<strong>决定商业格局分化的关键在于“有界性”</strong>：如果改进函数 $r(n_j)$ 是<strong>有界的（Bounded）</strong>（即学习效应或规模红利存在天花板），那么当多条技术路线在竞争中先后触及 $r$ 的上限时，正反馈引擎熄火，市场就会退化为由天然偏好分布 $a$ 决定的<strong>多技术共享格局</strong>；只有当某项技术在早期跑得足够快、在对手触顶前就将其彻底关在门外时，单技术垄断才会发生。</p>
+      </div>
+      <div class="case">
+        <h4>实操案例 · 2026 年 11 月 AI 产业锚点</h4>
+        <p>这精准解释了当下<strong>闭源旗舰与顶级开源大模型共存</strong>的产业稳态。尽管 OpenAI（GPT-6 Astra / GPT-6.1 Sol）、Anthropic（Claude Fable 5.2）与 Google（Gemini 4）拥有极强的早期数据与算力正反馈，但受限于高质量人类语料枯竭、推理算力边际递减以及通用场景的性能饱和，闭源旗舰的边际能力提升已显现出<strong>有界收益递增</strong>的特征（逼近 $r$ 的上限）。与此同时，<strong>DeepSeek（原生多模态 DeepSeek-V4.1-Flash、V4 Pro，MIT 开源）</strong> 与 <strong>Moonshot AI（2.8 万亿参数开源权重模型 Kimi K3）</strong> 凭借极致推理性价比与工程优化，迅速追平并触及了绝大多数常规业务的能力天花板。由于 $r(n_j)$ 有界，闭源巨头无法将开源生态彻底封死，市场最终演化为“闭源旗舰主导前沿复杂探索 + 开源模型占据海量私有化与端侧长尾”的共存均衡（类似图4-2中 $p_2(x)$ 的内部稳定不动点）。</p>
+      </div>
+    </div>
+    <div class="think">
+      <p class="role">底层原理</p>
+      <h4>底层第一性原理</h4>
+      <p><strong>边际效用上限对赢家通吃的天然制衡</strong>。真实商业世界之所以没有坍缩成一家垄断一切的单一巨无霸，根本原因在于几乎所有的“学习曲线”和“规模红利”在物理约束与用户需求层面都是<strong>有界的</strong>。一旦性能指标跨过用户的“够用阈值”，差异化偏好与成本敏感度就会重新夺回市场控制权。</p>
+      <h4>认知局限性</h4>
+      <p>在技术演进的半途中，很难事前判断某项 AI 能力的改进函数 $r(n_j)$ 究竟是“即将撞上物理天花板”，还是“正处于下一轮自我博弈跃迁的前夜”——这正是战略押注中最难化解的不确定性。</p>
+    </div>
+  </article>
+
+  <article class="module" id="m12">
+    <div class="mod-head">
+      <span class="mod-no">12</span>
+      <h3>经济史重估与公共政策的两难（案例与多臂老虎机困境）</h3>
+    </div>
+    <div class="dig">
+      <p class="role">模块拆解</p>
+      <div class="field">
+        <h4>核心定义</h4>
+        <p>基于动态收益递增对技术演进史的重新审视，以及公共政策在面对早期劣质锁定时遭遇的双重制度瓶颈——<strong>专利补偿局限</strong>与“多臂老虎机”（Multi-armed Bandit）下注难题。</p>
+      </div>
+      <div class="field">
+        <h4>运行逻辑</h4>
+        <p><strong>经济史重估</strong>：在收益递增世界里，历史不再只是把“必然最优解”交付出来的搬运工，而是决定胜负的裁判。阿瑟剖析了四大经典史实：源于协调外部性的 <strong>QWERTY 键盘布局</strong>与<strong>交流电标准</strong>；以及源于学习效应的 <strong>美国轻水核反应堆</strong>（源起于 1954 年核潜艇“鹦鹉螺号”的紧凑型反应堆合同与政治权宜，早早锁定经验优势并关闭了公认更优越的气冷堆通道）与 <strong>汽油动力汽车淘汰蒸汽动力汽车</strong>（1890 年代汽油车原本易爆、嘈杂且复杂，却因世纪之交几个开发者的偶然转向，到 1920 年彻底挤垮蒸汽机）。因此，面对市场赢家，必须警惕“用胜出结果反推其先天优越性”的归因谬误。</p>
+        <p><strong>政策两难</strong>：自由放任在收益递增下无法保证长期最优技术胜出。但外部干预同样面临结构性困境：(1) <strong>专利制度局限</strong>：只有当早期开发者能独占日后跨期外溢的收益时专利才有效，对于通用底层技术往往难以奏效；(2) <strong>多臂老虎机困境</strong>：当政府或产业资本试图对“有希望但尚不成熟”的技术路径进行担保时（如美国战略防御计划），必然面临多臂老虎机难题——潜在优越技术在早期的实验失败（低累积奖金）会让理性决策者在它成熟前就将其放弃，导致系统依然被锁定在令人遗憾的路径上。</p>
+      </div>
+      <div class="case">
+        <h4>实操案例 · 2026 年 11 月 AI 产业锚点</h4>
+        <p>看当前全球产业资本与国家算力基金在<strong>非 Transformer 下一代基础架构</strong>（如 JEPA、脉冲神经架构、新型光计算芯片）上的投资博弈。如今主流自回归大模型及其配套的 GPU/CUDA 算子生态（如同当年的轻水反应堆与汽油车）已经吸纳了全行业最成熟的工具链与商业现金流；而潜在的下一代空间物理或因果推理架构在早期往往表现平平（低“累积奖金”），在季度财务回报考核与多臂老虎机博弈下极易被“完全合理地”削减预算，从而在无形中加剧整个行业对现有范式的路径锁定。</p>
+      </div>
+    </div>
+    <div class="think">
+      <p class="role">底层原理</p>
+      <h4>底层第一性原理</h4>
+      <p><strong>可预测性的理论极限与演化生态观</strong>。阿瑟在全章末尾给出了一个极具哲学深度的结论：由于超出观察者模型分辨能力的微小历史事件会被正反馈放大，经济未来的可预测性不仅存在实践上的限度，更存在<strong>理论上的限度</strong>（类似遗传学中的“创始者效应”）。因此，顶尖系统架构师与战略家的核心能力，不在于妄图精准预测哪一匹黑马必胜，而在于<strong>刻意保留接口开放性与架构多样性（延缓过早锁定）</strong>，为尚未成熟的潜在优越路线留出不被主流市场瞬间吞噬的演化生态位。</p>
+      <h4>认知局限性</h4>
+      <p>现实中的技术路径锁定往往不仅是纯经济动力学的结果，还叠加了既得利益巨头的制度性游说——已经跨过吸收屏障的垄断者，会主动利用安全合规标准、算力准入牌照等制度工具来人为加固壁垒，使后发者的突围成本成倍放大。</p>
+    </div>
+  </article>
+</section>
+<section id="atlas">
+  <div class="branch-head">
+    <span class="bno">全章收束</span>
+    <h2>一、第04章全章知识图谱总览</h2>
+  </div>
+
+  <h3 class="sec"><span class="sn">1</span>范式跃迁：从“静态均衡”到“概率动力学”</h3>
+  <div class="kp">
+    <p><span class="kt">核心破局</span><br>新古典静态分析能求解出收益递增下的<strong>多重均衡（Multiple Equilibria）</strong>，但无法回答“哪一个均衡最终被选中”；布莱恩·阿瑟将技术竞争重构为随时间序列演化的<strong>随机动力学系统</strong>，在演化中动态“长”出市场格局。</p>
+  </div>
+  <div class="kp">
+    <p><span class="kt">历史小事件的非平均化</span><br>定义超出观察者事前模型分辨能力的偶然扰动为“历史小事件”。在正反馈（使用中学习、协调外部性）的放大下，早期微小的随机领先不会被大数定律平均化，而是直接锁定进后续版本的收益函数中，产生<strong>非遍历性（路径依赖）</strong>与创始者效应。</p>
+  </div>
+
+  <h3 class="sec"><span class="sn">2</span>核心数学模型与相变机制</h3>
+  <div class="kp">
+    <p><span class="kt">双异质主体线性支付模型 · 表4-1</span><br>设 $R$ 型主体天然偏好技术 $A$（$a_R &gt; b_R$），$S$ 型主体天然偏好技术 $B$（$a_s &lt; b_s$），第 $n$ 步选择时的净现值取决于历史累积采用数 $n_A, n_B$：$R$ 型选择 $A$ 与 $B$ 的支付分别为 $a_R + r n_A$ 与 $b_R + r n_B$；$S$ 型选择 $A$ 与 $B$ 的支付分别为 $a_s + s n_A$ 与 $b_s + s n_B$。参数 $r, s$ 同时为正代表<strong>收益递增</strong>，同时为负代表<strong>收益递减</strong>，同时为 $0$ 代表<strong>收益不变</strong>。</p>
+  </div>
+  <div class="kp">
+    <p><span class="kt">市场份额与吸收屏障 · 式1–3 &amp; 图4-1</span><br>记采用数之差 $d_n = n_A(n) - n_B(n)$，则技术 $A$ 的市场份额为 $x_n = 0.5 + d_n / 2n$。当 $d_n &lt; \Delta_R = \frac{b_R - a_R}{r}$ 时，连天然偏好 $A$ 的 $R$ 型主体也会倒戈向 $B$；当 $d_n &gt; \Delta_S = \frac{b_S - a_s}{s}$ 时，天然偏好 $B$ 的 $S$ 型主体也会倒戈向 $A$。$\Delta_R$ 与 $\Delta_S$ 在 $(d_n, n)$ 平面上构成两条<strong>吸收屏障（Absorbing Barriers）</strong>；随机游走一旦撞破任一屏障，所有后续主体将一边倒地选择同一技术，系统进入永久锁定。</p>
+  </div>
+  <div class="kp">
+    <p><span class="kt">同质主体下的早期锁定与“非不遗憾”低效率 · 表4-2</span><br>若技术 $A$ 初始收益高但学习斜率平缓（$0$ 次时为 $10$，每 $10$ 次增加 $1$），技术 $B$ 初始收益低但学习斜率陡峭（$0$ 次时为 $4$，每 $10$ 次增加 $3$），两者虽在第 $30$ 次采用时于收益 $13$ 处打平且此后 $B$ 长期占优，但因早期主体均理性选择 $A$，市场在 $B$ 启动前便已锁死在较劣技术 $A$ 上，违背路径有效性的“不遗憾”标准。</p>
+  </div>
+  <div class="kp">
+    <p><span class="kt">一般非线性框架与有界性边界 · 图4-2 &amp; 定理1–3</span><br><strong>路径依赖与单技术支配定理</strong>：对于非线性采用函数 $p(x)$，系统以概率 $1$ 收敛于稳定（吸引）不动点；如 $S$ 型曲线 $p_1(x)$ 在中间存在不稳定“分水岭”，仅在份额 $0$ 和 $1$ 处有稳定不动点，必然导致非遍历与单技术垄断。<strong>有界收益递增</strong>：在连续偏好分布 $\Pi_j(n) = a_j + r(n_j)$ 中，若改进函数 $r(n_j)$ 无界递增，市场必走向单技术垄断；若 $r(n_j)$ <strong>有界</strong>（学习红利存在天花板），多技术同时触及上限后正反馈熄火，市场将由天然偏好分布主导，演化为多技术共享格局（对应凹形曲线 $p_2(x)$ 的内部稳定不动点 $x_2$）。</p>
+  </div>
+
+  <h3 class="sec"><span class="sn">3</span>三大收益体制的四维属性对比（表4-3）</h3>
+  <div class="tablewrap">
+    <table>
+      <caption>表 4-3 三种体制在四个维度上的表现</caption>
+      <thead>
+        <tr>
+          <th>收益体制</th>
+          <th>可预测性</th>
+          <th>灵活性</th>
+          <th>遍历性</th>
+          <th>路径有效性</th>
+          <th>动力学特征与市场终局</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="收益体制"><span class="rt con">收益不变</span><br>$r = s = 0$</td>
+          <td data-label="可预测性"><span class="yes">是</span></td>
+          <td data-label="灵活性"><span class="no">不是</span></td>
+          <td data-label="遍历性"><span class="yes">是</span></td>
+          <td data-label="路径有效性"><span class="yes">是</span></td>
+          <td data-label="动力学特征与市场终局">无边界自由随机游走；小事件被平均化，份额以概率 $1$ 收敛于 $50/50$；补贴需填补天然偏好差才有效。</td>
+        </tr>
+        <tr>
+          <td data-label="收益体制"><span class="rt dec">收益递减</span><br>$r, s &lt; 0$</td>
+          <td data-label="可预测性"><span class="yes">是</span></td>
+          <td data-label="灵活性"><span class="yes">是</span></td>
+          <td data-label="遍历性"><span class="yes">是</span></td>
+          <td data-label="路径有效性"><span class="yes">是</span></td>
+          <td data-label="动力学特征与市场终局">拥挤效应形成<strong>反射屏障</strong>；任何历史序列均被拉回 $50/50$；政策补贴 $g$ 始终能移动屏障并改变选择。</td>
+        </tr>
+        <tr>
+          <td data-label="收益体制"><span class="rt inc">收益递增</span><br>$r, s &gt; 0$</td>
+          <td data-label="可预测性"><span class="no">不是</span></td>
+          <td data-label="灵活性"><span class="no">不是</span></td>
+          <td data-label="遍历性"><span class="no">不是</span></td>
+          <td data-label="路径有效性"><span class="no">不是</span></td>
+          <td data-label="动力学特征与市场终局">存在<strong>吸收屏障</strong>；份额非 $0$ 即 $100\%$；跨过屏障后逆转所需的补贴（锁定指数）趋于无穷大；易锁死在劣质路径。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sec"><span class="sn">4</span>模型边界扩展与经济史／政策推演</h3>
+  <div class="kp">
+    <p><span class="kt">策略性渗透定价 · Hanson 模型</span><br>商业巨头在早期承受亏损以抢占装机量，大概率仍会导致市场排斥；但当厂商<strong>贴现率极高</strong>（更看重当期现金流而非遥远垄断利润）时，多强共存的<strong>市场分享</strong>会重新出现。</p>
+  </div>
+  <div class="kp">
+    <p><span class="kt">理性预期均衡 · Katz &amp; Shapiro 推广</span><br>用户对“未来他人将选择哪项标准”的预期会直接折现到当期收益中，其动力学后果是<strong>大幅缩窄吸收屏障间距</strong>，加速锁定并加剧市场不稳定性。</p>
+  </div>
+  <div class="kp">
+    <p><span class="kt">经济史重估与政策两难</span><br>QWERTY 键盘、交流电（协调外部性）以及轻水核反应堆、汽油车淘汰蒸汽车（学习效应）均印证了“赢家未必先天更优”。自由放任在收益递增下易致锁定低效，但外部干预受限于<strong>专利跨期补偿不足</strong>与政府押注不成熟技术时的“多臂老虎机（Multi-armed Bandit）”困境（因早期低累积奖金而过早放弃潜在更优路线）。</p>
+  </div>
+</section>
+
+<section id="checklist">
+  <div class="branch-head">
+    <span class="bno">应用</span>
+    <h2>二、2026 AI 战略决策自检清单</h2>
+  </div>
+  <p style="margin-top:16px;font-size:15.5px;color:var(--muted)">在设计 AI 系统架构、评估模型选型或制定产品护城河策略时，可用以下 4 组第一性原理问题进行压力测试。</p>
+
+  <div class="dim">
+    <p class="dim-head"><span class="dno">维度一</span>正反馈与“吸收屏障”构建</p>
+    <p style="font-size:14px;color:var(--muted);margin:6px 0 0">产品与架构护城河自检</p>
+
+    <div class="check">
+      <p class="check-q"><span class="cn">1</span>我的系统是否存在内生的“使用中学习”飞轮？</p>
+      <p><span class="lbl">理论锚点</span>支付函数中的 $r n_A$ 项是否真实存在（模块 02、04）？若用户调用 $10,000$ 次与调用 $1$ 次相比，系统的上下文理解、路由精度或私有知识图谱没有随之进化，则项目处于“收益不变”区，极易被竞品随时替换。</p>
+      <p class="act"><span class="lbl">2026 动作</span>效仿 <strong>OpenAI / Anthropic</strong> 的 RL 轨迹沉淀与 <strong>Cursor（SpaceXAI）/ Cognition（Devin）</strong> 的代码库记忆绑定，将用户的每一次纠偏、审批与工作流交互结构化沉淀为专属状态记忆，抬高迁移所需的“锁定程度指数”。</p>
+    </div>
+
+    <div class="check">
+      <p class="check-q"><span class="cn">2</span>我是否利用了“理性预期”来提前收窄吸收屏障？</p>
+      <p><span class="lbl">理论锚点</span>对未来标准的集体信念会直接压缩吸收屏障间距（模块 09）。</p>
+      <p class="act"><span class="lbl">2026 动作</span>参考 <strong>Google Gemini 4 Hydrogen</strong> 接管原生交互入口的策略，在细分垂直场景中优先抢占“默认协议层／标准接口”（如成为团队统一的 MCP 资产中枢或内部 Agent 调度总线），让用户相信“这是团队未来的唯一默认底座”，从而加速内部生态向其坍缩。</p>
+    </div>
+  </div>
+
+  <div class="dim">
+    <p class="dim-head"><span class="dno">维度二</span>技术选型与“路径无效”防御</p>
+    <p style="font-size:14px;color:var(--muted);margin:6px 0 0">规避外部锁死自检</p>
+
+    <div class="check">
+      <p class="check-q"><span class="cn">3</span>当前接入的闭源模型或办公台，是否正在把我的核心资产锁进高成本黑盒？</p>
+      <p><span class="lbl">理论锚点</span>一旦跨过吸收屏障，逆转转换成本 $g$ 将趋于无穷大，并引发长期“路径无效”（模块 07、08）。</p>
+      <p class="act"><span class="lbl">2026 动作</span>在接入 <strong>Claude Sonnet 5.5 / GPT-6.1 Sol</strong> 或 <strong>OpenAI Dots / Claude Meetings</strong> 时，严格执行“状态与推理分离”原则——提示词工程、长期记忆图谱与业务工作流编排必须保存在自控的开放格式与本地仓库中，确保模型底座可随时热插拔，人为削平厂商设置的吸收屏障。</p>
+    </div>
+
+    <div class="check">
+      <p class="check-q"><span class="cn">4</span>我是否犯了“用当前跑分优势否定潜在高斜率架构”的短视错误？</p>
+      <p><span class="lbl">理论锚点</span>同质模型中，起点高斜率平缓的技术 $A$ 会掩盖起点低斜率陡峭的技术 $B$ 的长期潜力（模块 05）。</p>
+      <p class="act"><span class="lbl">2026 动作</span>在评估具身智能、空间计算与复杂规划底座时，不能仅以当下的视觉生成流畅度（如传统自回归视频方案）作为唯一标尺，需持续跟踪并小规模并行验证 <strong>Genie 4（实时交互世界模型）</strong>、<strong>World Labs Marble（3D 空间模型）</strong> 与 <strong>AMI Labs（JEPA 自监督表征）</strong> 等不同斜率路线的演进拐点。</p>
+    </div>
+  </div>
+
+  <div class="dim">
+    <p class="dim-head"><span class="dno">维度三</span>市场终局预判</p>
+    <p style="font-size:14px;color:var(--muted);margin:6px 0 0">竞争格局与定价策略自检</p>
+
+    <div class="check">
+      <p class="check-q"><span class="cn">5</span>所在赛道的收益递增是“无界”的还是“有界”的？</p>
+      <p><span class="lbl">理论锚点</span>无界递增导致单技术垄断，有界递增（触及改进上限 $r$）则导致多技术共享市场（模块 11）。</p>
+      <p class="act"><span class="lbl">2026 动作</span>在通用文本与常规多模态领域，闭源旗舰的边际提升已显露<strong>有界特征</strong>，而 <strong>DeepSeek-V4.1-Flash / V4 Pro</strong> 与 <strong>Kimi K3</strong> 等顶级开源权重模型已触及绝大多数企业场景的“够用天花板”。此时战略重心不应是盲目重训通用基座，而应转向“闭源旗舰处理 $10\%$ 极高难度推理 + 开源模型低成本吞吐 $90\%$ 业务长尾”的混合架构。</p>
+    </div>
+
+    <div class="check">
+      <p class="check-q"><span class="cn">6</span>竞争对手的“贴现率”处于什么水平？</p>
+      <p><span class="lbl">理论锚点</span>Hanson 模型表明，高贴现率会迫使厂商放弃补贴战，使市场重回分享格局（模块 09）。</p>
+      <p class="act"><span class="lbl">2026 动作</span>当基础模型巨头与 AI 应用独角兽进入算力 ROI 考核期（贴现率上升、算力补贴退潮、企业版提价）时，正是独立开发者与垂直应用切入对价格敏感、但对工作流深度定制有强偏好的细分利基市场（类似图4-2中 $p_2(x)$ 内部均衡点）的最佳时间窗口。</p>
+    </div>
+  </div>
+
+  <div class="dim">
+    <p class="dim-head"><span class="dno">维度四</span>不确定性治理与资源分配</p>
+    <p style="font-size:14px;color:var(--muted);margin:6px 0 0">应对“多臂老虎机”难题</p>
+
+    <div class="check">
+      <p class="check-q"><span class="cn">7</span>在新范式探索中，我是否因为早期“低累积奖金”而过早砍掉了未来赢家？</p>
+      <p><span class="lbl">理论锚点</span>多臂老虎机困境会导致理性决策者在潜在优越技术成熟前就将其淘汰（模块 12）。</p>
+      <p class="act"><span class="lbl">2026 动作</span>建立双轨制研发预算——将 $80\%$ 精力投入已跨过分水岭的成熟确定性工具链（如 <strong>FLUX / Kling / ElevenLabs / Suno</strong> 等已形成工作流标准的垂直模型）以获取当期现金流；同时强制保留 $20\%$ 的“非对称探索预算”，允许早期表现粗糙但底层第一性原理更优的新架构在隔离沙盒中持续积累迭代次数，避免在下一个技术奇点来临时被锁死在旧时代的轨道上。</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>文本取自布莱恩·阿瑟《复杂经济学：经济思想的新框架》（贾拥民 译，浙江科学技术出版社 · 湛庐文化，2023 年 7 月新版）第 04 章的知识树拆解记录，按四大分支与 12 个模块重排；公式采用 KaTeX 渲染，机制图为本页据原文数据绘制，封面引自豆瓣读书条目。</p>
+  <p>文中 2026 年产业锚点为例证性类比，用于说明模型机制，不构成对具体公司或产品的判断。</p>
+</footer>
+
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false,strict:false});"></script>
+</body>
+</html>

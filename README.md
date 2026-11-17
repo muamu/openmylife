@@ -12,9 +12,9 @@
 
 > 每日推荐 —— 宁缺毋滥，努力日更。
 
-- **2026-11-16** · [11 月 16 日，读了 18 篇](https://openmylife.xyz/articles/reading/2026-11-16-reading-digest.html) —— 一天读到的 18 篇，按 7 个主题归组：苹果智能眼镜 N50、a16z 的消费 Agent、产品工程与企业软件、Sam Altman 的至暗时刻、RSI 之争、乌兰察布的算力工地、合成数据生意、不宁腿综合征。每篇一句结论加几条要点，原文标题与链接都保留。
-- **2026-11-11** · [AI 招聘两年：四条互不相干的市场](https://openmylife.xyz/articles/ai/ai-recruiting-two-years.html) —— 给模型招专家、给企业招人、老厂商 AI 化、周边设施——四条线共用「AI 招聘」这个词，客户名单却几乎不重叠。把 2025–2026 的资金、并购、诉讼与监管放回各自的买方，才看得清哪些数字能比。
-- **2026-11-08** · [个人助理 V3 洞察：从抢入口到抢上下文](https://openmylife.xyz/articles/agent/personal-agent-v3-context.html) —— V3 真正新增的不是五个产品，而是三种生产、保管与定价个人上下文的方式。能力已变成供应链，下一阶段看授权深度、分成率与可携带性，不看 DAU。
+- **2026-11-17** · [《复杂经济学》第 04 章：收益递增、路径依赖，与 AI 的赢家通吃](https://openmylife.xyz/articles/reading/complexity-economics-ch04.html) —— 阿瑟第 04 章拆成 12 个知识模块：收益递增与正反馈、双技术竞争的随机游走、三大收益体制的四维对比、非线性框架与政策两难。结论有点反直觉——市场只有「一家通吃」和「各占一半」两种命，且事前算不出是哪一种；末尾附一份 2026 AI 战略自检清单。
+- **2026-11-13** · [国内外生活助理类 AI Agent 清单（v4）](https://openmylife.xyz/articles/agent/life-assistant-agents.html) —— 国际 25 个、国内 16 个、手机厂商自带 5 家、硬件 4 个，附两份实测榜、开源与基础设施、形态速查与六条判断。v4 新增 Tabletop、Toki、AI看山、CyboPal，补 Grok Build 泄密与「守下限」判断。
+- **2026-10-24** · [AI 审美的三层结构：默认审美、调节层与上限层](https://openmylife.xyz/articles/ai/aesthetic-three-layers.html) —— 默认审美是统计引力，提示词是意图翻译，模型能力是细节天花板。动手前先分清：你面对的是默认审美问题，还是能力上限问题。
 
 ## 我是谁
 
