@@ -1,0 +1,358 @@
+<!--
+date: 2026-11-17
+tags: [阅读, 每日速览, AI, 产业]
+visibility: public
+note: 独立单页 HTML 源文件；站点发布版见 https://openmylife.xyz/articles/reading/2026-11-17-reading-digest.html；正文为他人文章的压缩转述，第三方内容不纳入 CC BY。
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>29-11·17 阅读速览：一天读到的 12 篇</title>
+<style>
+  :root{
+    --ink:#16181b; --ink2:#39424c; --muted:#69707a; --faint:#969ea8;
+    --line:#e5e8ec; --rail:#eef1f4; --bg:#ffffff; --soft:#f7f8f9;
+    --accent:#1a4d44; --accent-soft:#e8f0ed;
+    --mark:#ad4726; --amber:#8f5a0d;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:16px;line-height:1.75;overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:28px 18px 64px}
+  @media (min-width:700px){ .wrap{padding:56px 30px 100px} }
+  a{color:inherit;text-decoration:none}
+
+  .kicker{
+    font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);font-weight:700;margin:0 0 14px
+  }
+  h1{
+    font-size:clamp(30px,8.8vw,48px);line-height:1.14;letter-spacing:-.03em;
+    margin:0 0 16px;font-weight:800
+  }
+  h1 em{font-style:normal;color:var(--accent)}
+  .lede{color:var(--ink2);font-size:16px;line-height:1.78;margin:0 0 22px;max-width:50ch}
+  .meta{
+    display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--muted);
+    padding-top:15px;border-top:1px solid var(--line)
+  }
+  .meta b{color:var(--ink);font-weight:600}
+
+  /* 分类导航 */
+  .toc{margin:30px 0 6px}
+  .toc-h{
+    font-size:11.5px;letter-spacing:.14em;color:var(--faint);
+    font-weight:700;text-transform:uppercase;margin:0 0 10px
+  }
+  .toc-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  @media (min-width:620px){ .toc-grid{grid-template-columns:repeat(2,1fr)} }
+  .toc-item{
+    background:var(--bg);padding:11px 13px;display:flex;align-items:center;justify-content:space-between;
+    gap:10px;font-size:14px;transition:background .15s
+  }
+  .toc-item:hover{background:var(--soft)}
+  .toc-item .nm{font-weight:600;letter-spacing:-.01em}
+  .toc-item .ct{font-size:11.5px;color:var(--faint);font-variant-numeric:tabular-nums;flex:none}
+
+  section{margin-top:52px;scroll-margin-top:20px}
+  .sec-h{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+  .sec-h .idx{
+    font-size:11.5px;font-weight:800;color:var(--accent);background:var(--accent-soft);
+    border-radius:5px;padding:2.5px 7px;letter-spacing:.04em;flex:none
+  }
+  h2{font-size:22px;line-height:1.32;margin:0;font-weight:780;letter-spacing:-.025em}
+  @media (min-width:700px){ h2{font-size:27px} }
+  .sec-p{color:var(--muted);font-size:13.5px;line-height:1.7;margin:8px 0 24px;max-width:48ch}
+
+  article.item{padding:26px 0 28px;border-top:1px solid var(--line)}
+  article.item:first-of-type{border-top:0;padding-top:2px}
+  .item-top{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+  .no{
+    font-size:12px;font-weight:800;color:var(--faint);font-variant-numeric:tabular-nums;
+    letter-spacing:.06em
+  }
+  .tag{
+    font-size:11px;font-weight:600;color:var(--accent);background:var(--accent-soft);
+    border-radius:4px;padding:1.5px 6px;letter-spacing:.02em
+  }
+  h3{
+    font-size:clamp(21px,5.4vw,26px);line-height:1.36;margin:0 0 12px;font-weight:780;
+    letter-spacing:-.028em
+  }
+  @media (min-width:700px){ h3{font-size:27px} }
+  h3 a{border-bottom:1px solid transparent;transition:border-color .15s}
+  h3 a:hover{border-color:#c3cdd8}
+  h3 .ext{font-size:.55em;color:var(--faint);font-weight:400;margin-left:6px;vertical-align:.14em}
+  h3 .hl{
+    color:#0c6a55;
+    background:linear-gradient(180deg,transparent 60%,#d8ebe4 60%);
+    padding:0 3px;border-radius:3px
+  }
+
+  /* 一句话结论 */
+  .take{
+    font-size:17px;font-weight:700;color:var(--accent);line-height:1.62;
+    margin:0 0 14px;letter-spacing:-.015em
+  }
+  .take .hl{color:var(--mark)}
+
+  /* 摘要：逐行 + 竖线 */
+  .sum{border-left:2px solid var(--rail);padding-left:15px;margin:0}
+  @media (min-width:700px){ .sum{padding-left:18px} }
+  .sum p{margin:0 0 11px;color:var(--ink2);font-size:15.5px;line-height:1.76}
+  .sum p:last-child{margin-bottom:0}
+  .sum b{color:var(--ink);font-weight:700}
+  .sum .hl{color:var(--mark);font-weight:700}
+  .sum code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;
+    background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;color:var(--ink)
+  }
+  .host{
+    margin-top:13px;font-size:11.5px;color:var(--faint);
+    display:flex;align-items:center;gap:6px
+  }
+  .host a{border-bottom:1px dotted #cdd5dd}
+  .host a:hover{color:var(--accent);border-color:var(--accent)}
+
+  footer{margin-top:46px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--faint);line-height:1.75}
+  footer b{color:var(--muted);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Reading Digest · 11 / 17</p>
+  <h1>11月17日 阅读速览</h1>
+  <p class="lede">这天主要在补读最近一周的腾讯研究院公众号，顺手夹了几篇访谈和行业观察。攒下的 12 篇按主题分了 6 组，每篇一句结论加几条要点，扫一眼就知道值不值得点原文。</p>
+  <div class="meta">
+    <span>日期 <b>2026年11月17日</b></span>
+    <span>来源 <b>11月17日-阅读</b></span>
+    <span>原文 <b>12 篇</b></span>
+    <span>分组 <b>6 类</b></span>
+    <span>速览 <b>约 7 分钟</b></span>
+  </div>
+
+  <div class="toc">
+    <p class="toc-h">本期目录</p>
+    <div class="toc-grid">
+      <a class="toc-item" href="#c1"><span class="nm">01 算力帝国与周期</span><span class="ct">3 篇</span></a>
+      <a class="toc-item" href="#c2"><span class="nm">02 模型的下一程</span><span class="ct">2 篇</span></a>
+      <a class="toc-item" href="#c3"><span class="nm">03 AI 进公司</span><span class="ct">3 篇</span></a>
+      <a class="toc-item" href="#c4"><span class="nm">04 Agent 的管道生意</span><span class="ct">1 篇</span></a>
+      <a class="toc-item" href="#c5"><span class="nm">05 生成现实与信任</span><span class="ct">1 篇</span></a>
+      <a class="toc-item" href="#c6"><span class="nm">06 意义与人机共处</span><span class="ct">2 篇</span></a>
+    </div>
+  </div>
+
+  <!-- 01 -->
+  <section id="c1">
+    <div class="sec-h"><span class="idx">01</span><h2>算力帝国与周期</h2></div>
+    <p class="sec-p">三篇讲的是同一件事：这轮 AI 的账，眼下都记在英伟达和它那位干了 33 年的 CEO 身上，剩下的问题是这轮周期能撑多久。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">01</span><span class="tag">投资 · 美股</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/SNaNa1gk3EufH0NiLu4s3Q">深度｜木头姐最新访谈：推理成本每年降99%，AI革命推动美国GDP增速升至7%<span class="ext">↗</span></a></h3>
+      <p class="take">ARK 的木头姐（Cathie Wood）押了两个数：<span class="hl">推理成本每年掉 99%</span>，美国 GDP 增速能顶到 7%。</p>
+      <div class="sum">
+        <p>中期选举后一年美股通常涨：1958–2022 年的数据里，不管执政党是共和党还是民主党，平均涨幅 <b>13% 至 14%</b>。选前市场把不确定性想得太坏，而执政党往往大丢国会席位，这次席位数变化跟奥巴马时期接近。</p>
+        <p>她把眼下这轮技术革命比作 1980 和 1990 年代。若判断成立，未来 20–25 年是美股长牛，中间照样会有回调甚至熊市。</p>
+        <p>她正面否掉了 Anthropic CEO Dario Amodei 的说法——那边讲十年内人类灭绝概率 10%、AI 引发大规模失业，ARK 认为长期的真问题是用工短缺：婴儿潮退休叠加移民减少。</p>
+        <p>电力、芯片、数据中心的短缺在她眼里是好事。早期物理资源受限，逼着企业一上来就抠资本与算力效率，比 90 年代末资金无序涌入的电信泡沫健康得多。</p>
+        <p>Ramp 的数字说明企业渗透还很浅：前 1% 的企业人均每月在前沿模型上花近 <b>1 万美元</b>，前 10% 略高于 <b>800 美元</b>，其余 90% 只有 <b>15 美元</b>。AI 用得猛的公司，招人也更快。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/SNaNa1gk3EufH0NiLu4s3Q">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">02</span><span class="tag">公司 · 治理</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/DSMIZ7bdkDLnMW1KDn2EBA">脆弱地基上的超级帝国：黄仁勋靠什么控制英伟达 33 年<span class="ext">↗</span></a></h3>
+      <p class="take">英伟达把一个国家 GDP 规模的赌注押在一个人身上，而这个人手里只有 <span class="hl">3.58%</span> 的股份。</p>
+      <div class="sum">
+        <p>2024 年出了两本传记：Stephen Witt 的 <b>The Thinking Machine</b> 写黄仁勋的个人时间轴，Tae Kim 的 <b>The Nvidia Way</b> 写英伟达的经营与商业模式。Witt 当年就在书里提醒，这笔账单押在一位 61 岁的 CEO 身上。</p>
+        <p>股东结构很特别。前两大外部股东都是被动指数基金：贝莱德 <b>7.43%</b>、先锋领航 <b>7.31%</b>，按权重买、平时不插手经营。全体董事加高管合计持股 <b>3.94%</b>，已经超过黄仁勋个人的 3.58%。</p>
+        <p>他控制公司靠的是机制：2010 年员工涨到 <b>5700 人</b>、办公室铺到北美欧洲亚洲之后推行 Top 5 邮件，全员定期写"手头最重要的五件事"直送团队和高管，他每天读约 <b>100 封</b>。</p>
+        <p>原文引他那句话：明显的趋势谁都能抓到，他要在还不明显的时候就抓住。2025 年英伟达全球流失率不到 <b>2.5%</b>，中国大陆区只有 <b>0.9%</b>，行业平均是 16.4%；他在 Glassdoor 最佳 CEO 榜上以 <b>99%</b> 员工支持率排第一。</p>
+        <p>他反驳"AI 芯片是浓缩铀"的说法：这就是一块芯片，中国自己也能造。他的主张是美国要保持领先，同时必须在全球参与竞争，否则中国会长出一条完全独立的技术路径，开源模型一扩散，标准就反超了。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/DSMIZ7bdkDLnMW1KDn2EBA">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">03</span><span class="tag">公司 · 周期</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/Rdl1aIsD9h-TvHOIbPf8sA">黄仁勋，是一种周期<span class="ext">↗</span></a></h3>
+      <p class="take">衡量一个时代创始人，得看他离开之后那套产业基础设施还能走多远。</p>
+      <div class="sum">
+        <p>作者的原话是，个人有终点，周期没有。在位时创造多少价值是一半，留下的组织体系能撑多久是另一半。</p>
+        <p>历史反复演过这一幕：洛克菲勒离开后石油工业继续扩张，福特之后汽车业走过全球化、自动化、电动化，乔布斯离世后移动互联网照旧往前跑。</p>
+        <p>眼下正在重算算力供需的变量有四个：AMD 持续迭代 GPU，头部云厂商加速自研专用芯片，主权国家和大型企业自建算力体系，加上模型架构优化带来的更低推理成本与异构芯片协同。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/Rdl1aIsD9h-TvHOIbPf8sA">微信公众号</a></div>
+    </article>
+  </section>
+
+  <!-- 02 -->
+  <section id="c2">
+    <div class="sec-h"><span class="idx">02</span><h2>模型的下一程</h2></div>
+    <p class="sec-p">两篇都在问同一件事：模型把手上的信息榨干了没有。一篇看它能不能自己出门找线索，一篇看它读长文时还记不记得开头。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">04</span><span class="tag">模型 · 评测</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/mvaf7Gcn7_ZbVBNHk7vEbA">愿景&开源 | 把今天的能力短板，变成通向超级智能的进化路径<span class="ext">↗</span></a></h3>
+      <p class="take">模型在真实工作区里能不能自己找线索，比在标准测试集上多考几分更能说明问题。</p>
+      <div class="sum">
+        <p>方向是把评测从标准测试集挪到开放的业务、创作和科研环境里，让模型在动态交互中理解模糊需求、应付环境变化。</p>
+        <p>工作区实验设的一个场景是：给个模糊的用户要求，模型得主动找关键线索，还要去查关联的数据源。</p>
+        <p>分数差得很直观：原始 GLM-5.3-Flash 只拿到 <b>34.3 分</b>，能主动检索、把材料上下文拿够的模型可以做到 <b>100 分</b>。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/mvaf7Gcn7_ZbVBNHk7vEbA">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">05</span><span class="tag">模型 · 长上下文</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/3TxZcWezx1pUgWZhPHy7JA">AI 读长文，怎么把前后的信息连起来？百灵的分段记忆实验<span class="ext">↗</span></a></h3>
+      <p class="take">百灵发现模型记不住长文开头，病灶在那份大小固定的"压缩笔记"，于是试着每段各留一份。</p>
+      <div class="sum">
+        <p>先看场景。旅行规划式的多轮对话，条件撒得很散：最早几轮定预算，中间来回改车票和行程，临出发再补天气。最后重排交通住宿时，模型得把最早那句预算捞回来。</p>
+        <p>实验底座是 <b>Ling-3.0-tiny</b>，百灵在 2026 年 8 月 11 日开源的轻量混合推理模型，总参数 <b>7.9B</b>，单 token 激活约 <b>1.3B</b>。</p>
+        <p>它有一部分注意力层用 Kimi Delta Attention（KDA）。这套机制像读长文时不停涂改同一份压缩笔记：显存省了，但字越写越多挤在一起，早期的细节会被稀释甚至盖掉，后面再想召回就难了。</p>
+        <p>实验要验证的是：把长文切成独立片段、每段各留一份压缩笔记，轻量模型能不能在算力可控的前提下，把跨越很远的信息重新关联起来。作者把这个性价比叫"智效比"。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/3TxZcWezx1pUgWZhPHy7JA">微信公众号</a></div>
+    </article>
+  </section>
+
+  <!-- 03 -->
+  <section id="c3">
+    <div class="sec-h"><span class="idx">03</span><h2>AI 进公司</h2></div>
+    <p class="sec-p">三篇都在讲 AI 真进公司以后的样子：一家制造企业怎么把系统断点接上，一个创业团队怎么用 10 个人顶掉 200 人，还有一篇只剩出海的资料清单。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">06</span><span class="tag">企业 · 落地</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/Zp3KE_jZA3T94rZlh1ua9g">从AI机遇到现实生产力<span class="ext">↗</span></a></h3>
+      <p class="take">企业用不动 AI，卡点多半出在模型和业务系统之间那段没接上的管子。</p>
+      <div class="sum">
+        <p>行业把模型外面那层运行系统叫 <b>Harness</b>，里面装着文件系统、工具调用、长记忆、反馈循环、权限边界和结果验证。AI 能写方案但取不到业务数据，能做分析但不认得渠道和客户，卡的都是这里。</p>
+        <p>一家头部制造企业在售后、产品、市场三条线提了 13 个落地场景，推着推着发现瓶颈全在系统断点。腾讯工程师驻场，让智能体通过 MCP 直连经销商管理系统。</p>
+        <p>底层模型一个没换，只把断点通了，结果每月自动初审 <b>2 万单</b>索赔发票，客服录音工单从人工抽检变成 <b>100% 全量质检</b>。</p>
+        <p>组织引入 AI 分三级：知识问答、办公智能体、数字员工搭子。第三级要拿到正式授权，直接进原有业务系统交最终结果。个人用智能体只要好用，机构用等于放进一支能碰客户数据的新团队，还得过可信和可担两关。</p>
+        <p>案例一长串：广东政务首批 18 家省直单位试点，第一次线下培训就冒出 54 项可复制场景，平均效率提升 <b>70%</b>；海王集团把 7000 多条药师知识做成技能，服务 5000 家药店，知识运营成本降 <b>80%</b>；长沙一位包子摊主用智能体管接龙订单，1 个人干过去 3 个人的活，日销从 300 个涨到 800 个。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/Zp3KE_jZA3T94rZlh1ua9g">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">07</span><span class="tag">资料 · 未摘录</span></div>
+      <h3>AI 改变中国出海品牌的第一年</h3>
+      <p class="take">这篇当天只存了标题和几份亚马逊的资料来源，正文一段没摘。</p>
+      <div class="sum">
+        <p>它引的第一手材料是亚马逊全球开店《2026 中国出口跨境电商发展趋势白皮书》，2026 年 6 月 11 日发布。</p>
+        <p>另外还有《2026 年亚马逊新卖家四大扶持计划重磅上线》（2026 年 3 月 18 日）和 Amazon《2025 Small Business Empowerment Report》。</p>
+        <p>两个卖家案例：橘朵入驻一年，8 款产品冲进 BSR 前 100；一个跨境零经验的新手，2 个月把普通智能猫砂盆做到类目 Top 5。</p>
+      </div>
+      <div class="host">来源 · 微信公众号（未摘录）</div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">08</span><span class="tag">人才 · 组织</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/kR_M-sK6IirIxUpWqoj9eg">对话前字节、美团招聘负责人魏小康：大模型 1 亿年薪不贵，做应用 <span class="hl">10 个人就够了</span><span class="ext">↗</span></a></h3>
+      <p class="take">魏小康算的账是：大模型 1 亿年薪不贵，做应用 10 个人就够，大厂这轮裁员回不去。</p>
+      <div class="sum">
+        <p>薪酬走了三波。2023–2024 年应届博士能开 300–400 万；2025 年腾讯入局，别人开 200–250 万它直接开 300–400 万，行业被迫反复抬价，极少数人薪酬包过亿；2026 年供需彻底反转，有顶会论文、有大厂实习的毕业生连面试机会都拿不到。牌桌上的模型厂现在约 10 家，他预计 2027 年最多剩 7–8 家。</p>
+        <p>1 亿不贵的账是这么算的：基座模型一年买卡上百亿、几年累计数百亿，这些算力能不能训成，全看核心几十个人的水平，团队之间效率能差几倍。横向比，2025 年外卖大战一年烧掉近 2000 亿，超过中国所有基座团队的累计投入。</p>
+        <p>人才分三层：天才（全行业二三十人）永远稀缺，薪酬不降反升；每年 Top 100 那个层面的"人才"已经严重过剩；其余工程师 2024 年起被迫往应用层分流。纯算法岗在文本、语音、视觉上会消失，大厂剩下的 80% 团队还在训小模型，多是为了绩效和生存。</p>
+        <p>他理想的团队是 10 个"产品实现者"顶 200 人产研：每人 2 台以上电脑、3–4 个大模型 Max 订阅，能撑千万日活。一个真实案例里，B/C 双端增减字段这种活，大厂要拉通 4–5 个团队排期 2 个月，他那边 2 人聊了 5 分钟、1 人干半天上线。</p>
+        <p>白领那边他给的时间表更硬：纯线上办公的大几千万人，等 2027 年 AI 办公产品成熟铺开，2–3 年内大面积被替代，除掌握 AI 的 5%–10%，岗位可能永久消失。应届生的漏斗也变了形，过去 100 人进 10 人胜出，以后前 90% 一开始就没资格进。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/kR_M-sK6IirIxUpWqoj9eg">微信公众号</a></div>
+    </article>
+  </section>
+
+  <!-- 04 -->
+  <section id="c4">
+    <div class="sec-h"><span class="idx">04</span><h2>Agent 的管道生意</h2></div>
+    <p class="sec-p">单篇成组，因为它的位置值得单独拎出来：所有 Agent 想跟人说话，都得从这条管道过。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">09</span><span class="tag">Agent · 基建</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/1JHVqFzcInrXdHcxR7MGLg">Photon：帮硅谷最火的 PA 接入 iMessage，<span class="hl">450 万美元融资</span>、4 个月收入涨 10 倍<span class="ext">↗</span></a></h3>
+      <p class="take">Photon 给 Agent 发手机号和邮箱，让它直接进 iMessage 和 WhatsApp，四个月收入涨了 10 倍。</p>
+      <div class="sum">
+        <p>拿的是 <b>450 万美元</b>种子轮，Gradient 和 A* 共同领投，Vercel、红杉中国、Z Fellows、Llama Ventures、Karman 和一批天使跟投。</p>
+        <p>5 月到 8 月收入涨 10 倍、单月消息量翻 5 倍，客户流失率低于 <b>3%</b>，平台注册开发者超 <b>5 万</b>，标杆客户有 Instinct、Manus、Hermes。</p>
+        <p>护城河是通信本身：自建要对接运营商、合规持有海量号码、自己搭数据中心，任何 Agent 公司从零走一遍要 <b>6 至 8 个月</b>，连 OpenAI 也用第三方方案。定价是一条 Business 线路 250 美元/月，覆盖 200–400 名终端用户。</p>
+        <p>站在管道中间，它看到四件事：整体留存偏低，试用一两周就流失；工作日忙周末闲，周日最冷；市面上的"主动性"多数只是定时推送，等于通知机器人；陪伴类（AI 男友/女友）的黏性和富媒体交互一骑绝尘。</p>
+        <p>团队不到 20 人、九成是工程师、0 个销售、只配 1 名 CMO，靠品牌和 PLG 做客户主动上门。它判断一个基建值不值得做，只问一句：服务今天突然宕机，客户会不会一秒钟把电话打爆。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/1JHVqFzcInrXdHcxR7MGLg">微信公众号</a></div>
+    </article>
+  </section>
+
+  <!-- 05 -->
+  <section id="c5">
+    <div class="sec-h"><span class="idx">05</span><h2>生成现实与信任</h2></div>
+    <p class="sec-p">也是单篇。生成内容的成本压到零以后，肉眼和直觉一起失效，人和人之间得换一种方式确认对方是真的。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">10</span><span class="tag">社会 · 信任</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/sCskjPAMFOGD-Ehj450yOw">生成现实时代，人类该如何拥有彼此？<span class="ext">↗</span></a></h3>
+      <p class="take">一张假的五角大楼爆炸照片骗过了交易算法，几分钟蒸发数千亿美元市值，这事已经发生过。</p>
+      <div class="sum">
+        <p>先看现场演出。几万名观众花高价进场，离舞台只有几十米，却全程举着手机看那块 6 英寸屏幕。肉眼直视反而让人不安，得先录下来才算真，现场变成了屏幕画面的生产车间。</p>
+        <p>2023 年 5 月 22 日，社交平台 X 上疯传一张五角大楼附近浓烟滚滚的照片，多个认证账号跟着转，实际那边风平浪静。照片触发了华尔街高频交易和恐慌性抛售，标普 500 几分钟内急跌，美股总市值一度蒸发数千亿美元，黄金和国债暴涨。爆炸没发生，钱是真的没了。</p>
+        <p>2024 年一项计算机安全研究测了美国、德国、中国 3002 名参与者，让他们分辨 AI 生成的图像、音频和文字。多数人基本靠猜：图像识别准确率不到 <b>50%</b>，其他媒介也没超过 <b>60%</b>。</p>
+        <p>身份在三级跳：屏幕时代造出观众，社交媒体把观众变成演员，生成式 AI 又把人推到"世界生成者"的位置。不懂 3D 建模和导演的人，在 Sora 或 Runway 里敲一句"夕阳下的蒸汽朋克飞艇城市"，几秒就能拿到光影自洽的微观世界。</p>
+        <p>作者也留了正面的一手：印刷术扩大阅读，摄影没终结绘画，录音没消灭现场演奏，AI 把受手艺、预算、语言限制的创造力放出来了。但代价是，算法推荐时代的"信息茧房"会变成生成式 AI 时代的"单人宇宙"。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/sCskjPAMFOGD-Ehj450yOw">微信公众号</a></div>
+    </article>
+  </section>
+
+  <!-- 06 -->
+  <section id="c6">
+    <div class="sec-h"><span class="idx">06</span><h2>意义与人机共处</h2></div>
+    <p class="sec-p">最后两篇离工作远一点：一篇拆工作为什么给不了意义，一篇借《道德经》讲两种智能怎么各走一条路还互相需要。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">11</span><span class="tag">工作 · 意义</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/D1cY5COAx6M586tkdGYmzw">工作不是人生意义的唯一来源<span class="ext">↗</span></a></h3>
+      <p class="take">作者把工作意义拆成金钱、地位、使命、自我实现四层，越往上越容易被异化吃掉。</p>
+      <div class="sum">
+        <p>先纠一个流传很广的数字。人类学家大卫·格雷伯在《狗屁工作》里用问卷得出结论：<b>40%</b> 的受访者觉得自己的工作没有意义。作者自己做了小范围网络调查，又对着国外针对这个假说的大规模实证比对，认为真实比例在 <b>10%</b> 左右。</p>
+        <p>高薪群体另有一套心理机制：如果我的工作对社会没益处，那我凭什么拿这么高薪、管这么多人、养活这么多人。用结果倒推正当性，心里就平了。</p>
+        <p>使命感有主客观两面：客观是产品和服务真被客户认了，主观是自己感到对别人有用。消防员和医生是典型，救人既是职业内容也是使命，还顺带拿到社会的额外尊重。</p>
+        <p>自我实现这层最容易被掰断。现代打工人不占有劳动成果，流水线上的工人不会骄傲地说最新款手机是我装的；岗位被"去技能化"之后，焊接工说自己"就是一台机器"，前台说自己这活"猴子都能干"。</p>
+        <p>任务难度也有边界：太简单会无聊，太难会摧毁信心，中间那段才出心流。古希腊的自由工匠敢在陶器和雕像上签名，靠的不只是手艺，还有城邦公民那份政治地位——经济上不富，政治上却是国家的主人。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/D1cY5COAx6M586tkdGYmzw">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">12</span><span class="tag">哲学 · 人机</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/L7vStNO0BTKMmkyAlnF-lg">进入"双智能"时代，我们该如何与AI相处？<span class="ext">↗</span></a></h3>
+      <p class="take">作者用《道德经》的"道生一，一生二，二生三"来讲碳基和硅基两种智能怎么共处。</p>
+      <div class="sum">
+        <p>古人对新技术的态度是先敬畏、再管控。《周礼》里专设管火的官职"司爟"，规定什么时候能用火、什么时候要收火，失火的人要受刑罚。</p>
+        <p>冶铁也一样。《吴越春秋》记干将莫邪铸剑，采五山之铁精、六合之金英，三个月不熔，最后莫邪舍身入炉才成剑。古人根本不知道金属的化学成分，管控措施却早早立了起来。</p>
+        <p>"一"是人类文明长期积累的知识与智慧，大模型的能力就是从这里长出来的。</p>
+        <p>"二"是分化出的两条异质路径：碳基的人类智能靠身体、感官与真实世界互动，磨了几百万年；硅基的 AI 靠数据、算法、算力驱动，能复制、能组合、迭代快。</p>
+        <p>"三"是两种智能持续互动之后涌现出来的新关系、新能力和新知识。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/L7vStNO0BTKMmkyAlnF-lg">微信公众号</a></div>
+    </article>
+  </section>
+
+  <footer>
+    <b>说明</b>　内容来自 <b>docs/笔记/11月17日-阅读</b>。每篇都按我摘下的部分压成一句结论加几条要点，没补外部资料；标题和链接都是原文的。"AI 改变中国出海品牌的第一年"当天只存了标题和资料来源，正文没摘，这里只列它引了什么。
+  </footer>
+
+</div>
+</body>
+</html>

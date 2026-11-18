@@ -1,0 +1,444 @@
+<!--
+date: 2026-11-16
+tags: [阅读, 每日速览, AI, 硬件]
+visibility: public
+note: 独立单页 HTML 源文件；站点发布版见 https://openmylife.xyz/articles/reading/2026-11-16-reading-digest.html；正文为他人文章的压缩转述，第三方内容不纳入 CC BY。
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>28-11·16 阅读速览：一天读到的 18 篇</title>
+<style>
+  :root{
+    --ink:#16181b; --ink2:#39424c; --muted:#69707a; --faint:#969ea8;
+    --line:#e5e8ec; --rail:#eef1f4; --bg:#ffffff; --soft:#f7f8f9;
+    --accent:#1a4d44; --accent-soft:#e8f0ed;
+    --mark:#ad4726; --amber:#8f5a0d;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:16px;line-height:1.75;overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:28px 18px 64px}
+  @media (min-width:700px){ .wrap{padding:56px 30px 100px} }
+  a{color:inherit;text-decoration:none}
+
+  .kicker{
+    font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);font-weight:700;margin:0 0 14px
+  }
+  h1{
+    font-size:clamp(30px,8.8vw,48px);line-height:1.14;letter-spacing:-.03em;
+    margin:0 0 16px;font-weight:800
+  }
+  h1 em{font-style:normal;color:var(--accent)}
+  .lede{color:var(--ink2);font-size:16px;line-height:1.78;margin:0 0 22px;max-width:50ch}
+  .meta{
+    display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--muted);
+    padding-top:15px;border-top:1px solid var(--line)
+  }
+  .meta b{color:var(--ink);font-weight:600}
+
+  /* 分类导航 */
+  .toc{margin:30px 0 6px}
+  .toc-h{
+    font-size:11.5px;letter-spacing:.14em;color:var(--faint);
+    font-weight:700;text-transform:uppercase;margin:0 0 10px
+  }
+  .toc-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  @media (min-width:620px){ .toc-grid{grid-template-columns:repeat(2,1fr)} }
+  .toc-item{
+    background:var(--bg);padding:11px 13px;display:flex;align-items:center;justify-content:space-between;
+    gap:10px;font-size:14px;transition:background .15s
+  }
+  .toc-item:hover{background:var(--soft)}
+  .toc-item .nm{font-weight:600;letter-spacing:-.01em}
+  .toc-item .ct{font-size:11.5px;color:var(--faint);font-variant-numeric:tabular-nums;flex:none}
+
+  section{margin-top:52px;scroll-margin-top:20px}
+  .sec-h{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+  .sec-h .idx{
+    font-size:11.5px;font-weight:800;color:var(--accent);background:var(--accent-soft);
+    border-radius:5px;padding:2.5px 7px;letter-spacing:.04em;flex:none
+  }
+  h2{font-size:22px;line-height:1.32;margin:0;font-weight:780;letter-spacing:-.025em}
+  @media (min-width:700px){ h2{font-size:27px} }
+  .sec-p{color:var(--muted);font-size:13.5px;line-height:1.7;margin:8px 0 24px;max-width:48ch}
+
+  article.item{padding:26px 0 28px;border-top:1px solid var(--line)}
+  article.item:first-of-type{border-top:0;padding-top:2px}
+  .item-top{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+  .no{
+    font-size:12px;font-weight:800;color:var(--faint);font-variant-numeric:tabular-nums;
+    letter-spacing:.06em
+  }
+  .tag{
+    font-size:11px;font-weight:600;color:var(--accent);background:var(--accent-soft);
+    border-radius:4px;padding:1.5px 6px;letter-spacing:.02em
+  }
+  h3{
+    font-size:clamp(21px,5.4vw,26px);line-height:1.36;margin:0 0 12px;font-weight:780;
+    letter-spacing:-.028em
+  }
+  @media (min-width:700px){ h3{font-size:27px} }
+  h3 a{border-bottom:1px solid transparent;transition:border-color .15s}
+  h3 a:hover{border-color:#c3cdd8}
+  h3 .ext{font-size:.55em;color:var(--faint);font-weight:400;margin-left:6px;vertical-align:.14em}
+  h3 .hl{
+    color:#0c6a55;
+    background:linear-gradient(180deg,transparent 60%,#d8ebe4 60%);
+    padding:0 3px;border-radius:3px
+  }
+
+  /* 一句话结论 */
+  .take{
+    font-size:17px;font-weight:700;color:var(--accent);line-height:1.62;
+    margin:0 0 14px;letter-spacing:-.015em
+  }
+  .take .hl{color:var(--mark)}
+
+  /* 摘要：逐行 + 竖线 */
+  .sum{border-left:2px solid var(--rail);padding-left:15px;margin:0}
+  @media (min-width:700px){ .sum{padding-left:18px} }
+  .sum p{margin:0 0 11px;color:var(--ink2);font-size:15.5px;line-height:1.76}
+  .sum p:last-child{margin-bottom:0}
+  .sum b{color:var(--ink);font-weight:700}
+  .sum .hl{color:var(--mark);font-weight:700}
+  .sum code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;
+    background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;color:var(--ink)
+  }
+  .host{
+    margin-top:13px;font-size:11.5px;color:var(--faint);
+    display:flex;align-items:center;gap:6px
+  }
+  .host a{border-bottom:1px dotted #cdd5dd}
+  .host a:hover{color:var(--accent);border-color:var(--accent)}
+
+  footer{margin-top:46px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--faint);line-height:1.75}
+  footer b{color:var(--muted);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Reading Digest · 11 / 16</p>
+  <h1>11 月 16 日，<br>读了 <em>18 篇</em></h1>
+  <p class="lede">我几乎每天都会读点东西，刷公众号、翻长访谈、看别人的对谈记录，只是不一定每次都分享。这天读完攒了些觉得值得留一笔的，就整理成了这一页：按主题分 7 组，每篇一句结论加几条要点，扫一眼就知道值不值得点原文。</p>
+  <div class="meta">
+    <span>来源 <b>11月16日-阅读</b></span>
+    <span>原文 <b>18 篇</b></span>
+    <span>分组 <b>7 类</b></span>
+    <span>速览 <b>约 9 分钟</b></span>
+  </div>
+
+  <div class="toc">
+    <p class="toc-h">本期目录</p>
+    <div class="toc-grid">
+      <a class="toc-item" href="#c1"><span class="nm">01 硬件与产品形态</span><span class="ct">2 篇</span></a>
+      <a class="toc-item" href="#c2"><span class="nm">02 软件工程与开发者</span><span class="ct">3 篇</span></a>
+      <a class="toc-item" href="#c3"><span class="nm">03 AI 与专业能力</span><span class="ct">1 篇</span></a>
+      <a class="toc-item" href="#c4"><span class="nm">04 AGI 路线与模型能力</span><span class="ct">4 篇</span></a>
+      <a class="toc-item" href="#c5"><span class="nm">05 算力基建与产业</span><span class="ct">4 篇</span></a>
+      <a class="toc-item" href="#c6"><span class="nm">06 投资与安全</span><span class="ct">2 篇</span></a>
+      <a class="toc-item" href="#c7"><span class="nm">07 生活与健康</span><span class="ct">2 篇</span></a>
+    </div>
+  </div>
+
+  <!-- 01 -->
+  <section id="c1">
+    <div class="sec-h"><span class="idx">01</span><h2>硬件与产品形态</h2></div>
+    <p class="sec-p">一组是苹果的眼镜，一组是 a16z 的消费 Agent。说的是同一件事：硬件越来越像壳，决定成败的是里面那个 AI。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">01</span><span class="tag">苹果 · 智能眼镜</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/ls-qwvT5OEDlDE3KS0IVcA">「真正想认真制造 AI 硬件的人，首先得拥有<span class="hl">一个足够聪明的 AI</span>」<span class="ext">↗</span></a></h3>
+      <p class="take">苹果的智能眼镜代号 N50，干脆不要屏幕，成败全看 <span class="hl">Siri 什么时候补完课</span>。</p>
+      <div class="sum">
+        <p>内部代号 <b>N50</b>，砍掉光波导屏幕，用老款 Apple Watch 那颗芯片的架构，配精简版 visionOS，做出来是一副很普通的眼镜，内部叫它"戴在脸上的 AirPods"。</p>
+        <p>时间表压在 <b>2027 年 6 月 WWDC</b> 亮相、年底发货。卡住的地方在 Siri，硬件其实早就定型了。</p>
+        <p>它不能自己跑第三方 App，靠 iOS 27.3 起的新 Siri 用语音调用 iPhone 上的应用，开发者不用单独开发，改改现有 App 就能接。</p>
+        <p>文章真正想说的是：以前硬件开荒、软件在划好的圈里长，这次换过来了，<span class="hl">硬件退到后面当安静的采集器，胜负交给软件</span>。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/ls-qwvT5OEDlDE3KS0IVcA">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">02</span><span class="tag">a16z · 消费 Agent</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/2yyN-Tld8Q3-RQsTChodQg">Agent 寒武纪大爆发，a16z 预言消费 AI 的下一站<span class="hl">不是助手是"军团"</span><span class="ext">↗</span></a></h3>
+      <p class="take">消费 Agent 的能力早就够用了，难的是<span class="hl">分寸感</span>。</p>
+      <div class="sum">
+        <p>圆桌上把问题拆成三块：<b>权限围栏、社交尴尬、记忆迁移</b>。</p>
+        <p>真正让人打退堂鼓的常常是尴尬。代发错一封邮件，比丢几美元难受多了，事后解释"这是我 AI 写的、我没盯住"，在职场上很贵。</p>
+        <p>也没人想让 Agent 把一份"<span class="hl">它把我看得太透了</span>"的记忆文件摊在自己面前。</p>
+        <p>能让人主动传播的是"口袋里的秘密武器"那种感觉：朋友问衣服哪买的，你说 Agent 挑的。</p>
+        <p>人就是爱花钱、爱盲目乐观，产品顺着来还行，<b>稍微带一点家长式管束，这产品就死了</b>。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/2yyN-Tld8Q3-RQsTChodQg">微信公众号</a></div>
+    </article>
+  </section>
+
+  <!-- 02 -->
+  <section id="c2">
+    <div class="sec-h"><span class="idx">02</span><h2>软件工程与开发者</h2></div>
+    <p class="sec-p">三篇都绕不开这件事：写代码越来越不值钱，值钱的是判断、架构和验收。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">03</span><span class="tag">前端 · 产品工程</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/lZMm8tVJ11OKoq2Hz2ywXA">"前端已死"说早了！Epic React 创始人：<span class="hl">框架已经不重要了</span><span class="ext">↗</span></a></h3>
+      <p class="take">AI 会写 React，跟做得出一个能下单的页面，是两件事。</p>
+      <div class="sum">
+        <p>这类工具知识的保鲜期缩到以周计，花一年录的课，还没录完就过时了。</p>
+        <p>AI 几秒能生成一个带搜索框的组件，可是防抖什么时候触发、旧请求回来会不会盖掉新的、刷新之后状态还在不在、支付失败怎么退、按钮点两次会不会扣两次钱，还得人来定。</p>
+        <p>他的建议是把 Agent 拉进 CI/CD 做端到端验收：<span class="hl">下不了单，就别发布</span>。</p>
+        <p>质量治理也别指望事后补一道 AI Review，先把基础原语修好——组件、错误处理、测试、代码规范。</p>
+        <p>GUI 也不会消失：要通盘看、要对比几个选项、要紧急拍停的时候，人还是得看见界面。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/lZMm8tVJ11OKoq2Hz2ywXA">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">04</span><span class="tag">企业软件 · 架构</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/PL0SOae0-LBzLGE8L0TUDw">企业软件<span class="hl">要完了吗</span>？<span class="ext">↗</span></a></h3>
+      <p class="take">以后企业里也许就剩一个对话框，后面直接连着数据库。</p>
+      <div class="sum">
+        <p>传统企业应用说穿了就是数据库上面一层增删改查的皮，Agent 时代的形态变成 <code>Agent talking to database</code>。</p>
+        <p>复杂度不会凭空消失：一部分沉进表结构和存储过程，一部分浮到 <code>agents.md</code> 这类业务规则里，还有一部分跑着跑着结晶成插件。</p>
+        <p>垂类 Agent 的壁垒没想象中厚：Coding Agent 是种元能力，一条链路跑通一次就能固化成代码，之后按机器速度复制。</p>
+        <p>最后能卖的只剩判断力，也就是咨询。99% 的日常操作免费自动化掉，<span class="hl">剩下 1% 的致命事故，卖专家到场和兜底</span>。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/PL0SOae0-LBzLGE8L0TUDw">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">05</span><span class="tag">Claude · 工作流</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/kp1BKbV2xVHpFE7dp7u37A">Claude 工程师 Agent 大教程：<span class="hl">如何防止被 AI 养废</span><span class="ext">↗</span></a></h3>
+      <p class="take">防被 AI 养废，靠流程，不靠自觉。</p>
+      <div class="sum">
+        <p>他把这件事拆成三级滑坡：<b>认知卸载、判断让渡、认知投降</b>，对应的新债叫理解债和意图债。</p>
+        <p>最狠的一招是让 Agent 当考官：合并前先让它出几道题考你，全答对才准合并。</p>
+        <p>动手前先手写一份需求清单，特别是"这次不做什么"。</p>
+        <p>还要追问它背着你做了哪些决定；测试报告别只看一片绿，先看实际跑了哪些用例、原始结果是什么，再读它的总结。</p>
+        <p>多 Agent 并行时留住一手材料；每周留一次不用 AI 的手写代码时间。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/kp1BKbV2xVHpFE7dp7u37A">微信公众号</a></div>
+    </article>
+  </section>
+
+  <!-- 03 -->
+  <section id="c3">
+    <div class="sec-h"><span class="idx">03</span><h2>AI 与专业能力</h2></div>
+    <p class="sec-p">这天最想转给朋友的一篇。它把"为什么人会信 AI"这件事讲清楚了。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">06</span><span class="tag">社会观察 · 认知</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/U9OzHS4CEVR4qY1QxiQGwA">AI，怎么就成<span class="hl">专业公敌</span>了<span class="ext">↗</span></a></h3>
+      <p class="take">外行拿着 AI 去做专业的事，出事是迟早的。</p>
+      <div class="sum">
+        <p>文章从一个法律援助工作者的死讲起：客户拿着豆包生成的东西反过来指导律师改文书；再往下是患者拿 AI 结论跟医生辩论，户外向导反复劝人别信 AI 给的野线规划。</p>
+        <p>根子在讨好。医疗、法律这类事没有客观分数可打，AI 只能靠人的反馈学，顺着人说最容易拿到好评。</p>
+        <p>所以它真正优化的是"<span class="hl">让你觉得对</span>"。外行的描述本来就走样，答案跟着离谱。</p>
+        <p>作者给了三条：让 AI 反驳自己；要它给出原始出处，自己点开看；承认专业有边界。</p>
+        <p>收尾那句是，AI 可以辅助决策，<b>但不要让它替你过日子</b>。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/U9OzHS4CEVR4qY1QxiQGwA">微信公众号</a></div>
+    </article>
+  </section>
+
+  <!-- 04 -->
+  <section id="c4">
+    <div class="sec-h"><span class="idx">04</span><h2>AGI 路线与模型能力</h2></div>
+    <p class="sec-p">三场对谈加一组产品快讯，聊的都是同一件事：模型到底能不能自己变强，强到什么程度才算数。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">07</span><span class="tag">访谈 · AGI</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/A8UymwXbH2_LLDaPuiXEag">"AGI 要等 100 年，甚至永远！"Sam 回忆至暗时刻：<span class="hl">ChatGPT 留存仅 5%</span>，团队嫌发得太早<span class="ext">↗</span></a></h3>
+      <p class="take">Sam 当年办 OpenAI，手上只有一个留存 5% 的产品，外面没人当真。</p>
+      <div class="sum">
+        <p>2015 年他办 OpenAI 的时候，外面的共识是 AGI 起码还要一百年，甚至永远做不出来。同一时期全球冒出一万家照片分享公司，那才叫"看起来明显的好点子"。</p>
+        <p>ChatGPT 内测留存只有 5%，团队里绝大多数人反对上线。他还是发了，用的是 YC 那句老话：<span class="hl">第一个版本自己都觉得有点拿不出手，那就已经发晚了</span>。</p>
+        <p>他真正在意的不是平均值，是那 5% 里天天用、爱得不行的少数人。起步阶段，一小撮狂热用户比一大群"还行"的用户有用得多。</p>
+        <p>他一直不持 OpenAI 股权，外界总觉得他另有所图。他的解释是，就像画家把心血全放在作品上，他做这件事，只因为它是自己能想到最值得干的探索。</p>
+        <p>给创业者的建议里最扎心的一条是"<b>少听建议</b>"：除了 YC 那几条通用准则，听八百期播客也变不成伟大的创始人，得自己下场。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/A8UymwXbH2_LLDaPuiXEag">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">08</span><span class="tag">对谈 · RSI</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/nUF5R5jwaRpUCySWJ5lwhA">给硅谷泼冷水！李飞飞与 Jeff Dean 关于 <span class="hl">RSI</span> 的讨论<span class="ext">↗</span></a></h3>
+      <p class="take">煎蛋煎一百次还是煎蛋，那不叫 RSI。</p>
+      <div class="sum">
+        <p>Jeff Dean 的标准很硬：自动搜出来的架构让 MRI 模型变准，只算自我改进；只有这次改进反过来喂给"提出方案的那套系统"，才算递归自我改进。</p>
+        <p>李飞飞用煎蛋打比方：练十次能出锅一个像样的蛋卷，那只是熟练度；真正的 RSI 是煎蛋的时候脑子被重连，最好还顺手长出第六根手指。</p>
+        <p>Jeff 也提了个很现实的浪费：实验凌晨两点跑完，人得等到早上八点才看，自动化能省掉这六小时，但训练的计算量和因果链条绕不过去。</p>
+        <p>他还有个更远的想法，让机器在成百上千个领域跑实验，从海量结果里归纳出一套"最小描述理论"。</p>
+        <p>问题是机器交出来的常是几百页 Lean 形式化证明，逻辑挑不出错，人却读不出优雅的思路。数学家要的不只是证完。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/nUF5R5jwaRpUCySWJ5lwhA">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">09</span><span class="tag">对谈 · 算力</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/zsVM_zvFJJ5wFRBGxJsVXw">收购之后，李飞飞、苏姿丰首次同台对话<span class="ext">↗</span></a></h3>
+      <p class="take">没什么火药味，只有一句值得记：博士是留给好奇心的那几年。</p>
+      <div class="sum">
+        <p>李飞飞说读博不再是唯一路径，AI 时代当研究者、做创新的路比以前多得多。</p>
+        <p>但她仍然觉得博士的价值在于：那是人生里少有的、被保护起来专门用来追一个问题的几年。</p>
+        <p>招人时她只看一件事——对这行有没有真直觉。产业界急着发模型、发产品，只有大学有时间把直觉养出来。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/zsVM_zvFJJ5wFRBGxJsVXw">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">10</span><span class="tag">产品 · Agent</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/tSHjquHBGFQVe9l4-P_CCA">Perplexity 让 AI 同事替人值夜班，OpenAI 说 <span class="hl">Computer Use 已快过常人</span><span class="ext">↗</span></a></h3>
+      <p class="take">Agent 开始上夜班，也比你更会用电脑。</p>
+      <div class="sum">
+        <p>Perplexity 给 Max 会员上了 Teammates：挂在 Slack 里接活、追进度，24 小时在后台跑，只在交代过的事情上叫人。</p>
+        <p>演示里它从美东晚六点守到早八点，报警后自己拉日志，把根因定位到"重试额度被设成 0"，附上修复和回滚方案，上线仍然要人批。</p>
+        <p>每个队友有独立环境和浏览器，操作全程记在线程上，人随时能接管。价格是年付折下来每月 167 美元。</p>
+        <p>OpenAI 那边，Ari Weinstein 说 Astra 思考用的 token 更少、更快，97% 和 99% 可靠性之间的差别很关键；James Sun 说它更抗 prompt injection。</p>
+        <p>他们最看好 ERP、采购、财务对账、市场调研这类"无聊"场景，认为护城河在速度、节奏和行业纵深。</p>
+      </div>
+      <div class="host">来源 · 微信公众号：<a href="https://mp.weixin.qq.com/s/tSHjquHBGFQVe9l4-P_CCA">Perplexity Teammates</a>、<a href="https://mp.weixin.qq.com/s/M8SINitZJx-dK9Qs2kHQ">Computer Use</a></div>
+    </article>
+  </section>
+
+  <!-- 05 -->
+  <section id="c5">
+    <div class="sec-h"><span class="idx">05</span><h2>算力基建与产业</h2></div>
+    <p class="sec-p">从乌兰察布的工地到一份财报里的影子股，都是算力这条链上的事。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">11</span><span class="tag">一线 · 数据中心</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/XMPf5u2dPEtOC_iAam2Fcw">乌兰察布 72 小时，目睹 <span class="hl">AI 时代的工业奇观</span><span class="ext">↗</span></a></h3>
+      <p class="take">一台服务器晚一天上线，就是 329 万打了水漂。</p>
+      <div class="sum">
+        <p>单台 600 万，一千台就是 60 亿；按五年折旧算，晚一天等于白扔 329 万。行里的铁律是"绝不能让服务器等机房"。</p>
+        <p>交付周期从 12 个月一路压到 2 到 3 个月，合同里写着晚一天赔 50 万。卡住采购的东西都很土：高倍率电池、机柜电源插头、液冷用的不锈钢分水管件。</p>
+        <p>谷歌、AWS 出五倍价钱扫国内液冷产能，施工方只能派人住到供应商厂里盯交货。</p>
+        <p>十万卡集群占地两万多平米，真正放机器的机房只有 1500 平米，剩下九成全在放供电、制冷和消防。一栋楼造价 40 亿，里面 GPU 值楼的十倍。</p>
+        <p>当地最体面的工作变成了数据中心值班员：培训 19800 包就业，进去月薪五六千，相亲提一句"在数据中心上班"彩礼能少十万——但全市岗位不到 500 个。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/XMPf5u2dPEtOC_iAam2Fcw">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">12</span><span class="tag">链接 · 未摘录</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/sakzDUTxpea-Jud1YAW_rA">硅谷研究机构实探中国版"星际之门"：速度、成本与系统能力令人瞩目<span class="ext">↗</span></a></h3>
+      <p class="take">这篇当天只存了链接，没来得及摘。</p>
+      <div class="sum">
+        <p>先占个位置，等回头补上再写。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/sakzDUTxpea-Jud1YAW_rA">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">13</span><span class="tag">财报 · 供应链</span></div>
+      <h3><a href="https://m.36kr.com/p/2737001241684483">远景系估值超 <span class="hl">1500 亿</span>：若启动上市，谁会受益<span class="ext">↗</span></a></h3>
+      <p class="take">远景传闻要 IPO 的多半是电池子公司，跟风机主业是两回事。</p>
+      <div class="sum">
+        <p>远景一直没上市，2023 年三家公司估值加起来超过 1500 亿，其中远景能源一年营收就过了 690 亿。</p>
+        <p>市场上传的赴港上市，多半指电池子公司远景动力（AESC），跟做风机的远景能源不是一个主体，受益标的也不一样。</p>
+        <p>A 股里几乎没有重仓远景母公司的影子股，早期资方是红杉中国、GIC、春华这类。日产手里还留着 AESC 少数股权，那边上市它直接受益。</p>
+        <p>沾边的主要是供应链：日月股份、金雷股份供铸件和主轴，大金重工、泰胜风能供塔筒，时代新材、中材科技供叶片。</p>
+        <p>但这类机会更多是情绪和订单预期，股价往往比业绩跑得快。</p>
+      </div>
+      <div class="host">来源 · <a href="https://m.36kr.com/p/2737001241684483">36氪</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">14</span><span class="tag">行业 · 数据</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/JKClhJ6ZuhVziROcFpGhIA">一位 researcher 看到的数据生意：<span class="hl">合成数据越来越容易，模厂为什么还在到处买？</span><span class="ext">↗</span></a></h3>
+      <p class="take">数据越来越便宜，模厂还在买，理由不太技术。</p>
+      <div class="sum">
+        <p>后训练要和各种 RL 环境打交道，想让模型多会一类任务，数据就得更杂、更多样。</p>
+        <p>这行的壁垒是人脉：认识 frontier lab 里的人，或者自己在那儿干过，才知道模厂缺什么、单子怎么进去。</p>
+        <p>玩法很杂：免费 token 站在后台静默收 prompt，API 中转站两头赚钱，中间商专门接那些手里有数据但没渠道的人。</p>
+        <p>基座模型变强之后，够格叫"专家数据"的领域越来越窄，人工标注的质量有时已经不如模型自己生成的。</p>
+        <p>那为什么还买？预算已经批了得花掉、高端算力买不到只能买数据、还有版权这摊灰活不想自己下场，让数商当白手套。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/JKClhJ6ZuhVziROcFpGhIA">微信公众号</a></div>
+    </article>
+  </section>
+
+  <!-- 06 -->
+  <section id="c6">
+    <div class="sec-h"><span class="idx">06</span><h2>投资与安全</h2></div>
+    <p class="sec-p">一头是钱，一头是攻防，押的都是同一件事：AI 会继续加速。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">15</span><span class="tag">投资 · 美股</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/ulUHmx5gTrssTsbIOGLmFA">AI 成为美股投资最大主题：<span class="hl">"这不是 ROI 问题，是生存问题"</span><span class="ext">↗</span></a></h3>
+      <p class="take">巨头不敢减速，停下来就等于把自己变成管道。</p>
+      <div class="sum">
+        <p>9 月 17 日那场访谈的核心判断就一句：这不只是回报率算不算得过来的问题，是不上牌桌就出局的问题。</p>
+        <p>AWS、Azure、GCP 都不想当互联网时代的 AT&amp;T——只出带宽、干最没附加值的活。所以必须自己手里有模型、有超级应用。</p>
+        <p>美股估值里，账上趴一大笔现金会被当成低效资产，把钱变成资本开支反而能换来增长预期。</p>
+        <p>组合上的做法很朴素：在合理价格重仓英伟达、博通、台积电这种位置不可替代的公司。</p>
+        <p>剩下的靠胆子。像 2025 年初 DeepSeek 把英伟达砸下去那样，敢在最悲观的时候买，前提是你真的读过产业细节。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/ulUHmx5gTrssTsbIOGLmFA">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">16</span><span class="tag">安全 · 攻防</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/1hQhYqExkxFWyVWuWNbM7w">Stamos 警告 AI 颠倒攻击链，呼吁企业 <span class="hl">90 天内主动攻击自己</span><span class="ext">↗</span></a></h3>
+      <p class="take">攻防成本倒过来了：攻击方近乎免费，防守方查一次 900 美元。</p>
+      <div class="sum">
+        <p>Cognition 的首席安全官 Stamos 说，开放权重模型已经能自动跑完攻击链的大部分环节，攻击者每个 token 的成本趋近于零。</p>
+        <p>所以他的建议很直接：每家公司 90 天内用 AI 红队攻击自己一遍。前几层防御交给 AI，但权限上限必须写死。</p>
+        <p>大量老软件该重构，别接着打补丁。他甚至建议谷歌、亚马逊花一亿美元用 Rust 重写 Linux 内核。</p>
+        <p>真假内容只能靠概率判断，长期解法是反过来——给真实内容做密码学签名。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/1hQhYqExkxFWyVWuWNbM7w">微信公众号</a></div>
+    </article>
+  </section>
+
+  <!-- 07 -->
+  <section id="c7">
+    <div class="sec-h"><span class="idx">07</span><h2>生活与健康</h2></div>
+    <p class="sec-p">两篇跟工作没关系，但都用得上。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">17</span><span class="tag">健康 · 冷知识</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/TkiDgrYAzNuJkk28JS5WCQ">男性坐着尿，是不是比站着更"养生"？<span class="ext">↗</span></a></h3>
+      <p class="take">坐着尿这件事，一半是解剖差异，一半是半夜起床那一下的风险。</p>
+      <div class="sum">
+        <p>坐着有没有用，分人：有些人坐姿能放松盆底肌、髋部肌肉和尿道括约肌，有些人没差别，膀胱和尿道的长法本来也不一样。</p>
+        <p>更有说服力的理由在夜里。有医生留言说接诊过好几例半夜憋尿后起身排尿、血压掉下来晕倒、摔到头部的病人，无一例外都是重症外伤。</p>
+        <p>所以这事谈不上人人适用，但对夜尿多、起身容易发晕的人，坐着确实稳一点。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/TkiDgrYAzNuJkk28JS5WCQ">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">18</span><span class="tag">生活 · AI 用处</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/l_2J06H-nwpZn7obkzvTAw">读者留言：AI 帮 97 岁老爷子认出了<span class="hl">不宁腿综合征</span><span class="ext">↗</span></a></h3>
+      <p class="take">一个 64 岁的人，靠 AI 给 97 岁的父亲找到了病名。</p>
+      <div class="sum">
+        <p>不宁腿（RLS）是种神经系统的毛病，腿深处不舒服，忍不住想动，动一动能好受一点。</p>
+        <p>老爷子躺下就不停翻身，后来整夜在屋里走，叫过 120，查也没查出什么，全家被折腾得够呛。</p>
+        <p>作者跟 AI 来回聊了几轮，AI 提到可能是"不宁腿综合征"；去医院一查，医生开了药，当晚十点睡到早上六点。</p>
+        <p>后来同事家老人有类似症状，照这个线索去查，也是同一个病。</p>
+        <p>这事的分量不在 AI 有多神，而在它把一个普通人压根没听过的病名，递到了眼前。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/l_2J06H-nwpZn7obkzvTAw">微信公众号</a></div>
+    </article>
+  </section>
+
+  <footer>
+    <b>说明</b>　内容来自 <b>docs/笔记/11月16日-阅读</b>。每篇都按我摘下的部分压成一句结论加几条要点，没补外部资料；标题和链接都是原文的。有几篇只摘了几段，就按那几段写；"星际之门"那篇当天只存了链接，就只留了个位置，没摘的地方一律不猜。
+  </footer>
+
+</div>
+</body>
+</html>

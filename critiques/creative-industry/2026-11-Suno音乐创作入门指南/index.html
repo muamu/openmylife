@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>27-Suno音乐创作入门指南</title>
+<style>
+  :root{
+    --paper:#F7FBFE;
+    --ink:#152430;
+    --ink-soft:#3C4E5C;
+    --ink-mute:#5E7180;
+    --blue:#1C7ED6;
+    --blue-bg:#E8F3FD;
+    --blue-line:#D5E6F5;
+    --mint:#0E9E7C;
+    --mint-bg:#E7F7F1;
+    --coral:#EE6B45;
+    --coral-bg:#FDEEE9;
+    --mark:#FFF0B3;
+    --serif:"Noto Serif SC","Songti SC","SimSun",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    --mono:"SF Mono",Consolas,"Roboto Mono",monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.85;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 18px 90px}
+
+  /* ---------- 封面 ---------- */
+  .cover{padding:52px 0 30px;border-bottom:1px solid var(--blue-line)}
+  .kicker{
+    display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.04em;
+    color:var(--blue);background:var(--blue-bg);border:1px solid var(--blue-line);
+    padding:5px 11px;border-radius:3px;margin-bottom:18px;
+  }
+  h1{
+    font-family:var(--serif);font-weight:700;line-height:1.25;
+    font-size:clamp(30px,7.5vw,50px);margin:0 0 18px;letter-spacing:.01em;
+  }
+  h1 .sub{display:block;font-size:.52em;font-weight:400;color:var(--ink-mute);margin-top:14px;letter-spacing:0}
+  .lede{font-size:1.06em;color:var(--ink-soft);max-width:40em}
+  .lede mark{background:var(--mark);padding:1px 4px;border-radius:2px}
+
+  /* ---------- 30 秒版 ---------- */
+  .tldr{
+    margin:30px -18px 0;padding:22px 18px;
+    background:linear-gradient(135deg,#E8F3FD 0%,#F2F9FE 100%);
+    border-top:1px solid var(--blue-line);border-bottom:1px solid var(--blue-line);
+  }
+  .tldr h2{font-size:1.05em;margin:0 0 12px;color:var(--blue);font-family:var(--sans);font-weight:700;border:0;padding:0;background:none}
+  .tldr ul{margin:0;padding-left:1.1em}
+  .tldr li{margin-bottom:7px}
+  .tldr li:last-child{margin-bottom:0}
+
+  /* ---------- 目录 ---------- */
+  nav.toc{margin:30px 0 8px;padding:16px 18px;background:#EEF6FC;border:1px solid var(--blue-line);border-radius:4px}
+  nav.toc .toc-t{font-family:var(--mono);font-size:12px;color:var(--blue);letter-spacing:.05em;margin-bottom:9px}
+  nav.toc a{display:inline-block;margin:3px 14px 3px 0;font-size:.9em;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--blue-line)}
+  nav.toc a:hover{color:var(--blue);border-color:var(--blue)}
+
+  /* ---------- 章节 ---------- */
+  section{margin-top:46px;scroll-margin-top:16px}
+  h2.sec{
+    font-family:var(--serif);font-size:clamp(21px,4.6vw,28px);line-height:1.4;
+    margin:0 -18px 22px;padding:14px 18px 13px 62px;position:relative;
+    background:var(--blue-bg);border-top:1px solid var(--blue-line);border-bottom:1px solid var(--blue-line);
+  }
+  h2.sec::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--blue)}
+  h2.sec .num{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.72em;color:var(--blue);font-weight:400}
+  h3{font-family:var(--serif);font-size:1.18em;margin:30px 0 10px;line-height:1.5}
+
+  p{margin:0 0 15px}
+  .muted{color:var(--ink-mute)}
+  strong{color:var(--ink);font-weight:700}
+  .kw{background:var(--mark);padding:1px 4px;border-radius:2px}
+  .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .cnq{font-style:normal}
+
+  ul.clean,ol.clean{padding-left:1.15em;margin:0 0 16px}
+  ul.clean li,ol.clean li{margin-bottom:9px}
+
+  /* ---------- 卡片 ---------- */
+  .card{background:#FFFFFF;border:1px solid var(--blue-line);border-radius:5px;padding:16px 18px;margin:18px 0}
+  .card .ct{font-weight:700;color:var(--blue);margin-bottom:8px;font-size:.96em}
+  .card.mint{background:var(--mint-bg);border-color:#C7EADA}
+  .card.mint .ct{color:var(--mint)}
+  .card.coral{background:var(--coral-bg);border-color:#F6D2C7}
+  .card.coral .ct{color:var(--coral)}
+
+  /* ---------- 表格 ---------- */
+  .tw{overflow-x:auto;margin:18px -18px;padding:0 18px}
+  table{border-collapse:collapse;width:100%;font-size:.9em;background:#FFFFFF;border:1px solid var(--blue-line)}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--blue-line);vertical-align:top}
+  th{background:var(--blue-bg);color:var(--blue);font-weight:700;font-size:.92em}
+  tr:last-child td{border-bottom:0}
+  td .yes{color:var(--mint);font-weight:700}
+  td .no{color:var(--ink-mute)}
+
+  /* ---------- SVG 图 ---------- */
+  figure{margin:22px 0}
+  .figwrap{background:#FFFFFF;border:1px solid var(--blue-line);border-radius:5px;padding:12px 10px 6px;display:flex;justify-content:center}
+  .figwrap svg{width:100%;max-width:360px;height:auto;display:block}
+  figcaption{font-size:.82em;color:var(--ink-mute);text-align:center;margin-top:9px;padding:0 8px}
+
+  /* ---------- 阶梯 ---------- */
+  .steps{counter-reset:st;margin:18px 0 0;padding:0;list-style:none}
+  .steps li{counter-increment:st;position:relative;padding:15px 16px 15px 58px;background:#FFFFFF;border:1px solid var(--blue-line);border-radius:5px;margin-bottom:11px}
+  .steps li::before{
+    content:counter(st);position:absolute;left:14px;top:15px;width:30px;height:30px;border-radius:50%;
+    background:var(--blue-bg);border:1px solid var(--blue-line);color:var(--blue);
+    font-family:var(--mono);font-size:14px;display:flex;align-items:center;justify-content:center;
+  }
+  .steps li .stt{font-weight:700;color:var(--ink)}
+  .steps li .std{color:var(--ink-soft);font-size:.93em}
+
+  /* ---------- 提示块 ---------- */
+  .note{background:#F0F7FC;border-left:3px solid var(--blue);padding:12px 16px;margin:18px 0;border-radius:0 4px 4px 0;font-size:.95em;color:var(--ink-soft)}
+  .note strong{color:var(--blue)}
+  .warn{background:var(--coral-bg);border-left:3px solid var(--coral);padding:12px 16px;margin:18px 0;border-radius:0 4px 4px 0;font-size:.95em;color:var(--ink-soft)}
+  .warn strong{color:var(--coral)}
+
+  code{font-family:var(--mono);font-size:.86em;background:#EEF6FC;border:1px solid var(--blue-line);padding:1px 5px;border-radius:3px;color:var(--blue)}
+  pre{background:#FFFFFF;border:1px solid var(--blue-line);border-radius:4px;padding:14px;overflow-x:auto;font-size:.82em;line-height:1.7;margin:14px 0}
+  pre code{background:none;border:0;padding:0;color:var(--ink-soft)}
+
+  /* ---------- 来源 ---------- */
+  .src{background:#F0F7FC;border:1px solid var(--blue-line);border-radius:5px;padding:16px 18px;margin-top:18px}
+  .src h3{margin:0 0 10px;font-family:var(--sans);font-size:.95em;color:var(--blue)}
+  .src ul{margin:0;padding-left:1.1em;font-size:.86em;color:var(--ink-soft)}
+  .src li{margin-bottom:5px}
+
+  footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--blue-line);font-size:.82em;color:var(--ink-mute)}
+
+  /* ---------- 平板以上 ---------- */
+  @media (min-width:700px){
+    body{font-size:18.5px}
+    .wrap{padding-left:24px;padding-right:24px}
+    .tldr,.tw{margin-left:0;margin-right:0;padding-left:24px;padding-right:24px}
+    h2.sec{margin-left:0;margin-right:0;padding-left:70px}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .figwrap{padding:18px}
+  }
+  @media (min-width:1400px){body{font-size:19.5px}.wrap{max-width:1040px}}
+  @media (min-width:1900px){body{font-size:21px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="cover">
+    <span class="kicker">入门指南 · 面向第一次用的人</span>
+    <h1>把 Suno 当成一台<br>"点歌唱片机"<span class="sub">不用懂乐理，不用会乐器，不用会唱歌——先玩明白，再谈别的</span></h1>
+    <p class="lede">写给完全没用过、或者点了几下就删掉的人。它最值钱的地方不是"做出音乐"，而是把说不出口的话、一个梗、一段回忆，变成一首只属于你的歌。这件事本身就够了。</p>
+  </header>
+
+  <div class="tldr">
+    <h2>30 秒版</h2>
+    <ul>
+      <li><strong>是什么</strong>：一个网页。打几句话或贴一段词，一两分钟后还你一首完整的歌，有人声有伴奏。听着像模像样。</li>
+      <li><strong>对普通人最值钱的地方</strong>：把情绪变成一首歌。生日、表白、损朋友、给爸妈写一首，比发文字有分量得多。</li>
+      <li><strong>免费能玩吗</strong>：能，每天约 <span class="mono">10</span> 首。但下载总共只有 <span class="mono">7</span> 次，且免费做的歌不能商用。</li>
+      <li><strong>想做得好看</strong>：分两个框写——一个管"听起来像什么"，一个管"唱什么词"。学会这一条就甩开大多数人。</li>
+      <li><strong>能赚钱吗</strong>：极少数人能，多数人赚个零花钱。别刷量，2026 年 10 月刚有人因此被判 <span class="mono">18</span> 个月。</li>
+      <li><strong>现在的版本</strong>：截至 2026 年 11 月是 v6 家族，9 月 9 日上线。免费用户用的是其中的 v6-mini。</li>
+    </ul>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-t">阅读顺序</div>
+    <a href="#s0">第 0 阶 · 它是什么</a>
+    <a href="#s1">第 1 阶 · 第一首歌</a>
+    <a href="#s2">第 2 阶 · 两个框</a>
+    <a href="#s3">第 3 阶 · 调教技巧</a>
+    <a href="#s4">第 4 阶 · 免费的边界</a>
+    <a href="#s5">第 5 阶 · 能不能赚钱</a>
+    <a href="#kit">工具箱</a>
+    <a href="#src">存疑与来源</a>
+  </nav>
+
+  <!-- 第 0 阶 -->
+  <section id="s0">
+    <h2 class="sec"><span class="num">00</span>先搞懂你手里这东西是什么</h2>
+    <p>把 Suno 想成一个<strong>很有天分、但不读心的弹唱歌手</strong>。你给它歌词和一句"想要什么感觉"，它就自由发挥。不会百分百照你的想法来，偶尔唱错字、瞎发挥，但也经常给你意外之喜。好玩就好玩在这。</p>
+
+    <figure>
+      <div class="figwrap">
+        <svg viewBox="0 0 360 196" role="img" aria-label="你给出想法，Suno 生成歌曲的示意">
+          <defs>
+            <pattern id="grid0" width="18" height="18" patternUnits="userSpaceOnUse">
+              <path d="M18 0H0V18" fill="none" stroke="#E8F3FD" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect x="0" y="0" width="360" height="196" fill="url(#grid0)"/>
+          <line x1="180" y1="16" x2="180" y2="180" stroke="#D5E6F5" stroke-width="1" stroke-dasharray="4 4"/>
+
+          <text x="90" y="34" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#5E7180">你给的</text>
+          <circle cx="90" cy="86" r="30" fill="#E8F3FD" stroke="#1C7ED6" stroke-width="1.5"/>
+          <text x="90" y="82" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#152430">几句话</text>
+          <text x="90" y="97" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#152430">或一段词</text>
+
+          <circle cx="270" cy="86" r="38" fill="#E7F7F1" stroke="#0E9E7C" stroke-width="1.5"/>
+          <text x="270" y="78" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#152430">完整一首</text>
+          <text x="270" y="94" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#152430">人声＋伴奏</text>
+          <text x="270" y="109" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#5E7180">主歌副歌</text>
+
+          <path d="M124 86 H232" stroke="#1C7ED6" stroke-width="1.6" fill="none" marker-end="url(#ar0)"/>
+          <defs><marker id="ar0" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#1C7ED6"/></marker></defs>
+          <text x="178" y="76" text-anchor="middle" font-family="monospace" font-size="10" fill="#1C7ED6">约 1 分钟</text>
+
+          <text x="180" y="166" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#5E7180">同一想法给十版，挑出两三版对味的，本来就是玩法的一部分</text>
+        </svg>
+      </div>
+      <figcaption>它的能力边界：能把感觉变成歌，但不保证好听</figcaption>
+    </figure>
+
+    <h3>为什么说它的可塑性很高</h3>
+    <p>同一台机器，能出的东西跨度大得离谱：</p>
+    <div class="grid2">
+      <div class="card"><div class="ct">正经的</div>一首情歌、一段电影配乐、六十年代复古电台味的歌。</div>
+      <div class="card"><div class="ct">不正经的</div>给朋友的生日损歌、把内部梗编成洗脑副歌、给自家猫写首主题曲。</div>
+    </div>
+    <p>2026 年 10 月又开了 Speech 功能：把你说的一段话配上音乐念出来，口音偶尔会飘。这些都不用会写谱，需要的是你能把"想要的那个感觉"说清楚——后面几阶都在教这件事。</p>
+    <div class="note"><strong>它给不了你的</strong>：现成的名曲、某个明星本人来唱（这是侵权，它也在拦）、以及"保证好听"。</div>
+  </section>
+
+  <!-- 第 1 阶 -->
+  <section id="s1">
+    <h2 class="sec"><span class="num">01</span>免费做出你的第一首歌</h2>
+    <p>先别急着学技巧，先出声。用 Chrome 或 Edge 打开官网，用 Google、Discord 或邮箱登录。它没有专门手机 App，iPhone 用户可以用 Safari 打开后"添加到主屏幕"，用起来跟 App 差不多。</p>
+    <p>最简单的一种玩法是 <strong>Simple 模式</strong>：在输入框写一句话，把"风格 + 心情"说清楚就行。</p>
+    <pre><code>轻快的中文流行歌，夏天下班骑车回家，开心又有点空落落</code></pre>
+    <p>按生成，等一两分钟，它会给两版，挑顺耳的那版。标题和歌词它会自己补——这是最快摸到感觉的方式。</p>
+    <div class="card mint"><div class="ct">这一阶只要记住一件事</div>一句话也能出歌。先出声，别在注册和选型上纠结。</div>
+  </section>
+
+  <!-- 第 2 阶 -->
+  <section id="s2">
+    <h2 class="sec"><span class="num">02</span>两个框，决定它是不是你想要的样子</h2>
+    <p>这是新手和高手的分水岭。切到 <strong>Custom 模式</strong>，你会看到两个主要输入框，它们各管各的，混了就会出问题。</p>
+
+    <figure>
+      <div class="figwrap">
+        <svg viewBox="0 0 360 214" role="img" aria-label="Style 框和 Lyrics 框的分工">
+          <defs>
+            <pattern id="grid2" width="18" height="18" patternUnits="userSpaceOnUse">
+              <path d="M18 0H0V18" fill="none" stroke="#E8F3FD" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="360" height="214" fill="url(#grid2)"/>
+
+          <rect x="16" y="30" width="152" height="128" rx="5" fill="#E8F3FD" stroke="#1C7ED6" stroke-width="1.5"/>
+          <text x="92" y="52" text-anchor="middle" font-family="monospace" font-size="14" fill="#1C7ED6">Style</text>
+          <text x="92" y="72" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#152430">听起来像什么</text>
+          <text x="30" y="98" font-family="sans-serif" font-size="11" fill="#3C4E5C">曲风 · 情绪</text>
+          <text x="30" y="118" font-family="sans-serif" font-size="11" fill="#3C4E5C">人声 · 乐器</text>
+          <text x="30" y="138" font-family="sans-serif" font-size="11" fill="#3C4E5C">速度 · 制作感</text>
+
+          <rect x="192" y="30" width="152" height="128" rx="5" fill="#E7F7F1" stroke="#0E9E7C" stroke-width="1.5"/>
+          <text x="268" y="52" text-anchor="middle" font-family="monospace" font-size="14" fill="#0E9E7C">Lyrics</text>
+          <text x="268" y="72" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#152430">唱什么词</text>
+          <text x="206" y="98" font-family="sans-serif" font-size="11" fill="#3C4E5C">歌词正文</text>
+          <text x="206" y="118" font-family="sans-serif" font-size="11" fill="#3C4E5C">[Verse] [Chorus]</text>
+          <text x="206" y="138" font-family="sans-serif" font-size="11" fill="#3C4E5C">段落标签</text>
+
+          <line x1="180" y1="24" x2="180" y2="164" stroke="#D5E6F5" stroke-width="1" stroke-dasharray="4 4"/>
+          <text x="180" y="192" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#EE6B45">风格描述写进歌词框 → 会被唱出来</text>
+        </svg>
+      </div>
+      <figcaption>最常见的低级错误：把"想要悲伤一点"写进歌词框，它真的会念出来</figcaption>
+    </figure>
+
+    <h3>风格框按五个位置排队</h3>
+    <p>Suno 对<strong>排在前面的词更敏感</strong>。别写成一堆乱词，按这个顺序放（英文标签更稳）：</p>
+    <ol class="clean">
+      <li><strong>曲风 + 细分</strong>：写"车库摇滚复兴"而不是"摇滚"，越具体越不飘。</li>
+      <li><strong>情绪 + 能量</strong>：一个方向就够。<span class="kw">"绝望"</span>往往比"小调加混响"有效。</li>
+      <li><strong>人声</strong>：谁在唱、怎么唱，如"轻柔女声、气声、贴着麦克风"。</li>
+      <li><strong>乐器</strong>：写你真能听出来的具体乐器，"叮当电吉他 + 刷镲"比"吉他和鼓"有画面。</li>
+      <li><strong>制作感 + 速度</strong>：如"低保真磁带质感，<span class="mono">92 BPM</span>"。给个数字，它就不乱飘。</li>
+    </ol>
+    <div class="card"><div class="ct">可以直接抄的一行</div>独立民谣，温暖怀旧，轻柔女声气声，指弹木吉他 + 低音提琴 + 刷镲，低保真磁带质感，<span class="mono">58 BPM</span><br><span class="muted" style="font-size:.88em">标签 8–15 个最稳。少于 5 个等于交给它随机，超过 20 个会互相打架。</span></div>
+
+    <h3>歌词框用标签标出段落</h3>
+    <p>方括号里的标签<strong>不会被唱出来</strong>，只是告诉它"这里换段了"：</p>
+    <pre><code>[Intro]
+[Verse 1]
+[Pre-Chorus]
+[Chorus]
+[Verse 2]
+[Bridge]
+[Final Chorus]
+[Outro]</code></pre>
+    <p>开头和结尾的一两个字最容易唱错或漏掉，别把关键词放在句首。中文的多音字、生僻字它可能不认识——"石斛"的"斛"会被跳过，换成同音字"胡"它就唱了。</p>
+  </section>
+
+  <!-- 第 3 阶 -->
+  <section id="s3">
+    <h2 class="sec"><span class="num">03</span>让它更接近你脑子里那首歌</h2>
+    <p>出歌不难，出"对的歌"才费功夫。这一阶是省积分的关键——少做无效重刷。</p>
+    <ol class="steps">
+      <li><span class="stt">一次只改一个东西。</span> <span class="std">拿一版还行的当底子，这次只把"开心"换成"怀念"，别的都不动。一次改五个词，你永远不知道是哪个起了作用。</span></li>
+      <li><span class="stt">先定方向，再补细节。</span> <span class="std">第一步只写曲风，对了再加情绪，再对才加乐器和速度。像调收音机一格格拧。</span></li>
+      <li><span class="stt">把不想要的赶走。</span> <span class="std">风格框里直接写 <code>no heavy drums, no rap</code>，比反复祈祷有效。</span></li>
+      <li><span class="stt">词写不出来就让 AI 起头。</span> <span class="std">让它"按 Suno 规范写一首关于××的中文歌，用英文元标签标主歌副歌"，拿到的结构往往能直接用。</span></li>
+      <li><span class="stt">想让同一个声音一直唱，用 Persona。</span> <span class="std">付费功能：把满意的声音存成人设，新歌接着用，声线就统一了。</span></li>
+      <li><span class="stt">攒一份自己的词表。</span> <span class="std">验证过的风格描述复制到笔记里复用。做同一专辑的歌保留约六成相同标签，听着就像一个人做的。</span></li>
+      <li><span class="stt">中文和方言要明说。</span> <span class="std">中国风加 <code>Chinese traditional</code>；粤语、客家话写 <code>Cantonese</code> / <code>Hakka</code>，不说它多半按普通话来。</span></li>
+    </ol>
+    <div class="note"><strong>2026 年 9 月之后的新东西</strong>：v6 支持"局部改词改段"（只把副歌改成福音合唱，其他地方不动），还能把几首歌混在一起、或丢一张图一段视频进来当参考。付费模型上更完整。</div>
+  </section>
+
+  <!-- 第 4 阶 -->
+  <section id="s4">
+    <h2 class="sec"><span class="num">04</span>免费的边界，先算清楚再决定</h2>
+    <p>这一阶决定你会不会白高兴。免费档的限制在 <span class="mono">2026-09-03</span> 改过一次，很多老教程没更新。</p>
+
+    <figure>
+      <div class="figwrap">
+        <svg viewBox="0 0 360 226" role="img" aria-label="免费档与付费档的权益对比">
+          <defs>
+            <pattern id="grid4" width="18" height="18" patternUnits="userSpaceOnUse">
+              <path d="M18 0H0V18" fill="none" stroke="#E8F3FD" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="360" height="226" fill="url(#grid4)"/>
+          <text x="14" y="22" font-family="monospace" font-size="12" fill="#5E7180">每天能做的歌</text>
+
+          <text x="14" y="52" font-family="sans-serif" font-size="11" fill="#152430">免费</text>
+          <rect x="72" y="40" width="60" height="16" rx="2" fill="#D5E6F5" stroke="#1C7ED6" stroke-width="1"/>
+          <text x="140" y="52" font-family="monospace" font-size="11" fill="#1C7ED6">约 10 首</text>
+
+          <text x="14" y="84" font-family="sans-serif" font-size="11" fill="#152430">Pro</text>
+          <rect x="72" y="72" width="240" height="16" rx="2" fill="#E8F3FD" stroke="#1C7ED6" stroke-width="1"/>
+          <text x="252" y="84" font-family="monospace" font-size="11" fill="#1C7ED6">约 500 首/月</text>
+
+          <text x="14" y="116" font-family="sans-serif" font-size="11" fill="#152430">Premier</text>
+          <rect x="72" y="104" width="272" height="16" rx="2" fill="#C7EADA" stroke="#0E9E7C" stroke-width="1"/>
+          <text x="290" y="116" font-family="monospace" font-size="11" fill="#0E9E7C">约 2000 首/月</text>
+
+          <line x1="14" y1="138" x2="346" y2="138" stroke="#D5E6F5" stroke-width="1" stroke-dasharray="4 4"/>
+          <text x="14" y="162" font-family="monospace" font-size="12" fill="#5E7180">下载额度</text>
+          <circle cx="24" cy="184" r="9" fill="#FDEEE9" stroke="#EE6B45" stroke-width="1.5"/>
+          <text x="40" y="188" font-family="sans-serif" font-size="11" fill="#152430">免费：终身 7 次</text>
+          <circle cx="200" cy="184" r="7" fill="#E8F3FD" stroke="#1C7ED6" stroke-width="1.5"/>
+          <text x="213" y="188" font-family="sans-serif" font-size="11" fill="#152430">Pro：20/月</text>
+          <text x="14" y="212" font-family="sans-serif" font-size="11" fill="#EE6B45">免费做的歌不能商用，升级也不追溯补票</text>
+        </svg>
+      </div>
+      <figcaption>免费够你把玩法搞清楚，不够你认真产出</figcaption>
+    </figure>
+
+    <div class="grid2">
+      <div class="card coral">
+        <div class="ct">免费档 · $0</div>
+        每天 50 积分 ≈ 10 首；用 v6-mini；只能在线听和分享；<strong>下载终身 7 次</strong>；不能商用；共享队列慢；不能分轨、不能加购积分。
+      </div>
+      <div class="card mint">
+        <div class="ct">付费档 · 约 $10 / $30 每月</div>
+        Pro 每月 2500 积分 ≈ 500 首，有商用权、20 次下载、分轨、优先队列；Premier 10000 积分 ≈ 2000 首，另加 Suno Studio，下载 60 次/月。
+      </div>
+    </div>
+    <div class="tw">
+      <table>
+        <tr><th>容易误会的点</th><th>实际情况</th></tr>
+        <tr><td>积分会不会攒着</td><td>订阅给的每天/每月清零，不用作废；自己花钱加购的不过期，但要保持订阅才能用。</td></tr>
+        <tr><td>商用权什么时候算</td><td>跟着"生成时的账号状态"走。付费期间做的歌，取消订阅后仍可商用；免费时做的那首，永远不行。</td></tr>
+        <tr><td>免费用的是最新模型吗</td><td><span class="no">不是。</span>免费是 v6-mini，旗舰 v6 要付费。老教程里的 v4.5 设置已过时。</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 第 5 阶 -->
+  <section id="s5">
+    <h2 class="sec"><span class="num">05</span>到底能不能赚钱</h2>
+    <p>先给结论：<strong>能，但和你看到的那条短视频不是一回事。</strong></p>
+
+    <div class="card">
+      <div class="ct">先把"版权"这事说清</div>
+      付费做的歌你能拿来赚钱，Suno 不抽成。但"能赚钱"不等于"版权在你手里"：美国版权局的态度是，<strong>纯 AI 生成的曲子可能拿不到版权保护</strong>——光写提示词不算作曲。意思是别人抄走你未必告得赢。想站稳一点，往里加真人创作：自己写的词、自己录的人声、自己弹的 MIDI、认真重新编曲。
+    </div>
+
+    <h3>流媒体真实能拿多少</h3>
+    <p>它不是"一首歌多少钱"，是一个大池子按比例分。第三方估算（Duetti，<span class="mono">2024</span> 年数据）：</p>
+    <figure>
+      <div class="figwrap">
+        <svg viewBox="0 0 360 210" role="img" aria-label="每 1000 次播放各平台收入估算">
+          <defs>
+            <pattern id="grid5" width="18" height="18" patternUnits="userSpaceOnUse">
+              <path d="M18 0H0V18" fill="none" stroke="#E8F3FD" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="360" height="210" fill="url(#grid5)"/>
+          <text x="14" y="22" font-family="monospace" font-size="11" fill="#5E7180">每 1000 次播放 · 美元</text>
+          <text x="14" y="52" font-family="sans-serif" font-size="11" fill="#152430">Amazon</text>
+          <rect x="86" y="41" width="176" height="15" rx="2" fill="#E8F3FD" stroke="#1C7ED6" stroke-width="1"/>
+          <text x="268" y="53" font-family="monospace" font-size="11" fill="#1C7ED6">8.8</text>
+          <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#152430">Apple</text>
+          <rect x="86" y="69" width="124" height="15" rx="2" fill="#E8F3FD" stroke="#1C7ED6" stroke-width="1"/>
+          <text x="216" y="81" font-family="monospace" font-size="11" fill="#1C7ED6">6.2</text>
+          <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#152430">YouTube</text>
+          <rect x="86" y="97" width="96" height="15" rx="2" fill="#E8F3FD" stroke="#1C7ED6" stroke-width="1"/>
+          <text x="188" y="109" font-family="monospace" font-size="11" fill="#1C7ED6">4.8</text>
+          <text x="14" y="136" font-family="sans-serif" font-size="11" fill="#152430">跨平台均值</text>
+          <rect x="86" y="125" width="68" height="15" rx="2" fill="#C7EADA" stroke="#0E9E7C" stroke-width="1.5"/>
+          <text x="160" y="137" font-family="monospace" font-size="11" fill="#0E9E7C">3.41</text>
+          <text x="14" y="164" font-family="sans-serif" font-size="11" fill="#152430">Spotify</text>
+          <rect x="86" y="153" width="60" height="15" rx="2" fill="#E8F3FD" stroke="#1C7ED6" stroke-width="1"/>
+          <text x="152" y="165" font-family="monospace" font-size="11" fill="#1C7ED6">3.0</text>
+          <line x1="14" y1="182" x2="346" y2="182" stroke="#D5E6F5" stroke-width="1" stroke-dasharray="4 4"/>
+          <text x="180" y="202" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#EE6B45">Spotify 还有门槛：12 个月内至少 1000 次播放才付</text>
+        </svg>
+      </div>
+      <figcaption>一万次 Spotify 播放大约 30 美元，还没扣发行商分成</figcaption>
+    </figure>
+
+    <h3>头部案例是真的，但那是头部</h3>
+    <ul class="clean">
+      <li>Bill Stiteler 的《The Puerto Rico Song》：约 650 万 Spotify 播放、520 万 TikTok 播放，从头到尾公开署名 Suno。</li>
+      <li>Xania Monet 五首歌两个月收入据 Billboard 估计超 5.2 万美元——她有媒体报道、电台和唱片合约。</li>
+      <li>The Velvet Sundown 的《Dust on the Wind》略低于 6000 美元。</li>
+    </ul>
+    <p>这三例都有传播和运营撑着。普通人直接对标，会误判。"月入两万"那类视频，原文自己也写了：是跑通流量、稳定接单之后的少数案例，绝大多数兼职的人每月几千都难稳定拿到。</p>
+
+    <h3>普通人更现实的四条路</h3>
+    <ol class="steps">
+      <li><span class="stt">帮人定制歌</span> <span class="std">最稳、回款最快。生日歌、婚礼歌、企业短歌。一首几十到三百元，买断商用版权的报到 500–1500 元。核心是听懂客户要的情绪，不是按按钮。</span></li>
+      <li><span class="stt">给短视频博主供背景音乐</span> <span class="std">批量做治愈、古风、轻音乐按月打包。但平台在清理同质化 AI 素材，模板化的很容易下架。</span></li>
+      <li><span class="stt">做音乐账号吃长期流量</span> <span class="std">配画面发视频平台，或走发行渠道上音乐平台。周期长，AI 曲目很多进不了推荐歌单。</span></li>
+      <li><span class="stt">教别人、卖提示词方案</span> <span class="std">利润上限高，前提是自己有真实接单案例，否则没人信。</span></li>
+    </ol>
+
+    <div class="warn">
+      <strong>三条红线，碰了会出事。</strong><br>
+      ① 别刷量——2026 年 10 月 6 日，Michael Smith 用 AI 造了几十万首歌、用机器人刷流骗了超 800 万美元版税，被判 18 个月监禁，罚没 8,091,843.64 美元。<br>
+      ② 别冒充真人歌手——未经授权的模仿人声会被平台移除。<br>
+      ③ 别以为素材库都收——Pond5、Envato、Epidemic Sound、Marmoset 基本拒收纯 AI 音乐。
+    </div>
+    <p class="muted">一个信号：截至 2026 年 4 月，Deezer 每天新上传里 44%（约 7.5 万首）是纯 AI 曲目，但只拿到 1%–3% 的播放，其中高达 85% 的播放被判定为欺诈。靠数量淹没这条路已经死了。</p>
+  </section>
+
+  <!-- 工具箱 -->
+  <section id="kit">
+    <h2 class="sec"><span class="num">06</span>工具箱：教程、案例、开源库</h2>
+    <h3>中文入门教程</h3>
+    <ul class="clean">
+      <li><strong>suno4.cn</strong>：国内整理得很全的教程集合，含元标签清单、中英文风格词对照、中文多音字处理、粤语做法、API 接入系列。适合按问题查。</li>
+      <li><strong>suno.hk</strong>：《Suno 使用手册：从入门到进阶》，从登录、两种模式讲到积分与导出，保姆级。</li>
+      <li><strong>suno-zh.com</strong>：中文社区用法页，风格公式和进阶工作流写得直白。</li>
+    </ul>
+    <h3>提示词工具和生成器</h3>
+    <ul class="clean">
+      <li><strong>howtopromptsuno.com</strong>：风格提示词生成器 + 五段式写法讲解。</li>
+      <li><strong>sunnoai.com/prompt</strong>：40 条可直接粘贴的提示词，附标签表。版本文案停在 v5.5，思路可用、版本号别照抄。</li>
+      <li><strong>sunobuilder.com</strong>：免费免注册的浏览器工具，能拆到风格、速度、调性、乐器、编曲，可导出。</li>
+      <li><strong>ChatGPT / Claude / Gemini</strong>：写词和想点子很好用。让它写风格提示词时，先喂规则：写成一行、逗号分隔、250 字符内、不要歌手名字。</li>
+    </ul>
+    <h3>GitHub 开源库</h3>
+    <div class="tw">
+      <table>
+        <tr><th>项目</th><th>是什么</th></tr>
+        <tr><td class="mono">naqashmunir21/awesome-suno-prompts</td><td>社区风格提示词集合，13 个流派文件，CC0。一张独立审计指出它宣传"1000+ 甚至 2000+"，实际可数出的结构化卡片约 <strong>250</strong> 张，版本字段还停在 v4.5/v5。<strong>当风格词典查很好用，当"验证过的 v6 配方库"会失望。</strong></td></tr>
+        <tr><td class="mono">Suno-API</td><td>Golang 写的非官方 API，能生成歌曲和歌词，想接进自己程序的人看这个。</td></tr>
+        <tr><td class="mono">SUP3RMASS1VE/Suno-Song-Remaster</td><td>桌面应用，把 AI 生成的音乐做母带处理，往"能发行"的质量推一把。</td></tr>
+        <tr><td class="mono">gitread.org/topics/suno</td><td>Suno 相关开源项目索引，列了三百多个，适合顺藤摸瓜。</td></tr>
+      </table>
+    </div>
+    <div class="note">想找真实反馈，优先看有出处的：Billboard 对华纳合作的报道、wavmark.io 和 sunowatermarkremover.com 的收入拆解、以及 Reddit 的 r/SunoAI。短视频里的"月入两万"当成营销看，别当成数据。</div>
+  </section>
+
+  <!-- 收束 -->
+  <section id="end">
+    <h2 class="sec"><span class="num">07</span>不同人该怎么开始</h2>
+    <ul class="clean">
+      <li><strong>纯粹图一乐</strong>：免费档，Simple 模式，一句话出歌。给朋友生日写一首、把内部梗编成副歌。别碰付费，别想赚钱。</li>
+      <li><strong>想做得好看一点</strong>：记住两个框分工，风格按五段式写，一次只改一个变量，攒自己的词表。</li>
+      <li><strong>想做系列或商用</strong>：上 Pro，用 Persona 固定声线，注意下载额度，往里加真人创作来加固版权位置。</li>
+      <li><strong>想靠它赚钱</strong>：先问自己有没有订单或流量入口。有，Suno 是效率工具；没有，先别辞掉任何东西。四条路里定制代做回款最快，流媒体最慢。</li>
+    </ul>
+    <div class="card mint"><div class="ct">一句话</div>它的强项是让普通人也能把情绪变成一首歌。这件事本身就已经值回票价，没必要非把它掰成一门生意。</div>
+  </section>
+
+  <!-- 来源 -->
+  <section id="src">
+    <h2 class="sec"><span class="num">08</span>存疑与来源</h2>
+    <p class="muted">数字会变，用的时候按标注时间重新核一下。</p>
+    <div class="tw">
+      <table>
+        <tr><th>事项</th><th>口径与时间</th><th>说明</th></tr>
+        <tr><td>模型版本</td><td>截至 2026-11</td><td>v6 家族 2026-09-09 上线，旧模型对新生成退役、已生成的仍可播。部分官网宣传页仍残留 v5.5 文案，属未更新。</td></tr>
+        <tr><td>免费积分</td><td>官网定价页 2026-11</td><td>50/天 ≈ 10 首。不同页面对免费模型写 v4.5-all 或 v6-mini，以定价页"Best free model (v6-mini)"为准。</td></tr>
+        <tr><td>下载额度</td><td>2026-09-03 生效</td><td>免费终身 7 次、Pro 20/月、Premier 60/月，Studio 无限。有来源说免费将完全取消下载，实际仍保留 7 次。</td></tr>
+        <tr><td>价格</td><td>2026-11</td><td>月付 / 年付折算值来自官网定价页与第三方汇总，结算以官网为准，含税。</td></tr>
+        <tr><td>每千次播放收入</td><td>Duetti 2024 报告</td><td>平均 $3.41，分平台为第三方估算，非平台官方费率。</td></tr>
+        <tr><td>头部收入</td><td>Billboard 等 2026 报道</td><td>Xania Monet 五首两月 &gt;$52,000 为 Billboard 估计，非审计数字。</td></tr>
+        <tr><td>开源库条数</td><td>审计快照 2026-10-19</td><td>awesome-suno-prompts 宣传 1000+/2000+，实数约 250 张结构化卡片。</td></tr>
+        <tr><td>变现案例</td><td>中文自媒体 2026</td><td>"月入两万"为个例自述，无第三方核验，仅作方向参考。</td></tr>
+      </table>
+    </div>
+    <div class="src">
+      <h3>主要来源</h3>
+      <ul>
+        <li>suno.com 官方定价页与首页（模型、积分、下载额度）</li>
+        <li>Billboard 关于华纳—Suno 合作的报道（2026-09-09）</li>
+        <li>sunnoai.com 的 v6 更新与许可说明</li>
+        <li>wavmark.io、sunowatermarkremover.com 的变现与版税拆解</li>
+        <li>GitHub 上 awesome-suno-prompts 及其独立审计</li>
+        <li>suno4.cn、suno.hk、suno-zh.com 中文教程</li>
+        <li>aitooltier.com 的 2026 年评测</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>平台规则和价格变动很快，尤其涉及下载额度、商用条款和模型版本。真要投入之前，去官网定价页和条款页再核一遍。</footer>
+
+</div>
+</body>
+</html>

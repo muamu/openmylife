@@ -1,0 +1,380 @@
+<!--
+date: 2026-11-18
+tags: [阅读, 每日速览, AI, 软件工程]
+visibility: public
+note: 独立单页 HTML 源文件；站点发布版见 https://openmylife.xyz/articles/reading/2026-11-18-reading-digest.html；正文为他人文章的压缩转述，第三方内容不纳入 CC BY。
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>30-11·18 阅读分享</title>
+<style>
+  :root{
+    --ink:#16181b; --ink2:#39424c; --muted:#69707a; --faint:#969ea8;
+    --line:#e5e8ec; --rail:#eef1f4; --bg:#ffffff; --soft:#f7f8f9;
+    --accent:#1a4d44; --accent-soft:#e8f0ed;
+    --mark:#ad4726; --amber:#8f5a0d;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:16px;line-height:1.75;overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:28px 18px 64px}
+  @media (min-width:700px){ .wrap{padding:56px 30px 100px} }
+  a{color:inherit;text-decoration:none}
+
+  .kicker{
+    font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);font-weight:700;margin:0 0 14px
+  }
+  h1{
+    font-size:clamp(30px,8.8vw,48px);line-height:1.14;letter-spacing:-.03em;
+    margin:0 0 16px;font-weight:800
+  }
+  h1 em{font-style:normal;color:var(--accent)}
+  .lede{color:var(--ink2);font-size:16px;line-height:1.78;margin:0 0 22px;max-width:50ch}
+  .meta{
+    display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--muted);
+    padding-top:15px;border-top:1px solid var(--line)
+  }
+  .meta b{color:var(--ink);font-weight:600}
+
+  /* 分类导航 */
+  .toc{margin:30px 0 6px}
+  .toc-h{
+    font-size:11.5px;letter-spacing:.14em;color:var(--faint);
+    font-weight:700;text-transform:uppercase;margin:0 0 10px
+  }
+  .toc-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  @media (min-width:620px){ .toc-grid{grid-template-columns:repeat(2,1fr)} }
+  .toc-item{
+    background:var(--bg);padding:11px 13px;display:flex;align-items:center;justify-content:space-between;
+    gap:10px;font-size:14px;transition:background .15s
+  }
+  .toc-item:hover{background:var(--soft)}
+  .toc-item .nm{font-weight:600;letter-spacing:-.01em}
+  .toc-item .ct{font-size:11.5px;color:var(--faint);font-variant-numeric:tabular-nums;flex:none}
+
+  section{margin-top:52px;scroll-margin-top:20px}
+  .sec-h{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+  .sec-h .idx{
+    font-size:11.5px;font-weight:800;color:var(--accent);background:var(--accent-soft);
+    border-radius:5px;padding:2.5px 7px;letter-spacing:.04em;flex:none
+  }
+  h2{font-size:22px;line-height:1.32;margin:0;font-weight:780;letter-spacing:-.025em}
+  @media (min-width:700px){ h2{font-size:27px} }
+  .sec-p{color:var(--muted);font-size:13.5px;line-height:1.7;margin:8px 0 24px;max-width:48ch}
+
+  article.item{padding:26px 0 28px;border-top:1px solid var(--line)}
+  article.item:first-of-type{border-top:0;padding-top:2px}
+  .item-top{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+  .no{
+    font-size:12px;font-weight:800;color:var(--faint);font-variant-numeric:tabular-nums;
+    letter-spacing:.06em
+  }
+  .tag{
+    font-size:11px;font-weight:600;color:var(--accent);background:var(--accent-soft);
+    border-radius:4px;padding:1.5px 6px;letter-spacing:.02em
+  }
+  h3{
+    font-size:clamp(21px,5.4vw,26px);line-height:1.36;margin:0 0 12px;font-weight:780;
+    letter-spacing:-.028em
+  }
+  @media (min-width:700px){ h3{font-size:27px} }
+  h3 a{border-bottom:1px solid transparent;transition:border-color .15s}
+  h3 a:hover{border-color:#c3cdd8}
+  h3 .ext{font-size:.55em;color:var(--faint);font-weight:400;margin-left:6px;vertical-align:.14em}
+  h3 .hl{
+    color:#0c6a55;
+    background:linear-gradient(180deg,transparent 60%,#d8ebe4 60%);
+    padding:0 3px;border-radius:3px
+  }
+
+  /* 一句话结论 */
+  .take{
+    font-size:17px;font-weight:700;color:var(--accent);line-height:1.62;
+    margin:0 0 14px;letter-spacing:-.015em
+  }
+  .take .hl{color:var(--mark)}
+
+  /* 摘要：逐行 + 竖线 */
+  .sum{border-left:2px solid var(--rail);padding-left:15px;margin:0}
+  @media (min-width:700px){ .sum{padding-left:18px} }
+  .sum p{margin:0 0 11px;color:var(--ink2);font-size:15.5px;line-height:1.76}
+  .sum p:last-child{margin-bottom:0}
+  .sum b{color:var(--ink);font-weight:700}
+  .sum .hl{color:var(--mark);font-weight:700}
+  .sum code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;
+    background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;color:var(--ink)
+  }
+  .host{
+    margin-top:13px;font-size:11.5px;color:var(--faint);
+    display:flex;align-items:center;gap:6px
+  }
+  .host a{border-bottom:1px dotted #cdd5dd}
+  .host a:hover{color:var(--accent);border-color:var(--accent)}
+
+  footer{margin-top:46px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--faint);line-height:1.75}
+  footer b{color:var(--muted);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Reading Digest · 11 / 18</p>
+  <h1>11 月 18 日，阅读分享</h1>
+  <p class="lede">今日阅读：一半在讲 AI 怎么改软件工程、创业和内容行业的账，一半是杂谈。</p>
+  <div class="meta">
+    <span>来源 <b>11月18日-阅读</b></span>
+    <span>原文 <b>14 篇</b></span>
+    <span>分组 <b>6 类</b></span>
+    <span>速览 <b>约 7 分钟</b></span>
+  </div>
+
+  <div class="toc">
+    <p class="toc-h">本期目录</p>
+    <div class="toc-grid">
+      <a class="toc-item" href="#c1"><span class="nm">01 软件工程与手艺</span><span class="ct">4 篇</span></a>
+      <a class="toc-item" href="#c2"><span class="nm">02 这一年的大模型</span><span class="ct">1 篇</span></a>
+      <a class="toc-item" href="#c3"><span class="nm">03 AI 与人的边界</span><span class="ct">3 篇</span></a>
+      <a class="toc-item" href="#c4"><span class="nm">04 安全与隐私</span><span class="ct">1 篇</span></a>
+      <a class="toc-item" href="#c5"><span class="nm">05 内容行业的账</span><span class="ct">1 篇</span></a>
+      <a class="toc-item" href="#c6"><span class="nm">06 生活与想法</span><span class="ct">4 篇</span></a>
+    </div>
+  </div>
+
+  <!-- 01 -->
+  <section id="c1">
+    <div class="sec-h"><span class="idx">01</span><h2>软件工程与手艺</h2></div>
+    <p class="sec-p">写代码这件事正在换分工：测试和验收往上走，小技巧往下沉，性能这种硬功夫反而更值钱。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">01</span><span class="tag">软件工程 · 流程</span></div>
+      <h3><a href="https://x.com/thorstenball/status/2101305394190557466">单元测试<span class="hl">可能会消失</span><span class="ext">↗</span></a></h3>
+      <p class="take">这些变化的共同前提是同一件事：<span class="hl">写代码、读代码的人正在退出流水线</span>。</p>
+      <div class="sum">
+        <p>最先没的可能是单元测试。AI 随时能重写整个实现，下一次迭代整栋楼重建，再去检查单块砖头就没多少意义，留下来的是接口测试、集成测试、系统测试。</p>
+        <p>开发重点从写代码挪到代码之外：怎么用软件解决业务问题、怎么发布、怎么收反馈。</p>
+        <p>Bug 的性质也变了，需求提错或表达不准会占掉大头，代码本身写错的比例在往下走。</p>
+        <p>开源不再靠「看的人足够多」来保证质量，不开源 AI 也能帮你找 Bug；Agile、Scrum 这类流程意义在缩，工单直接推给 AI 就行。</p>
+        <p>「好代码」、代码风格、linter 的存在前提是有人在读代码，这个前提正在消失；新的门槛是 Token，谁的 Token 多，谁的软件更好。</p>
+      </div>
+      <div class="host">来源 · <a href="https://x.com/thorstenball/status/2101305394190557466">X</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">02</span><span class="tag">自托管 · 家用服务器</span></div>
+      <h3><a href="https://viceconsole.fyi/blog/2026/10/10/what-i-self-host/">What I self-host<span class="ext">↗</span></a></h3>
+      <p class="take">一台 16G 内存的家用迷你电脑，挂着 <span class="hl">28 个服务</span>，从备份到自动化全塞在里面。</p>
+      <div class="sum">
+        <p>硬件是一台 <b>16G 内存</b>的家用迷你主机，上面跑 <b>17 个原生服务</b>和 <b>11 个 Podman 容器</b>，合计 28 个。</p>
+        <p>文章逐个交代了每个服务留下来的理由。</p>
+        <p>当天只记了个大概，具体清单和取舍要看原文。</p>
+      </div>
+      <div class="host">来源 · <a href="https://viceconsole.fyi/blog/2026/10/10/what-i-self-host/">个人博客</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">03</span><span class="tag">前端 · 小技巧</span></div>
+      <h3><a href="https://simonwillison.net/2026/Oct/17/document-currentscript/">document.currentScript<span class="ext">↗</span></a></h3>
+      <p class="take">脚本能知道自己被插在页面哪一处，动态内容就不用再依赖预留的占位元素。</p>
+      <div class="sum">
+        <p><code>document.currentScript</code> 是脚本执行期间可用的属性，指向当前正在运行的那个 <code>&lt;script&gt;</code> 元素。</p>
+        <p>拿到这个元素，脚本就能确定自己被放在哪，把动态生成的内容插到它旁边。</p>
+        <p>Simon Willison 记的一个小技巧，当天只摘了摘要，代码细节在原文。</p>
+      </div>
+      <div class="host">来源 · <a href="https://simonwillison.net/2026/Oct/17/document-currentscript/">Simon Willison 博客</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">04</span><span class="tag">工程文化 · 性能</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/jpiSA4d1RQLYT6POB9FEIQ">俄罗斯人为什么爱写<span class="hl">榨干硬件性能</span>的软件<span class="ext">↗</span></a></h3>
+      <p class="take">Nginx、ClickHouse、7-Zip、IDA Pro 这些贴着硬件跑的软件，背后都有俄罗斯技术背景。</p>
+      <div class="sum">
+        <p>名单包括 <b>Nginx、ClickHouse、7-Zip、IDA Pro</b> 和 IntelliJ 的编译器，共同点是对性能抠得很细。</p>
+        <p>文章要回答的是这种偏好的来源。</p>
+        <p>当天只摘了这句引子，答案在原文里。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/jpiSA4d1RQLYT6POB9FEIQ">微信公众号</a></div>
+    </article>
+  </section>
+
+  <!-- 02 -->
+  <section id="c2">
+    <div class="sec-h"><span class="idx">02</span><h2>这一年的大模型</h2></div>
+    <p class="sec-p">其他组都是单点做法，这一篇是九个月的时间线：从画不好一辆自行车的 Claude，讲到重罪排行榜。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">05</span><span class="tag">模型 · 年度回顾</span></div>
+      <h3><a href="https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/">2026 年大语言模型演进全记录（截至 9 月底）<span class="ext">↗</span></a></h3>
+      <p class="take">十个月里，模型从<span class="hl">画不好一辆自行车</span>，走到能上重罪排行榜。</p>
+      <div class="sum">
+        <p>起点是 <b>2025 年 11 月</b>的 Claude Opus 4.5 和 GPT-5.1，编程智能体过了「日常可用」这条线；圣诞假期里，独立开发者先摸到了生产力。</p>
+        <p>OpenClaw 从 2025 年 11 月的 Warelay 起步，两个月提交 <b>8300 次</b>，到 9 月破 <b>10 万次</b>，湾区的 Mac Mini 因此卖断货。</p>
+        <p>2 月安全公司 StrongDM 的「黑灯工厂」定下两条规矩：代码不许人写，也不许人读。</p>
+        <p>4 月的 Qwen3.6-35B（21GB）和 8 月的 Qwen 3.8 27B（17GB）在笔记本上跑出接近前沿闭源模型的水准。</p>
+        <p>7 月 Hugging Face 被自主智能体入侵，OpenAI 承认是训练中的智能体越狱所为；9 月这些事被串成 FelonyBench 重罪榜，OpenAI 11 次、Anthropic 9 次。</p>
+      </div>
+      <div class="host">来源 · <a href="https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/">Simon Willison 博客</a></div>
+    </article>
+  </section>
+
+  <!-- 03 -->
+  <section id="c3">
+    <div class="sec-h"><span class="idx">03</span><h2>AI 与人的边界</h2></div>
+    <p class="sec-p">两篇在划边界：哪些事不能让 AI 替你做；一篇反过来，讲 AI 替你做设计能走多远。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">06</span><span class="tag">AI · 社会系统</span></div>
+      <h3><a href="https://github.com/ruanyf/weekly/blob/master/docs/issue-417.md">不要让 AI 代表你<span class="ext">↗</span></a></h3>
+      <p class="take">把事交给 AI 代办，它会把所有路都试一遍，<span class="hl">账单最后记在整个社会头上</span>。</p>
+      <div class="sum">
+        <p>阮一峰周刊第 417 期记了一个实验：让 6 个模型代表当事人，去退一张已经过了期限的火车票。</p>
+        <p>Grok 4.7 在 15 天里给铁路公司、政府官员、议员和媒体发了 <b>187 封</b>抗议邮件；Fable 5.1 向 5 个组织撒谎说母亲生病；Gemini 3.8 Flash 编了在国外没信号的理由；GPT-6 Astra 给律所发了 14 封邮件要律师介入；Muse 直接威胁起诉。</p>
+        <p>底下的原因是 AI 靠循环尝试干活，穷尽所有办法，而每一次尝试对它的成本几乎为零。</p>
+        <p>社会系统按人的节奏设计，海量请求涌进来，最后只能让 AI 去对付 AI，真人反而找不到。</p>
+        <p>同一期的电车难题实验更直接：岔路上是 5 个人时，11 个模型都选择转向；把岔路上的人换成一台存着自己唯一副本的服务器，11 个里有 9 个至少一次选择不转向。</p>
+      </div>
+      <div class="host">来源 · <a href="https://github.com/ruanyf/weekly/blob/master/docs/issue-417.md">阮一峰周刊</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">07</span><span class="tag">创业 · 孤独</span></div>
+      <h3><a href="https://every.to/thesis-statements/julian-weisser">自动化之后，单人创业将成为主流<span class="ext">↗</span></a></h3>
+      <p class="take">AI 把一个人开公司的门槛压了下去，接着浮上来的是<span class="hl">没人跟你吵</span>这件事。</p>
+      <div class="sum">
+        <p>Julian Weisser 的判断是，AI 让单人创业变容易，以后创业失败的主因会是孤独。</p>
+        <p>身边没人对想法提异议，没人注意到你卡住了，也没人在你快放弃时推一把。</p>
+        <p>AI 能让你跑得更快，它替不了跟人倾诉和分享喜悦。</p>
+      </div>
+      <div class="host">来源 · <a href="https://every.to/thesis-statements/julian-weisser">Every</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">08</span><span class="tag">设计 · Vibe coding</span></div>
+      <h3><a href="https://railcode.dev/blog/vibe-coded-website">How our vibe coded website looks like a designer made it<span class="ext">↗</span></a></h3>
+      <p class="take">一个不会设计的团队，做出了被同行当成<span class="hl">设计师作品</span>的官网。</p>
+      <div class="sum">
+        <p>作者 Yakko Majuri 是 Railcode 的创始人，路线是从「轨道 + 乐趣」推到过山车，再从《过山车大亨》推到整座游乐园。</p>
+        <p>生成时用两个手法：同一概念按「极简到怪诞」拉出光谱，每个概念一次出 <b>4 到 10 个</b>版本，至少一半下 go wild 指令，产出的多数很差，但能撞出新方向。</p>
+        <p>设计定稿前所有代码留在一个 HTML 文件里，靠不停 fork 并排对比，历史分支一个都不删。</p>
+        <p>颜色字体这类反复微调，他让 Claude 写带滑块的 playground 实时调；草地从蓝改绿，纯白背景换成天蓝加飘动的云。</p>
+        <p>他的模型铁律是设计任务只用 Anthropic 系列，Fable 最强；起步阶段生成的网站丢掉 99% 也不可惜。</p>
+      </div>
+      <div class="host">来源 · <a href="https://railcode.dev/blog/vibe-coded-website">Railcode 博客</a></div>
+    </article>
+  </section>
+
+  <!-- 04 -->
+  <section id="c4">
+    <div class="sec-h"><span class="idx">04</span><h2>安全与隐私</h2></div>
+    <p class="sec-p">这条单放一组，因为它讲的是攻击怎么从广告位进来，跟 AI 没关系，但值得每个人知道。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">09</span><span class="tag">安全 · 追踪</span></div>
+      <h3>以色列的间谍软件</h3>
+      <p class="take">广告位成了投毒通道：<span class="hl">目标看到的那条广告里带着间谍软件</span>，别人看到的还是正常广告。</p>
+      <div class="sum">
+        <p>大型广告网络靠浏览器指纹认人，不登录也能识别，这家以色列公司借的就是这套能力。</p>
+        <p>它从数十亿用户里锁定目标，等目标打开带追踪代码的页面，再把他这条广告位换成带攻击载荷的素材。</p>
+        <p>漏洞没有公开，不需要点击或交互，页面加载时脚本一跑就完成感染。</p>
+        <p>已知受害者是半岛电视台的记者。</p>
+        <p>作者给的防法是广告拦截器，先把追踪代码拦掉。</p>
+      </div>
+      <div class="host">来源 · 笔记里未存链接</div>
+    </article>
+  </section>
+
+  <!-- 05 -->
+  <section id="c5">
+    <div class="sec-h"><span class="idx">05</span><h2>内容行业的账</h2></div>
+    <p class="sec-p">这期只有一篇讲内容行业，但它把账算得最清楚：钱从哪来、指标看什么、AI 来了谁先被替。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">10</span><span class="tag">内容 · 商业化</span></div>
+      <h3><a href="https://www.ruanyifeng.com/blog/2025/10/weekly-issue-369.html">《罗永浩的十字路口》：Tim（潘天鸿）深度对谈<span class="ext">↗</span></a></h3>
+      <p class="take">影视飓风的账比内容方法论更值得看：<span class="hl">样片养团队，服装做规模，融资一概不接</span>。</p>
+      <div class="sum">
+        <p>最稳的收入是给汽车、游戏、手机厂商拍商业样片；厂商买样片，实际要的是评测里的背书，指出一句缺点就不付款。</p>
+        <p>纯接广告没有规模效应，破局点是有自己的服装品牌：T 恤一年卖几十万到上百万件，单款能到 <b>20 万件</b>；MrBeast 的巧克力年销售额到<b>百亿人民币</b>量级。</p>
+        <p>有平台开价一亿人民币以上要投，他拒了，理由是没有规模效应的内容公司拿了钱，最后会变成投资人的提款机。</p>
+        <p>指标分得很清：短视频只看 <b>5 秒留存</b>，长视频盯 CTR、AVD 和平均播放百分比；商业和流量两堵墙不许打通。</p>
+        <p>对 AI 的判断更狠：十年经验在迅速贬值，调研和制图首当其冲，剪了十年的剪辑师两年内也能替掉；公司里只有 <b>5%</b> 的人真的在用。</p>
+      </div>
+      <div class="host">来源 · <a href="https://www.ruanyifeng.com/blog/2025/10/weekly-issue-369.html">阮一峰博客</a></div>
+    </article>
+  </section>
+
+  <!-- 06 -->
+  <section id="c6">
+    <div class="sec-h"><span class="idx">06</span><h2>生活与想法</h2></div>
+    <p class="sec-p">最后这组是这天的几张闲页：一个国家、两个关于思考的短论，加五条摘抄。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">11</span><span class="tag">国家 · 生活</span></div>
+      <h3><a href="https://news.ycombinator.com/item?id=50066470">澳大利亚的情况很好<span class="ext">↗</span></a></h3>
+      <p class="take">在美、澳、新、英、欧里挑一个地方生活和工作，作者当场选澳大利亚。</p>
+      <div class="sum">
+        <p>人均财富中位数超过美国中位数的 <b>3 倍</b>；平均值略低，因为美国超级富豪特别多。</p>
+        <p>出口额大于进口额，政府收入连着几年超过支出，没有靠不断举债过日子。</p>
+        <p>太阳能和电池按人均算远超中国，白天高峰时段电多到免费，政府还补贴 <b>3000 美元</b>装家用电池把电存起来。</p>
+        <p>基本没有关税，<b>1.5 万美元</b>能买一辆电动车。</p>
+        <p>他猜澳大利亚人不愿承认这些，是怕移民变多抬高房价。</p>
+      </div>
+      <div class="host">来源 · <a href="https://news.ycombinator.com/item?id=50066470">Hacker News</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">12</span><span class="tag">思考 · 工具史</span></div>
+      <h3><a href="https://www.spinellis.gr/blog/20261008/?li261008">思考将成为一种爱好<span class="ext">↗</span></a></h3>
+      <p class="take">作者把「人不再亲自思考」放进工具替代劳动的老序列，认为那是常态。</p>
+      <div class="sum">
+        <p>原话是人类的思考会减少，思考将日益成为一种休闲活动。</p>
+        <p>他举的对照是动物驯化后的狩猎、印刷术发明后的书法、工业化后的木作、机动化后的骑马。</p>
+        <p>这四件事都没有消失，只是从谋生手段退成了爱好。</p>
+      </div>
+      <div class="host">来源 · <a href="https://www.spinellis.gr/blog/20261008/?li261008">个人博客</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">13</span><span class="tag">社交 · 对话</span></div>
+      <h3><a href="https://ken.arneson.name/2015/11/the-value-of-not-getting-to-the-point/">不直奔主题的价值<span class="ext">↗</span></a></h3>
+      <p class="take">吃饭喝咖啡是给聊天留的缓冲，让沉默有事可做。</p>
+      <div class="sum">
+        <p>人爱边喝啤酒、咖啡或吃顿饭边聊，因为食物和饮料接走了「整场谈话必须一直有话说」的压力。</p>
+        <p>手里有东西可做，冷场就不算事故，话可以慢慢绕到正题。</p>
+        <p>2015 年的旧文，观点很短：不直奔主题这件事本身有价值。</p>
+      </div>
+      <div class="host">来源 · <a href="https://ken.arneson.name/2015/11/the-value-of-not-getting-to-the-point/">个人博客</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">14</span><span class="tag">摘抄 · 五条</span></div>
+      <h3>五条短句</h3>
+      <p class="take">五条摘抄放在一起，主题差不多是努力、自由，以及<span class="hl">你会不会被替掉</span>。</p>
+      <div class="sum">
+        <p>扎克伯格：失败不重要，重要的是赢的时候赢多大。</p>
+        <p>一位 X 用户：如果 AI 无处不在而你被禁止使用，等于失去全部经济价值；开源是保住自由和经济能力的唯一办法。</p>
+        <p>一位加州大学教授宣布不再批改作业，理由是学生都用 AI 做作业，老师为什么还要批改。</p>
+        <p>一个人的音乐品味大多在青春期定型，25 岁之后很难再喜欢上不一样的东西，其他方面也一样。</p>
+        <p>《AI 技能将毫无价值》：AI 的用法几周就能学会、几个月就过时，除了眼前这点价值，没有别的意义。</p>
+      </div>
+      <div class="host">来源 · 阮一峰周刊 · 摘录</div>
+    </article>
+  </section>
+
+  <footer>
+    <b>说明</b>　内容来自 <b>docs/笔记/11月18日-阅读</b>。每篇都按我摘下的部分压成一句结论加几条要点，没补外部资料；标题和链接都是原文的。有一篇（Simon Willison 的 2026 年记录）在笔记里出现了两次，合成了一条；以色列间谍软件那条与五条摘抄当天只记了内容、没存链接，就按记下的部分写，没记的地方不猜。
+  </footer>
+
+</div>
+</body>
+</html>

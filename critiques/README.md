@@ -56,6 +56,7 @@ tags: []
 - `critiques/ai-industry/2026-11-奇绩S26-39家Agent核对/` —— `kind: report`（HTML 报告，按公开材料重建 39 家 Agent 标签的分档核对，非官方名单）
 - `critiques/ai-aesthetics/2026-10-AI审美三层结构/` —— `kind: report`（HTML 报告，link-only）
 - `critiques/creative-industry/2026-10-推理模型与游戏工业重估/` —— `kind: report`（HTML 报告，link-only）
+- `critiques/creative-industry/2026-11-Suno音乐创作入门指南/` —— `kind: report`（HTML 指南，平台规则为 2026-11 快照，额度与商用条款以官网为准）
 - `critiques/dating/2027-01-dating-product-advice.md` —— `kind: advice`
 
 ## 与 `notes/insights/` 的分工

@@ -12,9 +12,9 @@
 
 > 每日推荐 —— 宁缺毋滥，努力日更。
 
-- **2026-11-17** · [《复杂经济学》第 04 章：收益递增、路径依赖，与 AI 的赢家通吃](https://openmylife.xyz/articles/reading/complexity-economics-ch04.html) —— 阿瑟第 04 章拆成 12 个知识模块：收益递增与正反馈、双技术竞争的随机游走、三大收益体制的四维对比、非线性框架与政策两难。结论有点反直觉——市场只有「一家通吃」和「各占一半」两种命，且事前算不出是哪一种；末尾附一份 2026 AI 战略自检清单。
-- **2026-11-13** · [国内外生活助理类 AI Agent 清单（v4）](https://openmylife.xyz/articles/agent/life-assistant-agents.html) —— 国际 25 个、国内 16 个、手机厂商自带 5 家、硬件 4 个，附两份实测榜、开源与基础设施、形态速查与六条判断。v4 新增 Tabletop、Toki、AI看山、CyboPal，补 Grok Build 泄密与「守下限」判断。
-- **2026-10-24** · [AI 审美的三层结构：默认审美、调节层与上限层](https://openmylife.xyz/articles/ai/aesthetic-three-layers.html) —— 默认审美是统计引力，提示词是意图翻译，模型能力是细节天花板。动手前先分清：你面对的是默认审美问题，还是能力上限问题。
+- **2026-11-18** · [11 月 18 日，阅读分享](https://openmylife.xyz/articles/reading/2026-11-18-reading-digest.html) —— 一天读到的 14 篇，按 6 个主题归组：AI 之后软件开发的 11 个变化、Simon Willison 的 2026 大模型全记录、不要让 AI 代表你、单人创业剩下的孤独、vibe coding 做出设计师级官网、以色列间谍软件、影视飓风的账、澳大利亚、思考与闲聊。每篇一句结论加几条要点，原文标题与链接都保留。
+- **2026-11-13** · [S26 的 39 家 Agent，能坐实的有几家](https://openmylife.xyz/articles/ai/miracleplus-s26-39-agents.html) —— 官方称 39 家做智能体，却没公布名单。逐条核对 51 个公开项目：13 家原文写明，10 家形态像，16 个标签落在口径差、未公开项目与交叉计数里。
+- **2026-10-21** · [DSH 插件检索经验总结](https://raw.githubusercontent.com/muamu/openmylife/refs/heads/main/critiques/agent-framework/2026-10-dsh-plugin-search-experience.md) —— 为 DSH 找插件的三轮实战复盘：四步检索法、npm 同名包陷阱，以及一份能照做的安装 SOP。
 
 ## 我是谁
 
@@ -68,6 +68,7 @@ OpenMyLife 是一套「把自己当成长期维护的开源项目」的方法与
 1. 灵感备忘录：[开源自己 · 灵感备忘录](./ideas/2026-10-17-openmylife-ideas.md)
 2. 写作方法：[AI 味拆三层](./notes/insights/2026-10-30-ai-flavor-three-layers.md) —— 把 AI 味拆成词、句、结构三层，附七种可数句式、三份自检清单与存疑口径。站点版：[openmylife.xyz/articles/ai/ai-flavor-three-layers.html](https://openmylife.xyz/articles/ai/ai-flavor-three-layers.html)
 3. 洞察：[大模型的壁垒](./notes/insights/2026-10-21-llm-barriers.html) —— 技术收敛之后，壁垒转移到算力、数据、资本与分发渠道。站点版：`https://openmylife.xyz/articles/ai/llm-barriers.html`（部署后生效）。
+4. 每日阅读速览：[notes/reading](./notes/reading) —— 从 2026-11 起，一天读到的多篇按主题归组，每篇一句结论加几条要点。
 
 ## 怎么用这个仓库
 
