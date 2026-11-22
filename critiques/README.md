@@ -42,6 +42,7 @@ tags: []
 - `critiques/personal-agent/2026-10-life-assistant-agents/` —— `kind: report`（HTML 报告，产品清单，已更新至 v4 · 2026-11-13）
 - `critiques/personal-agent/2026-11-personal-agent-v3-context/` —— `kind: report`（HTML 洞察文章，基于上方清单 v3，已接入站点）
 - `critiques/personal-agent/2026-11-personal-agent-v4-defaults/` —— `kind: report`（HTML 洞察文章，基于清单 v4，已接入站点）
+- `critiques/personal-agent/2026-11-22-muse-interview/` —— `kind: report`（HTML 访谈整理，含 137 轮中文文字稿，已接入站点）
 - `critiques/finance/hk-a-shares/2026-10-minimax-zhipu-h1-2026/` —— `kind: report`（HTML 报告）
 - `critiques/auto-industry/2026-10-全球汽车进出口数据研究/` —— `kind: report`（HTML 报告）
 - `critiques/ai-industry/2026-10-kimi-k3-1-pro-pr-crisis/` —— `kind: report`（HTML 报告，AI 公司公关事件复盘）

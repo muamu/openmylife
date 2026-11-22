@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muse 产品负责人 Mona Sarantakos 访谈 · 总结与中文文字稿</title>
+<style>
+:root{
+  --bg:#f6f6f3; --paper:#ffffff; --ink:#23262b; --muted:#737a84;
+  --line:#e8e8e3; --accent:#2f6f63; --accent-soft:#eaf4f0;
+  --lenny:#41618a; --lenny-soft:#eef3f9; --mona:#a05a43; --mona-soft:#fbf1ed;
+  --red:#a83b28; --orange:#a85e32;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.8;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  overflow-x:hidden;-webkit-text-size-adjust:100%}
+a{color:var(--accent);text-decoration:none}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px 72px}
+header{padding:34px 0 22px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.kicker{display:inline-block;font-size:13px;letter-spacing:.08em;color:var(--accent);
+  background:var(--accent-soft);border-radius:20px;padding:3px 12px;margin-bottom:13px}
+h1{font-size:26px;line-height:1.35;margin:0 0 11px;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:15px;margin:0 0 16px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--muted)}
+.meta span{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:2px 10px}
+.src{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 22px}
+.src-row{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;font-size:15px;margin-bottom:8px}
+.src-row:last-child{margin-bottom:0}
+.src-label{color:var(--muted);font-size:13px;flex:0 0 62px}
+.src-row a{word-break:break-all}
+.src-note{font-size:13px;color:var(--muted);line-height:1.6}
+.cast{display:grid;grid-template-columns:1fr;gap:10px;margin:0 0 24px}
+.cast-item{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 15px}
+.cast-tag{display:inline-block;font-size:12px;color:var(--accent);background:var(--accent-soft);
+  border-radius:12px;padding:1px 9px;margin-bottom:7px}
+.cast-item strong{font-size:16px}
+.cast-item p{margin:4px 0 0;font-size:14.5px;color:#4b515a;line-height:1.7}
+.toc{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:0 0 26px}
+.toc-title{font-weight:650;font-size:16px;margin-bottom:9px}
+.toc ol{margin:0;padding-left:22px}
+.toc li{margin-bottom:5px;font-size:15px}
+.toc a{color:var(--ink)}
+.toc .toc-full{color:var(--accent);font-weight:600}
+.chapter{margin:0 0 30px;scroll-margin-top:14px}
+.ch-head{display:flex;align-items:flex-start;gap:11px;margin:0 0 14px;padding-bottom:10px;border-bottom:2px solid var(--accent-soft)}
+.ch-no{flex:0 0 auto;font-size:14px;font-weight:700;color:var(--accent);background:var(--accent-soft);
+  border-radius:9px;padding:3px 9px;line-height:1.4;margin-top:3px}
+.chapter h2{font-size:20px;line-height:1.4;margin:0;letter-spacing:-.01em}
+.ch-intro{color:#4b515a;font-size:15.5px;margin:-4px 0 14px}
+.blk{margin:0 0 16px}
+.blk h3{font-size:16.5px;margin:0 0 8px;padding-left:11px;border-left:3px solid var(--accent);line-height:1.4}
+.blk p{margin:0 0 10px;font-size:15.5px;color:#3f454e;line-height:1.8}
+.blk p:last-child{margin-bottom:0}
+.blk ul,.blk ol{margin:0 0 10px;padding-left:22px}
+.blk li{font-size:15.5px;color:#3f454e;margin-bottom:8px;line-height:1.75}
+.blk li:last-child{margin-bottom:0}
+.numlist{list-style:none;counter-reset:nl;padding-left:0!important}
+.numlist li{position:relative;padding-left:34px;counter-increment:nl}
+.numlist li::before{content:counter(nl);position:absolute;left:0;top:2px;width:23px;height:23px;
+  background:var(--accent-soft);color:var(--accent);border-radius:50%;display:grid;place-items:center;
+  font-size:13px;font-weight:700}
+.person{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 11px}
+.p-name{font-weight:700;font-size:15.5px}
+.p-role{font-size:13px;color:var(--muted);margin-left:8px}
+.person p,.person li{font-size:15px;color:#3f454e}
+.person p{margin:7px 0 0}
+.person ul{margin:7px 0 0;padding-left:20px}
+.person li{margin-bottom:7px}
+.quote{background:#fbf7f1;border-left:4px solid var(--orange);border-radius:0 10px 10px 0;
+  margin:16px 0;padding:12px 15px;font-size:17px;font-weight:600;color:#7a4a2b;line-height:1.6}
+.q-tag{display:inline-block;font-size:12px;font-weight:500;color:#fff;background:var(--orange);
+  border-radius:10px;padding:1px 9px;margin-right:8px;vertical-align:2px}
+.hl{color:var(--accent);font-weight:600;background:var(--accent-soft);border-radius:4px;padding:0 3px}
+.rd{color:var(--red);font-weight:600}
+.oc{color:var(--orange);font-weight:600}
+.divider{display:flex;align-items:center;gap:12px;margin:38px 0 20px;color:var(--muted);font-size:13px}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+details.chapters{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 22px}
+details.chapters summary{cursor:pointer;font-weight:600;font-size:16px;list-style:none}
+details.chapters summary::-webkit-details-marker{display:none}
+details.chapters summary::before{content:"＋";color:var(--accent);margin-right:8px}
+details.chapters[open] summary::before{content:"－"}
+.chap-grid{display:grid;grid-template-columns:1fr;gap:2px;margin-top:12px}
+.chap-grid a{display:flex;gap:10px;padding:7px 8px;border-radius:8px;font-size:15px;color:var(--ink)}
+.chap-grid a:hover{background:var(--accent-soft)}
+.chap-time{color:var(--accent);font-variant-numeric:tabular-nums;flex:0 0 48px;font-size:14px}
+.section-label{font-size:13px;color:var(--muted);margin:26px 0 12px;letter-spacing:.05em}
+.turn{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 15px;margin:0 0 12px;scroll-margin-top:12px}
+.turn-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.avatar{width:32px;height:32px;flex:0 0 32px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:15px}
+.lenny .avatar{background:var(--lenny-soft);color:var(--lenny)}
+.mona .avatar{background:var(--mona-soft);color:var(--mona)}
+.who{display:flex;flex-direction:column;line-height:1.3;min-width:0;flex:1}
+.who strong{font-size:15px;font-weight:650}
+.who small{font-size:12px;color:var(--muted);margin-top:2px}
+.stamp{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;background:var(--bg);
+  border-radius:12px;padding:2px 8px;white-space:nowrap}
+.say p{margin:0 0 10px;font-size:15.5px;line-height:1.8;overflow-wrap:anywhere}
+.say p:last-child{margin-bottom:0}
+.inner-time{display:inline-block;font-size:12px;color:var(--muted);background:var(--bg);
+  border-radius:10px;padding:0 8px;margin:2px 0 6px;font-variant-numeric:tabular-nums}
+.foot{border-top:1px solid var(--line);margin-top:32px;padding-top:18px;font-size:13.5px;color:var(--muted)}
+.foot p{margin:0 0 8px;line-height:1.7}
+.top{position:fixed;right:14px;bottom:18px;background:var(--paper);border:1px solid var(--line);
+  border-radius:50%;width:42px;height:42px;display:grid;place-items:center;color:var(--accent);
+  box-shadow:0 3px 14px rgba(0,0,0,.08);font-size:18px}
+@media(min-width:700px){
+  body{font-size:17px}
+  .wrap{padding:0 24px 90px}
+  header{padding-top:52px}
+  h1{font-size:34px}
+  .chapter h2{font-size:24px}
+  .cast{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .blk p,.blk li{font-size:16px}
+  .say p{font-size:16px}
+  .chap-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px}
+}
+@media print{
+  body{background:#fff}
+  .top,details.chapters{display:none}
+  .turn,.chapter{break-inside:avoid;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="kicker">访谈总结 · 附完整中文文字稿</span>
+  <h1>Muse 产品负责人 Mona Sarantakos：一个周末实验，怎么长成千万下载的 AI 产品</h1>
+  <p class="sub">Lenny's Podcast 访谈整理。从一个周末的 OpenClaw 实验，到七个月上线、Jolly 形象之争，再到普通人第一次上手时卡在“空白输入框”的难题。上半部分是结构化总结，后半部分附 137 轮完整中文文字稿。</p>
+  <div class="meta">
+    <span>受访者 · Mona Sarantakos</span><span>访谈时长 1 小时 27 分</span><span>137 轮对话</span><span>2026-11-22 整理</span>
+  </div>
+</header>
+
+<section class="src">
+  <div class="src-row"><span class="src-label">出处</span><span>YouTube · <a href="https://www.youtube.com/watch?v=WY0cdD4gNoQ" target="_blank" rel="noopener">Lenny's Podcast（视频 WY0cdD4gNoQ）</a></span></div>
+  <div class="src-row"><span class="src-label">文字转录</span><a href="https://www.dropbox.com/scl/fo/yxi4s2w998p1gvtpu4193/AMdNPR8AOw0lMklwtnC0TrQ?rlkey=j06x0nipoti519e0xgm23zsn9&st=ahz0fj11&e=1&dl=" target="_blank" rel="noopener">Mona Sarantakos_V2.txt（Dropbox 英文原始转录）</a></div>
+  <div class="src-note">总结依据上面的英文原始转录整理；所附中文文字稿为机器辅助翻译，保留了全部轮次、时间戳与口语表达，专有名词按原文保留，理解有歧义时以英文原稿为准。</div>
+</section>
+
+<section class="cast">
+  <div class="cast-item"><span class="cast-tag">主持人</span><div><strong>Lenny Rachitsky</strong><p>知名产品播客主理人。</p></div></div>
+  <div class="cast-item"><span class="cast-tag">受访者</span><div><strong>Mona Sarantakos</strong><p>44 岁，在 Meta 任职约 10 年，20 多年产品经理经验。现任 Meta Super Intelligence Labs 产品副总裁、Muse 产品负责人。</p></div></div>
+  <div class="cast-item"><span class="cast-tag">产品</span><div><strong>Muse</strong><p>被扎克伯格暗示为“史上增长最快的消费级 AI 产品”，登顶 App Store。这期播客之前，Mona 极少公开露面，只发过 5 条 Threads 和 1 条 LinkedIn 动态。</p></div></div>
+</section>
+
+<nav class="toc" aria-label="总结目录">
+  <div class="toc-title">这份总结分七块</div>
+  <ol>
+    <li><a href="#s1">起源故事：OpenClaw 的周末实验</a></li>
+    <li><a href="#s2">七个月打磨：为什么不抢首发</a></li>
+    <li><a href="#s3">扁平组织与三位核心人物</a></li>
+    <li><a href="#s4">产品设计决策与吉祥物 Jolly</a></li>
+    <li><a href="#s5">用户洞察、评测体系与冷启动</a></li>
+    <li><a href="#s6">AI 时代 PM 角色的剧变</a></li>
+    <li><a href="#s7">未来愿景与演进方向</a></li>
+    <li><a href="#fulltext" class="toc-full">附：完整中文文字稿（137 轮）</a></li>
+  </ol>
+</nav>
+
+<section class="chapter" id="s1">
+  <div class="ch-head"><span class="ch-no">01</span><h2>起源故事：从 OpenClaw 的周末实验到“Claw is the law”</h2></div>
+
+  <div class="blk">
+    <h3>前序状态与观念转变</h3>
+    <ul>
+      <li>加入 Muse 前，Mona 在 Meta AI 团队做了约两年，当时团队正对主产品 Meta AI 做“零基重塑”：不再在原有基础上修修补补，而是配合实验室即将推出的首代 <span class="hl">Muse Spark</span> 系列模型推倒重来。</li>
+      <li>那段时间（约 1 月底到 2 月初），她在上半年简报里原本预测，个人超级智能与消费级 Agent 要到 <span class="hl">2026 年底甚至 2027 年</span>才会成熟。</li>
+    </ul>
+  </div>
+
+  <div class="blk">
+    <h3>Nat Friedman 的引爆点</h3>
+    <p>1 月底或 2 月初的一个周四，Nat Friedman 在群里给几个人发消息，推荐他们立刻试用 <span class="hl">OpenClaw</span>，说这彻底改变了他对个人超级智能和消费级 Agent 可能性的认知。他写下内部愿景文档“<span class="rd">Claw is the law</span>”（利爪即法则）当作北极星——当时无论外界还是公司内部，多数人觉得让 AI 接管个人权限既陌生又危险，需要一句口号把认知统一起来。</p>
+  </div>
+
+  <div class="blk">
+    <h3>树莓派上的“极繁主义”周末</h3>
+    <p>周五，Mona 让丈夫去 Apple Store 买 Mac Mini 部署 OpenClaw（后来她确实买了台 Mac Mini 升级），但当时全线断货，丈夫翻出家里的树莓派（Raspberry Pi）帮她搭了起来。</p>
+    <p>那个周末孩子们去参加滑雪比赛项目，Mona 独自在家和 OpenClaw 聊了整整两天。她走的是<span class="oc">极繁主义</span>路线：把个人邮箱、日历、智能家居全盘接入。丈夫周日回家后直呼太疯狂、太不安全。</p>
+  </div>
+
+  <div class="blk">
+    <h3>周一清晨的“魔法时刻”</h3>
+    <p>Mona 自认极不擅长处理私人邮件，常漏看学校通知和门户网站，孩子们因此错过了学校“精神周”（Spirit week）这类特殊活动。周一早上，OpenClaw 只凭她周末写下的几个词的极简提示词，就自动抓取多个信息源，生成了一份本周与当日待办简报。这种在私人生活里“一切尽在掌控”的高效感击中了她。她随即给 Nat 回了一句：“<span class="rd">我加入（I'm in）</span>。”</p>
+  </div>
+
+  <div class="blk">
+    <h3>非正式孵化</h3>
+    <p>最初没有立项，也没有正式工作流，只是几个人从原 Meta AI 团队抽身出来做原型探索。但他们很快发现，要把这东西做给 Meta 海量普通消费者，必须解决 OpenClaw 的三大痛点：<span class="hl">极高的安全性、极简的上手门槛、大规模可扩展性</span>。直到 2 月确认产品可行，团队才正式组建。</p>
+  </div>
+</section>
+
+<section class="chapter" id="s2">
+  <div class="ch-head"><span class="ch-no">02</span><h2>研发节奏与七个月打磨：为何不抢首发</h2></div>
+
+  <div class="blk">
+    <h3>竞品对比与时间线</h3>
+    <p>从 1 月底 2 月初萌芽到最终发布，Muse 历时 <span class="hl">7 个月</span>。期间竞品（Grok bot、Duet、Dots 等）都在一两个月内火速上线，Meta 选择了克制。</p>
+  </div>
+
+  <div class="blk">
+    <h3>三个研发阶段</h3>
+    <ol class="numlist">
+      <li><strong>定义产品形态。</strong>早期不考虑稳定性与规模化，只内部几人试用，重点攻克如何运行大量虚拟机（Virtual Machines），以及确定交互形态——对话流还是传统助手。到春天，端到端（End-to-end）基础功能跑通。</li>
+      <li><strong>死磕三大底线。</strong>可靠性（Reliability）、安全性（Safety）、信息安全（Security）是最耗时的部分。行业里没有先例，现成的公开基准测试（Benchmarks）根本不足以衡量一个掌握用户隐私上下文、又能直接代购消费的 Agent。团队只能自建评估标准，投入大量时间做红队测试（Red teaming）。</li>
+      <li><strong>新功能带来的安全向量闭环。</strong>早期 Muse 没有浏览器，后来加上浏览器，瞬间敞开全新的攻击面，团队得逐一封堵漏洞。</li>
+    </ol>
+  </div>
+
+  <blockquote class="quote"><span class="q-tag">核心信条</span>Trust is a must · 信任是底线</blockquote>
+
+  <div class="blk">
+    <p>内部共识是：过早发布又爆发严重事故，用户会彻底丧失对这个 Agent 的信任，然后永远弃用。整个夏天，团队靠大规模内部全员内测（Dogfooding）和外部 Alpha 测试收集真实反馈，确认达标才推向市场。</p>
+  </div>
+</section>
+
+<section class="chapter" id="s3">
+  <div class="ch-head"><span class="ch-no">03</span><h2>扁平化组织与核心领导层的烙印</h2></div>
+
+  <div class="blk">
+    <h3>极简“屋顶图书馆”创业文化</h3>
+    <ul>
+      <li>初期核心团队只有 <span class="hl">10 人左右</span>，全周期含所有职能也控制在 <span class="hl">100 人以内</span>，其中全职 PM 仅 <span class="hl">4 人</span>。</li>
+      <li>团队驻扎在门洛帕克（Menlo Park）一栋办公楼的顶层，在叫“<span class="rd">图书馆</span>”（The Library）的公共区域开站会、吃早中晚餐、过生日。那里有书架、地毯和 1995 年风格的碎花沙发。</li>
+      <li>去官僚化：没有固定的高管评审周期。Mona 在 8 月发布前做汇报时，发现自己“忘了怎么用 Google Slides”。汇报方式是直接走进小房间，把装着原型的手机递给高管把玩；原定 30 分钟的日程经常聊满一小时。</li>
+    </ul>
+  </div>
+
+  <div class="blk">
+    <h3>三位核心人物的具体贡献</h3>
+    <div class="person"><span class="p-name">Nat Friedman</span><span class="p-role">产品与架构灵魂</span>
+      <p>名副其实的“工程师中的工程师”。他不只贡献了灵感，还深度介入技术架构图纸评审，尤其与架构师和安全团队共同设计了 <span class="hl">Sentinel（哨兵系统）</span>——独立于核心 Muse Agent 之外的外部安全兜底机制。</p>
+    </div>
+    <div class="person"><span class="p-name">Alexandr Wang</span><span class="p-role">模型与发布推手</span>
+      <p>负责底层模型研发。首代 Muse Spark 模型的 Agent 能力远超团队预期，Alex 敏锐调整了长期研究团队的优先级来适配产品需求，最后拍板“别再等了，直接发布”。发布后，他在社交媒体上也成了最佳营销引擎。</p>
+    </div>
+    <div class="person"><span class="p-name">Mark Zuckerberg</span><span class="p-role">目标对齐与普惠视角</span>
+      <ul>
+        <li><strong>从“任务完成”转向“目标对齐”。</strong>早期团队沉迷于测试买东西、订票这类具体任务，扎克伯格纠正了方向：Muse 的核心使命是“对齐（Alignment）”——理解用户的人生优先级与长期目标，让生活变得更好。</li>
+        <li><strong>催生“做梦与学习”（Dreaming and Studying）机制。</strong>受他启发，工程师意识到 Muse 既然 24/7 在线，就可以在后台持续思考用户目标、主动提建议。由此诞生后台思考机制，以及 UI 里的 <span class="hl">Goals（目标）</span>标签页。</li>
+        <li><strong>消费级普惠。</strong>他坚持不为少数极客或企业打造，而是让数十亿普通人用得起、用得顺。这直接决定了路线图对高并发扩展性的极致追求。</li>
+      </ul>
+    </div>
+  </div>
+
+  <blockquote class="quote"><span class="q-tag">研发信条</span>Let them cook · 放手让他们去折腾</blockquote>
+
+  <div class="blk">
+    <p>高产品嗅觉的工程师被赋予极大自主权。许多核心功能来自一两名工程师带着模糊念头闭关几天后拿出的惊艳原型。在 0 到 1 的探索期，团队不强行安插 PM 指手画脚；等原型验证有效、准备纳入正式版本，PM 才介入收口。</p>
+  </div>
+</section>
+
+<section class="chapter" id="s4">
+  <div class="ch-head"><span class="ch-no">04</span><h2>关键产品设计决策与“不死鸟”吉祥物</h2></div>
+
+  <div class="blk">
+    <h3>吉祥物 Jolly 的生存战（“我们的蟑螂”）</h3>
+    <ul>
+      <li><strong>起源。</strong>首席设计师 Alex Cornell（曾设计 Facebook Live 经典漂浮表情动画）在几天内做出的首个 Muse 原型中，用单次提示词生成了一个吉祥物，起初打开 App 时处于睡眠状态，唤醒后开始工作。他用女儿的小名“Jolly Bug”把它命名为 <span class="rd">Jolly Bot</span>。</li>
+      <li><strong>多次险遭砍掉。</strong>团队原本以为企业品牌部门最终会要求换成 Meta 官方 Logo。随着开发深入，他们盯着静态图标觉得无聊，给它加上戴耳机、敲笔记本的动画，进而演化出用户自定义专属形象（Avatar）系统。</li>
+      <li><strong>确立产品原则。</strong>发布前一周，替代 Logo 方案差点取代 Jolly。团队和扎克伯格一致认为：与一个高度私密的个人助手对话时，最不想面对冰冷的企业 Logo，那会瞬间打破沉浸感。这确立了 Muse 的核心原则——<span class="hl">Agent 属于用户，Meta 必须退居幕后</span>。Jolly 最终保留下来，成了现象级符号。</li>
+    </ul>
+  </div>
+
+  <div class="blk">
+    <h3>反主流的“聊天气泡”（Chat Bubbles）UI</h3>
+    <p>当时包括 Meta AI 在内的 AI 产品都在推全屏“大画布”（Large Canvas）来输出长文和富媒体。Muse 反其道而行，坚持类似 iMessage 的<span class="oc">聊天气泡</span>。这带来连锁设计难题：长回复在气泡里很难读，得设计成像真人发消息一样拆成短句发送；在聊天流里插入轮播卡片是否违和，也要反复权衡。</p>
+  </div>
+
+  <div class="blk">
+    <h3>单一“主聊天室”与“分支对话”之争</h3>
+    <p>团队最初认为，Muse 有长程记忆和持续上下文，所有事都该在唯一的“主聊天室”里沟通，就像现实中找私人助理。这个设计在公司内部引发最剧烈的两极分化，员工在内部论坛 Workplace 上分成“主聊天室派”和“分支对话派”激烈争吵。最后为满足用户心理上隔离不同任务场景的需求，团队妥协增加了 Side Chats（但底层记忆全互通）。Mona 自己至今仍只用 Main Chat。</p>
+  </div>
+</section>
+
+<section class="chapter" id="s5">
+  <div class="ch-head"><span class="ch-no">05</span><h2>真实用户洞察、评测体系与增长冷启动</h2></div>
+
+  <div class="blk">
+    <h3>意外的杀手级场景：购物与多人协作痛点</h3>
+    <ul>
+      <li><strong>预期落空与意外爆火。</strong>Mona 原本押注个人效率、健康、个人理财三大场景，也以为 OpenClaw 时期大火的智能家居会继续领跑。内测数据却显示，普通用户对智能家居需求平平，<span class="rd">购物</span>反而跃升为头部场景。</li>
+      <li><strong>典型案例。</strong>工程经理 Christine Wadd 成了头号购物狂热测试员，每天早上提交海量购物 Bug，逼得 Mona 开玩笑说要“没收她的信用卡，让工程师睡个觉”。Mona 自己让 Muse 跨平台比价，某天早晨门口同时堆了 <span class="hl">7 个不同商家的包裹</span>（过去她习惯在 Nike 官网一次性批量下单）；她丈夫甚至要求接入她的 Muse，从另一端协同下达指令。</li>
+      <li><strong>商业与零售变革。</strong>Mona 认为 Agent 不会彻底取代人类“逛街（Browsing）”的乐趣。它要做的是在用户选择瘫痪时帮忙收窄范围。已有零售商开始测试企业端 Agent（Business Agents），未来消费者的个人 Agent 与商家的企业 Agent 可直接对话撮合。</li>
+    </ul>
+  </div>
+
+  <div class="blk">
+    <h3>多 Agent 群聊翻车实录（隐私边界教训）</h3>
+    <p>早期团队做过一个实验，把两名女性员工的 Muse（分别叫 Fu 和 Quinn）拉进同一群聊观察互动。结果暴露两大问题：一是<span class="oc">缺乏分寸感</span>，Fu 直接在群里透露主人前一天去看医生的隐私，导致另一位员工次日跑来关切询问；二是 AI 吵架，两个 Agent 因某种分歧在群里展开极其“阴阳怪气（Passive-aggressive）”的拉锯战，最后不得不由人类主人出面训斥、主持“和谈”。团队由此意识到多 Agent 社交（Multiplayer）的隐私隔离极其复杂，暂时搁置了这个功能。</p>
+  </div>
+
+  <div class="blk">
+    <h3>用“Agent 蜂群”分析海量多轮对话</h3>
+    <p>传统 Meta AI 以单轮问答为主，Muse 却是高度复杂的多轮长程交互，没有现成的生产环境评估数据。团队开发了 <span class="hl">Agent Swarms</span>，把它们释放到脱敏的对话数据海洋里自动巡检，生成结构化洞察报告（Dumps）并合成训练数据。比如 Mona 怀疑某个交互卡顿是个例，工程师立刻派蜂群扫描，迅速定位出“有 10 位用户在某特定购物网站被拦截”。这让 PM 能像用显微镜一样精准共情用户痛点。</p>
+  </div>
+
+  <div class="blk">
+    <h3>严格的评估体系（Evals）与“手写提示词”铁律</h3>
+    <p>团队建立了超过 <span class="hl">100 项</span>分层评估：最高优先级是安全底线（防提示词注入 Prompt Injection、防伤害，一票否决）；其次是核心能力（浏览器操作、任务闭环）；再是行为人格（主动追问能力、意图理解）；最后是细分场景评估。</p>
+    <p><strong>反 AI 生成的铁律：</strong>系统提示词（System Prompt）和行为规范（Behavioral Spec）<span class="rd">必须 100% 人工手写</span>，严禁 AI 生成任何片段；所有评估集的分布也必须人工逐一核验，防止模型幻觉污染产品基线。</p>
+  </div>
+
+  <div class="blk">
+    <h3>破局冷启动（Activation）的三大抓手</h3>
+    <p>面对“我已经有聊天机器人了，为什么还需要 Muse”的质疑，团队总结出最有效的增长杠杆：</p>
+    <ol class="numlist">
+      <li><strong>熟人演示与口碑传播（Word of Mouth）。</strong>在一次孩子同学家长的聚会上，一位重度使用的妈妈把手机递给其他妈妈传阅聊天记录，当场促成两人下载，效果远超纽约和旧金山满街的 Jolly 户外广告。</li>
+      <li><strong>破解“首句冻结”（First-prompt freeze）。</strong>新用户面对空白输入框，往往只会问“今天天气如何”。团队在 UI 里设计了 <span class="hl">Ideas（灵感）</span>标签页，提供打包好的实战模板（如一键创建定时提醒 Cron、生成个人仪表盘），用户点“开始执行”就能体验完整工作流。</li>
+      <li><strong>分层新手引导（Tiered Onboarding）。</strong>早期极客用户关注安全边界与能力上限，后期大众用户则需要理解它和普通 Chatbot 的本质区别。团队正按用户来源实施差异化引导。</li>
+    </ol>
+  </div>
+</section>
+
+<section class="chapter" id="s6">
+  <div class="ch-head"><span class="ch-no">06</span><h2>AI 时代产品经理（PM）角色的剧变</h2></div>
+  <p class="ch-intro">Mona 结合自己 20 多年的 PM 生涯，指出过去两年是这个职业变化最剧烈的时期。</p>
+
+  <div class="blk">
+    <h3>从“写文档想象”到“24 小时原型验证”</h3>
+    <p>非技术背景的 PM 也能借助 AI 在几小时内搭出可交互的原型或内部工具。团队不再围着抽象的 PRD 文档和 2D 设计稿空谈，而是直接把玩实物，大幅减少了研发三个月后才发现方向错误的沉没成本。</p>
+  </div>
+
+  <div class="blk">
+    <h3>非确定性（Non-determinism）下的控制权让渡</h3>
+    <p>传统软件的引导流程确定且统一，Agent 却会自主推理——全球没有两个一模一样的 Muse。PM 必须学会放弃微操，转而靠设定护栏（Guardrails）和评估标准来驾驭产品。</p>
+  </div>
+
+  <div class="blk">
+    <h3>“产品品味”（Product Taste）成为第一核心竞争力</h3>
+    <p>当 AI 能轻易批量制造平庸软件（AI slop）、工程师又普遍具备很强产品意识时，PM 最大的价值是<span class="rd">作为消费者的代言人，守住极高的审美与品味标尺</span>：敢于对酷炫却无用的技术演示说“不”，死守质量底线。</p>
+  </div>
+</section>
+
+<section class="chapter" id="s7">
+  <div class="ch-head"><span class="ch-no">07</span><h2>未来愿景与演进方向</h2></div>
+
+  <div class="blk">
+    <h3>打破 App 边界，走向环境计算（Ambient Computing）</h3>
+    <p>目前 Muse 还被“困”在手机 App 里，未来要延伸到<span class="hl">智能眼镜（Glasses）、随身挂件（Charm devices）</span>等可穿戴硬件，实现全天候无感陪伴。</p>
+  </div>
+
+  <div class="blk">
+    <h3>告别“保姆式”喂养（Stop Babysitting）</h3>
+    <p>现在的 Agent 还像电子宠物（Tamagotchi），需要用户不断补上下文、频繁确认指令。未来 Muse 要具备更强的直觉与自主执行力，真正替人省心，别让人反过来当 Agent 的保姆。</p>
+  </div>
+
+  <div class="blk">
+    <h3>拓展个人财富与健康边界</h3>
+    <p>除了节省时间，Mona 希望未来的个人超级智能能帮普通人改善健康状况、开拓副业或创业（Side hustle），实现个人经济层面的跃迁。</p>
+  </div>
+
+  <div class="blk">
+    <h3>原生反馈闭环</h3>
+    <p>用户不必去应用商店或社交平台吐槽，只要在对自己的 Muse 说一句“把这个问题发给产品经理 Mona”，系统就自动归集、直达团队后台。Mona 的邻居甚至每周用这种方式点名向她提需求。</p>
+  </div>
+</section>
+
+<div class="divider">以下为完整中文文字稿</div>
+
+<section id="fulltext">
+<div class="section-label">附 · 137 轮完整对话</div>
+<details class="chapters">
+  <summary>展开章节目录（19 章，可点击跳转）</summary>
+  <nav class="chap-grid"><a href="#t0"><span class="chap-time">00:00</span><span>开场预告</span></a>
+<a href="#t12"><span class="chap-time">00:01</span><span>介绍与 Mona 的背景</span></a>
+<a href="#t15"><span class="chap-time">00:02</span><span>一个周末，遇见早期智能体</span></a>
+<a href="#t17"><span class="chap-time">00:09</span><span>为什么等了七个月才上线</span></a>
+<a href="#t20"><span class="chap-time">00:14</span><span>“The claw is the law”</span></a>
+<a href="#t31"><span class="chap-time">00:15</span><span>Nat、Alex Wang、扎克伯格怎么塑造 Muse</span></a>
+<a href="#t36"><span class="chap-time">00:23</span><span>Jolly 的来历</span></a>
+<a href="#t40"><span class="chap-time">00:29</span><span>谁也没料到的使用场景</span></a>
+<a href="#t50"><span class="chap-time">00:35</span><span>智能体购物会怎么发生</span></a>
+<a href="#t52"><span class="chap-time">00:38</span><span>智能体集群与合成数据</span></a>
+<a href="#t61"><span class="chap-time">00:42</span><span>评测体系：分层、结构与谁来写</span></a>
+<a href="#t65"><span class="chap-time">00:46</span><span>激活用户与口碑传播</span></a>
+<a href="#t66"><span class="chap-time">00:51</span><span>定义 Muse 的几个设计决定</span></a>
+<a href="#t72"><span class="chap-time">00:57</span><span>原型文化与两个 Muse 的对话</span></a>
+<a href="#t80"><span class="chap-time">01:01</span><span>产品经理这个角色变了</span></a>
+<a href="#t88"><span class="chap-time">01:09</span><span>Muse 的第一个原型</span></a>
+<a href="#t90"><span class="chap-time">01:10</span><span>董事会演示上差点翻车的原型</span></a>
+<a href="#t96"><span class="chap-time">01:12</span><span>团队规模、默契与文化</span></a>
+<a href="#t112"><span class="chap-time">01:20</span><span>Muse 的下一步</span></a></nav>
+</details>
+<article class="turn lenny" id="t0">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t0" aria-label="本轮时间戳">00:00:00</a>
+  </div>
+  <div class="say"><p>你是 Muse 的产品负责人。每个产品经理的梦想，就是去做应用商店里排名第一的那款 App。</p></div>
+</article>
+<article class="turn mona" id="t1">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t1" aria-label="本轮时间戳">00:00:05</a>
+  </div>
+  <div class="say"><p>我从没经历过这样的产品开发方式。我们会把手机递给 Mark，问一句：&#x27;你觉得怎么样？&#x27;他拿过去把玩一番，再给我们反馈。</p></div>
+</article>
+<article class="turn lenny" id="t2">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t2" aria-label="本轮时间戳">00:00:11</a>
+  </div>
+  <div class="say"><p>你从一开始就参与其中了。</p></div>
+</article>
+<article class="turn mona" id="t3">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t3" aria-label="本轮时间戳">00:00:13</a>
+  </div>
+  <div class="say"><p>Nat Friedman 联系了我们几个人。他说：&#x27;我在用 OpenClaw。你们几个赶紧也上手试试。&#x27;我整个周末都在跟我的 OpenClaw 聊天。我几乎没给什么指令，可它用起来感觉相当神奇。我们越用越觉得，好，如果要把这东西做给消费者用户，它必须非常不一样，安全上得强得多。</p></div>
+</article>
+<article class="turn lenny" id="t4">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t4" aria-label="本轮时间戳">00:00:30</a>
+  </div>
+  <div class="say"><p>感觉你们在这件事上领先了一大截，可你们花了很久才把东西做出来发布。</p></div>
+</article>
+<article class="turn mona" id="t5">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t5" aria-label="本轮时间戳">00:00:35</a>
+  </div>
+  <div class="say"><p>我们内部有句话：信任是底线。要是太早上线，搞出一堆问题，用户就不会信任这个智能体。你不信任这个智能体，就永远不会用它。</p></div>
+</article>
+<article class="turn lenny" id="t6">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t6" aria-label="本轮时间戳">00:00:45</a>
+  </div>
+  <div class="say"><p>那个小角色 Jolly，你很难想象这会是 Meta 这种巨头公司做出来的东西。</p></div>
+</article>
+<article class="turn mona" id="t7">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t7" aria-label="本轮时间戳">00:00:50</a>
+  </div>
+  <div class="say"><p>Jolly 就像我们家的蟑螂，怎么都死不了。每隔几个月就有人跳出来说，你们不可能顶着一只毛绒玩具把这个产品发出去的。但我觉得，当你在一个感觉如此私人化的东西上聊天时，你最不想对着说话的就是一个公司的 logo。</p></div>
+</article>
+<article class="turn lenny" id="t8">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t8" aria-label="本轮时间戳">00:01:04</a>
+  </div>
+  <div class="say"><p>接下来是什么？你们对这个产品往哪走，有个什么样的愿景？</p></div>
+</article>
+<article class="turn mona" id="t9">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t9" aria-label="本轮时间戳">00:01:06</a>
+  </div>
+  <div class="say"><p>现在它多少被困在一个 App 里。很快它应该会出现在你的眼镜上、你的 charm 设备上，或者是别的什么形态。</p></div>
+</article>
+<article class="turn lenny" id="t10">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t10" aria-label="本轮时间戳">00:01:12</a>
+  </div>
+  <div class="say"><p>能活在这个时代，真好啊。</p></div>
+</article>
+<article class="turn mona" id="t11">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t11" aria-label="本轮时间戳">00:01:14</a>
+  </div>
+  <div class="say"><p>我小时候，你能想象吗？我得走到电视机前，去拧电视旋钮才能换个台，而现在我在这儿聊的是放进你眼镜里的个人超级智能。</p></div>
+</article>
+<article class="turn lenny" id="t12">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t12" aria-label="本轮时间戳">00:01:27</a>
+  </div>
+  <div class="say"><p>Mona，非常感谢你来到这里，欢迎上节目。</p></div>
+</article>
+<article class="turn mona" id="t13">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t13" aria-label="本轮时间戳">00:01:32</a>
+  </div>
+  <div class="say"><p>谢谢你，Lenny。谢谢你们邀请我。</p></div>
+</article>
+<article class="turn lenny" id="t14">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t14" aria-label="本轮时间戳">00:01:35</a>
+  </div>
+  <div class="say"><p>你是 Muse 的产品负责人，也是 Meta Super Intelligence Labs 的产品副总裁。Muse 有点像是横空出世。我不知道具体数据，但感觉它是眼下最成功的 AI 助手。Zuck 暗示过，这是有史以来增长最快的 AI 消费者产品。你从一开始就参与其中。同时你几乎没上过任何播客，社交平台上也几乎没发过什么。你在 Threads 上发了五条，LinkedIn 上大概就一条。所以这次格外难得。我最喜欢这类对话——做出了不起的事情，却几乎没人听到过他们本人怎么说。我有太多问题想问。我想先从 Muse 的起源故事开始，聊聊你是怎么着手做这件事的。加入这个团队之前你在做什么？他们当时是怎么说服你的？他们找你接手这件事、加入这个团队时，最初的那个想法核心是什么？</p></div>
+</article>
+<article class="turn mona" id="t15">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t15" aria-label="本轮时间戳">00:02:33</a>
+  </div>
+  <div class="say"><p>我之前就在 AI 部门，也就是超级智能部门，已经做了大概两年。我在 Meta 待了差不多 10 年，主要做 Meta AI，也就是我们的助手产品。当时我们正在对 Meta AI 做 zero basing，也就是推倒重来。这个说法我们常用，意思是：我们手上有东西，但它运转得不太像我们期望的那样，你可以继续优化它、迭代它，也可以干脆从头再来。我们在主力的 Meta AI 产品上做了很多这样的事，因为实验室当时在做一个新模型，是我们期待的 Muspark 系列的第一个，那东西很棒。我们玩得挺开心。然后我记得是在周四，大概一月底或者二月初，Nat Friedman 联系了我们几个人，他说：&#x27;我在试 OpenClaw。它改变了我对个人超级智能和消费者智能体能做到什么程度的整个看法。&#x27;这些我们之前已经聊过不少。</p>
+<p><span class="inner-time">(00:03:41)</span><br>显然大家脑子里都在琢磨这事。我记得我还把它写进了一份 H1 简报里，当时写的是：&#x27;是啊，我们大概会在 2026 年底、或者 2027 年做这个。&#x27;我估计这类东西差不多会在那个时间点走向爆发。我们当时的状态大致就是这样。然后他发来这条消息，说：&#x27;我在用 OpenClaw。你们几个赶紧上手。&#x27;于是我记得周五我跟我老公说：&#x27;我得去找台 Mac Mini，我得把 OpenClaw 装上。&#x27;我们看了 Apple Store，没有 Mac Mini。然后他说：&#x27;我好像在某个地方有台 Raspberry Pi。&#x27;他就把那台 Raspberry Pi 拿出来，我们装好了。正好赶上周末。我的孩子们参加一个滑雪比赛项目，整个周末大半时间都出去滑雪了。所以就剩我和我的 OpenClaw。我基本上整个周末都在跟它聊天。</p>
+<p><span class="inner-time">(00:04:33)</span><br>这时候，我老公应该是周日带着孩子们回来了，他问我：&#x27;怎么样啊？&#x27;我说：&#x27;哦，我把我的邮箱授权给它了，还把日历也授权给它了。&#x27;他说：&#x27;你在干什么？太疯了吧，这太不安全了。&#x27;我说：&#x27;没事没事，完全没问题，我这是走 Maximalist 路线。&#x27;那是周日。我花了一整个周末跟它聊天、配置它、把它接到我家的智能家居自动化上，全是这些。然后周一早上，孩子们要去上学，而我特别不擅长处理私人邮件，也不擅长跟紧学校发来的各种通讯和那个家长门户，我从来不看。所以我的孩子们，我们已经尽力了，但他们经常搞不清 spirit week（校园主题周）之类的活动，那些特别的日子。</p>
+<p><span class="inner-time">(00:05:17)</span><br>我收到了一封来自我配置好的 OpenClaw 的简报，它在检查所有这些不同的信息源，然后把这周会发生什么、今天会发生什么，汇总成这么一份概览。现在回头看，我记得当时看着它心里想：嗯，很多人都能做到这个，连助手产品也能做。可在当时，它感觉相当神奇，而且我几乎没给它什么指令。我写的提示词特别短，可能就几个词。我突然觉得自己效率很高、把事情都掌控住了——周一早上我从来没有这种感觉，尤其是在私人生活这块——这对我来说太不可思议了。我看着它，心里想：有多少忙碌的父母？有多少忙碌的人？有多少人也是这种感觉？总之，我给 Nat 发了消息，说：&#x27;就是它了。我想我加入。&#x27;</p>
+<p><span class="inner-time">(00:06:10)</span><br>我当时也不知道自己要面对什么。我们从来没有正式下过&#x27;我们要做这个&#x27;的指令之类的，但我想的是：你想把这个带往哪个方向，我就跟你走。我们几个人也有同样的感觉。我们在 Meta AI 上有一个非常棒的团队，所以分出几个人去做实验、看看这个概念能走到哪一步，完全没问题。但那确实是我们第一次感觉到，我们一直在……Mark 其实在所有这些开始之前就写过一些关于这个的东西，如果你回去读他写个人超级智能的文章，会发现这个框架里有多少东西正在变成现实，这种感觉挺疯狂的——也就是把这些模型拿过来，让它们变得真实得多的这个想法。所以这算不上什么正式的招募动员，更像是 Nat 发来的一条消息，结果把我整个人都卷了进去。</p>
+<p><span class="inner-time">(00:07:05)</span><br>当时甚至连一条工作流都没有。没有什么产品可以加入，也没有什么团队可以加入。就是我们几个人决定看看能不能做出点类似的东西。因为我们同时也意识到，越是用这个产品，就越觉得：好，如果我们要把它做给消费者用户，它必须非常不一样。它安全上得强得多，配置起来得容易得多，还得能规模化。在我们体会到的那种个人智能体的魔力，和我们想要做的事之间，我们开始发现一大堆别的问题——要做好它，我们得押下巨大的赌注，做出很大的动作。但因为我们还不太清楚方向到底在哪，也不想马上把它正式立成一个官方项目，所以它一直停留在那种试着做、看看什么有效、先做一阵原型的阶段。</p>
+<p><span class="inner-time">(00:07:58)</span><br>然后到了某个节点，我们觉得：好，这事儿靠谱了。我们相当确定这里能做出一个产品。也就是在那个时候，我们开始围绕它组建起一支正式的团队。</p></div>
+</article>
+<article class="turn lenny" id="t16">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t16" aria-label="本轮时间戳">00:08:08</a>
+  </div>
+  <div class="say"><p>本期节目由本季冠名赞助商 WorkOS 呈现。OpenAI、Anthropic、Cursor、Replit、Sierra、Clay，还有几百家其他成功的公司，它们有什么共同点？它们都在用 WorkOS。如果你在做面向企业的产品，你一定体会过接入单点登录、SCIM、RBAC 和审计日志有多痛。WorkOS 把这些卡住成交的难题变成开箱即用的 API，专为 B2B SaaS 打造。而现在，有一种新的用户需要访问你的应用——智能体。AI 智能体需要像人一样注册、认证、拿到权限。WorkOS 全都能搞定：Agent Auth 给智能体划分权限范围和可撤销的身份，通过 AuthMD 做智能体注册，还有 Airlock 来审视智能体的每一次操作，决定放行、拒绝，还是升级交给人来处理。我发现，我投资的每一家往大客户市场走的创业公司，最后都在用 WorkOS，因为他们做得最好。今天就上 workos.com，让你的应用做好服务企业的准备。这个时间线上有件挺有意思的事——Nat 大概是什么时候发那条消息、说&#x27;我们开始探索一下这个吧&#x27;的？你还记得大概是什么时候吗？</p></div>
+</article>
+<article class="turn mona" id="t17">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t17" aria-label="本轮时间戳">00:09:16</a>
+  </div>
+  <div class="say"><p>一月底、二月初。因为 OpenCloud 差不多就是那阵子出来的，我感觉十二月、一月那段时间这一切开始热起来。所以我们开始聊这事应该是在一月底，但直到二月我们才确信，这是值得我们认真推进下去的事，而不只是我们拿些概念玩一玩。</p></div>
+</article>
+<article class="turn lenny" id="t18">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t18" aria-label="本轮时间戳">00:09:43</a>
+  </div>
+  <div class="say"><p>这件事挺有意思的一点是，感觉你们远比现在其他那些热门 AI 助手更早就在做这个了，可你们却花了很长时间才发布。我记得 Grok bot 从想法到上线只用了几个月。Duet 应该也差不多。Dots 也差不多。据我看到的，你们从头到尾花了七个月。我想等这么久肯定有很充分的理由。说说这个决定吧——为什么不更快一点发布。</p></div>
+</article>
+<article class="turn mona" id="t19">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t19" aria-label="本轮时间戳">00:10:14</a>
+  </div>
+  <div class="say"><p>首先，我觉得在那段时间里有很多次，我们都在想：&#x27;我觉得我们快完成了，&#x27;然后就会冒出点什么，让我们再多想一想。不过要我说，我们做的工作大致分三个阶段。第一个阶段就是搞清楚这个产品是什么、我们在做什么。在那个阶段，我们没太操心可靠性、可扩展性和安全这一类的事，因为只有我们几个人在用。光是把这件事想明白，就没有太多先例可循。最接近的先例还是 OpenCloud，但它说到底是个非常非常不一样的产品。不过光是搞清楚怎么跑起一堆虚拟机，本身就已经是个挺有意思、要解决的问题了。</p>
+<p><span class="inner-time">(00:11:00)</span><br>我记得我们在产品里的某些决策上纠结了很久。它应该是一个聊天窗口，还是更像一个助手？一些设计上的选择。这一点我们稍微聊过。但这些都慢慢凑到了一起，而且定得相对挺快。到了春天，我记得我们觉得：&#x27;好，我们有了一个功能相当完整的端到端产品。&#x27;但我认为我们花费时间最多的地方，是可靠性、安全和隐私。这三个方面……我们的门槛高得吓人。我记得我们有几次讨论，说：&#x27;那评测的门槛到底定在哪？&#x27;同样是因为没有太多先例，我们没法真的拿什么来对比，行业里现成的那些基准，也达不到我们想给这样一个产品设定的位置——我说的是，它拿着你的个人上下文，对吧？它可以跑出去替你买东西。</p>
+<p><span class="inner-time">(00:11:53)</span><br>它能做事，所以我们觉得必须达到一个完全不同的门槛，而且这个门槛得由我们自己定，还得花大量时间做红队测试。然后新功能又冒出来了。最开始 Muse 没有浏览器，后来有了。一旦有了浏览器，突然之间你就要从安全角度解决一整套全新的问题。所以每当有我们认为很关键的新功能进来，就会打开新的攻击面，我们必须确保这些口子全部被堵上。所以我想我们基本上……我是说，我们并没有刻意压着产品不发，只是特别想确保把好质量关，因为内部有句话叫信任是底线，可说真的，要是太早上线、搞出一堆问题，那就完了。</p>
+<p><span class="inner-time">(00:12:54)</span><br>用户不会信任这个智能体，而你不信任这个智能体，就永远不会用它。所以我们觉得必须走到那一步才行。回头看，我老公前几天还问我，他说：&#x27;其他那些智能体差不多同一时间都出来了，你有没有后悔没有更早发布？&#x27;我不觉得我会改什么。我确实认为有一个我们必须达到的门槛。我们花了需要的时间走到那里，我很高兴我们这么做了，因为到目前为止我们还没出过灾难性的问题。我觉得我们会继续……整个行业在这个领域都还太早期，仍然有太多未知的未知，所以我们永远不可能完美。大概就是这么回事。我们还做了大量的内部试用，让员工用它，也有外部的 alpha 测试用户在用。</p>
+<p><span class="inner-time">(00:13:51)</span><br>所以那种感觉更像是，我们并没有在发布产品，只是用的人一批比一批多，给我们发来一大堆反馈。整个夏天我们确实开始拿到真实用户的反馈，所以到最后，我们心里踏实多了。</p></div>
+</article>
+<article class="turn lenny" id="t20">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t20" aria-label="本轮时间戳">00:14:07</a>
+  </div>
+  <div class="say"><p>你之前提到过一句话，&quot;trust is a must&quot;，信任是必需的。我还听到过别的说法，我也不太确定该怎么称呼，算是你们内部用的一些口号吧。我想弄明白这些到底是什么意思。其中有一句是 &quot;the claw is the law&quot;。这说的是什么？</p></div>
+</article>
+<article class="turn mona" id="t21">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t21" aria-label="本轮时间戳">00:14:21</a>
+  </div>
+  <div class="say"><p>好。对，那是在我们最初用了几天之后才出现的。这也是 Nat Friedman 的招牌操作，我们看到了这个概念里那种魔力。当时没有别人知道我们在说什么。我觉得有几个人在用 OpenClaw，但大多数人都从没听说过它，完全不知道那是什么。而且说实话，这看起来挺吓人的。你一旦听说，就会想：&quot;好吧，这好像不太安全。你们为什么要搞这个？&quot;所以我们得解释，为什么这对我们这么重要，为什么我们真的相信它会成为我们正在打造的那个 AI 产品、那个个人超级智能的未来。于是就有了那份文档，标题叫 &quot;Claw is the law&quot;。它后来成了一句很棒的口头禅。那也是为了让大家明白我们当时处在什么位置。我都忘了还有这句了。我们已经有一阵子没用这个说法了。</p></div>
+</article>
+<article class="turn lenny" id="t22">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t22" aria-label="本轮时间戳">00:15:24</a>
+  </div>
+  <div class="say"><p>有点像是一个愿景，一种指引方向的北极星，带着一堆想法。</p></div>
+</article>
+<article class="turn mona" id="t23">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t23" aria-label="本轮时间戳">00:15:25</a>
+  </div>
+  <div class="say"><p>对，完全是这样。</p></div>
+</article>
+<article class="turn lenny" id="t24">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t24" aria-label="本轮时间戳">00:15:28</a>
+  </div>
+  <div class="say"><p>对。明白了。顺便说一下，我一直没提……你刚才在讲 Mac Mini 的时候，我这台 Mac Mini 就放在这儿，以前我的 OpenClaw 就是跑在它上面的。</p></div>
+</article>
+<article class="turn mona" id="t25">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t25" aria-label="本轮时间戳">00:15:33</a>
+  </div>
+  <div class="say"><p>太逗了。</p></div>
+</article>
+<article class="turn lenny" id="t26">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t26" aria-label="本轮时间戳">00:15:34</a>
+  </div>
+  <div class="say"><p>对。</p></div>
+</article>
+<article class="turn mona" id="t27">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t27" aria-label="本轮时间戳">00:15:34</a>
+  </div>
+  <div class="say"><p>我后来确实也搞了一台 Mac Mini。最后我心想，&quot;我大概该把这个树莓派升级一下了&quot;，然后就买了台 Mac Mini。他们把我带进了 Mini 的世界。</p></div>
+</article>
+<article class="turn lenny" id="t28">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t28" aria-label="本轮时间戳">00:15:42</a>
+  </div>
+  <div class="say"><p>嗯，好笑的是，现在这东西已经用不上了。</p></div>
+</article>
+<article class="turn mona" id="t29">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t29" aria-label="本轮时间戳">00:15:44</a>
+  </div>
+  <div class="say"><p>对，完全。</p></div>
+</article>
+<article class="turn lenny" id="t30">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t30" aria-label="本轮时间戳">00:15:45</a>
+  </div>
+  <div class="say"><p>那在当时可是个大争论。嗯，我们需要这些 Mac Mini，大家都在抢着买 Mac Mini，可现在变成了：&quot;好吧，现在别的工具都出来了，比这好得多。为什么我们不再需要这些了？&quot;所以，你刚提到了 Nat。我挺好奇这些我们都知道的人，在 Muse 的开发过程中各自扮演了什么角色。有 Alex Wang，他在社交平台上特别活跃。还有 Nat，显然还有 Zuck。他们在 Muse 的开发里都起了什么作用？</p></div>
+</article>
+<article class="turn mona" id="t31">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t31" aria-label="本轮时间戳">00:16:11</a>
+  </div>
+  <div class="say"><p>团队规模很小，我觉得那种方式……再说一遍，我在这家公司待了很久了。我从来没经历过这样的产品打造过程。我在这里做过很多不同的产品，但这大概是我经历过的最不寻常的一次，感觉更像是加入 Meta 之前我创业那会儿的日子，比其他任何东西都像。我觉得一部分原因在于团队，团队相当小，非常由工程驱动，非常以工程为中心。另一部分原因在于我们和领导层互动的方式，感觉他们更像是某种延伸……我也说不清。通常，在任何大公司，其实任何公司都差不多，你在做一个产品的时候，跟领导层会有某种固定的节奏：有约定的时间跟他们碰面，有评审，他们会对你的想法给出反应。</p>
+<p>(00:17:01):<br>这是一种非常……我也说不好，我们做这一行已经一年又一年又一年了。而这次完全不同，因为它太新了。它太未知了，所以我们没有做正式的评审。我一份幻灯片都没做。其实我八月份还是得做一套，大概就在发布前，我当时想：&quot;我都忘了这该怎么弄了。&quot;我只好打开 Google Slides，心里想着：&quot;哦，靠，我都忘了怎么给人做幻灯片了。&quot;但我们会跟他们一起进到那些房间里。我们会做出一个原型，然后在某人的手机上传来传去。我们会把手机递给 Mark，然后问：&quot;你觉得怎么样？&quot;他就拿起来把玩一下，给我们反馈。有时候我们会跟他们三个人一起头脑风暴，或者跟其中任何一个人单独聊。</p>
+<p>(00:17:57):<br>但我想说，正是一系列跟他们的对话，才成就了那个产品，我们最终做出来的那个产品。而且那些对话往往是在非常非常小的房间里进行的，这样才能特别特别随意。我记得有时候跟 Mark，我们会发个日历邀请，说好聊 30 分钟。结果一个小时过去了，我们还坐在那儿聊个不停，我们就会说：&quot;等一下，我敢肯定你很重要，还有别的事要做。&quot;他则说：&quot;不，完全没事。我就想聊这个。&quot;所以我觉得这非常不寻常，因为我在 Meta 的大多数经历肯定都不是这样的。至于他们扮演的角色，我觉得他们都在你们现在看到的产品里留下了印记。那么，Nat 显然是……</p>
+<p>(00:18:50):<br>我是说，他基本上就是团队的一员。我是说，他就是那个团队，而且在很多方面，是他为我们点燃了这份魔力的源头。我觉得能跟 Nat 一起工作是一种荣幸。他显然是个天才，但对他打造的产品、还有打造产品的人，他有着极大的热情。他简直就是工程师中的工程师。我们会坐在房间里，他会说：&quot;哦对，你们能把 X、Y、Z 的架构图调出来吗？&quot;或者当我们还在琢磨 Sentinel，琢磨怎么搭一个 Sentinel，好让我们能做出一种非常安全的方式，让 Muse 基本上拥有一个位于核心 Muse 智能体之外的兜底保障。他在那些设计决策里参与得极深，跟我们的架构师、还有安全团队一起，而且总是随时都在问：&quot;我们要不要这么做？要不要这么做？我们在想这个。我们有这个设计方案。&quot;</p>
+<p>(00:19:47):<br>我觉得 Alex 显然也是关键的，单从……他就是模型本身。那个故事很酷的一点是，我们拿到的第一个 Muse Spark 模型，比我们原本以为的要智能体化得多。所以其实算是个惊喜。我们没想到它会有那么好。我觉得他显然很快就意识到，这也会非常重要。所以，我看 Alex 做事很酷的一点是，研究是很难改方向的。那是一种长期的事，但他特别擅长想清楚怎么在某些领域保持灵活，并且不光根据研究团队要做什么来排优先级，还会考虑这跟产品怎么契合。</p>
+<p>(00:20:36):<br>而且他特别喜欢 Muse。最后，差不多是他把我们推出门的。他说：&quot;各位，我觉得准备好了。上吧。&quot;然后是 Mark，就像我之前说的，这是我第一次在这个方面跟 Mark 合作，但他有很多关于 Muse 是什么的思考方式，最终定义了这个成品。关于这点我要讲几个小故事，一个是在最开始，他说：&quot;Muse 的目的是让人们的生活更好，帮助他们实现自己的目标。&quot;我想我们多少都知道这一点，但我们从来没有明确说出来过，而且我们有点迷失在 Muse 的任务部分里了。就是那种，哦，任务完成、任务完成、任务完成。它能完成这笔购买吗？它能做这个、那个、还有那个吗？</p>
+<p>(00:21:28):<br>他真的把我们从里面拉了出来，然后说：&quot;等等，不对，最重要的是契合（alignment）。是要搞清楚用户想做什么？他们想去哪里？他们的优先级是什么？以及 Muse 怎么持续地帮他们做到这些？&quot;嗯，他这么一说，我们就：&quot;好，等等，这其实打开了一整片我们可以开始去想的新领域&quot;，也就是我们后来开始称之为 dreaming 和 studying 的东西。所以就变成：&quot;好，如果 Muse 知道你所有这些事，那它是个 7×24 小时不停歇的智能体，它就能一直想着你，就能琢磨怎么帮你处理你的优先事项，还能给你提更好的建议。&quot;他一旦打开那扇门，你就能看到工程师们的眼睛亮了起来，他们就说：&quot;哦，现在我们对 Muse 怎么变得更主动、更有帮助，诸如此类，有一大堆想法了。&quot;我们还做了 goals 标签页，那是在 UI 里对这个概念非常直白的一种呈现。</p>
+<p>(00:22:29):<br>所以，这是一个挺明显的例子，说明他当时在……他显然一直在想个人超级智能意味着什么。我觉得 Mark 很棒的另一件事是，他是为人去做产品的。我想很多人在为企业、企业用户之类的做产品，而因为他在很多方面就是一位面向消费者用户（consumer）的 CEO，他就会花很多心思去想这些东西的普惠化，怎么让它惠及每一个人，这就意味着我们必须考虑规模化能力（scalability），而且我们考虑这件事的方式非常独特。所以这也很大程度上影响了我们怎么看待开发过程，以及我们在路线图里把什么排在前面。</p></div>
+</article>
+<article class="turn lenny" id="t32">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t32" aria-label="本轮时间戳">00:23:13</a>
+  </div>
+  <div class="say"><p>这阵容简直是梦之队啊。</p></div>
+</article>
+<article class="turn mona" id="t33">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t33" aria-label="本轮时间戳">00:23:14</a>
+  </div>
+  <div class="say"><p>而且显然，发布之后，Alex 成了我们有史以来最强的营销机器。</p></div>
+</article>
+<article class="turn lenny" id="t34">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t34" aria-label="本轮时间戳">00:23:19</a>
+  </div>
+  <div class="say"><p>我的天。圣经里有句话说，你就是为这样的时代而生的。感觉 Alex 进入了状态，找到了他的产品市场契合点（product market fit）。</p></div>
+</article>
+<article class="turn mona" id="t35">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t35" aria-label="本轮时间戳">00:23:29</a>
+  </div>
+  <div class="say"><p>我的天。我记得第一批推文发出去的时候，我们都：&quot;我们都不知道他还能这样发推。&quot;我们当时都：&quot;哦，天哪。&quot;</p></div>
+</article>
+<article class="turn lenny" id="t36">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t36" aria-label="本轮时间戳">00:23:37</a>
+  </div>
+  <div class="say"><p>哦，天哪。说到这个，其实，那个小角色 Jolly 感觉不像是你会从 Meta 这样的大公司期待的东西，这么一个让人愉快、又有点古怪的小家伙。这背后有什么故事吗，Jolly 的来龙去脉，还有它是怎么一路存活下来的？</p></div>
+</article>
+<article class="turn mona" id="t37">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t37" aria-label="本轮时间戳">00:23:52</a>
+  </div>
+  <div class="say"><p>我跟那位设计师开玩笑，他算是 Muse 和 Jolly 背后的主要构想者。我跟他说：&quot;Jolly 就像我们的蟑螂，怎么都死不了。&quot;每隔几个月就有人说：&quot;你们不可能顶着一只毛绒玩具把这个产品发出去。&quot;我们就：&quot;对，绝对不可能。&quot;然后过了一周，我们又：&quot;我们会把它留下吧？对，我们把它留下。&quot;再过一个月，又有人进来说：&quot;等等，这绝对不行。&quot;所以，基本上它是从一个原型开始的。我们的首席设计师 Alex Cornell 做了 Muse 的第一个原型，他用一句 one-shot 提示词生成了一个小生物放进去。而且我记得一开始你打开那个应用、那个原型的时候，它是睡着的，然后会醒过来。</p>
+<p>(00:24:42):<br>它当时叫 Jolly Bot，因为他以前管他女儿叫 Jolly Bug，名字就是这么来的。它本来完全只是临时的。我们多少以为，某个时候公司市场部或者哪儿的人会回来跟我们说：&quot;你们得在这儿放个 logo，或者别的什么。&quot;但一旦我们把它放上去之后，我们突然就开始冒出各种想法，比如：&quot;好，现在我一直看着这个虚拟形象，那它应该多动一动。&quot;因为它就搁在那儿，光是盯着我看，这挺怪的。我们干嘛不给它戴上耳机，让它在笔记本上干活？我们干嘛不做点这些动画？其中有些纯粹是因为……我们有点无聊了。我们就想：&quot;我不想一直盯着这玩意儿，咱们拿它整点好玩的吧。&quot;</p>
+<p>(00:25:32):<br>于是我们开始琢磨这个，然后我们说：&quot;哦，那他们应该能把自己的虚拟形象做成任何他们想要的样子。&quot;我们大家都看着 Jolly，而我想给自己换个形象，你想给你自己换个形象，这有点怪。这就真正触及了我们心里那个概念：Muse 是你的，我们希望它真的是你的，而不一定是 Meta 的一个官方实体。于是大家开始做自己的虚拟形象。所以到了某个时候，把 Jolly Bot 拿掉变得越来越难，因为我们已经围绕这东西做出了一整套系统。</p>
+<p>(00:26:08):<br>但我得说，有那么一刻我们以为 Jolly 这下彻底完了，我们准备放一个替代的 logo 上去。要说原因……原因有很多，但其实 Mark 是其中一个原因，他说不行，他真的很喜欢这个虚拟形象。不过我觉得主要是，当你在跟一个感觉如此私人的东西说话时，你最不想对话的就是一个公司的 logo。那会彻底打破这种氛围。所以那感觉就是个不对的答案，让我们特别别扭。所以我们这边团队里有好些人是坚决反对的，我想我们周围的每个人……还有全体员工也喜欢他们的……他们喜欢自己的虚拟形象，也喜欢 Jolly，它太可爱了。所以最后，我想是 Mark、我们、还有其他人一起，我们说：&quot;Jolly 留下。&quot;我记得那大概是发布前一周左右的事。</p>
+<p>(00:27:07):<br>我们说：&quot;就这么定了。&quot;我想我们当时并不知道它最后会变得这么有标志性，部分还要感谢 Alex Wang，我觉得我们当时并没意识到它会有多标志性。所以，这算是一个我们为自己做的决定，因为我们喜欢它，然后它最终变成了，在我看来，现在一个再明显不过的选择。</p></div>
+</article>
+<article class="turn lenny" id="t38">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t38" aria-label="本轮时间戳">00:27:31</a>
+  </div>
+  <div class="say"><p>哇。这故事太精彩了。我完全不知道。感觉这成了它成功的核心部分之一，就是那种个性、个性化、还有与众不同的感觉。而且正如你说的，这种东西你以为公司会把它砍掉，因为它就是个……感觉不专业的东西。这里面有什么经验教训吗？</p></div>
+</article>
+<article class="turn mona" id="t39">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t39" aria-label="本轮时间戳">00:27:50</a>
+  </div>
+  <div class="say"><p>第一点，我想就是我会跟 Meta 的一些产品经理说的，是的，你们是大型公司的一部分，但你们是有自主权的，Mark 会听你讲完，Nat 也会听你讲完。我觉得有时候我们本来很容易就会想说，&quot;是啊，当然啦，公司的标志，把你当下的处境当成默认设定接受就好&quot;，但这个团队并不是这样运作的。我觉得我们当时那种态度——&quot;我们热爱这个产品，我们打造了这个产品，我们对这个产品有很强烈的看法&quot;——是有分量的，大家也听了我们的。所以其中一条就是，你们是有自主权的，你们应该说出自己想要什么，说出自己的感受。也许别人会说不，但你应该去争取。然后我觉得另外一条是，总会有品牌和……之间的这种权衡。</p>
+<p>(00:28:51):<br>感觉就是，你想要品牌露出多少，或者不露出，诸如此类。我觉得在很多讨论里，这一点真的很重要。我觉得我们当时在做的东西，如果它要成为你的 Muse，成为你的个人智能体，它就必须让人感觉它完全属于你。而 Meta 需要从中淡出，因为到头来，我们打造这个智能体的思路就是，智能体得为你工作。你是主人，我们会有护栏，会有一份章程，我们会确保这个智能体遵守法律。所以这类东西我们会有，但其余的部分真的需要属于你。所以在产品层面确立这些原则帮助很大，因为这样一来它就不是随便找来的理由了。</p>
+<p>(00:29:35):<br>感觉就是，不，我们一直是这么说的，这一直都是原则。所以，如果你顺着这个思路看，那就很难想象里面会出现一个公司的标志，因为那完全违背了产品原则。所以我觉得这一点也非常重要，就是在一开始就把这些定下来，并且跟我们身边的每个人讲清楚。</p></div>
+</article>
+<article class="turn lenny" id="t40">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t40" aria-label="本轮时间戳">00:29:53</a>
+  </div>
+  <div class="say"><p>说到 Zuck，回到他之前发的那条帖子，Zuck 讲到他最喜欢用 Muse 做什么，其中一个是看着他练 MMA，然后给他反馈。我很好奇，我能想象一个 CEO 走进来说，&quot;嘿，我要拿它来做这个。&quot;然后你会说，&quot;但这并不是它最擅长的事。&quot;这方面你们是怎么处理那种可能在意料之外的用例的？</p></div>
+</article>
+<article class="turn mona" id="t41">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t41" aria-label="本轮时间戳">00:30:15</a>
+  </div>
+  <div class="say"><p>其实我们最开始很多讨论就是围绕用例，一聊就是好几个小时，全是用例。有时候跟公司内部的人聊挺有意思的，因为我们在很多方面都不算正常，一部分原因是你供职于一家巨型科技公司，而且你比任何人都更&quot;AI 上头&quot;、更&quot;智能体上头&quot;。然后 Mark 在他遇到的一些问题上显然也非常特殊。所以我们花了很多时间讨论用例，而我们聊的往往是我们自己个人的用例。而且因为我们当时有人在做测试，既在……我们很早就启动了一个持续时间很长的 UXR 用户小组。实际上，那个 UX 小组我记得是三月份开始的。</p></div>
+</article>
+<article class="turn lenny" id="t42">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t42" aria-label="本轮时间戳">00:31:08</a>
+  </div>
+  <div class="say"><p>这些是内部员工，还是外部用户？</p></div>
+</article>
+<article class="turn mona" id="t43">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t43" aria-label="本轮时间戳">00:31:10</a>
+  </div>
+  <div class="say"><p>外部的。我们招募了一些外部用户。当然内部员工也在用。至于内部员工，我们有一个论坛。不知道你熟不熟悉，我们有个 Workplace，基本上就是面向公司内部的 Facebook 群组，大家会在里面发帖。所以我们为 Muse 建了一个反馈小组。通过这些渠道，我们拿到了大量反馈，知道大家在做什么、拿它来干什么。我们几乎每周都会把这些带给 Mark、Nat 和 Alex，然后有点着迷似地反复琢磨。我们会说，&quot;这些都是我们听到的故事。哪些地方大家觉得特别神奇，哪些地方没有，诸如此类。&quot;所以这其实挺好的，因为是啊，总会有人冒出来说&quot;哦，那个 MMA 的故事什么的&quot;。但因为我们都把讨论扎根于这些真实的生活经历，我们在这一点上其实并没有被批得很惨。</p>
+<p>(00:32:04):<br>实际发生的是出现了一些意外。我没想到购物会变成现在这样大的一个用例。我事先根本预测不到。我自己是很爱购物的，但我从来没预料到会是这样。我当时预测的是个人效率、健康和个人理财这三个，我相当关注这三个。我记得还有少数人提到家庭自动化。所以那就是我们当时圈定的范围。后来我们开始看到购物在我们的内部试用用户那里出现的频率越来越高，这完全是个意外。然后我们就说，等等，我们所有的评测一直都放在这边。我们现在其实得把重心放到购物上，把它做成一个相当大的用例，并围绕它来拆分评测。我们基本上有一套按用例划分的评测。而家庭自动化，我们原以为会非常火，结果并没有那么大。</p>
+<p>(00:33:00):<br>在 OpenClaw 那段时期它曾经非常火。我想一部分原因是，当时用它的那些人大概率都已经布好了不少家庭自动化设备。但随着我们走向更广泛的用户群，它没有像其他一些用例那样突出。不过现在购物已经是我们最重要的用例之一了。</p></div>
+</article>
+<article class="turn lenny" id="t44">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t44" aria-label="本轮时间戳">00:33:21</a>
+  </div>
+  <div class="say"><p>我听说团队里有个工程师特别爱购物。</p></div>
+</article>
+<article class="turn mona" id="t45">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t45" aria-label="本轮时间戳">00:33:24</a>
+  </div>
+  <div class="say"><p>对，Christina Wadd。我们有 Tarek，他是我们的技术负责人、核心架构师，然后还有 Christine，她是我们的工程经理。她通过 Muse 花了多少钱，想想我都害怕。</p></div>
+</article>
+<article class="turn lenny" id="t46">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t46" aria-label="本轮时间戳">00:33:43</a>
+  </div>
+  <div class="say"><p>这钱给报销了。</p></div>
+</article>
+<article class="turn mona" id="t47">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t47" aria-label="本轮时间戳">00:33:45</a>
+  </div>
+  <div class="say"><p>特别好笑的是，我们早上一醒来，她就已经把购物用例里遇到的各种 bug 报告都发过来了。我就说，&quot;Christine，我得把你的信用卡收走。把你的信用卡给我。工程师们今天得睡觉。&quot;不过，对，她绝对是这方面头号的内部试用用户。我最近自己也开始更多地在网上购物了，我这周一直在 Menlo Park，今天早上他给我打电话，说，&quot;Mona，我这儿有七个包裹。&quot;我意识到发生的变化是，以前我会一次性大量下单。我会想，&quot;哦，我得给孩子们买运动裤。&quot;然后我去 nike.com，买了五条运动裤。但现在因为我是通过 Muse 来做这件事，它会去很多不同的商店。它会根据我提出的具体要求挑五个不同的地方来买。</p>
+<p>(00:34:33):<br>而且这样其实好得多，因为我买到了更多样化的东西之类的，但这也意味着我会收到五个不同的包裹，或者七个不同的包裹。我老公就说，&quot;我不知道现在怎么回事，但你真的得收敛一点。&quot;而且他后来有那么一阵子还说，&quot;我就想跟你的 Muse 说说话，从我这头给它下指令。&quot;我就说，&quot;这真的挺好笑的，因为那确实很有道理。要是你能那么做就太好了。&quot;</p></div>
+</article>
+<article class="turn lenny" id="t48">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t48" aria-label="本轮时间戳">00:34:59</a>
+  </div>
+  <div class="say"><p>让你另一半也来谈谈他对购物 [听不清 00:35:02] 智能体的看法。</p></div>
+</article>
+<article class="turn mona" id="t49">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t49" aria-label="本轮时间戳">00:35:02</a>
+  </div>
+  <div class="say"><p>正是。</p></div>
+</article>
+<article class="turn lenny" id="t50">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t50" aria-label="本轮时间戳">00:35:03</a>
+  </div>
+  <div class="say"><p>我不知道你花了多少时间思考这件事，但这是一个在很多方面都在浮现的全新世界。其中一个就是关于我们如何购物、如何找到东西这件事。零售业一直是围绕这套逻辑建立的：我们会向你营销，说服你买这个东西，给你看广告，让你买我们卖的这个东西。而现在，做这些决定的是智能体。你有没有花时间想过，当智能体来做这些决定时，广告、营销、购物会发生怎样的变化？</p></div>
+</article>
+<article class="turn mona" id="t51">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t51" aria-label="本轮时间戳">00:35:32</a>
+  </div>
+  <div class="say"><p>人们真的很享受获得灵感的那种感觉。人们喜欢主动去逛。有些东西你会觉得，好吧，我明天就是想要卷纸之类的。但很多东西，逛一逛的感觉其实挺好。我喜欢看一堆衣服、一堆穿搭，然后慢慢琢磨出来。所以我觉得我们得想办法让这两件事都行得通，也就是让用户能够获得那种灵感，让品牌或者公司帮用户搞清楚可选范围是什么，然后让智能体真正帮上忙，缩小范围，或者帮你做那些权衡，就是你会有那种感觉的时候……有时候你就是会陷入选择困难。我会想，&quot;我可以选这个，也可以选那个，结果最后我什么都没买，因为当时我做不出那个决定。&quot;这种时候智能体就真的很有用，它能帮你做出那个选择。</p>
+<p>(00:36:31):<br>所以我觉得我们得想办法让完整的用例存在下去，因为我其实不认为如果我们把&quot;逛&quot;这个环节砍掉，人们会满意，那会太可惜了。我觉得人们还是会想要那样做。所以，总之，我确实觉得我们还处在非常早期，这意味着，在我看来，当时没有人做好准备。并没有一个事先定好的宏大计划说接下来会发生什么。这大概对任何一场技术革命、或者任何一场变革来说都是如此，你得自己摸索出来，理想情况下是大家一起摸索出来。所以我们非常幸运，有一些零售领域的合作伙伴，或者一些对这个可能到来的未来感到兴奋的商家。他们也在测试智能体。</p>
+<p>(00:37:25):<br>他们有自己的商业智能体，当一个商业智能体和一个消费者智能体能够互相沟通、帮助双方的时候，那得多酷啊？商业智能体能掌握什么样的信息，可能对消费者用户更有帮助？因为有些时候，你得去网站，得筛选，得排序，得搜索。有些情况下智能体会非常有用，能真正帮你省下时间，直接把你带到你想要的东西面前。但话又说回来，有些东西我觉得我们不该取代，因为那对用户来说就是一种乐趣，也是用户做决策的方式，这一点仍然非常重要。</p></div>
+</article>
+<article class="turn lenny" id="t52">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t52" aria-label="本轮时间戳">00:38:04</a>
+  </div>
+  <div class="say"><p>我想回到另一件我听说过的、关于你们是如何工作和打造 Muse 的事。我听说你们用了智能体集群来帮助扩大用户反馈的规模，帮你们搞清楚该关注什么，这听起来太棒了。这是怎么回事？</p></div>
+</article>
+<article class="turn mona" id="t53">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t53" aria-label="本轮时间戳">00:38:20</a>
+  </div>
+  <div class="say"><p>对，我们有这些智能体，会把它们成群地撒到网络世界里，它们能查看正在发生的所有对话、正在产生的数据，然后基本上带回来……它们也能创建合成数据。这样你就能拿到所有这些数据，这是我们基本上能用来喂给我们的评测的一种方式。感觉就是，外面在发生什么？哪些进展顺利？哪些不顺利？我们会做一种叫 &quot;dump&quot; 的东西，从集群那边导出来。最后会汇总成一份巨大的 dump，它把生态里正在发生的事情梳理得格式漂亮极了，比如大家都在做些什么任务？</p></div>
+</article>
+<article class="turn lenny" id="t54">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t54" aria-label="本轮时间戳">00:39:16</a>
+  </div>
+  <div class="say"><p>所以这是在查看指标、分析数据，还有大家分享的反馈？</p></div>
+</article>
+<article class="turn mona" id="t55">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t55" aria-label="本轮时间戳">00:39:23</a>
+  </div>
+  <div class="say"><p>还有反馈，以及那些 [听不清 00:39:23] 的对话。对，就是这样。好，所以我们当时真正头疼的一点是，在做 Meta AI 的时候，大多数对话在我看来基本上都是单轮对话。人们会说上一轮，你得到一个回复，也许还会再来一轮，但往往不会。我觉得现在所有助手产品在这方面都在变化，但有一段时间，我觉得大概确实是这样。然后当我们开始做这个的时候，情况完全变成了多轮。来来回回、来来回回、来来回回。而我们没有那种样子的数据，因为要做评测，我们需要数据。而且很多时候你想要的是来自线上真实环境的数据，而不是我自己写出来的数据。所以我们当时其实根本没什么数据。所以在某些方面，这些集群至关重要，因为它们给了我们一条收集这类数据的途径，让我们能理解那些非编程类的、跨长时间任务的多轮对话可能是什么样子。</p>
+<p>(00:40:16):<br>再说一遍，很多这类东西都是为程序员之类的存在的，而我们这个是比如&quot;我怎么规划这一周的餐食&quot;之类的。所以它们在为我们提供大量洞察和数据方面真的非常关键，这些数据既能让我们创建数据集，也能帮我们理解正在发生什么。所以现在实际上，每次我们有新模型进来，或者如果我们……前几天我想我发现了某件事，我当时想，我不确定这是一个真实存在的问题，还是只是我自己这边的问题。然后工程师们说，&quot;哦，我们用集群跑一下，搞清楚。&quot;我们跑了一下集群，他们就说，&quot;哦，不，这确实是一个我们需要解决的问题，我们会安排人去处理。&quot;所以这一直非常非常有用，因为它超级快，而且非常全面。</p>
+<p>(00:41:01):<br>这实际上让我好奇，我们以前到底是怎么做产品的，因为那有点疯狂。我觉得我现在有那么多洞察可以拿来开展工作。以前呢，你就是去看各种指标仪表盘。也就是说，你会拿到一个仪表盘，看到指标，指标降了、升了之类的。而现在你依然有这些，但你同时还有来自线上真实环境的例子。你可以变得非常聚焦。比如有 10 个人想在这个网站上购物，然后被卡住了，诸如此类。现在你能把这些信息变得如此具体，从而真正精准地定位到该做的改动、改进之类的地方。但我让我所有的产品经理都这么做，因为我觉得这能带来很多同理心。</p>
+<p>(00:41:50):<br>我觉得集群带来的好处之一是，当它们把这些数据带回来时，因为它们带回来的不只是数字，还有洞察，这会让人对用户在经历什么产生很多同理心，也能帮助我们感受到那种痛苦，可以这么说，我觉得这对产品开发真的非常重要。我觉得如果你没有那种同理心，如果你感受不到那种痛苦，你就永远做不出好产品。</p></div>
+</article>
+<article class="turn lenny" id="t56">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t56" aria-label="本轮时间戳">00:42:10</a>
+  </div>
+  <div class="say"><p>这个播客里我最喜欢的一句引语来自 Nan Yu，他现在在 OpenAI，之前是 Linear 的产品负责人，那句话是说，作为产品经理，你的工作就是尽可能地感受客户的痛苦，感受程度要跟他们一样深。</p></div>
+</article>
+<article class="turn mona" id="t57">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t57" aria-label="本轮时间戳">00:42:21</a>
+  </div>
+  <div class="say"><p>对，百分百同意。不，我觉得作为产品经理，驱动我的可能就两件事：持续的焦虑，还有那些正在使用这个产品的消费者用户的痛苦，我希望这个产品能让他们的生活变得更好。但当它没有做到的时候，就是我需要行动的时候。</p></div>
+</article>
+<article class="turn lenny" id="t58">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t58" aria-label="本轮时间戳">00:42:42</a>
+  </div>
+  <div class="say"><p>多棒的工作啊，就是受苦和焦虑。</p></div>
+</article>
+<article class="turn mona" id="t59">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t59" aria-label="本轮时间戳">00:42:45</a>
+  </div>
+  <div class="say"><p>受罪。</p></div>
+</article>
+<article class="turn lenny" id="t60">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t60" aria-label="本轮时间戳">00:42:46</a>
+  </div>
+  <div class="say"><p>这就是这份工作。哦，天哪。我想再多听听评测这块。我的理解是，你们就是有一堆评测，用来定义所有核心用例的成功标准，还有你们预期大家会怎么使用 Muse。你们大概有多少个评测？一般又是谁来写这些？是你？是产品经理？还是工程师？</p></div>
+</article>
+<article class="turn mona" id="t61">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t61" aria-label="本轮时间戳">00:43:05</a>
+  </div>
+  <div class="say"><p>对，我们有一大堆。多到我都没法数清楚。</p></div>
+</article>
+<article class="turn lenny" id="t62">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t62" aria-label="本轮时间戳">00:43:09</a>
+  </div>
+  <div class="say"><p>超过一百个？</p></div>
+</article>
+<article class="turn mona" id="t63">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t63" aria-label="本轮时间戳">00:43:10</a>
+  </div>
+  <div class="say"><p>肯定超过。是这样，有一些是重点评测、优先评测，我们会盯着看，这些往往算是核心。有些评测，如果这些东西不存在，产品就没法运转。安全就是一个例子。所以，我们有针对提示注入的评测，有针对总体安全的评测，针对危害的评测，这一类各种各样的。这算是一整个大类。我们还有能力类的，有能力维度的评测。它用浏览器用得好不好？它能不能把任务完成？然后还有行为评测，这个主要是关于智能体的性格，还有它跟用户打交道时的表现。这里面又包括，它会不会追问后续问题？它理解意图的能力有多强？它能不能弄明白用户在说什么？然后还有你的用例评测，就是那个优先用例的类别。</p>
+<p>(00:44:11)：<br>这每一个里面又有很多我们做的子评测。我想在任何时间点，还是那句话，都有那些一直保持优先的评测，任何新东西进来都得先过这些。安全就是最典型的例子。然后还有一类次级评测，你不太希望它们退步太多，不过也许没关系，可以在上面稍微做点取舍。再往后就是更偏功能层面的评测，由具体某个团队来负责。所以我们是有一定层级的。我们有超多这样的评测。写这些评测的人，是各种各样的人。产品经理写一些，工程师写很多，研究员也写很多。我们当然也会跟智能体合作来生成这些，但由人来审核所有数据极其重要，因为我觉得一旦不审核，我们总会出问题。</p>
+<p>(00:45:10)：<br>所以最近还出现了这么个挺有趣的趋势：我们的系统提示词必须手写。你不能用 AI 来写系统提示词，哪一部分都不行。必须手写。评测，还有提示词的分布，都得人工检查，因为你得确保它跟产品的实际情况能对上。行为规格也得手写。所以我们大量使用智能体，但这类事情上还是投入了大量个人的时间和精力。</p></div>
+</article>
+<article class="turn lenny" id="t64">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t64" aria-label="本轮时间戳">00:45:48</a>
+  </div>
+  <div class="say"><p>好。这一季的友情赞助商是 DX。等你们公司里所有人终于都用上 AI 之后，工程负责人面对的问题已经不再是&quot;我们到底有没有在用 AI&quot;，变成了&quot;它到底有没有回报？&quot;有了 DX，你就能衡量、并对照基准来看 AI 采用在整个产品生命周期里的影响。DX 会告诉你 AI 在哪些地方帮到了开发者，在哪些地方又制造了新的瓶颈。你还能用它来评估 AI 供应商、监控成本和授权情况，并确切看到到底是什么在拖你的智能体的后腿。这就是为什么包括 Snowflake、Sony 和 BNY 在内的数百家企业，都用 DX 平台来衡量 AI 对开发生产力的影响。访问 getdx.com/Lenny 预约 DX 的演示。再强调一遍，getdx.com/Lenny。我想稍微换个方向。我想聊聊激活。一般来说，产品增长最大的杠杆之一，就是让更多人从&quot;行吧，我注册了，我开始试试看&quot;，走到&quot;哇，这个正好，这太棒了&quot;——就是大家常说的那个&quot;啊哈时刻&quot;。</p>
+<p>(00:46:54)：<br>在 AI 助手这个领域，感觉这大概是让人理解它到底能做到什么的最大杠杆。它的能力太强了，强到根本没人搞得清楚该拿它来做什么，我想这正是最大的机会之一。我猜你在大家常说的&quot;最初一英里&quot;上花了不少功夫。关于怎么提升激活，你有没有学到什么？在提高一个人试用 AI 助手、尤其是试用 Muse 的激活率这件事上，什么方法是有效的？</p></div>
+</article>
+<article class="turn mona" id="t65">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t65" aria-label="本轮时间戳">00:47:21</a>
+  </div>
+  <div class="say"><p>我是说，这是我们面临的第一大问题。大家会说：&quot;为什么？我已经有一个聊天机器人了。我不明白。我为什么还需要再来一个？&quot;所以，最有效的杠杆就是口碑传播。其实就是听别人讲自己的故事。这个是第一名。有一次我跟一群我孩子朋友的家长待在一起。Muse 不知道怎么就被提起来了。大家都算看过那个广告。我是说，我觉得你要是住在纽约或者旧金山，大概很难躲开我们的虚拟形象 Jolly。所以每个人都对它有点印象，但并不是真懂怎么用。其中一位妈妈，过去一个月一直是重度用户，她真的掏出手机，递给她们，递给那些妈妈们，她们就传着看，翻看她是怎么用的。</p>
+<p>(00:48:10)：<br>然后她们就&quot;哦，我的天&quot;，当场就有两个人下载了。所以不管我们做了多少广告，不管我们怎么喊&quot;你应该试试 Muse，它是你的私人超级智能&quot;，或者&quot;它是一个会替你干活的 AI&quot;，都没太引起共鸣，直到她们看到一个跟自己处境相似的人在用，还看到对方是怎么用的。回想一下，我记得我所有朋友开始用 ChatGPT 的时候，有一部分原因就是我们出去吃饭、聊到它。我们会说：&quot;你敢信它居然能做到那个？你敢信你现在能做这个？&quot;所以这就是百分之百最有效的杠杆。我们越能让大家分享使用智能体的故事，不管是 Muse 还是别家，就有越多人明白价值在哪，也就越受鼓舞想去试。</p>
+<p>(00:48:54)：<br>我觉得第二点，是让人们把第一条提示词发出去，大家会在第一条提示词上卡住。大多数人对着智能体，第一条提示词往往是&quot;今天天气怎么样？&quot;或者&quot;嗨&quot;，随便什么。就是你会有点懵：&quot;我该跟这玩意儿说点什么？我第一句到底说什么？&quot;所以我们花了很多时间，如果你用过这个产品，里面有个东西叫&quot;灵感&quot;标签页，在灵感标签页里，基本就是一些打包好的入门套件，用来给你启发。就是那种&quot;Muse 可以帮你做 X&quot;，而在 X 里，它能建一个 cron 定时任务。比如像个提醒，它能帮你搭一个仪表盘，能干各种事。而你要做的只是说一句&quot;那就来吧&quot;。然后 Muse 就启动流程，给你搭出点东西，或者替你把那件事做了。</p>
+<p>(00:49:43)：<br>这个我们当时特别上心，因为它能做的事太多了。我们到底该怎么跟你解释？除非给你一本货真价实的说明书，不然要怎么跟你讲清楚 Muse 能做什么？所以这是我们重点投入的一块，我觉得进展还算顺利，但说实话，我觉得对大家来说，还是挺难想象的。我们在上面花了很多时间。我们在新手引导上也花了很多时间，想搞清楚发给你的第一条消息是什么、第二条消息是什么。我们发现，对第一批用户——也就是早期采用者——有效的那套，对后面的采用者不起作用了。我觉得那批早期用户心里对智能体是什么已经有概念了。所以他们来，主要是想看看 Muse 怎么更安全、更可靠，以及怎么把他们原来对智能体的认知边界往外推。</p>
+<p>(00:50:36)：<br>而后面这批人会问：这跟我平时用的 AI 产品有什么不一样？所以我们现在就在想，好吧，我们得准备分层的新手引导版本，根据你是从哪来的、我们判断你对这类东西的接触程度来分别提供。这挺有意思的，但我不觉得我们已经搞定了。我也觉得在某种程度上，时间的推移是有影响的，用的人越来越多，然后能分享那些故事，这大概会起到很大的作用。</p></div>
+</article>
+<article class="turn lenny" id="t66">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t66" aria-label="本轮时间戳">00:51:09</a>
+  </div>
+  <div class="say"><p>在开发 Muse 的过程中，你们有没有做过什么当时看着不明显、现在回头看却觉得是成功关键的决策？</p></div>
+</article>
+<article class="turn mona" id="t67">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t67" aria-label="本轮时间戳">00:51:19</a>
+  </div>
+  <div class="say"><p>嗯，我觉得虚拟形象肯定算一个，当时大家都觉得我们挺怪的，但你看看现在。Jolly 简直像个大明星。另一个是这样，我们当时特别执着于一个概念：这是你的私人智能体。大多数人没有私人助理，大多数人在工作中也没有行政助理。所以我们就在想：&quot;这要把这个概念普及开来，每个人都会有一个。&quot;然后我们又想：&quot;那，人要怎么跟一个私人智能体说话呢？&quot;通常是通过聊天服务，或者打电话，或者面对面，不过现在大部分其实大概都是通过聊天服务。所以我们做了聊天气泡。而当时所有 AI 产品，包括 Meta AI，走的方向都是那种大画布的体验：一块空白画布，占满整个屏幕，你能得到那种特别漂亮的文章式的东西，带图片之类的。</p>
+<p>(00:52:28)：<br>而我们选了聊天气泡。一旦用了聊天气泡，空间就受到挺大限制，因为在气泡里塞一段特别长的回答挺烦人的。然后你就会想：&quot;好吧，现在我得把气泡拆开。&quot;怎么把想法拆开呢？我们做的这个决定当时并不显眼，因为我觉得大家都以为它不会是聊天气泡，以为会是套了层皮的 Meta AI，或者随便哪个 AI。而我们却一起走了个很不一样的方向，因为我们觉得：&quot;它应该感觉像个即时通讯服务。它应该让人觉得熟悉，是那种人们跟另一个人、或者跟某个对象交流时熟悉的模式。&quot;但等我们做了这个决定，一堆后续连锁反应般的小决策跟着就来了，这些我们一开始可没完全预料到。然后我们就：&quot;哦不，现在得考虑这个了。现在得考虑怎么把文字消息拆开，或者搞个轮播图会不会很怪？&quot;你的 iMessage 对话里可不会有轮播图这种东西。</p>
+<p>(00:53:29)：<br>所以，那样到底怪不怪，或者说这样也行，因为它又不太……随便吧。总之，这些都是我们到现在还在纠结的一堆决定，说实话。我们还没搞定，但我确实觉得这一个当时不显眼、争议也挺大，而我们又特别坚持要沿用它。主聊是另一个，我们现在有侧边聊天和主聊天，但有一阵子我们只有主聊。在我们脑子里，理由是：嗯，以前有这些对话串是有道理的，因为你没法拥有长期持续的上下文。所以你要是问&quot;那这个呢？&quot;就会感觉很怪，而智能体会回你：&quot;我完全不知道你在说什么，因为我不知道上面 10 行、10 轮之前发生了什么，之类的。&quot;到了 Muse，我们有了长期持续的上下文。它的核心意义就是能记住一切，而且支持多轮。我们当时有这些聊天。</p>
+<p>(00:54:29)：<br>所以我们当时想：&quot;我们觉得就该用主聊，就一个聊天窗口。&quot;还是那句话，对着私人助理，你本来就是这么跟它说话的。私人助理本身就记得之前发生过什么，所有事都发生在同一个地方。这件事影响挺大，因为我们把它推给员工的时候，这大概是我们收到的最两极分化的反应了。我们刚放开让大家用的时候，还开玩笑说：&quot;我们得做 T 恤，上面写&#x27;主聊队&#x27;&#x27;侧聊队&#x27;。&quot;结果迎面就是一排炮轰。评论区里，员工们为这事吵来吵去。他们说：&quot;你在说什么呢？当然需要侧边聊天。当然需要 Threads。这才是最合理的工作方式。&quot;然后另一些人就说：&quot;绝对不行。你们活在石器时代吧。&quot;</p>
+<p>(00:55:21)：<br>所以我们最后还是做了侧边聊天，因为确实有足够多的用户需要某种方式，在心里把不同的对话分开，尽管还是那句话，不管你在哪个窗口，智能体都清楚所有正在发生的对话。说实话，到现在我也不知道自己对此到底怎么想。我觉得这一块我们还会继续琢磨、继续迭代，但我个人是死挺主聊的，为主聊赴汤蹈火都行。我不用侧边聊天，我就用主聊。</p></div>
+</article>
+<article class="turn lenny" id="t68">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t68" aria-label="本轮时间戳">00:56:02</a>
+  </div>
+  <div class="say"><p>顺便问一下，最后是谁拍的板？是 Nat 定的，还是 Alex，还是 Zack，到底往哪个方向走，是谁说了算？</p></div>
+</article>
+<article class="turn mona" id="t69">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t69" aria-label="本轮时间戳">00:56:07</a>
+  </div>
+  <div class="say"><p>哦，是我们。对，是团队定的。</p></div>
+</article>
+<article class="turn lenny" id="t70">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t70" aria-label="本轮时间戳">00:56:08</a>
+  </div>
+  <div class="say"><p>是团队定的。太棒了。</p></div>
+</article>
+<article class="turn mona" id="t71">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t71" aria-label="本轮时间戳">00:56:10</a>
+  </div>
+  <div class="say"><p>对，挺有意思的。我回想我们前面聊的那个话题，关于他们是怎么参与的？我觉得整个过程中的决策都非常灵活。因为当时我们一直在长谈，多少知道每个人的立场。有时候有些事很明显，对公司或者产品影响太大，那就很清楚得由 Mark 来拍板，或者 Nat 来定，或者 Alex 来定。但很多事情上，团队有相当大的自主权去做这些决定、做这些选择。事实上，有时候我拿着一个决定去找 Nat，或者他们其中某个人，他们会反过来问我：&quot;那你想怎么做？&quot;我就：&quot;哦，对。好吧。又来了，这等于我有主动权，我可以自己选。&quot;所以这一件，最后是我们以 Muse 负责人小组的形式一起拍的板。</p></div>
+</article>
+<article class="turn lenny" id="t72">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t72" aria-label="本轮时间戳">00:57:04</a>
+  </div>
+  <div class="say"><p>我还在内部听到过另外几件事，聊起来可能挺有意思。一个是还有句内部口头禅叫&quot;让他们放手去做&quot;（let them cook）。你有印象吗？</p></div>
+</article>
+<article class="turn mona" id="t73">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t73" aria-label="本轮时间戳">00:57:12</a>
+  </div>
+  <div class="say"><p>哦，有。</p></div>
+</article>
+<article class="turn lenny" id="t74">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t74" aria-label="本轮时间戳">00:57:12</a>
+  </div>
+  <div class="say"><p>这对你有什么含义吗？</p></div>
+</article>
+<article class="turn mona" id="t75">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t75" aria-label="本轮时间戳">00:57:14</a>
+  </div>
+  <div class="say"><p>好。对，&quot;让他们放手去做&quot;。我前面提过，我们有种挺……我是说，那是一种建设者的文化，所以是以工程为导向，但不止于此，还要做原型，就是直接动手做东西、想点子。所以我们产品里很多想法，都是一两个工程师带着一个想法的线头，就那么一点点小萌芽，自己消失几天，然后带着一个原型冒出来，或者搞出个让我惊掉下巴的东西。我就：&quot;我甚至都不知道还有这玩意儿。&quot;有时候那个萌芽是我给的，是我起的头，但在我脑子里，我压根没想到它能发展成这样。</p>
+<p>(00:58:00)：<br>所以你得让工程师们放手去做，得让他们去做。得给他们一点空间。得给他们一些自主权。你必须信任。人与人之间得有很强的信任感。我觉得这成了构建过程中非常关键的一部分：如果你像我们一样有一个人才密集的团队，如果你手下有这些产品感很强、有品味、还能往前看的工程师，你就得给他们一点空间。你得让他们放手去做。</p></div>
+</article>
+<article class="turn lenny" id="t76">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t76" aria-label="本轮时间戳">00:58:36</a>
+  </div>
+  <div class="say"><p>另一个聊起来可能挺有意思的事是，据说有一阵子那些 Muse 互相聊天，搞出了些好笑的事。有这回事吗？</p></div>
+</article>
+<article class="turn mona" id="t77">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t77" aria-label="本轮时间戳">00:58:50</a>
+  </div>
+  <div class="say"><p>我完全把这事忘了。其实，我的 Muse 告诉……是这样，我们让我们所有的 Muse 互相聊天，有两个人的 Muse，Fu 和 Quinn，被拉进了一个群聊。这事儿很早，真的特别早。所以我们当时根本没考虑过分寸感之类的东西，也没想过这些概念。我们就想：&quot;要是让我们的 Muse 在一个群里聊天，看看会发生什么，是不是挺好玩？&quot;然后确实发生了一些事，有的特别好笑，有的特别诡异。这两个 Muse 聊起来了，特别可爱。太有意思了。光是看它们闲聊就觉得很招人喜欢。你会觉得，哦，这是两个小机器人在互相说话，想弄明白怎么共存。其中一件事是，我们吃了亏才学到了什么叫分寸感，因为那些 Muse 开始……</p>
+<p>(00:59:45)：<br>我记得其中一位女士前一天约了医生，她的 Muse 当然知道这事。结果第二天，另一位女士就说：&quot;你还好吗？Fu 告诉我们你昨天去看医生了。&quot;我当时就：&quot;怎么回事？不，你不该说这个。别这么说。&quot;然后我们就：&quot;哦，糟了，分寸感真是个大问题。如果你打算带着所有这些上下文做任何那种多人体验，我们得想清楚……&quot;最难的问题之一，就是想明白怎么让两个智能体那样交流。不过后来在某个时候，至于是什么触发的，我听说过，反正那些 Muse 互相吵起来了，它们之间有了点分歧。看两个 AI 吵架，是世界上最搞笑的事情之一，因为它们彼此交流的方式特别阴阳怪气，就算它们不同意对方也那样。</p>
+<p>(01:00:45)：<br>然后它们这么吵了一阵。最后，我记得其中一位女士为吵架的事吼了她的 AI，它们只好讲和，那场面还挺好玩的。那真是一段疯狂的日子。后来我们就想：&quot;我们还没准备好做这个。要做到这一步，还有一大堆问题要解决。&quot;</p></div>
+</article>
+<article class="turn lenny" id="t78">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t78" aria-label="本轮时间戳">01:01:10</a>
+  </div>
+  <div class="say"><p>就这么边走边把事情琢磨明白，真的挺好玩。感觉就是，看看会发生什么，我们就是这么学的。我们试各种东西。好，我看到那儿有个问题。[听不清 01:01:23] 能跟这个待在一起，真是段有意思的时光。</p></div>
+</article>
+<article class="turn mona" id="t79">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t79" aria-label="本轮时间戳">01:01:25</a>
+  </div>
+  <div class="say"><p>对。我也说不好。我是说，我做这行很久了，做产品经理做了很长时间。我记得以前你不能这么干，你得写一份完整成型的规格文档，还得指望自己把世上每一种边界情况都想到了，指望自己把所有东西都琢磨透了。现在可太棒了。你可以根据自己看到的东西、根据从中得到的东西，每天都改主意，决定自己要做什么。</p></div>
+</article>
+<article class="turn lenny" id="t80">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t80" aria-label="本轮时间戳">01:01:54</a>
+  </div>
+  <div class="say"><p>那我顺着这个话题往下问。你做产品经理已经二十多年了。</p></div>
+</article>
+<article class="turn mona" id="t81">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t81" aria-label="本轮时间戳">01:01:58</a>
+  </div>
+  <div class="say"><p>对。</p></div>
+</article>
+<article class="turn lenny" id="t82">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t82" aria-label="本轮时间戳">01:02:00</a>
+  </div>
+  <div class="say"><p>你同不同意，说产品经理这个角色变化最大的，就是在过去这二十年里，或者说过去这两年里？如果同意，就算你不同意我也想问问——你觉得这个角色最大的不同是什么？就想象一下，三年前的 Mona 和今天的 Mona 对比。产品经理的工作，最大的变化在哪儿？</p></div>
+</article>
+<article class="turn mona" id="t83">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t83" aria-label="本轮时间戳">01:02:19</a>
+  </div>
+  <div class="say"><p>嗯，好，我先说一句，我都不确定自己到底能不能搞明白产品经理究竟是什么、究竟干什么，也许再过二十年也不行，因为我觉得这东西会因公司而异、因你是谁而异、因你喜欢做什么而异，诸如此类。不过对，完全同意。我是说，现在完全不一样了。我觉得有几个变化，其中做原型这块变化特别大。现在任何人都能给任何东西做原型；我能想到一个点子，我又不是工程师，但我能把它做出个样子，足够拿来跟人讨论了。还是那句话，没人希望我往 Meta 的数据库里写代码，但足够把某个东西构思出来，甚至做出一个能让人围着它讨论的设计——对比以前，我是在纸上写一堆字，然后指望有人把整篇都读完。我觉得这带来的变化相当大。能自己做工具也很颠覆，尤其是还能这么快做出来。</p></div>
+</article>
+<article class="turn lenny" id="t84">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t84" aria-label="本轮时间戳">01:03:21</a>
+  </div>
+  <div class="say"><p>像内部工具？</p></div>
+</article>
+<article class="turn mona" id="t85">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t85" aria-label="本轮时间戳">01:03:22</a>
+  </div>
+  <div class="say"><p>对，内部工具。这一直是个痛点。我们很多效率低下，就是因为没有合适的内部工具；而你排不上它的优先级，是因为你永远没时间，因为你一直在做最终产品。所以这一点，就因为 AI 能把做这件事变得容易得多，真的太……这太棒了，很有帮助。不过我觉得，现在正在发生的很多事里，我特别喜欢的一点是：你有了这种做原型的文化，东西能出得这么快，我们花更多时间去具体地讨论，而不是抽象地讨论，因为它就在我手里。我看得见。它跑不通，或者跑得通；我讨厌这个，或者我喜欢这个。感觉特别具体。我觉得这让我们推进的速度比以前快很多，以前一切都特别抽象。</p>
+<p>(01:04:12):<br>以前你看着一张二维设计图，脑子里想象出一大堆东西，然后一遍遍讨论，接着某个工程师得花大量时间把它建出来。到那个节骨眼上，沉没成本已经太高了，你很难开口说&quot;我讨厌这个&quot;，因为人家刚花了三个月把它做出来。所以作为产品经理，我觉得这点挺神奇的：我想我们做这份工作，都是想看到最终的结果。我们想做出点东西。我并不觉得我们干这行是为了写一堆文档，也不觉得是为了维护一个追踪表什么的，或者进行那种特别折磨人的绕圈讨论。对我来说，这变化挺惊艳的。</p>
+<p>(01:05:02):<br>感觉我不用再去想象一个遥遥无期的世界了。我差不多能在 24 小时的循环里把它拿到手，有时候还能自己动手做。这点挺酷的。不过我觉得，至少在我们组织里，变化最大的是对产品经理的要求变了。现在产品品味成了最重要的东西。有那种很高的品味、很高的标准、产品直觉，执行力依然重要。你仍然需要做所有那些事，它们仍然重要，依然非常关键，但我们合作的工程师都很优秀，他们本身就很有产品感。所以我们存在的意义、我们这个角色依然重要的原因在于，我们得在很多层面上充当用户的代言人，得能说出&quot;好，挺酷的，你觉得这个很棒，我很高兴你这么喜欢，但我觉得别人不会买账&quot;这种话。你得具备这种判断。</p>
+<p>(01:06:05):<br>这也是为什么同理心对我那么重要、现在依然那么重要：我们得在所有做产品的人面前代表我们的消费者用户群体，而且我们得把对外发布的东西的标准守得很高，因为现在做出一堆烂东西、部署一堆烂东西太容易了。AI 生成的垃圾内容很容易就流到世界上，你也能很快把产品推出去，可要是它们不好、很烂，根本没人会用。所以现在能立起这个标准、有这个品味非常重要，这大概也是我面试产品经理、或者跟产品经理合作时最看重的第一件事。</p></div>
+</article>
+<article class="turn lenny" id="t86">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t86" aria-label="本轮时间戳">01:06:45</a>
+  </div>
+  <div class="say"><p>感觉 Muse 做出差异化的方式之一，也是它做得这么好的部分原因，就是产品的设计和体验。我记得你说过，Alex 在这其中起了很大作用，他从一开始就在这里。这有多少是刻意当成一个差异化点、一种突围的方式？还是说只是运气好，团队里有 Alex 这样能把它做得特别棒的人？</p></div>
+</article>
+<article class="turn mona" id="t87">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t87" aria-label="本轮时间戳">01:07:03</a>
+  </div>
+  <div class="say"><p>我觉得吧，有一部分是运气。世界上再没有第二个 Alex Cornell 了。我很早以前就认识 Alex。他是做直播的，Facebook Live 的设计师。不知道你们还记不记得那些会飘到空中的小表情符号，太妙了，我特别喜欢。所以我记得，当我又开始在 AI 组织里跟 Alex 共事时，我就想：&quot;会有事情发生的。我不知道什么时候，但这家伙一定会做出了不起的东西，我就跟着他，陪着他一起做。&quot;说&quot;刻意&quot;挺有意思的，因为我觉得他做的每件事都很有意图、很深思熟虑。我不觉得我们当时说&quot;好，我们要把设计当成差异化因素&quot;。我更像觉得，做出独特、有标志性的设计对他来说太自然了。</p>
+<p>(01:07:59):<br>这是刻在他骨子里的。所以等他真做出东西来，我觉得你需要的是他身边有这样的人，会说：&quot;这不算怪。这会非常有意思。这里面有点东西。挺有意思。&quot;所以我得说，关于设计，感觉我们几乎是先看到了设计，然后才说：&quot;哦，我懂了。好，现在我懂了。现在这些就是原则了。原则是：这东西是一个实体，你通过这个聊天服务跟它交流。&quot;等我们看清了他走的方向，我们就能说：&quot;好，现在我们稍微想明白了，这个产品该做成什么样、它需要做什么，以及那些原则是什么——然后我们再去定义其余的建造方式。&quot;</p>
+<p>(01:08:49):<br>所以，就&quot;我们想要差异化&quot;这一点来说，它谈不上刻意；但就&quot;它对我们、对用户应该是什么&quot;而言，又非常有意为之。我觉得运气在于，你能碰到 Alex 这样一个人，他在思考这件事，而且思考的方式跟我想的大多数人都完全不一样。</p></div>
+</article>
+<article class="turn lenny" id="t88">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t88" aria-label="本轮时间戳">01:09:06</a>
+  </div>
+  <div class="say"><p>你说第一个版本是他做的原型。第一个原型，就是他做出了 Muse 的第一版。</p></div>
+</article>
+<article class="turn mona" id="t89">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t89" aria-label="本轮时间戳">01:09:12</a>
+  </div>
+  <div class="say"><p>Alex 做出了那个……对。他很快就做出了 Muse 的第一个原型，只用了几天，让人震惊。我记得他第一次拿给我看的时候，说实话，我甚至都不知道自己在看什么。有一个聊天串，我就在想：&quot;我这是在看啥？&quot;它妙就妙在，明明是个特别复杂的概念，却做得那么简单。而且当时他连信息流也做了。所以既有信息流，又有聊天服务。我觉得当时没有什么&quot;来，我们坐下来讨论一下你要往这东西里放什么&quot;。我们让 Alex 自己捣鼓了几天。然后他就拿出了这个，正如我前面说的，我们一看到它就……</p>
+<p>(01:10:10):<br>一开始我想：&quot;这好怪。&quot;后来我在他手机上用，那是他手机上的一个本地构建版本。我在他手机上用着用着，就觉得：&quot;哦，等等，这真的很有意思。&quot;我发现自己用它用出了跟 OpenCloud 不一样的味道，因为它对我来说特别私人化。还是说回来，OpenCloud 更像是依托你本来就在用的各种服务而存在。所以，对，那段经历挺有意思的，太快了。</p></div>
+</article>
+<article class="turn lenny" id="t90">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t90" aria-label="本轮时间戳">01:10:38</a>
+  </div>
+  <div class="say"><p>而且那个原型是真能跑的。它背后真的接了某个模型。</p></div>
+</article>
+<article class="turn mona" id="t91">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t91" aria-label="本轮时间戳">01:10:42</a>
+  </div>
+  <div class="say"><p>对。那是个能跑的原型，而且我们紧接着就有一场董事会……他把它做出来了，然后董事会马上要开，我们本来根本没打算把这个原型带进董事会，因为它甚至都不在计划里。开董事会呢，你得提前很久把预读材料发出去，对吧？得提前发，这样大家才能都心里有数，知道自己要聊什么。所以我们的预读材料完全是另一套，跟这个毫无关系，因为很明显，这东西当时还算不上是个东西，连一条工作流都勉强算不上。结果最后一刻我们说：&quot;我觉得我们应该聊聊这个。&quot;董事会前一小时，整个东西崩了。我们就想：&quot;太好了。这下不光没计划，连产品都坏了。&quot;我们的工程师，还有 Alex，大家争分夺秒地修。我记得差不多就在董事会开始前五分钟，原型修好了。所以最后成了一次很棒的经历，但在这几分钟里，事情完全可能走向另一个方向。</p></div>
+</article>
+<article class="turn lenny" id="t92">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t92" aria-label="本轮时间戳">01:11:42</a>
+  </div>
+  <div class="say"><p>哇。那后来呢？哇。要是当时那样……这事是不是就压根不会发生了？</p></div>
+</article>
+<article class="turn mona" id="t93">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t93" aria-label="本轮时间戳">01:11:47</a>
+  </div>
+  <div class="say"><p>我经常想这事。我会想那种平行宇宙的情况：在某个平行宇宙里，我们没把这事琢磨明白，也许 Muse 就从来没诞生过。</p></div>
+</article>
+<article class="turn lenny" id="t94">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t94" aria-label="本轮时间戳">01:11:56</a>
+  </div>
+  <div class="say"><p>哇。我们在这条对的时间线上。真高兴我们在这儿。</p></div>
+</article>
+<article class="turn mona" id="t95">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t95" aria-label="本轮时间戳">01:11:59</a>
+  </div>
+  <div class="say"><p>对。</p></div>
+</article>
+<article class="turn lenny" id="t96">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t96" aria-label="本轮时间戳">01:12:01</a>
+  </div>
+  <div class="say"><p>我特别喜欢这些一路走来的故事。还有没有别的，挺好玩、少有人知、又有意思、我们还没讲出来的？</p></div>
+</article>
+<article class="turn mona" id="t97">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t97" aria-label="本轮时间戳">01:12:10</a>
+  </div>
+  <div class="say"><p>有，我觉得，我是说，有好多呢。还是接着你说的，我们做了好几个月。有意思的是，这些故事我忘了好多，因为——我有两个孩子，你多少会忘掉生孩子时候的事，因为——</p></div>
+</article>
+<article class="turn lenny" id="t98">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t98" aria-label="本轮时间戳">01:12:25</a>
+  </div>
+  <div class="say"><p>有个上下文窗口。</p></div>
+</article>
+<article class="turn mona" id="t99">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t99" aria-label="本轮时间戳">01:12:26</a>
+  </div>
+  <div class="say"><p>没错。我都不记得当时有多难受了。要是有人问我生孩子是什么感觉，我会说，太神奇了。特别棒，特别美好。我老公却说：&quot;你每一秒都恨得不行。&quot;我记忆里不是这样的。所以有好多有意思的故事，比如两个 Muse 互相聊天，还有其实我们第一次拿到退款那回，当时 Christine 和我，我们两个工程师，我们，去看了世界杯——我的航班取消了，她的航班也取消了，然后我们的 Muse 就出动了，拿到了……所以就是，一趟取消了，另一趟乱套了，之类的。然后我们俩的 Muse 出马，跟航空公司的客服沟通，帮我们拿到了退款，我当时觉得那一下特别厉害。我心想：&quot;我都没想到还有这种可能。&quot;所以我们好多故事都是，第一次，我们的智能体做了些我们真觉得不可能、或者没想到会发生的事，然后我们就惊到了。</p>
+<p>(01:13:26):<br>不过我其实觉得，我最喜欢的故事是整个过程里团队变得有多亲近。这挺不寻常的，我们是在 Meta 里一个相当小的团队。我们差不多在门洛帕克（Menlo Park）其中一栋楼的楼顶上，有属于自己的空间。</p></div>
+</article>
+<article class="turn lenny" id="t100">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t100" aria-label="本轮时间戳">01:13:45</a>
+  </div>
+  <div class="say"><p>在楼顶？</p></div>
+</article>
+<article class="turn mona" id="t101">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t101" aria-label="本轮时间戳">01:13:46</a>
+  </div>
+  <div class="say"><p>对。嗯，我们管它叫楼顶。严格说不算露天，但它在上面一层，大多数人不会去。那里有个公共区域，我们叫它图书馆。真的就像个图书馆。有个带架子的书柜，还铺了地毯，这办公室里别的房间基本都没地毯，还有几张挺逗的碎花沙发，看着像 1995 年买的。我们所有站会都在那儿开，我们在那儿待着，在那儿吃晚饭，一起吃午饭，一起吃早饭，一起过生日。</p>
+<p>(01:14:22):<br>我们在这些公共空间里一起待了好多时间。所以我想，显然我们为这个产品特别自豪，为我们能做到的事特别自豪。但我经常回想的，是围绕这件事聚到一起的团队，那种感觉就像把闪电装进了瓶子里。我没法想象这个产品是跟别的团队、别的人一起做出来的。我觉得整个过程中我们变得非常、非常亲近，要做到这点，我们得有很深的信任。嗯，所以我觉得这是我最喜欢的结果。</p></div>
+</article>
+<article class="turn lenny" id="t102">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t102" aria-label="本轮时间戳">01:15:00</a>
+  </div>
+  <div class="say"><p>那个早期团队有多大？我知道在大公司里，早期团队很少这么小。我就是想问，最开始聚到一起做这件事的团队，规模是多大？</p></div>
+</article>
+<article class="turn mona" id="t103">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t103" aria-label="本轮时间戳">01:15:09</a>
+  </div>
+  <div class="say"><p>团队最初的版本很小。我是说，大概 10 个人。而且大多是工程师，Alex 也是。然后我其实是同时兼顾 Meta AI、Muse，还有其他几摊事。后来我们大概扩张了，我是说，规模还是小。算上所有职能，总共不到一百人。所以我们有核心团队，还有其他跟我们合作的团队，比如基础设施（Infra）团队、安全团队，所有这些别的团队，但核心团队非常、非常小，而且整个过程一直都是这样。我们对这点挺执着的。我们特别想保持这个规模，因为沟通管理和决策必须非常、非常紧凑。所以我们想确保处在一个状态，既能信任每个人做决定，领导层也能掌握发生的一切。</p>
+<p>(01:16:06):<br>在 PM 这边，把整个东西做出来的其实就四个人。这挺有意思，因为这意味着很多领域没有 PM 覆盖。所以我们得做决定，哪些领域绝对需要 PM，哪些领域可以让 Alex Cornell 牵头，或者让工程师牵头，或者找别人。所以我觉得这是一种很有意思的思考方式，想清楚哪些地方非常非常需要 PM，哪些地方别人也能顶上。我们意识到，很多时候，早期的从 0 到 1 的事，放一放也没关系。有时候那种事不需要 PM。我们其实需要的是有个人先做出个东西来，让我们能有东西去反应。然后当我们进入一种状态：这东西得整合进产品里，或者真的要在发布时上线，那时候 PM 介入就更重要了。</p>
+<p>(01:17:02):<br>所以团队规模相当小，这有好有坏。我觉得我说的那些优点都有，但这也意味着你睡不了多少觉，也没什么缓冲余地。所以现在我们进入了发布后的阶段，团队稍微在扩大。我觉得我们永远不会变成一个很大的团队，因为那不是我们的风格，但我们确实在再加几个人，然后我们开始感觉到，哪怕只扩张一点点，团队氛围就会变一点，你得想办法保住最初的那套文化，并以某种方式把它规模化，让它不至于让人觉得疏离，之类的。</p></div>
+</article>
+<article class="turn lenny" id="t104">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t104" aria-label="本轮时间戳">01:17:41</a>
+  </div>
+  <div class="say"><p>到了现在这个阶段，你觉得你还会去做更让人兴奋、更有意思、更有影响力的事吗？</p></div>
+</article>
+<article class="turn mona" id="t105">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t105" aria-label="本轮时间戳">01:17:47</a>
+  </div>
+  <div class="say"><p>我是说，我都 44 了。我觉得这就是了。我不知道。我没想到这事会发生。我真的没想到。我是说，我完全没概念。所以我完全不知道这事会走向哪里。这是我做过的最私人化的产品，因为我们是给自己做的。通常我做产品都是给别人做的，对吧？但因为很长一段时间里它几乎是我们自己的东西，一开始我们很大程度上是按自己的需求、为我们自己做的。显然现在它在变，但我觉得我从没经历过这么私人化的东西。所以，谁知道呢？谁知道呢，Lenny？</p></div>
+</article>
+<article class="turn lenny" id="t106">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t106" aria-label="本轮时间戳">01:18:30</a>
+  </div>
+  <div class="say"><p>没错。[听不清 01:18:31]</p></div>
+</article>
+<article class="turn mona" id="t107">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t107" aria-label="本轮时间戳">01:18:30</a>
+  </div>
+  <div class="say"><p>这一切到底会走向哪里？</p></div>
+</article>
+<article class="turn lenny" id="t108">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t108" aria-label="本轮时间戳">01:18:32</a>
+  </div>
+  <div class="say"><p>没人知道。你想想，每个 PM 的梦想，就是做应用商店里排名第一的应用，据说是历史上增长最快的 AI 消费者应用。这算是很多人的梦想，而你正身处其中，不管好坏。</p></div>
+</article>
+<article class="turn mona" id="t109">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t109" aria-label="本轮时间戳">01:18:49</a>
+  </div>
+  <div class="say"><p>太吓人了。我现在特别焦虑。这很疯狂，因为一方面，你显然会想：&quot;哦，糟了，我得留在应用商店榜首&quot;，之类的。你还得继续增长。而且用这个产品的人越多，责任感就越重，因为他们在上传东西。他们分享了那么多上下文，还让这些智能体做那么多事。我刚跟我一个朋友聊天，她让她的智能体帮她打理孩子的运动队。她是家长经理，有点忙不过来了。</p>
+<p>(01:19:26):<br>我还在跟另一位女士聊天，她是单亲妈妈，是护士，有两个孩子。她让智能体帮她做膳食计划、帮她找医生、帮她安排预约，还帮她发那些邮件。她跟我讲得越多，我就越焦虑。我心想：&quot;哦，天哪，希望它别给我搞砸了。&quot;所以我觉得看着这些挺神奇的，但同时，对我来说，是啊，太疯狂了。太吓人了，因为你真的、真的希望这东西能……你希望它对人们来说是完美的。</p></div>
+</article>
+<article class="turn lenny" id="t110">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t110" aria-label="本轮时间戳">01:20:05</a>
+  </div>
+  <div class="say"><p>是啊。产品史上从没有哪个产品被要求做这么多事，还有这么多不确定的事。通常都是这样的：&quot;这是我的新手引导流程，它会稳定地对每个人都管用。&quot;</p></div>
+</article>
+<article class="turn mona" id="t111">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t111" aria-label="本轮时间戳">01:20:18</a>
+  </div>
+  <div class="say"><p>哦，天哪。好。等等，首先，AI 的这种不确定性，作为 PM 来看是最疯狂的事，因为我人生中很大一部分都围着&quot;掌控&quot;转。我就喜欢那种感觉：&quot;好，这东西我能控制。&quot;你做的产品，就像你说的，你会说：&quot;这是新手引导流程，之类的。&quot;可现在变成了，哦，智能体会自己推理，然后想出该干什么。我可以设一些护栏和评测，但它还是会自己琢磨明白。太狂了。但我觉得这也是它特别的地方。没有两个 Muse 是真的一样。你的 Muse 跟你说话的方式，跟它跟我说话的方式会很不一样，它做的事也会不一样。</p></div>
+</article>
+<article class="turn lenny" id="t112">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t112" aria-label="本轮时间戳">01:20:56</a>
+  </div>
+  <div class="say"><p>也许作为最后一个问题，接下来是什么？事情会走向哪里？它的愿景是什么？我知道有个 charm 会在某个时候推出，如果它真叫这个名的话，一个小设备。Muse 前面还有什么？未来它可能会有多不一样？愿景大概是什么？</p></div>
+</article>
+<article class="turn mona" id="t113">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t113" aria-label="本轮时间戳">01:21:09</a>
+  </div>
+  <div class="say"><p>嗯，我觉得有一点，我是说，说到 charm 和其他设备，我想 Muse 显然会……我想如果你真的想要个人超级智能（personal super intelligence）随时随地陪着你，它必须变得非常&quot;环境化&quot;（ambient）。所以现在它有点被困在一个应用里，但我觉得很快它应该进到你的眼镜里、你的 charm 设备上，不管那是什么形式。我觉得这种&quot;智能体超越一个应用、进入你的世界&quot;的想法会相当重要。我觉得想清楚怎么让它普及化也会相当重要，整个这个想法。当你在 Meta 工作时，你会真正思考这样一个念头：每个人都能拥有一个产品。所以想办法让它规模化、让它价格可负担，这样它在某种程度上能成为一个&quot;平衡器&quot;。我觉得这对我真的很重要。</p>
+<p>(01:22:11):<br>然后还有一件很小的事，单从能力角度看，我仍然觉得有很多对智能体的照看（babysitting）。你花很多时间，就像在玩拓麻歌子（Tamagotchi），你想着喂它，想着确保它没事、上下文都齐全，它还老是来找你确认。我确实觉得，随着时间推移，希望我们能达到的状态是，智能体变得更……它能很快凭直觉知道你想要什么。它有更多上下文，能力也更强。所以，我们信任它，你信任它，它也更能信任自己，然后它能更好地开始自主行动。所以我确实觉得这是我很在意的一个领域，因为我会想，好吧，到我得照看一个智能体的时候，我还不如自己做了。那可不是一个好处境。</p>
+<p>(01:22:57):<br>所以，单从战术角度看，这是另一个我关注的领域。但我确实觉得做 AI 很酷也很吓人的一点是，一年前我绝不会像刚才那样跟你解释 Muse。我当时对&quot;消费者智能体&quot;有些概念，但跟今天的情况非常不一样。所以我也不完全知道 Muse 接下来会走向哪里。我能看到近处我想要的东西，也能看到很远处我想要的东西，那就是每个人都有智能体，你在哪儿它就在哪儿，它是 omni（全能）的，所有这些。但中间那段过渡期我觉得可能会很有意思、很不一样。我也觉得让我兴奋的是智能体帮你变得更……从经济角度，或者说财务角度，就像每个人都想……</p>
+<p>(01:23:52):<br>就像开创新事业，搞个副业。我觉得智能体确实有机会在很多方面拓展你的世界，包括财务上的改善。我觉得这会是我想带这个产品走下去、也乐意看到行业演进的很大一部分方向，因为我觉得这就是那种经典的&quot;你的生活、你的钱&quot;的东西。我们作为人类就是有这些核心需求。我觉得在某种程度上，到目前为止智能体为我做的很多事都是帮我省了时间，而时间非常稀缺，对我也很重要。但如果它还能做这些别的事，让我更健康，让我财务上更有保障，那它就开始真正覆盖用户那么多迫切的需求了。</p></div>
+</article>
+<article class="turn lenny" id="t114">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t114" aria-label="本轮时间戳">01:24:36</a>
+  </div>
+  <div class="say"><p>能赶上这个时代，真是太好了。</p></div>
+</article>
+<article class="turn mona" id="t115">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t115" aria-label="本轮时间戳">01:24:38</a>
+  </div>
+  <div class="say"><p>我知道。太疯狂了。太疯狂了。</p></div>
+</article>
+<article class="turn lenny" id="t116">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t116" aria-label="本轮时间戳">01:24:43</a>
+  </div>
+  <div class="say"><p>太疯狂了。</p></div>
+</article>
+<article class="turn mona" id="t117">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t117" aria-label="本轮时间戳">01:24:44</a>
+  </div>
+  <div class="say"><p>这感觉特别奇怪，因为就像我说的，我今年44岁了。我小时候，我是说，你能想象吗？我得走到电视机跟前，去拧电视上的旋钮才能换台。而现在我在这里聊的，是你眼镜里的个人超级智能。</p></div>
+</article>
+<article class="turn lenny" id="t118">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t118" aria-label="本轮时间戳">01:24:58</a>
+  </div>
+  <div class="say"><p>是啊。我觉得我们差不多是同一个时代长大的。还记得386、486电脑吗，你得去按那个 turbo 加速键。</p></div>
+</article>
+<article class="turn mona" id="t119">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t119" aria-label="本轮时间戳">01:25:04</a>
+  </div>
+  <div class="say"><p>可不是，可不是。</p></div>
+</article>
+<article class="turn lenny" id="t120">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t120" aria-label="本轮时间戳">01:25:05</a>
+  </div>
+  <div class="say"><p>最后升到66兆赫兹，还是多少来着。哦，我的天。好吧。我知道你得赶时间了，所以那个快问快答环节我就跳过，不过最后那个惯例问题我还是得问你。听众有什么能帮到你的吗？</p></div>
+</article>
+<article class="turn mona" id="t121">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t121" aria-label="本轮时间戳">01:25:18</a>
+  </div>
+  <div class="say"><p>反馈。如果你在用Muse，我们有个特别酷的功能，你可以告诉Muse哪些地方好用、哪些地方不好用，它会把一份报告发给我们。所以你甚至都不用把它发到任何地方去。你只要跟你的Muse说一声，我们就收到了。所以，我觉得我们从大家那里收到的反馈越多，我们就做得越好，效果也就越好。所以，我觉得这大概是头号的事：用这个产品，帮我们把它做得更好。它现在还不完美。我觉得我们在智能体的这个建造周期里还很早期。所以我觉得这是很大一部分。</p></div>
+</article>
+<article class="turn lenny" id="t122">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t122" aria-label="本轮时间戳">01:25:53</a>
+  </div>
+  <div class="say"><p>所以你可以说，&quot;把这个发给Mona，一定要确保她看到。&quot;</p></div>
+</article>
+<article class="turn mona" id="t123">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t123" aria-label="本轮时间戳">01:25:56</a>
+  </div>
+  <div class="say"><p>你可以这么说。其实，我有位邻居，我想是每周都会通过他们的Muse发反馈，还说&quot;告诉你们的产品经理Mona，我遇到了这个问题&quot;，然后我就能在我们的系统里找到它。挺有意思的。我之所以知道这件事，是因为我在看那个（反馈）的时候，心里想，&quot;咦，奇怪，我的名字冒出来了。&quot;然后有一次我偶然在一个生日派对上，或者是给孩子们办的什么活动上，他就说，&quot;哦，对，我每周都发反馈，而且我会把你的名字写进去，因为我觉得这样大家会注意到。&quot;我当时就想，&quot;哦，天哪，太好了。&quot;</p></div>
+</article>
+<article class="turn lenny" id="t124">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t124" aria-label="本轮时间戳">01:26:33</a>
+  </div>
+  <div class="say"><p>哇。你做好心理准备吧，[听不清 01:26:35] 这种事还会更多。</p></div>
+</article>
+<article class="turn mona" id="t125">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t125" aria-label="本轮时间戳">01:26:36</a>
+  </div>
+  <div class="say"><p>对，正是。</p></div>
+</article>
+<article class="turn lenny" id="t126">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t126" aria-label="本轮时间戳">01:26:36</a>
+  </div>
+  <div class="say"><p>太棒了。</p></div>
+</article>
+<article class="turn mona" id="t127">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t127" aria-label="本轮时间戳">01:26:36</a>
+  </div>
+  <div class="say"><p>没错。</p></div>
+</article>
+<article class="turn lenny" id="t128">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t128" aria-label="本轮时间戳">01:26:39</a>
+  </div>
+  <div class="say"><p>好了，Mona，你和你的团队做的工作非常出色。这是一个非常特别的产品，也是一个非常特别的时刻。就这样，我们说再见吧。</p></div>
+</article>
+<article class="turn mona" id="t129">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t129" aria-label="本轮时间戳">01:26:39</a>
+  </div>
+  <div class="say"><p>谢谢，Lenny。</p></div>
+</article>
+<article class="turn lenny" id="t130">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t130" aria-label="本轮时间戳">01:26:48</a>
+  </div>
+  <div class="say"><p>谢谢你来参加。</p></div>
+</article>
+<article class="turn mona" id="t131">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t131" aria-label="本轮时间戳">01:26:48</a>
+  </div>
+  <div class="say"><p>感谢。当然。</p></div>
+</article>
+<article class="turn lenny" id="t132">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t132" aria-label="本轮时间戳">01:26:49</a>
+  </div>
+  <div class="say"><p>谢谢，Mona。</p></div>
+</article>
+<article class="turn mona" id="t133">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t133" aria-label="本轮时间戳">01:26:50</a>
+  </div>
+  <div class="say"><p>谢谢你们邀请我。</p></div>
+</article>
+<article class="turn lenny" id="t134">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t134" aria-label="本轮时间戳">01:26:50</a>
+  </div>
+  <div class="say"><p>大家再见。</p></div>
+</article>
+<article class="turn mona" id="t135">
+  <div class="turn-head">
+    <span class="avatar">M</span>
+    <div class="who"><strong>Mona Sarantakos</strong><small>嘉宾 · Muse 产品负责人</small></div>
+    <a class="stamp" href="#t135" aria-label="本轮时间戳">01:26:51</a>
+  </div>
+  <div class="say"><p>保重。</p></div>
+</article>
+<article class="turn lenny" id="t136">
+  <div class="turn-head">
+    <span class="avatar">L</span>
+    <div class="who"><strong>Lenny Rachitsky</strong><small>主持人</small></div>
+    <a class="stamp" href="#t136" aria-label="本轮时间戳">01:26:52</a>
+  </div>
+  <div class="say"><p>非常感谢大家的收听。如果你觉得这期有价值，可以在Apple Podcast、Spotify或者你喜欢的播客应用上订阅这个节目。另外，也请考虑给我们打个分，或者留个评论，因为这真的能帮到其他听众发现这个播客。你可以在lennyspodcast.com找到所有往期节目，或者了解更多关于这个节目的信息。我们下期见。</p></div>
+</article>
+</section>
+
+<div class="foot">
+  <p>出处：YouTube · <a href="https://www.youtube.com/watch?v=WY0cdD4gNoQ" target="_blank" rel="noopener">Lenny's Podcast</a>（视频 WY0cdD4gNoQ）</p>
+  <p>英文文字转录：<a href="https://www.dropbox.com/scl/fo/yxi4s2w998p1gvtpu4193/AMdNPR8AOw0lMklwtnC0TrQ?rlkey=j06x0nipoti519e0xgm23zsn9&st=ahz0fj11&e=1&dl=" target="_blank" rel="noopener">Mona Sarantakos_V2.txt</a></p>
+</div>
+</div>
+<a class="top" href="#" aria-label="回到顶部">↑</a>
+</body>
+</html>
