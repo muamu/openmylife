@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>张涛北大分享：Manus 的诞生与 AI 时代的产品创新</title>
+<meta name="description" content="Manus CPO 张涛北大分享全纪录：从 Monica 插件、被砍掉的 AI 浏览器，到 Manus 的立项与发布；以及 AI 时代做产品的四个关键、给创业者的三条建议和圆桌问答。">
+<style>
+/* MANUS:BODY:START */
+html{scroll-behavior:smooth}
+body{margin:0;background:#f6f3ec;color:#1b1a17;-webkit-font-smoothing:antialiased}
+/* MANUS:BODY:END */
+
+.manus-page{
+  --bg:#f6f3ec;
+  --paper:#fffdf8;
+  --paper-soft:#fbf8f1;
+  --ink:#1b1a17;
+  --ink-2:#4a463d;
+  --ink-3:#7a7468;
+  --line:#e3ddd0;
+  --line-soft:#efe7d8;
+  --orange:#e8590c;
+  --orange-ink:#b9470a;
+  --orange-soft:#f7e3d3;
+  --green:#2f8f4e;
+  --green-soft:#e2f0e6;
+  --amber:#c67a12;
+  --amber-soft:#f7ebd6;
+  --red:#b7301f;
+  --red-soft:#f6ded9;
+  --serif:"Songti SC","STSong","SimSun","Noto Serif SC",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --mono:ui-monospace,"Cascadia Code","SFMono-Regular",Consolas,monospace;
+  --w:1000px;
+}
+.manus-page *{box-sizing:border-box}
+.manus-page{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16.5px;
+  line-height:1.85;
+  min-height:100vh;
+}
+.manus-page ::selection{background:var(--orange-soft);color:var(--ink)}
+.manus-page a{color:var(--orange-ink);text-decoration:none;border-bottom:1px solid rgba(232,89,12,.28)}
+.manus-page a:hover{border-bottom-color:var(--orange-ink)}
+.manus-page code{font-family:var(--mono);font-size:.88em;background:var(--orange-soft);padding:1px 5px;border-radius:4px;color:var(--orange-ink);overflow-wrap:anywhere}
+.manus-page .wrap{max-width:var(--w);margin:0 auto;padding:0 22px}
+@media (min-width:700px){.manus-page{font-size:17.5px}.manus-page .wrap{padding:0 30px}}
+
+/* 顶栏 */
+.manus-page .topbar{
+  position:sticky;top:0;z-index:20;
+  background:rgba(246,243,236,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.manus-page .topbar .wrap{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding-top:9px;padding-bottom:9px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--ink-3);
+}
+.manus-page .topbar b{font-weight:600;color:var(--orange-ink);white-space:nowrap}
+.manus-page .topbar span{white-space:nowrap}
+
+/* 头图 */
+.manus-page .article-hero{
+  padding:52px 0 34px;
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(620px 320px at 90% 0%, rgba(232,89,12,.10), transparent 70%),
+    radial-gradient(520px 280px at 0% 90%, rgba(47,143,78,.06), transparent 72%);
+}
+.manus-page .kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  margin:0 0 20px;padding:5px 11px;border-radius:999px;
+  background:var(--orange-soft);color:var(--orange-ink);
+  font-size:12.5px;font-weight:600;
+}
+.manus-page .kicker i{width:5px;height:5px;border-radius:50%;background:var(--orange);display:inline-block}
+.manus-page h1{
+  margin:0;
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(29px,5.4vw,50px);line-height:1.24;letter-spacing:-.01em;
+}
+.manus-page h1 em{font-style:normal;color:var(--orange-ink)}
+.manus-page .dek{
+  margin:20px 0 0;max-width:46em;
+  font-size:16px;line-height:1.9;color:var(--ink-2);
+}
+.manus-page .meta{
+  margin-top:24px;padding-top:14px;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:11.5px;line-height:2;color:var(--ink-3);
+}
+.manus-page .meta span{display:inline-block;margin-right:18px}
+
+/* 数字卡 */
+.manus-page .stats{
+  margin-top:26px;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);
+}
+@media (min-width:720px){.manus-page .stats{grid-template-columns:repeat(4,1fr)}}
+.manus-page .stat{background:var(--paper);padding:16px 18px}
+.manus-page .stat b{
+  display:block;font-family:var(--mono);font-size:21px;line-height:1.25;
+  letter-spacing:-.02em;color:var(--orange-ink);font-variant-numeric:tabular-nums;
+}
+.manus-page .stat span{display:block;margin-top:5px;font-size:11.5px;line-height:1.55;color:var(--ink-3)}
+.manus-page .stats-note{
+  margin:8px 0 0;font-family:var(--mono);font-size:10.5px;line-height:1.7;color:var(--ink-3);
+}
+
+/* 一分钟速览 */
+.manus-page .quick{
+  margin:30px 0 0;padding:20px 22px;
+  background:var(--paper);border:1px solid var(--line);border-radius:14px;
+}
+.manus-page .quick-head{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  padding-bottom:12px;border-bottom:1px solid var(--line-soft);
+}
+.manus-page .quick-head h2{
+  margin:0;font-family:var(--serif);font-size:20px;line-height:1.4;color:var(--ink);
+}
+.manus-page .quick-head span{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--ink-3);white-space:nowrap;
+}
+.manus-page .quick ol{list-style:none;margin:0;padding:0}
+.manus-page .quick li{
+  display:grid;grid-template-columns:30px 1fr;gap:8px;align-items:start;
+  padding:10px 0;border-bottom:1px dashed var(--line-soft);
+  font-size:14.5px;line-height:1.7;color:var(--ink-2);
+}
+.manus-page .quick li:last-child{border-bottom:0;padding-bottom:2px}
+.manus-page .quick li i{
+  font-style:normal;font-family:var(--mono);font-size:11px;color:var(--orange);
+  padding-top:2px;
+}
+
+/* 目录 */
+.manus-page .toc{
+  margin:16px 0 0;padding:16px 18px;
+  background:var(--paper-soft);border:1px solid var(--line);border-radius:12px;
+}
+.manus-page .toc .th{
+  margin-bottom:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ink-3);
+}
+.manus-page .toc ol{
+  margin:0;padding-left:1.3em;columns:2;column-gap:26px;
+  font-size:13px;line-height:1.9;
+}
+.manus-page .toc ol li{break-inside:avoid}
+.manus-page .toc a{color:var(--ink-2);border:0}
+.manus-page .toc a:hover{color:var(--orange-ink)}
+@media (max-width:640px){.manus-page .toc ol{columns:1}}
+
+/* 正文 */
+.manus-page section{padding:36px 0 30px;border-top:1px solid var(--line)}
+.manus-page section.first{border-top:0}
+.manus-page h2{
+  margin:0 0 14px;display:flex;align-items:baseline;gap:10px;
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(22px,3.2vw,28px);line-height:1.4;letter-spacing:-.005em;
+}
+.manus-page h2 .n{
+  flex:0 0 auto;font-family:var(--mono);font-size:12px;
+  letter-spacing:.08em;color:var(--orange);
+}
+.manus-page h3{margin:24px 0 8px;font-size:16.5px;line-height:1.6;color:var(--ink)}
+.manus-page p{margin:0 0 13px;font-size:15.5px;line-height:1.9;color:var(--ink-2)}
+.manus-page ul,.manus-page ol{margin:0 0 14px;padding-left:1.3em;color:var(--ink-2)}
+.manus-page li{margin:5px 0;font-size:15.5px;line-height:1.85}
+.manus-page li::marker{color:var(--orange)}
+.manus-page strong{color:var(--ink);font-weight:700}
+.manus-page .small{font-size:13px;line-height:1.8;color:var(--ink-3)}
+
+/* 时间线 */
+.manus-page .timeline{
+  margin:10px 0 0;padding-left:20px;border-left:2px solid var(--line);
+}
+.manus-page .tli{position:relative;padding:0 0 18px}
+.manus-page .tli:last-child{padding-bottom:0}
+.manus-page .tli::before{
+  content:"";position:absolute;left:-27px;top:7px;width:11px;height:11px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--orange);
+}
+.manus-page .tli time{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--orange-ink)}
+.manus-page .tli p{margin:3px 0 0;font-size:14.5px;line-height:1.75;color:var(--ink-2)}
+
+/* 卡片 */
+.manus-page .grid2{display:grid;gap:14px;margin:18px 0}
+@media (min-width:760px){.manus-page .grid2{grid-template-columns:1fr 1fr}}
+.manus-page .card{
+  background:var(--paper);border:1px solid var(--line);border-radius:12px;
+  padding:18px 18px 14px;
+}
+.manus-page .card .tag{
+  display:inline-block;padding:2px 8px;border-radius:999px;
+  background:var(--orange-soft);color:var(--orange-ink);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;
+}
+.manus-page .card h3{margin:8px 0 8px;font-size:15.5px;line-height:1.5}
+.manus-page .card p{margin:0 0 8px;font-size:14px;line-height:1.8}
+.manus-page .card p:last-child{margin-bottom:0}
+.manus-page .card ul{margin:0;padding-left:1.2em}
+.manus-page .card li{font-size:14px;line-height:1.8}
+
+/* 提示块 */
+.manus-page .callout{
+  margin:18px 0;padding:14px 16px;
+  border-left:3px solid var(--orange);border-radius:0 10px 10px 0;
+  background:var(--orange-soft);
+  font-size:14.5px;line-height:1.85;color:var(--ink-2);
+}
+.manus-page .callout b{color:var(--orange-ink)}
+.manus-page .callout.green{border-left-color:var(--green);background:var(--green-soft)}
+.manus-page .callout.green b{color:#23694b}
+
+/* 引用 */
+.manus-page .quote{
+  margin:20px 0;padding:16px 20px;
+  background:var(--paper);border:1px solid var(--line);border-radius:12px;
+  font-family:var(--serif);font-size:18px;line-height:1.75;color:var(--ink);
+}
+.manus-page .quote span{
+  display:block;margin-top:8px;
+  font-family:var(--mono);font-size:10.5px;color:var(--ink-3);
+}
+
+/* 问答 */
+.manus-page .qa{margin-top:6px}
+.manus-page .qa-item{padding:15px 0;border-bottom:1px solid var(--line-soft)}
+.manus-page .qa-item:last-child{border-bottom:0;padding-bottom:2px}
+.manus-page .qa-q{
+  display:flex;align-items:flex-start;gap:9px;
+  margin:0 0 6px;font-size:15.5px;font-weight:700;line-height:1.65;color:var(--ink);
+}
+.manus-page .qa-q i{
+  flex:0 0 auto;margin-top:1px;padding:1px 6px;border-radius:4px;
+  background:var(--orange-soft);color:var(--orange-ink);
+  font-style:normal;font-family:var(--mono);font-size:10.5px;font-weight:500;
+}
+.manus-page .qa-a{
+  margin:0;padding-left:34px;
+  font-size:14.5px;line-height:1.85;color:var(--ink-2);
+}
+
+/* 来源 */
+.manus-page .source{
+  margin:30px 0 6px;padding:18px 20px;
+  background:var(--paper);border:1px solid var(--line);border-radius:12px;
+  font-size:13px;line-height:1.85;color:var(--ink-3);
+}
+.manus-page .source h2{margin-bottom:10px;font-size:20px}
+.manus-page .source ul{margin:0;padding-left:1.2em}
+.manus-page .source li{font-size:13px;line-height:1.85;margin:4px 0}
+.manus-page .page-foot{
+  padding:28px 0 44px;text-align:center;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--ink-3);
+}
+@media print{
+  .manus-page .topbar,.manus-page .toc,.manus-page .page-foot{display:none}
+  .manus-page .article-hero{background:none}
+  .manus-page{font-size:12pt}
+}
+</style>
+</head>
+<body>
+<main class="manus-page">
+
+  <div class="topbar">
+    <div class="wrap">
+      <b>开源人生 · 演讲整理</b>
+      <span>Manus / General Agent</span>
+    </div>
+  </div>
+
+  <!-- MANUS:CONTENT:START -->
+  <header class="article-hero">
+    <div class="wrap">
+      <p class="kicker"><i></i>演讲整理 · 张涛 / Manus CPO</p>
+      <h1>张涛北大分享<br><em>Manus 的诞生与 AI 时代的产品创新</em></h1>
+      <p class="dek">从浏览器插件 Monica，到被砍掉的 AI 浏览器，再到 Cursor 里看到的技术拐点；从零预算发布和算力保卫战，到四个产品创新关键、三条创业建议，以及和真格、蓝驰的圆桌问答。下面按分享的顺序整理。</p>
+      <div class="meta">
+        <span>讲者：张涛（Manus CPO / 合伙人）</span>
+        <span>来源：<a href="https://fomalhaut647.com/posts/lecture-zhang-tao/" target="_blank" rel="noopener noreferrer">fomalhaut647.com</a></span>
+        <span>整理：2026-11-22</span>
+        <span>阅读约 12 分钟</span>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>7 个月</b><span>被砍掉的 AI 浏览器研发时长</span></div>
+        <div class="stat"><b>2.5 个月</b><span>Manus 从立项到发布</span></div>
+        <div class="stat"><b>800M TPM</b><span>上线第三天的并发需求</span></div>
+        <div class="stat"><b>4000–5000 万</b><span>上线后首个 4 月的 ARR（美元）</span></div>
+      </div>
+      <p class="stats-note">以上数字来自讲者口述与现场记录，未独立核验。</p>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <section class="quick" id="quick">
+      <div class="quick-head">
+        <h2>1 分钟速览</h2>
+        <span>5 条 · 每条一行</span>
+      </div>
+      <ol>
+        <li><i>01</i><span><strong>Monica</strong> 插件起家，2023 年靠划词改写和翻译高速增长。</span></li>
+        <li><i>02</i><span>团队花 <strong>7 个月</strong> 做出 AI 浏览器，发布前整体砍掉，转身做通用 Agent。</span></li>
+        <li><i>03</i><span>从 Cursor 看到 <strong>Claude 3.5 V2</strong> 的 Agentic 能力，2024 年 12 月立项 <strong>Manus</strong>。</span></li>
+        <li><i>04</i><span>面向非技术人群：<strong>执行过程透明化 + 会话回放</strong>，零预算发布，第三天 TPM 到 <strong>800M</strong>。</span></li>
+        <li><i>05</i><span>四个关键，三条建议：<strong>预判模型、拒绝 Chatbot、坚持 General、理解非技术用户</strong>；<strong>全球化、多动手、动态决策</strong>。</span></li>
+      </ol>
+    </section>
+
+    <nav class="toc" aria-label="目录">
+      <div class="th">往下读</div>
+      <ol>
+        <li><a href="#timeline">一条时间线</a></li>
+        <li><a href="#s1">从浏览器插件说起</a></li>
+        <li><a href="#s2">一次昂贵的放弃</a></li>
+        <li><a href="#s3">在 Cursor 里看见通用 Agent</a></li>
+        <li><a href="#s4">为普通人做产品</a></li>
+        <li><a href="#s5">零预算发布与算力保卫战</a></li>
+        <li><a href="#s6">四个创新关键</a></li>
+        <li><a href="#s7">三条建议</a></li>
+        <li><a href="#s8">圆桌对谈</a></li>
+        <li><a href="#s9">现场问答 12 问</a></li>
+        <li><a href="#s10">来源与说明</a></li>
+      </ol>
+    </nav>
+
+    <section class="first" id="timeline">
+      <h2><span class="n">00</span>一条时间线</h2>
+      <p class="small">先把关键节点排出来，后面的故事就不容易乱。</p>
+      <div class="timeline">
+        <div class="tli"><time>2022 年底 – 2023 年初</time><p>ChatGPT 爆火，团队做浏览器侧边栏插件 Monica。</p></div>
+        <div class="tli"><time>2024 年 3 月</time><p>张涛与首席科学家 Peak 加入，公司约 30 人，开始做 AI 浏览器。</p></div>
+        <div class="tli"><time>2024 年 10 月</time><p>浏览器完成度很高，发布前被 Red 拍板整体关停。</p></div>
+        <div class="tli"><time>2024 年 11 月</time><p>Claude Sonnet 3.5 V2 发布，团队看到长程规划与工具调用的跃迁。</p></div>
+        <div class="tli"><time>2024 年 12 月</time><p>Manus 立项，方向是全球首个通用 AI Agent。</p></div>
+        <div class="tli"><time>2025 年 3 月 5 日</time><p>Manus 发布，邀请码把算力与现金流压力同时压住。</p></div>
+        <div class="tli"><time>2025 年 3 月下旬 – 4 月</time><p>付费上线；4 月单月 ARR 冲到 4000 万至近 5000 万美元。</p></div>
+      </div>
+    </section>
+
+    <section id="s1">
+      <h2><span class="n">01</span>从浏览器插件说起：Monica 的天花板</h2>
+      <p>2022 年底到 2023 年初，ChatGPT 刚火。用户让它写邮件、写社媒文案，写完还得在几个浏览器标签页之间来回复制粘贴。工作流被切碎了。</p>
+      <p>国内当时没有自研大模型，创业机会集中在应用层。团队做了个浏览器侧边栏 Monica：在 Gmail 等网页里划一段字，直接改写或翻译，不用离开当前页面。</p>
+      <p>这个功能比 Google 在 Gmail 里内置同类能力早了大约一年半。2023 年，Monica 靠这个体验高速增长。</p>
+      <p>到 2024 年初，天花板开始显形。Chrome 插件算高级功能，全球大量普通用户甚至不知道浏览器能装插件；插件也没有独立的主端形态。CEO Red 刚拒掉字节跳动的收购，团队决定找下一个更大的方向。</p>
+    </section>
+
+    <section id="s2">
+      <h2><span class="n">02</span>一次昂贵的放弃：已经做好的 AI 浏览器</h2>
+      <p>2024 年 3 月，张涛和首席科学家 Peak 加入，组建新团队。公司当时约 30 人，融过真格的天使轮和 Pre-A 轮，账上并不宽裕。</p>
+      <p>顺着「插件天花板低，那就自己做个浏览器」的思路，团队投入 7 个月，做了一款完全 AI Native 的浏览器。到 2024 年 10 月，完成度已经超过后来 2025 年 1–2 月发布的 Arc Dia 和 Perplexity Comet，连 Launch Website 和发布视频都做好了。</p>
+      <p>然后 Red 拍板：整个项目 Sunset。</p>
+      <p>第一个原因是旧体验的基准线陷阱。内部测试时功能很炫，拿给亲友试用，所有人第一反应都是问「某某传统浏览器功能在哪」。Safari 和 Chrome 有二十多年基建，用户会拿大厂标准来要求一个小团队，团队只能花大量精力补基础功能，AI 核心能力反而被削弱。这就像开一家小馆子，客人先拿米其林的餐具标准来挑刺，你只能先补盘子，菜没时间做。</p>
+      <p>第二个原因是时间。Red 担心一旦发布，团队会不甘心，陷进 3 到 6 个月的持续迭代。对创业公司来说，方向对了钱总能融，浪费时间会直接错过市场窗口。</p>
+      <p>2024 年 10 月，浏览器项目彻底关停。张涛后来复盘，这个决定直接促成了 Manus；市场也印证了「AI + 旧体验」的浏览器赛道没跑出头部赢家。</p>
+      <div class="quote">「时间是创业者最昂贵的资源。」<span>张涛复述 CEO Red 当时的判断</span></div>
+    </section>
+
+    <section id="s3">
+      <h2><span class="n">03</span>在 Cursor 里看见通用 Agent</h2>
+      <p>2024 年 7 月，Cursor 爆火。张涛、Peak 和全栈开发阿斌都有编程背景。张涛不是专业工程师，但他开始用 Cursor 处理报销、帮妻子把 MP4 转成 MP3、写小说。</p>
+      <p>2024 年 11 月，Anthropic 发布 Claude Sonnet 3.5 V2，能力出现一次质变。当时国内外创业者大多在做 Cursor 的 Copycat，团队看到的却是编程之外的东西：Agentic 能力。</p>
+      <div class="grid2">
+        <div class="card">
+          <span class="tag">能力一</span>
+          <h3>长程规划（Long-horizon Planning）</h3>
+          <p>模型会拆解复杂任务，主动调用工具，甚至会向用户反问来补信息，不像早期基于多轮对话训练的模型，习惯在一轮里把话说完。</p>
+        </div>
+        <div class="card">
+          <span class="tag">能力二</span>
+          <h3>工具调用（Tool Use / Function Calling）</h3>
+          <p>3.5 V2 的函数调用在当时断层领先。模型不只回答问题，还能真的去操作外部工具。</p>
+        </div>
+      </div>
+      <p>团队判断，世界不需要更多工程师，工程师已经有足够多花哨工具；机会在于拿 Coding 当中间层，让不懂技术的人也能处理通用任务。</p>
+      <p>2024 年 12 月，Manus 立项。两个半月后，2025 年 3 月 5 日发布。发布之后他们才发现，全球只有自己切进了通用方向。</p>
+    </section>
+
+    <section id="s4">
+      <h2><span class="n">04</span>为普通人做产品：透明与传播</h2>
+      <p>早期原型很像 Cursor 的三栏专业编程界面。真格投资人雨森参观时说，三栏布局太专业，把人拒之门外。团队砍掉一栏，改成双栏，明确服务非技术人群。</p>
+      <p>评测集是现攒的。张涛在朋友圈问：如果你有一个本科生实习生，会让他干什么？100 多位朋友给了 400 多个真实任务，剔除 100 多个需要物理身体的（比如买奶茶），剩下 300 多条，成了早期的内部评测集。</p>
+      <p>2025 年 1 月 5 日原型调通。随着 Harness 演进，AI 每天给出的解法开始超出预期。张涛在办公室激动大喊，那段时间每天回家嗓子都是哑的。</p>
+      <p>发布首周，因为智能表现太震撼，很多用户怀疑它是雾件，或者造假。团队因此做了两个后来被行业广泛沿用的设计。</p>
+      <div class="grid2">
+        <div class="card">
+          <span class="tag">信任</span>
+          <h3>工作流实时透明</h3>
+          <p>Step-by-step 展示 Agent 的思考、工具调用、网页访问、写代码、生成图表，让普通人看到「它像人一样工作」，先建立信任。</p>
+        </div>
+        <div class="card">
+          <span class="tag">增长</span>
+          <h3>Session Replay 会话回放</h3>
+          <p>不用邀请码、不用充值，用户把链接分享出去，朋友就能完整回放任务执行过程，直接看到那个魔法瞬间。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="s5">
+      <h2><span class="n">05</span>零预算发布与算力保卫战</h2>
+      <p>外界曾质疑 Manus 花重金买 KOL 营销，甚至有营销专家说，给两三千万预算也抄不出这个效果。实际情况是，2 月 28 日距离发布只剩 6 天，Red 提议加个视频，外部 Agency 报价工期至少两周。</p>
+      <p>张涛只能自己上。机身是索尼 A7C2，镜头向真格雨森借了 50mm F1.2 GM。3 月 1 日，他在共享办公园区找了个相对安静的角落拍摄，视频里能看到背后保洁阿姨拖地走过导致的跳帧。首席科学家 Peak 出镜，张涛用剪映剪了两天两夜。唯一支出，是为了导出 4K 视频上传 YouTube 买的 12–15 美元 CapCut 月度会员，导出后立刻取消。</p>
+      <div class="callout"><b>张涛的结论：</b>早期创业别把讲故事外包给 Agency。创始人亲自用自己的语言表达对产品的骄傲，信息才不会失真。很多公司事后说「我们太踏实，不会营销」，在他看来，这是在逃避产品创新不足。</div>
+      <h3>发布当天还有另一场仗</h3>
+      <p>公司刚融完 A 轮，账上只剩 800–900 万美元。有邀请码限制的情况下，峰值单日烧掉 50 万美元；如果没有邀请码，3 月 5 日发布后撑不到 3 月 10 日就会破产。发布时甚至没来得及做付费功能，首日爆火后才紧急抽调团队开发 Pricing，3 月下旬上线付费。</p>
+      <p>算力供应链也被撞了一下。传统 Chatbot 和 General Agent 的单日活 Token 消耗量相差 200 到 1000 倍。亚太区头部情感陪伴 / Chatbot 厂商向云厂商申请的并发量通常是 10M–20M TPM，Manus 上线第三天需求就到了 800M TPM。</p>
+      <p>张涛打电话要 500M 现货并发，对方以为他在吹牛骗折扣。最后靠一家服务不佳、算力闲置的云厂商「捡漏」数百 M TPM，撑过首月，也顺手游说各大云厂商提前储备算力，客观上为 2025 年 6 月后的国内 Agent 创业者铺了路。</p>
+    </section>
+
+    <section id="s6">
+      <h2><span class="n">06</span>四个创新关键</h2>
+      <p>这一部分是张涛认为最值得带走的四件事。</p>
+
+      <h3>01 为 6 个月后的模型做产品</h3>
+      <p>别追当天的新闻。看到某个模型早上更新才去立项，已经晚了。创业者应该像 Peak 那样，靠长期深耕预判 Frontier Model Lab 的演进方向，为 6 个月后的模型能力设计产品形态。当下模型可能还笨拙，只要它按预期进化，产品就能瞬间卡住身位。</p>
+      <p><strong>Less Structure, More Intelligence。</strong>2024 年底，行业共识是写死 Workflow，用 if-else 兜底，人教 AI 做事，同时做 Multi-Agent。Manus 从第一版就抛弃硬编码 Workflow，坚持 Single Agent，把每一步决策交给模型。</p>
+      <div class="callout green"><b>一个验证：</b>2025 年 2 月中旬 Claude 3.7 发布当晚，团队一行 Harness 代码没改，只切换了模型 Endpoint，内部评测集里的未解决问题就攻克了 20%–30%。</div>
+      <p>再往前看，当视频生成从输入 Prompt 到出画面的延迟降到 1 秒以内，它就会变成一代新的操作系统，软件和游戏的交互都会被重写。</p>
+
+      <h3>02 拒绝 Chatbot 与免费补贴</h3>
+      <p>Chatbot 的价值上限被用户的提问能力锁死。未来 AI 应该尽量减少用户输入，在 24 小时的日常行为里主动捕捉意图，持续推理并输出智能。</p>
+      <p>免费补贴是毒药。沿用移动互联网「免费补贴换 DAU」，是过去两三年国内 AI 创业最大的陷阱，大厂尤其严重。首月砸钱买来一二十万免费 DAU，然后被 KPI 绑架，再也不敢切付费。免费用户还会提出海量低价值、发散的伪需求，消耗创业者最宝贵的注意力。</p>
+      <p>付费能筛选真实需求。AI 的智能本身有很高商业价值，Manus 的核心重度用户单月消费可达 4000–5000 美元。3 月底上线付费后，仅用 4 月单月，ARR 就冲破 4000 万至近 5000 万美元。</p>
+
+      <h3>03 坚持 General，抢占品牌心智</h3>
+      <p>心智占位只有一次机会。早期很多投资人建议 Manus 聚焦做网站生成器或 PPT 生成器，团队坚持做全球首个 General AI Agent。品牌心智一旦固化，后面花数亿美金也难扭转：垂直竞品想向通用拓展，用户会觉得违和；Manus 顺势推出 Web App、Slides、Video，反而显得理所当然。</p>
+      <p>付费最高、最忠诚的用户是程序员以外的人，比如 CEO、小老板、部门主管。公司里老板的杂事最多，也最缺一个能随时处理长尾跨界任务的帮手。</p>
+
+      <h3>04 理解非技术用户，重构异步云端体验</h3>
+      <p>程序员习惯在本地电脑上对着 Cursor 不断点 Accept，普通人不会一直守在电脑前。Manus 给每个任务配一个独立的云端沙盒，用户在手机上随手布置任务，锁屏离开，云端异步执行，完成后再推送结果。</p>
+    </section>
+
+    <section id="s7">
+      <h2><span class="n">07</span>给 AI Native 创业者的三条建议</h2>
+
+      <h3>01 Day One 全球化</h3>
+      <p>大语言模型抹平了语言壁垒。Manus 核心团队都在中国本土受教育，CEO Red 此前甚至没去过美国，但发布百天内就受邀出席法国 VivaTech 峰会与爱丽舍宫晚宴，张涛坐在马克龙右手边、黄仁勋对面。欧洲创业者常陷在 Build in Europe, Build for Europe 的防御心态里，中国创业者更该善用 LLM 消除语言障碍，从第一天就搭多语言产品与客服体系。</p>
+      <p>全球化不等于只做欧美。团队内部严禁使用「国外」这个词，因为它会形成「国内 vs 国外」的狭隘对立。全球市场非常多元，Global South 藏着巨大机会。Manus 最大的收入来源是美国，最大的用户群体却在巴西，中东、日韩、东南亚乃至非洲都有大量活跃用户。</p>
+
+      <h3>02 多动手实操，远离自媒体噪音</h3>
+      <p>过去 21 个月，自媒体说 Manus 被颠覆、完蛋，说了无数次，公司业务一直在增长。绝大多数自媒体缺一线实战，也没经历过大流量检验，靠制造焦虑收割流量。盲从这些声音，会误以为大厂一入局就毫无机会，而大厂做出的产品往往十有八九不好用。</p>
+      <p>张涛面试校招 AI PM 时发现，不少求职者手机里没装过 AI 应用，或者列表里只有两三个面试前突击生成的对话。做 AI 的前提，是自己先成为重度用户。</p>
+
+      <h3>03 保持好奇心，在不确定性里动态决策</h3>
+      <p>执行和技术能力已经高度过剩，稀缺的是观察真实生活、拆解社会运行里的摩擦、准确定义问题、描述终局形态的能力。</p>
+      <p>创业不是考卷，没有标准答案，也没有一击必杀的银弹。VC 要做大量事前研究来提高单次下注的胜率，所以总爱问终局是什么；优秀创业者很少在行动前把所有路径想清楚，他们带着好奇心先下场，再根据每天的反馈调整。</p>
+      <div class="quote">「Mens et Manus，Mind and Hand，头脑与双手。」<span>Manus 的名字来自 MIT 校训</span></div>
+      <p>大模型厂商在造大脑，Manus 想让大脑作用于真实世界。创业也一样，得投身实践，不能停在 BP 推演里。</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="n">08</span>圆桌对谈：通用 Agent 还有多大空间</h2>
+      <p class="small">圆桌由真格基金匡薇（Tina）、蓝驰创投姜志熹（Robby）、主持人刘勇（Patrick）与张涛一起聊。</p>
+
+      <h3>话题一：通用 Agent 赛道还有机会吗？</h3>
+      <p><strong>Tina：</strong>AI 仍处极早期，结合具体场景（比如基于 WhatsApp 的 Instinct）还有大量新用例，关键在于先下场行动。</p>
+      <p><strong>张涛：</strong>ChatGPT 月活约 11 亿，具备通用 Agent 能力的 Codex 月活只有 2000 多万，即便在 OpenAI 生态内，Agent 渗透率也不足 5%。如果全球 70 亿人口里有一半成为 AI 基础用户，是 3 倍增长；Agent 渗透率再从不足 5% 提到 20%–30%，是 6–7 倍增长。两边乘起来，市场还有 20 到 30 倍空间。年轻创业者别站在 Sam Altman 或张一鸣的宏观视角指点江山，从具体小问题切入。</p>
+      <p><strong>Robby：</strong>要区分轻量级交互（比如豆包）和高成本生产力 Agent。受限于高昂算力成本，目前真正高价值的通用 Agent 主要服务高收入人群，美国月入 2 万美元以上、中国月入 1.5 万–2 万元以上的白领，短期内很难像移动互联网那样全民普惠。</p>
+
+      <h3>话题二：Personal Agent 的终局与中美差异</h3>
+      <p><strong>张涛（基于新产品 Cue 的观察）：</strong></p>
+      <ul>
+        <li><strong>基础设施代差决定需求强弱。</strong>中国互联网直接跨入移动时代，微信一站式解决了几乎所有生活与工作连接；欧美及新加坡等发达国家 IT 起步早，遗留了海量割裂的 Legacy 系统。张涛在新加坡带两个孩子：两所学校有三个独立教务系统，加上夫妻二人的邮箱，带孩子看病还要核对医保网络，不同医院分别用网站、电话、邮件或 WhatsApp 预约，高频 Context Switch 让人焦虑。他目前重度依赖 Cue 在单一界面统管这些事务。</li>
+        <li><strong>区域运营属性。</strong>Personal Agent 需要深度接入本地生活与服务提供商，类似打车软件没能被 Uber 全球一统，不同国家与城市会诞生本土化赢家。</li>
+      </ul>
+      <p><strong>Robby：</strong>持审慎态度。并非每个人都需要助理，就像上厕所还是要自己来。许多普通人本身没有配助理的需求，也有人享受亲自规划旅行的乐趣，不把这件事当摩擦力；叠加高昂 Token 成本与大厂挤压，C 端普适性存疑。</p>
+      <p><strong>Tina：</strong>看好 Token 成本持续下降，未来可能像 5G 流量一样便宜，每个人都能成为「拥有数字员工的老板」。国内微信生态虽强，但仍存在信息过载与跟进遗漏，比如导出微信聊天记录构建个人记忆库，这正是年轻开发者的切入点。</p>
+
+      <h3>话题三：AI 应用何时迎来全民大爆发？</h3>
+      <p><strong>Robby：</strong>看算力成本拐点。目前全行业利润被英伟达、内存厂商及数据中心赚走，缺少移动互联网时代「50 元包月流量无限用」的零边际成本土壤。只有当硬件过度投资导致泡沫破裂、算力供应成本暴跌（比如使用成本降到十分之一），应用才会迎来百万倍用户级爆发。</p>
+      <p><strong>张涛：</strong>看交互形态拐点。他重申 1 秒延迟的 Seedance 是核心 Turning Point。一旦实现实时生成，AI 会从白领生产力工具下沉为全社会难以抗拒的娱乐与交互操作系统。即便月薪 3000 元的人也愿意花 300 元，像《黑客帝国》「插管」一样，带来截然不同的人生体验。</p>
+      <p><strong>Tina：</strong>从 Bottom-up 的青年创业信号看。真格前实习生（北大、清华本科毕业生）买了十几台二手 iPhone 研究 AI 视频营销，最近开源发布的 Hypit AI 仅 10 天就拿到 1.5 万 GitHub Stars。机会属于已经动手 Ship Product 的人。</p>
+      <p><strong>刘勇：</strong>Token 首字输出延迟（TTFT）降到 0.1 秒级，以及价格大幅下探，是两个关键观察指标。</p>
+
+      <h3>话题四：国内难收费、海外难上市，怎么破局？</h3>
+      <p><strong>张涛：</strong>回归商业本质与资本效率。公司本质是做一门好生意，只要能健康盈利，保证合理的 Revenue Margin，不靠恶性补贴，就不必过度依赖二级市场上市输血。Manus 在估值达到 20 亿美元时，历史累计融资金额与总花费仅约 5000 万至 6000 万美元。</p>
+      <p><strong>Robby：</strong>务实层面，国内效率型工具确实极难收费，中国团队做效率工具必须立足全球市场，尽管会面临地缘与监管摩擦；务虚层面，创业者应认清自身能力边界，擅长本土就深耕国内，不必强行盲从上帝视角。</p>
+      <p><strong>Tina：</strong>在校学生拥有最充裕的时间，当务之急是薅尽各大厂商的免费 Token 额度，快速做出产品并在 X、GitHub、Discord 上发布验证，等产品跑出数据后再考虑商业化与上市难题。</p>
+    </section>
+
+    <section id="s9">
+      <h2><span class="n">09</span>现场问答 12 问</h2>
+      <div class="qa">
+        <div class="qa-item">
+          <p class="qa-q"><i>Q1</i><span>如何应对 Codex 与 Claude Code 的巨额算力补贴竞争？</span></p>
+          <p class="qa-a">Codex / CC 巅峰期对 200 美元订阅用户的实际 API 补贴高达 27–30 倍，硬拼功能必死。关键在人群错位：美国是 Manus 最大收入国，但旧金山和西雅图甚至不在 Manus 美国城市前十，前十是洛杉矶、迈阿密、芝加哥、休斯顿、纽约等。Manus 服务的是非科技圈主流人群，他们根本不用 Codex。</p>
+        </div>
+        <div class="qa-item">
+          <p class="qa-q"><i>Q2</i><span>大四学生做接入高校教务系统与微信的校园 Personal AI，怎么切入？</span></p>
+          <p class="qa-a">纯系统连接在技术上容易被通用巨头覆盖，但高校是极好的封闭练兵场。CEO Red 早年也在华中科技大学做校园漂流瓶等软件起家。可以当起点，别当终局。</p>
+        </div>
+        <div class="qa-item">
+          <p class="qa-q"><i>Q3</i><span>出海如何解决语言翻译之外的本地文化难题？</span></p>
+          <p class="qa-a">双管齐下。外部建立 Manus Fellow 全球志愿者项目，由当地核心用户纠正广告与排版的文化偏差；内部在重点市场招聘本地员工，同时善用高校留学生资源，比如清华苏世民书院、北大燕京学堂，那里汇聚了认同中国的各国优秀人才。</p>
+        </div>
+        <div class="qa-item">
+          <p class="qa-q"><i>Q4</i><span>坚持 General 路线面临巨大诱惑与阻力时，靠什么定力？</span></p>
+          <p class="qa-a">AI 还处在「中世纪宗教时代」，没到工业时代，核心是展现「神迹」建立品牌信仰。通用品牌带来的信任溢价高于垂直标签，团队从第一天起就只瞄准非技术人群，没被极客需求带偏。</p>
+        </div>
+        <div class="qa-item">
+          <p class="qa-q"><i>Q5</i><span>未来最期待什么样的新硬件或传感器？</span></p>
+          <p class="qa-a">带摄像头的 AirPods，苹果此前泄露过相关规划。人类是视觉动物，只靠音频输入不够，未来会走向视觉加音频的全天候环境感知。</p>
+        </div>
+        <div class="qa-item">
+          <p class="qa-q"><i>Q6</i><span>AI 产品经理与传统互联网产品经理的最大区别是什么？</span></p>
+          <p class="qa-a">底层内核没区别，永远是发现问题、定义问题、解决问题，产品经理可以干一辈子，别用「安卓 PM」这类工具标签给自己设限。区别在考核方式：现在面试会直接看候选人日常使用 AI 的深度与体感。</p>
+        </div>
+        <div class="qa-item">
+          <p class="qa-q"><i>Q7</i><span>客单价 100 万、已签 30 位富豪客户的 AI 传记业务无法规模化，怎么办？</span></p>
+          <p class="qa-a">破除对 Scale 的盲目迷信。能服务好 30 位顶级客户、年入数千万，已经是天花板级的好生意，像头部 KOL 年入两三千万。并非所有生意都要做成十亿级规模。</p>
+        </div>
+        <div class="qa-item">
+          <p class="qa-q"><i>Q8</i><span>如何打造 AI Native 组织？</span></p>
+          <p class="qa-a">张涛说已在个人公众号「潜云思绪」发过系统性长文，详细拆解管理哲学与实践。</p>
+        </div>
+        <div class="qa-item">
+          <p class="qa-q"><i>Q9</i><span>Solo Founder 如何在动态战局中守住产品不变的内核？</span></p>
+          <p class="qa-a">审美的本质是创始人的价值观与取舍，它决定你吸引什么样的人、拒绝什么平庸设计。战局和工具每天都在变，底层价值观与「不可容忍的底线」必须恒定。</p>
+        </div>
+        <div class="qa-item">
+          <p class="qa-q"><i>Q10</i><span>1 秒视频生成具体怎么和用户需求匹配？</span></p>
+          <p class="qa-a">比如主播在直播间设定「重庆版 GTA」规则，所有观众都能直接进入实时生成的世界各自操作，内容从一人制作多人消费，变成全民实时共创。张涛还引述 Elon Musk 去年与团队长谈 3 小时的观点：人类最终通过双眼接收信息，语言模型只是过渡，未来一切都会走向视觉模型，Software gonna die, Game gonna die，全球算力上限取决于人眼输入比特率乘以人口总数。</p>
+        </div>
+        <div class="qa-item">
+          <p class="qa-q"><i>Q11</i><span>个人底层的核心价值体系是什么？</span></p>
+          <p class="qa-a">生于没有手机的年代，亲历科技浪潮改善生活。相信技术进步不会自动变成生活便利，优秀 PM 的使命是当连接前沿技术与真实需求的桥梁。</p>
+        </div>
+        <div class="qa-item">
+          <p class="qa-q"><i>Q12</i><span>国内企业级 To B Agent 落地困难，有什么破局思路？</span></p>
+          <p class="qa-a">三个死结：员工没动力学、旧系统打通和权限管控难、人力加 AI 成本太高。月薪 5000 元的员工配 500 元 AI，人力成本就涨了 10%。他提了个大胆构想：做一家只有「1 个 DAU」的产品，只给老板或部门经理用。老板最有动力推进业务，天然拥有全公司最高系统权限，也能通过咨询或管理预算覆盖无限量 Token，绕开中基层的推广阻力。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="source" id="s10">
+      <h2><span class="n">10</span>来源与说明</h2>
+      <ul>
+        <li>原始分享记录：<a href="https://fomalhaut647.com/posts/lecture-zhang-tao/" target="_blank" rel="noopener noreferrer">fomalhaut647.com/posts/lecture-zhang-tao/</a></li>
+        <li>本文为该场分享的中文整理，保留讲者观点与叙事顺序，做了删节与重新分段。</li>
+        <li>文中时间、金额、TPM、ARR、用户量等数字均来自讲者口述或现场记录，未独立核验；引用前请以原始出处为准。</li>
+        <li>第三方演讲内容不纳入本仓 CC BY 4.0，引用请注明原出处。</li>
+      </ul>
+    </section>
+
+  </div>
+  <!-- MANUS:CONTENT:END -->
+
+  <div class="page-foot">开源人生 · OpenMyLife · 2026-11-22 整理 · 第三方演讲整理，不纳入 CC BY 4.0</div>
+
+</main>
+</body>
+</html>

@@ -12,9 +12,9 @@
 
 > 每日推荐 —— 宁缺毋滥，努力日更。
 
-- **2026-11-22** · [Muse 产品负责人访谈：一个周末实验，怎么长成千万下载的 AI 产品](https://openmylife.xyz/articles/agent/muse-interview.html) —— Lenny 播客访谈整理：Mona Sarantakos 讲 Muse 从树莓派跑 OpenClaw 的周末实验，到七个月后上线、登顶 App Store。中间有扁平组织、吉祥物 Jolly 之争、Side Chats 的妥协，以及「购物」这个预期之外的头部场景。附 137 轮完整中文文字稿。
-- **2026-11-19** · [国内外生活助理类 AI Agent 清单（v5）](https://openmylife.xyz/articles/agent/life-assistant-agents.html) —— 国际 26 个、国内 17 个、手机厂商自带 5 家、硬件 4 个 + 边界样本 1 个，附两份实测榜、基础设施、形态速查与七条判断。v5 新增 Linq / Photon / Second、Poppy 1.0 与 ChatGPT Wallet，补 Gemini Tasks 与千问办公 2.0。
-- **2026-10-30** · [AI 味拆三层：大多数人洗的，是最不管用的那一层](https://openmylife.xyz/articles/ai/ai-flavor-three-layers.html) —— AI 味不是一种味道，而是三层：词、句、结构。520 万字对照统计（口径见附录 A）显示，黑名单词与破折号已经失效；真正决定读者信不信的，是结构与材料。附七种可数句式与存疑清单。
+- **2026-11-22** · [张涛北大分享：Manus 的诞生与 AI 时代的产品创新](https://openmylife.xyz/articles/agent/manus-zhangtao-pku-talk.html) —— Manus CPO 张涛的北大分享整理：从浏览器插件 Monica、被砍掉的 AI 浏览器，到 Manus 的立项与发布；后半段是四个产品创新关键、三条创业建议，以及通用 Agent 空间、Personal Agent 终局与 To B 落地的圆桌问答。
+- **2026-11-18** · [11 月 18 日，阅读分享](https://openmylife.xyz/articles/reading/2026-11-18-reading-digest.html) —— 一天读到的 14 篇，按 6 个主题归组：AI 之后软件开发的 11 个变化、Simon Willison 的 2026 大模型全记录、不要让 AI 代表你、单人创业剩下的孤独、vibe coding 做出设计师级官网、以色列间谍软件、影视飓风的账、澳大利亚、思考与闲聊。每篇一句结论加几条要点，原文标题与链接都保留。
+- **2026-10-21** · [MiniMax 与智谱 2026 中报对照：收入、亏损与 ARR](https://openmylife.xyz/articles/finance/minimax-zhipu-h1-2026.html) —— 两家港股大模型公司上市后的首份中报对照：收入、亏损、ARR 与估值，数据截至 2026-10-21。
 
 ## 我是谁
 
