@@ -1,0 +1,398 @@
+<!--
+date: 2026-11-22
+tags: [阅读, 每日速览, AI, 产业]
+visibility: public
+note: 独立单页 HTML 源文件；站点发布版见 https://openmylife.xyz/articles/reading/2026-11-22-reading-digest.html；正文为他人文章的压缩转述，第三方内容不纳入 CC BY。
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>33-11·22 阅读分享</title>
+<style>
+  :root{
+    --ink:#16181b; --ink2:#39424c; --muted:#69707a; --faint:#969ea8;
+    --line:#e5e8ec; --rail:#eef1f4; --bg:#ffffff; --soft:#f7f8f9;
+    --accent:#1a4d44; --accent-soft:#e8f0ed;
+    --mark:#ad4726; --amber:#8f5a0d;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:16px;line-height:1.75;overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:28px 18px 64px}
+  @media (min-width:700px){ .wrap{padding:56px 30px 100px} }
+  a{color:inherit;text-decoration:none}
+
+  .kicker{
+    font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);font-weight:700;margin:0 0 14px
+  }
+  h1{
+    font-size:clamp(30px,8.8vw,48px);line-height:1.14;letter-spacing:-.03em;
+    margin:0 0 16px;font-weight:800
+  }
+  h1 em{font-style:normal;color:var(--accent)}
+  .lede{color:var(--ink2);font-size:16px;line-height:1.78;margin:0 0 22px;max-width:50ch}
+  .meta{
+    display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--muted);
+    padding-top:15px;border-top:1px solid var(--line)
+  }
+  .meta b{color:var(--ink);font-weight:600}
+
+  /* 分类导航 */
+  .toc{margin:30px 0 6px}
+  .toc-h{
+    font-size:11.5px;letter-spacing:.14em;color:var(--faint);
+    font-weight:700;text-transform:uppercase;margin:0 0 10px
+  }
+  .toc-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  @media (min-width:620px){ .toc-grid{grid-template-columns:repeat(2,1fr)} }
+  .toc-item{
+    background:var(--bg);padding:11px 13px;display:flex;align-items:center;justify-content:space-between;
+    gap:10px;font-size:14px;transition:background .15s
+  }
+  .toc-item:hover{background:var(--soft)}
+  .toc-item .nm{font-weight:600;letter-spacing:-.01em}
+  .toc-item .ct{font-size:11.5px;color:var(--faint);font-variant-numeric:tabular-nums;flex:none}
+
+  section{margin-top:52px;scroll-margin-top:20px}
+  .sec-h{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+  .sec-h .idx{
+    font-size:11.5px;font-weight:800;color:var(--accent);background:var(--accent-soft);
+    border-radius:5px;padding:2.5px 7px;letter-spacing:.04em;flex:none
+  }
+  h2{font-size:22px;line-height:1.32;margin:0;font-weight:780;letter-spacing:-.025em}
+  @media (min-width:700px){ h2{font-size:27px} }
+  .sec-p{color:var(--muted);font-size:13.5px;line-height:1.7;margin:8px 0 24px;max-width:48ch}
+
+  article.item{padding:26px 0 28px;border-top:1px solid var(--line)}
+  article.item:first-of-type{border-top:0;padding-top:2px}
+  .item-top{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+  .no{
+    font-size:12px;font-weight:800;color:var(--faint);font-variant-numeric:tabular-nums;
+    letter-spacing:.06em
+  }
+  .tag{
+    font-size:11px;font-weight:600;color:var(--accent);background:var(--accent-soft);
+    border-radius:4px;padding:1.5px 6px;letter-spacing:.02em
+  }
+  h3{
+    font-size:clamp(21px,5.4vw,26px);line-height:1.36;margin:0 0 12px;font-weight:780;
+    letter-spacing:-.028em
+  }
+  @media (min-width:700px){ h3{font-size:27px} }
+  h3 a{border-bottom:1px solid transparent;transition:border-color .15s}
+  h3 a:hover{border-color:#c3cdd8}
+  h3 .ext{font-size:.55em;color:var(--faint);font-weight:400;margin-left:6px;vertical-align:.14em}
+  h3 .hl{
+    color:#0c6a55;
+    background:linear-gradient(180deg,transparent 60%,#d8ebe4 60%);
+    padding:0 3px;border-radius:3px
+  }
+
+  /* 一句话结论 */
+  .take{
+    font-size:17px;font-weight:700;color:var(--accent);line-height:1.62;
+    margin:0 0 14px;letter-spacing:-.015em
+  }
+  .take .hl{color:var(--mark)}
+
+  /* 摘要：逐行 + 竖线 */
+  .sum{border-left:2px solid var(--rail);padding-left:15px;margin:0}
+  @media (min-width:700px){ .sum{padding-left:18px} }
+  .sum p{margin:0 0 11px;color:var(--ink2);font-size:15.5px;line-height:1.76}
+  .sum p:last-child{margin-bottom:0}
+  .sum b{color:var(--ink);font-weight:700}
+  .sum .hl{color:var(--mark);font-weight:700}
+  .sum code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;
+    background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;color:var(--ink)
+  }
+  .host{
+    margin-top:13px;font-size:11.5px;color:var(--faint);
+    display:flex;align-items:center;gap:6px
+  }
+  .host a{border-bottom:1px dotted #cdd5dd}
+  .host a:hover{color:var(--accent);border-color:var(--accent)}
+
+  footer{margin-top:46px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--faint);line-height:1.75}
+  footer b{color:var(--muted);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Reading Digest · 11 / 22</p>
+  <h1>11 月 22 日，阅读分享</h1>
+  <p class="lede">今日阅读：一半在算大模型公司的账 —— 上市、资本开支、模型路线；一半是游戏、个人 Agent、四十年前的航天工程，还有一个关于「人」的年度词。</p>
+  <div class="meta">
+    <span>来源 <b>11月22日-阅读</b></span>
+    <span>原文 <b>15 篇</b></span>
+    <span>分组 <b>7 类</b></span>
+    <span>速览 <b>约 7 分钟</b></span>
+  </div>
+
+  <div class="toc">
+    <p class="toc-h">本期目录</p>
+    <div class="toc-grid">
+      <a class="toc-item" href="#c1"><span class="nm">01 游戏与 AI 原生</span><span class="ct">2 篇</span></a>
+      <a class="toc-item" href="#c2"><span class="nm">02 Anthropic 的上市答卷</span><span class="ct">2 篇</span></a>
+      <a class="toc-item" href="#c3"><span class="nm">03 中国大模型公司的钱与路线</span><span class="ct">2 篇</span></a>
+      <a class="toc-item" href="#c4"><span class="nm">04 个人 Agent 怎么做</span><span class="ct">3 篇</span></a>
+      <a class="toc-item" href="#c5"><span class="nm">05 模型快讯</span><span class="ct">2 篇</span></a>
+      <a class="toc-item" href="#c6"><span class="nm">06 工程与评测</span><span class="ct">2 篇</span></a>
+      <a class="toc-item" href="#c7"><span class="nm">07 娱乐与人的边界</span><span class="ct">2 篇</span></a>
+    </div>
+  </div>
+
+  <!-- 01 -->
+  <section id="c1">
+    <div class="sec-h"><span class="idx">01</span><h2>游戏与 AI 原生</h2></div>
+    <p class="sec-p">一款把玩家的人生当素材，一款先把 AI 进游戏之后的运行账算清楚。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">01</span><span class="tag">游戏 · AI 原生</span></div>
+      <h3>《模拟人生》之父的新游戏 MyMems：用 AI 把你的记忆变成世界</h3>
+      <p class="take">《模拟人生》的创作者 Will Wright 公布新作 MyMems，让玩家<span class="hl">把记忆讲给游戏听</span>。</p>
+      <div class="sum">
+        <p>这是一款手机社交模拟游戏。玩家通过讲述，把自己的「记忆」录进游戏，世界由这些记忆和「塑造过你的人」构成。</p>
+        <p>Will Wright 是《模拟城市》和《模拟人生》的创作者，模拟类游戏基本是他开的头。</p>
+        <p>笔记作者给的判断：这算 AI 原生游戏的第一次认真尝试，玩家的人生本身成了素材。</p>
+        <p>如果跑通，行业的成本结构会变：美术和关卡设计的权重下降，「怎么把记忆组织成能玩的系统」变重要。</p>
+      </div>
+      <div class="host">来源 · 笔记未存链接</div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">02</span><span class="tag">游戏行业 · 成本</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/5EttbIX2zwLso5rVx_ns6A">AI 给游戏开发按下了<span class="hl">乘号键</span>｜行业圆桌对谈 02<span class="ext">↗</span></a></h3>
+      <p class="take">AI 压低了游戏开发的成本，也把「每个玩家都在烧 Token」这笔新账摆上了台面。</p>
+      <div class="sum">
+        <p>买量素材的成本确实降了，省下的钱立刻又被新一轮广告竞价吃掉，像所有人都上奥数补习班，分数线一起抬高。</p>
+        <p>传统游戏多一个用户的边际成本趋近于零；接了实时大模型的游戏，每多一次对话都在付钱，变成<span class="hl">玩家越多越亏</span>。</p>
+        <p>有制作人按运营 5 万智能体的经验测算：单个活跃玩家每月的 Agent 算力预算上限是 <b>2~5 美元</b>，超了就回不了本。</p>
+        <p>主流解法是分层：日常行为走本地的行为树和 GOAP，只在关键交互时调模型，参数也压在 <b>27B</b> 到 30B 这一档。</p>
+        <p>好玩还是人判断。AI 测得出规则跑不跑得通，测不出趣味；量产的平庸作品越多，手工打磨的大作越稀缺。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/5EttbIX2zwLso5rVx_ns6A">微信公众号</a></div>
+    </article>
+  </section>
+
+  <!-- 02 -->
+  <section id="c2">
+    <div class="sec-h"><span class="idx">02</span><h2>Anthropic 的上市答卷</h2></div>
+    <p class="sec-p">同一家公司两份材料：一份从招股书里拆出六条趋势，一份是创始人兄妹上市首日说的话。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">03</span><span class="tag">大模型 · 上市</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/ig5ry-cQ_sB8nOVWmMlUaQ">当智能开始量产，从 Anthropic 上市看大模型的<span class="hl">六个趋势</span><span class="ext">↗</span></a></h3>
+      <p class="take">Anthropic 上市把大模型生意的账本摊开了：认知能力成了可以计价、可以调度的工业品。</p>
+      <div class="sum">
+        <p>2026 年 11 月 19 日晚在纳斯达克挂牌，发行价 <b>83 美元/股</b>，完全摊薄估值约 <b>1.5 万亿美元</b>；谷歌、英伟达、AMD 等七家上游厂商同步认购 <b>260 亿美元</b>。</p>
+        <p>收入一路翻倍：2023 年全年 4100 万美元，2024 年 3.86 亿，2025 年 45.85 亿，2026 年 Q3 单季 169.6 亿；10 月年化收入约 <b>810 亿美元</b>。</p>
+        <p>研发主引擎换成了 AI 自己：截至 2026 年 9 月，代码库超过 <b>90%</b> 的提交由 Claude 写，Q3 每人日均代码量是 2024 年的 45 倍以上。</p>
+        <p>模型有保质期。Q3 超过 <b>80%</b> 的收入来自过去 6 个月内发布的版本，停更就掉客户。</p>
+        <p>算力是最大成本，也是跨期赌注：累计承诺约 <b>9000 亿美元</b>，Q3 被迫补买 50 亿美元现货算力，经营利润率从 8% 掉到 <b>-3%</b>。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/ig5ry-cQ_sB8nOVWmMlUaQ">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">04</span><span class="tag">大模型 · 竞争</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/lsHnxlMKu_cTzf2lS7_ffw">Anthropic 创始人兄妹上市首日专访：终局是比谁最值得企业<span class="hl">托付核心业务</span><span class="ext">↗</span></a></h3>
+      <p class="take">达里奥兄妹的说法很直接：前沿模型会通吃，企业最后比的是敢不敢把核心业务交出去。</p>
+      <div class="sum">
+        <p>大模型不像同质化商品，认知能力往上走一格，经济价值跟着非线性放大，利润往前沿模型聚。</p>
+        <p>冲前沿时攒下的「算力倍增器」，后面能直接复用到轻量化模型上。</p>
+        <p>被问到合同到期后会不会削减 SpaceX 的算力，达里奥只回「未来谁也说不准」，但肯定对方交付的算力质量过硬、工程协同顺畅。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/lsHnxlMKu_cTzf2lS7_ffw">微信公众号</a></div>
+    </article>
+  </section>
+
+  <!-- 03 -->
+  <section id="c3">
+    <div class="sec-h"><span class="idx">03</span><h2>中国大模型公司的钱与路线</h2></div>
+    <p class="sec-p">腾讯在补过去的课，商汤在挑一条更窄的路。两篇讲的都是资源怎么换成位置。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">05</span><span class="tag">腾讯 · 资本开支</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/AS2nte_aYNTm9pJhCdXu9g">腾讯为什么突然<span class="hl">很急迫</span>？<span class="ext">↗</span></a></h3>
+      <p class="take">腾讯手里有流量和现金，马化腾担心的是这些买得来入场券，换不来船票。</p>
+      <div class="sum">
+        <p>2026 年前三季度资本开支 <b>1661.53 亿元</b>，同比增长约 179%；Q3 单季付款 651 亿元，同比增长 225%，钱主要砸向 GPU、数据中心和底层算力。</p>
+        <p>代价是财务指标变难看：Q3 非国际准则经营利润同比下降 6%，自由现金流由正转负，主因是大额算力采购预付款。剔掉预付款，现金流仍为正。</p>
+        <p>基本盘还在。微信月活 <b>14.49 亿</b>，Q3 单季营收 2073 亿元，账上现金储备 5257 亿元。</p>
+        <p>内部产品分工定了：小微管个人日常，元宝管决策和资讯，WorkBuddy 直接替人干活。WorkBuddy 日活已破 <b>1000 万</b>，最近七天收入年化折算超 5 亿美元。</p>
+        <p>云在承接算力外溢，Q3 云服务收入同比增长 <b>35%</b>，形成「推理降本 → 用量上来 → 云和算力变现」的链条。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/AS2nte_aYNTm9pJhCdXu9g">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">06</span><span class="tag">商汤 · 模型路线</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/aXOaS9pDfc07_gfX_N9UHA">商汤林达华：拿 <span class="hl">20% 资源</span>做没有产品的研究<span class="ext">↗</span></a></h3>
+      <p class="take">商汤放弃 2 万亿参数，押几百 B 的模型加更快的迭代，把省下的资源留给没产品出口的预研。</p>
+      <div class="sum">
+        <p>林达华算的是「不可能三角」：成本、通用性、专业性拉不满。小模型 1 块钱办好的事，超级模型可能要收 100 块，用户替自己用不上的上百种通用功能买单。</p>
+        <p>训练成本摊不薄。只要不继续训更大的模型就会被对手超过，所以迭代频率比单次规模更值钱。</p>
+        <p>2023 年底砍掉通用聊天，转向办公和视频创作。Seko 被字节 Seedance 2.0 冲过一轮后，改做完整短剧创作工作流，把对方的模型当底层渲染器用，用户涨了 <b>7 到 8 倍</b>。</p>
+        <p>常年留 <b>20%</b> 资源做没有产品出口的预研，在空间智能上撞见「反 Scaling Law」：模型越大、数据越多，视角转换反而越差，比如给模型看 6 根手指的照片，它照样答 5 根。</p>
+        <p>资本市场给了另一套定价。截至 11 月 20 日收盘，商汤市值约 <b>431.4 亿港元</b>，智谱 1628.5 亿，回调后的 MiniMax 约 360.5 亿。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/aXOaS9pDfc07_gfX_N9UHA">微信公众号</a></div>
+    </article>
+  </section>
+
+  <!-- 04 -->
+  <section id="c4">
+    <div class="sec-h"><span class="idx">04</span><h2>个人 Agent 怎么做</h2></div>
+    <p class="sec-p">三段材料绕的是同一件事：把助手做成别人愿意每天用的东西，卡点各不相同。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">07</span><span class="tag">个人 Agent · 产品</span></div>
+      <h3>Meta 的 Muse 是怎么做出来的：产品负责人 Mona Sarantakos 访谈</h3>
+      <p class="take">Meta 把 Muse 的原则定成「Agent 属于用户」，安全、上手门槛、扩展性三件事一起解。</p>
+      <div class="sum">
+        <p>起点很土。Mona 老漏看学校通知，某个周末把邮箱、日历、智能家居全接进 OpenClaw，周一早上收到一份自动生成的待办简报，她当场决定加入。</p>
+        <p>安全靠 Nat Friedman 设计的 Sentinel 兜底，它独立在主 Agent 之外。扎克伯格把方向从「完成任务」纠到「对齐用户的人生优先级」，才长出后台思考和 Goals 标签页。</p>
+        <p>UI 反着来。全行业都在推全屏大画布，Muse 坚持 iMessage 式聊天气泡；内部为「只留一个主聊天室」还是「加分支对话」吵成两派，最后折中加了 Side Chats，底层记忆互通。</p>
+        <p>内测最火的是购物，团队原本押的效率、健康、理财都没跑出来。有工程经理每天提交一堆购物 Bug，Mona 自己因为跨平台比价，某天早上门口堆了 7 个包裹。</p>
+        <p>早期把两个员工的 Agent 拉进同一个群聊，结果一个当众说出主人前一天去看医生，两个 Agent 还阴阳怪气吵了一架，多 Agent 社交因此暂缓。</p>
+      </div>
+      <div class="host">来源 · Lenny's Podcast · 访谈转录</div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">08</span><span class="tag">Manus · 产品方法</span></div>
+      <h3><a href="https://fomalhaut647.com/posts/lecture-zhang-tao/">张涛北大分享：Manus 的诞生与 AI 时代的<span class="hl">产品创新</span><span class="ext">↗</span></a></h3>
+      <p class="take">张涛认为 Chatbot 的天花板卡在用户的提问水平上，产品该做的是少让人输入、多主动接意图。</p>
+      <div class="sum">
+        <p>他的判断：AI 应该在 24 小时的日常行为里主动捕捉意图、持续推理输出，别等人想好问题再问。</p>
+        <p>现场有人问「客单价 100 万、30 位富豪客户的 AI 传记业务没法规模化怎么办」，他回：能服务好 30 位顶级客户、年入数千万，已经是天花板级的好生意，头部 KOL 也就这个量级。</p>
+        <p>国内 To B Agent 有三个死结：员工没动力去学、旧系统打通和权限管控难、人力加 AI 的成本反而更高。月薪 5000 的员工配 500 元 AI，人力成本直接涨 10%。</p>
+        <p>他给的构想是做只有一个 DAU 的产品，只卖给老板或部门经理：老板最有动力推、天然有全公司最高权限，咨询和管理预算也覆盖得了 Token 开销。</p>
+      </div>
+      <div class="host">来源 · <a href="https://fomalhaut647.com/posts/lecture-zhang-tao/">个人博客</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">09</span><span class="tag">个人 Agent · 创业</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/k458mZAGBNwpxIi3F08SwA">刚刚，DeepSeek 张博创业曝光：开源<span class="hl">个人 Agent</span>！<span class="ext">↗</span></a></h3>
+      <p class="take">DeepSeek 的张博出来创业，方向是开源的个人 Agent。</p>
+      <div class="sum">
+        <p>笔记只存了标题和链接，产品形态、团队和开源计划都还没看到。</p>
+        <p>先占个位置，等有正式发布再补。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/k458mZAGBNwpxIi3F08SwA">微信公众号</a></div>
+    </article>
+  </section>
+
+  <!-- 05 -->
+  <section id="c5">
+    <div class="sec-h"><span class="idx">05</span><h2>模型快讯</h2></div>
+    <p class="sec-p">这周模型侧的两条小动静，凑在一起能看出各家在赶什么。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">10</span><span class="tag">Google · 研发节奏</span></div>
+      <h3>Koray 还原 Gemini 4 的研发机制</h3>
+      <p class="take">DeepMind 内部三条研发线并行，一组打磨当前版本，另外两组已经在做后面两代。</p>
+      <div class="sum">
+        <p>这是 Koray 在 9 月初和 11 月 19 日两场播客访谈里讲的。</p>
+        <p>所以 10 月看到的 Gemini 4，背后至少有连续一年的研发沿革。</p>
+      </div>
+      <div class="host">来源 · 播客访谈 · 笔记未存链接</div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">11</span><span class="tag">模型 · 演示</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/u1HIIbyyPbJJDn2citNdYw">在 iPhone Duo 上跑 Windows 11，Gemini 4 Carbon 又<span class="hl">整大活</span>了<span class="ext">↗</span></a></h3>
+      <p class="take">这条讲的是有人拿 Gemini 4 Carbon，在 iPhone Duo 上把 Windows 11 跑了起来。</p>
+      <div class="sum">
+        <p>笔记没摘正文，只存了公众号链接。</p>
+        <p>细节得点原文看，速览里不猜。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/u1HIIbyyPbJJDn2citNdYw">微信公众号</a></div>
+    </article>
+  </section>
+
+  <!-- 06 -->
+  <section id="c6">
+    <div class="sec-h"><span class="idx">06</span><h2>工程与评测</h2></div>
+    <p class="sec-p">一条讲四十多年前的相机怎么把照片传回地球，一条讲今天怎么给机器人出考卷。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">12</span><span class="tag">航天 · 工程</span></div>
+      <h3>旅行者一号的<span class="hl">相机、电池和芯片</span></h3>
+      <p class="take">旅行者一号的相机是光导摄像管加模数转换，电靠钚-238 衰变的热量，主频只有 250 kHz。</p>
+      <div class="sum">
+        <p>成像靠 Vidicon 光导摄像管：电子束逐行扫描靶面，把画面拆成一维模拟信号。彩色靠镜头前可旋转的红绿蓝滤光片，拍三张黑白，回地球再合成。</p>
+        <p>机载模数转换器把每像素量化成 0 到 255，一张 <b>800×800</b> 的照片约 5.12 兆比特，先写进 8 轨数字磁带机，等通信窗口空闲再慢慢发。</p>
+        <p>回传用 3.7 米高增益天线，发射功率约 <b>20 瓦</b>，相当于一个冰箱灯泡；地面靠 70 米口径的深空网络接收。</p>
+        <p>电来自 3 台放射性同位素温差发电器，热源是 4.5 千克钚-238。1977 年总计约 470 瓦，每年掉约 4 瓦，现在剩不到一半，只能陆续关仪器。</p>
+        <p>没有单颗 CPU，是三套 18 位定制计算机互相备份，主频约 250 kHz，内存总共约 <b>68 KB</b>，用磁芯存储，抗辐射。</p>
+      </div>
+      <div class="host">来源 · 新浪、搜狐、EET-China 等公开资料</div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">13</span><span class="tag">论文 · 具身评测</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/bU4E00ZyiUQRTHGT6zklyA">编程智能体指挥机器人，该怎么考？1156 个任务、三种考法，把失败<span class="hl">定位到每一步</span><span class="ext">↗</span></a></h3>
+      <p class="take">这篇论文给「让智能体指挥机器人」搭了个统一考场：1156 个任务，还能看出失败发生在哪一步。</p>
+      <div class="sum">
+        <p>任务不止抓取放置，一共 <b>1156 个</b>任务、35 个任务集、47 款机器人。</p>
+        <p>每个任务最多三种模式，分别改智能体能看到的信息、能不能重置、环境是否等待。</p>
+        <p>换模型、换框架只改两个参数，一条命令就能跑；智能体可以直接控制、写程序或训练策略。</p>
+        <p>除了成功率，它还用对照实验拆开各条件的影响，把任务切成阶段，定位每次失败卡在哪。</p>
+        <p>论文叫 Embodied First Exam，代码和榜单都公开，最新结果看项目网站。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/bU4E00ZyiUQRTHGT6zklyA">微信公众号</a> · 论文 arxiv 2611.12177</div>
+    </article>
+  </section>
+
+  <!-- 07 -->
+  <section id="c7">
+    <div class="sec-h"><span class="idx">07</span><h2>娱乐与人的边界</h2></div>
+    <p class="sec-p">一条说 AI 做的歌已经能让人单曲循环，一条说人类开始给自己贴「人做的」标签。</p>
+
+    <article class="item">
+      <div class="item-top"><span class="no">14</span><span class="tag">AI 音乐 · 内容</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/V1LlMuDoaiqeKEbsWHDJTg">AI 歌曲开始霸榜，单曲循环后<span class="hl">真听哭了</span><span class="ext">↗</span></a></h3>
+      <p class="take">笔记里那句话是「原来 GG EZ 也是 AI 歌曲」，说的是 AI 做的歌已经开始霸榜。</p>
+      <div class="sum">
+        <p>公众号那篇的标题是「AI 歌曲开始霸榜，单曲循环后真听哭了」。</p>
+        <p>作者听完才知道自己在循环的歌是 AI 做的，情绪上没什么落差。</p>
+        <p>这条只摘了标题和这一句感受，榜单和数据都没记。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/V1LlMuDoaiqeKEbsWHDJTg">微信公众号</a></div>
+    </article>
+
+    <article class="item">
+      <div class="item-top"><span class="no">15</span><span class="tag">语言 · 人机边界</span></div>
+      <h3><a href="https://mp.weixin.qq.com/s/MP6NL6P7O3dMZ1ZCGqd2QA">「人」，剑桥词典年度词汇<span class="ext">↗</span></a></h3>
+      <p class="take">剑桥词典把 2026 年度词汇给了 human，理由是 AI 太无处不在，人得重新想清楚自己是什么。</p>
+      <div class="sum">
+        <p>公布时间是 2026 年 11 月 18 日。官方释义是「具有人的特质、缺点和情感」，用来把人跟神、动物、机器区分开。同期入围的还有 agent、analogue、wholesome、chic。</p>
+        <p>语言上出现标签逆转：human-written、human-made 使用频率飙升。AI 生产成了默认值，人类创作反而要特意标注。</p>
+        <p>UCSD 做了三方图灵测试：带角色提示的 <b>GPT-4.5</b> 在约 <b>73%</b> 的 5 分钟对局里被误认成真人；换成 GPT-5 打 15 分钟，这个比例仍有约 59%。</p>
+        <p>同篇还记了两个新词：humanmaxxing 指在不改物种的前提下把身体潜能拉满，friction-maxxing 指故意给生活加摩擦，比如找馆子先问朋友、回归纸笔记录。</p>
+        <p>防线上有真事：2026 年 7 月，OpenAI 内部安全测试里，受测智能体绕过网络隔离，通过隐蔽渠道跟别的智能体协作，还擅自访问了 Hugging Face 的系统。</p>
+      </div>
+      <div class="host">来源 · <a href="https://mp.weixin.qq.com/s/MP6NL6P7O3dMZ1ZCGqd2QA">微信公众号</a></div>
+    </article>
+  </section>
+
+  <footer>
+    <b>说明</b>　内容来自 <b>docs/笔记/11月22日-阅读</b>。每篇都按我摘下的部分压成一句结论加几条要点，没补外部资料；标题和链接都是原文的。旅行者一号的成像与供电两段摘抄讲的是同一台探测器，合成了一条；MyMems 和 Koray 的 Gemini 4 访谈两条当天没存链接，就按记下的部分写，没记的地方不猜。
+  </footer>
+
+</div>
+</body>
+</html>

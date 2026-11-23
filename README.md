@@ -13,8 +13,8 @@
 > 每日推荐 —— 宁缺毋滥，努力日更。
 
 - **2026-11-22** · [张涛北大分享：Manus 的诞生与 AI 时代的产品创新](https://openmylife.xyz/articles/agent/manus-zhangtao-pku-talk.html) —— Manus CPO 张涛的北大分享整理：从浏览器插件 Monica、被砍掉的 AI 浏览器，到 Manus 的立项与发布；后半段是四个产品创新关键、三条创业建议，以及通用 Agent 空间、Personal Agent 终局与 To B 落地的圆桌问答。
-- **2026-11-18** · [11 月 18 日，阅读分享](https://openmylife.xyz/articles/reading/2026-11-18-reading-digest.html) —— 一天读到的 14 篇，按 6 个主题归组：AI 之后软件开发的 11 个变化、Simon Willison 的 2026 大模型全记录、不要让 AI 代表你、单人创业剩下的孤独、vibe coding 做出设计师级官网、以色列间谍软件、影视飓风的账、澳大利亚、思考与闲聊。每篇一句结论加几条要点，原文标题与链接都保留。
-- **2026-10-21** · [MiniMax 与智谱 2026 中报对照：收入、亏损与 ARR](https://openmylife.xyz/articles/finance/minimax-zhipu-h1-2026.html) —— 两家港股大模型公司上市后的首份中报对照：收入、亏损、ARR 与估值，数据截至 2026-10-21。
+- **2026-11-12** · [AI 招聘平台的圆桌：双端 Agent 社区在中国能不能成立](https://openmylife.xyz/articles/ai/ai-recruiting-roundtable-invisible-community.html) —— 七个 AI 模拟席位、八轮推演与两轮重启：把「AI 看不见的社区」拆成伪命题与真核弹，再放回冷启动、NDA 与巨头免费化四道墙前验证。
+- **2026-10-24** · [AI 审美的三层结构：默认审美、调节层与上限层](https://openmylife.xyz/articles/ai/aesthetic-three-layers.html) —— 默认审美是统计引力，提示词是意图翻译，模型能力是细节天花板。动手前先分清：你面对的是默认审美问题，还是能力上限问题。
 
 ## 我是谁
 

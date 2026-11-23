@@ -29,6 +29,8 @@ skills/
 |---|---|---|
 | `skill-evolution` | 把刚完成的工作流提炼为可复用技能，并按使用反馈持续进化 | [`SKILL.md`](./skill-evolution/SKILL.md) |
 | `orchestrate-mode` | 开发 / 重构 / 研究任务复杂度中等以上时先加载，再由分级逻辑决定直接做、派一个 agent 还是进入编排模式（主对话只拆解、派发、收口、汇报） | [`SKILL.md`](./orchestrate-mode/SKILL.md) |
+| `reading-digest` | 把一天读的原始阅读记录压成分组速览：每篇一句结论 + 3–5 条要点，保留原题与链接，去 AI 味，产出单文件分享页并接到站点发布 | [`SKILL.md`](./reading-digest/SKILL.md) |
+| `de-ai-flavor-deepseek` | DeepSeek 口径的去 AI 味：先删废话，再拆对称与段末点题，最后调句子节奏；只改表达，不改数字与判断 | [`SKILL.md`](./de-ai-flavor-deepseek/SKILL.md) |
 
 ## 新增技能
 
