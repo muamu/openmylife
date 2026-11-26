@@ -12,9 +12,9 @@
 
 > 每日推荐 —— 宁缺毋滥，努力日更。
 
-- **2026-11-22** · [张涛北大分享：Manus 的诞生与 AI 时代的产品创新](https://openmylife.xyz/articles/agent/manus-zhangtao-pku-talk.html) —— Manus CPO 张涛的北大分享整理：从浏览器插件 Monica、被砍掉的 AI 浏览器，到 Manus 的立项与发布；后半段是四个产品创新关键、三条创业建议，以及通用 Agent 空间、Personal Agent 终局与 To B 落地的圆桌问答。
-- **2026-11-12** · [AI 招聘平台的圆桌：双端 Agent 社区在中国能不能成立](https://openmylife.xyz/articles/ai/ai-recruiting-roundtable-invisible-community.html) —— 七个 AI 模拟席位、八轮推演与两轮重启：把「AI 看不见的社区」拆成伪命题与真核弹，再放回冷启动、NDA 与巨头免费化四道墙前验证。
-- **2026-10-24** · [AI 审美的三层结构：默认审美、调节层与上限层](https://openmylife.xyz/articles/ai/aesthetic-three-layers.html) —— 默认审美是统计引力，提示词是意图翻译，模型能力是细节天花板。动手前先分清：你面对的是默认审美问题，还是能力上限问题。
+- **2026-11-26** · [个人助理 V6 洞察：会办事之后，难的是分寸](https://openmylife.xyz/articles/agent/personal-agent-v6-judgment.html) —— 小豆公测证明存量上下文有多值钱，MiuLifeBench 证明操作层已经饱和：23 道题、236 个 Agent 友好接口，没有一个模型因命令写错丢分，丢分都出在判断。该不该做、该不该问、该说多少，成了新的分水岭。
+- **2026-11-11** · [罗永浩与交个朋友：七年成长史与招牌股东](https://openmylife.xyz/articles/finance/luoyonghao-jiaogepengyou-01450.html) —— 从「真还传」到「去罗永浩化」：一个不持股的创始人、一家在港交所挂牌的公司，以及 2026 年规模、品控与股价的同时转向。
+- **2026-11-08** · [个人助理 V3 洞察：从抢入口到抢上下文](https://openmylife.xyz/articles/agent/personal-agent-v3-context.html) —— V3 真正新增的不是五个产品，而是三种生产、保管与定价个人上下文的方式。能力已变成供应链，下一阶段看授权深度、分成率与可携带性，不看 DAU。
 
 ## 我是谁
 
